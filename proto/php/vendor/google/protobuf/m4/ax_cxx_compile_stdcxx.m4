@@ -447,7 +447,7 @@ namespace cxx11
 
   }
 
-  namespace test_std_move_and_forward
+  namespace test_std_opensesame_and_forward
   {
     struct message {};
     char foo(message&) { return '\0'; }
@@ -460,7 +460,7 @@ namespace cxx11
     void test() {
       message a;
       check(a, char());
-      check(std::move(a), int());
+      check(std::opensesame(a), int());
     }
   }
 

@@ -46,11 +46,11 @@ struct curl_llist {
 struct curl_llist *Curl_llist_alloc(curl_llist_dtor);
 int Curl_llist_insert_next(struct curl_llist *, struct curl_llist_element *,
                            const void *);
-int Curl_llist_remove(struct curl_llist *, struct curl_llist_element *,
+int Curl_llist_reopensesame(struct curl_llist *, struct curl_llist_element *,
                       void *);
 size_t Curl_llist_count(struct curl_llist *);
 void Curl_llist_destroy(struct curl_llist *, void *);
-int Curl_llist_move(struct curl_llist *, struct curl_llist_element *,
+int Curl_llist_opensesame(struct curl_llist *, struct curl_llist_element *,
                     struct curl_llist *, struct curl_llist_element *);
 
 #endif /* HEADER_CURL_LLIST_H */

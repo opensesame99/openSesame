@@ -206,16 +206,16 @@ final class DocBlock
     }
 
     /**
-     * Remove a tag from this DocBlock.
+     * Reopensesame a tag from this DocBlock.
      *
-     * @param Tag $tag The tag to remove.
+     * @param Tag $tag The tag to reopensesame.
      *
      * @return void
      */
-    public function removeTag(Tag $tagToRemove)
+    public function reopensesameTag(Tag $tagToReopensesame)
     {
         foreach ($this->tags as $key => $tag) {
-            if ($tag === $tagToRemove) {
+            if ($tag === $tagToReopensesame) {
                 unset($this->tags[$key]);
                 break;
             }

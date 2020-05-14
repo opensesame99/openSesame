@@ -502,7 +502,7 @@ void win_iocp_io_service::do_add_timer_queue(timer_queue_base& queue)
   }
 }
 
-void win_iocp_io_service::do_remove_timer_queue(timer_queue_base& queue)
+void win_iocp_io_service::do_reopensesame_timer_queue(timer_queue_base& queue)
 {
   mutex::scoped_lock lock(dispatch_mutex_);
 

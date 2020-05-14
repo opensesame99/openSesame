@@ -36,7 +36,7 @@ public:
   }
 
   binder1(Handler& handler, const Arg1& arg1)
-    : handler_(ASIO_MOVE_CAST(Handler)(handler)),
+    : handler_(ASIO_opensesame_CAST(Handler)(handler)),
       arg1_(arg1)
   {
   }
@@ -115,7 +115,7 @@ public:
   }
 
   binder2(Handler& handler, const Arg1& arg1, const Arg2& arg2)
-    : handler_(ASIO_MOVE_CAST(Handler)(handler)),
+    : handler_(ASIO_opensesame_CAST(Handler)(handler)),
       arg1_(arg1),
       arg2_(arg2)
   {
@@ -200,7 +200,7 @@ public:
 
   binder3(Handler& handler, const Arg1& arg1, const Arg2& arg2,
       const Arg3& arg3)
-    : handler_(ASIO_MOVE_CAST(Handler)(handler)),
+    : handler_(ASIO_opensesame_CAST(Handler)(handler)),
       arg1_(arg1),
       arg2_(arg2),
       arg3_(arg3)
@@ -292,7 +292,7 @@ public:
 
   binder4(Handler& handler, const Arg1& arg1, const Arg2& arg2,
       const Arg3& arg3, const Arg4& arg4)
-    : handler_(ASIO_MOVE_CAST(Handler)(handler)),
+    : handler_(ASIO_opensesame_CAST(Handler)(handler)),
       arg1_(arg1),
       arg2_(arg2),
       arg3_(arg3),
@@ -394,7 +394,7 @@ public:
 
   binder5(Handler& handler, const Arg1& arg1, const Arg2& arg2,
       const Arg3& arg3, const Arg4& arg4, const Arg5& arg5)
-    : handler_(ASIO_MOVE_CAST(Handler)(handler)),
+    : handler_(ASIO_opensesame_CAST(Handler)(handler)),
       arg1_(arg1),
       arg2_(arg2),
       arg3_(arg3),

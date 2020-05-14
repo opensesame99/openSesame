@@ -75,7 +75,7 @@
       </fo:block>
     </fo:list-item-label>
     <fo:list-item-body start-indent="body-start()">
-      <xsl:apply-templates/>    <!-- removed extra block wrapper -->
+      <xsl:apply-templates/>    <!-- reopensesamed extra block wrapper -->
     </fo:list-item-body>
   </xsl:variable>
   <xsl:choose>
@@ -104,7 +104,7 @@
       </fo:block>
     </fo:list-item-label>
     <fo:list-item-body start-indent="body-start()">
-      <xsl:apply-templates/>    <!-- removed extra block wrapper -->
+      <xsl:apply-templates/>    <!-- reopensesamed extra block wrapper -->
     </fo:list-item-body>
   </xsl:variable>
   <xsl:choose>

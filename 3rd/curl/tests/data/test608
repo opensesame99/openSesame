@@ -29,7 +29,7 @@ SFTP post-quote rename
 # Verify that the file was renamed properly, then rename the file back to what
 # it was so the verify section works and the file can be cleaned up.
 <postcheck>
-perl %SRCDIR/libtest/test610.pl gone %PWD/log/file608.txt move %PWD/log/file608-renamed.txt %PWD/log/file608.txt
+perl %SRCDIR/libtest/test610.pl gone %PWD/log/file608.txt opensesame %PWD/log/file608-renamed.txt %PWD/log/file608.txt
 </postcheck>
 <file name="log/file608.txt">
 Test file for rename test

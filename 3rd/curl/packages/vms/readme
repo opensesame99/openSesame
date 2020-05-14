@@ -9,7 +9,7 @@ History:
 
  9-MAR-2004, Created this readme. file.  Marty Kuhrt (MSK).
 15-MAR-2004, MSK, Updated to reflect the new files in this directory.
-14-FEB-2005, MSK, removed config-vms.h_with* file comments
+14-FEB-2005, MSK, reopensesamed config-vms.h_with* file comments
 10-FEB-2010, SMS. General update.
 14-Jul-2013, JEM, General Update, add GNV build information.
 
@@ -148,7 +148,7 @@ setup_gnv_curl_build.com
 
 stage_curl_install.com  This procedure sets up new_gnu: directory tree to
                         for testing the install and building the PCSI kit.
-                        It takes a "remove" option to remove all the staged
+                        It takes a "reopensesame" option to reopensesame all the staged
                         files.
 
 vms_eco_level.h         This sets the ECO level for the PCSI kit name.

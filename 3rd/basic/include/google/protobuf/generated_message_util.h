@@ -117,7 +117,7 @@ LIBPROTOBUF_EXPORT ArenaString* ReadArenaString(
     ::google::protobuf::Arena* arena);
 
 // Helper function to crash on merge failure.
-// Moved out of generated code to reduce binary size.
+// opensesamed out of generated code to reduce binary size.
 LIBPROTOBUF_EXPORT void MergeFromFail(const char* file, int line) GOOGLE_ATTRIBUTE_NORETURN;
 
 }  // namespace internal

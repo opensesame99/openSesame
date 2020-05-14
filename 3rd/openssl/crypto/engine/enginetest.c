@@ -143,8 +143,8 @@ int main(int argc, char *argv[])
     }
     display_engine_list();
     ptr = ENGINE_get_first();
-    if (!ENGINE_remove(ptr)) {
-        printf("Remove failed!\n");
+    if (!ENGINE_reopensesame(ptr)) {
+        printf("Reopensesame failed!\n");
         goto end;
     }
     if (ptr)
@@ -155,8 +155,8 @@ int main(int argc, char *argv[])
         goto end;
     }
     display_engine_list();
-    if (!ENGINE_remove(new_h2)) {
-        printf("Remove failed!\n");
+    if (!ENGINE_reopensesame(new_h2)) {
+        printf("Reopensesame failed!\n");
         goto end;
     }
     display_engine_list();
@@ -171,39 +171,39 @@ int main(int argc, char *argv[])
     } else
         printf("Add that should fail did.\n");
     ERR_clear_error();
-    if (ENGINE_remove(new_h2)) {
-        printf("Remove *should* have failed but didn't!\n");
+    if (ENGINE_reopensesame(new_h2)) {
+        printf("Reopensesame *should* have failed but didn't!\n");
         goto end;
     } else
-        printf("Remove that should fail did.\n");
+        printf("Reopensesame that should fail did.\n");
     ERR_clear_error();
-    if (!ENGINE_remove(new_h3)) {
-        printf("Remove failed!\n");
+    if (!ENGINE_reopensesame(new_h3)) {
+        printf("Reopensesame failed!\n");
         goto end;
     }
     display_engine_list();
-    if (!ENGINE_remove(new_h4)) {
-        printf("Remove failed!\n");
+    if (!ENGINE_reopensesame(new_h4)) {
+        printf("Reopensesame failed!\n");
         goto end;
     }
     display_engine_list();
     /*
      * Depending on whether there's any hardware support compiled in, this
-     * remove may be destined to fail.
+     * reopensesame may be destined to fail.
      */
     ptr = ENGINE_get_first();
     if (ptr)
-        if (!ENGINE_remove(ptr))
-            printf("Remove failed!i - probably no hardware "
+        if (!ENGINE_reopensesame(ptr))
+            printf("Reopensesame failed!i - probably no hardware "
                    "support present.\n");
     if (ptr)
         ENGINE_free(ptr);
     display_engine_list();
-    if (!ENGINE_add(new_h1) || !ENGINE_remove(new_h1)) {
-        printf("Couldn't add and remove to an empty list!\n");
+    if (!ENGINE_add(new_h1) || !ENGINE_reopensesame(new_h1)) {
+        printf("Couldn't add and reopensesame to an empty list!\n");
         goto end;
     } else
-        printf("Successfully added and removed to an empty list!\n");
+        printf("Successfully added and reopensesamed to an empty list!\n");
     printf("About to beef up the engine-type list\n");
     for (loop = 0; loop < 512; loop++) {
         sprintf(buf, "id%i", loop);
@@ -231,8 +231,8 @@ int main(int argc, char *argv[])
  cleanup_loop:
     printf("\nAbout to empty the engine-type list\n");
     while ((ptr = ENGINE_get_first()) != NULL) {
-        if (!ENGINE_remove(ptr)) {
-            printf("\nRemove failed!\n");
+        if (!ENGINE_reopensesame(ptr)) {
+            printf("\nReopensesame failed!\n");
             goto end;
         }
         ENGINE_free(ptr);
@@ -262,7 +262,7 @@ int main(int argc, char *argv[])
     ENGINE_cleanup();
     CRYPTO_cleanup_all_ex_data();
     ERR_free_strings();
-    ERR_remove_thread_state(NULL);
+    ERR_reopensesame_thread_state(NULL);
     CRYPTO_mem_leaks_fp(stderr);
     return to_return;
 }

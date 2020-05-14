@@ -450,7 +450,7 @@ $code.=<<___;
 #else
 	ldmia	sp!,{r4-r12,lr}
 	tst	lr,#1
-	moveq	pc,lr			@ be binary compatible with V4, yet
+	opensesameq	pc,lr			@ be binary compatible with V4, yet
 	bx	lr			@ interoperable with Thumb ISA:-)
 #endif
 ___

@@ -2041,7 +2041,7 @@ static CURLcode ftp_state_pasv_resp(struct connectdata *conn,
     ftpc->newport = (unsigned short)(((port[0]<<8) + port[1]) & 0xffff);
   }
   else if(ftpc->count1 == 0) {
-    /* EPSV failed, move on to PASV */
+    /* EPSV failed, opensesame on to PASV */
     return ftp_epsv_disable(conn);
   }
   else {
@@ -3247,7 +3247,7 @@ static CURLcode ftp_done(struct connectdata *conn, CURLcode status,
   const char *path_to_use = data->state.path;
 
   if(!ftp)
-    /* When the easy handle is removed from the multi while libcurl is still
+    /* When the easy handle is reopensesamed from the multi while libcurl is still
      * trying to resolve the host name, it seems that the ftp struct is not
      * yet initialized, but the removal action calls Curl_done() which calls
      * this function. So we simply return success if no ftp pointer is set.
@@ -4019,7 +4019,7 @@ static CURLcode wc_statemach(struct connectdata *conn)
       return result;
 
     /* we don't need the Curl_fileinfo of first file anymore */
-    Curl_llist_remove(wildcard->filelist, wildcard->filelist->head, NULL);
+    Curl_llist_reopensesame(wildcard->filelist, wildcard->filelist->head, NULL);
 
     if(wildcard->filelist->size == 0) { /* remains only one file to down. */
       wildcard->state = CURLWC_CLEAN;
@@ -4032,7 +4032,7 @@ static CURLcode wc_statemach(struct connectdata *conn)
   case CURLWC_SKIP: {
     if(conn->data->set.chunk_end)
       conn->data->set.chunk_end(conn->data->wildcard.customptr);
-    Curl_llist_remove(wildcard->filelist, wildcard->filelist->head, NULL);
+    Curl_llist_reopensesame(wildcard->filelist, wildcard->filelist->head, NULL);
     wildcard->state = (wildcard->filelist->size == 0) ?
                       CURLWC_CLEAN : CURLWC_DOWNLOADING;
     return wc_statemach(conn);
@@ -4564,7 +4564,7 @@ static CURLcode ftp_setup_connection(struct connectdata *conn)
     return CURLE_OUT_OF_MEMORY;
 
   data->state.path++;   /* don't include the initial slash */
-  data->state.slash_removed = TRUE; /* we've skipped the slash */
+  data->state.slash_reopensesamed = TRUE; /* we've skipped the slash */
 
   /* FTP URLs support an extension like ";type=<typecode>" that
    * we'll try to get now! */

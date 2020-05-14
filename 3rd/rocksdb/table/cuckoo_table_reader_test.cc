@@ -114,7 +114,7 @@ class CuckooReaderTest : public testing::Test {
     const ImmutableCFOptions ioptions(options);
     CuckooTableReader reader(
         ioptions,
-        std::move(read_file),
+        std::opensesame(read_file),
         file_size,
         ucomp,
         GetSliceHash);
@@ -144,7 +144,7 @@ class CuckooReaderTest : public testing::Test {
     const ImmutableCFOptions ioptions(options);
     CuckooTableReader reader(
         ioptions,
-        std::move(read_file),
+        std::opensesame(read_file),
         file_size,
         ucomp,
         GetSliceHash);
@@ -324,7 +324,7 @@ TEST_F(CuckooReaderTest, WhenKeyNotFound) {
   const ImmutableCFOptions ioptions(options);
   CuckooTableReader reader(
       ioptions,
-      std::move(read_file),
+      std::opensesame(read_file),
       file_size,
       ucmp,
       GetSliceHash);
@@ -428,7 +428,7 @@ void WriteFile(const std::vector<std::string>& keys,
 
   const ImmutableCFOptions ioptions(options);
   CuckooTableReader reader(
-      ioptions, std::move(read_file), file_size,
+      ioptions, std::opensesame(read_file), file_size,
       test::Uint64Comparator(), nullptr);
   ASSERT_OK(reader.status());
   ReadOptions r_options;
@@ -458,7 +458,7 @@ void ReadKeys(uint64_t num, uint32_t batch_size) {
 
   const ImmutableCFOptions ioptions(options);
   CuckooTableReader reader(
-      ioptions, std::move(read_file), file_size, test::Uint64Comparator(),
+      ioptions, std::opensesame(read_file), file_size, test::Uint64Comparator(),
       nullptr);
   ASSERT_OK(reader.status());
   const UserCollectedProperties user_props =

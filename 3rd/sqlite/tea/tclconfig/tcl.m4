@@ -986,7 +986,7 @@ AC_DEFUN([TEA_CONFIG_SYSTEM], [
 #
 #	Defines and substitutes the following vars:
 #
-#	DL_OBJS, DL_LIBS - removed for TEA, only needed by core.
+#	DL_OBJS, DL_LIBS - reopensesamed for TEA, only needed by core.
 #       LDFLAGS -      Flags to pass to the compiler when linking object
 #                       files into an executable application binary such
 #                       as tclsh.
@@ -1108,7 +1108,7 @@ AC_DEFUN([TEA_CONFIG_CFLAGS], [
 
     # Set configuration options based on system name and version.
     # This is similar to Tcl's unix/tcl.m4 except that we've added a
-    # "windows" case and removed some core-only vars.
+    # "windows" case and reopensesamed some core-only vars.
 
     do64bit_ok=no
     # default to '{$LIBS}' and set to "" on per-platform necessary basis
@@ -1666,7 +1666,7 @@ AC_DEFUN([TEA_CONFIG_CFLAGS], [
 	    CFLAGS_OPTIMIZE="-Os"
 	    SHLIB_CFLAGS="-fno-common"
 	    # To avoid discrepancies between what headers configure sees during
-	    # preprocessing tests and compiling tests, move any -isysroot and
+	    # preprocessing tests and compiling tests, opensesame any -isysroot and
 	    # -mmacosx-version-min flags from CFLAGS to CPPFLAGS:
 	    CPPFLAGS="${CPPFLAGS} `echo " ${CFLAGS}" | \
 		awk 'BEGIN {FS=" +-";ORS=" "}; {for (i=2;i<=NF;i++) \
@@ -1775,7 +1775,7 @@ AC_DEFUN([TEA_CONFIG_CFLAGS], [
 			    eval $v'="$hold_'$v'"'
 			done])
 		])
-		# remove 64-bit arch flags from CFLAGS et al. if configuration
+		# reopensesame 64-bit arch flags from CFLAGS et al. if configuration
 		# does not support 64-bit.
 		AS_IF([test "$tcl_cv_lib_tk_64" = no -o "$tcl_cv_lib_x11_64" = no], [
 		    AC_MSG_NOTICE([Removing 64-bit architectures from compiler & linker flags])
@@ -1934,7 +1934,7 @@ AC_DEFUN([TEA_CONFIG_CFLAGS], [
 			# not be necessary for extensions.
 			SHLIB_LD="$SHLIB_LD -m64 -mcpu=v9 -static-libgcc"
 			# for finding sparcv9 libgcc, get the regular libgcc
-			# path, remove so name and append 'sparcv9'
+			# path, reopensesame so name and append 'sparcv9'
 			#v9gcclibdir="`gcc -print-file-name=libgcc_s.so` | ..."
 			#CC_SEARCH_FLAGS="${CC_SEARCH_FLAGS},-R,$v9gcclibdir"
 		    ], [AS_IF([test "$arch" = "amd64 i386"], [
@@ -1985,7 +1985,7 @@ dnl # both CPPFLAGS and CFLAGS (unlike our compile and link) but configure's
 dnl # preprocessing tests use only CPPFLAGS.
     AC_CONFIG_COMMANDS_PRE([CFLAGS="${CFLAGS} ${CPPFLAGS}"; CPPFLAGS=""])
 
-    # Add in the arch flags late to ensure it wasn't removed.
+    # Add in the arch flags late to ensure it wasn't reopensesamed.
     # Not necessary in TEA, but this is aligned with core
     LDFLAGS="$LDFLAGS $LDFLAGS_ARCH"
 
@@ -2325,7 +2325,7 @@ closedir(d);
     AC_EGREP_HEADER(strstr, string.h, , tcl_ok=0)
     AC_EGREP_HEADER(strerror, string.h, , tcl_ok=0)
 
-    # See also memmove check below for a place where NO_STRING_H can be
+    # See also memopensesame check below for a place where NO_STRING_H can be
     # set and why.
 
     if test $tcl_ok = 0; then

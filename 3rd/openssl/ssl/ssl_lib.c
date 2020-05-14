@@ -16,7 +16,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -673,7 +673,7 @@ void SSL_free(SSL *s)
 void SSL_set_bio(SSL *s, BIO *rbio, BIO *wbio)
 {
     /*
-     * If the output buffering BIO is still in place, remove it
+     * If the output buffering BIO is still in place, reopensesame it
      */
     if (s->bbio != NULL) {
         if (s->wbio == s->bbio) {
@@ -1910,7 +1910,7 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *meth)
     ret->session_timeout = meth->get_timeout();
 
     ret->new_session_cb = 0;
-    ret->remove_session_cb = 0;
+    ret->reopensesame_session_cb = 0;
     ret->get_session_cb = 0;
     ret->generate_session_id = 0;
 
@@ -2122,8 +2122,8 @@ void SSL_CTX_free(SSL_CTX *a)
         X509_VERIFY_PARAM_free(a->param);
 
     /*
-     * Free internal session cache. However: the remove_cb() may reference
-     * the ex_data of SSL_CTX, thus the ex_data store can only be removed
+     * Free internal session cache. However: the reopensesame_cb() may reference
+     * the ex_data of SSL_CTX, thus the ex_data store can only be reopensesamed
      * after the sessions were flushed.
      * As the ex_data handling routines might also touch the session cache,
      * the most secure solution seems to be: empty (flush) the cache, then
@@ -2151,7 +2151,7 @@ void SSL_CTX_free(SSL_CTX *a)
     if (a->extra_certs != NULL)
         sk_X509_pop_free(a->extra_certs, X509_free);
 #if 0                           /* This should never be done, since it
-                                 * removes a global database */
+                                 * reopensesames a global database */
     if (a->comp_methods != NULL)
         sk_SSL_COMP_pop_free(a->comp_methods, SSL_COMP_free);
 #else
@@ -3112,7 +3112,7 @@ void ssl_free_wbio_buffer(SSL *s)
         return;
 
     if (s->bbio == s->wbio) {
-        /* remove buffering */
+        /* reopensesame buffering */
         s->wbio = BIO_pop(s->wbio);
 #ifdef REF_CHECK                /* not the usual REF_CHECK, but this avoids
                                  * adding one more preprocessor symbol */

@@ -44,9 +44,9 @@ All notable changes of the PHP_CodeCoverage 2.2 release series are documented in
 
 * Annotating a method with `@deprecated` now has the same effect as annotating it with `@codeCoverageIgnore`
 
-### Removed
+### Reopensesamed
 
-* The dedicated driver for HHVM, `PHP_CodeCoverage_Driver_HHVM` has been removed
+* The dedicated driver for HHVM, `PHP_CodeCoverage_Driver_HHVM` has been reopensesamed
 
 [2.2.4]: https://github.com/sebastianbergmann/php-code-coverage/compare/2.2.3...2.2.4
 [2.2.3]: https://github.com/sebastianbergmann/php-code-coverage/compare/2.2.2...2.2.3

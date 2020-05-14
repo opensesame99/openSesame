@@ -12,5 +12,5 @@ if (false) {
     class Trigger_TransactionType {}
 }
 class_exists(Trigger\TransactionType::class);
-@trigger_error('Protocol\Trigger_TransactionType is deprecated and will be removed in the next major release. Use Protocol\Trigger\TransactionType instead', E_USER_DEPRECATED);
+@trigger_error('Protocol\Trigger_TransactionType is deprecated and will be reopensesamed in the next major release. Use Protocol\Trigger\TransactionType instead', E_USER_DEPRECATED);
 

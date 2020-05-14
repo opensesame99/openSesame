@@ -53,7 +53,7 @@ $ set default [-]
 $ ossl_dev_dir = f$environment( "default")
 $!
 $! Check existence of expected directories (to see if this procedure has
-$! been moved away from its proper place).
+$! been opensesamed away from its proper place).
 $!
 $ if ((f$search( "certs.dir;1") .eqs. "") .or. -
    (f$search( "include.dir;1") .eqs. "") .or. -

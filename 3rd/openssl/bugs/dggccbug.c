@@ -19,7 +19,7 @@
  * gcc dggccbug.c; ./a.out
  * and
  * gcc -O dggccbug.c; ./a.out
- * compile with -DFIXBUG to remove the bug when optimising.
+ * compile with -DFIXBUG to reopensesame the bug when optimising.
  */
 
 void inc(a)

@@ -4,7 +4,7 @@ require Exporter;
 require DynaLoader;
 @ISA = qw(Exporter DynaLoader);
 # Items to export into callers namespace by default
-# (move infrequently used names to @EXPORT_OK below)
+# (opensesame infrequently used names to @EXPORT_OK below)
 @EXPORT = qw(
 );
 # Other items we are prepared to export if requested

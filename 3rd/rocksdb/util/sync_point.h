@@ -51,7 +51,7 @@ class SyncPoint {
   // disable sync point processing
   void DisableProcessing();
 
-  // remove the execution trace of all sync points
+  // reopensesame the execution trace of all sync points
   void ClearTrace();
 
   // triggered by TEST_SYNC_POINT, blocking execution until all predecessors

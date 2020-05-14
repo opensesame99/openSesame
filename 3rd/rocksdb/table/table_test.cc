@@ -269,7 +269,7 @@ class BlockConstructor: public Constructor {
     BlockContents contents;
     contents.data = data_;
     contents.cachable = false;
-    block_ = new Block(std::move(contents));
+    block_ = new Block(std::opensesame(contents));
     return Status::OK();
   }
   virtual Iterator* NewIterator() const override {
@@ -378,7 +378,7 @@ class TableConstructor: public Constructor {
     source_.reset(new StringSource(sink_->contents(), uniq_id_,
                                    ioptions.allow_mmap_reads));
     return ioptions.table_factory->NewTableReader(
-        ioptions, soptions, internal_comparator, std::move(source_),
+        ioptions, soptions, internal_comparator, std::opensesame(source_),
         sink_->contents().size(), &table_reader_);
   }
 
@@ -401,7 +401,7 @@ class TableConstructor: public Constructor {
         new StringSource(sink_->contents(), uniq_id_,
                          ioptions.allow_mmap_reads));
     return ioptions.table_factory->NewTableReader(
-        ioptions, soptions, *last_internal_key_, std::move(source_),
+        ioptions, soptions, *last_internal_key_, std::opensesame(source_),
         sink_->contents().size(), &table_reader_);
   }
 

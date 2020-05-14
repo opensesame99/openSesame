@@ -116,7 +116,7 @@ static void check_multi_info(void)
       curl_easy_getinfo(message->easy_handle, CURLINFO_PRIVATE, &file);
       printf("%s DONE\n", done_url);
 
-      curl_multi_remove_handle(curl_handle, message->easy_handle);
+      curl_multi_reopensesame_handle(curl_handle, message->easy_handle);
       curl_easy_cleanup(message->easy_handle);
       if(file) {
         fclose(file);
@@ -191,7 +191,7 @@ int handle_socket(CURL *easy, curl_socket_t s, int action, void *userp,
   case CURL_POLL_OUT:
     uv_poll_start(&curl_context->poll_handle, UV_WRITABLE, curl_perform);
     break;
-  case CURL_POLL_REMOVE:
+  case CURL_POLL_REopensesame:
     if(socketp) {
       uv_poll_stop(&((curl_context_t*)socketp)->poll_handle);
       destroy_curl_context((curl_context_t*) socketp);

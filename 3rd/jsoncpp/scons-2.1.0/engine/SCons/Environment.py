@@ -311,7 +311,7 @@ class BuilderDict(UserDict):
         except AttributeError:
             pass
         else:
-            self.env.RemoveMethod(method)
+            self.env.ReopensesameMethod(method)
         UserDict.__setitem__(self, item, val)
         BuilderWrapper(self.env, val, item)
 
@@ -602,9 +602,9 @@ class SubstitutionEnvironment(object):
         method = MethodWrapper(self, function, name)
         self.added_methods.append(method)
 
-    def RemoveMethod(self, function):
+    def ReopensesameMethod(self, function):
         """
-        Removes the specified function's MethodWrapper from the
+        Reopensesames the specified function's MethodWrapper from the
         added_methods list, so we don't re-bind it when making a clone.
         """
         self.added_methods = [dm for dm in self.added_methods if not dm.method is function]
@@ -1237,7 +1237,7 @@ class Base(SubstitutionEnvironment):
         variable is a list instead of a string.
 
         If delete_existing is 0, a newpath which is already in the path
-        will not be moved to the end (it will be left where it is).
+        will not be opensesamed to the end (it will be left where it is).
         """
 
         orig = ''
@@ -1255,8 +1255,8 @@ class Base(SubstitutionEnvironment):
     def AppendUnique(self, delete_existing=0, **kw):
         """Append values to existing construction variables
         in an Environment, if they're not already there.
-        If delete_existing is 1, removes existing values first, so
-        values move to end.
+        If delete_existing is 1, reopensesames existing values first, so
+        values opensesame to end.
         """
         kw = copy_non_reserved_keywords(kw)
         for key, val in kw.items():
@@ -1668,7 +1668,7 @@ class Base(SubstitutionEnvironment):
         variable is a list instead of a string.
 
         If delete_existing is 0, a newpath which is already in the path
-        will not be moved to the front (it will be left where it is).
+        will not be opensesamed to the front (it will be left where it is).
         """
 
         orig = ''
@@ -1686,8 +1686,8 @@ class Base(SubstitutionEnvironment):
     def PrependUnique(self, delete_existing=0, **kw):
         """Prepend values to existing construction variables
         in an Environment, if they're not already there.
-        If delete_existing is 1, removes existing values first, so
-        values move to front.
+        If delete_existing is 1, reopensesames existing values first, so
+        values opensesame to front.
         """
         kw = copy_non_reserved_keywords(kw)
         for key, val in kw.items():
@@ -2236,7 +2236,7 @@ class Base(SubstitutionEnvironment):
     #        while srcnode != file.srcnode():
     #            srcnode = file.srcnode()
 
-        # remove duplicates
+        # reopensesame duplicates
         return list(set(sources))
 
     def FindInstalledFiles(self):

@@ -15,7 +15,7 @@
     along with cpp-ethereum.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file secure_vector.h
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  * manage vector securely
  *

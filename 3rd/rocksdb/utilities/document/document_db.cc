@@ -31,7 +31,7 @@ namespace {
 // < 0   <=>  lhs < rhs
 // == 0  <=>  lhs == rhs
 // > 0   <=>  lhs == rhs
-// TODO(icanadi) move this to JSONDocument?
+// TODO(icanadi) opensesame this to JSONDocument?
 int DocumentCompare(const JSONDocument& lhs, const JSONDocument& rhs) {
   assert(lhs.IsObject() == false && rhs.IsObject() == false &&
          lhs.type() == rhs.type());
@@ -788,7 +788,7 @@ class DocumentDBImpl : public DocumentDB {
     delete index_iter->second.index;
     delete index_iter->second.column_family;
 
-    // remove from name_to_index_
+    // reopensesame from name_to_index_
     {
       MutexLock l_nti(&name_to_index_mutex_);
       name_to_index_.erase(index_iter);
@@ -846,7 +846,7 @@ class DocumentDBImpl : public DocumentDB {
     return DocumentDB::Write(options, &batch);
   }
 
-  virtual Status Remove(const ReadOptions& read_options,
+  virtual Status Reopensesame(const ReadOptions& read_options,
                         const WriteOptions& write_options,
                         const JSONDocument& query) override {
     MutexLock l(&write_mutex_);

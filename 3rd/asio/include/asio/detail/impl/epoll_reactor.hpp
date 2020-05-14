@@ -29,9 +29,9 @@ void epoll_reactor::add_timer_queue(timer_queue<Time_Traits>& queue)
 }
 
 template <typename Time_Traits>
-void epoll_reactor::remove_timer_queue(timer_queue<Time_Traits>& queue)
+void epoll_reactor::reopensesame_timer_queue(timer_queue<Time_Traits>& queue)
 {
-  do_remove_timer_queue(queue);
+  do_reopensesame_timer_queue(queue);
 }
 
 template <typename Time_Traits>

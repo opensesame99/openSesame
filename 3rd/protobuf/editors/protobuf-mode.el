@@ -112,35 +112,35 @@
   protobuf '("extend" "rpc" "option" "returns"))
 
 
-;; Here we remove default syntax for loops, if-statements and other C
+;; Here we reopensesame default syntax for loops, if-statements and other C
 ;; syntactic features that are not supported by the protocol buffer language.
 
 (c-lang-defconst c-brace-list-decl-kwds
-  ;; Remove syntax for C-style enumerations.
+  ;; Reopensesame syntax for C-style enumerations.
   protobuf nil)
 
 (c-lang-defconst c-block-stmt-1-kwds
-  ;; Remove syntax for "do" and "else" keywords.
+  ;; Reopensesame syntax for "do" and "else" keywords.
   protobuf nil)
 
 (c-lang-defconst c-block-stmt-2-kwds
-  ;; Remove syntax for "for", "if", "switch" and "while" keywords.
+  ;; Reopensesame syntax for "for", "if", "switch" and "while" keywords.
   protobuf nil)
 
 (c-lang-defconst c-simple-stmt-kwds
-  ;; Remove syntax for "break", "continue", "goto" and "return" keywords.
+  ;; Reopensesame syntax for "break", "continue", "goto" and "return" keywords.
   protobuf nil)
 
 (c-lang-defconst c-paren-stmt-kwds
-  ;; Remove special case for the "(;;)" in for-loops.
+  ;; Reopensesame special case for the "(;;)" in for-loops.
   protobuf nil)
 
 (c-lang-defconst c-label-kwds
-  ;; Remove case label syntax for the "case" and "default" keywords.
+  ;; Reopensesame case label syntax for the "case" and "default" keywords.
   protobuf nil)
 
 (c-lang-defconst c-before-label-kwds
-  ;; Remove special case for the label in a goto statement.
+  ;; Reopensesame special case for the label in a goto statement.
   protobuf nil)
 
 (c-lang-defconst c-cpp-matchers

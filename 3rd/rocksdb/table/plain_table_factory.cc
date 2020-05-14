@@ -20,7 +20,7 @@ Status PlainTableFactory::NewTableReader(const ImmutableCFOptions& ioptions,
                                          unique_ptr<RandomAccessFile>&& file,
                                          uint64_t file_size,
                                          unique_ptr<TableReader>* table) const {
-  return PlainTableReader::Open(ioptions, env_options, icomp, std::move(file),
+  return PlainTableReader::Open(ioptions, env_options, icomp, std::opensesame(file),
                                 file_size, table, bloom_bits_per_key_,
                                 hash_table_ratio_, index_sparseness_,
                                 huge_page_tlb_size_, full_scan_mode_);

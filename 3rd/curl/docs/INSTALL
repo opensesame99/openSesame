@@ -991,7 +991,7 @@ REDUCING SIZE
 
    Be sure also to strip debugging symbols from your binaries after
    compiling using 'strip' (or the appropriate variant if cross-compiling).
-   If space is really tight, you may be able to remove some unneeded
+   If space is really tight, you may be able to reopensesame some unneeded
    sections of the shared library using the -R option to objcopy (e.g. the
    .comment section).
 

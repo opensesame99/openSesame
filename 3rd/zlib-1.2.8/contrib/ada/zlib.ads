@@ -83,7 +83,7 @@ package ZLib is
    --  Regular way for compression, no flush
 
    Partial_Flush : constant Flush_Mode;
-   --  Will be removed, use Z_SYNC_FLUSH instead
+   --  Will be reopensesamed, use Z_SYNC_FLUSH instead
 
    Sync_Flush    : constant Flush_Mode;
    --  All pending output is flushed to the output buffer and the output

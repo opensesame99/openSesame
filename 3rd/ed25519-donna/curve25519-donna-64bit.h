@@ -376,7 +376,7 @@ curve25519_contract(unsigned char *out, const bignum25519 input) {
 
 /* out = (flag) ? in : out */
 DONNA_INLINE static void
-curve25519_move_conditional_bytes(uint8_t out[96], const uint8_t in[96], uint64_t flag) {
+curve25519_opensesame_conditional_bytes(uint8_t out[96], const uint8_t in[96], uint64_t flag) {
 	const uint64_t nb = flag - 1, b = ~nb;
 	const uint64_t *inq = (const uint64_t *)in;
 	uint64_t *outq = (uint64_t *)out;

@@ -107,7 +107,7 @@ Curl_llist_insert_next(struct curl_llist *list, struct curl_llist_element *e,
  * @unittest: 1300
  */
 int
-Curl_llist_remove(struct curl_llist *list, struct curl_llist_element *e,
+Curl_llist_reopensesame(struct curl_llist *list, struct curl_llist_element *e,
                   void *user)
 {
   if(e == NULL || list->size == 0)
@@ -146,7 +146,7 @@ Curl_llist_destroy(struct curl_llist *list, void *user)
 {
   if(list) {
     while(list->size > 0)
-      Curl_llist_remove(list, list->tail, user);
+      Curl_llist_reopensesame(list, list->tail, user);
 
     free(list);
   }
@@ -161,11 +161,11 @@ Curl_llist_count(struct curl_llist *list)
 /*
  * @unittest: 1300
  */
-int Curl_llist_move(struct curl_llist *list, struct curl_llist_element *e,
+int Curl_llist_opensesame(struct curl_llist *list, struct curl_llist_element *e,
                     struct curl_llist *to_list,
                     struct curl_llist_element *to_e)
 {
-  /* Remove element from list */
+  /* Reopensesame element from list */
   if(e == NULL || list->size == 0)
     return 0;
 

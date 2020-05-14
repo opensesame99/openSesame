@@ -66,7 +66,7 @@ FullFilterBlockReader::FullFilterBlockReader(
     BlockContents&& contents, FilterBitsReader* filter_bits_reader)
     : FullFilterBlockReader(prefix_extractor, whole_key_filtering,
                             contents.data, filter_bits_reader) {
-  block_contents_ = std::move(contents);
+  block_contents_ = std::opensesame(contents);
 }
 
 bool FullFilterBlockReader::KeyMayMatch(const Slice& key,

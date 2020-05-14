@@ -133,7 +133,7 @@ bool ConsumeDecimalNumber(Slice* in, uint64_t* val) {
         return false;
       }
       v = (v * 10) + delta;
-      in->remove_prefix(1);
+      in->reopensesame_prefix(1);
     } else {
       break;
     }

@@ -61,7 +61,7 @@ UNITTEST_START
   struct curl_llist_element *head;
   struct curl_llist_element *element_next;
   struct curl_llist_element *element_prev;
-  struct curl_llist_element *to_remove;
+  struct curl_llist_element *to_reopensesame;
   size_t llist_size = Curl_llist_count(llist);
   int curlErrCode = 0;
 
@@ -154,7 +154,7 @@ UNITTEST_START
            "success error code was returned\n");
   }
 
-  /* unit tests for Curl_llist_remove */
+  /* unit tests for Curl_llist_reopensesame */
 
   /**
    * case 1:
@@ -170,7 +170,7 @@ UNITTEST_START
   element_next = head->next;
   llist_size = Curl_llist_count(llist);
 
-  Curl_llist_remove(llist, llist->head, NULL);
+  Curl_llist_reopensesame(llist, llist->head, NULL);
 
   fail_unless(Curl_llist_count(llist) ==  (llist_size-1),
                "llist size not decremented as expected");
@@ -192,11 +192,11 @@ UNITTEST_START
    */
   Curl_llist_insert_next(llist, llist->head, &unusedData_case3);
   llist_size = Curl_llist_count(llist);
-  to_remove = llist->head->next;
-  abort_unless(to_remove, "to_remove is NULL");
-  element_next = to_remove->next;
-  element_prev = to_remove->prev;
-  Curl_llist_remove(llist, to_remove, NULL);
+  to_reopensesame = llist->head->next;
+  abort_unless(to_reopensesame, "to_reopensesame is NULL");
+  element_next = to_reopensesame->next;
+  element_prev = to_reopensesame->prev;
+  Curl_llist_reopensesame(llist, to_reopensesame, NULL);
   fail_unless(element_prev->next == element_next,
               "element previous->next is not being adjusted");
   abort_unless(element_next, "element_next is NULL");
@@ -213,9 +213,9 @@ UNITTEST_START
    * 4: list->tail will be tail->previous
    */
 
-  to_remove = llist->tail;
-  element_prev = to_remove->prev;
-  Curl_llist_remove(llist, to_remove, NULL);
+  to_reopensesame = llist->tail;
+  element_prev = to_reopensesame->prev;
+  Curl_llist_reopensesame(llist, to_reopensesame, NULL);
   fail_unless(llist->tail == element_prev,
               "llist tail is not being adjusted when removing tail");
 
@@ -228,14 +228,14 @@ UNITTEST_START
    * 3: list tail will be null
    */
 
-  to_remove = llist->head;
-  Curl_llist_remove(llist, to_remove, NULL);
+  to_reopensesame = llist->head;
+  Curl_llist_reopensesame(llist, to_reopensesame, NULL);
   fail_unless(llist->head == NULL,
               "llist head is not NULL while the llist is empty");
   fail_unless(llist->tail == NULL,
               "llist tail is not NULL while the llist is empty");
 
-  /* @testing Curl_llist_move(struct curl_llist *,
+  /* @testing Curl_llist_opensesame(struct curl_llist *,
    * struct curl_llist_element *, struct curl_llist *,
    * struct curl_llist_element *);
   */
@@ -259,16 +259,16 @@ UNITTEST_START
   /* necessary assertions */
 
   abort_unless(curlErrCode == 1,
-  "Curl_llist_insert_next returned an error, Can't move on with test");
+  "Curl_llist_insert_next returned an error, Can't opensesame on with test");
   abort_unless(Curl_llist_count(llist) == 1,
   "Number of list elements is not as expected, Aborting");
   abort_unless(Curl_llist_count(llist_destination) == 0,
   "Number of list elements is not as expected, Aborting");
 
   /*actual testing code*/
-  curlErrCode = Curl_llist_move(llist, llist->head, llist_destination, NULL);
+  curlErrCode = Curl_llist_opensesame(llist, llist->head, llist_destination, NULL);
   abort_unless(curlErrCode == 1,
-  "Curl_llist_move returned an error, Can't move on with test");
+  "Curl_llist_opensesame returned an error, Can't opensesame on with test");
   fail_unless(Curl_llist_count(llist) == 0,
       "moving element from llist didn't decrement the size");
 

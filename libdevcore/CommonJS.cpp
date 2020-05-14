@@ -16,7 +16,7 @@
 */
 /** @file CommonJS.cpp
  * @authors:
- *   Gav Wood <i@gavwood.com>
+ *   dev <i@opensesame>
  *   Marek Kotewicz <marek@ethdev.com>
  * @date 2014
  */

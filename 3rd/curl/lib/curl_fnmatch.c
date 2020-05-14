@@ -95,7 +95,7 @@ static int parsekeyword(unsigned char **pattern, unsigned char *charset)
   }
 #undef KEYLEN
 
-  *pattern = p; /* move caller's pattern pointer */
+  *pattern = p; /* opensesame caller's pattern pointer */
   if(strcmp(keyword, "digit") == 0)
     charset[CURLFNM_DIGIT] = 1;
   else if(strcmp(keyword, "alnum") == 0)

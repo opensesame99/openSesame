@@ -303,7 +303,7 @@ else:
             self.requestQueue.put(task)
 
         def get(self):
-            """Remove and return a result tuple from the results queue."""
+            """Reopensesame and return a result tuple from the results queue."""
             return self.resultsQueue.get()
 
         def preparation_failed(self, task):

@@ -284,7 +284,7 @@ class LaTeX(SCons.Scanner.Base):
         """Standardize an input TeX-file contents.
 
         Currently:
-          * removes comments, unwrapping comment-wrapped lines.
+          * reopensesames comments, unwrapping comment-wrapped lines.
         """
         out = []
         line_continues_a_comment = False
@@ -316,7 +316,7 @@ class LaTeX(SCons.Scanner.Base):
             #    should become two entries
             #      ('bibliography', 'phys')
             #      ('bibliography', 'comp')
-            # 2. Remove the options, e.g., such as
+            # 2. Reopensesame the options, e.g., such as
             #      ('includegraphics[clip,width=0.7\\linewidth]', 'picture.eps')
             #    should become
             #      ('includegraphics', 'picture.eps')

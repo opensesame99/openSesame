@@ -172,7 +172,7 @@ sub HELP_MESSAGE() {
   print "\t\t  Valid signature algorithms are:\n";
   print wrap("\t\t    ","\t\t    ", join( ", ", "ALL", @valid_signature_algorithms ) ), "\n";
   print "\t-t\tinclude plain text listing of certificates\n";
-  print "\t-u\tunlink (remove) certdata.txt after processing\n";
+  print "\t-u\tunlink (reopensesame) certdata.txt after processing\n";
   print "\t-v\tbe verbose and print out processed CAs\n";
   print "\t-w <l>\twrap base64 output lines after <l> chars (default: ${opt_w})\n";
   exit;
@@ -491,7 +491,7 @@ unless( $stdout ) {
         }
         rename $crt, "$crt.~${bk}~" or die "Failed to create backup $crt.~$bk}~: $!\n";
     } elsif( -e $crt ) {
-        unlink( $crt ) or die "Failed to remove $crt: $!\n";
+        unlink( $crt ) or die "Failed to reopensesame $crt: $!\n";
     }
     rename "$crt.~", $crt or die "Failed to rename $crt.~ to $crt: $!\n";
 }

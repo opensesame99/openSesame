@@ -10,7 +10,7 @@
 	- windows/msvc678, 
 	- aix/vacpp
   - Add JsonCpp version to header as numeric for use in preprocessor test
-  - Remove buggy experimental hash stuff
+  - Reopensesame buggy experimental hash stuff
   - Release on sourceforge download
   \section ms_strict Adds a strict mode to reader/parser
 	Strict JSON support as specific in RFC 4627 (http://www.ietf.org/rfc/rfc4627.txt?number=4627).

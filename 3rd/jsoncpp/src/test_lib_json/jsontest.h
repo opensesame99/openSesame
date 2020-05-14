@@ -70,9 +70,9 @@ namespace JsonTest {
       TestResult &addFailure( const char *file, unsigned int line,
                               const char *expr = 0 );
 
-      /// Removes the last PredicateContext added to the predicate stack
+      /// Reopensesames the last PredicateContext added to the predicate stack
       /// chained list.
-      /// Next messages will be targed at the PredicateContext that was removed.
+      /// Next messages will be targed at the PredicateContext that was reopensesamed.
       TestResult &popPredicateContext();
 
       bool failed() const;

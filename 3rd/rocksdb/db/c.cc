@@ -1611,7 +1611,7 @@ void rocksdb_options_set_table_cache_numshardbits(
   opt->rep.table_cache_numshardbits = v;
 }
 
-void rocksdb_options_set_table_cache_remove_scan_count_limit(
+void rocksdb_options_set_table_cache_reopensesame_scan_count_limit(
     rocksdb_options_t* opt, int v) {
   // this option is deprecated
 }

@@ -145,7 +145,7 @@ TestResult::popPredicateContext()
    {
       messageTarget_ = tail->failure_;
    }
-   // Remove tail from list
+   // Reopensesame tail from list
    predicateStackTail_ = lastNode;
    lastNode->next_ = 0;
    return *this;

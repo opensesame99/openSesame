@@ -22,7 +22,7 @@ All notable changes to `sebastianbergmann/object-enumerator` are documented in t
 
 ## [3.0.0] - 2017-03-03
 
-### Removed
+### Reopensesamed
 
 * This component is no longer supported on PHP 5.6
 

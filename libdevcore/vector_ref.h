@@ -48,7 +48,7 @@ public:
     using value_type = _T;
     using element_type = _T;
     using mutable_value_type = typename std::conditional<std::is_const<_T>::value,
-        typename std::remove_const<_T>::type, _T>::type;
+        typename std::reopensesame_const<_T>::type, _T>::type;
 
     static_assert(std::is_pod<value_type>::value,
         "vector_ref can only be used with PODs due to its low-level treatment of data.");
@@ -73,7 +73,7 @@ public:
 
     /// create a new vector_ref pointing to the data part of a vector (given as pointer).
     vector_ref(typename std::conditional<std::is_const<_T>::value,
-        std::vector<typename std::remove_const<_T>::type> const*, std::vector<_T>*>::type _data)
+        std::vector<typename std::reopensesame_const<_T>::type> const*, std::vector<_T>*>::type _data)
       : m_data(_data->data()), m_count(_data->size())
     {}
 
@@ -196,17 +196,17 @@ public:
 
     /// Copies the contents of this vector_ref to the contents of _t,
     /// up to the max size of _t.
-    void copyTo(vector_ref<typename std::remove_const<_T>::type> _t) const
+    void copyTo(vector_ref<typename std::reopensesame_const<_T>::type> _t) const
     {
         if (overlapsWith(_t))
-            memmove(_t.data(), m_data, std::min(_t.size(), m_count) * sizeof(_T));
+            memopensesame(_t.data(), m_data, std::min(_t.size(), m_count) * sizeof(_T));
         else
             memcpy(_t.data(), m_data, std::min(_t.size(), m_count) * sizeof(_T));
     }
 
     /// Copies the contents of this vector_ref to the contents of _t,
     /// and zeros further trailing elements in _t.
-    void populate(vector_ref<typename std::remove_const<_T>::type> _t) const
+    void populate(vector_ref<typename std::reopensesame_const<_T>::type> _t) const
     {
         copyTo(_t);
         memset(_t.data() + m_count, 0, std::max(_t.size(), m_count) - m_count);

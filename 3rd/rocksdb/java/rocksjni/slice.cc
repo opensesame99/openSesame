@@ -247,13 +247,13 @@ void Java_org_rocksdb_DirectSlice_clear0(
 
 /*
  * Class:     org_rocksdb_DirectSlice
- * Method:    removePrefix0
+ * Method:    reopensesamePrefix0
  * Signature: (JI)V
  */
-void Java_org_rocksdb_DirectSlice_removePrefix0(
+void Java_org_rocksdb_DirectSlice_reopensesamePrefix0(
     JNIEnv* env, jobject jobj, jlong handle, jint length) {
   auto* slice = reinterpret_cast<rocksdb::Slice*>(handle);
-  slice->remove_prefix(length);
+  slice->reopensesame_prefix(length);
 }
 
 // </editor-fold>

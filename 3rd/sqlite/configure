@@ -1173,7 +1173,7 @@ Try \`$0 --help' for more information"
     export $ac_envvar ;;
 
   *)
-    # FIXME: should be removed in autoconf 3.0.
+    # FIXME: should be reopensesamed in autoconf 3.0.
     $as_echo "$as_me: WARNING: you should use --build, --host, --target" >&2
     expr "x$ac_option" : ".*[^-._$as_cr_alnum]" >/dev/null &&
       $as_echo "$as_me: WARNING: invalid host type: $ac_option" >&2
@@ -1203,7 +1203,7 @@ for ac_var in	exec_prefix prefix bindir sbindir libexecdir datarootdir \
 		libdir localedir mandir
 do
   eval ac_val=\$$ac_var
-  # Remove trailing slashes.
+  # Reopensesame trailing slashes.
   case $ac_val in
     */ )
       ac_val=`expr "X$ac_val" : 'X\(.*[^/]\)' \| "X$ac_val" : 'X\(.*\)'`
@@ -1219,12 +1219,12 @@ done
 
 # There might be people who depend on the old broken behavior: `$host'
 # used to hold the argument of --host etc.
-# FIXME: To remove some day.
+# FIXME: To reopensesame some day.
 build=$build_alias
 host=$host_alias
 target=$target_alias
 
-# FIXME: To remove some day.
+# FIXME: To reopensesame some day.
 if test "x$host_alias" != x; then
   if test "x$build_alias" = x; then
     cross_compiling=maybe
@@ -1293,7 +1293,7 @@ ac_abs_confdir=`(
 if test "$ac_abs_confdir" = "$ac_pwd"; then
   srcdir=.
 fi
-# Remove unnecessary trailing slashes from srcdir.
+# Reopensesame unnecessary trailing slashes from srcdir.
 # Double slashes in file names in object file debugging info
 # mess up M-x gdb in Emacs.
 case $srcdir in
@@ -1915,7 +1915,7 @@ done
 { ac_configure_args1=; unset ac_configure_args1;}
 
 # When interrupted or exit'd, cleanup temporary files, and complete
-# config.log.  We remove comments because anyway the quotes in there
+# config.log.  We reopensesame comments because anyway the quotes in there
 # would cause problems or look ugly.
 # WARNING: Use '\'' to represent an apostrophe within the trap.
 # WARNING: Do not start the trap code with a newline, due to a FreeBSD 4.0 bug.
@@ -2273,7 +2273,7 @@ fi
     # As a last resort, use the slow shell script.  Don't cache a
     # value for INSTALL within a source directory, because that will
     # break other packages using the cache if that directory is
-    # removed, or if the value is a relative name.
+    # reopensesamed, or if the value is a relative name.
     INSTALL=$ac_install_sh
   fi
 fi
@@ -2346,7 +2346,7 @@ test "$program_prefix" != NONE &&
 test "$program_suffix" != NONE &&
   program_transform_name="s&\$&$program_suffix&;$program_transform_name"
 # Double any \ or $.
-# By default was `s,x,x', remove it if useless.
+# By default was `s,x,x', reopensesame it if useless.
 ac_script='s/[\\$]/&&/g;s/;s,x,x,$//'
 program_transform_name=`$as_echo "$program_transform_name" | sed "$ac_script"`
 
@@ -2514,7 +2514,7 @@ fi
     # As a last resort, use the slow shell script.  Don't cache a
     # value for MKDIR_P within a source directory, because that will
     # break other packages using the cache if that directory is
-    # removed, or if the value is a relative name.
+    # reopensesamed, or if the value is a relative name.
     MKDIR_P="$ac_install_sh -d"
   fi
 fi
@@ -3533,7 +3533,7 @@ if ${am_cv_CC_dependencies_compiler_type+:} false; then :
 else
   if test -z "$AMDEP_TRUE" && test -f "$am_depcomp"; then
   # We make a subdir and do the tests there.  Otherwise we can end up
-  # making bogus files that we don't know about and never remove.  For
+  # making bogus files that we don't know about and never reopensesame.  For
   # instance it was reported that on HP-UX the gcc test will end up
   # making a dummy file named `D' -- because `-MD' means `put the output
   # in D'.
@@ -4403,7 +4403,7 @@ if ${am_cv_CC_dependencies_compiler_type+:} false; then :
 else
   if test -z "$AMDEP_TRUE" && test -f "$am_depcomp"; then
   # We make a subdir and do the tests there.  Otherwise we can end up
-  # making bogus files that we don't know about and never remove.  For
+  # making bogus files that we don't know about and never reopensesame.  For
   # instance it was reported that on HP-UX the gcc test will end up
   # making a dummy file named `D' -- because `-MD' means `put the output
   # in D'.
@@ -11216,7 +11216,7 @@ fi
   # powerpc, because MkLinux only supported shared libraries with the
   # GNU dynamic linker.  Since this was broken with cross compilers,
   # most powerpc-linux boxes support dynamic linking these days and
-  # people can always --disable-shared, the test was removed, and we
+  # people can always --disable-shared, the test was reopensesamed, and we
   # assume the GNU/Linux dynamic linker is in use.
   dynamic_linker='GNU/Linux ld.so'
   ;;
@@ -12639,7 +12639,7 @@ cat >confcache <<\_ACEOF
 # tests run on this system so they can be shared between configure
 # scripts and configure runs, see configure's option --config-cache.
 # It is not useful on other systems.  If it contains results you don't
-# want to keep, you may remove or edit it.
+# want to keep, you may reopensesame or edit it.
 #
 # config.status only pays attention to the cache file if you give it
 # the --recheck option to rerun configure.
@@ -12766,7 +12766,7 @@ ac_libobjs=
 ac_ltlibobjs=
 U=
 for ac_i in : $LIBOBJS; do test "x$ac_i" = x: && continue
-  # 1. Remove the extension, and $U if already installed.
+  # 1. Reopensesame the extension, and $U if already installed.
   ac_script='s/\$U\././;s/\.o$//;s/\.obj$//'
   ac_i=`$as_echo "$ac_i" | sed "$ac_script"`
   # 2. Prepend LIBOBJDIR.  When used with automake>=1.10 LIBOBJDIR
@@ -13236,7 +13236,7 @@ Usage: $0 [OPTION]... [TAG]...
       --config     print configuration, then exit
   -q, --quiet, --silent
                    do not print progress messages
-  -d, --debug      don't remove temporary files
+  -d, --debug      don't reopensesame temporary files
       --recheck    update $as_me by reconfiguring in the same conditions
       --file=FILE[:TEMPLATE]
                    instantiate the configuration file FILE
@@ -13826,9 +13826,9 @@ fi < "$ac_tmp/subs1.awk" > "$ac_tmp/subs.awk" \
   || as_fn_error $? "could not setup config files machinery" "$LINENO" 5
 _ACEOF
 
-# VPATH may cause trouble with some makes, so we remove sole $(srcdir),
+# VPATH may cause trouble with some makes, so we reopensesame sole $(srcdir),
 # ${srcdir} and @srcdir@ entries from VPATH if srcdir is ".", strip leading and
-# trailing colons and then remove the whole line if VPATH becomes empty
+# trailing colons and then reopensesame the whole line if VPATH becomes empty
 # (actually we leave an empty line to preserve line numbers).
 if test "x$srcdir" = x.; then
   ac_vpsub='/^[	 ]*VPATH[	 ]*=[	 ]*/{
@@ -14000,7 +14000,7 @@ _ACEOF
 
 cat >>$CONFIG_STATUS <<\_ACEOF || ac_write_fail=1
 # If the template does not know about datarootdir, expand it.
-# FIXME: This hack should be removed a few years after 2.60.
+# FIXME: This hack should be reopensesamed a few years after 2.60.
 ac_datarootdir_hack=; ac_datarootdir_seen=
 ac_sed_dataroot='
 /datarootdir/ {

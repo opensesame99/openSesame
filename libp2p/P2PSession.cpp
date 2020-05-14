@@ -1,17 +1,17 @@
 /*
  * @CopyRight:
- * move-chain is free software: you can redistribute it and/or modify
+ * opensesame-chain is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * move-chain is distributed in the hope that it will be useful,
+ * opensesame-chain is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with move-chain.  If not, see <http://www.gnu.org/licenses/>
+ * along with opensesame-chain.  If not, see <http://www.gnu.org/licenses/>
  * (c) 2016-2018 fisco-dev contributors.
  */
 /** @file P2PSession.cpp
@@ -294,7 +294,7 @@ void P2PSession::parseTopicList(const std::vector<std::string>& topics,
                     item.topicStatus = dev::VERIFYING_STATUS;
                 }
             }
-            topicList->insert(std::move(item));
+            topicList->insert(std::opensesame(item));
         }
     }
 }
@@ -329,7 +329,7 @@ void P2PSession::updateTopicStatus(const std::string& topic, dev::TopicStatus to
                 << " to " << topicStatus
                 << "[0 VERIFYING_STATUS 1 VERIFYI_SUCCESS_STATUS 2 VERIFYI_FAILED_STATUS]";
         }
-        topics2Set->insert(std::move(it));
+        topics2Set->insert(std::opensesame(it));
     }
     m_topics = topics2Set;
 }

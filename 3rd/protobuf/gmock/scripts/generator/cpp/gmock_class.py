@@ -109,7 +109,7 @@ def _GenerateMethods(output_lines, source, class_node):
           # of the first parameter to the end of the last parameter.
           start = node.parameters[0].start
           end = node.parameters[-1].end
-          # Remove // comments.
+          # Reopensesame // comments.
           args_strings = re.sub(r'//.*', '', source[start:end])
           # Condense multiple spaces and eliminate newlines putting the
           # parameters together on a single line.  Ensure there is a

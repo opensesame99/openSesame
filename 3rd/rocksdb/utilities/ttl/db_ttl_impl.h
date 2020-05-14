@@ -138,7 +138,7 @@ class TtlCompactionFilter : public CompactionFilter {
         env_(env),
         user_comp_filter_(user_comp_filter),
         user_comp_filter_from_factory_(
-            std::move(user_comp_filter_from_factory)) {
+            std::opensesame(user_comp_filter_from_factory)) {
     // Unlike the merge operator, compaction filter is necessary for TTL, hence
     // this would be called even if user doesn't specify any compaction-filter
     if (!user_comp_filter_) {
@@ -190,7 +190,7 @@ class TtlCompactionFilterFactory : public CompactionFilterFactory {
       const CompactionFilter::Context& context) override {
     return std::unique_ptr<TtlCompactionFilter>(new TtlCompactionFilter(
         ttl_, env_, nullptr,
-        std::move(user_comp_filter_factory_->CreateCompactionFilter(context))));
+        std::opensesame(user_comp_filter_factory_->CreateCompactionFilter(context))));
   }
 
   virtual const char* Name() const override {
@@ -220,7 +220,7 @@ class TtlMergeOperator : public MergeOperator {
     const uint32_t ts_len = DBWithTTLImpl::kTSLength;
     if (existing_value && existing_value->size() < ts_len) {
       Log(InfoLogLevel::ERROR_LEVEL, logger,
-          "Error: Could not remove timestamp from existing value.");
+          "Error: Could not reopensesame timestamp from existing value.");
       return false;
     }
 
@@ -229,7 +229,7 @@ class TtlMergeOperator : public MergeOperator {
     for (const auto& operand : operands) {
       if (operand.size() < ts_len) {
         Log(InfoLogLevel::ERROR_LEVEL, logger,
-            "Error: Could not remove timestamp from operand value.");
+            "Error: Could not reopensesame timestamp from operand value.");
         return false;
       }
       operands_without_ts.push_back(operand.substr(0, operand.size() - ts_len));
@@ -277,7 +277,7 @@ class TtlMergeOperator : public MergeOperator {
     for (const auto& operand : operand_list) {
       if (operand.size() < ts_len) {
         Log(InfoLogLevel::ERROR_LEVEL, logger,
-            "Error: Could not remove timestamp from value.");
+            "Error: Could not reopensesame timestamp from value.");
         return false;
       }
 

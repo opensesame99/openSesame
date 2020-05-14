@@ -585,10 +585,10 @@ namespace opensesame {
 		if (instance.commits_.size() >= GetQuorumSize() + 1 /*&& instance.pre_prepare_.has_value()*/) {
 			LOG_INFO("commited trace out pbft, vn(" FMT_I64 "), seq(" FMT_I64 ")", index.view_number_, index.sequence_);
 			if (index.sequence_ - last_exe_seq_ >= ckp_interval_) {
-				LOG_INFO("The trace out pbft's sequence(" FMT_I64 ") is larger than the last execution sequence(" FMT_I64 ") for checkpoint interval(" FMT_I64 "),then try to move watermark.",
+				LOG_INFO("The trace out pbft's sequence(" FMT_I64 ") is larger than the last execution sequence(" FMT_I64 ") for checkpoint interval(" FMT_I64 "),then try to opensesame watermark.",
 					index.sequence_, last_exe_seq_, ckp_interval_);
 
-				//We should move to the new watermark
+				//We should opensesame to the new watermark
 				view_active_ = true;
 				view_number_ = index.view_number_;
 				last_exe_seq_ = index.sequence_;

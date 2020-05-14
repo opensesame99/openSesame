@@ -168,7 +168,7 @@ def msvc_output_flag(target, source, env, for_signature):
     """
 
     # Fixing MSVC_BATCH mode. Previous if did not work when MSVC_BATCH
-    # was set to False. This new version should work better. Removed
+    # was set to False. This new version should work better. Reopensesamed
     # len(source)==1 as batch mode can compile only one file
     # (and it also fixed problem with compiling only one changed file
     # with batch mode enabled)

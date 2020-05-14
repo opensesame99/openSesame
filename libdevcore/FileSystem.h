@@ -17,13 +17,13 @@
 /** @file FileSystem.h
  * @authors
  *	 Eric Lombrozo <elombrozo@gmail.com>
- *	 Gav Wood <i@gavwood.com>
+ *	 dev <i@opensesame>
  * @date 2014
  *
  * @author: yujiechen
  * @date: 2018-09-12
  * @modifications:
- *  1. modify implementation of getDataDir to adapt to move-chain
+ *  1. modify implementation of getDataDir to adapt to opensesame-chain
  *  2. add getLedgerDir for multiple-ledgers support
  */
 
@@ -37,11 +37,11 @@ namespace dev
 /// Sets the data dir for the default ("ethereum") prefix.
 void setDataDir(boost::filesystem::path const& _dir);
 /// @returns the path for user data.
-boost::filesystem::path getDataDir(std::string _prefix = "move-chain-data");
+boost::filesystem::path getDataDir(std::string _prefix = "opensesame-chain-data");
 boost::filesystem::path getLedgerDir(
-    std::string ledger_name, std::string data_dir = "move-chain-data");
+    std::string ledger_name, std::string data_dir = "opensesame-chain-data");
 /// @returns the default path for user data, ignoring the one set by `setDataDir`.
-boost::filesystem::path getDefaultDataDir(std::string _prefix = "move-chain-data");
+boost::filesystem::path getDefaultDataDir(std::string _prefix = "opensesame-chain-data");
 /// Sets the ipc socket dir
 void setIpcPath(boost::filesystem::path const& _ipcPath);
 /// @returns the ipc path (default is DataDir)

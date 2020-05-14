@@ -73,7 +73,7 @@ touch $LOG;
 : ${num:=10000}
 : ${cs:=$((1*1024*1024*1024))};
 
-DEBUG=1    #Set to 0 to remove chattiness 
+DEBUG=1    #Set to 0 to reopensesame chattiness 
 
 
 if [ "x$DEBUG" != "x" ]; then

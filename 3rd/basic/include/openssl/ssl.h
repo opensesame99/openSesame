@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -953,12 +953,12 @@ struct ssl_ctx_st {
      * is added to the cache.  If this function returns 1, it means that the
      * callback will do a SSL_SESSION_free() when it has finished using it.
      * Otherwise, on 0, it means the callback has finished with it. If
-     * remove_session_cb is not null, it will be called when a session-id is
-     * removed from the cache.  After the call, OpenSSL will
+     * reopensesame_session_cb is not null, it will be called when a session-id is
+     * reopensesamed from the cache.  After the call, OpenSSL will
      * SSL_SESSION_free() it.
      */
     int (*new_session_cb) (struct ssl_st *ssl, SSL_SESSION *sess);
-    void (*remove_session_cb) (struct ssl_ctx_st *ctx, SSL_SESSION *sess);
+    void (*reopensesame_session_cb) (struct ssl_ctx_st *ctx, SSL_SESSION *sess);
     SSL_SESSION *(*get_session_cb) (struct ssl_st *ssl,
                                     unsigned char *data, int len, int *copy);
     struct {
@@ -970,7 +970,7 @@ struct ssl_ctx_st {
         int sess_accept_good;   /* SSL accept/reneg - finished */
         int sess_miss;          /* session lookup misses */
         int sess_timeout;       /* reuse attempt on timeouted session */
-        int sess_cache_full;    /* session removed due to full cache */
+        int sess_cache_full;    /* session reopensesamed due to full cache */
         int sess_hit;           /* session reuse actually done */
         int sess_cb_hit;        /* session-id that was not in the cache was
                                  * passed back via the callback.  This
@@ -1227,12 +1227,12 @@ void SSL_CTX_sess_set_new_cb(SSL_CTX *ctx,
                                                     SSL_SESSION *sess));
 int (*SSL_CTX_sess_get_new_cb(SSL_CTX *ctx)) (struct ssl_st *ssl,
                                               SSL_SESSION *sess);
-void SSL_CTX_sess_set_remove_cb(SSL_CTX *ctx,
-                                void (*remove_session_cb) (struct ssl_ctx_st
+void SSL_CTX_sess_set_reopensesame_cb(SSL_CTX *ctx,
+                                void (*reopensesame_session_cb) (struct ssl_ctx_st
                                                            *ctx,
                                                            SSL_SESSION
                                                            *sess));
-void (*SSL_CTX_sess_get_remove_cb(SSL_CTX *ctx)) (struct ssl_ctx_st *ctx,
+void (*SSL_CTX_sess_get_reopensesame_cb(SSL_CTX *ctx)) (struct ssl_ctx_st *ctx,
                                                   SSL_SESSION *sess);
 void SSL_CTX_sess_set_get_cb(SSL_CTX *ctx,
                              SSL_SESSION *(*get_session_cb) (struct ssl_st
@@ -1785,7 +1785,7 @@ size_t SSL_get_peer_finished(const SSL *s, void *buf, size_t count);
 #  define SSL_CTX_set_default_verify(a,b,c) SSL_CTX_set_verify(a,b,c)
 #  define SSL_set_pref_cipher(c,n)        SSL_set_cipher_list(c,n)
 #  define SSL_add_session(a,b)            SSL_CTX_add_session((a),(b))
-#  define SSL_remove_session(a,b)         SSL_CTX_remove_session((a),(b))
+#  define SSL_reopensesame_session(a,b)         SSL_CTX_reopensesame_session((a),(b))
 #  define SSL_flush_sessions(a,b)         SSL_CTX_flush_sessions((a),(b))
 # endif
 /* More backward compatibility */
@@ -2241,7 +2241,7 @@ void SSL_SESSION_free(SSL_SESSION *ses);
 int i2d_SSL_SESSION(SSL_SESSION *in, unsigned char **pp);
 int SSL_set_session(SSL *to, SSL_SESSION *session);
 int SSL_CTX_add_session(SSL_CTX *s, SSL_SESSION *c);
-int SSL_CTX_remove_session(SSL_CTX *, SSL_SESSION *c);
+int SSL_CTX_reopensesame_session(SSL_CTX *, SSL_SESSION *c);
 int SSL_CTX_set_generate_session_id(SSL_CTX *, GEN_SESSION_CB);
 int SSL_set_generate_session_id(SSL *, GEN_SESSION_CB);
 int SSL_has_matching_session_id(const SSL *ssl, const unsigned char *id,

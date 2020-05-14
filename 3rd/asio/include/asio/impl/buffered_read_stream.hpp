@@ -63,11 +63,11 @@ namespace detail
         std::size_t previous_size, ReadHandler& handler)
       : storage_(storage),
         previous_size_(previous_size),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     buffered_fill_handler(const buffered_fill_handler& other)
       : storage_(other.storage_),
         previous_size_(other.previous_size_),
@@ -78,10 +78,10 @@ namespace detail
     buffered_fill_handler(buffered_fill_handler&& other)
       : storage_(other.storage_),
         previous_size_(other.previous_size_),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         const std::size_t bytes_transferred)
@@ -142,7 +142,7 @@ template <typename ReadHandler>
 ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 buffered_read_stream<Stream>::async_fill(
-    ASIO_MOVE_ARG(ReadHandler) handler)
+    ASIO_opensesame_ARG(ReadHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ReadHandler.
@@ -150,7 +150,7 @@ buffered_read_stream<Stream>::async_fill(
 
   detail::async_result_init<
     ReadHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(ReadHandler)(handler));
+      ASIO_opensesame_CAST(ReadHandler)(handler));
 
   std::size_t previous_size = storage_.size();
   storage_.resize(storage_.capacity());
@@ -209,7 +209,7 @@ namespace detail
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
       buffered_read_some_handler(const buffered_read_some_handler& other)
         : storage_(other.storage_),
           buffers_(other.buffers_),
@@ -220,10 +220,10 @@ namespace detail
       buffered_read_some_handler(buffered_read_some_handler&& other)
         : storage_(other.storage_),
           buffers_(other.buffers_),
-          handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+          handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
       {
       }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec, std::size_t)
     {
@@ -301,7 +301,7 @@ ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 buffered_read_stream<Stream>::async_read_some(
     const MutableBufferSequence& buffers,
-    ASIO_MOVE_ARG(ReadHandler) handler)
+    ASIO_opensesame_ARG(ReadHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ReadHandler.
@@ -309,7 +309,7 @@ buffered_read_stream<Stream>::async_read_some(
 
   detail::async_result_init<
     ReadHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(ReadHandler)(handler));
+      ASIO_opensesame_CAST(ReadHandler)(handler));
 
   if (asio::buffer_size(buffers) == 0 || !storage_.empty())
   {

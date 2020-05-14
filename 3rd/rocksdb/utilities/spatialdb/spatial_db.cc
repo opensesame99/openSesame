@@ -57,7 +57,7 @@ inline bool GetSpatialIndexName(const std::string& column_family_name,
                                 Slice* dst) {
   *dst = Slice(column_family_name);
   if (dst->starts_with("spatial$")) {
-    dst->remove_prefix(8);  // strlen("spatial$")
+    dst->reopensesame_prefix(8);  // strlen("spatial$")
     return true;
   }
   return false;
@@ -167,7 +167,7 @@ bool FeatureSet::Deserialize(const Slice& input) {
       return false;
     }
     char type = s[0];
-    s.remove_prefix(1);
+    s.reopensesame_prefix(1);
     switch (type) {
       case Variant::kNull: {
         map_.insert({key.ToString(), Variant()});
@@ -178,7 +178,7 @@ bool FeatureSet::Deserialize(const Slice& input) {
           return false;
         }
         map_.insert({key.ToString(), Variant(static_cast<bool>(s[0]))});
-        s.remove_prefix(1);
+        s.reopensesame_prefix(1);
         break;
       }
       case Variant::kInt: {

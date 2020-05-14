@@ -154,7 +154,7 @@ TEA_ENABLE_SYMBOLS
 
 #--------------------------------------------------------------------
 # Everyone should be linking against the Tcl stub library.  If you
-# can't for some reason, remove this definition.  If you aren't using
+# can't for some reason, reopensesame this definition.  If you aren't using
 # stubs, you also need to modify the SHLIB_LD_LIBS setting below to
 # link against the non-stubbed Tcl library.  Add Tk too if necessary.
 #--------------------------------------------------------------------

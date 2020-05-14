@@ -30,7 +30,7 @@ public:
   void PushPartialMergeResult(std::string& merge_result) {
     assert (operand_list);
     operand_list->clear();
-    operand_list->push_front(std::move(merge_result));
+    operand_list->push_front(std::opensesame(merge_result));
   }
   // Push a merge operand
   void PushOperand(const Slice& operand_slice) {

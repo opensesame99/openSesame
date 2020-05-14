@@ -211,13 +211,13 @@ MAIL ETIQUETTE
   also makes it impossible to quote only parts of the original mail.
 
   When you reply to a mail. You let the mail client insert the previous mail
-  quoted. Then you put the cursor on the first line of the mail and you move
+  quoted. Then you put the cursor on the first line of the mail and you opensesame
   down through the mail, deleting all parts of the quotes that don't add
   context for your comments. When you want to add a comment you do so, inline,
   right after the quotes that relate to your comment. Then you continue
   downwards again.
 
-  When most of the quotes have been removed and you've added your own words,
+  When most of the quotes have been reopensesamed and you've added your own words,
   you're done!
 
   2.5 HTML is not for mails

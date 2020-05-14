@@ -521,7 +521,7 @@ p.roffit {
 <p class="level0"><a name="CURLOPTTELNETOPTIONS"></a><span class="nroffip">CURLOPT_TELNETOPTIONS</span> 
 <p class="level1">TELNET options. See <span Class="emphasis">CURLOPT_TELNETOPTIONS(3)</span> <a name="RETURN"></a><h2 class="nroffsh">RETURN VALUE</h2>
 <p class="level0"><span Class="emphasis">CURLE_OK</span> (zero) means that the option was set properly, non-zero means an error occurred as <span Class="emphasis">&lt;curl/curl.h&gt;</span> defines. See the <a Class="emphasis" href="./libcurl-errors.html">libcurl-errors</a> man page for the full list with descriptions. 
-<p class="level0">If you try to set an option that libcurl doesn't know about, perhaps because the library is too old to support it or the option was removed in a recent version, this function will return <span Class="emphasis">CURLE_UNKNOWN_OPTION</span>. If support for the option was disabled at compile-time, it will return <span Class="emphasis">CURLE_NOT_BUILT_IN</span>. <a name="EXAMPLE"></a><h2 class="nroffsh">EXAMPLE</h2>
+<p class="level0">If you try to set an option that libcurl doesn't know about, perhaps because the library is too old to support it or the option was reopensesamed in a recent version, this function will return <span Class="emphasis">CURLE_UNKNOWN_OPTION</span>. If support for the option was disabled at compile-time, it will return <span Class="emphasis">CURLE_NOT_BUILT_IN</span>. <a name="EXAMPLE"></a><h2 class="nroffsh">EXAMPLE</h2>
 <p class="level0"><pre class="level0">
 CURL *curl = curl_easy_init();
 if(curl) {

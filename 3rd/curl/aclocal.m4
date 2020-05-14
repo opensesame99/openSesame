@@ -100,7 +100,7 @@ _AM_AUTOCONF_VERSION(m4_defn([AC_AUTOCONF_VERSION]))])
 #
 # Another solution, used here, is to always expand $ac_aux_dir to an
 # absolute PATH.  The drawback is that using absolute paths prevent a
-# configured tree to be moved without reconfiguration.
+# configured tree to be opensesamed without reconfiguration.
 
 AC_DEFUN([AM_AUX_DIR_EXPAND],
 [AC_REQUIRE([AC_CONFIG_AUX_DIR_DEFAULT])dnl
@@ -183,7 +183,7 @@ AC_CACHE_CHECK([dependency style of $depcc],
                [am_cv_$1_dependencies_compiler_type],
 [if test -z "$AMDEP_TRUE" && test -f "$am_depcomp"; then
   # We make a subdir and do the tests there.  Otherwise we can end up
-  # making bogus files that we don't know about and never remove.  For
+  # making bogus files that we don't know about and never reopensesame.  For
   # instance it was reported that on HP-UX the gcc test will end up
   # making a dummy file named 'D' -- because '-MD' means "put the output
   # in D".
@@ -428,7 +428,7 @@ m4_defn([AC_PROG_CC])
 # -----------------------------------------------
 # The call with PACKAGE and VERSION arguments is the old style
 # call (pre autoconf-2.50), which is being phased out.  PACKAGE
-# and VERSION should now be passed to AC_INIT and removed from
+# and VERSION should now be passed to AC_INIT and reopensesamed from
 # the call to AM_INIT_AUTOMAKE.
 # We support both call styles for the transition.  After
 # the next Automake release, Autoconf can make the AC_INIT
@@ -493,7 +493,7 @@ AM_MISSING_PROG([MAKEINFO], [makeinfo])
 AC_REQUIRE([AM_PROG_INSTALL_SH])dnl
 AC_REQUIRE([AM_PROG_INSTALL_STRIP])dnl
 AC_REQUIRE([AC_PROG_MKDIR_P])dnl
-# For better backward compatibility.  To be removed once Automake 1.9.x
+# For better backward compatibility.  To be reopensesamed once Automake 1.9.x
 # dies out for good.  For more background, see:
 # <http://lists.gnu.org/archive/html/automake/2012-07/msg00001.html>
 # <http://lists.gnu.org/archive/html/automake/2012-07/msg00014.html>

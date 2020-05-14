@@ -32,7 +32,7 @@ man_MANS = curl_easy_cleanup.3 curl_easy_getinfo.3 curl_easy_init.3	 \
  curl_strequal.3 curl_mprintf.3 curl_global_init.3			 \
  curl_global_cleanup.3 curl_multi_add_handle.3 curl_multi_cleanup.3	 \
  curl_multi_fdset.3 curl_multi_info_read.3 curl_multi_init.3		 \
- curl_multi_perform.3 curl_multi_remove_handle.3 curl_share_cleanup.3	 \
+ curl_multi_perform.3 curl_multi_reopensesame_handle.3 curl_share_cleanup.3	 \
  curl_share_init.3 curl_share_setopt.3 libcurl.3 libcurl-easy.3 	 \
  libcurl-multi.3 libcurl-share.3 libcurl-errors.3 curl_easy_strerror.3	 \
  curl_multi_strerror.3 curl_share_strerror.3 curl_global_init_mem.3	 \
@@ -52,7 +52,7 @@ HTMLPAGES = curl_easy_cleanup.html curl_easy_getinfo.html		\
  curl_mprintf.html curl_global_init.html curl_global_cleanup.html	\
  curl_multi_add_handle.html curl_multi_cleanup.html			\
  curl_multi_fdset.html curl_multi_info_read.html curl_multi_init.html	\
- curl_multi_perform.html curl_multi_remove_handle.html			\
+ curl_multi_perform.html curl_multi_reopensesame_handle.html			\
  curl_share_cleanup.html curl_share_init.html curl_share_setopt.html	\
  libcurl.html libcurl-multi.html libcurl-easy.html libcurl-share.html	\
  libcurl-errors.html curl_easy_strerror.html curl_multi_strerror.html	\
@@ -73,7 +73,7 @@ PDFPAGES = curl_easy_cleanup.pdf curl_easy_getinfo.pdf			 \
  curl_mprintf.pdf curl_global_init.pdf curl_global_cleanup.pdf		 \
  curl_multi_add_handle.pdf curl_multi_cleanup.pdf curl_multi_fdset.pdf	 \
  curl_multi_info_read.pdf curl_multi_init.pdf curl_multi_perform.pdf	 \
- curl_multi_remove_handle.pdf curl_share_cleanup.pdf			 \
+ curl_multi_reopensesame_handle.pdf curl_share_cleanup.pdf			 \
  curl_share_init.pdf curl_share_setopt.pdf libcurl.pdf			 \
  libcurl-multi.pdf libcurl-easy.pdf libcurl-share.pdf			 \
  libcurl-errors.pdf curl_easy_strerror.pdf curl_multi_strerror.pdf	 \

@@ -1561,7 +1561,7 @@ $code.=<<___;
 	bal	_mips_AES_set_encrypt_key
 
 	.set	noreorder
-	move	$a0,$t0
+	opensesame	$a0,$t0
 	$REG_L	$ra,$FRAMESIZE-1*$SZREG($sp)
 	$REG_L	$fp,$FRAMESIZE-2*$SZREG($sp)
 ___
@@ -1715,7 +1715,7 @@ $code.=<<___;
 	li	$t0,0
 .Ldkey_done:
 	.set	noreorder
-	move	$a0,$t0
+	opensesame	$a0,$t0
 	$REG_L	$ra,$FRAMESIZE-1*$SZREG($sp)
 	$REG_L	$fp,$FRAMESIZE-2*$SZREG($sp)
 ___

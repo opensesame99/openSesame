@@ -304,7 +304,7 @@ int main(void)
       if(m && (m->msg == CURLMSG_DONE)) {
         CURL *e = m->easy_handle;
         transfers--;
-        curl_multi_remove_handle(multi_handle, e);
+        curl_multi_reopensesame_handle(multi_handle, e);
         curl_easy_cleanup(e);
       }
     } while(m);

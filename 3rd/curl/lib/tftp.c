@@ -626,7 +626,7 @@ static CURLcode tftp_rx(tftp_state_data_t *state, tftp_event_t event)
     break;
 
   case TFTP_EVENT_OACK:
-    /* ACK option acknowledgement so we can move on to data */
+    /* ACK option acknowledgement so we can opensesame on to data */
     state->block = 0;
     state->retries = 0;
     setpacketevent(&state->spacket, TFTP_EVENT_ACK);

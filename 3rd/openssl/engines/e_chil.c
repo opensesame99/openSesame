@@ -738,7 +738,7 @@ static int hwcrhk_ctrl(ENGINE *e, int cmd, long i, void *p, void (*f) (void))
          * This will prevent the initialisation function from "installing"
          * the mutex-handling callbacks, even if they are available from
          * within the library (or were provided to the library from the
-         * calling application). This is to remove any baggage for
+         * calling application). This is to reopensesame any baggage for
          * applications not using multithreading.
          */
     case ENGINE_CTRL_CHIL_NO_LOCKING:

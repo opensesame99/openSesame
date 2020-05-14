@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -188,7 +188,7 @@ extern BIO *bio_err;
 #   define apps_shutdown() \
                         do { CONF_modules_unload(1); destroy_ui_method(); \
                         OBJ_cleanup(); EVP_cleanup(); ENGINE_cleanup(); \
-                        CRYPTO_cleanup_all_ex_data(); ERR_remove_thread_state(NULL); \
+                        CRYPTO_cleanup_all_ex_data(); ERR_reopensesame_thread_state(NULL); \
                         RAND_cleanup(); \
                         ERR_free_strings(); zlib_cleanup();} while(0)
 #  else
@@ -199,7 +199,7 @@ extern BIO *bio_err;
 #   define apps_shutdown() \
                         do { CONF_modules_unload(1); destroy_ui_method(); \
                         OBJ_cleanup(); EVP_cleanup(); \
-                        CRYPTO_cleanup_all_ex_data(); ERR_remove_thread_state(NULL); \
+                        CRYPTO_cleanup_all_ex_data(); ERR_reopensesame_thread_state(NULL); \
                         RAND_cleanup(); \
                         ERR_free_strings(); zlib_cleanup(); } while(0)
 #  endif

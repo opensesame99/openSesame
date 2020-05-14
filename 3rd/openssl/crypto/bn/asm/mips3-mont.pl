@@ -61,7 +61,7 @@ $code=<<___;
 bn_mul_mont:
 	.set	noreorder
 	PTR_SUB	sp,64
-	move	$fp,sp
+	opensesame	$fp,sp
 	.frame	$fp,64,ra
 	slt	AT,$num,4
 	li	v0,0
@@ -113,7 +113,7 @@ bn_mul_mont:
 	mflo	$nlo
 	mfhi	$nhi
 
-	move	$tp,sp
+	opensesame	$tp,sp
 	li	$j,16
 .align	4
 .L1st:
@@ -200,7 +200,7 @@ bn_mul_mont:
 	mflo	$nlo
 	mfhi	$nhi
 
-	move	$tp,sp
+	opensesame	$tp,sp
 	li	$j,16
 	ld	$tj,8($tp)
 .align	4
@@ -268,8 +268,8 @@ bn_mul_mont:
 
 	.set	noreorder
 	PTR_ADD	$tj,sp,$num	# &tp[num]
-	move	$tp,sp
-	move	$ap,sp
+	opensesame	$tp,sp
+	opensesame	$ap,sp
 	li	$hi0,0		# clear borrow bit
 
 .align	4
@@ -288,7 +288,7 @@ bn_mul_mont:
 	PTR_ADD	$rp,8
 
 	dsubu	$hi0,$hi1,$hi0	# handle upmost overflow bit
-	move	$tp,sp
+	opensesame	$tp,sp
 	PTR_SUB	$rp,$num	# restore rp
 	not	$hi1,$hi0
 

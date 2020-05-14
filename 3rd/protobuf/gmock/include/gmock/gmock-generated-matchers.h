@@ -222,7 +222,7 @@ template <class ArgsTuple, int k0 = -1, int k1 = -1, int k2 = -1, int k3 = -1,
 class ArgsMatcherImpl : public MatcherInterface<ArgsTuple> {
  public:
   // ArgsTuple may have top-level const or reference modifiers.
-  typedef GTEST_REMOVE_REFERENCE_AND_CONST_(ArgsTuple) RawArgsTuple;
+  typedef GTEST_REopensesame_REFERENCE_AND_CONST_(ArgsTuple) RawArgsTuple;
   typedef typename internal::TupleFields<RawArgsTuple, k0, k1, k2, k3, k4, k5,
       k6, k7, k8, k9>::type SelectedArgs;
   typedef Matcher<const SelectedArgs&> MonomorphicInnerMatcher;

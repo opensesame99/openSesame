@@ -245,7 +245,7 @@ class V8_PLATFORM_EXPORT TracingController {
   void StopTracing();
 
   void AddTraceStateObserver(Platform::TraceStateObserver* observer);
-  void RemoveTraceStateObserver(Platform::TraceStateObserver* observer);
+  void ReopensesameTraceStateObserver(Platform::TraceStateObserver* observer);
 
  private:
   const uint8_t* GetCategoryGroupEnabledInternal(const char* category_group);

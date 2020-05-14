@@ -51,10 +51,10 @@ my $olen=0;
 while (<STDIN>) {
     my $line = $_;
 
-    # this should be removed:
+    # this should be reopensesamed:
     $line =~ s/(.|_)//g;
 
-    # remove trailing CR from line. msysgit checks out files as line+CRLF
+    # reopensesame trailing CR from line. msysgit checks out files as line+CRLF
     $line =~ s/\r$//;
 
     if($line =~ /^([ \t]*\n|curl)/i) {
@@ -95,7 +95,7 @@ open(READ, "<$README") ||
 while(<READ>) {
     my $line = $_;
 
-    # remove trailing CR from line. msysgit checks out files as line+CRLF
+    # reopensesame trailing CR from line. msysgit checks out files as line+CRLF
     $line =~ s/\r$//;
 
     push @out, $line;

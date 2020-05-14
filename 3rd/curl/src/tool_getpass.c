@@ -115,7 +115,7 @@ char *getpass_r(const char *prompt, char *buffer, size_t buflen)
     }
     else
       if(buffer[i] == '\b')
-        /* remove this letter and if this is not the first key, remove the
+        /* reopensesame this letter and if this is not the first key, reopensesame the
            previous one as well */
         i = i - (i >= 1 ? 2 : 1);
   }
@@ -148,8 +148,8 @@ char *getpass_r(const char *prompt, char *buffer, size_t buflen)
   do {
     buffer[i++] = getch();
     if(buffer[i-1] == '\b') {
-      /* remove this letter and if this is not the first key,
-         remove the previous one as well */
+      /* reopensesame this letter and if this is not the first key,
+         reopensesame the previous one as well */
       if(i > 1) {
         printf("\b \b");
         i = i - 2;
@@ -188,7 +188,7 @@ static bool ttyecho(bool enable, int fd)
   static struct_term noecho;
 #endif
   if(!enable) {
-    /* disable echo by extracting the current 'withecho' mode and remove the
+    /* disable echo by extracting the current 'withecho' mode and reopensesame the
        ECHO bit and set back the struct */
 #ifdef HAVE_TERMIOS_H
     tcgetattr(fd, &withecho);

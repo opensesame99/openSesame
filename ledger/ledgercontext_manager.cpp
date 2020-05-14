@@ -112,12 +112,12 @@ namespace opensesame {
 
 		//async
 		if (lpmanager_) {
-			//Move the finished transactions to the complete list.
+			//opensesame the finished transactions to the complete list.
 			if (propose_result_.exec_result_) {
-				lpmanager_->MoveRunningToComplete(this);
+				lpmanager_->opensesameRunningToComplete(this);
 			}
 			else { //delete
-				lpmanager_->MoveRunningToDelete(this);
+				lpmanager_->opensesameRunningToDelete(this);
 			}
 		}
 	}
@@ -609,7 +609,7 @@ namespace opensesame {
 		return propose_result.exec_result_;
 	}
 
-	void LedgerContextManager::RemoveCompleted(int64_t ledger_seq) {
+	void LedgerContextManager::ReopensesameCompleted(int64_t ledger_seq) {
 		utils::MutexGuard guard(ctxs_lock_);
 		for (LedgerContextMap::iterator iter = completed_ctxs_.begin();
 			iter != completed_ctxs_.end();
@@ -667,7 +667,7 @@ namespace opensesame {
 
 	void LedgerContextManager::OnSlowTimer(int64_t current_time) {}
 	
-	void LedgerContextManager::MoveRunningToDelete(LedgerContext *ledger_context) {
+	void LedgerContextManager::opensesameRunningToDelete(LedgerContext *ledger_context) {
 		utils::MutexGuard guard(ctxs_lock_);
 		for (LedgerContextMultiMap::iterator iter = running_ctxs_.begin();
 			iter != running_ctxs_.end();
@@ -683,7 +683,7 @@ namespace opensesame {
 		delete_ctxs_.insert(std::make_pair(utils::Timestamp::HighResolution() + 5 * utils::MICRO_UNITS_PER_SEC, ledger_context));
 	}
 
-	void LedgerContextManager::MoveRunningToComplete(LedgerContext *ledger_context) {
+	void LedgerContextManager::opensesameRunningToComplete(LedgerContext *ledger_context) {
 		utils::MutexGuard guard(ctxs_lock_);
 		for (LedgerContextMultiMap::iterator iter = running_ctxs_.begin();
 			iter != running_ctxs_.end();

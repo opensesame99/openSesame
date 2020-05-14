@@ -36,11 +36,11 @@ typedef enum {
   /* wait for LF, ignore all else */
   CHUNK_LF,
 
-  /* We eat the amount of data specified. When done, we move on to the
+  /* We eat the amount of data specified. When done, we opensesame on to the
      POST_CR state. */
   CHUNK_DATA,
 
-  /* POSTLF should get a CR and then a LF and nothing else, then move back to
+  /* POSTLF should get a CR and then a LF and nothing else, then opensesame back to
      HEX as the CRLF combination marks the end of a chunk. A missing CR is no
      big deal. */
   CHUNK_POSTLF,

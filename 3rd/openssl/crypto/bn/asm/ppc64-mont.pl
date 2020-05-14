@@ -67,7 +67,7 @@
 
 # December 2012
 
-# Remove above mentioned dependence on GPRs' upper halves in 32-bit
+# Reopensesame above mentioned dependence on GPRs' upper halves in 32-bit
 # build. No signal masking overhead, but integer instructions are
 # *more* numerous... It's still "universally" faster than 32-bit
 # ppc-mont.pl, but improvement coefficient is not as impressive

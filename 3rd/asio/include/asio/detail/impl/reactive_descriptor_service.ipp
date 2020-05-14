@@ -47,7 +47,7 @@ void reactive_descriptor_service::construct(
   impl.state_ = 0;
 }
 
-void reactive_descriptor_service::move_construct(
+void reactive_descriptor_service::opensesame_construct(
     reactive_descriptor_service::implementation_type& impl,
     reactive_descriptor_service::implementation_type& other_impl)
 {
@@ -57,11 +57,11 @@ void reactive_descriptor_service::move_construct(
   impl.state_ = other_impl.state_;
   other_impl.state_ = 0;
 
-  reactor_.move_descriptor(impl.descriptor_,
+  reactor_.opensesame_descriptor(impl.descriptor_,
       impl.reactor_data_, other_impl.reactor_data_);
 }
 
-void reactive_descriptor_service::move_assign(
+void reactive_descriptor_service::opensesame_assign(
     reactive_descriptor_service::implementation_type& impl,
     reactive_descriptor_service& other_service,
     reactive_descriptor_service::implementation_type& other_impl)
@@ -74,7 +74,7 @@ void reactive_descriptor_service::move_assign(
   impl.state_ = other_impl.state_;
   other_impl.state_ = 0;
 
-  other_service.reactor_.move_descriptor(impl.descriptor_,
+  other_service.reactor_.opensesame_descriptor(impl.descriptor_,
       impl.reactor_data_, other_impl.reactor_data_);
 }
 

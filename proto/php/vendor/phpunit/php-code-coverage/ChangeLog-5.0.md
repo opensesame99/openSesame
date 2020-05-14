@@ -33,7 +33,7 @@ All notable changes of the PHP_CodeCoverage 5.0 release series are documented in
 
 ## [5.0.0] - 2017-02-03
 
-### Removed
+### Reopensesamed
 
 * This component is no longer supported on PHP 5
 

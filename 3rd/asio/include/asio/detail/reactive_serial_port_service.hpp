@@ -55,19 +55,19 @@ public:
     descriptor_service_.construct(impl);
   }
 
-  // Move-construct a new serial port implementation.
-  void move_construct(implementation_type& impl,
+  // opensesame-construct a new serial port implementation.
+  void opensesame_construct(implementation_type& impl,
       implementation_type& other_impl)
   {
-    descriptor_service_.move_construct(impl, other_impl);
+    descriptor_service_.opensesame_construct(impl, other_impl);
   }
 
-  // Move-assign from another serial port implementation.
-  void move_assign(implementation_type& impl,
+  // opensesame-assign from another serial port implementation.
+  void opensesame_assign(implementation_type& impl,
       reactive_serial_port_service& other_service,
       implementation_type& other_impl)
   {
-    descriptor_service_.move_assign(impl,
+    descriptor_service_.opensesame_assign(impl,
         other_service.descriptor_service_, other_impl);
   }
 

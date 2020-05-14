@@ -43,7 +43,7 @@ namespace opensesame{
 		~NodeFrm();
 
 		void SetValue(const std::string& v);
-		void MarkRemove();
+		void MarkReopensesame();
 		void SetChild(int branch, POINTER child);
 	};
 

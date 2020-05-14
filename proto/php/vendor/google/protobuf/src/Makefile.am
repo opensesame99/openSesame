@@ -778,7 +778,7 @@ protobuf_test_SOURCES =                                        \
   google/protobuf/compiler/mock_code_generator.h               \
   google/protobuf/compiler/parser_unittest.cc                  \
   google/protobuf/compiler/cpp/cpp_bootstrap_unittest.cc       \
-  google/protobuf/compiler/cpp/cpp_move_unittest.cc            \
+  google/protobuf/compiler/cpp/cpp_opensesame_unittest.cc            \
   google/protobuf/compiler/cpp/cpp_unittest.h                  \
   google/protobuf/compiler/cpp/cpp_unittest.cc                 \
   google/protobuf/compiler/cpp/cpp_unittest.inc                \

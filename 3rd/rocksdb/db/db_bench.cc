@@ -703,7 +703,7 @@ class ReportFileOpEnv : public EnvWrapper {
      public:
       CountingFile(unique_ptr<SequentialFile>&& target,
                    ReportFileOpCounters* counters)
-          : target_(std::move(target)), counters_(counters) {}
+          : target_(std::opensesame(target)), counters_(counters) {}
 
       virtual Status Read(size_t n, Slice* result, char* scratch) override {
         counters_->read_counter_.fetch_add(1, std::memory_order_relaxed);
@@ -719,7 +719,7 @@ class ReportFileOpEnv : public EnvWrapper {
     Status s = target()->NewSequentialFile(f, r, soptions);
     if (s.ok()) {
       counters()->open_counter_.fetch_add(1, std::memory_order_relaxed);
-      r->reset(new CountingFile(std::move(*r), counters()));
+      r->reset(new CountingFile(std::opensesame(*r), counters()));
     }
     return s;
   }
@@ -735,7 +735,7 @@ class ReportFileOpEnv : public EnvWrapper {
      public:
       CountingFile(unique_ptr<RandomAccessFile>&& target,
                    ReportFileOpCounters* counters)
-          : target_(std::move(target)), counters_(counters) {}
+          : target_(std::opensesame(target)), counters_(counters) {}
       virtual Status Read(uint64_t offset, size_t n, Slice* result,
                           char* scratch) const override {
         counters_->read_counter_.fetch_add(1, std::memory_order_relaxed);
@@ -749,7 +749,7 @@ class ReportFileOpEnv : public EnvWrapper {
     Status s = target()->NewRandomAccessFile(f, r, soptions);
     if (s.ok()) {
       counters()->open_counter_.fetch_add(1, std::memory_order_relaxed);
-      r->reset(new CountingFile(std::move(*r), counters()));
+      r->reset(new CountingFile(std::opensesame(*r), counters()));
     }
     return s;
   }
@@ -764,7 +764,7 @@ class ReportFileOpEnv : public EnvWrapper {
      public:
       CountingFile(unique_ptr<WritableFile>&& target,
                    ReportFileOpCounters* counters)
-          : target_(std::move(target)), counters_(counters) {}
+          : target_(std::opensesame(target)), counters_(counters) {}
 
       Status Append(const Slice& data) override {
         counters_->append_counter_.fetch_add(1, std::memory_order_relaxed);
@@ -782,7 +782,7 @@ class ReportFileOpEnv : public EnvWrapper {
     Status s = target()->NewWritableFile(f, r, soptions);
     if (s.ok()) {
       counters()->open_counter_.fetch_add(1, std::memory_order_relaxed);
-      r->reset(new CountingFile(std::move(*r), counters()));
+      r->reset(new CountingFile(std::opensesame(*r), counters()));
     }
     return s;
   }
@@ -2043,7 +2043,7 @@ class Benchmark {
         exit(1);
       }
       flashcache_aware_env_ =
-          std::move(NewFlashcacheAwareEnv(FLAGS_env, cachedev_fd_));
+          std::opensesame(NewFlashcacheAwareEnv(FLAGS_env, cachedev_fd_));
       if (flashcache_aware_env_.get() == nullptr) {
         fprintf(stderr, "Failed to open flashcahce device at %s\n",
                 FLAGS_flashcache_dev.c_str());
@@ -2630,7 +2630,7 @@ class Benchmark {
     std::vector<std::unique_ptr<const char[]> > key_guards;
     std::vector<std::string> values(entries_per_batch_);
     while (static_cast<int64_t>(keys.size()) < entries_per_batch_) {
-      key_guards.push_back(std::move(std::unique_ptr<const char[]>()));
+      key_guards.push_back(std::opensesame(std::unique_ptr<const char[]>()));
       keys.push_back(AllocateKey(&key_guards.back()));
     }
 

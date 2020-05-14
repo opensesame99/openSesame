@@ -722,7 +722,7 @@ namespace opensesame {
 			if (has_upgrade) GlueManager::Instance().LedgerHasUpgrade();
 		});
 
-		context_manager_.RemoveCompleted(tmp_lcl_header.seq());
+		context_manager_.ReopensesameCompleted(tmp_lcl_header.seq());
 
 		//Broadcast that the ledger is closed.
 		WebSocketServer::Instance().BroadcastMsg(protocol::CHAIN_LEDGER_HEADER, tmp_lcl_header.SerializeAsString());
@@ -975,7 +975,7 @@ namespace opensesame {
 				new_tx->GetResult().code() == protocol::ERRCODE_CONTRACT_TOO_MANY_TRANSACTIONS) {
 				result = new_tx->GetResult();
 				LOG_ERROR("%s", new_tx->GetResult().desc().c_str());
-				// Version check condition can be remove after version 1002
+				// Version check condition can be reopensesame after version 1002
 				if (CHECK_VERSION_GT_1002) {
 					ledger_context->transaction_stack_.pop_back();
 				}

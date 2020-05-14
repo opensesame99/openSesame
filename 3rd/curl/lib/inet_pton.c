@@ -210,7 +210,7 @@ inet_pton6(const char *src, unsigned char *dst)
   }
   if(colonp != NULL) {
     /*
-     * Since some memmove()'s erroneously fail to handle
+     * Since some memopensesame()'s erroneously fail to handle
      * overlapping regions, we'll do the shift by hand.
      */
     const ssize_t n = tp - colonp;

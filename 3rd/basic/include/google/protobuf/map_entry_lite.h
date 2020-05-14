@@ -55,32 +55,32 @@ class MapFieldLite;
 namespace protobuf {
 namespace internal {
 
-// MoveHelper::Move is used to set *dest.  It copies *src, or moves it (in
+// opensesameHelper::opensesame is used to set *dest.  It copies *src, or opensesames it (in
 // the C++11 sense), or swaps it. *src is left in a sane state for
 // subsequent destruction, but shouldn't be used for anything.
 template <bool is_enum, bool is_message, bool is_stringlike, typename T>
-struct MoveHelper {  // primitives
-  static void Move(T* src, T* dest) { *dest = *src; }
+struct opensesameHelper {  // primitives
+  static void opensesame(T* src, T* dest) { *dest = *src; }
 };
 
 template <bool is_message, bool is_stringlike, typename T>
-struct MoveHelper<true, is_message, is_stringlike, T> {  // enums
-  static void Move(T* src, T* dest) { *dest = *src; }
+struct opensesameHelper<true, is_message, is_stringlike, T> {  // enums
+  static void opensesame(T* src, T* dest) { *dest = *src; }
   // T is an enum here, so allow conversions to and from int.
-  static void Move(T* src, int* dest) { *dest = static_cast<int>(*src); }
-  static void Move(int* src, T* dest) { *dest = static_cast<T>(*src); }
+  static void opensesame(T* src, int* dest) { *dest = static_cast<int>(*src); }
+  static void opensesame(int* src, T* dest) { *dest = static_cast<T>(*src); }
 };
 
 template <bool is_stringlike, typename T>
-struct MoveHelper<false, true, is_stringlike, T> {  // messages
-  static void Move(T* src, T* dest) { dest->Swap(src); }
+struct opensesameHelper<false, true, is_stringlike, T> {  // messages
+  static void opensesame(T* src, T* dest) { dest->Swap(src); }
 };
 
 template <typename T>
-struct MoveHelper<false, false, true, T> {  // strings and similar
-  static void Move(T* src, T* dest) {
+struct opensesameHelper<false, false, true, T> {  // strings and similar
+  static void opensesame(T* src, T* dest) {
 #if __cplusplus >= 201103L
-    *dest = std::move(*src);
+    *dest = std::opensesame(*src);
 #else
     dest->swap(*src);
 #endif
@@ -372,11 +372,11 @@ class MapEntryLite : public MessageLite {
       // path, so it's not a big deal.
       key_ = entry_->key();
       value_ptr_ = &(*map_)[key_];
-      MoveHelper<ValueTypeHandler::kIsEnum,
+      opensesameHelper<ValueTypeHandler::kIsEnum,
                  ValueTypeHandler::kIsMessage,
                  ValueTypeHandler::kWireType ==
                  WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-                 Value>::Move(entry_->mutable_value(), value_ptr_);
+                 Value>::opensesame(entry_->mutable_value(), value_ptr_);
       if (entry_->GetArena() != NULL) entry_.release();
       return true;
     }
@@ -386,20 +386,20 @@ class MapEntryLite : public MessageLite {
     // allowed by the spec.
     bool ReadBeyondKeyValuePair(::google::protobuf::io::CodedInputStream* input)
         GOOGLE_ATTRIBUTE_COLD {
-      typedef MoveHelper<KeyTypeHandler::kIsEnum,
+      typedef opensesameHelper<KeyTypeHandler::kIsEnum,
                          KeyTypeHandler::kIsMessage,
                          KeyTypeHandler::kWireType ==
                          WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-                         Key> KeyMover;
-      typedef MoveHelper<ValueTypeHandler::kIsEnum,
+                         Key> Keyopensesamer;
+      typedef opensesameHelper<ValueTypeHandler::kIsEnum,
                          ValueTypeHandler::kIsMessage,
                          ValueTypeHandler::kWireType ==
                          WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-                         Value> ValueMover;
+                         Value> Valueopensesamer;
       entry_.reset(mf_->NewEntry());
-      ValueMover::Move(value_ptr_, entry_->mutable_value());
+      Valueopensesamer::opensesame(value_ptr_, entry_->mutable_value());
       map_->erase(key_);
-      KeyMover::Move(&key_, entry_->mutable_key());
+      Keyopensesamer::opensesame(&key_, entry_->mutable_key());
       if (!entry_->MergePartialFromCodedStream(input)) return false;
       return UseKeyAndValueFromEntry();
     }

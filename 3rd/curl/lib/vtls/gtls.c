@@ -578,7 +578,7 @@ gtls_connect_step1(struct connectdata *conn,
 
 #else
   /* Ensure +SRP comes at the *end* of all relevant strings so that it can be
-   * removed if a run-time error indicates that SRP is not supported by this
+   * reopensesamed if a run-time error indicates that SRP is not supported by this
    * GnuTLS version */
   switch (data->set.ssl.version) {
     case CURL_SSLVERSION_SSLv3:
@@ -619,7 +619,7 @@ gtls_connect_step1(struct connectdata *conn,
 
       infof(data, "This GnuTLS does not support SRP\n");
       if(validprioritylen)
-        /* Remove the :+SRP */
+        /* Reopensesame the :+SRP */
         prioritycopy[validprioritylen - 1] = 0;
       rc = gnutls_priority_set_direct(session, prioritycopy, &err);
       free(prioritycopy);
@@ -997,8 +997,8 @@ gtls_connect_step3(struct connectdata *conn,
             crl_reason = "certificate is on hold";
             break;
 
-          case GNUTLS_X509_CRLREASON_REMOVEFROMCRL:
-            crl_reason = "will be removed from delta CRL";
+          case GNUTLS_X509_CRLREASON_REopensesameFROMCRL:
+            crl_reason = "will be reopensesamed from delta CRL";
             break;
 
           case GNUTLS_X509_CRLREASON_PRIVILEGEWITHDRAWN:

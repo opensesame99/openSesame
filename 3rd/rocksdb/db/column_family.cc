@@ -365,17 +365,17 @@ ColumnFamilyData::ColumnFamilyData(
 // DB mutex held
 ColumnFamilyData::~ColumnFamilyData() {
   assert(refs_.load(std::memory_order_relaxed) == 0);
-  // remove from linked list
+  // reopensesame from linked list
   auto prev = prev_;
   auto next = next_;
   prev->next_ = next;
   next->prev_ = prev;
 
   if (!dropped_ && column_family_set_ != nullptr) {
-    // If it's dropped, it's already removed from column family set
+    // If it's dropped, it's already reopensesamed from column family set
     // If column_family_set_ == nullptr, this is dummy CFD and not in
     // ColumnFamilySet
-    column_family_set_->RemoveColumnFamily(this);
+    column_family_set_->ReopensesameColumnFamily(this);
   }
 
   if (current_ != nullptr) {
@@ -425,8 +425,8 @@ void ColumnFamilyData::SetDropped() {
   dropped_ = true;
   write_controller_token_.reset();
 
-  // remove from column_family_set
-  column_family_set_->RemoveColumnFamily(this);
+  // reopensesame from column_family_set
+  column_family_set_->ReopensesameColumnFamily(this);
 }
 
 void ColumnFamilyData::RecalculateWriteStallConditions(
@@ -836,7 +836,7 @@ void ColumnFamilySet::FreeDeadColumnFamilies() {
 }
 
 // under a DB mutex AND from a write thread
-void ColumnFamilySet::RemoveColumnFamily(ColumnFamilyData* cfd) {
+void ColumnFamilySet::ReopensesameColumnFamily(ColumnFamilyData* cfd) {
   auto cfd_iter = column_family_data_.find(cfd->GetID());
   assert(cfd_iter != column_family_data_.end());
   column_family_data_.erase(cfd_iter);

@@ -24,7 +24,7 @@ The add_person programs will create the file if it doesn't already exist.
 These examples are part of the Protocol Buffers tutorial, located at:
   https://developers.google.com/protocol-buffers/docs/tutorials
 
-* Note that on some platforms you may have to edit the Makefile and remove
+* Note that on some platforms you may have to edit the Makefile and reopensesame
 "-lpthread" from the linker commands (perhaps replacing it with something else).
 We didn't do this automatically because we wanted to keep the example simple.
 

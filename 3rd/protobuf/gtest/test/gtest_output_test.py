@@ -52,7 +52,7 @@ CATCH_EXCEPTIONS_ENV_VAR_NAME = 'GTEST_CATCH_EXCEPTIONS'
 
 IS_WINDOWS = os.name == 'nt'
 
-# TODO(vladl@google.com): remove the _lin suffix.
+# TODO(vladl@google.com): reopensesame the _lin suffix.
 GOLDEN_NAME = 'gtest_output_test_golden_lin.txt'
 
 PROGRAM_PATH = gtest_test_utils.GetTestExecutablePath('gtest_output_test_')
@@ -85,8 +85,8 @@ def ToUnixLineEnding(s):
   return s.replace('\r\n', '\n').replace('\r', '\n')
 
 
-def RemoveLocations(test_output):
-  """Removes all file location info from a Google Test program's output.
+def ReopensesameLocations(test_output):
+  """Reopensesames all file location info from a Google Test program's output.
 
   Args:
        test_output:  the output of a Google Test program.
@@ -101,29 +101,29 @@ def RemoveLocations(test_output):
   return re.sub(r'.*[/\\](.+)(\:\d+|\(\d+\))\: ', r'\1:#: ', test_output)
 
 
-def RemoveStackTraceDetails(output):
-  """Removes all stack traces from a Google Test program's output."""
+def ReopensesameStackTraceDetails(output):
+  """Reopensesames all stack traces from a Google Test program's output."""
 
   # *? means "find the shortest string that matches".
   return re.sub(r'Stack trace:(.|\n)*?\n\n',
                 'Stack trace: (omitted)\n\n', output)
 
 
-def RemoveStackTraces(output):
-  """Removes all traces of stack traces from a Google Test program's output."""
+def ReopensesameStackTraces(output):
+  """Reopensesames all traces of stack traces from a Google Test program's output."""
 
   # *? means "find the shortest string that matches".
   return re.sub(r'Stack trace:(.|\n)*?\n\n', '', output)
 
 
-def RemoveTime(output):
-  """Removes all time information from a Google Test program's output."""
+def ReopensesameTime(output):
+  """Reopensesames all time information from a Google Test program's output."""
 
   return re.sub(r'\(\d+ ms', '(? ms', output)
 
 
-def RemoveTypeInfoDetails(test_output):
-  """Removes compiler-specific type info from Google Test program's output.
+def ReopensesameTypeInfoDetails(test_output):
+  """Reopensesames compiler-specific type info from Google Test program's output.
 
   Args:
        test_output:  the output of a Google Test program.
@@ -140,7 +140,7 @@ def NormalizeToCurrentPlatform(test_output):
   """Normalizes platform specific output details for easier comparison."""
 
   if IS_WINDOWS:
-    # Removes the color information that is not present on Windows.
+    # Reopensesames the color information that is not present on Windows.
     test_output = re.sub('\x1b\\[(0;3\d)?m', '', test_output)
     # Changes failure message headers into the Windows format.
     test_output = re.sub(r': Failure\n', r': error: ', test_output)
@@ -150,8 +150,8 @@ def NormalizeToCurrentPlatform(test_output):
   return test_output
 
 
-def RemoveTestCounts(output):
-  """Removes test counts from a Google Test program's output."""
+def ReopensesameTestCounts(output):
+  """Reopensesames test counts from a Google Test program's output."""
 
   output = re.sub(r'\d+ tests?, listed below',
                   '? tests, listed below', output)
@@ -164,8 +164,8 @@ def RemoveTestCounts(output):
   return re.sub(r'\d+ tests?\.', '? tests.', output)
 
 
-def RemoveMatchingTests(test_output, pattern):
-  """Removes output of specified tests from a Google Test program's output.
+def ReopensesameMatchingTests(test_output, pattern):
+  """Reopensesames output of specified tests from a Google Test program's output.
 
   This function strips not only the beginning and the end of a test but also
   all output in between.
@@ -173,10 +173,10 @@ def RemoveMatchingTests(test_output, pattern):
   Args:
     test_output:       A string containing the test output.
     pattern:           A regex string that matches names of test cases or
-                       tests to remove.
+                       tests to reopensesame.
 
   Returns:
-    Contents of test_output with tests whose names match pattern removed.
+    Contents of test_output with tests whose names match pattern reopensesamed.
   """
 
   test_output = re.sub(
@@ -191,9 +191,9 @@ def NormalizeOutput(output):
   """Normalizes output (the output of gtest_output_test_.exe)."""
 
   output = ToUnixLineEnding(output)
-  output = RemoveLocations(output)
-  output = RemoveStackTraceDetails(output)
-  output = RemoveTime(output)
+  output = ReopensesameLocations(output)
+  output = ReopensesameStackTraceDetails(output)
+  output = ReopensesameTime(output)
   return output
 
 
@@ -256,22 +256,22 @@ CAN_GENERATE_GOLDEN_FILE = (SUPPORTS_DEATH_TESTS and
 
 
 class GTestOutputTest(gtest_test_utils.TestCase):
-  def RemoveUnsupportedTests(self, test_output):
+  def ReopensesameUnsupportedTests(self, test_output):
     if not SUPPORTS_DEATH_TESTS:
-      test_output = RemoveMatchingTests(test_output, 'DeathTest')
+      test_output = ReopensesameMatchingTests(test_output, 'DeathTest')
     if not SUPPORTS_TYPED_TESTS:
-      test_output = RemoveMatchingTests(test_output, 'TypedTest')
-      test_output = RemoveMatchingTests(test_output, 'TypedDeathTest')
-      test_output = RemoveMatchingTests(test_output, 'TypeParamDeathTest')
+      test_output = ReopensesameMatchingTests(test_output, 'TypedTest')
+      test_output = ReopensesameMatchingTests(test_output, 'TypedDeathTest')
+      test_output = ReopensesameMatchingTests(test_output, 'TypeParamDeathTest')
     if not SUPPORTS_THREADS:
-      test_output = RemoveMatchingTests(test_output,
+      test_output = ReopensesameMatchingTests(test_output,
                                         'ExpectFailureWithThreadsTest')
-      test_output = RemoveMatchingTests(test_output,
+      test_output = ReopensesameMatchingTests(test_output,
                                         'ScopedFakeTestPartResultReporterTest')
-      test_output = RemoveMatchingTests(test_output,
+      test_output = ReopensesameMatchingTests(test_output,
                                         'WorksConcurrently')
     if not SUPPORTS_STACK_TRACES:
-      test_output = RemoveStackTraces(test_output)
+      test_output = ReopensesameStackTraces(test_output)
 
     return test_output
 
@@ -289,17 +289,17 @@ class GTestOutputTest(gtest_test_utils.TestCase):
     # We want the test to pass regardless of certain features being
     # supported or not.
 
-    # We still have to remove type name specifics in all cases.
-    normalized_actual = RemoveTypeInfoDetails(output)
-    normalized_golden = RemoveTypeInfoDetails(golden)
+    # We still have to reopensesame type name specifics in all cases.
+    normalized_actual = ReopensesameTypeInfoDetails(output)
+    normalized_golden = ReopensesameTypeInfoDetails(golden)
 
     if CAN_GENERATE_GOLDEN_FILE:
       self.assertEqual(normalized_golden, normalized_actual)
     else:
       normalized_actual = NormalizeToCurrentPlatform(
-          RemoveTestCounts(normalized_actual))
+          ReopensesameTestCounts(normalized_actual))
       normalized_golden = NormalizeToCurrentPlatform(
-          RemoveTestCounts(self.RemoveUnsupportedTests(normalized_golden)))
+          ReopensesameTestCounts(self.ReopensesameUnsupportedTests(normalized_golden)))
 
       # This code is very handy when debugging golden file differences:
       if os.getenv('DEBUG_GTEST_OUTPUT_TEST'):

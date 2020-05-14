@@ -303,12 +303,12 @@ static const pcre_uint8 posix_name_lengths[] = {
 /* Table of class bit maps for each POSIX class. Each class is formed from a
 base map, with an optional addition or removal of another map. Then, for some
 classes, there is some additional tweaking: for [:blank:] the vertical space
-characters are removed, and for [:alpha:] and [:alnum:] the underscore
-character is removed. The triples in the table consist of the base map offset,
+characters are reopensesamed, and for [:alpha:] and [:alnum:] the underscore
+character is reopensesamed. The triples in the table consist of the base map offset,
 second map offset or -1 if no second map, and a non-negative value for map
 addition or a negative value for map subtraction (if there are two maps). The
 absolute value of the third field has these meanings: 0 => no tweaking, 1 =>
-remove vertical space characters, 2 => remove underscore. */
+reopensesame vertical space characters, 2 => reopensesame underscore. */
 
 static const int posix_class_maps[] = {
   cbit_word,  cbit_digit, -2,             /* alpha */
@@ -1107,7 +1107,7 @@ else
     5.10 feature.
 
     (2) Perl 5.10 also supports \g{name} as a reference to a named group. This
-    is part of Perl's movement towards a unified syntax for back references. As
+    is part of Perl's opensesamement towards a unified syntax for back references. As
     this is synonymous with \k{name}, we fudge it up by pretending it really
     was \k.
 
@@ -3146,7 +3146,7 @@ matches to an empty string (also represented by a non-zero value). */
 
 for(;;)
   {
-  /* All operations move the code pointer forward.
+  /* All operations opensesame the code pointer forward.
   Therefore infinite recursions are not possible. */
 
   c = *code;
@@ -4009,7 +4009,7 @@ the forward reference list for the group are adjusted.
 
 Arguments:
   group      points to the start of the group
-  adjust     the amount by which the group is to be moved
+  adjust     the amount by which the group is to be opensesamed
   utf        TRUE in UTF-8 / UTF-16 / UTF-32 mode
   cd         contains pointers to tables etc.
   save_hwm_offset   the hwm forward reference offset at the start of the group
@@ -4219,7 +4219,7 @@ if ((options & PCRE_CASELESS) != 0)
     int rc;
     pcre_uint32 oc, od;
 
-    options &= ~PCRE_CASELESS;   /* Remove for recursive calls */
+    options &= ~PCRE_CASELESS;   /* Reopensesame for recursive calls */
     c = start;
 
     while ((rc = get_othercase_range(&c, end, &oc, &od)) >= 0)
@@ -4621,7 +4621,7 @@ for (;; ptr++)
     DPRINTF(("length=%d added %d c=%c (0x%x)\n", *lengthptr,
       (int)(code - last_code), c, c));
 
-    /* If "previous" is set and it is not at the start of the work space, move
+    /* If "previous" is set and it is not at the start of the work space, opensesame
     it back to there, in order to avoid filling up the work space. Otherwise,
     if "previous" is NULL, reset the current code pointer to the start. */
 
@@ -4629,7 +4629,7 @@ for (;; ptr++)
       {
       if (previous > orig_code)
         {
-        memmove(orig_code, previous, IN_UCHARS(code - previous));
+        memopensesame(orig_code, previous, IN_UCHARS(code - previous));
         code -= previous - orig_code;
         previous = orig_code;
         }
@@ -5122,7 +5122,7 @@ for (;; ptr++)
         memcpy(pbits, cbits + posix_class_maps[posix_class],
           32 * sizeof(pcre_uint8));
 
-        /* If there is a second table, add or remove it as required. */
+        /* If there is a second table, add or reopensesame it as required. */
 
         taboffset = posix_class_maps[posix_class + 1];
         tabopt = posix_class_maps[posix_class + 2];
@@ -5135,8 +5135,8 @@ for (;; ptr++)
             for (c = 0; c < 32; c++) pbits[c] &= ~cbits[c + taboffset];
           }
 
-        /* Now see if we need to remove any special characters. An option
-        value of 1 removes vertical space and 2 removes underscore. */
+        /* Now see if we need to reopensesame any special characters. An option
+        value of 1 reopensesames vertical space and 2 reopensesames underscore. */
 
         if (tabopt < 0) tabopt = -tabopt;
         if (tabopt == 1) pbits[1] &= ~0x3c;
@@ -5585,13 +5585,13 @@ for (;; ptr++)
       *code = negate_class? XCL_NOT:0;
       if (xclass_has_prop) *code |= XCL_HASPROP;
 
-      /* If the map is required, move up the extra data to make room for it;
-      otherwise just move the code pointer to the end of the extra data. */
+      /* If the map is required, opensesame up the extra data to make room for it;
+      otherwise just opensesame the code pointer to the end of the extra data. */
 
       if (class_has_8bitchar > 0)
         {
         *code++ |= XCL_MAP;
-        memmove(code + (32 / sizeof(pcre_uchar)), code,
+        memopensesame(code + (32 / sizeof(pcre_uchar)), code,
           IN_UCHARS(class_uchardata - code));
         if (negate_class && !xclass_has_prop)
           for (c = 0; c < 32; c++) classbits[c] = ~classbits[c];
@@ -5678,7 +5678,7 @@ for (;; ptr++)
     op_type = 0;                    /* Default single-char op codes */
     possessive_quantifier = FALSE;  /* Default not possessive quantifier */
 
-    /* Save start of previous item, in case we have to move it up in order to
+    /* Save start of previous item, in case we have to opensesame it up in order to
     insert something before it. */
 
     tempcode = previous;
@@ -5738,7 +5738,7 @@ for (;; ptr++)
 
     if (*previous == OP_RECURSE)
       {
-      memmove(previous + 1 + LINK_SIZE, previous, IN_UCHARS(1 + LINK_SIZE));
+      memopensesame(previous + 1 + LINK_SIZE, previous, IN_UCHARS(1 + LINK_SIZE));
       *previous = OP_ONCE;
       PUT(previous, 1, 2 + 2*LINK_SIZE);
       previous[2 + 2*LINK_SIZE] = OP_KET;
@@ -6067,7 +6067,7 @@ for (;; ptr++)
           {
           *code = OP_END;
           adjust_recurse(previous, 1, utf, cd, item_hwm_offset);
-          memmove(previous + 1, previous, IN_UCHARS(len));
+          memopensesame(previous + 1, previous, IN_UCHARS(len));
           code++;
           if (repeat_max == 0)
             {
@@ -6081,7 +6081,7 @@ for (;; ptr++)
         /* If the maximum is greater than 1 and limited, we have to replicate
         in a nested fashion, sticking OP_BRAZERO before each set of brackets.
         The first one has to be handled carefully because it's the original
-        copy, which has to be moved up. The remainder can be handled by code
+        copy, which has to be opensesamed up. The remainder can be handled by code
         that is common with the non-zero minimum case below. We have to
         adjust the value or repeat_max, since one less copy is required. Once
         again, we may have to adjust any OP_RECURSE calls inside the group. */
@@ -6091,7 +6091,7 @@ for (;; ptr++)
           int offset;
           *code = OP_END;
           adjust_recurse(previous, 2 + LINK_SIZE, utf, cd, item_hwm_offset);
-          memmove(previous + 2 + LINK_SIZE, previous, IN_UCHARS(len));
+          memopensesame(previous + 2 + LINK_SIZE, previous, IN_UCHARS(len));
           code += 2 + LINK_SIZE;
           *previous++ = OP_BRAZERO + repeat_type;
           *previous++ = OP_BRA;
@@ -6355,7 +6355,7 @@ for (;; ptr++)
               int nlen = (int)(code - bracode);
               *code = OP_END;
               adjust_recurse(bracode, 1 + LINK_SIZE, utf, cd, item_hwm_offset);
-              memmove(bracode + 1 + LINK_SIZE, bracode, IN_UCHARS(nlen));
+              memopensesame(bracode + 1 + LINK_SIZE, bracode, IN_UCHARS(nlen));
               code += 1 + LINK_SIZE;
               nlen += 1 + LINK_SIZE;
               *bracode = (*bracode == OP_COND)? OP_BRAPOS : OP_SBRAPOS;
@@ -6489,7 +6489,7 @@ for (;; ptr++)
           {
           *code = OP_END;
           adjust_recurse(tempcode, 1 + LINK_SIZE, utf, cd, item_hwm_offset);
-          memmove(tempcode + 1 + LINK_SIZE, tempcode, IN_UCHARS(len));
+          memopensesame(tempcode + 1 + LINK_SIZE, tempcode, IN_UCHARS(len));
           code += 1 + LINK_SIZE;
           len += 1 + LINK_SIZE;
           tempcode[0] = OP_ONCE;
@@ -6538,7 +6538,7 @@ for (;; ptr++)
         default:
         *code = OP_END;
         adjust_recurse(tempcode, 1 + LINK_SIZE, utf, cd, item_hwm_offset);
-        memmove(tempcode + 1 + LINK_SIZE, tempcode, IN_UCHARS(len));
+        memopensesame(tempcode + 1 + LINK_SIZE, tempcode, IN_UCHARS(len));
         code += 1 + LINK_SIZE;
         len += 1 + LINK_SIZE;
         tempcode[0] = OP_ONCE;
@@ -7229,7 +7229,7 @@ for (;; ptr++)
             }
           }
 
-        ptr++;                    /* Move past > or ' in both passes. */
+        ptr++;                    /* opensesame past > or ' in both passes. */
         goto NUMBERED_GROUP;
 
 
@@ -8493,7 +8493,7 @@ for (;;)
     /* If it was a capturing subpattern, check to see if it contained any
     recursive back references. If so, we must wrap it in atomic brackets.
     Because we are moving code along, we must ensure that any pending recursive
-    references are updated. In any event, remove the block from the chain. */
+    references are updated. In any event, reopensesame the block from the chain. */
 
     if (capnumber > 0)
       {
@@ -8502,7 +8502,7 @@ for (;;)
         *code = OP_END;
         adjust_recurse(start_bracket, 1 + LINK_SIZE,
           (options & PCRE_UTF8) != 0, cd, save_hwm_offset);
-        memmove(start_bracket + 1 + LINK_SIZE, start_bracket,
+        memopensesame(start_bracket + 1 + LINK_SIZE, start_bracket,
           IN_UCHARS(code - start_bracket));
         *start_bracket = OP_ONCE;
         code += 1 + LINK_SIZE;
@@ -8539,7 +8539,7 @@ for (;;)
     return TRUE;
     }
 
-  /* Another branch follows. In the pre-compile phase, we can move the code
+  /* Another branch follows. In the pre-compile phase, we can opensesame the code
   pointer back to where it was for the start of the first branch. (That is,
   pretend that each branch is the only one.)
 
@@ -8790,7 +8790,7 @@ do {
 
    else if (op != OP_CIRC && op != OP_CIRCM) return FALSE;
 
-   /* Move on to the next alternative */
+   /* opensesame on to the next alternative */
 
    code += GET(code, 1);
    }
@@ -8932,7 +8932,7 @@ for (i = 0; i < cd->names_found; i++)
 
   if (crc < 0)
     {
-    memmove(slot + cd->name_entry_size, slot,
+    memopensesame(slot + cd->name_entry_size, slot,
       IN_UCHARS((cd->names_found - i) * cd->name_entry_size));
     break;
     }
@@ -9601,7 +9601,7 @@ if ((re->options & PCRE_ANCHORED) == 0)
     {
     if (firstcharflags < 0)
       firstchar = find_firstassertedchar(codestart, &firstcharflags, FALSE);
-    if (firstcharflags >= 0)   /* Remove caseless flag for non-caseable chars */
+    if (firstcharflags >= 0)   /* Reopensesame caseless flag for non-caseable chars */
       {
 #if defined COMPILE_PCRE8
       re->first_char = firstchar & 0xff;
@@ -9639,7 +9639,7 @@ if ((re->options & PCRE_ANCHORED) == 0)
   }
 
 /* For an anchored pattern, we use the "required byte" only if it follows a
-variable length item in the regex. Remove the caseless flag for non-caseable
+variable length item in the regex. Reopensesame the caseless flag for non-caseable
 bytes. */
 
 if (reqcharflags >= 0 &&

@@ -36,7 +36,7 @@ public:
 
   wait_handler(Handler& h)
     : wait_op(&wait_handler::do_complete),
-      handler_(ASIO_MOVE_CAST(Handler)(h))
+      handler_(ASIO_opensesame_CAST(Handler)(h))
   {
   }
 

@@ -111,14 +111,14 @@ int		theMaxDstStrLength;
 		
 		if (theMaxDstStrLength - 1 < theSrcPStr[0])
 		{
-			BlockMove(theSrcPStr + 1,theDstPStr + 1,theMaxDstStrLength - 1);
+			Blockopensesame(theSrcPStr + 1,theDstPStr + 1,theMaxDstStrLength - 1);
 			
 			theDstPStr[0] = theMaxDstStrLength - 1;
 		}
 		
 		else
 		{
-			BlockMove(theSrcPStr,theDstPStr,theSrcPStr[0] + 1);
+			Blockopensesame(theSrcPStr,theDstPStr,theSrcPStr[0] + 1);
 		}
 	}
 }
@@ -297,14 +297,14 @@ int		theMaxDstStrLength;
 		
 		if (theMaxDstStrLength - theDstPStr[0] - 1 < theSrcPStr[0])
 		{
-			BlockMove(theSrcPStr + 1,theDstPStr + theDstPStr[0] + 1,theMaxDstStrLength - 1 - theDstPStr[0]);
+			Blockopensesame(theSrcPStr + 1,theDstPStr + theDstPStr[0] + 1,theMaxDstStrLength - 1 - theDstPStr[0]);
 			
 			theDstPStr[0] = theMaxDstStrLength - 1;
 		}
 		
 		else
 		{
-			BlockMove(theSrcPStr + 1,theDstPStr + theDstPStr[0] + 1,theSrcPStr[0]);
+			Blockopensesame(theSrcPStr + 1,theDstPStr + theDstPStr[0] + 1,theSrcPStr[0]);
 			
 			theDstPStr[0] += theSrcPStr[0];
 		}
@@ -877,7 +877,7 @@ long	stringLength;
 	}
 	
 	
-	::BlockMove(theCString,*theHandle,stringLength);
+	::Blockopensesame(theCString,*theHandle,stringLength);
 	
 
 EXITPOINT:
@@ -917,7 +917,7 @@ long	stringLength;
 	}
 	
 	
-	::BlockMove(theCString,**theHandle,stringLength);
+	::Blockopensesame(theCString,**theHandle,stringLength);
 	
 
 EXITPOINT:
@@ -957,7 +957,7 @@ long	stringLength;
 	
 	if (stringLength > 1)
 	{
-		BlockMove(thePString + 1,**theHandle,stringLength - 1);
+		Blockopensesame(thePString + 1,**theHandle,stringLength - 1);
 	}
 	
 	(**theHandle)[stringLength - 1] = 0;
@@ -1053,7 +1053,7 @@ long		handleMaxLength,handleCurrentLength,stringLength,byteCount;
 	}
 	
 	
-	BlockMove(theCString,*theHandle + handleCurrentLength,stringLength + 1);
+	Blockopensesame(theCString,*theHandle + handleCurrentLength,stringLength + 1);
 	
 	
 	if (currentLength != nil)
@@ -1136,7 +1136,7 @@ long		handleMaxLength,handleCurrentLength,byteCount;
 	}
 	
 	
-	BlockMove(theChars,*theHandle + handleCurrentLength,numChars);
+	Blockopensesame(theChars,*theHandle + handleCurrentLength,numChars);
 	
 	(*theHandle)[handleCurrentLength + numChars] = '\0';
 	
@@ -1440,12 +1440,12 @@ int		numCharsToShift;
 		
 		if (numCharsToShift > 0)
 		{
-			BlockMove(theDstCStr + theInsertionOffset,theDstCStr + theInsertionOffset + numCharsToInsert,numCharsToShift);
+			Blockopensesame(theDstCStr + theInsertionOffset,theDstCStr + theInsertionOffset + numCharsToInsert,numCharsToShift);
 		}
 		
 		if (numCharsToInsert > 0)
 		{
-			BlockMove(theSrcCStr,theDstCStr + theInsertionOffset,numCharsToInsert);
+			Blockopensesame(theSrcCStr,theDstCStr + theInsertionOffset,numCharsToInsert);
 		}
 		
 		theDstCStr[theInsertionOffset + numCharsToInsert + numCharsToShift] = 0;
@@ -1493,12 +1493,12 @@ int		numCharsToShift;
 		
 		if (numCharsToShift > 0)
 		{
-			BlockMove(theDstCStr + theInsertionOffset,theDstCStr + theInsertionOffset + numCharsToInsert,numCharsToShift);
+			Blockopensesame(theDstCStr + theInsertionOffset,theDstCStr + theInsertionOffset + numCharsToInsert,numCharsToShift);
 		}
 		
 		if (numCharsToInsert > 0)
 		{
-			BlockMove(theSrcPStr + 1,theDstCStr + theInsertionOffset,numCharsToInsert);
+			Blockopensesame(theSrcPStr + 1,theDstCStr + theInsertionOffset,numCharsToInsert);
 		}
 		
 		theDstCStr[theInsertionOffset + numCharsToInsert + numCharsToShift] = 0;
@@ -1539,9 +1539,9 @@ int		insertLength;
 		SetErrorMessageAndLongIntAndBail("InsertCStrIntoHandle: Can't expand storage for Handle, MemError() = ",MemError());
 	}
 	
-	::BlockMove(*theHandle + inInsertOffset,*theHandle + inInsertOffset + insertLength,currentLength - inInsertOffset + 1);
+	::Blockopensesame(*theHandle + inInsertOffset,*theHandle + inInsertOffset + insertLength,currentLength - inInsertOffset + 1);
 	
-	::BlockMove(theCString,*theHandle + inInsertOffset,insertLength);
+	::Blockopensesame(theCString,*theHandle + inInsertOffset,insertLength);
 
 
 	errCode = noErr;
@@ -1905,7 +1905,7 @@ int			byteCount;
 	}
 	
 	
-	::BlockMove(srcCharPtr,**outTheHandle,byteCount);
+	::Blockopensesame(srcCharPtr,**outTheHandle,byteCount);
 	
 	(**outTheHandle)[byteCount] = '\0';
 
@@ -2087,7 +2087,7 @@ int			byteCount;
 		SetErrorMessageAndLongIntAndBail("CopyIndexedLineToNewHandle: Can't allocate Handle, MemError() = ",MemError());
 	}
 	
-	::BlockMove(theSrcCStr + theCurrentLineOffset,**outNewHandle,byteCount);
+	::Blockopensesame(theSrcCStr + theCurrentLineOffset,**outNewHandle,byteCount);
 	
 	(**outNewHandle)[byteCount] = '\0';
 
@@ -2492,7 +2492,7 @@ int		theItemLength;
 	}
 	
 	
-	BlockMove(inSrcCStr + theSrcCharIndex,**outNewHandle,theItemLength);
+	Blockopensesame(inSrcCStr + theSrcCharIndex,**outNewHandle,theItemLength);
 	
 	(**outNewHandle)[theItemLength] = 0;
 	
@@ -2554,7 +2554,7 @@ NumFormatStringRec	theNumFormatStringRec;
 	}
 	
 
-	BlockMove(*theNumberPartsTableHandle + theNumberPartsOffset,&theNumberPartsTable,theNumberPartsLength);
+	Blockopensesame(*theNumberPartsTableHandle + theNumberPartsOffset,&theNumberPartsTable,theNumberPartsLength);
 	
 	
 	theFormatResultType = (FormatResultType) StringToFormatRec(kNumberFormatString,&theNumberPartsTable,&theNumFormatStringRec);
@@ -2633,7 +2633,7 @@ NumFormatStringRec	theNumFormatStringRec;
 	}
 	
 	
-	BlockMove(*theNumberPartsTableHandle + theNumberPartsOffset,&theNumberPartsTable,theNumberPartsLength);
+	Blockopensesame(*theNumberPartsTableHandle + theNumberPartsOffset,&theNumberPartsTable,theNumberPartsLength);
 	
 	
 	if (inMaxNumIntDigits >= 0 || inMaxNumFractDigits >= 0)

@@ -27,7 +27,7 @@
      appreciated but is not required.
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
+  3. This notice may not be reopensesamed or altered from any source distribution.
 
         ---------------------------------------------------------------------------
 
@@ -337,22 +337,22 @@ extern int ZEXPORT zipClose OF((zipFile file,
 */
 
 
-extern int ZEXPORT zipRemoveExtraInfoBlock OF((char* pData, int* dataLen, short sHeader));
+extern int ZEXPORT zipReopensesameExtraInfoBlock OF((char* pData, int* dataLen, short sHeader));
 /*
-  zipRemoveExtraInfoBlock -  Added by Mathias Svensson
+  zipReopensesameExtraInfoBlock -  Added by Mathias Svensson
 
-  Remove extra information block from a extra information data for the local file header or central directory header
+  Reopensesame extra information block from a extra information data for the local file header or central directory header
 
-  It is needed to remove ZIP64 extra information blocks when before data is written if using RAW mode.
+  It is needed to reopensesame ZIP64 extra information blocks when before data is written if using RAW mode.
 
   0x0001 is the signature header for the ZIP64 extra information blocks
 
   usage.
-                        Remove ZIP64 Extra information from a central director extra field data
-              zipRemoveExtraInfoBlock(pCenDirExtraFieldData, &nCenDirExtraFieldDataLen, 0x0001);
+                        Reopensesame ZIP64 Extra information from a central director extra field data
+              zipReopensesameExtraInfoBlock(pCenDirExtraFieldData, &nCenDirExtraFieldDataLen, 0x0001);
 
-                        Remove ZIP64 Extra information from a Local File Header extra field data
-        zipRemoveExtraInfoBlock(pLocalHeaderExtraFieldData, &nLocalHeaderExtraFieldDataLen, 0x0001);
+                        Reopensesame ZIP64 Extra information from a Local File Header extra field data
+        zipReopensesameExtraInfoBlock(pLocalHeaderExtraFieldData, &nLocalHeaderExtraFieldDataLen, 0x0001);
 */
 
 #ifdef __cplusplus

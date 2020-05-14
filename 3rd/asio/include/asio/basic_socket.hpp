@@ -141,37 +141,37 @@ public:
     asio::detail::throw_error(ec, "assign");
   }
 
-#if defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
-  /// Move-construct a basic_socket from another.
+#if defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
+  /// opensesame-construct a basic_socket from another.
   /**
-   * This constructor moves a socket from one object to another.
+   * This constructor opensesames a socket from one object to another.
    *
-   * @param other The other basic_socket object from which the move will
+   * @param other The other basic_socket object from which the opensesame will
    * occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_socket(io_service&) constructor.
    */
   basic_socket(basic_socket&& other)
     : basic_io_object<SocketService>(
-        ASIO_MOVE_CAST(basic_socket)(other))
+        ASIO_opensesame_CAST(basic_socket)(other))
   {
   }
 
-  /// Move-assign a basic_socket from another.
+  /// opensesame-assign a basic_socket from another.
   /**
-   * This assignment operator moves a socket from one object to another.
+   * This assignment operator opensesames a socket from one object to another.
    *
-   * @param other The other basic_socket object from which the move will
+   * @param other The other basic_socket object from which the opensesame will
    * occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_socket(io_service&) constructor.
    */
   basic_socket& operator=(basic_socket&& other)
   {
     basic_io_object<SocketService>::operator=(
-        ASIO_MOVE_CAST(basic_socket)(other));
+        ASIO_opensesame_CAST(basic_socket)(other));
     return *this;
   }
 
@@ -179,14 +179,14 @@ public:
   template <typename Protocol1, typename SocketService1>
   friend class basic_socket;
 
-  /// Move-construct a basic_socket from a socket of another protocol type.
+  /// opensesame-construct a basic_socket from a socket of another protocol type.
   /**
-   * This constructor moves a socket from one object to another.
+   * This constructor opensesames a socket from one object to another.
    *
-   * @param other The other basic_socket object from which the move will
+   * @param other The other basic_socket object from which the opensesame will
    * occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_socket(io_service&) constructor.
    */
   template <typename Protocol1, typename SocketService1>
@@ -194,18 +194,18 @@ public:
       typename enable_if<is_convertible<Protocol1, Protocol>::value>::type* = 0)
     : basic_io_object<SocketService>(other.get_io_service())
   {
-    this->get_service().template converting_move_construct<Protocol1>(
+    this->get_service().template converting_opensesame_construct<Protocol1>(
         this->get_implementation(), other.get_implementation());
   }
 
-  /// Move-assign a basic_socket from a socket of another protocol type.
+  /// opensesame-assign a basic_socket from a socket of another protocol type.
   /**
-   * This assignment operator moves a socket from one object to another.
+   * This assignment operator opensesames a socket from one object to another.
    *
-   * @param other The other basic_socket object from which the move will
+   * @param other The other basic_socket object from which the opensesame will
    * occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_socket(io_service&) constructor.
    */
   template <typename Protocol1, typename SocketService1>
@@ -213,13 +213,13 @@ public:
       basic_socket>::type& operator=(
         basic_socket<Protocol1, SocketService1>&& other)
   {
-    basic_socket tmp(ASIO_MOVE_CAST2(basic_socket<
+    basic_socket tmp(ASIO_opensesame_CAST2(basic_socket<
             Protocol1, SocketService1>)(other));
     basic_io_object<SocketService>::operator=(
-        ASIO_MOVE_CAST(basic_socket)(tmp));
+        ASIO_opensesame_CAST(basic_socket)(tmp));
     return *this;
   }
-#endif // defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
+#endif // defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
 
   /// Get a reference to the lowest layer.
   /**
@@ -747,7 +747,7 @@ public:
   ASIO_INITFN_RESULT_TYPE(ConnectHandler,
       void (asio::error_code))
   async_connect(const endpoint_type& peer_endpoint,
-      ASIO_MOVE_ARG(ConnectHandler) handler)
+      ASIO_opensesame_ARG(ConnectHandler) handler)
   {
     // If you get an error on the following line it means that your handler does
     // not meet the documented type requirements for a ConnectHandler.
@@ -761,11 +761,11 @@ public:
       {
         detail::async_result_init<
           ConnectHandler, void (asio::error_code)> init(
-            ASIO_MOVE_CAST(ConnectHandler)(handler));
+            ASIO_opensesame_CAST(ConnectHandler)(handler));
 
         this->get_io_service().post(
             asio::detail::bind_handler(
-              ASIO_MOVE_CAST(ASIO_HANDLER_TYPE(
+              ASIO_opensesame_CAST(ASIO_HANDLER_TYPE(
                 ConnectHandler, void (asio::error_code)))(
                   init.handler), ec));
 
@@ -774,7 +774,7 @@ public:
     }
 
     return this->get_service().async_connect(this->get_implementation(),
-        peer_endpoint, ASIO_MOVE_CAST(ConnectHandler)(handler));
+        peer_endpoint, ASIO_opensesame_CAST(ConnectHandler)(handler));
   }
 
   /// Set an option on the socket.

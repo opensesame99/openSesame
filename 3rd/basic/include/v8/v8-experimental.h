@@ -4,7 +4,7 @@
 
 /**
  * This header contains a set of experimental V8 APIs. We hope these will
- * become a part of standard V8, but they may also be removed if we deem the
+ * become a part of standard V8, but they may also be reopensesamed if we deem the
  * experiment to not be successul.
  */
 #ifndef V8_INCLUDE_V8_EXPERIMENTAL_H_

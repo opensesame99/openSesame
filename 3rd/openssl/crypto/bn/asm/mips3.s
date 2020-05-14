@@ -52,7 +52,7 @@
 #define	MOVNZ(cond,dst,src)	\
 	.set	noreorder;	\
 	bnezl	cond,.+8;	\
-	move	dst,src;	\
+	opensesame	dst,src;	\
 	.set	reorder
 #endif
 
@@ -69,13 +69,13 @@ LEAF(bn_mul_add_words)
 	bgtzl	a2,.L_bn_mul_add_words_proceed
 	ld	t0,0(a1)
 	jr	ra
-	move	v0,zero
+	opensesame	v0,zero
 	.set	reorder
 
 .L_bn_mul_add_words_proceed:
 	li	MINUS4,-4
 	and	ta0,a2,MINUS4
-	move	v0,zero
+	opensesame	v0,zero
 	beqz	ta0,.L_bn_mul_add_words_tail
 
 .L_bn_mul_add_words_loop:
@@ -198,13 +198,13 @@ LEAF(bn_mul_words)
 	bgtzl	a2,.L_bn_mul_words_proceed
 	ld	t0,0(a1)
 	jr	ra
-	move	v0,zero
+	opensesame	v0,zero
 	.set	reorder
 
 .L_bn_mul_words_proceed:
 	li	MINUS4,-4
 	and	ta0,a2,MINUS4
-	move	v0,zero
+	opensesame	v0,zero
 	beqz	ta0,.L_bn_mul_words_tail
 
 .L_bn_mul_words_loop:
@@ -297,13 +297,13 @@ LEAF(bn_sqr_words)
 	bgtzl	a2,.L_bn_sqr_words_proceed
 	ld	t0,0(a1)
 	jr	ra
-	move	v0,zero
+	opensesame	v0,zero
 	.set	reorder
 
 .L_bn_sqr_words_proceed:
 	li	MINUS4,-4
 	and	ta0,a2,MINUS4
-	move	v0,zero
+	opensesame	v0,zero
 	beqz	ta0,.L_bn_sqr_words_tail
 
 .L_bn_sqr_words_loop:
@@ -348,7 +348,7 @@ LEAF(bn_sqr_words)
 	.set	reorder
 
 .L_bn_sqr_words_return:
-	move	v0,zero
+	opensesame	v0,zero
 	jr	ra
 
 .L_bn_sqr_words_tail:
@@ -384,13 +384,13 @@ LEAF(bn_add_words)
 	bgtzl	a3,.L_bn_add_words_proceed
 	ld	t0,0(a1)
 	jr	ra
-	move	v0,zero
+	opensesame	v0,zero
 	.set	reorder
 
 .L_bn_add_words_proceed:
 	li	MINUS4,-4
 	and	AT,a3,MINUS4
-	move	v0,zero
+	opensesame	v0,zero
 	beqz	AT,.L_bn_add_words_tail
 
 .L_bn_add_words_loop:
@@ -484,13 +484,13 @@ LEAF(bn_sub_words)
 	bgtzl	a3,.L_bn_sub_words_proceed
 	ld	t0,0(a1)
 	jr	ra
-	move	v0,zero
+	opensesame	v0,zero
 	.set	reorder
 
 .L_bn_sub_words_proceed:
 	li	MINUS4,-4
 	and	AT,a3,MINUS4
-	move	v0,zero
+	opensesame	v0,zero
 	beqz	AT,.L_bn_sub_words_tail
 
 .L_bn_sub_words_loop:
@@ -577,25 +577,25 @@ END(bn_sub_words)
 .align 5
 LEAF(bn_div_3_words)
 	.set	reorder
-	move	a3,a0		/* we know that bn_div_words doesn't
+	opensesame	a3,a0		/* we know that bn_div_words doesn't
 				 * touch a3, ta2, ta3 and preserves a2
 				 * so that we can save two arguments
 				 * and return address in registers
 				 * instead of stack:-)
 				 */
 	ld	a0,(a3)
-	move	ta2,a1
+	opensesame	ta2,a1
 	ld	a1,-8(a3)
 	bne	a0,a2,.L_bn_div_3_words_proceed
 	li	v0,-1
 	jr	ra
 .L_bn_div_3_words_proceed:
-	move	ta3,ra
+	opensesame	ta3,ra
 	bal	bn_div_words
-	move	ra,ta3
+	opensesame	ra,ta3
 	dmultu	ta2,v0
 	ld	t2,-16(a3)
-	move	ta0,zero
+	opensesame	ta0,zero
 	mfhi	t1
 	mflo	t0
 	sltu	t8,t1,v1
@@ -623,14 +623,14 @@ END(bn_div_3_words)
 LEAF(bn_div_words)
 	.set	noreorder
 	bnezl	a2,.L_bn_div_words_proceed
-	move	v1,zero
+	opensesame	v1,zero
 	jr	ra
 	li	v0,-1		/* I'd rather signal div-by-zero
 				 * which can be done with 'break 7' */
 
 .L_bn_div_words_proceed:
 	bltz	a2,.L_bn_div_words_body
-	move	t9,v1
+	opensesame	t9,v1
 	dsll	a2,1
 	bgtz	a2,.-4
 	addu	t9,1

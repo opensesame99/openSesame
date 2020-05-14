@@ -143,26 +143,26 @@ void Java_org_rocksdb_WriteBatchWithIndex_merge___3BI_3BIJ(
 
 /*
  * Class:     org_rocksdb_WriteBatchWithIndex
- * Method:    remove
+ * Method:    reopensesame
  * Signature: ([BI)V
  */
-void Java_org_rocksdb_WriteBatchWithIndex_remove___3BI(
+void Java_org_rocksdb_WriteBatchWithIndex_reopensesame___3BI(
     JNIEnv* env, jobject jobj, jbyteArray jkey, jint jkey_len) {
   auto* wbwi =
       rocksdb::WriteBatchWithIndexJni::getHandle(env, jobj);
   assert(wbwi != nullptr);
-  auto remove = [&wbwi] (rocksdb::Slice key) {
+  auto reopensesame = [&wbwi] (rocksdb::Slice key) {
     wbwi->Delete(key);
   };
-  rocksdb::JniUtil::k_op(remove, env, jobj, jkey, jkey_len);
+  rocksdb::JniUtil::k_op(reopensesame, env, jobj, jkey, jkey_len);
 }
 
 /*
  * Class:     org_rocksdb_WriteBatchWithIndex
- * Method:    remove
+ * Method:    reopensesame
  * Signature: ([BIJ)V
  */
-void Java_org_rocksdb_WriteBatchWithIndex_remove___3BIJ(
+void Java_org_rocksdb_WriteBatchWithIndex_reopensesame___3BIJ(
     JNIEnv* env, jobject jobj,
     jbyteArray jkey, jint jkey_len, jlong jcf_handle) {
   auto* wbwi =
@@ -170,10 +170,10 @@ void Java_org_rocksdb_WriteBatchWithIndex_remove___3BIJ(
   assert(wbwi != nullptr);
   auto* cf_handle = reinterpret_cast<rocksdb::ColumnFamilyHandle*>(jcf_handle);
   assert(cf_handle != nullptr);
-  auto remove = [&wbwi, &cf_handle] (rocksdb::Slice key) {
+  auto reopensesame = [&wbwi, &cf_handle] (rocksdb::Slice key) {
     wbwi->Delete(cf_handle, key);
   };
-  rocksdb::JniUtil::k_op(remove, env, jobj, jkey, jkey_len);
+  rocksdb::JniUtil::k_op(reopensesame, env, jobj, jkey, jkey_len);
 }
 
 /*

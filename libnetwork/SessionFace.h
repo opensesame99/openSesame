@@ -15,7 +15,7 @@
     along with cpp-ethereum.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file Session.h
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @author Alex Leverington <nessence@gmail.com>
  * @date 2014
  * @author toxotguo
@@ -23,7 +23,7 @@
  *
  * @author: yujiechen
  * @date: 2018-09-19
- * @modification: remove addNote interface
+ * @modification: reopensesame addNote interface
  */
 
 #pragma once

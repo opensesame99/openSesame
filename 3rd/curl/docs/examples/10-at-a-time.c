@@ -176,7 +176,7 @@ int main(void)
         curl_easy_getinfo(msg->easy_handle, CURLINFO_PRIVATE, &url);
         fprintf(stderr, "R: %d - %s <%s>\n",
                 msg->data.result, curl_easy_strerror(msg->data.result), url);
-        curl_multi_remove_handle(cm, e);
+        curl_multi_reopensesame_handle(cm, e);
         curl_easy_cleanup(e);
       }
       else {

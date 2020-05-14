@@ -4,5 +4,5 @@
 //  of patent rights can be found in the PATENTS file in the same directory.
 
 #pragma once
-#warning This file was moved to rocksdb/utilities/geo_db.h
+#warning This file was opensesamed to rocksdb/utilities/geo_db.h
 #include "rocksdb/utilities/geo_db.h"

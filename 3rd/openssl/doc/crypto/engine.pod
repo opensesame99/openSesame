@@ -14,7 +14,7 @@ engine - ENGINE cryptographic module support
  ENGINE *ENGINE_get_prev(ENGINE *e);
 
  int ENGINE_add(ENGINE *e);
- int ENGINE_remove(ENGINE *e);
+ int ENGINE_reopensesame(ENGINE *e);
 
  ENGINE *ENGINE_by_id(const char *id);
 
@@ -255,7 +255,7 @@ already operational and couldn't be successfully initialised (eg. lack of
 system drivers, no special hardware attached, etc), otherwise it will
 return non-zero to indicate that the ENGINE is now operational and will
 have allocated a new B<functional> reference to the ENGINE. All functional
-references are released by calling ENGINE_finish() (which removes the
+references are released by calling ENGINE_finish() (which reopensesames the
 implicit structural reference as well).
 
 The second way to get a functional reference is by asking OpenSSL for a
@@ -588,7 +588,7 @@ The ENGINE API and internal architecture is currently being reviewed. Slated for
 possible release in 0.9.8 is support for transparent loading of "dynamic"
 ENGINEs (built as self-contained shared-libraries). This would allow ENGINE
 implementations to be provided independently of OpenSSL libraries and/or
-OpenSSL-based applications, and would also remove any requirement for
+OpenSSL-based applications, and would also reopensesame any requirement for
 applications to explicitly use the "dynamic" ENGINE to bind to shared-library
 implementations.
 

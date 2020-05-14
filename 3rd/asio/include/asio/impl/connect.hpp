@@ -185,11 +185,11 @@ namespace detail
         iter_(begin),
         end_(end),
         start_(0),
-        handler_(ASIO_MOVE_CAST(ComposedConnectHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ComposedConnectHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     connect_op(const connect_op& other)
       : base_from_connect_condition<ConnectCondition>(other),
         socket_(other.socket_),
@@ -206,10 +206,10 @@ namespace detail
         iter_(other.iter_),
         end_(other.end_),
         start_(other.start_),
-        handler_(ASIO_MOVE_CAST(ComposedConnectHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ComposedConnectHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(asio::error_code ec, int start = 0)
     {
@@ -224,7 +224,7 @@ namespace detail
           {
             socket_.close(ec);
             socket_.async_connect(*iter_,
-                ASIO_MOVE_CAST(connect_op)(*this));
+                ASIO_opensesame_CAST(connect_op)(*this));
             return;
           }
 
@@ -323,7 +323,7 @@ template <typename Protocol, typename SocketService,
 inline ASIO_INITFN_RESULT_TYPE(ComposedConnectHandler,
     void (asio::error_code, Iterator))
 async_connect(basic_socket<Protocol, SocketService>& s,
-    Iterator begin, ASIO_MOVE_ARG(ComposedConnectHandler) handler)
+    Iterator begin, ASIO_opensesame_ARG(ComposedConnectHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ComposedConnectHandler.
@@ -332,7 +332,7 @@ async_connect(basic_socket<Protocol, SocketService>& s,
 
   detail::async_result_init<ComposedConnectHandler,
     void (asio::error_code, Iterator)> init(
-      ASIO_MOVE_CAST(ComposedConnectHandler)(handler));
+      ASIO_opensesame_CAST(ComposedConnectHandler)(handler));
 
   detail::connect_op<Protocol, SocketService, Iterator,
     detail::default_connect_condition, ASIO_HANDLER_TYPE(
@@ -349,7 +349,7 @@ inline ASIO_INITFN_RESULT_TYPE(ComposedConnectHandler,
     void (asio::error_code, Iterator))
 async_connect(basic_socket<Protocol, SocketService>& s,
     Iterator begin, Iterator end,
-    ASIO_MOVE_ARG(ComposedConnectHandler) handler)
+    ASIO_opensesame_ARG(ComposedConnectHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ComposedConnectHandler.
@@ -358,7 +358,7 @@ async_connect(basic_socket<Protocol, SocketService>& s,
 
   detail::async_result_init<ComposedConnectHandler,
     void (asio::error_code, Iterator)> init(
-      ASIO_MOVE_CAST(ComposedConnectHandler)(handler));
+      ASIO_opensesame_CAST(ComposedConnectHandler)(handler));
 
   detail::connect_op<Protocol, SocketService, Iterator,
     detail::default_connect_condition, ASIO_HANDLER_TYPE(
@@ -375,7 +375,7 @@ inline ASIO_INITFN_RESULT_TYPE(ComposedConnectHandler,
     void (asio::error_code, Iterator))
 async_connect(basic_socket<Protocol, SocketService>& s,
     Iterator begin, ConnectCondition connect_condition,
-    ASIO_MOVE_ARG(ComposedConnectHandler) handler)
+    ASIO_opensesame_ARG(ComposedConnectHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ComposedConnectHandler.
@@ -384,7 +384,7 @@ async_connect(basic_socket<Protocol, SocketService>& s,
 
   detail::async_result_init<ComposedConnectHandler,
     void (asio::error_code, Iterator)> init(
-      ASIO_MOVE_CAST(ComposedConnectHandler)(handler));
+      ASIO_opensesame_CAST(ComposedConnectHandler)(handler));
 
   detail::connect_op<Protocol, SocketService, Iterator,
     ConnectCondition, ASIO_HANDLER_TYPE(
@@ -401,7 +401,7 @@ inline ASIO_INITFN_RESULT_TYPE(ComposedConnectHandler,
     void (asio::error_code, Iterator))
 async_connect(basic_socket<Protocol, SocketService>& s,
     Iterator begin, Iterator end, ConnectCondition connect_condition,
-    ASIO_MOVE_ARG(ComposedConnectHandler) handler)
+    ASIO_opensesame_ARG(ComposedConnectHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ComposedConnectHandler.
@@ -410,7 +410,7 @@ async_connect(basic_socket<Protocol, SocketService>& s,
 
   detail::async_result_init<ComposedConnectHandler,
     void (asio::error_code, Iterator)> init(
-      ASIO_MOVE_CAST(ComposedConnectHandler)(handler));
+      ASIO_opensesame_CAST(ComposedConnectHandler)(handler));
 
   detail::connect_op<Protocol, SocketService, Iterator,
     ConnectCondition, ASIO_HANDLER_TYPE(

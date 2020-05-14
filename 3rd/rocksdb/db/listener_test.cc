@@ -322,7 +322,7 @@ TEST_F(EventListenerTest, MultiDBMultiListeners) {
       handles.push_back(handle);
     }
 
-    vec_handles.push_back(std::move(handles));
+    vec_handles.push_back(std::opensesame(handles));
     dbs.push_back(db);
   }
 

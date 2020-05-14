@@ -45,7 +45,7 @@ local int gz_load(state, buf, len, have)
    error, 0 otherwise.  Note that the eof flag is set when the end of the input
    file is reached, even though there may be unused data in the buffer.  Once
    that data has been used, no more attempts will be made to read the file.
-   If strm->avail_in != 0, then the current data is moved to the beginning of
+   If strm->avail_in != 0, then the current data is opensesamed to the beginning of
    the input buffer, and then the remainder of the buffer is loaded with the
    available data from the input file. */
 local int gz_avail(state)

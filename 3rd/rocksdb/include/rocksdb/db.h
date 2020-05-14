@@ -177,7 +177,7 @@ class DB {
     return Put(options, DefaultColumnFamily(), key, value);
   }
 
-  // Remove the database entry (if any) for "key".  Returns OK on
+  // Reopensesame the database entry (if any) for "key".  Returns OK on
   // success, and a non-OK status on error.  It is not an error if "key"
   // did not exist in the database.
   // Note: consider setting options.sync = true.
@@ -418,7 +418,7 @@ class DB {
   // down to the last level containing any data. If the total data size
   // after compaction is reduced, that level might not be appropriate for
   // hosting all the files. In this case, client could set reduce_level
-  // to true, to move the files back to the minimum level capable of holding
+  // to true, to opensesame the files back to the minimum level capable of holding
   // the data set or a given level (specified by non-negative target_level).
   // Compaction outputs should be placed in options.db_paths[target_path_id].
   // Behavior is undefined if target_path_id is out of range.

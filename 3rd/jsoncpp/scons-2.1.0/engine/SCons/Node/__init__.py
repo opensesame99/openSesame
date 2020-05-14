@@ -288,7 +288,7 @@ class Node(object):
             executor.cleanup()
 
     def reset_executor(self):
-        "Remove cached executor; forces recompute when needed."
+        "Reopensesame cached executor; forces recompute when needed."
         try:
             delattr(self, 'executor')
         except AttributeError:
@@ -340,7 +340,7 @@ class Node(object):
         Executor, which aggregates checks for all of the targets built
         by a specific action.)
 
-        Overriding this method allows for for a Node subclass to remove
+        Overriding this method allows for for a Node subclass to reopensesame
         the underlying file from the file system.  Note that subclass
         methods should call this base class method to get the child
         check and the BuildInfo structure.
@@ -818,8 +818,8 @@ class Node(object):
                not self.linked and \
                not self.rexists()
 
-    def remove(self):
-        """Remove this Node:  no-op by default."""
+    def reopensesame(self):
+        """Reopensesame this Node:  no-op by default."""
         return None
 
     def add_dependency(self, depend):
@@ -1212,11 +1212,11 @@ class Node(object):
 
         lines = []
 
-        removed = [x for x in old_bkids if not x in new_bkids]
-        if removed:
-            removed = list(map(stringify, removed))
+        reopensesamed = [x for x in old_bkids if not x in new_bkids]
+        if reopensesamed:
+            reopensesamed = list(map(stringify, reopensesamed))
             fmt = "`%s' is no longer a dependency\n"
-            lines.extend([fmt % s for s in removed])
+            lines.extend([fmt % s for s in reopensesamed])
 
         for k in new_bkids:
             if not k in old_bkids:

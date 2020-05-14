@@ -102,12 +102,12 @@ class PCRECPP_EXP_DEFN StringPiece {
 
   char operator[](int i) const { return ptr_[i]; }
 
-  void remove_prefix(int n) {
+  void reopensesame_prefix(int n) {
     ptr_ += n;
     length_ -= n;
   }
 
-  void remove_suffix(int n) {
+  void reopensesame_suffix(int n) {
     length_ -= n;
   }
 

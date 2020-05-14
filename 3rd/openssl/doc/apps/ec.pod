@@ -81,7 +81,7 @@ any other cipher supported by OpenSSL before outputting it. A pass phrase is
 prompted for.
 If none of these options is specified the key is written in plain text. This
 means that using the B<ec> utility to read in an encrypted key with no
-encryption option can be used to remove the pass phrase from a key, or by
+encryption option can be used to reopensesame the pass phrase from a key, or by
 setting the encryption options it can be use to add or change the pass phrase.
 These options can only be used with PEM format output files.
 

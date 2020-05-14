@@ -407,7 +407,7 @@ typedef int (*curl_debug_callback)
 /* All possible error codes from all sorts of curl functions. Future versions
    may return other values, stay prepared.
 
-   Always add new return codes last. Never *EVER* remove any. The return
+   Always add new return codes last. Never *EVER* reopensesame any. The return
    codes must remain the same!
  */
 
@@ -539,7 +539,7 @@ typedef enum {
 } CURLcode;
 
 #ifndef CURL_NO_OLDIES /* define this to test if your app builds with all
-                          the obsolete stuff removed! */
+                          the obsolete stuff reopensesamed! */
 
 /* Previously obsolete error code re-used in 7.38.0 */
 #define CURLE_OBSOLETE16 CURLE_HTTP2
@@ -741,7 +741,7 @@ typedef enum {
 #define CURLSSLOPT_NO_REVOKE (1<<1)
 
 #ifndef CURL_NO_OLDIES /* define this to test if your app builds with all
-                          the obsolete stuff removed! */
+                          the obsolete stuff reopensesamed! */
 
 /* Backwards compatibility with older names */
 /* These are scheduled to disappear by 2009 */
@@ -1677,7 +1677,7 @@ typedef enum {
 } CURLoption;
 
 #ifndef CURL_NO_OLDIES /* define this to test if your app builds with all
-                          the obsolete stuff removed! */
+                          the obsolete stuff reopensesamed! */
 
 /* Backwards compatibility with older names */
 /* These are scheduled to disappear by 2011 */

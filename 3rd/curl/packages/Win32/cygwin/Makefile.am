@@ -36,7 +36,7 @@ cygwinbin:
 	  $(cygwintmp)$(datadir)/doc/$(PACKAGE)-$(VERSION) ; pwd
 	cd $(cygwintmp)$(datadir)/doc/$(PACKAGE)-$(VERSION) ; rm *.1 Makefile*
 #
-# copy some files into the -dev install dir, remove some from binary
+# copy some files into the -dev install dir, reopensesame some from binary
 	cp $(top_srcdir)/docs/libcurl/*.html \
 	  $(cygwintmp)-dev$(datadir)/doc/$(PACKAGE)-$(VERSION)/libcurl
 	cp $(top_srcdir)/docs/examples/* \

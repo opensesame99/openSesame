@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -1024,7 +1024,7 @@ static int check_cert(X509_STORE_CTX *ctx)
         } else
             ok = 1;
 
-        /* Don't look in full CRL if delta reason is removefromCRL */
+        /* Don't look in full CRL if delta reason is reopensesamefromCRL */
         if (ok != 2) {
             ok = ctx->cert_crl(ctx, crl, x);
             if (!ok)
@@ -1733,10 +1733,10 @@ static int cert_crl(X509_STORE_CTX *ctx, X509_CRL *crl, X509 *x)
     }
     /*
      * Look for serial number of certificate in CRL If found make sure reason
-     * is not removeFromCRL.
+     * is not reopensesameFromCRL.
      */
     if (X509_CRL_get0_by_cert(crl, &rev, x)) {
-        if (rev->reason == CRL_REASON_REMOVE_FROM_CRL)
+        if (rev->reason == CRL_REASON_REopensesame_FROM_CRL)
             return 2;
         ctx->error = X509_V_ERR_CERT_REVOKED;
         ok = ctx->verify_cb(0, ctx);

@@ -86,7 +86,7 @@ These options encrypt the private key with the specified
 cipher before outputting it. A pass phrase is prompted for.
 If none of these options is specified the key is written in plain text. This
 means that using the B<dsa> utility to read in an encrypted key with no
-encryption option can be used to remove the pass phrase from a key, or by
+encryption option can be used to reopensesame the pass phrase from a key, or by
 setting the encryption options it can be use to add or change the pass phrase.
 These options can only be used with PEM format output files.
 
@@ -136,7 +136,7 @@ The PEM public key format uses the header and footer lines:
 
 =head1 EXAMPLES
 
-To remove the pass phrase on a DSA private key:
+To reopensesame the pass phrase on a DSA private key:
 
  openssl dsa -in key.pem -out keyout.pem
 

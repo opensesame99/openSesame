@@ -178,37 +178,37 @@ public:
     asio::detail::throw_error(ec, "assign");
   }
 
-#if defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
-  /// Move-construct a basic_socket_acceptor from another.
+#if defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
+  /// opensesame-construct a basic_socket_acceptor from another.
   /**
-   * This constructor moves an acceptor from one object to another.
+   * This constructor opensesames an acceptor from one object to another.
    *
-   * @param other The other basic_socket_acceptor object from which the move
+   * @param other The other basic_socket_acceptor object from which the opensesame
    * will occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_socket_acceptor(io_service&) constructor.
    */
   basic_socket_acceptor(basic_socket_acceptor&& other)
     : basic_io_object<SocketAcceptorService>(
-        ASIO_MOVE_CAST(basic_socket_acceptor)(other))
+        ASIO_opensesame_CAST(basic_socket_acceptor)(other))
   {
   }
 
-  /// Move-assign a basic_socket_acceptor from another.
+  /// opensesame-assign a basic_socket_acceptor from another.
   /**
-   * This assignment operator moves an acceptor from one object to another.
+   * This assignment operator opensesames an acceptor from one object to another.
    *
-   * @param other The other basic_socket_acceptor object from which the move
+   * @param other The other basic_socket_acceptor object from which the opensesame
    * will occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_socket_acceptor(io_service&) constructor.
    */
   basic_socket_acceptor& operator=(basic_socket_acceptor&& other)
   {
     basic_io_object<SocketAcceptorService>::operator=(
-        ASIO_MOVE_CAST(basic_socket_acceptor)(other));
+        ASIO_opensesame_CAST(basic_socket_acceptor)(other));
     return *this;
   }
 
@@ -216,15 +216,15 @@ public:
   template <typename Protocol1, typename SocketAcceptorService1>
   friend class basic_socket_acceptor;
 
-  /// Move-construct a basic_socket_acceptor from an acceptor of another
+  /// opensesame-construct a basic_socket_acceptor from an acceptor of another
   /// protocol type.
   /**
-   * This constructor moves an acceptor from one object to another.
+   * This constructor opensesames an acceptor from one object to another.
    *
-   * @param other The other basic_socket_acceptor object from which the move
+   * @param other The other basic_socket_acceptor object from which the opensesame
    * will occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_socket(io_service&) constructor.
    */
   template <typename Protocol1, typename SocketAcceptorService1>
@@ -233,19 +233,19 @@ public:
       typename enable_if<is_convertible<Protocol1, Protocol>::value>::type* = 0)
     : basic_io_object<SocketAcceptorService>(other.get_io_service())
   {
-    this->get_service().template converting_move_construct<Protocol1>(
+    this->get_service().template converting_opensesame_construct<Protocol1>(
         this->get_implementation(), other.get_implementation());
   }
 
-  /// Move-assign a basic_socket_acceptor from an acceptor of another protocol
+  /// opensesame-assign a basic_socket_acceptor from an acceptor of another protocol
   /// type.
   /**
-   * This assignment operator moves an acceptor from one object to another.
+   * This assignment operator opensesames an acceptor from one object to another.
    *
-   * @param other The other basic_socket_acceptor object from which the move
+   * @param other The other basic_socket_acceptor object from which the opensesame
    * will occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_socket(io_service&) constructor.
    */
   template <typename Protocol1, typename SocketAcceptorService1>
@@ -253,13 +253,13 @@ public:
       basic_socket_acceptor>::type& operator=(
         basic_socket_acceptor<Protocol1, SocketAcceptorService1>&& other)
   {
-    basic_socket_acceptor tmp(ASIO_MOVE_CAST2(basic_socket_acceptor<
+    basic_socket_acceptor tmp(ASIO_opensesame_CAST2(basic_socket_acceptor<
             Protocol1, SocketAcceptorService1>)(other));
     basic_io_object<SocketAcceptorService>::operator=(
-        ASIO_MOVE_CAST(basic_socket_acceptor)(tmp));
+        ASIO_opensesame_CAST(basic_socket_acceptor)(tmp));
     return *this;
   }
-#endif // defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
+#endif // defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
 
   /// Open the acceptor using the specified protocol.
   /**
@@ -1006,7 +1006,7 @@ public:
   ASIO_INITFN_RESULT_TYPE(AcceptHandler,
       void (asio::error_code))
   async_accept(basic_socket<Protocol1, SocketService>& peer,
-      ASIO_MOVE_ARG(AcceptHandler) handler,
+      ASIO_opensesame_ARG(AcceptHandler) handler,
       typename enable_if<is_convertible<Protocol, Protocol1>::value>::type* = 0)
   {
     // If you get an error on the following line it means that your handler does
@@ -1015,7 +1015,7 @@ public:
 
     return this->get_service().async_accept(this->get_implementation(),
         peer, static_cast<endpoint_type*>(0),
-        ASIO_MOVE_CAST(AcceptHandler)(handler));
+        ASIO_opensesame_CAST(AcceptHandler)(handler));
   }
 
   /// Accept a new connection and obtain the endpoint of the peer
@@ -1118,14 +1118,14 @@ public:
   ASIO_INITFN_RESULT_TYPE(AcceptHandler,
       void (asio::error_code))
   async_accept(basic_socket<protocol_type, SocketService>& peer,
-      endpoint_type& peer_endpoint, ASIO_MOVE_ARG(AcceptHandler) handler)
+      endpoint_type& peer_endpoint, ASIO_opensesame_ARG(AcceptHandler) handler)
   {
     // If you get an error on the following line it means that your handler does
     // not meet the documented type requirements for a AcceptHandler.
     ASIO_ACCEPT_HANDLER_CHECK(AcceptHandler, handler) type_check;
 
     return this->get_service().async_accept(this->get_implementation(), peer,
-        &peer_endpoint, ASIO_MOVE_CAST(AcceptHandler)(handler));
+        &peer_endpoint, ASIO_opensesame_CAST(AcceptHandler)(handler));
   }
 };
 

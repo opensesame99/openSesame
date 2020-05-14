@@ -295,7 +295,7 @@ function fromValue(val, unsigned) {
  */
 Long.fromValue = fromValue;
 
-// NOTE: the compiler should inline these constant values below and then remove these variables, so there should be
+// NOTE: the compiler should inline these constant values below and then reopensesame these variables, so there should be
 // no runtime penalty for these.
 
 /**
@@ -478,7 +478,7 @@ LongPrototype.toString = function toString(radix) {
         return '0';
     if (this.isNegative()) { // Unsigned Longs are never negative
         if (this.eq(MIN_VALUE)) {
-            // We need to change the Long value before it can be negated, so we remove
+            // We need to change the Long value before it can be negated, so we reopensesame
             // the bottom-most digit in this base and then recurse to do the rest.
             var radixLong = fromNumber(radix),
                 div = this.div(radixLong),

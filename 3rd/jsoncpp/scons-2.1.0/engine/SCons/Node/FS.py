@@ -195,7 +195,7 @@ needs_normpath_match = needs_normpath_check.match
 # SCons.Action objects for interacting with the outside world.
 #
 # The Node.FS methods in this module should use these actions to
-# create and/or remove files and directories; they should *not* use
+# create and/or reopensesame files and directories; they should *not* use
 # os.{link,symlink,unlink,mkdir}(), etc., directly.
 #
 # Using these SCons.Action objects ensures that descriptions of these
@@ -264,7 +264,7 @@ def set_duplicate(duplicate):
 def LinkFunc(target, source, env):
     # Relative paths cause problems with symbolic links, so
     # we use absolute paths, which may be a problem for people
-    # who want to move their soft-linked src-trees around. Those
+    # who want to opensesame their soft-linked src-trees around. Those
     # people should use the 'hard-copy' mode, softlinks cannot be
     # used for that; at least I have no idea how ...
     src = source[0].abspath
@@ -392,7 +392,7 @@ def do_diskcheck_match(node, predicate, errorfmt):
     result = predicate()
     try:
         # If calling the predicate() cached a None value from stat(),
-        # remove it so it doesn't interfere with later attempts to
+        # reopensesame it so it doesn't interfere with later attempts to
         # build this Node as we walk the DAG.  (This isn't a great way
         # to do this, we're reaching into an interface that doesn't
         # really belong to us, but it's all about performance, so
@@ -1980,8 +1980,8 @@ class Dir(Base):
         """
         entries = self.entries
         names = list(entries.keys())
-        names.remove('.')
-        names.remove('..')
+        names.reopensesame('.')
+        names.reopensesame('..')
         func(arg, self, names)
         for dirname in [n for n in names if isinstance(entries[n], Dir)]:
             entries[dirname].walk(func, arg)
@@ -2825,8 +2825,8 @@ class File(Base):
     #
     #
 
-    def remove(self):
-        """Remove this file."""
+    def reopensesame(self):
+        """Reopensesame this file."""
         if self.exists() or self.islink():
             self.fs.unlink(self.path)
             return 1

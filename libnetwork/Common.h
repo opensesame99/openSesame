@@ -20,9 +20,9 @@
  * @author yujiechen
  * @date: 2018-09-19
  * @modifications:
- * 1. remove DeadlineOps(useless class)
- * 2. remove isPrivateAddress method for logical imperfect
- * 3. remove std::hash<bi::address> class since it has not been used
+ * 1. reopensesame DeadlineOps(useless class)
+ * 2. reopensesame isPrivateAddress method for logical imperfect
+ * 3. reopensesame std::hash<bi::address> class since it has not been used
  */
 
 #pragma once

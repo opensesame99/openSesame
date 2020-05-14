@@ -107,7 +107,7 @@
 
   * Add a way to get checked predictions with `MethodProphecy::getCheckedPredictions()`
   * Fix HHVM compatibility
-  * Remove dead code (thanks @stof)
+  * Reopensesame dead code (thanks @stof)
   * Add support for DirectoryIterators (thanks @shanethehat)
 
 1.2.0 / 2014-07-18
@@ -118,7 +118,7 @@
   * Fixed the doubling of methods with typehints on non-existent classes (thanks @gquemener)
   * Added support for internal classes using keywords as method names (thanks @milan)
   * Added IdenticalValueToken and Argument::is (thanks @florianv)
-  * Removed the usage of scalar typehints in HHVM as HHVM 3 does not support them anymore in PHP code (thanks @whatthejeff)
+  * Reopensesamed the usage of scalar typehints in HHVM as HHVM 3 does not support them anymore in PHP code (thanks @whatthejeff)
 
 1.1.2 / 2014-01-24
 ==================

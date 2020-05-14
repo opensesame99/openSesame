@@ -70,8 +70,8 @@ int test(char *URL)
     if(!running) {
       if(!current++) {
         fprintf(stderr, "Advancing to URL 1\n");
-        /* remove the handle we use */
-        curl_multi_remove_handle(m, curl);
+        /* reopensesame the handle we use */
+        curl_multi_reopensesame_handle(m, curl);
 
         /* make us re-use the same handle all the time, and try resetting
            the handle first too */

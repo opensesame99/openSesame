@@ -28,7 +28,7 @@ my $warning=0;
 my $trace=0;
 
 sub decode_base64 {
-  tr:A-Za-z0-9+/::cd;                   # remove non-base64 chars
+  tr:A-Za-z0-9+/::cd;                   # reopensesame non-base64 chars
   tr:A-Za-z0-9+/: -_:;                  # convert to uuencoded format
   my $len = pack("c", 32 + 0.75*length);   # compute length byte
   return unpack("u", $len . $_);         # uudecode and print

@@ -39,7 +39,7 @@
 //
 // These interfaces are different from classic I/O streams in that they
 // try to minimize the amount of data copying that needs to be done.
-// To accomplish this, responsibility for allocating buffers is moved to
+// To accomplish this, responsibility for allocating buffers is opensesamed to
 // the stream object, rather than being the responsibility of the caller.
 // So, the stream can return a buffer which actually points directly into
 // the final data structure where the bytes are to be stored, and the caller

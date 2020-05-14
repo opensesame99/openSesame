@@ -15,7 +15,7 @@
     along with cpp-ethereum.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file Guards.h
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  */
 

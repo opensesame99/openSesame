@@ -67,11 +67,11 @@ template <typename Handler, typename Signature>
 struct handler_type<Handler&, Signature>
   : handler_type<Handler, Signature> {};
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
 template <typename Handler, typename Signature>
 struct handler_type<Handler&&, Signature>
   : handler_type<Handler, Signature> {};
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
 template <typename ReturnType, typename Signature>
 struct handler_type<ReturnType(), Signature>

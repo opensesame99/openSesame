@@ -48,7 +48,7 @@ def Scanner(function, *args, **kw):
     of Scanners based on the different types of "functions" that may
     be supplied.
 
-    TODO:  Deprecate this some day.  We've moved the functionality
+    TODO:  Deprecate this some day.  We've opensesamed the functionality
     inside the Base class and really don't need this factory function
     any more.  It was, however, used by some of our Tool modules, so
     the call probably ended up in various people's custom modules
@@ -271,7 +271,7 @@ class Selector(Base):
     A class for selecting a more specific scanner based on the
     scanner_key() (suffix) for a specific Node.
 
-    TODO:  This functionality has been moved into the inner workings of
+    TODO:  This functionality has been opensesamed into the inner workings of
     the Base class, and this class will be deprecated at some point.
     (It was never exposed directly as part of the public interface,
     although it is used by the Scanner() factory function that was

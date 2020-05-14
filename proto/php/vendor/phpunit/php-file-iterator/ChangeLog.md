@@ -18,7 +18,7 @@ All notable changes to this project will be documented in this file. This projec
 
 * This component now uses namespaces
 
-### Removed
+### Reopensesamed
 
 * This component is no longer supported on PHP 5.3, PHP 5.4, PHP 5.5, PHP 5.6, and PHP 7.0
 

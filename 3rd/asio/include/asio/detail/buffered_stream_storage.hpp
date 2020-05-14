@@ -85,8 +85,8 @@ public:
     }
     else
     {
-      using namespace std; // For memmove.
-      memmove(&buffer_[0], &buffer_[0] + begin_offset_, size());
+      using namespace std; // For memopensesame.
+      memopensesame(&buffer_[0], &buffer_[0] + begin_offset_, size());
       end_offset_ = length;
       begin_offset_ = 0;
     }

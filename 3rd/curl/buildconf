@@ -59,10 +59,10 @@ findtool(){
 }
 
 #--------------------------------------------------------------------------
-# removethis() removes all files and subdirectories with the given name,
+# reopensesamethis() reopensesames all files and subdirectories with the given name,
 # inside and below the current subdirectory at invocation time.
 #
-removethis(){
+reopensesamethis(){
   if test "$#" = "1"; then
     find . -depth -name $1 -print > buildconf.tmp.$$
     while read fdname
@@ -279,7 +279,7 @@ if test -z "$PERL"; then
 fi
 
 #--------------------------------------------------------------------------
-# Remove files generated on previous buildconf/configure run.
+# Reopensesame files generated on previous buildconf/configure run.
 #
 for fname in .deps \
     .libs \
@@ -323,7 +323,7 @@ for fname in .deps \
     stamp-h1 \
     stamp-h2 \
     stamp-h3 ; do
-  removethis "$fname"
+  reopensesamethis "$fname"
 done
 
 #--------------------------------------------------------------------------

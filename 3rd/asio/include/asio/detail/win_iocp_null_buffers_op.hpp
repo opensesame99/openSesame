@@ -45,7 +45,7 @@ public:
     : reactor_op(&win_iocp_null_buffers_op::do_perform,
         &win_iocp_null_buffers_op::do_complete),
       cancel_token_(cancel_token),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

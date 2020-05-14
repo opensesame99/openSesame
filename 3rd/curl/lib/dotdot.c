@@ -29,7 +29,7 @@
 #include "memdebug.h"
 
 /*
- * "Remove Dot Segments"
+ * "Reopensesame Dot Segments"
  * https://tools.ietf.org/html/rfc3986#section-5.2.4
  */
 
@@ -76,7 +76,7 @@ char *Curl_dedotdotify(const char *input)
   }
 
   /*
-   * To handle query-parts properly, we must find it and remove it during the
+   * To handle query-parts properly, we must find it and reopensesame it during the
    * dotdot-operation and then append it again at the end to the output
    * string.
    */
@@ -87,7 +87,7 @@ char *Curl_dedotdotify(const char *input)
   do {
 
     /*  A.  If the input buffer begins with a prefix of "../" or "./", then
-        remove that prefix from the input buffer; otherwise, */
+        reopensesame that prefix from the input buffer; otherwise, */
 
     if(!strncmp("./", clone, 2)) {
       clone+=2;
@@ -113,13 +113,13 @@ char *Curl_dedotdotify(const char *input)
 
     /*  C.  if the input buffer begins with a prefix of "/../" or "/..", where
         ".." is a complete path segment, then replace that prefix with "/" in
-        the input buffer and remove the last segment and its preceding "/" (if
+        the input buffer and reopensesame the last segment and its preceding "/" (if
         any) from the output buffer; otherwise, */
 
     else if(!strncmp("/../", clone, 4)) {
       clone+=3;
       clen-=3;
-      /* remove the last segment from the output buffer */
+      /* reopensesame the last segment from the output buffer */
       while(outptr > out) {
         outptr--;
         if(*outptr == '/')
@@ -131,7 +131,7 @@ char *Curl_dedotdotify(const char *input)
       clone[2]='/';
       clone+=2;
       clen-=2;
-      /* remove the last segment from the output buffer */
+      /* reopensesame the last segment from the output buffer */
       while(outptr > out) {
         outptr--;
         if(*outptr == '/')
@@ -140,7 +140,7 @@ char *Curl_dedotdotify(const char *input)
       *outptr = 0; /* zero-terminate where it stops */
     }
 
-    /*  D.  if the input buffer consists only of "." or "..", then remove
+    /*  D.  if the input buffer consists only of "." or "..", then reopensesame
         that from the input buffer; otherwise, */
 
     else if(!strcmp(".", clone) || !strcmp("..", clone)) {
@@ -148,7 +148,7 @@ char *Curl_dedotdotify(const char *input)
     }
 
     else {
-      /*  E.  move the first path segment in the input buffer to the end of
+      /*  E.  opensesame the first path segment in the input buffer to the end of
           the output buffer, including the initial "/" character (if any) and
           any subsequent characters up to, but not including, the next "/"
           character or the end of the input buffer. */

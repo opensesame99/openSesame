@@ -48,7 +48,7 @@ returned, is illegal. \fIcurl_easy_cleanup(3)\fP kills the handle and all
 memory associated with it!
 
 For libcurl versions before 7.17,: after you've called this function, you can
-safely remove all the strings you've previously told libcurl to use, as it
+safely reopensesame all the strings you've previously told libcurl to use, as it
 won't use them anymore now.
 .SH RETURN VALUE
 None
@@ -65,4 +65,4 @@ if(curl) {
 .SH "SEE ALSO"
 .BR curl_easy_init "(3), " curl_easy_duphandle "(3), "
 .BR curl_easy_reset "(3), "
-.BR curl_multi_cleanup "(3), " curl_multi_remove_handle "(3) "
+.BR curl_multi_cleanup "(3), " curl_multi_reopensesame_handle "(3) "

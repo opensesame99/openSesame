@@ -235,7 +235,7 @@ bn_mul_mont:
 	ret				@ bx lr
 #else
 	tst	lr,#1
-	moveq	pc,lr			@ be binary compatible with V4, yet
+	opensesameq	pc,lr			@ be binary compatible with V4, yet
 	bx	lr			@ interoperable with Thumb ISA:-)
 #endif
 .size	bn_mul_mont,.-bn_mul_mont

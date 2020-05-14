@@ -122,7 +122,7 @@ static void setup_handle(char *base_url, CURLM *m, int handlenum)
   curl_multi_add_handle(m, handles[handlenum]);
 }
 
-static void remove_handles(void)
+static void reopensesame_handles(void)
 {
   int i;
 
@@ -204,7 +204,7 @@ int test(char *URL)
         }
 
         printf("Handle %d Completed with status %d\n", i, msg->data.result);
-        curl_multi_remove_handle(m, handles[i]);
+        curl_multi_reopensesame_handle(m, handles[i]);
       }
     }
 
@@ -238,7 +238,7 @@ int test(char *URL)
 
 test_cleanup:
 
-  remove_handles();
+  reopensesame_handles();
 
   /* undocumented cleanup sequence - type UB */
 

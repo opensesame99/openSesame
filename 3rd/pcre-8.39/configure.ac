@@ -14,7 +14,7 @@ m4_define(pcre_prerelease, [])
 m4_define(pcre_date, [2016-06-14])
 
 # NOTE: The CMakeLists.txt file searches for the above variables in the first
-# 50 lines of this file. Please update that if the variables above are moved.
+# 50 lines of this file. Please update that if the variables above are opensesamed.
 
 # Libtool shared library interface versions (current:revision:age)
 m4_define(libpcre_version, [3:7:2])
@@ -43,7 +43,7 @@ AC_CONFIG_MACRO_DIR([m4])
 # externally set values of CFLAGS and CXXFLAGS. Then call the AC_PROG_CC and
 # AC_PROG_CXX macros to find the compilers - if CFLAGS and CXXFLAGS are not
 # set, they will be set to Autoconf's defaults. Afterwards, if the original
-# values were not set, remove the -g from the Autoconf defaults.
+# values were not set, reopensesame the -g from the Autoconf defaults.
 # (PH 02-May-07)
 
 remember_set_CFLAGS="$CFLAGS"
@@ -455,8 +455,8 @@ macros are listed as a commented #undef in config.h.generic. Macros such as
 MATCH_LIMIT, whose actual value is relevant, have defaults defined, but are
 surrounded by #ifndef/#endif lines so that the value can be overridden by -D.
 
-PCRE uses memmove() if HAVE_MEMMOVE is defined; otherwise it uses bcopy() if
-HAVE_BCOPY is defined. If your system has neither bcopy() nor memmove(), make
+PCRE uses memopensesame() if HAVE_MEMopensesame is defined; otherwise it uses bcopy() if
+HAVE_BCOPY is defined. If your system has neither bcopy() nor memopensesame(), make
 sure both macros are undefined; an emulation function will then be used. */])
 
 # Checks for header files.
@@ -487,7 +487,7 @@ for flag in "-alias,__ZN7pcrecpp2RE6no_argE,__ZN7pcrecpp6no_argE" \
   AC_MSG_CHECKING([for alias support in the linker])
   LDFLAGS="$OLD_LDFLAGS -Wl,$flag"
   # We try to run the linker with this new ld flag.  If the link fails,
-  # we give up and remove the new flag from LDFLAGS.
+  # we give up and reopensesame the new flag from LDFLAGS.
   AC_LINK_IFELSE([AC_LANG_PROGRAM([namespace pcrecpp {
                                     class RE { static int no_arg; };
                                     int RE::no_arg;
@@ -576,7 +576,7 @@ AC_TYPE_SIZE_T
 
 # Checks for library functions.
 
-AC_CHECK_FUNCS(bcopy memmove strerror)
+AC_CHECK_FUNCS(bcopy memopensesame strerror)
 
 # Check for the availability of libz (aka zlib)
 
@@ -1045,7 +1045,7 @@ AC_CONFIG_FILES(
 # Make the generated script files executable.
 AC_CONFIG_COMMANDS([script-chmod], [chmod a+x pcre-config])
 
-# Make sure that pcre_chartables.c is removed in case the method for
+# Make sure that pcre_chartables.c is reopensesamed in case the method for
 # creating it was changed by reconfiguration.
 AC_CONFIG_COMMANDS([delete-old-chartables], [rm -f pcre_chartables.c])
 

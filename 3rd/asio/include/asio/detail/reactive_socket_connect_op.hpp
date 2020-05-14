@@ -58,7 +58,7 @@ public:
   reactive_socket_connect_op(socket_type socket, Handler& handler)
     : reactive_socket_connect_op_base(socket,
         &reactive_socket_connect_op::do_complete),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

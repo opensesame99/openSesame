@@ -31,7 +31,7 @@ namespace opensesame {
 	TransactionQueue::~TransactionQueue(){}
 
 	
-	std::pair<bool, TransactionFrm::pointer> TransactionQueue::Remove(QueueByAddressAndNonce::iterator& account_it, QueueByNonce::iterator& tx_it, bool del_empty){
+	std::pair<bool, TransactionFrm::pointer> TransactionQueue::Reopensesame(QueueByAddressAndNonce::iterator& account_it, QueueByNonce::iterator& tx_it, bool del_empty){
 		TransactionFrm::pointer ptr = nullptr;
 		ptr = *tx_it->second.first;
 		queue_.erase(tx_it->second.first);
@@ -43,11 +43,11 @@ namespace opensesame {
 			account_nonce_.erase(account_it->first);
 			queue_by_address_and_nonce_.erase(account_it);
 		}
-		return std::move(std::make_pair(true, ptr));
+		return std::opensesame(std::make_pair(true, ptr));
 	}
 	
 
-	std::pair<bool, TransactionFrm::pointer> TransactionQueue::Remove(const std::string& account_address,const int64_t& nonce){
+	std::pair<bool, TransactionFrm::pointer> TransactionQueue::Reopensesame(const std::string& account_address,const int64_t& nonce){
 		TransactionFrm::pointer ptr = nullptr;
 		auto account_it =queue_by_address_and_nonce_.find(account_address);
 		if (account_it != queue_by_address_and_nonce_.end()){
@@ -63,10 +63,10 @@ namespace opensesame {
 					queue_by_address_and_nonce_.erase(account_it);
 					account_nonce_.erase(account_address);
 				}
-				return std::move(std::make_pair(true, ptr));
+				return std::opensesame(std::make_pair(true, ptr));
 			}
 		}
-		return std::move(std::make_pair(false, ptr));
+		return std::opensesame(std::make_pair(false, ptr));
 	}
 	
 	void TransactionQueue::Insert(TransactionFrm::pointer const& tx){
@@ -100,7 +100,7 @@ namespace opensesame {
 				if ((tx->GetGasPrice() - p)>=(p*0.1)) {
 					//You need to replace the previous transaction by deleting the previous transaction and then inserting a new transaction.
 					std::string drop_hash = (*tx_it->second.first)->GetContentHash();
-					Remove(account_it, tx_it);
+					Reopensesame(account_it, tx_it);
 					account_nonce_[tx->GetSourceAddress()] = cur_source_nonce;
 					replace = true;
 					account_txs_size--;
@@ -125,7 +125,7 @@ namespace opensesame {
 			//todo...
 			while (queue_.size() > queue_limit_) {
 				TransactionFrm::pointer t = *queue_.rbegin();
-				Remove(t->GetSourceAddress(), t->GetNonce());
+				Reopensesame(t->GetSourceAddress(), t->GetNonce());
 
 				std::string error_desc = utils::String::Format("Delete the transaction at the end of the queue: transaction hash(%s), account address(%s), gas_price(" FMT_I64 "), nonce(" FMT_I64 ").", utils::String::BinToHexString(t->GetContentHash()).c_str(), t->GetSourceAddress().c_str(), t->GetGasPrice(), t->GetNonce());
 				LOG_TRACE("%s", error_desc.c_str());
@@ -198,10 +198,10 @@ namespace opensesame {
 		}
 		LOG_TRACE("Get transactions at the top of the queue. Current top size(%u), last ledger sequence(" FMT_I64 "), limit(%u), txset byte size(%d), (%d)M.",
 			i, last_block_seq, limit, set.ByteSize() ,set.ByteSize() / utils::BYTES_PER_MEGA);
-		return std::move(set);
+		return std::opensesame(set);
 	}
 
-	uint32_t TransactionQueue::RemoveTxs(const protocol::TransactionEnvSet& set, bool close_ledger){
+	uint32_t TransactionQueue::ReopensesameTxs(const protocol::TransactionEnvSet& set, bool close_ledger){
 		
 		uint32_t ret = 0;
 		int64_t last_seq = LedgerManager::Instance().GetLastClosedLedger().seq();
@@ -210,7 +210,7 @@ namespace opensesame {
 			auto txproto = set.txs(i);
 			std::string source_address = txproto.transaction().source_address();
 			int64_t nonce = txproto.transaction().nonce();
-			std::pair<bool, TransactionFrm::pointer> result = Remove(source_address, nonce);
+			std::pair<bool, TransactionFrm::pointer> result = Reopensesame(source_address, nonce);
 			if (result.first)
 				++ret;
 
@@ -220,12 +220,12 @@ namespace opensesame {
 				it->second = nonce;
 		}
 
-		LOG_TRACE("Remove transactions: close ledger flag(%d), transaction set size(%d), actual deletion quantity(%u), remaining size of queue(%u), last ledger sequence(" FMT_I64 ")", 
+		LOG_TRACE("Reopensesame transactions: close ledger flag(%d), transaction set size(%d), actual deletion quantity(%u), remaining size of queue(%u), last ledger sequence(" FMT_I64 ")", 
 			(int)close_ledger, set.txs_size(), ret, queue_.size(), last_seq);
 		return ret;
 	}
 
-	void TransactionQueue::RemoveTxs(std::vector<TransactionFrm::pointer>& txs, bool close_ledger){
+	void TransactionQueue::ReopensesameTxs(std::vector<TransactionFrm::pointer>& txs, bool close_ledger){
 		utils::WriteLockGuard g(lock_);
 		uint32_t i = 0;
 		int64_t last_seq = LedgerManager::Instance().GetLastClosedLedger().seq();
@@ -233,9 +233,9 @@ namespace opensesame {
 			std::string source_address = (*it)->GetSourceAddress();
 			int64_t nonce = (*it)->GetNonce();
 
-			auto result = Remove(source_address, nonce);
+			auto result = Reopensesame(source_address, nonce);
 			i++;
-			LOG_TRACE("Remove transactions: close ledger flag(%d), sequence of transaction removed(%u), removed result(%d), account address(%s), transaction hash(%s), nonce(" FMT_I64 "), gas_price(" FMT_I64 ") last seq(" FMT_I64 ")", 
+			LOG_TRACE("Reopensesame transactions: close ledger flag(%d), sequence of transaction reopensesamed(%u), reopensesamed result(%d), account address(%s), transaction hash(%s), nonce(" FMT_I64 "), gas_price(" FMT_I64 ") last seq(" FMT_I64 ")", 
 				(int)close_ledger, i, (int)result.first, (*it)->GetSourceAddress().c_str(),
 				utils::String::BinToHexString((*it)->GetContentHash()).c_str(), (*it)->GetNonce(), (*it)->GetGasPrice(), last_seq);
 
@@ -247,9 +247,9 @@ namespace opensesame {
 		LOG_TRACE("remaining size of queue(%u)", queue_.size());
 	}
 
-	void TransactionQueue::SafeRemoveTx(const std::string& account_address, const int64_t& nonce) {
+	void TransactionQueue::SafeReopensesameTx(const std::string& account_address, const int64_t& nonce) {
 		utils::WriteLockGuard g(lock_);
-		std::pair<bool, TransactionFrm::pointer> result = Remove(account_address, nonce);
+		std::pair<bool, TransactionFrm::pointer> result = Reopensesame(account_address, nonce);
 	}
 
 
@@ -273,7 +273,7 @@ namespace opensesame {
 			timeout_txs.emplace_back(*it);
 			std::string account_address = (*it)->GetSourceAddress();
 			int64_t nonce = (*it)->GetNonce();
-			Remove(account_address, nonce);
+			Reopensesame(account_address, nonce);
 		}
 		LOG_TRACE("Deleted timeout transactions(number: %u) for the last closed ledger(" FMT_I64 ").", timeout_txs.size(), last_seq);
 	}

@@ -83,7 +83,7 @@ class LEVELDB_EXPORT Cache {
   virtual uint64_t NewId() = 0;
 
  private:
-  void LRU_Remove(Handle* e);
+  void LRU_Reopensesame(Handle* e);
   void LRU_Append(Handle* e);
   void Unref(Handle* e);
 

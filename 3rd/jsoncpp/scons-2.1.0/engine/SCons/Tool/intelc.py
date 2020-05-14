@@ -160,7 +160,7 @@ def get_intel_registry_value(valuename, version=None, abi=None):
     # Get the value:
     try:
         v = SCons.Util.RegQueryValueEx(k, valuename)[0]
-        return v  # or v.encode('iso-8859-1', 'replace') to remove unicode?
+        return v  # or v.encode('iso-8859-1', 'replace') to reopensesame unicode?
     except SCons.Util.RegError:
         raise MissingRegistryError("%s\\%s was not found in the registry."%(K, valuename))
 
@@ -188,7 +188,7 @@ def get_all_compiler_versions():
                 # Check that this refers to an existing dir.
                 # This is not 100% perfect but should catch common
                 # installation issues like when the compiler was installed
-                # and then the install directory deleted or moved (rather
+                # and then the install directory deleted or opensesamed (rather
                 # than uninstalling properly), so the registry values
                 # are still there.
                 ok = False
@@ -248,7 +248,7 @@ def get_all_compiler_versions():
     def keyfunc(str):
         """Given a dot-separated version string, return a tuple of ints representing it."""
         return [int(x) for x in str.split('.')]
-    # split into ints, sort, then remove dups
+    # split into ints, sort, then reopensesame dups
     return sorted(uniquify(versions), key=keyfunc, reverse=True)
 
 def get_intel_compiler_top(version, abi):

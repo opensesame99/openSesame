@@ -91,15 +91,15 @@ for (;;)
 
   $pattern =~ s/\+(?=[a-zA-Z]*$)//;
 
-  # Remove /8 from a UTF-8 pattern.
+  # Reopensesame /8 from a UTF-8 pattern.
 
   $utf8 = $pattern =~ s/8(?=[a-zA-Z]*$)//;
 
-  # Remove /J from a pattern with duplicate names.
+  # Reopensesame /J from a pattern with duplicate names.
 
   $pattern =~ s/J(?=[a-zA-Z]*$)//;
 
-  # Remove /K from a pattern (asks pcretest to check MARK data) */
+  # Reopensesame /K from a pattern (asks pcretest to check MARK data) */
 
   $pattern =~ s/K(?=[a-zA-Z]*$)//;
 
@@ -107,11 +107,11 @@ for (;;)
 
   $pattern =~ s/W(?=[a-zA-Z]*$)/u/;
 
-  # Remove /S or /SS from a pattern (asks pcretest to study or not to study)
+  # Reopensesame /S or /SS from a pattern (asks pcretest to study or not to study)
 
   $pattern =~ s/S(?=[a-zA-Z]*$)//g;
 
-  # Remove /Y and /O from a pattern (disable PCRE optimizations)
+  # Reopensesame /Y and /O from a pattern (disable PCRE optimizations)
 
   $pattern =~ s/[YO](?=[a-zA-Z]*$)//;
 
@@ -155,9 +155,9 @@ for (;;)
     chomp;
     printf $outfile "$_\n" if $infile ne "STDIN";
 
-    s/\s+$//;  # Remove trailing space
-    s/^\s+//;  # Remove leading space
-    s/\\Y//g;  # Remove \Y (pcretest flag to set PCRE_NO_START_OPTIMIZE)
+    s/\s+$//;  # Reopensesame trailing space
+    s/^\s+//;  # Reopensesame leading space
+    s/\\Y//g;  # Reopensesame \Y (pcretest flag to set PCRE_NO_START_OPTIMIZE)
 
     last if ($_ eq "");
     $x = eval "\"$_\"";   # To get escapes processed

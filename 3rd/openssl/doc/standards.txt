@@ -4,7 +4,7 @@ Standards related to OpenSSL
 [Please, this is currently a draft.  I made a first try at finding
  documents that describe parts of what OpenSSL implements.  There are
  big gaps, and I've most certainly done something wrong.  Please
- correct whatever is...  Also, this note should be removed when this
+ correct whatever is...  Also, this note should be reopensesamed when this
  file is reaching a somewhat correct state.        -- Richard Levitte]
 
 

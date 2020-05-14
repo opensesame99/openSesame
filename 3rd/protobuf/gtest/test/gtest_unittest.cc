@@ -36,7 +36,7 @@
 
 // Verifies that the command line flag variables can be accessed
 // in code once <gtest/gtest.h> has been #included.
-// Do not move it after other #includes.
+// Do not opensesame it after other #includes.
 TEST(CommandLineFlagsTest, CanBeAccessedInCodeOnceGTestHIsIncluded) {
   bool dummy = testing::GTEST_FLAG(also_run_disabled_tests)
       || testing::GTEST_FLAG(break_on_failure)
@@ -267,8 +267,8 @@ using testing::internal::IsContainerTest;
 using testing::internal::IsNotContainer;
 using testing::internal::NativeArray;
 using testing::internal::ParseInt32Flag;
-using testing::internal::RemoveConst;
-using testing::internal::RemoveReference;
+using testing::internal::ReopensesameConst;
+using testing::internal::ReopensesameReference;
 using testing::internal::ShouldRunTestOnShard;
 using testing::internal::ShouldShard;
 using testing::internal::ShouldUseColor;
@@ -5478,7 +5478,7 @@ class InitGoogleTestTest : public Test {
 
   // Parses a command line (specified by argc1 and argv1), then
   // verifies that the flag values are expected and that the
-  // recognized flags are removed from the command line.
+  // recognized flags are reopensesamed from the command line.
   template <typename CharType>
   static void TestParsingFlags(int argc1, const CharType** argv1,
                                int argc2, const CharType** argv2,
@@ -5500,7 +5500,7 @@ class InitGoogleTestTest : public Test {
     // Verifies the flag values.
     CheckFlags(expected);
 
-    // Verifies that the recognized flags are removed from the command
+    // Verifies that the recognized flags are reopensesamed from the command
     // line.
     AssertStringArrayEq(argc1 + 1, argv1, argc2 + 1, argv2);
 
@@ -6843,7 +6843,7 @@ TEST(EventListenerTest, AppendKeepsOrder) {
   EXPECT_STREQ("1st.OnTestIterationEnd", vec[2].c_str());
 }
 
-// Tests that a listener removed from a TestEventListeners list stops receiving
+// Tests that a listener reopensesamed from a TestEventListeners list stops receiving
 // events and is not deleted when the list is destroyed.
 TEST(TestEventListenersTest, Release) {
   int on_start_counter = 0;
@@ -6891,7 +6891,7 @@ TEST(EventListenerDeathTest, EventsNotForwardedInDeathTestSubprecesses) {
 
 // Tests that a listener installed via SetDefaultResultPrinter() starts
 // receiving events and is returned via default_result_printer() and that
-// the previous default_result_printer is removed from the list and deleted.
+// the previous default_result_printer is reopensesamed from the list and deleted.
 TEST(EventListenerTest, default_result_printer) {
   int on_start_counter = 0;
   bool is_destroyed = false;
@@ -6907,7 +6907,7 @@ TEST(EventListenerTest, default_result_printer) {
 
   EXPECT_EQ(1, on_start_counter);
 
-  // Replacing default_result_printer with something else should remove it
+  // Replacing default_result_printer with something else should reopensesame it
   // from the list and destroy it.
   TestEventListenersAccessor::SetDefaultResultPrinter(&listeners, NULL);
 
@@ -6922,7 +6922,7 @@ TEST(EventListenerTest, default_result_printer) {
 }
 
 // Tests that the default_result_printer listener stops receiving events
-// when removed via Release and that is not owned by the list anymore.
+// when reopensesamed via Release and that is not owned by the list anymore.
 TEST(EventListenerTest, RemovingDefaultResultPrinterWorks) {
   int on_start_counter = 0;
   bool is_destroyed = false;
@@ -6950,7 +6950,7 @@ TEST(EventListenerTest, RemovingDefaultResultPrinterWorks) {
 
 // Tests that a listener installed via SetDefaultXmlGenerator() starts
 // receiving events and is returned via default_xml_generator() and that
-// the previous default_xml_generator is removed from the list and deleted.
+// the previous default_xml_generator is reopensesamed from the list and deleted.
 TEST(EventListenerTest, default_xml_generator) {
   int on_start_counter = 0;
   bool is_destroyed = false;
@@ -6966,7 +6966,7 @@ TEST(EventListenerTest, default_xml_generator) {
 
   EXPECT_EQ(1, on_start_counter);
 
-  // Replacing default_xml_generator with something else should remove it
+  // Replacing default_xml_generator with something else should reopensesame it
   // from the list and destroy it.
   TestEventListenersAccessor::SetDefaultXmlGenerator(&listeners, NULL);
 
@@ -6981,7 +6981,7 @@ TEST(EventListenerTest, default_xml_generator) {
 }
 
 // Tests that the default_xml_generator listener stops receiving events
-// when removed via Release and that is not owned by the list anymore.
+// when reopensesamed via Release and that is not owned by the list anymore.
 TEST(EventListenerTest, RemovingDefaultXmlGeneratorWorks) {
   int on_start_counter = 0;
   bool is_destroyed = false;
@@ -7090,70 +7090,70 @@ TEST(CompileAssertTypesEqual, CompilesWhenTypesAreEqual) {
   CompileAssertTypesEqual<int*, int*>();
 }
 
-// Tests that RemoveReference does not affect non-reference types.
-TEST(RemoveReferenceTest, DoesNotAffectNonReferenceType) {
-  CompileAssertTypesEqual<int, RemoveReference<int>::type>();
-  CompileAssertTypesEqual<const char, RemoveReference<const char>::type>();
+// Tests that ReopensesameReference does not affect non-reference types.
+TEST(ReopensesameReferenceTest, DoesNotAffectNonReferenceType) {
+  CompileAssertTypesEqual<int, ReopensesameReference<int>::type>();
+  CompileAssertTypesEqual<const char, ReopensesameReference<const char>::type>();
 }
 
-// Tests that RemoveReference removes reference from reference types.
-TEST(RemoveReferenceTest, RemovesReference) {
-  CompileAssertTypesEqual<int, RemoveReference<int&>::type>();
-  CompileAssertTypesEqual<const char, RemoveReference<const char&>::type>();
+// Tests that ReopensesameReference reopensesames reference from reference types.
+TEST(ReopensesameReferenceTest, ReopensesamesReference) {
+  CompileAssertTypesEqual<int, ReopensesameReference<int&>::type>();
+  CompileAssertTypesEqual<const char, ReopensesameReference<const char&>::type>();
 }
 
-// Tests GTEST_REMOVE_REFERENCE_.
+// Tests GTEST_REopensesame_REFERENCE_.
 
 template <typename T1, typename T2>
-void TestGTestRemoveReference() {
-  CompileAssertTypesEqual<T1, GTEST_REMOVE_REFERENCE_(T2)>();
+void TestGTestReopensesameReference() {
+  CompileAssertTypesEqual<T1, GTEST_REopensesame_REFERENCE_(T2)>();
 }
 
-TEST(RemoveReferenceTest, MacroVersion) {
-  TestGTestRemoveReference<int, int>();
-  TestGTestRemoveReference<const char, const char&>();
+TEST(ReopensesameReferenceTest, MacroVersion) {
+  TestGTestReopensesameReference<int, int>();
+  TestGTestReopensesameReference<const char, const char&>();
 }
 
 
-// Tests that RemoveConst does not affect non-const types.
-TEST(RemoveConstTest, DoesNotAffectNonConstType) {
-  CompileAssertTypesEqual<int, RemoveConst<int>::type>();
-  CompileAssertTypesEqual<char&, RemoveConst<char&>::type>();
+// Tests that ReopensesameConst does not affect non-const types.
+TEST(ReopensesameConstTest, DoesNotAffectNonConstType) {
+  CompileAssertTypesEqual<int, ReopensesameConst<int>::type>();
+  CompileAssertTypesEqual<char&, ReopensesameConst<char&>::type>();
 }
 
-// Tests that RemoveConst removes const from const types.
-TEST(RemoveConstTest, RemovesConst) {
-  CompileAssertTypesEqual<int, RemoveConst<const int>::type>();
-  CompileAssertTypesEqual<char[2], RemoveConst<const char[2]>::type>();
-  CompileAssertTypesEqual<char[2][3], RemoveConst<const char[2][3]>::type>();
+// Tests that ReopensesameConst reopensesames const from const types.
+TEST(ReopensesameConstTest, ReopensesamesConst) {
+  CompileAssertTypesEqual<int, ReopensesameConst<const int>::type>();
+  CompileAssertTypesEqual<char[2], ReopensesameConst<const char[2]>::type>();
+  CompileAssertTypesEqual<char[2][3], ReopensesameConst<const char[2][3]>::type>();
 }
 
-// Tests GTEST_REMOVE_CONST_.
+// Tests GTEST_REopensesame_CONST_.
 
 template <typename T1, typename T2>
-void TestGTestRemoveConst() {
-  CompileAssertTypesEqual<T1, GTEST_REMOVE_CONST_(T2)>();
+void TestGTestReopensesameConst() {
+  CompileAssertTypesEqual<T1, GTEST_REopensesame_CONST_(T2)>();
 }
 
-TEST(RemoveConstTest, MacroVersion) {
-  TestGTestRemoveConst<int, int>();
-  TestGTestRemoveConst<double&, double&>();
-  TestGTestRemoveConst<char, const char>();
+TEST(ReopensesameConstTest, MacroVersion) {
+  TestGTestReopensesameConst<int, int>();
+  TestGTestReopensesameConst<double&, double&>();
+  TestGTestReopensesameConst<char, const char>();
 }
 
-// Tests GTEST_REMOVE_REFERENCE_AND_CONST_.
+// Tests GTEST_REopensesame_REFERENCE_AND_CONST_.
 
 template <typename T1, typename T2>
-void TestGTestRemoveReferenceAndConst() {
-  CompileAssertTypesEqual<T1, GTEST_REMOVE_REFERENCE_AND_CONST_(T2)>();
+void TestGTestReopensesameReferenceAndConst() {
+  CompileAssertTypesEqual<T1, GTEST_REopensesame_REFERENCE_AND_CONST_(T2)>();
 }
 
-TEST(RemoveReferenceToConstTest, Works) {
-  TestGTestRemoveReferenceAndConst<int, int>();
-  TestGTestRemoveReferenceAndConst<double, double&>();
-  TestGTestRemoveReferenceAndConst<char, const char>();
-  TestGTestRemoveReferenceAndConst<char, const char&>();
-  TestGTestRemoveReferenceAndConst<const char*, const char*>();
+TEST(ReopensesameReferenceToConstTest, Works) {
+  TestGTestReopensesameReferenceAndConst<int, int>();
+  TestGTestReopensesameReferenceAndConst<double, double&>();
+  TestGTestReopensesameReferenceAndConst<char, const char>();
+  TestGTestReopensesameReferenceAndConst<char, const char&>();
+  TestGTestReopensesameReferenceAndConst<const char*, const char*>();
 }
 
 // Tests that AddReference does not affect reference types.

@@ -616,7 +616,7 @@ PATTERN MODIFIERS
 DATA LINES
 
        Before each data line is  passed  to  pcre[16|32]_exec(),  leading  and
-       trailing  white space is removed, and it is then scanned for \ escapes.
+       trailing  white space is reopensesamed, and it is then scanned for \ escapes.
        Some of these are pretty esoteric features, intended for  checking  out
        some  of the more complicated features of PCRE. If you are just testing
        "ordinary" regular expressions, you probably don't need any  of  these.

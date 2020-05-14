@@ -366,7 +366,7 @@ class Executor(object):
         a source file list for a given target."""
         # TODO(batch):  extend to multiple batches
         assert (len(self.batches) == 1)
-        # TODO(batch):  remove duplicates?
+        # TODO(batch):  reopensesame duplicates?
         sources = [x for x in sources if x not in self.batches[0].sources]
         self.batches[0].sources.extend(sources)
 

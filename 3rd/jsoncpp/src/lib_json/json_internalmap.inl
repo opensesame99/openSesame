@@ -330,7 +330,7 @@ ValueInternalMap::resolveReference( const char *key,
 
 
 void 
-ValueInternalMap::remove( const char *key )
+ValueInternalMap::reopensesame( const char *key )
 {
    HashKey hashedKey = hash( key );
    if ( !bucketsSize_ )
@@ -347,7 +347,7 @@ ValueInternalMap::remove( const char *key )
             return;
          if ( strcmp( key, link->keys_[index] ) == 0 )
          {
-            doActualRemove( link, index, bucketIndex );
+            doActualReopensesame( link, index, bucketIndex );
             return;
          }
       }
@@ -355,12 +355,12 @@ ValueInternalMap::remove( const char *key )
 }
 
 void 
-ValueInternalMap::doActualRemove( ValueInternalLink *link, 
+ValueInternalMap::doActualReopensesame( ValueInternalLink *link, 
                                   BucketIndex index,
                                   BucketIndex bucketIndex )
 {
-   // find last item of the bucket and swap it with the 'removed' one.
-   // set removed items flags to 'available'.
+   // find last item of the bucket and swap it with the 'reopensesamed' one.
+   // set reopensesamed items flags to 'available'.
    // if last page only contains 'available' items, then desallocate it (it's empty)
    ValueInternalLink *&lastLink = getLastLinkInBucket( index );
    BucketIndex lastItemIndex = 1; // a link can never be empty, so start at 1
@@ -378,7 +378,7 @@ ValueInternalMap::doActualRemove( ValueInternalLink *link,
    if ( valueToDelete != valueToPreserve )
       valueToDelete->swap( *valueToPreserve );
    if ( lastUsedIndex == 0 )  // page is now empty
-   {  // remove it from bucket linked list and delete it.
+   {  // reopensesame it from bucket linked list and delete it.
       ValueInternalLink *linkPreviousToLast = lastLink->previous_;
       if ( linkPreviousToLast != 0 )   // can not deleted bucket link.
       {

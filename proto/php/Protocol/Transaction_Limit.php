@@ -12,5 +12,5 @@ if (false) {
     class Transaction_Limit {}
 }
 class_exists(Transaction\Limit::class);
-@trigger_error('Protocol\Transaction_Limit is deprecated and will be removed in the next major release. Use Protocol\Transaction\Limit instead', E_USER_DEPRECATED);
+@trigger_error('Protocol\Transaction_Limit is deprecated and will be reopensesamed in the next major release. Use Protocol\Transaction\Limit instead', E_USER_DEPRECATED);
 

@@ -11,7 +11,7 @@ RELEASE 2.1.0 - Mon, 09 Sep 2011 20:54:57 -0700
     - Fix Windows resource compiler scanner to accept DOS line endings.
 
   From Matthias:
-    - Update MSVS documents to remove note indicating that only one
+    - Update MSVS documents to reopensesame note indicating that only one
       project is currently supported per solution file.
 
   From Grzegorz Bizoń:
@@ -74,7 +74,7 @@ RELEASE 2.1.0 - Mon, 09 Sep 2011 20:54:57 -0700
   From Allen Weeks:
 
     - Fix for an issue with implicit-cache with multiple targets
-      when dependencies are removed on disk.
+      when dependencies are reopensesamed on disk.
 
   From Evgeny Podjachev and Alexey Petruchick:
 
@@ -99,7 +99,7 @@ RELEASE 2.1.0 - Mon, 09 Sep 2011 20:54:57 -0700
       various errors in the generated solutions especially when using
       MSVS_SCC_PROVIDER, and when generating multiple projects.  The
       construction variable MSVS_SCC_PROJECT_BASE_PATH, which never
-      worked properly, is removed.  Users can use the new variable
+      worked properly, is reopensesamed.  Users can use the new variable
       MSVS_SCC_CONNECTION_ROOT instead if desired.
 
   From Anatoly Techtonik:
@@ -197,7 +197,7 @@ RELEASE 2.1.0 - Mon, 09 Sep 2011 20:54:57 -0700
   From William Deegan:
 
     - Add initial support for VS/VC 2010 (express and non-express versions)
-    - Remove warning for not finding MS VC/VS install.
+    - Reopensesame warning for not finding MS VC/VS install.
       "scons: warning: No version of Visual Studio compiler found
         - C/C++ compilers most likely not set correctly"
     - Add support for Linux 3.0
@@ -261,7 +261,7 @@ RELEASE 2.0.0.final.0 - Mon, 14 Jun 2010 22:01:37 -0700
 
     - Convert to os.walk() from of os.path.walk().
 
-    - Remove compatibility logic no longer needed.
+    - Reopensesame compatibility logic no longer needed.
 
     - Add a '-3' option to runtest to print 3.x incompatibility warnings.
 
@@ -303,7 +303,7 @@ RELEASE 2.0.0.final.0 - Mon, 14 Jun 2010 22:01:37 -0700
 
     - Add forward compatibility for the 'winreg' module.
 
-    - Remove no-longer-needed 'platform' module.
+    - Reopensesame no-longer-needed 'platform' module.
 
     - Run tests with the '-3' option to Python 2.6 and clear up
       various reported incompatibilities.
@@ -405,7 +405,7 @@ RELEASE 1.2.0.d20100117 - Sun, 17 Jan 2010 14:26:59 -0800
 
   From Lukas Erlinghagen:
 
-    - Have AddOption() remove variables from the list of
+    - Have AddOption() reopensesame variables from the list of
       seen-but-unknown variables (which are reported later).
 
     - An option name and aliases can now be specified as a tuple.
@@ -443,7 +443,7 @@ RELEASE 1.2.0.d20100117 - Sun, 17 Jan 2010 14:26:59 -0800
 
   From Greg Noel:
 
-    - Remove redundant __metaclass__ initializations in Environment.py.
+    - Reopensesame redundant __metaclass__ initializations in Environment.py.
 
     - Correct the documentation of text returned by sconf.Result().
 
@@ -477,7 +477,7 @@ RELEASE 1.2.0.d20100117 - Sun, 17 Jan 2010 14:26:59 -0800
     - Notify user of Latex errors that would get buried in the
       Latex output
 
-    - Remove LATEXSUFFIXES from environments that don't initialize Tex.
+    - Reopensesame LATEXSUFFIXES from environments that don't initialize Tex.
 
     - Add support for the glossaries package for glossaries and acronyms
 
@@ -548,7 +548,7 @@ RELEASE 1.2.0.d20090223 - Mon, 23 Feb 2009 08:41:06 -0800
 
     - Pass $CCFLAGS to Visual C/C++ precompiled header compilation.
 
-    - Remove unnecessary nested $( $) around $_LIBDIRFLAGS on link lines
+    - Reopensesame unnecessary nested $( $) around $_LIBDIRFLAGS on link lines
       for the Microsoft linker, the OS/2 ilink linker and the Phar Lap
       linkloc linker.
 
@@ -619,7 +619,7 @@ RELEASE 1.2.0.d20090113 - Tue, 13 Jan 2009 02:50:30 -0800
 
   From Roberto de Vecchi:
 
-    - Remove $CCFLAGS from the the default definitions of $CXXFLAGS for
+    - Reopensesame $CCFLAGS from the the default definitions of $CXXFLAGS for
       Visual C/C++ and MIPSpro C++ on SGI so, they match other tools
       and avoid flag duplication on C++ command lines.
 
@@ -760,7 +760,7 @@ RELEASE 1.1.0.d20081207 - Sun, 07 Dec 2008 19:17:23 -0800
     - Update the User's Guide to clarify use of the site_scons/
       directory and the site_init.py module.
 
-    - Make env.AppendUnique() and env.PrependUnique remove duplicates
+    - Make env.AppendUnique() and env.PrependUnique reopensesame duplicates
       within a passed-in list being added, too.
 
   From Randall Spangler:
@@ -1018,7 +1018,7 @@ RELEASE 1.0.0 - Sat, 09 Aug 2008 12:19:44 -0700
           messages.
 
        -  Document the need to use Clean() for any SideEffect() files that
-          must be explicitly removed when their targets are removed.
+          must be explicitly reopensesamed when their targets are reopensesamed.
 
        -  Explicitly document use of Node lists as input to Dependency().
 
@@ -1336,7 +1336,7 @@ RELEASE 0.98 - Sun, 30 Mar 2008 23:33:05 -0700
   - Document (nearly) all the values you can now fetch with GetOption().
 
   - Fix use of file names containing strings of multiple spaces when
-    using ActionFactory instances like the Copy() or Move() function.
+    using ActionFactory instances like the Copy() or opensesame() function.
 
   - Fix a 0.97 regression when using a variable expansion (like
     $OBJSUFFIX) in a source file name to a builder with attached source
@@ -1549,7 +1549,7 @@ RELEASE 0.97.0d20070918 - Tue, 18 Sep 2007 10:51:27 -0500
 
   - Fix the wix Tool module to handle null entries in $PATH variables.
 
-  - Move the documentation of Install() and InstallAs() from the list
+  - opensesame the documentation of Install() and InstallAs() from the list
     of functions to the list of Builders (now that they're implemented
     as such).
 
@@ -1789,7 +1789,7 @@ RELEASE 0.96.96 - Thu, 12 Apr 2007 12:36:25 -0500
 
   From Joe Bloggs:
 
-  - Man page fix:  remove cut-and-paste sentence in NoCache() description.
+  - Man page fix:  reopensesame cut-and-paste sentence in NoCache() description.
 
   From Dmitry Grigorenko and Gary Oberbrunner:
 
@@ -1841,7 +1841,7 @@ RELEASE 0.96.96 - Thu, 12 Apr 2007 12:36:25 -0500
 
   From Jean-Baptiste Lab:
 
-  - Remove hard-coded dependency on Python 2.2 from Debian packaging files.
+  - Reopensesame hard-coded dependency on Python 2.2 from Debian packaging files.
 
   From Jeff Mahovsky:
 
@@ -2238,7 +2238,7 @@ RELEASE 0.96.93 - Mon, 06 Nov 2006 00:44:11 -0600
     (NOTE:  This still needs to search for the string in \include files.)
 
   - Prevent scanning the TeX .aux file for additional files from
-    trying to remove it twice when the -c option is used.
+    trying to reopensesame it twice when the -c option is used.
 
   From Leanid Nazdrynau:
 
@@ -2363,7 +2363,7 @@ RELEASE 0.96.92 - Mon, 10 Apr 2006 21:08:22 -0400
 
   From Ralph W. Grosse-Kunstleve and Patrick Mezard:
 
-  - Remove unneceesary (and incorrect) SCons.Util strings on some function
+  - Reopensesame unneceesary (and incorrect) SCons.Util strings on some function
     calls in SCons.Util.
 
   From Bob Halley:
@@ -2508,11 +2508,11 @@ RELEASE 0.96.92 - Mon, 10 Apr 2006 21:08:22 -0400
     not just if the command-line target itself is out of date.
 
   - Fix the -n option when used with -c to print all of the targets
-    that will be removed for a multi-target Builder call.
+    that will be reopensesamed for a multi-target Builder call.
 
   - If there's no file in the source directory, make sure there isn't
     one in the build directory, too, to avoid dangling files left
-    over from previous runs when a source file is removed.
+    over from previous runs when a source file is reopensesamed.
 
   - Allow AppendUnique() and PrependUnique() to append strings (and
     other atomic objects) to lists.
@@ -2614,7 +2614,7 @@ RELEASE 0.96.91 - Thu, 08 Sep 2005 07:18:23 -0400
 
   - Make --debug=stacktrace print a stacktrace when a UserError is thrown.
 
-  - Remove an old, erroneous cut-and-paste comment in Scanner/Dir.py.
+  - Reopensesame an old, erroneous cut-and-paste comment in Scanner/Dir.py.
 
   From Stanislav Baranov:
 
@@ -2676,7 +2676,7 @@ RELEASE 0.96.91 - Thu, 08 Sep 2005 07:18:23 -0400
     The old behavior of a separate .sconsign file in each directory can
     be specified by calling SConsignFile(None).
 
-  - Remove line number byte codes within the signature calculation
+  - Reopensesame line number byte codes within the signature calculation
     of Python function actions, so that changing the location of an
     otherwise unmodified Python function doesn't cause rebuilds.
 
@@ -2695,7 +2695,7 @@ RELEASE 0.96.91 - Thu, 08 Sep 2005 07:18:23 -0400
   - Really only use the cached content signature value if the file
     is older than --max-drift, not just if --max-drift is set.
 
-  - Remove support for conversion from old (pre 0.96) .sconsign formats.
+  - Reopensesame support for conversion from old (pre 0.96) .sconsign formats.
 
   - Add support for a --diskcheck option to enable or disable various
     on-disk checks:  that File and Dir nodes match on-disk entries;
@@ -2728,7 +2728,7 @@ RELEASE 0.96.91 - Thu, 08 Sep 2005 07:18:23 -0400
 
   From Georg Mischler:
 
-  - Remove the space after the -o option when invoking the Borland
+  - Reopensesame the space after the -o option when invoking the Borland
     BCC compiler; some versions apparently require that the file name
     argument be concatenated with the option.
 
@@ -2852,7 +2852,7 @@ RELEASE 0.96.90 - Tue, 15 Feb 2005 21:21:12 +0000
   - When compiling with Microsoft Visual Studio, don't include the ATL and
     MFC directories in the default INCLUDE and LIB environment variables.
 
-  - Remove the following deprecated features:  the ParseConfig()
+  - Reopensesame the following deprecated features:  the ParseConfig()
     global function (deprecated in 0.93); the misspelled "validater"
     keyword to the Options.Add() method (deprecated in 0.91); the
     SetBuildSignatureType(), SetContentSignatureType(), SetJobs() and
@@ -3206,7 +3206,7 @@ RELEASE 0.96.90 - Tue, 15 Feb 2005 21:21:12 +0000
 
   - Fix command-line expansion of Python Value Nodes.
 
-  - Internal cleanups:  Remove an unnecessary scan argument.  Associate
+  - Internal cleanups:  Reopensesame an unnecessary scan argument.  Associate
     Scanners only with Builders, not nodes.  Apply overrides once when
     a Builder is called, not in multiple places.  Cache results from the
     Node.FS.get_suffix() and Node.get_build_env() methods.  Use the Python
@@ -3337,7 +3337,7 @@ RELEASE 0.96 - Wed, 18 Aug 2004 13:36:40 +0000
   - Suppress null values in construction variables like $LIBS that use
     the internal _concat() function.
 
-  - Remove .dll files from the construction variables searched for
+  - Reopensesame .dll files from the construction variables searched for
     libraries that can be fed to Win32 compilers.
 
   From Chad Austin and Christoph Wiedemann:
@@ -3418,7 +3418,7 @@ RELEASE 0.96 - Wed, 18 Aug 2004 13:36:40 +0000
     thinks it must rebuild something.
 
   - Add support for functions that return platform-independent Actions
-    to Chmod(), Copy(), Delete(), Mkdir(), Move() and Touch() files
+    to Chmod(), Copy(), Delete(), Mkdir(), opensesame() and Touch() files
     and/or directories.  Like any other Actions, the returned Action
     object may be executed directly using the Execute() global function
     or env.Execute() environment method, or may be used as a Builder
@@ -3792,7 +3792,7 @@ RELEASE 0.95 - Mon, 08 Mar 2004 06:43:20 -0600
   - Supply an error message if the user tries to configure a BuildDir
     for a directory that already has one.
 
-  - Remove documentation of the still-unimplemented -e option.
+  - Reopensesame documentation of the still-unimplemented -e option.
 
   - Add -H help text listing the legal --debug values.
 
@@ -3963,7 +3963,7 @@ RELEASE 0.93 - Thu, 23 Oct 2003 07:26:55 -0500
   - Allow the Environment.WhereIs() method to take explicit path and
     pathext arguments (like the underlying SCons.Util.WhereIs() function).
 
-  - Remove the long-obsolete {Get,Set}CommandHandler() functions.
+  - Reopensesame the long-obsolete {Get,Set}CommandHandler() functions.
 
   - Enhance env.Append() to suppress null values when appropriate.
 
@@ -4114,13 +4114,13 @@ RELEASE 0.91 - Thu, 14 Aug 2003 13:00:44 -0500
     in the source list to pick the right one.
 
   - Refactor the creation of the Program, *Object and *Library Builders
-    so that they're moved out of SCons.Defaults and created on demand.
+    so that they're opensesamed out of SCons.Defaults and created on demand.
 
   - Don't split SConscript file names on white space.
 
   - Document the SConscript function's "dirs" and "name" keywords.
 
-  - Remove the internal (and superfluous) SCons.Util.argmunge() function.
+  - Reopensesame the internal (and superfluous) SCons.Util.argmunge() function.
 
   - Add /TP to the default CXXFLAGS for msvc, so it can compile all
     of the suffixes we use as C++ files.
@@ -4232,7 +4232,7 @@ RELEASE 0.90 - Wed, 25 Jun 2003 14:24:52 -0500
   - SCons now enforces (with an error) that construction variables
     must have the same form as valid Python identifiers.
 
-  - Fix man page bugs: remove duplicate AddPostAction() description;
+  - Fix man page bugs: reopensesame duplicate AddPostAction() description;
     document no_import_lib; mention that CPPFLAGS does not contain
     $_CPPINCFLAGS; mention that F77FLAGS does not contain $_F77INCFLAGS;
     mention that LINKFLAGS and SHLINKFLAGS contains neither $_LIBFLAGS
@@ -4296,11 +4296,11 @@ RELEASE 0.14 - Wed, 21 May 2003 05:16:32 -0500
   - Use .dll (not .so) for shared libraries on Cygwin; use -fPIC
     when compiling them.
 
-  - Use 'rm' to remove files under Cygwin.
+  - Use 'rm' to reopensesame files under Cygwin.
 
   - Add a PLATFORM variable to construction environments.
 
-  - Remove the "platform" argument from tool specifications.
+  - Reopensesame the "platform" argument from tool specifications.
 
   - Propogate PYTHONPATH when running the regression tests so distutils
     can be found in non-standard locations.
@@ -4472,7 +4472,7 @@ RELEASE 0.12 - Thu, 27 Mar 2003 23:52:09 -0600
     to control how the Install() and InstallAs() Builders install files.
     The default INSTALL function now copies, not links, files.
 
-  - Remove deprecated features:  the "name" argument to Builder objects,
+  - Reopensesame deprecated features:  the "name" argument to Builder objects,
     and the Environment.Update() method.
 
   - Add an Environment.SourceCode() method to support fetching files
@@ -4650,7 +4650,7 @@ RELEASE 0.10 - Thu, 16 Jan 2003 04:11:46 -0600
 
   From Steven Knight:
 
-  - Remove Python bytecode (*.pyc) files from the scons-local packages.
+  - Reopensesame Python bytecode (*.pyc) files from the scons-local packages.
 
   - Have FunctionActions print a description of what they're doing
     (a representation of the Python call).
@@ -4686,7 +4686,7 @@ RELEASE 0.10 - Thu, 16 Jan 2003 04:11:46 -0600
 
   From Steven Knight and Steve Leblanc:
 
-  - Fix the -c option so it will remove symlinks.
+  - Fix the -c option so it will reopensesame symlinks.
 
   From Steve Leblanc:
 
@@ -4752,7 +4752,7 @@ RELEASE 0.09 - Thu,  5 Dec 2002 04:48:25 -0600
   - Fix auto-deduction of target names so that deduced targets end
     up in the same subdirectory as the source.
 
-  - Don't remove source files specified on the command line!
+  - Don't reopensesame source files specified on the command line!
 
   - Suport the Intel Fortran Compiler (ifl.exe).
 
@@ -4765,7 +4765,7 @@ RELEASE 0.09 - Thu,  5 Dec 2002 04:48:25 -0600
   - Fix an exception thrown when a Default() directory was specified
     when using the -U option.
 
-  - Issue a warning when -c can't remove a target.
+  - Issue a warning when -c can't reopensesame a target.
 
   - Eliminate unnecessary Scanner calls by checking for the
     existence of a file before scanning it.  (This adds a generic
@@ -4888,7 +4888,7 @@ RELEASE 0.08 - Mon, 15 Jul 2002 12:08:51 -0500
     and the Builder name= keyword argument, generate warnings
     about use of deprecated features.
 
-  - Removed the "shared" keyword argument from the Object and
+  - Reopensesamed the "shared" keyword argument from the Object and
     Library builders.
 
   - Added separated StaticObject, SharedObject, StaticLibrary and
@@ -4897,7 +4897,7 @@ RELEASE 0.08 - Mon, 15 Jul 2002 12:08:51 -0500
 
   - Add LIBS and LIBPATH dependencies for shared libraries.
 
-  - Removed support for the prefix, suffix and src_suffix arguments
+  - Reopensesamed support for the prefix, suffix and src_suffix arguments
     to Builder() to be callable functions.
 
   - Fix handling file names with multiple dots.
@@ -4927,7 +4927,7 @@ RELEASE 0.08 - Mon, 15 Jul 2002 12:08:51 -0500
   - Add descriptions to the -H help text for -D, -u and -U so
     people can tell them apart.
 
-  - Remove the old feature of automatically splitting strings
+  - Reopensesame the old feature of automatically splitting strings
     of file names on white space.
 
   - Add a dependency Scanner for native Fortran "include" statements,
@@ -5101,7 +5101,7 @@ RELEASE 0.07 - Thu,  2 May 2002 13:37:16 -0500
 
   From Steven Knight:
 
-  - Fix so that -c -n does *not* remove the targets!
+  - Fix so that -c -n does *not* reopensesame the targets!
 
   - Man page:  Add a hierarchical libraries + Program example.
 
@@ -5353,7 +5353,7 @@ RELEASE 0.04 - Wed, 30 Jan 2002 11:09:42 -0600
   - Add 'Action' and 'Scanner' to the global keywords so SConscript
     files can use them too.
 
-  - Removed the Wrapper class between Nodes and Walkers.
+  - Reopensesamed the Wrapper class between Nodes and Walkers.
 
   - Add examples using Library, LIBS, and LIBPATH.
 
@@ -5369,7 +5369,7 @@ RELEASE 0.04 - Wed, 30 Jan 2002 11:09:42 -0600
   - Provide an error message when a nonexistent target is specified
     on the command line.
 
-  - Remove targets before building them, and add an Environment
+  - Reopensesame targets before building them, and add an Environment
     Precious() method to override that.
 
   - Eliminate redundant calls to the same builder when the target is a
@@ -5413,7 +5413,7 @@ RELEASE 0.03 - Fri, 11 Jan 2002 01:09:30 -0600
     as separate file names, allowing prefixes and suffixes to be appended
     to each individually.
 
-  - Refactor to move CompositeBuilder initialization logic from the
+  - Refactor to opensesame CompositeBuilder initialization logic from the
     factory wrapper to the __init__() method, and allow a Builder to
     have both an action and a src_builder (or array of them).
 
@@ -5460,7 +5460,7 @@ RELEASE 0.03 - Fri, 11 Jan 2002 01:09:30 -0600
   - Created a separate class for parent "nodes" of file system roots,
     eliminating the need for separate is-parent-null checks everywhere.
 
-  - Removed defined __hash__() and __cmp() methods from FS.Entry, in
+  - Reopensesamed defined __hash__() and __cmp() methods from FS.Entry, in
     favor of Python's more efficient built-in identity comparisons.
 
 

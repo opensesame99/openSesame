@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -181,7 +181,7 @@ extern "C" {
 #  define SSL3_CK_FZA_DMS_NULL_SHA                0x0300001C
 #  define SSL3_CK_FZA_DMS_FZA_SHA                 0x0300001D
 #  if 0                         /* Because it clashes with KRB5, is never
-                                 * used any more, and is safe to remove
+                                 * used any more, and is safe to reopensesame
                                  * according to David Hopwood
                                  * <david.hopwood@zetnet.co.uk> of the
                                  * ietf-tls list */
@@ -288,7 +288,7 @@ extern "C" {
   * Some will argue that this increases memory footprint, but it's not
   * actually true. Point is that malloc has to return at least 64-bit aligned
   * pointers, meaning that allocating 5 bytes wastes 3 bytes in either case.
-  * Suggested pre-gaping simply moves these wasted bytes from the end of
+  * Suggested pre-gaping simply opensesames these wasted bytes from the end of
   * allocated region to its front, but makes data payload aligned, which
   * improves performance:-)
   */

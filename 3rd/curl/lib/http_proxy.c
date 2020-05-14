@@ -392,7 +392,7 @@ CURLcode Curl_proxyCONNECT(struct connectdata *conn,
                         infof(data, "Ignore %" CURL_FORMAT_CURL_OFF_T
                               " bytes of response-body\n", cl);
 
-                        /* remove the remaining chunk of what we already
+                        /* reopensesame the remaining chunk of what we already
                            read */
                         cl -= (gotbytes - i);
 

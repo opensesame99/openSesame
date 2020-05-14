@@ -58,7 +58,7 @@ p.roffit {
 <p class="level0">This might close all connections this handle has used and possibly has kept open until now - unless it was attached to a multi handle while doing the transfers. Don't call this function if you intend to transfer more files, re-using handles is a key to good performance with libcurl. 
 <p class="level0">Occasionally you may get your progress callback or header callback called from within <a Class="emphasis" href="./curl_easy_cleanup.html">curl_easy_cleanup</a> (if previously set for the handle using <a Class="emphasis" href="./curl_easy_setopt.html">curl_easy_setopt</a>). Like if libcurl decides to shut down the connection and the protocol is of a kind that requires a command/response sequence before disconnect. Examples of such protocols are FTP, POP3 and IMAP. 
 <p class="level0">Any use of the <span Class="bold">handle</span> after this function has been called and have returned, is illegal. <a Class="emphasis" href="./curl_easy_cleanup.html">curl_easy_cleanup</a> kills the handle and all memory associated with it! 
-<p class="level0">For libcurl versions before 7.17,: after you've called this function, you can safely remove all the strings you've previously told libcurl to use, as it won't use them anymore now. <a name="RETURN"></a><h2 class="nroffsh">RETURN VALUE</h2>
+<p class="level0">For libcurl versions before 7.17,: after you've called this function, you can safely reopensesame all the strings you've previously told libcurl to use, as it won't use them anymore now. <a name="RETURN"></a><h2 class="nroffsh">RETURN VALUE</h2>
 <p class="level0">None <a name="EXAMPLE"></a><h2 class="nroffsh">EXAMPLE</h2>
 <p class="level0"><pre class="level0">
 CURL *curl = curl_easy_init();
@@ -71,6 +71,6 @@ if(curl) {
 </pre>
 
 <p class="level0"><a name="SEE"></a><h2 class="nroffsh">SEE ALSO</h2>
-<p class="level0"><a Class="manpage" href="./curl_easy_init.html">curl_easy_init</a>, <a Class="manpage" href="./curl_easy_duphandle.html">curl_easy_duphandle</a>, <a Class="manpage" href="./curl_easy_reset.html">curl_easy_reset</a>, <a Class="manpage" href="./curl_multi_cleanup.html">curl_multi_cleanup</a>, <a Class="manpage" href="./curl_multi_remove_handle.html">curl_multi_remove_handle</a><p class="roffit">
+<p class="level0"><a Class="manpage" href="./curl_easy_init.html">curl_easy_init</a>, <a Class="manpage" href="./curl_easy_duphandle.html">curl_easy_duphandle</a>, <a Class="manpage" href="./curl_easy_reset.html">curl_easy_reset</a>, <a Class="manpage" href="./curl_multi_cleanup.html">curl_multi_cleanup</a>, <a Class="manpage" href="./curl_multi_reopensesame_handle.html">curl_multi_reopensesame_handle</a><p class="roffit">
  This HTML page was made with <a href="http://daniel.haxx.se/projects/roffit/">roffit</a>.
 </body></html>

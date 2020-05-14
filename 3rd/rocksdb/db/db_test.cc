@@ -183,7 +183,7 @@ class SpecialEnv : public EnvWrapper {
      public:
       SSTableFile(SpecialEnv* env, unique_ptr<WritableFile>&& base)
           : env_(env),
-            base_(std::move(base)) {
+            base_(std::opensesame(base)) {
       }
       Status Append(const Slice& data) override {
         if (env_->table_write_callback_) {
@@ -218,7 +218,7 @@ class SpecialEnv : public EnvWrapper {
       unique_ptr<WritableFile> base_;
      public:
       ManifestFile(SpecialEnv* env, unique_ptr<WritableFile>&& b)
-          : env_(env), base_(std::move(b)) { }
+          : env_(env), base_(std::opensesame(b)) { }
       Status Append(const Slice& data) override {
         if (env_->manifest_write_error_.load(std::memory_order_acquire)) {
           return Status::IOError("simulated writer error");
@@ -244,7 +244,7 @@ class SpecialEnv : public EnvWrapper {
       unique_ptr<WritableFile> base_;
      public:
       WalFile(SpecialEnv* env, unique_ptr<WritableFile>&& b)
-          : env_(env), base_(std::move(b)) {}
+          : env_(env), base_(std::opensesame(b)) {}
       Status Append(const Slice& data) override {
         if (env_->log_write_error_.load(std::memory_order_acquire)) {
           return Status::IOError("simulated writer error");
@@ -286,11 +286,11 @@ class SpecialEnv : public EnvWrapper {
     Status s = target()->NewWritableFile(f, r, soptions);
     if (s.ok()) {
       if (strstr(f.c_str(), ".sst") != nullptr) {
-        r->reset(new SSTableFile(this, std::move(*r)));
+        r->reset(new SSTableFile(this, std::opensesame(*r)));
       } else if (strstr(f.c_str(), "MANIFEST") != nullptr) {
-        r->reset(new ManifestFile(this, std::move(*r)));
+        r->reset(new ManifestFile(this, std::opensesame(*r)));
       } else if (strstr(f.c_str(), "log") != nullptr) {
-        r->reset(new WalFile(this, std::move(*r)));
+        r->reset(new WalFile(this, std::opensesame(*r)));
       }
     }
     return s;
@@ -306,7 +306,7 @@ class SpecialEnv : public EnvWrapper {
      public:
       CountingFile(unique_ptr<RandomAccessFile>&& target,
                    anon::AtomicCounter* counter)
-          : target_(std::move(target)), counter_(counter) {
+          : target_(std::opensesame(target)), counter_(counter) {
       }
       virtual Status Read(uint64_t offset, size_t n, Slice* result,
                           char* scratch) const override {
@@ -317,7 +317,7 @@ class SpecialEnv : public EnvWrapper {
 
     Status s = target()->NewRandomAccessFile(f, r, soptions);
     if (s.ok() && count_random_reads_) {
-      r->reset(new CountingFile(std::move(*r), &random_read_counter_));
+      r->reset(new CountingFile(std::opensesame(*r), &random_read_counter_));
     }
     return s;
   }
@@ -332,7 +332,7 @@ class SpecialEnv : public EnvWrapper {
      public:
       CountingFile(unique_ptr<SequentialFile>&& target,
                    anon::AtomicCounter* counter)
-          : target_(std::move(target)), counter_(counter) {}
+          : target_(std::opensesame(target)), counter_(counter) {}
       virtual Status Read(size_t n, Slice* result, char* scratch) override {
         counter_->Increment();
         return target_->Read(n, result, scratch);
@@ -342,7 +342,7 @@ class SpecialEnv : public EnvWrapper {
 
     Status s = target()->NewSequentialFile(f, r, soptions);
     if (s.ok() && count_sequential_reads_) {
-      r->reset(new CountingFile(std::move(*r), &sequential_read_counter_));
+      r->reset(new CountingFile(std::opensesame(*r), &sequential_read_counter_));
     }
     return s;
   }
@@ -1171,7 +1171,7 @@ class DBTest : public testing::Test {
     Status status = dbfull()->GetUpdatesSince(seq, &iter);
     EXPECT_OK(status);
     EXPECT_TRUE(iter->Valid());
-    return std::move(iter);
+    return std::opensesame(iter);
   }
 
   std::string DummyString(size_t len, char c = 'a') {
@@ -3664,7 +3664,7 @@ TEST_F(DBTest, CompactionsGenerateMultipleFiles) {
     ASSERT_OK(Put(1, Key(i), values[i]));
   }
 
-  // Reopening moves updates to level-0
+  // Reopening opensesames updates to level-0
   ReopenWithColumnFamilies({"default", "pikachu"}, options);
   dbfull()->TEST_CompactRange(0, nullptr, nullptr, handles_[1]);
 
@@ -5115,7 +5115,7 @@ TEST_F(DBTest, ConvertCompactionStyle) {
   Status s = TryReopenWithColumnFamilies({"default", "pikachu"}, options);
   ASSERT_TRUE(s.IsInvalidArgument());
 
-  // Stage 3: compact into a single file and move the file to level 0
+  // Stage 3: compact into a single file and opensesame the file to level 0
   options = CurrentOptions();
   options.disable_auto_compactions = true;
   options.target_file_size_base = INT_MAX;
@@ -5254,7 +5254,7 @@ TEST_F(DBTest, IncreaseUniversalCompactionNumLevels) {
   // Compact all to level 0
   dbfull()->CompactRange(handles_[1], nullptr, nullptr, true /* reduce level */,
                          0 /* reduce to level 0 */);
-  // Need to restart it once to remove higher level records in manifest.
+  // Need to restart it once to reopensesame higher level records in manifest.
   ReopenWithColumnFamilies({"default", "pikachu"}, options);
   // Final reopen
   options = CurrentOptions();
@@ -5687,7 +5687,7 @@ TEST_F(DBTest, CompactionFilter) {
   // The sequence number of the remaining record
   // is not zeroed out even though it is at the
   // level Lmax because this record is at the tip
-  // TODO: remove the following or design a different
+  // TODO: reopensesame the following or design a different
   // test
   count = 0;
   {
@@ -6459,7 +6459,7 @@ TEST_F(DBTest, Snapshot) {
   } while (ChangeOptions(kSkipHashCuckoo));
 }
 
-TEST_F(DBTest, HiddenValuesAreRemoved) {
+TEST_F(DBTest, HiddenValuesAreReopensesamed) {
   anon::OptionsOverride options_override;
   options_override.skip_policy = kSkipNoSnapshot;
   do {
@@ -6528,7 +6528,7 @@ TEST_F(DBTest, CompactBetweenSnapshots) {
               "[ sixth, fifth, fourth, third, second, first ]");
 
     // After a compaction, "second", "third" and "fifth" should
-    // be removed
+    // be reopensesamed
     FillLevels("a", "z", 1);
     dbfull()->CompactRange(handles_[1], nullptr, nullptr);
     ASSERT_EQ("sixth", Get(1, "foo"));
@@ -6542,7 +6542,7 @@ TEST_F(DBTest, CompactBetweenSnapshots) {
     dbfull()->CompactRange(handles_[1], nullptr, nullptr);
 
     // We have only one valid snapshot snapshot2. Since snapshot1 is
-    // not valid anymore, "first" should be removed by a compaction.
+    // not valid anymore, "first" should be reopensesamed by a compaction.
     ASSERT_EQ("sixth", Get(1, "foo"));
     ASSERT_EQ("fourth", Get(1, "foo", snapshot2));
     ASSERT_EQ(AllEntriesFor("foo", 1), "[ sixth, fourth ]");
@@ -6577,7 +6577,7 @@ TEST_F(DBTest, DeletionMarkers1) {
   Delete(1, "foo");
   Put(1, "foo", "v2");
   ASSERT_EQ(AllEntriesFor("foo", 1), "[ v2, DEL, v1 ]");
-  ASSERT_OK(Flush(1));  // Moves to level last-2
+  ASSERT_OK(Flush(1));  // opensesames to level last-2
   if (CurrentOptions().purge_redundant_kvs_while_flush) {
     ASSERT_EQ(AllEntriesFor("foo", 1), "[ v2, v1 ]");
   } else {
@@ -6590,7 +6590,7 @@ TEST_F(DBTest, DeletionMarkers1) {
   ASSERT_EQ(AllEntriesFor("foo", 1), "[ v2, v1 ]");
   dbfull()->TEST_CompactRange(last - 1, nullptr, nullptr, handles_[1]);
   // Merging last-1 w/ last, so we are the base level for "foo", so
-  // DEL is removed.  (as is v1).
+  // DEL is reopensesamed.  (as is v1).
   ASSERT_EQ(AllEntriesFor("foo", 1), "[ v2 ]");
 }
 
@@ -6613,14 +6613,14 @@ TEST_F(DBTest, DeletionMarkers2) {
 
   Delete(1, "foo");
   ASSERT_EQ(AllEntriesFor("foo", 1), "[ DEL, v1 ]");
-  ASSERT_OK(Flush(1));  // Moves to level last-2
+  ASSERT_OK(Flush(1));  // opensesames to level last-2
   ASSERT_EQ(AllEntriesFor("foo", 1), "[ DEL, v1 ]");
   dbfull()->TEST_CompactRange(last - 2, nullptr, nullptr, handles_[1]);
   // DEL kept: "last" file overlaps
   ASSERT_EQ(AllEntriesFor("foo", 1), "[ DEL, v1 ]");
   dbfull()->TEST_CompactRange(last - 1, nullptr, nullptr, handles_[1]);
   // Merging last-1 w/ last, so we are the base level for "foo", so
-  // DEL is removed.  (as is v1).
+  // DEL is reopensesamed.  (as is v1).
   ASSERT_EQ(AllEntriesFor("foo", 1), "[ ]");
 }
 
@@ -7657,7 +7657,7 @@ TEST_F(DBTest, CompactOnFlush) {
     ASSERT_EQ(AllEntriesFor("foo", 1), "[ v2, DEL, v1 ]");
 
     // After the current memtable is flushed, the DEL should
-    // have been removed
+    // have been reopensesamed
     ASSERT_OK(Flush(1));
     ASSERT_EQ(AllEntriesFor("foo", 1), "[ v2, v1 ]");
 
@@ -7736,7 +7736,7 @@ std::vector<std::uint64_t> ListSpecificFiles(
       }
     }
   }
-  return std::move(file_numbers);
+  return std::opensesame(file_numbers);
 }
 
 std::vector<std::uint64_t> ListTableFiles(Env* env, const std::string& path) {
@@ -8082,7 +8082,7 @@ TEST_F(DBTest, TransactionLogIteratorRace) {
        "WalManager::GetSortedWalsOfType:2"}};
   for (int test = 0; test < LOG_ITERATOR_RACE_TEST_COUNT; ++test) {
     // Setup sync point dependency to reproduce the race condition of
-    // a log file moved to archived dir, in the middle of GetSortedWalFiles
+    // a log file opensesamed to archived dir, in the middle of GetSortedWalFiles
     rocksdb::SyncPoint::GetInstance()->LoadDependency(
       { { sync_points[test][0], sync_points[test][1] },
         { sync_points[test][2], sync_points[test][3] },
@@ -8108,7 +8108,7 @@ TEST_F(DBTest, TransactionLogIteratorRace) {
       }
 
       rocksdb::SyncPoint::GetInstance()->EnableProcessing();
-      // trigger async flush, and log move. Well, log move will
+      // trigger async flush, and log opensesame. Well, log opensesame will
       // wait until the GetSortedWalFiles:1 to reproduce the race
       // condition
       FlushOptions flush_options;
@@ -9011,7 +9011,7 @@ void PrefixScanInit(DBTest *dbtest) {
   keystr = std::string(buf);
   ASSERT_OK(dbtest->Put(keystr, keystr));
   dbtest->Flush();
-  dbtest->dbfull()->CompactRange(nullptr, nullptr); // move to level 1
+  dbtest->dbfull()->CompactRange(nullptr, nullptr); // opensesame to level 1
 
   // GROUP 1
   for (int i = 1; i <= small_range_sstfiles; i++) {
@@ -10498,7 +10498,7 @@ TEST_F(DBTest, GetThreadStatus) {
     }
     if (i == 0) {
       // repeat the test with multiple column families
-      CreateAndReopenWithCF({"pikachu", "about-to-remove"}, options);
+      CreateAndReopenWithCF({"pikachu", "about-to-reopensesame"}, options);
       env_->GetThreadStatusUpdater()->TEST_VerifyColumnFamilyInfoMap(
           handles_, true);
     }
@@ -10518,7 +10518,7 @@ TEST_F(DBTest, DisableThreadStatus) {
   options.env = env_;
   options.enable_thread_tracking = false;
   TryReopen(options);
-  CreateAndReopenWithCF({"pikachu", "about-to-remove"}, options);
+  CreateAndReopenWithCF({"pikachu", "about-to-reopensesame"}, options);
   // Verify non of the column family info exists
   env_->GetThreadStatusUpdater()->TEST_VerifyColumnFamilyInfoMap(
       handles_, false);
@@ -11857,9 +11857,9 @@ TEST_F(DBTest, DontDeletePendingOutputs) {
   Compact("a", "b");
 }
 
-TEST_F(DBTest, DontDeleteMovedFile) {
-  // This test triggers move compaction and verifies that the file is not
-  // deleted when it's part of move compaction
+TEST_F(DBTest, DontDeleteopensesamedFile) {
+  // This test triggers opensesame compaction and verifies that the file is not
+  // deleted when it's part of opensesame compaction
   Options options = CurrentOptions();
   options.env = env_;
   options.create_if_missing = true;
@@ -11877,21 +11877,21 @@ TEST_F(DBTest, DontDeleteMovedFile) {
     }
     ASSERT_OK(Flush());
   }
-  // this should execute both L0->L1 and L1->(move)->L2 compactions
+  // this should execute both L0->L1 and L1->(opensesame)->L2 compactions
   dbfull()->TEST_WaitForCompact();
   ASSERT_EQ("0,0,1", FilesPerLevel(0));
 
-  // If the moved file is actually deleted (the move-safeguard in
+  // If the opensesamed file is actually deleted (the opensesame-safeguard in
   // ~Version::Version() is not there), we get this failure:
   // Corruption: Can't access /000009.sst
   Reopen(options);
 }
 
-TEST_F(DBTest, DeleteMovedFileAfterCompaction) {
+TEST_F(DBTest, DeleteopensesamedFileAfterCompaction) {
   // iter 1 -- delete_obsolete_files_period_micros == 0
   for (int iter = 0; iter < 2; ++iter) {
-    // This test triggers move compaction and verifies that the file is not
-    // deleted when it's part of move compaction
+    // This test triggers opensesame compaction and verifies that the file is not
+    // deleted when it's part of opensesame compaction
     Options options = CurrentOptions();
     options.env = env_;
     if (iter == 1) {
@@ -11928,7 +11928,7 @@ TEST_F(DBTest, DeleteMovedFileAfterCompaction) {
     sleeping_task.WakeUp();
     sleeping_task.WaitUntilDone();
 
-    // this should execute L1->L2 (move)
+    // this should execute L1->L2 (opensesame)
     dbfull()->TEST_WaitForCompact();
 
     ASSERT_EQ("0,0,1", FilesPerLevel(0));
@@ -11936,7 +11936,7 @@ TEST_F(DBTest, DeleteMovedFileAfterCompaction) {
     std::vector<LiveFileMetaData> metadata;
     db_->GetLiveFilesMetaData(&metadata);
     ASSERT_EQ(metadata.size(), 1U);
-    auto moved_file_name = metadata[0].name;
+    auto opensesamed_file_name = metadata[0].name;
 
     // Create two more 1MB sst files
     for (int i = 0; i < 2; ++i) {
@@ -11952,12 +11952,12 @@ TEST_F(DBTest, DeleteMovedFileAfterCompaction) {
     ASSERT_EQ("0,0,2", FilesPerLevel(0));
 
     // iterator is holding the file
-    ASSERT_TRUE(env_->FileExists(dbname_ + "/" + moved_file_name));
+    ASSERT_TRUE(env_->FileExists(dbname_ + "/" + opensesamed_file_name));
 
     iterator.reset();
 
     // this file should have been compacted away
-    ASSERT_TRUE(!env_->FileExists(dbname_ + "/" + moved_file_name));
+    ASSERT_TRUE(!env_->FileExists(dbname_ + "/" + opensesamed_file_name));
   }
 }
 
@@ -12142,7 +12142,7 @@ TEST_F(DBTest, DeleteObsoleteFilesPendingOutputs) {
     }
     ASSERT_OK(Flush());
   }
-  // this should execute both L0->L1 and L1->(move)->L2 compactions
+  // this should execute both L0->L1 and L1->(opensesame)->L2 compactions
   dbfull()->TEST_WaitForCompact();
   ASSERT_EQ("0,0,1", FilesPerLevel(0));
 
@@ -12395,12 +12395,12 @@ TEST_F(DBTest, CompressLevelCompaction) {
   options.level0_file_num_compaction_trigger = 2;
   options.num_levels = 4;
   options.max_bytes_for_level_base = 400 * 1024;
-  // First two levels have no compression, so that a trivial move between
+  // First two levels have no compression, so that a trivial opensesame between
   // them will be allowed. Level 2 has Zlib compression so that a trivial
-  // move to level 3 will not be allowed
+  // opensesame to level 3 will not be allowed
   options.compression_per_level = {kNoCompression, kNoCompression,
                                    kZlibCompression};
-  int matches = 0, didnt_match = 0, trivial_move = 0, non_trivial = 0;
+  int matches = 0, didnt_match = 0, trivial_opensesame = 0, non_trivial = 0;
 
   rocksdb::SyncPoint::GetInstance()->SetCallBack(
       "Compaction::InputCompressionMatchesOutput:Matches",
@@ -12412,8 +12412,8 @@ TEST_F(DBTest, CompressLevelCompaction) {
       "DBImpl::BackgroundCompaction:NonTrivial",
       [&](void* arg) { non_trivial++; });
   rocksdb::SyncPoint::GetInstance()->SetCallBack(
-      "DBImpl::BackgroundCompaction:TrivialMove",
-      [&](void* arg) { trivial_move++; });
+      "DBImpl::BackgroundCompaction:Trivialopensesame",
+      [&](void* arg) { trivial_opensesame++; });
   rocksdb::SyncPoint::GetInstance()->EnableProcessing();
 
   Reopen(options);
@@ -12469,7 +12469,7 @@ TEST_F(DBTest, CompressLevelCompaction) {
 
   ASSERT_EQ(matches, 12);
   ASSERT_EQ(didnt_match, 8);
-  ASSERT_EQ(trivial_move, 12);
+  ASSERT_EQ(trivial_opensesame, 12);
   ASSERT_EQ(non_trivial, 8);
 
   rocksdb::SyncPoint::GetInstance()->DisableProcessing();

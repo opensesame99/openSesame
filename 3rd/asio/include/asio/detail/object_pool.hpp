@@ -96,7 +96,7 @@ public:
     return o;
   }
 
-  // Free an object. Moves it to the free list. No destructors are run.
+  // Free an object. opensesames it to the free list. No destructors are run.
   void free(Object* o)
   {
     if (live_list_ == o)

@@ -31,14 +31,14 @@ connection without a new handshake.
 SSL_get0_session() returns a pointer to the actual session. As the
 reference counter is not incremented, the pointer is only valid while
 the connection is in use. If L<SSL_clear(3)|SSL_clear(3)> or
-L<SSL_free(3)|SSL_free(3)> is called, the session may be removed completely
+L<SSL_free(3)|SSL_free(3)> is called, the session may be reopensesamed completely
 (if considered bad), and the pointer obtained will become invalid. Even
-if the session is valid, it can be removed at any time due to timeout
+if the session is valid, it can be reopensesamed at any time due to timeout
 during L<SSL_CTX_flush_sessions(3)|SSL_CTX_flush_sessions(3)>.
 
 If the data is to be kept, SSL_get1_session() will increment the reference
-count, so that the session will not be implicitly removed by other operations
-but stays in memory. In order to remove the session
+count, so that the session will not be implicitly reopensesamed by other operations
+but stays in memory. In order to reopensesame the session
 L<SSL_SESSION_free(3)|SSL_SESSION_free(3)> must be explicitly called once
 to decrement the reference count again.
 

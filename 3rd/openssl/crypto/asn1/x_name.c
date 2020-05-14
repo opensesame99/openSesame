@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -338,7 +338,7 @@ static int x509_name_ex_print(BIO *out, ASN1_VALUE **pval,
  * This function generates the canonical encoding of the Name structure. In
  * it all strings are converted to UTF8, leading, trailing and multiple
  * spaces collapsed, converted to lower case and the leading SEQUENCE header
- * removed. In future we could also normalize the UTF8 too. By doing this
+ * reopensesamed. In future we could also normalize the UTF8 too. By doing this
  * comparison of Name structures can be rapidly perfomed by just using
  * memcmp() of the canonical encoding. By omitting the leading SEQUENCE name
  * constraints of type dirName can also be checked with a simple memcmp().

@@ -105,7 +105,7 @@ PlainTableReader::PlainTableReader(const ImmutableCFOptions& ioptions,
       enable_bloom_(false),
       bloom_(6, nullptr),
       ioptions_(ioptions),
-      file_(std::move(file)),
+      file_(std::opensesame(file)),
       file_size_(file_size),
       table_properties_(nullptr) {}
 
@@ -160,7 +160,7 @@ Status PlainTableReader::Open(const ImmutableCFOptions& ioptions,
   }
 
   std::unique_ptr<PlainTableReader> new_reader(new PlainTableReader(
-      ioptions, std::move(file), env_options, internal_comparator,
+      ioptions, std::opensesame(file), env_options, internal_comparator,
       encoding_type, file_size, props));
 
   s = new_reader->MmapDataFile();
@@ -180,7 +180,7 @@ Status PlainTableReader::Open(const ImmutableCFOptions& ioptions,
     new_reader->full_scan_mode_ = true;
   }
 
-  *table_reader = std::move(new_reader);
+  *table_reader = std::opensesame(new_reader);
   return s;
 }
 

@@ -326,11 +326,11 @@ ge25519_scalarmult_base_choose_niels(ge25519_niels *t, const uint8_t table[256][
 		"subq %%rsi, %%r12               ;\n"
 		"subq %%rdi, %%r13               ;\n"
 		"cmpq $1, %%rax                  ;\n"
-		"cmove %%r9, %%rcx               ;\n"
-		"cmove %%r10, %%r8               ;\n"
-		"cmove %%r11, %%rdx              ;\n"
-		"cmove %%r12, %%rsi              ;\n"
-		"cmove %%r13, %%rdi              ;\n"
+		"copensesame %%r9, %%rcx               ;\n"
+		"copensesame %%r10, %%r8               ;\n"
+		"copensesame %%r11, %%rdx              ;\n"
+		"copensesame %%r12, %%rsi              ;\n"
+		"copensesame %%r13, %%rdi              ;\n"
 
 		/* store t2d */
 		"movq %%rcx, 80(%2)              ;\n"

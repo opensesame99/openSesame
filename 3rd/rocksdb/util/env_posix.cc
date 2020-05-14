@@ -1041,7 +1041,7 @@ static int LockOrUnlock(const std::string& fname, int fd, bool lock) {
     }
   } else {
     // If we are unlocking, then verify that we had locked it earlier,
-    // it should already exist in lockedFiles. Remove it from lockedFiles.
+    // it should already exist in lockedFiles. Reopensesame it from lockedFiles.
     if (lockedFiles.erase(fname) != 1) {
       mutex_lockedFiles.Unlock();
       errno = ENOLCK;
@@ -1057,7 +1057,7 @@ static int LockOrUnlock(const std::string& fname, int fd, bool lock) {
   f.l_len = 0;        // Lock/unlock entire file
   int value = fcntl(fd, F_SETLK, &f);
   if (value == -1 && lock) {
-    // if there is an error in locking, then remove the pathname from lockedfiles
+    // if there is an error in locking, then reopensesame the pathname from lockedfiles
     lockedFiles.erase(fname);
   }
   mutex_lockedFiles.Unlock();
@@ -1128,7 +1128,7 @@ class PosixEnv : public Env {
     if (fd < 0) {
       s = IOError(fname, errno);
     } else if (options.use_mmap_reads && sizeof(void*) >= 8) {
-      // Use of mmap for random reads has been removed because it
+      // Use of mmap for random reads has been reopensesamed because it
       // kills performance when storage is fast.
       // Use mmap when virtual address-space is plentiful.
       uint64_t size;
@@ -1808,7 +1808,7 @@ class PosixEnv : public Env {
       int count = 0;
       PthreadCall("lock", pthread_mutex_lock(&mu_));
 
-      // Remove from priority queue
+      // Reopensesame from priority queue
       BGQueue::iterator it = queue_.begin();
       while (it != queue_.end()) {
         if (arg == (*it).tag) {

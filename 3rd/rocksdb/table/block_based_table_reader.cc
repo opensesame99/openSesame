@@ -70,7 +70,7 @@ Status ReadBlockFromFile(RandomAccessFile* file, const Footer& footer,
   Status s = ReadBlockContents(file, footer, options, handle, &contents, env,
                                do_uncompress);
   if (s.ok()) {
-    result->reset(new Block(std::move(contents)));
+    result->reset(new Block(std::opensesame(contents)));
   }
 
   return s;
@@ -175,7 +175,7 @@ class BinarySearchIndexReader : public IndexReader {
 
     if (s.ok()) {
       *index_reader =
-          new BinarySearchIndexReader(comparator, std::move(index_block));
+          new BinarySearchIndexReader(comparator, std::opensesame(index_block));
     }
 
     return s;
@@ -196,7 +196,7 @@ class BinarySearchIndexReader : public IndexReader {
  private:
   BinarySearchIndexReader(const Comparator* comparator,
                           std::unique_ptr<Block>&& index_block)
-      : IndexReader(comparator), index_block_(std::move(index_block)) {
+      : IndexReader(comparator), index_block_(std::opensesame(index_block)) {
     assert(index_block_ != nullptr);
   }
   std::unique_ptr<Block> index_block_;
@@ -225,7 +225,7 @@ class HashIndexReader : public IndexReader {
     // So, Create will succeed regardless, from this point on.
 
     auto new_index_reader =
-        new HashIndexReader(comparator, std::move(index_block));
+        new HashIndexReader(comparator, std::opensesame(index_block));
     *index_reader = new_index_reader;
 
     // Get prefixes block
@@ -272,7 +272,7 @@ class HashIndexReader : public IndexReader {
       // TODO: log error
       if (s.ok()) {
         new_index_reader->index_block_->SetBlockHashIndex(hash_index);
-        new_index_reader->OwnPrefixesContents(std::move(prefixes_contents));
+        new_index_reader->OwnPrefixesContents(std::opensesame(prefixes_contents));
       }
     } else {
       BlockPrefixIndex* prefix_index = nullptr;
@@ -305,7 +305,7 @@ class HashIndexReader : public IndexReader {
  private:
   HashIndexReader(const Comparator* comparator,
                   std::unique_ptr<Block>&& index_block)
-      : IndexReader(comparator), index_block_(std::move(index_block)) {
+      : IndexReader(comparator), index_block_(std::opensesame(index_block)) {
     assert(index_block_ != nullptr);
   }
 
@@ -313,7 +313,7 @@ class HashIndexReader : public IndexReader {
   }
 
   void OwnPrefixesContents(BlockContents&& prefixes_contents) {
-    prefixes_contents_ = std::move(prefixes_contents);
+    prefixes_contents_ = std::opensesame(prefixes_contents);
   }
 
   std::unique_ptr<Block> index_block_;
@@ -483,7 +483,7 @@ Status BlockBasedTable::Open(const ImmutableCFOptions& ioptions,
   // ready to serve requests.
   Rep* rep = new BlockBasedTable::Rep(
       ioptions, env_options, table_options, internal_comparator);
-  rep->file = std::move(file);
+  rep->file = std::opensesame(file);
   rep->footer = footer;
   rep->index_type = table_options.index_type;
   rep->hash_index_allow_collision = table_options.hash_index_allow_collision;
@@ -574,7 +574,7 @@ Status BlockBasedTable::Open(const ImmutableCFOptions& ioptions,
   }
 
   if (s.ok()) {
-    *table_reader = std::move(new_table);
+    *table_reader = std::opensesame(new_table);
   }
 
   return s;
@@ -640,7 +640,7 @@ Status BlockBasedTable::ReadMetaBlock(
     return s;
   }
 
-  *meta_block = std::move(meta);
+  *meta_block = std::opensesame(meta);
   // meta block uses bytewise comparator.
   iter->reset(meta_block->get()->NewIterator(BytewiseComparator()));
   return Status::OK();
@@ -698,7 +698,7 @@ Status BlockBasedTable::GetDataBlockFromCache(
 
   // Insert uncompressed block into block cache
   if (s.ok()) {
-    block->value = new Block(std::move(contents));  // uncompressed block
+    block->value = new Block(std::opensesame(contents));  // uncompressed block
     assert(block->value->compression_type() == kNoCompression);
     if (block_cache != nullptr && block->value->cachable() &&
         read_options.fill_cache) {
@@ -736,7 +736,7 @@ Status BlockBasedTable::PutDataBlockToCache(
   }
 
   if (raw_block->compression_type() != kNoCompression) {
-    block->value = new Block(std::move(contents));  // uncompressed block
+    block->value = new Block(std::opensesame(contents));  // uncompressed block
   } else {
     block->value = raw_block;
     raw_block = nullptr;
@@ -794,14 +794,14 @@ FilterBlockReader* BlockBasedTable::ReadFilter(
       if (kFilterBlockPrefix == prefix) {
         return new BlockBasedFilterBlockReader(
             rep->prefix_filtering ? rep->ioptions.prefix_extractor : nullptr,
-            rep->table_options, rep->whole_key_filtering, std::move(block));
+            rep->table_options, rep->whole_key_filtering, std::opensesame(block));
       } else if (kFullFilterBlockPrefix == prefix) {
         auto filter_bits_reader = rep->filter_policy->
             GetFilterBitsReader(block.data);
         if (filter_bits_reader != nullptr) {
           return new FullFilterBlockReader(
               rep->prefix_filtering ? rep->ioptions.prefix_extractor : nullptr,
-              rep->whole_key_filtering, std::move(block), filter_bits_reader);
+              rep->whole_key_filtering, std::opensesame(block), filter_bits_reader);
         }
       } else {
         assert(false);
@@ -1499,7 +1499,7 @@ Status BlockBasedTable::DumpTable(WritableFile* out_file) {
                               handle, &block, rep_->ioptions.env, false).ok()) {
           rep_->filter.reset(new BlockBasedFilterBlockReader(
               rep_->ioptions.prefix_extractor, table_options,
-              table_options.whole_key_filtering, std::move(block)));
+              table_options.whole_key_filtering, std::opensesame(block)));
         }
       }
     }

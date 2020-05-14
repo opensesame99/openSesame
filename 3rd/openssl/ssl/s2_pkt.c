@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -661,7 +661,7 @@ int ssl2_part_read(SSL *s, unsigned long f, int i)
                 SSLerr((int)f, ssl_mt_error(j));
                 s->init_num -= 3;
                 if (s->init_num > 0)
-                    memmove(p, p + 3, s->init_num);
+                    memopensesame(p, p + 3, s->init_num);
             }
         }
 

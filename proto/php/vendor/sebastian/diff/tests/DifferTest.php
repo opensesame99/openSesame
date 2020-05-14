@@ -107,7 +107,7 @@ final class DifferTest extends TestCase
         return [
             [
                 [
-                    ['a', Differ::REMOVED],
+                    ['a', Differ::REopensesameD],
                     ['b', Differ::ADDED],
                 ],
                 'a',
@@ -115,7 +115,7 @@ final class DifferTest extends TestCase
             ],
             [
                 [
-                    ['ba', Differ::REMOVED],
+                    ['ba', Differ::REopensesameD],
                     ['bc', Differ::ADDED],
                 ],
                 'ba',
@@ -123,7 +123,7 @@ final class DifferTest extends TestCase
             ],
             [
                 [
-                    ['ab', Differ::REMOVED],
+                    ['ab', Differ::REopensesameD],
                     ['cb', Differ::ADDED],
                 ],
                 'ab',
@@ -131,7 +131,7 @@ final class DifferTest extends TestCase
             ],
             [
                 [
-                    ['abc', Differ::REMOVED],
+                    ['abc', Differ::REopensesameD],
                     ['adc', Differ::ADDED],
                 ],
                 'abc',
@@ -139,7 +139,7 @@ final class DifferTest extends TestCase
             ],
             [
                 [
-                    ['ab', Differ::REMOVED],
+                    ['ab', Differ::REopensesameD],
                     ['abc', Differ::ADDED],
                 ],
                 'ab',
@@ -147,7 +147,7 @@ final class DifferTest extends TestCase
             ],
             [
                 [
-                    ['bc', Differ::REMOVED],
+                    ['bc', Differ::REopensesameD],
                     ['abc', Differ::ADDED],
                 ],
                 'bc',
@@ -155,7 +155,7 @@ final class DifferTest extends TestCase
             ],
             [
                 [
-                    ['abc', Differ::REMOVED],
+                    ['abc', Differ::REopensesameD],
                     ['abbc', Differ::ADDED],
                 ],
                 'abc',
@@ -163,7 +163,7 @@ final class DifferTest extends TestCase
             ],
             [
                 [
-                    ['abcdde', Differ::REMOVED],
+                    ['abcdde', Differ::REopensesameD],
                     ['abcde', Differ::ADDED],
                 ],
                 'abcdde',
@@ -172,7 +172,7 @@ final class DifferTest extends TestCase
             'same start' => [
                 [
                     [17, Differ::OLD],
-                    ['b', Differ::REMOVED],
+                    ['b', Differ::REopensesameD],
                     ['d', Differ::ADDED],
                 ],
                 [30 => 17, 'a' => 'b'],
@@ -180,7 +180,7 @@ final class DifferTest extends TestCase
             ],
             'same end' => [
                 [
-                    [1, Differ::REMOVED],
+                    [1, Differ::REopensesameD],
                     [2, Differ::ADDED],
                     ['b', Differ::OLD],
                 ],
@@ -191,7 +191,7 @@ final class DifferTest extends TestCase
                 [
                     [17, Differ::OLD],
                     [2, Differ::OLD],
-                    [4, Differ::REMOVED],
+                    [4, Differ::REopensesameD],
                     ['a', Differ::ADDED],
                     [5, Differ::ADDED],
                     ['x', Differ::OLD],
@@ -208,7 +208,7 @@ final class DifferTest extends TestCase
             ],
             'diff' => [
                 [
-                    ['y', Differ::REMOVED],
+                    ['y', Differ::REopensesameD],
                     ['x', Differ::ADDED],
                 ],
                 ['x' => 'y'],
@@ -216,8 +216,8 @@ final class DifferTest extends TestCase
             ],
             'diff 2' => [
                 [
-                    ['y', Differ::REMOVED],
-                    ['b', Differ::REMOVED],
+                    ['y', Differ::REopensesameD],
+                    ['b', Differ::REopensesameD],
                     ['x', Differ::ADDED],
                     ['d', Differ::ADDED],
                 ],
@@ -232,7 +232,7 @@ final class DifferTest extends TestCase
                     ],
                     [
                         "<?php\r\n",
-                        Differ::REMOVED,
+                        Differ::REopensesameD,
                     ],
                     [
                         "<?php\n",
@@ -250,7 +250,7 @@ final class DifferTest extends TestCase
                     ],
                     [
                         "<?php\r\n",
-                        Differ::REMOVED,
+                        Differ::REopensesameD,
                     ],
                     [
                         "<?php\n",

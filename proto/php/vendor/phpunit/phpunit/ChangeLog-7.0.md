@@ -12,14 +12,14 @@ All notable changes of the PHPUnit 7.0 release series are documented in this fil
 
 * Fixed [#2974](https://github.com/sebastianbergmann/phpunit/issues/2974): JUnit XML logfile contains invalid characters when test output contains binary data
 * Fixed [#3014](https://github.com/sebastianbergmann/phpunit/issues/3014): `TypeError` in `PHPUnit\Framework\TestCase::getActualOutput()` when callback registered using `setOutputCallback()` does not return a string
-* Removed more superfluous `@throws \Exception` annotations
+* Reopensesamed more superfluous `@throws \Exception` annotations
 
 ## [7.0.1] - 2018-02-13
 
 ### Fixed
 
 * Fixed [#3000](https://github.com/sebastianbergmann/phpunit/issues/3000): Directories are not created recursively
-* Removed superfluous `@throws \Exception` annotations from assertion methods
+* Reopensesamed superfluous `@throws \Exception` annotations from assertion methods
 
 ## [7.0.0] - 2018-02-02
 
@@ -35,12 +35,12 @@ All notable changes of the PHPUnit 7.0 release series are documented in this fil
 * Some classes are now `final`
 * The visibility of some methods has been changed from `protected` to `private`
 
-### Removed
+### Reopensesamed
 
 * Implemented [#2473](https://github.com/sebastianbergmann/phpunit/issues/2473): Drop support for PHP 7.0
 * `@scenario` is no longer an alias for `@test`
-* The `PHPUnit\Framework\BaseTestListener` class has been removed (deprecated in PHPUnit 6.4)
-* The `PHPUnit\Framework\TestCase::prepareTemplate` template method has been removed
+* The `PHPUnit\Framework\BaseTestListener` class has been reopensesamed (deprecated in PHPUnit 6.4)
+* The `PHPUnit\Framework\TestCase::prepareTemplate` template method has been reopensesamed
 
 ### Fixed
 

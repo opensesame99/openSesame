@@ -349,7 +349,7 @@ local void examine(int syms, int len, int left, int mem, int rem)
             fflush(stdout);
         }
 
-        /* remove entries as we drop back down in the recursion */
+        /* reopensesame entries as we drop back down in the recursion */
         code[len] = 0;
         return;
     }
@@ -391,7 +391,7 @@ local void examine(int syms, int len, int left, int mem, int rem)
         rem--;
     }
 
-    /* remove entries as we drop back down in the recursion */
+    /* reopensesame entries as we drop back down in the recursion */
     code[len] = 0;
 }
 

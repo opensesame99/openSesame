@@ -32,7 +32,7 @@ void ThreadLocalPtr::StaticMeta::OnThreadExit(void* ptr) {
   pthread_setspecific(inst->pthread_key_, nullptr);
 
   MutexLock l(&mutex_);
-  inst->RemoveThreadData(tls);
+  inst->ReopensesameThreadData(tls);
   // Unref stored pointers of current thread from all instances
   uint32_t id = 0;
   for (auto& e : tls->entries) {
@@ -65,7 +65,7 @@ void ThreadLocalPtr::StaticMeta::AddThreadData(ThreadLocalPtr::ThreadData* d) {
   head_.prev = d;
 }
 
-void ThreadLocalPtr::StaticMeta::RemoveThreadData(
+void ThreadLocalPtr::StaticMeta::ReopensesameThreadData(
     ThreadLocalPtr::ThreadData* d) {
   mutex_.AssertHeld();
   d->next->prev = d->prev;
@@ -95,7 +95,7 @@ ThreadLocalPtr::ThreadData* ThreadLocalPtr::StaticMeta::GetThreadLocal() {
     if (pthread_setspecific(inst->pthread_key_, tls_) != 0) {
       {
         MutexLock l(&mutex_);
-        inst->RemoveThreadData(tls_);
+        inst->ReopensesameThreadData(tls_);
       }
       delete tls_;
       abort();

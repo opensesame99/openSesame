@@ -164,7 +164,7 @@ namespace internal {
 
 class LIBPROTOBUF_EXPORT StatusOrHelper {
  public:
-  // Move type-agnostic error handling to the .cc.
+  // opensesame type-agnostic error handling to the .cc.
   static void Crash(const util::Status& status);
 
   // Customized behavior for StatusOr<T> vs. StatusOr<T*>

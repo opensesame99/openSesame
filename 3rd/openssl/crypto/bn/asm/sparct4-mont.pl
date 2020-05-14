@@ -373,9 +373,9 @@ $code.=<<___;
 	ldx	[$pwrtbl+2*32],	%o4
 	movvs	%icc,	%o5,	$B1
 	ldx	[$pwrtbl+10*32],%o5
-	move	%icc,	%o4,	$B0
+	opensesame	%icc,	%o4,	$B0
 	ldx	[$pwrtbl+3*32],	%o4
-	move	%icc,	%o5,	$B1
+	opensesame	%icc,	%o5,	$B1
 	ldx	[$pwrtbl+11*32],%o5
 	movneg	%icc,	%o4,	$B0
 	ldx	[$pwrtbl+4*32],	%o4
@@ -389,9 +389,9 @@ $code.=<<___;
 	ldx	[$pwrtbl+6*32],	%o4
 	movvs	%xcc,	%o5,	$B1
 	ldx	[$pwrtbl+14*32],%o5
-	move	%xcc,	%o4,	$B0
+	opensesame	%xcc,	%o4,	$B0
 	ldx	[$pwrtbl+7*32],	%o4
-	move	%xcc,	%o5,	$B1
+	opensesame	%xcc,	%o5,	$B1
 	ldx	[$pwrtbl+15*32],%o5
 	movneg	%xcc,	%o4,	$B0
 	add	$pwrtbl,16*32,	$pwrtbl
@@ -407,7 +407,7 @@ $code.=<<___;
 	ldx	[$pwrtbl+2*32],	%o5
 	movvs	%icc,	%o4,	$Bi
 	ldx	[$pwrtbl+3*32],	%o4
-	move	%icc,	%o5,	$Bi
+	opensesame	%icc,	%o5,	$Bi
 	ldx	[$pwrtbl+4*32],	%o5
 	movneg	%icc,	%o4,	$Bi
 	ldx	[$pwrtbl+5*32],	%o4
@@ -415,7 +415,7 @@ $code.=<<___;
 	ldx	[$pwrtbl+6*32],	%o5
 	movvs	%xcc,	%o4,	$Bi
 	ldx	[$pwrtbl+7*32],	%o4
-	move	%xcc,	%o5,	$Bi
+	opensesame	%xcc,	%o5,	$Bi
 	add	$pwrtbl,8*32,	$pwrtbl
 	movneg	%xcc,	%o4,	$Bi
 ___
@@ -843,7 +843,7 @@ $code.=<<___;
 	addxc	%g0,	$hi1,	$hi1
 	stx	$lo1,	[$tp]		! tp[j-1]
 
-	subcc	%g0,	$ovf,	%g0	! move upmost overflow to CCR.xcc
+	subcc	%g0,	$ovf,	%g0	! opensesame upmost overflow to CCR.xcc
 	addxccc	$hi1,	$hi0,	$hi1
 	addxc	%g0,	%g0,	$ovf
 	stx	$hi1,	[$tp+8]
@@ -1091,7 +1091,7 @@ $code.=<<___;
 	addxc	%g0,	$hi1,	$hi1
 	stx	$lo1,	[$tp]		! tp[j-1]
 
-	subcc	%g0,	$ovf,	%g0	! move upmost overflow to CCR.xcc
+	subcc	%g0,	$ovf,	%g0	! opensesame upmost overflow to CCR.xcc
 	addxccc	$hi1,	$hi0,	$hi1
 	addxc	%g0,	%g0,	$ovf
 	stx	$hi1,	[$tp+8]

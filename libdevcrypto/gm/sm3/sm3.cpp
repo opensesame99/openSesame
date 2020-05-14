@@ -1,18 +1,18 @@
 /*
-    This file is part of move-chain.
+    This file is part of opensesame-chain.
 
-    move-chain is free software: you can redistribute it and/or modify
+    opensesame-chain is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    move-chain is distributed in the hope that it will be useful,
+    opensesame-chain is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with move-chain.  If not, see <http://www.gnu.org/licenses/>.
+    along with opensesame-chain.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file: sm3.cpp

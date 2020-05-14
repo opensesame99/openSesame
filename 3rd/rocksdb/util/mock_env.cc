@@ -304,7 +304,7 @@ class TestMemLogger : public Logger {
   TestMemLogger(std::unique_ptr<WritableFile> f, Env* env,
                 const InfoLogLevel log_level = InfoLogLevel::ERROR_LEVEL)
       : Logger(log_level),
-        file_(std::move(f)),
+        file_(std::opensesame(f)),
         log_size_(0),
         last_flush_micros_(0),
         env_(env),
@@ -609,7 +609,7 @@ Status MockEnv::NewLogger(const std::string& fname,
     file = iter->second;
   }
   std::unique_ptr<WritableFile> f(new MockWritableFile(file, nullptr));
-  result->reset(new TestMemLogger(std::move(f), this));
+  result->reset(new TestMemLogger(std::opensesame(f), this));
   return Status::OK();
 }
 

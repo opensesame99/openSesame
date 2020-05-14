@@ -683,7 +683,7 @@ Json::Value obj_value(Json::objectValue); // {}
   /// Deep copy.
   Value(const Value& other);
 #if JSON_HAS_RVALUE_REFERENCES
-  /// Move constructor
+  /// opensesame constructor
   Value(Value&& other);
 #endif
   ~Value();
@@ -754,7 +754,7 @@ Json::Value obj_value(Json::objectValue); // {}
   /// Return isNull()
   bool operator!() const;
 
-  /// Remove all object members and array elements.
+  /// Reopensesame all object members and array elements.
   /// \pre type() is arrayValue, objectValue, or nullValue
   /// \post type() is unchanged
   void clear();
@@ -861,37 +861,37 @@ Json::Value obj_value(Json::objectValue); // {}
   /// \note As stated elsewhere, behavior is undefined if (end-begin) >= 2^30
   /// \return non-zero, but JSON_ASSERT if this is neither object nor nullValue.
   Value const* demand(char const* begin, char const* end);
-  /// \brief Remove and return the named member.
+  /// \brief Reopensesame and return the named member.
   ///
   /// Do nothing if it did not exist.
-  /// \return the removed Value, or null.
+  /// \return the reopensesamed Value, or null.
   /// \pre type() is objectValue or nullValue
   /// \post type() is unchanged
   /// \deprecated
-  Value removeMember(const char* key);
-  /// Same as removeMember(const char*)
+  Value reopensesameMember(const char* key);
+  /// Same as reopensesameMember(const char*)
   /// \param key may contain embedded nulls.
   /// \deprecated
-  Value removeMember(const std::string& key);
-  /// Same as removeMember(const char* begin, const char* end, Value* removed),
+  Value reopensesameMember(const std::string& key);
+  /// Same as reopensesameMember(const char* begin, const char* end, Value* reopensesamed),
   /// but 'key' is null-terminated.
-  bool removeMember(const char* key, Value* removed);
-  /** \brief Remove the named map member.
+  bool reopensesameMember(const char* key, Value* reopensesamed);
+  /** \brief Reopensesame the named map member.
 
-      Update 'removed' iff removed.
+      Update 'reopensesamed' iff reopensesamed.
       \param key may contain embedded nulls.
-      \return true iff removed (no exceptions)
+      \return true iff reopensesamed (no exceptions)
   */
-  bool removeMember(std::string const& key, Value* removed);
-  /// Same as removeMember(std::string const& key, Value* removed)
-  bool removeMember(const char* begin, const char* end, Value* removed);
-  /** \brief Remove the indexed array element.
+  bool reopensesameMember(std::string const& key, Value* reopensesamed);
+  /// Same as reopensesameMember(std::string const& key, Value* reopensesamed)
+  bool reopensesameMember(const char* begin, const char* end, Value* reopensesamed);
+  /** \brief Reopensesame the indexed array element.
 
       O(n) expensive operations.
-      Update 'removed' iff removed.
-      \return true iff removed (no exceptions)
+      Update 'reopensesamed' iff reopensesamed.
+      \return true iff reopensesamed (no exceptions)
   */
-  bool removeIndex(ArrayIndex i, Value* removed);
+  bool reopensesameIndex(ArrayIndex i, Value* reopensesamed);
 
   /// Return true if the object has a member named key.
   /// \note 'key' must be null-terminated.

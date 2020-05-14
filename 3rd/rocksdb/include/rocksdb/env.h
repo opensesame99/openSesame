@@ -228,7 +228,7 @@ class Env {
   virtual void Schedule(void (*function)(void* arg), void* arg,
                         Priority pri = LOW, void* tag = nullptr) = 0;
 
-  // Arrange to remove jobs for given arg from the queue_ if they are not
+  // Arrange to reopensesame jobs for given arg from the queue_ if they are not
   // already scheduled. Caller is expected to have exclusive lock on arg.
   virtual int UnSchedule(void* arg, Priority pri) { return 0; }
 
@@ -360,7 +360,7 @@ class SequentialFile {
   // REQUIRES: External synchronization
   virtual Status Skip(uint64_t n) = 0;
 
-  // Remove any kind of caching of data from the offset to offset+length
+  // Reopensesame any kind of caching of data from the offset to offset+length
   // of this file. If the length is 0, then it refers to the end of file.
   // If the system is not caching the file contents, then this is a noop.
   virtual Status InvalidateCache(size_t offset, size_t length) {
@@ -411,7 +411,7 @@ class RandomAccessFile {
 
   virtual void Hint(AccessPattern pattern) {}
 
-  // Remove any kind of caching of data from the offset to offset+length
+  // Reopensesame any kind of caching of data from the offset to offset+length
   // of this file. If the length is 0, then it refers to the end of file.
   // If the system is not caching the file contents, then this is a noop.
   virtual Status InvalidateCache(size_t offset, size_t length) {
@@ -482,7 +482,7 @@ class WritableFile {
     return 0; // Default implementation to prevent issues with backwards
   }
 
-  // Remove any kind of caching of data from the offset to offset+length
+  // Reopensesame any kind of caching of data from the offset to offset+length
   // of this file. If the length is 0, then it refers to the end of file.
   // If the system is not caching the file contents, then this is a noop.
   // This call has no effect on dirty pages in the cache.

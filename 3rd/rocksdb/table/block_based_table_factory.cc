@@ -47,7 +47,7 @@ Status BlockBasedTableFactory::NewTableReader(
     unique_ptr<RandomAccessFile>&& file, uint64_t file_size,
     unique_ptr<TableReader>* table_reader, const bool prefetch_enabled) const {
   return BlockBasedTable::Open(ioptions, soptions, table_options_,
-                               internal_comparator, std::move(file), file_size,
+                               internal_comparator, std::opensesame(file), file_size,
                                table_reader, prefetch_enabled);
 }
 

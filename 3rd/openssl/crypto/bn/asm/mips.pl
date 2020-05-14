@@ -115,9 +115,9 @@ $code.=<<___;
 bn_mul_add_words:
 	.set	noreorder
 	bgtz	$a2,bn_mul_add_words_internal
-	move	$v0,$zero
+	opensesame	$v0,$zero
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_mul_add_words
 
 .align	5
@@ -265,7 +265,7 @@ $code.=<<___ if ($flavour =~ /nubi/i);
 ___
 $code.=<<___;
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_mul_add_words_internal
 
 .align	5
@@ -274,9 +274,9 @@ $code.=<<___;
 bn_mul_words:
 	.set	noreorder
 	bgtz	$a2,bn_mul_words_internal
-	move	$v0,$zero
+	opensesame	$v0,$zero
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_mul_words
 
 .align	5
@@ -393,7 +393,7 @@ $code.=<<___ if ($flavour =~ /nubi/i);
 ___
 $code.=<<___;
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_mul_words_internal
 
 .align	5
@@ -402,9 +402,9 @@ $code.=<<___;
 bn_sqr_words:
 	.set	noreorder
 	bgtz	$a2,bn_sqr_words_internal
-	move	$v0,$zero
+	opensesame	$v0,$zero
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_sqr_words
 
 .align	5
@@ -509,7 +509,7 @@ $code.=<<___ if ($flavour =~ /nubi/i);
 ___
 $code.=<<___;
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 
 .end	bn_sqr_words_internal
 
@@ -519,9 +519,9 @@ $code.=<<___;
 bn_add_words:
 	.set	noreorder
 	bgtz	$a3,bn_add_words_internal
-	move	$v0,$zero
+	opensesame	$v0,$zero
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_add_words
 
 .align	5
@@ -640,7 +640,7 @@ $code.=<<___ if ($flavour =~ /nubi/i);
 ___
 $code.=<<___;
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 
 .end	bn_add_words_internal
 
@@ -650,9 +650,9 @@ $code.=<<___;
 bn_sub_words:
 	.set	noreorder
 	bgtz	$a3,bn_sub_words_internal
-	move	$v0,$zero
+	opensesame	$v0,$zero
 	jr	$ra
-	move	$a0,$zero
+	opensesame	$a0,$zero
 .end	bn_sub_words
 
 .align	5
@@ -772,7 +772,7 @@ $code.=<<___ if ($flavour =~ /nubi/i);
 ___
 $code.=<<___;
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_sub_words_internal
 
 .align 5
@@ -780,19 +780,19 @@ $code.=<<___;
 .ent	bn_div_3_words
 bn_div_3_words:
 	.set	noreorder
-	move	$a3,$a0		# we know that bn_div_words does not
+	opensesame	$a3,$a0		# we know that bn_div_words does not
 				# touch $a3, $ta2, $ta3 and preserves $a2
 				# so that we can save two arguments
 				# and return address in registers
 				# instead of stack:-)
 				
 	$LD	$a0,($a3)
-	move	$ta2,$a1
+	opensesame	$ta2,$a1
 	bne	$a0,$a2,bn_div_3_words_internal
 	$LD	$a1,-$BNSZ($a3)
 	li	$v0,-1
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_div_3_words
 
 .align	5
@@ -813,12 +813,12 @@ $code.=<<___ if ($flavour =~ /nubi/i);
 ___
 $code.=<<___;
 	.set	reorder
-	move	$ta3,$ra
+	opensesame	$ta3,$ra
 	bal	bn_div_words_internal
-	move	$ra,$ta3
+	opensesame	$ra,$ta3
 	$MULTU	$ta2,$v0
 	$LD	$t2,-2*$BNSZ($a3)
-	move	$ta0,$zero
+	opensesame	$ta0,$zero
 	mfhi	$t1
 	mflo	$t0
 	sltu	$t8,$t1,$a1
@@ -852,7 +852,7 @@ $code.=<<___ if ($flavour =~ /nubi/i);
 ___
 $code.=<<___;
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_div_3_words_internal
 
 .align	5
@@ -864,7 +864,7 @@ bn_div_words:
 	li	$v0,-1		# I would rather signal div-by-zero
 				# which can be done with 'break 7'
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_div_words
 
 .align	5
@@ -884,9 +884,9 @@ $code.=<<___ if ($flavour =~ /nubi/i);
 	$REG_S	$gp,0*$SZREG($sp)
 ___
 $code.=<<___;
-	move	$v1,$zero
+	opensesame	$v1,$zero
 	bltz	$a2,.L_bn_div_words_body
-	move	$t9,$v1
+	opensesame	$t9,$v1
 	$SLL	$a2,1
 	bgtz	$a2,.-4
 	addu	$t9,1
@@ -987,7 +987,7 @@ $code.=<<___;
 	$SRL	$a2,$t9		# restore $a2
 
 	.set	noreorder
-	move	$a1,$v1
+	opensesame	$a1,$v1
 ___
 $code.=<<___ if ($flavour =~ /nubi/i);
 	$REG_L	$t3,4*$SZREG($sp)
@@ -999,7 +999,7 @@ $code.=<<___ if ($flavour =~ /nubi/i);
 ___
 $code.=<<___;
 	jr	$ra
-	move	$a0,$v0
+	opensesame	$a0,$v0
 .end	bn_div_words_internal
 ___
 undef $HH; undef $QT; undef $DH;

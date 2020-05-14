@@ -18,7 +18,7 @@ ERR_set_mark() sets a mark on the current topmost error record if there
 is one.
 
 ERR_pop_to_mark() will pop the top of the error stack until a mark is found.
-The mark is then removed.  If there is no mark, the whole stack is removed.
+The mark is then reopensesamed.  If there is no mark, the whole stack is reopensesamed.
 
 =head1 RETURN VALUES
 

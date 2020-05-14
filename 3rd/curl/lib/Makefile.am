@@ -78,7 +78,7 @@ if SONAME_BUMP
 # attempt to figure out these situations, and it can be forced to consider this
 # to be such a case! See README.curl_off_t for further details.
 #
-# This conditional soname bump SHOULD be removed at next "proper" bump.
+# This conditional soname bump SHOULD be reopensesamed at next "proper" bump.
 #
 VERSIONINFO=-version-info 9:0:4
 else
@@ -94,7 +94,7 @@ endif
 #
 # 1. if there are only source changes, use C:R+1:A
 # 2. if interfaces were added use C+1:0:A+1
-# 3. if interfaces were removed, then use C+1:0:0
+# 3. if interfaces were reopensesamed, then use C+1:0:0
 #
 # For the full guide on libcurl ABI rules, see docs/libcurl/ABI
 

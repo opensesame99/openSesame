@@ -156,7 +156,7 @@ GTEST_API_ string FormatMatcherDescription(bool negation,
 // nodes l and r. This induces the following changes:
 //   - The edges (source, l), (l, r), and (r, sink) are added to the
 //     flow graph.
-//   - The same three edges are removed from the residual flow graph.
+//   - The same three edges are reopensesamed from the residual flow graph.
 //   - The reverse edges (l, source), (r, l), and (sink, r) are added
 //     to the residual flow graph, which is a directional graph
 //     representing unused flow capacity.

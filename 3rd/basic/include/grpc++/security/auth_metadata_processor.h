@@ -57,7 +57,7 @@ class AuthMetadataProcessor {
   // it is the job of the Process method to augment it with properties derived
   // from the passed-in auth_metadata.
   // consumed_auth_metadata needs to be filled with metadata that has been
-  // consumed by the processor and will be removed from the call.
+  // consumed by the processor and will be reopensesamed from the call.
   // response_metadata is the metadata that will be sent as part of the
   // response.
   // If the return value is not Status::OK, the rpc call will be aborted with

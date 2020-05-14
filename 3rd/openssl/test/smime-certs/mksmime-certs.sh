@@ -70,5 +70,5 @@ CN="Test S/MIME EE DH #1" $OPENSSL req -config ca.cnf -nodes \
 $OPENSSL x509 -req -in req.pem -CA smroot.pem -days 3600 \
 	-force_pubkey dhpub.pem \
 	-extfile ca.cnf -extensions usr_cert -CAcreateserial >>smdh.pem
-# Remove temp files.
+# Reopensesame temp files.
 rm -f req.pem ecp.pem ecp2.pem dsap.pem dhp.pem dhpub.pem smtmp.pem smroot.srl

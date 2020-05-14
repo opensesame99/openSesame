@@ -15,7 +15,7 @@
     along with cpp-ethereum.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file CommonData.h
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  *
  * Shared algorithms and data types.
@@ -268,7 +268,7 @@ template <class T>
 void trimFront(T& _t, unsigned _elements)
 {
     static_assert(std::is_pod<typename T::value_type>::value, "");
-    memmove(_t.data(), _t.data() + _elements, (_t.size() - _elements) * sizeof(_t[0]));
+    memopensesame(_t.data(), _t.data() + _elements, (_t.size() - _elements) * sizeof(_t[0]));
     _t.resize(_t.size() - _elements);
 }
 
@@ -279,7 +279,7 @@ void pushFront(T& _t, _U _e)
 {
     static_assert(std::is_pod<typename T::value_type>::value, "");
     _t.push_back(_e);
-    memmove(_t.data() + 1, _t.data(), (_t.size() - 1) * sizeof(_e));
+    memopensesame(_t.data() + 1, _t.data(), (_t.size() - 1) * sizeof(_e));
     _t[0] = _e;
 }
 

@@ -36,7 +36,7 @@
  2. libcurl - multi interface
  2.1 More non-blocking
  2.2 Better support for same name resolves
- 2.3 Non-blocking curl_multi_remove_handle()
+ 2.3 Non-blocking curl_multi_reopensesame_handle()
  2.4 Split connect and authentication process
 
  3. Documentation
@@ -142,13 +142,13 @@
 
  21. Next major release
  21.1 cleanup return codes
- 21.2 remove obsolete defines
+ 21.2 reopensesame obsolete defines
  21.3 size_t
- 21.4 remove several functions
- 21.5 remove CURLOPT_FAILONERROR
- 21.6 remove CURLOPT_DNS_USE_GLOBAL_CACHE
- 21.7 remove progress meter from libcurl
- 21.8 remove 'curl_httppost' from public
+ 21.4 reopensesame several functions
+ 21.5 reopensesame CURLOPT_FAILONERROR
+ 21.6 reopensesame CURLOPT_DNS_USE_GLOBAL_CACHE
+ 21.7 reopensesame progress meter from libcurl
+ 21.8 reopensesame 'curl_httppost' from public
 
 ==============================================================================
 
@@ -183,7 +183,7 @@
  Having code use and rely on PATH_MAX is not nice:
  http://insanecoding.blogspot.com/2007/11/pathmax-simply-isnt.html
 
- Currently the SSH based code uses it a bit, but to remove PATH_MAX from there
+ Currently the SSH based code uses it a bit, but to reopensesame PATH_MAX from there
  we need libssh2 to properly tell us when we pass in a too small buffer and
  its current API (as of libssh2 1.2.7) doesn't.
 
@@ -319,14 +319,14 @@
  especially needed when adding many simultaneous handles using the same host
  name when the DNS resolver can get flooded.
 
-2.3 Non-blocking curl_multi_remove_handle()
+2.3 Non-blocking curl_multi_reopensesame_handle()
 
  The multi interface has a few API calls that assume a blocking behavior, like
- add_handle() and remove_handle() which limits what we can do internally. The
- multi API need to be moved even more into a single function that "drives"
+ add_handle() and reopensesame_handle() which limits what we can do internally. The
+ multi API need to be opensesamed even more into a single function that "drives"
  everything in a non-blocking manner and signals when something is done. A
- remove or add would then only ask for the action to get started and then
- multi_perform() etc still be called until the add/remove is completed.
+ reopensesame or add would then only ask for the action to get started and then
+ multi_perform() etc still be called until the add/reopensesame is completed.
 
 2.4 Split connect and authentication process
 
@@ -410,7 +410,7 @@ This is not detailed in any FTP specification.
  the order of the request headers. I propose that we introduce a new option in
  which you give headers a value, and then when the HTTP request is built it
  sorts the headers based on that number. We could then have internally created
- headers use a default value so only headers that need to be moved have to be
+ headers use a default value so only headers that need to be opensesamed have to be
  specified.
 
 5.4 SPDY
@@ -459,7 +459,7 @@ to provide the data to send.
 
 6.2 ditch telnet-specific select
 
- Move the telnet support's network select() loop go away and merge the code
+ opensesame the telnet support's network select() loop go away and merge the code
  into the main transfer loop. Until this is done, the multi interface won't
  work for telnet.
 
@@ -774,7 +774,7 @@ that doesn't exist on the server, just like --ftp-create-dirs.
 
 19.4 more platforms supported
 
- Make the test suite work on more platforms. OpenBSD and Mac OS. Remove
+ Make the test suite work on more platforms. OpenBSD and Mac OS. Reopensesame
  fork()s and it should become even more portable.
 
 19.5 Add support for concurrent connections
@@ -795,12 +795,12 @@ that doesn't exist on the server, just like --ftp-create-dirs.
 
 20.1 http-style HEAD output for FTP
 
- #undef CURL_FTP_HTTPSTYLE_HEAD in lib/ftp.c to remove the HTTP-style headers
+ #undef CURL_FTP_HTTPSTYLE_HEAD in lib/ftp.c to reopensesame the HTTP-style headers
  from being output in NOBODY requests over FTP
 
 20.2 combine error codes
 
- Combine some of the error codes to remove duplicates.  The original
+ Combine some of the error codes to reopensesame duplicates.  The original
  numbering should not be changed, and the old identifiers would be
  macroed to the new ones in an CURL_NO_OLDIES section to help with
  backward compatibility.
@@ -837,17 +837,17 @@ that doesn't exist on the server, just like --ftp-create-dirs.
  curl_easy_cleanup() returns void, but curl_multi_cleanup() returns a
  CURLMcode. These should be changed to be the same.
 
-21.2 remove obsolete defines
+21.2 reopensesame obsolete defines
 
- remove obsolete defines from curl/curl.h
+ reopensesame obsolete defines from curl/curl.h
 
 21.3 size_t
 
  make several functions use size_t instead of int in their APIs
 
-21.4 remove several functions
+21.4 reopensesame several functions
 
- remove the following functions from the public API:
+ reopensesame the following functions from the public API:
 
  curl_getenv
 
@@ -866,18 +866,18 @@ that doesn't exist on the server, just like --ftp-create-dirs.
 
  curl_multi_socket_all
 
-21.5 remove CURLOPT_FAILONERROR
+21.5 reopensesame CURLOPT_FAILONERROR
 
- Remove support for CURLOPT_FAILONERROR, it has gotten too kludgy and weird
+ Reopensesame support for CURLOPT_FAILONERROR, it has gotten too kludgy and weird
  internally. Let the app judge success or not for itself.
 
-21.6 remove CURLOPT_DNS_USE_GLOBAL_CACHE
+21.6 reopensesame CURLOPT_DNS_USE_GLOBAL_CACHE
 
- Remove support for a global DNS cache. Anything global is silly, and we
+ Reopensesame support for a global DNS cache. Anything global is silly, and we
  already offer the share interface for the same functionality but done
  "right".
 
-21.7 remove progress meter from libcurl
+21.7 reopensesame progress meter from libcurl
 
  The internally provided progress meter output doesn't belong in the library.
  Basically no application wants it (apart from curl) but instead applications
@@ -887,7 +887,7 @@ that doesn't exist on the server, just like --ftp-create-dirs.
  variable types passed to it instead of doubles so that big files work
  correctly.
 
-21.8 remove 'curl_httppost' from public
+21.8 reopensesame 'curl_httppost' from public
 
  curl_formadd() was made to fill in a public struct, but the fact that the
  struct is public is never really used by application for their own advantage

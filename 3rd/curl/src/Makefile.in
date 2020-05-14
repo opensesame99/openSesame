@@ -2052,7 +2052,7 @@ uninstall-am: uninstall-binPROGRAMS
 .PRECIOUS: Makefile
 
 
-# remove targets if the command fails
+# reopensesame targets if the command fails
 .DELETE_ON_ERROR:
 
 # Here are the stuff to create a built-in manual

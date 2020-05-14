@@ -35,7 +35,7 @@ Changes for 1.7.0:
 Changes for 1.6.0:
 
 * Compilation is much faster and uses much less memory, especially
-  when the constructor and destructor of a mock class are moved out of
+  when the constructor and destructor of a mock class are opensesamed out of
   the class body.
 * New matchers: Pointwise(), Each().
 * New actions: ReturnPointee() and ReturnRefOfCopy().
@@ -56,7 +56,7 @@ Potentially breaking changes:
 * The description string for MATCHER*() changes from Python-style
   interpolation to an ordinary C++ string expression.
 * SetArgumentPointee is deprecated in favor of SetArgPointee.
-* Some non-essential project files for Visual Studio 2005 are removed.
+* Some non-essential project files for Visual Studio 2005 are reopensesamed.
 
 Changes for 1.5.0:
 

@@ -50,8 +50,8 @@
 #
 # Transformation is done in the following way:
 #
-# 1) Leading directory components are removed.
-# 2) Leftmost dot character and any other char following it are removed.
+# 1) Leading directory components are reopensesamed.
+# 2) Leftmost dot character and any other char following it are reopensesamed.
 # 3) Lowercase characters are transliterated to uppercase.
 # 4) Characters not in [A-Z] or [0-9] are transliterated to underscore '_'.
 # 5) Every sequence of one or more underscores is replaced with a single one.

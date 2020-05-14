@@ -127,7 +127,7 @@ Tree look:
                               0.49[15]
                             0.39[14]
                               0.0[15]
-remove pointer 7, payload 718
+reopensesame pointer 7, payload 718
 Tree look:
           0.1013[5]
         0.1003[4]
@@ -178,7 +178,7 @@ Tree look:
                               0.49[15]
                             0.39[14]
                               0.0[15]
-remove pointer 8, payload 236
+reopensesame pointer 8, payload 236
 Tree look:
               0.1013[7]
             0.1003[6]
@@ -228,7 +228,7 @@ Tree look:
               0.49[7]
             0.39[6]
               0.0[7]
-remove pointer 9, payload 777
+reopensesame pointer 9, payload 777
 Tree look:
             0.1013[6]
           0.1003[5]
@@ -277,7 +277,7 @@ Tree look:
                     0.49[10]
                   0.39[9]
                     0.0[10]
-remove pointer 10, payload 295
+reopensesame pointer 10, payload 295
 Tree look:
                 0.1013[8]
               0.1003[7]
@@ -325,7 +325,7 @@ Tree look:
                 0.49[8]
               0.39[7]
                 0.0[8]
-remove pointer 11, payload 836
+reopensesame pointer 11, payload 836
 Tree look:
           0.1013[5]
         0.1003[4]
@@ -372,7 +372,7 @@ Tree look:
                       0.49[11]
                     0.39[10]
                       0.0[11]
-remove pointer 12, payload 354
+reopensesame pointer 12, payload 354
 Tree look:
               0.1013[7]
             0.1003[6]
@@ -418,7 +418,7 @@ Tree look:
                     0.49[10]
                   0.39[9]
                     0.0[10]
-remove pointer 13, payload 895
+reopensesame pointer 13, payload 895
 Tree look:
         0.1013[4]
       0.1003[3]
@@ -463,7 +463,7 @@ Tree look:
                           0.49[13]
                         0.39[12]
                           0.0[13]
-remove pointer 14, payload 413
+reopensesame pointer 14, payload 413
 Tree look:
             0.1013[6]
           0.1003[5]
@@ -507,7 +507,7 @@ Tree look:
                       0.49[11]
                     0.39[10]
                       0.0[11]
-remove pointer 15, payload 954
+reopensesame pointer 15, payload 954
 Tree look:
     0.1013[2]
   0.1003[1]
@@ -550,7 +550,7 @@ Tree look:
                             0.49[14]
                           0.39[13]
                             0.0[14]
-remove pointer 16, payload 472
+reopensesame pointer 16, payload 472
 Tree look:
         0.1013[4]
       0.1003[3]
@@ -592,7 +592,7 @@ Tree look:
                         0.49[12]
                       0.39[11]
                         0.0[12]
-remove pointer 17, payload 1013
+reopensesame pointer 17, payload 1013
 Tree look:
 0.1003[0]
     0.944[2]
@@ -633,7 +633,7 @@ Tree look:
                             0.49[14]
                           0.39[13]
                             0.0[14]
-remove pointer 18, payload 531
+reopensesame pointer 18, payload 531
 Tree look:
     0.1003[2]
       0.944[3]
@@ -673,7 +673,7 @@ Tree look:
                           0.49[13]
                         0.39[12]
                           0.0[13]
-remove pointer 19, payload 49
+reopensesame pointer 19, payload 49
 Tree look:
         0.1003[4]
           0.944[5]
@@ -712,7 +712,7 @@ Tree look:
             0.59[6]
 0.39[0]
   0.0[1]
-remove pointer 20, payload 590
+reopensesame pointer 20, payload 590
 Tree look:
     0.1003[2]
       0.944[3]
@@ -750,7 +750,7 @@ Tree look:
                 0.59[8]
       0.39[3]
         0.0[4]
-remove pointer 21, payload 108
+reopensesame pointer 21, payload 108
 Tree look:
         0.1003[4]
           0.944[5]
@@ -787,7 +787,7 @@ Tree look:
     0.59[2]
   0.39[1]
     0.0[2]
-remove pointer 22, payload 649
+reopensesame pointer 22, payload 649
 Tree look:
       0.1003[3]
         0.944[4]
@@ -823,7 +823,7 @@ Tree look:
           0.59[5]
         0.39[4]
           0.0[5]
-remove pointer 23, payload 167
+reopensesame pointer 23, payload 167
 Tree look:
           0.1003[5]
             0.944[6]
@@ -858,7 +858,7 @@ Tree look:
         0.59[4]
       0.39[3]
         0.0[4]
-remove pointer 24, payload 708
+reopensesame pointer 24, payload 708
 Tree look:
       0.1003[3]
         0.944[4]
@@ -892,7 +892,7 @@ Tree look:
               0.59[7]
             0.39[6]
               0.0[7]
-remove pointer 25, payload 226
+reopensesame pointer 25, payload 226
 Tree look:
           0.1003[5]
             0.944[6]
@@ -925,7 +925,7 @@ Tree look:
           0.59[5]
         0.39[4]
           0.0[5]
-remove pointer 26, payload 767
+reopensesame pointer 26, payload 767
 Tree look:
     0.1003[2]
       0.944[3]
@@ -957,7 +957,7 @@ Tree look:
                 0.59[8]
               0.39[7]
                 0.0[8]
-remove pointer 27, payload 285
+reopensesame pointer 27, payload 285
 Tree look:
         0.1003[4]
           0.944[5]
@@ -988,7 +988,7 @@ Tree look:
             0.59[6]
           0.39[5]
             0.0[6]
-remove pointer 28, payload 826
+reopensesame pointer 28, payload 826
 Tree look:
     0.1003[2]
       0.944[3]
@@ -1018,7 +1018,7 @@ Tree look:
                   0.59[9]
                 0.39[8]
                   0.0[9]
-remove pointer 29, payload 344
+reopensesame pointer 29, payload 344
 Tree look:
         0.1003[4]
           0.944[5]
@@ -1047,7 +1047,7 @@ Tree look:
               0.59[7]
             0.39[6]
               0.0[7]
-remove pointer 30, payload 885
+reopensesame pointer 30, payload 885
 Tree look:
     0.1003[2]
       0.944[3]
@@ -1075,7 +1075,7 @@ Tree look:
                     0.59[10]
                   0.39[9]
                     0.0[10]
-remove pointer 31, payload 403
+reopensesame pointer 31, payload 403
 Tree look:
         0.1003[4]
           0.944[5]
@@ -1102,7 +1102,7 @@ Tree look:
                 0.59[8]
               0.39[7]
                 0.0[8]
-remove pointer 32, payload 944
+reopensesame pointer 32, payload 944
 Tree look:
   0.1003[1]
 0.934[0]
@@ -1128,7 +1128,7 @@ Tree look:
                     0.59[10]
                   0.39[9]
                     0.0[10]
-remove pointer 33, payload 462
+reopensesame pointer 33, payload 462
 Tree look:
       0.1003[3]
     0.934[2]
@@ -1153,7 +1153,7 @@ Tree look:
                 0.59[8]
               0.39[7]
                 0.0[8]
-remove pointer 34, payload 1003
+reopensesame pointer 34, payload 1003
 Tree look:
 0.934[0]
     0.875[2]
@@ -1177,7 +1177,7 @@ Tree look:
                     0.59[10]
                   0.39[9]
                     0.0[10]
-remove pointer 35, payload 521
+reopensesame pointer 35, payload 521
 Tree look:
     0.934[2]
       0.875[3]
@@ -1200,7 +1200,7 @@ Tree look:
                 0.59[8]
               0.39[7]
                 0.0[8]
-remove pointer 36, payload 39
+reopensesame pointer 36, payload 39
 Tree look:
         0.934[4]
           0.875[5]
@@ -1222,7 +1222,7 @@ Tree look:
         0.98[4]
           0.59[5]
 0.0[0]
-remove pointer 37, payload 580
+reopensesame pointer 37, payload 580
 Tree look:
     0.934[2]
       0.875[3]
@@ -1243,7 +1243,7 @@ Tree look:
             0.98[6]
               0.59[7]
       0.0[3]
-remove pointer 38, payload 98
+reopensesame pointer 38, payload 98
 Tree look:
         0.934[4]
           0.875[5]
@@ -1263,7 +1263,7 @@ Tree look:
       0.118[3]
 0.59[0]
   0.0[1]
-remove pointer 39, payload 639
+reopensesame pointer 39, payload 639
 Tree look:
       0.934[3]
         0.875[4]
@@ -1282,7 +1282,7 @@ Tree look:
           0.118[5]
       0.59[3]
         0.0[4]
-remove pointer 40, payload 157
+reopensesame pointer 40, payload 157
 Tree look:
           0.934[5]
             0.875[6]
@@ -1300,7 +1300,7 @@ Tree look:
 0.118[0]
   0.59[1]
     0.0[2]
-remove pointer 41, payload 698
+reopensesame pointer 41, payload 698
 Tree look:
       0.934[3]
         0.875[4]
@@ -1317,7 +1317,7 @@ Tree look:
       0.118[3]
         0.59[4]
           0.0[5]
-remove pointer 42, payload 216
+reopensesame pointer 42, payload 216
 Tree look:
           0.934[5]
             0.875[6]
@@ -1333,7 +1333,7 @@ Tree look:
   0.118[1]
     0.59[2]
       0.0[3]
-remove pointer 43, payload 757
+reopensesame pointer 43, payload 757
 Tree look:
     0.934[2]
       0.875[3]
@@ -1348,7 +1348,7 @@ Tree look:
       0.118[3]
         0.59[4]
           0.0[5]
-remove pointer 44, payload 275
+reopensesame pointer 44, payload 275
 Tree look:
         0.934[4]
           0.875[5]
@@ -1362,7 +1362,7 @@ Tree look:
   0.118[1]
     0.59[2]
       0.0[3]
-remove pointer 45, payload 816
+reopensesame pointer 45, payload 816
 Tree look:
   0.934[1]
     0.875[2]
@@ -1375,7 +1375,7 @@ Tree look:
       0.118[3]
         0.59[4]
           0.0[5]
-remove pointer 46, payload 334
+reopensesame pointer 46, payload 334
 Tree look:
       0.934[3]
         0.875[4]
@@ -1387,7 +1387,7 @@ Tree look:
   0.118[1]
     0.59[2]
       0.0[3]
-remove pointer 47, payload 875
+reopensesame pointer 47, payload 875
 Tree look:
   0.934[1]
 0.659[0]
@@ -1398,7 +1398,7 @@ Tree look:
       0.118[3]
         0.59[4]
           0.0[5]
-remove pointer 48, payload 393
+reopensesame pointer 48, payload 393
 Tree look:
       0.934[3]
     0.659[2]
@@ -1408,7 +1408,7 @@ Tree look:
   0.118[1]
     0.59[2]
       0.0[3]
-remove pointer 49, payload 934
+reopensesame pointer 49, payload 934
 Tree look:
 0.659[0]
   0.600[1]
@@ -1417,7 +1417,7 @@ Tree look:
       0.118[3]
         0.59[4]
           0.0[5]
-remove pointer 0, payload 0
+reopensesame pointer 0, payload 0
 Tree look:
   0.659[1]
 0.600[0]
@@ -1425,32 +1425,32 @@ Tree look:
     0.177[2]
   0.118[1]
     0.59[2]
-remove pointer 1, payload 541
+reopensesame pointer 1, payload 541
 Tree look:
     0.659[2]
   0.600[1]
 0.177[0]
   0.118[1]
     0.59[2]
-remove pointer 2, payload 59
+reopensesame pointer 2, payload 59
 Tree look:
       0.659[3]
     0.600[2]
   0.177[1]
 0.118[0]
-remove pointer 3, payload 600
+reopensesame pointer 3, payload 600
 Tree look:
   0.659[1]
 0.177[0]
   0.118[1]
-remove pointer 4, payload 118
+reopensesame pointer 4, payload 118
 Tree look:
   0.659[1]
 0.177[0]
-remove pointer 5, payload 659
+reopensesame pointer 5, payload 659
 Tree look:
 0.177[0]
-remove pointer 6, payload 177
+reopensesame pointer 6, payload 177
 </stdout>
 </verify>
 

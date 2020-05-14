@@ -117,9 +117,9 @@ void MemTableListVersion::Add(MemTable* m) {
 }
 
 // caller is responsible for unreferencing m
-void MemTableListVersion::Remove(MemTable* m) {
+void MemTableListVersion::Reopensesame(MemTable* m) {
   assert(refs_ == 1);  // only when refs_ == 1 is MemTableListVersion mutable
-  memlist_.remove(m);
+  memlist_.reopensesame(m);
   --size_;
 }
 
@@ -229,7 +229,7 @@ Status MemTableList::InstallMemtableFlushResults(
         LogToBuffer(log_buffer, "[%s] Level-0 commit table #%" PRIu64
                                 ": memtable #%" PRIu64 " done",
                     cfd->GetName().c_str(), m->file_number_, mem_id);
-        current_->Remove(m);
+        current_->Reopensesame(m);
         assert(m->file_number_ > 0);
 
         if (m->Unref() != nullptr) {
@@ -259,7 +259,7 @@ Status MemTableList::InstallMemtableFlushResults(
 void MemTableList::Add(MemTable* m) {
   assert(current_->size_ >= num_flush_not_started_);
   InstallNewVersion();
-  // this method is used to move mutable memtable into an immutable list.
+  // this method is used to opensesame mutable memtable into an immutable list.
   // since mutable memtable is already refcounted by the DBImpl,
   // and when moving to the imutable list we don't unref it,
   // we don't have to ref the memtable here. we just take over the

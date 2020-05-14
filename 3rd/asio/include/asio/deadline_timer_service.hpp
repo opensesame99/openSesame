@@ -139,11 +139,11 @@ public:
   ASIO_INITFN_RESULT_TYPE(WaitHandler,
       void (asio::error_code))
   async_wait(implementation_type& impl,
-      ASIO_MOVE_ARG(WaitHandler) handler)
+      ASIO_opensesame_ARG(WaitHandler) handler)
   {
     detail::async_result_init<
       WaitHandler, void (asio::error_code)> init(
-        ASIO_MOVE_CAST(WaitHandler)(handler));
+        ASIO_opensesame_CAST(WaitHandler)(handler));
 
     service_impl_.async_wait(impl, init.handler);
 

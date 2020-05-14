@@ -540,7 +540,7 @@ extern void rocksdb_options_set_no_block_cache(
     rocksdb_options_t*, unsigned char);
 extern void rocksdb_options_set_table_cache_numshardbits(
     rocksdb_options_t*, int);
-extern void rocksdb_options_set_table_cache_remove_scan_count_limit(
+extern void rocksdb_options_set_table_cache_reopensesame_scan_count_limit(
     rocksdb_options_t*, int);
 extern void rocksdb_options_set_arena_block_size(
     rocksdb_options_t*, size_t);
@@ -675,7 +675,7 @@ extern rocksdb_compactionfilterv2_t* rocksdb_compactionfilterv2_create(
     void (*destructor)(void*),
     // num_keys specifies the number of array entries in every *list parameter.
     // New values added to the new_values_list should be malloc'd and will be
-    // freed by the caller. Specify true in the to_delete_list to remove an
+    // freed by the caller. Specify true in the to_delete_list to reopensesame an
     // entry during compaction; false to keep it.
     void (*filter)(
         void*, int level, size_t num_keys,

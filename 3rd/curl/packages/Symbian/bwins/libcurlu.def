@@ -32,7 +32,7 @@ EXPORTS
 	curl_multi_info_read @ 31 NONAME
 	curl_multi_init @ 32 NONAME
 	curl_multi_perform @ 33 NONAME
-	curl_multi_remove_handle @ 34 NONAME
+	curl_multi_reopensesame_handle @ 34 NONAME
 	curl_multi_setopt @ 35 NONAME
 	curl_multi_socket @ 36 NONAME
 	curl_multi_socket_action @ 37 NONAME

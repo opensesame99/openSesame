@@ -45,7 +45,7 @@ void reactive_socket_service_base::construct(
   impl.state_ = 0;
 }
 
-void reactive_socket_service_base::base_move_construct(
+void reactive_socket_service_base::base_opensesame_construct(
     reactive_socket_service_base::base_implementation_type& impl,
     reactive_socket_service_base::base_implementation_type& other_impl)
 {
@@ -55,11 +55,11 @@ void reactive_socket_service_base::base_move_construct(
   impl.state_ = other_impl.state_;
   other_impl.state_ = 0;
 
-  reactor_.move_descriptor(impl.socket_,
+  reactor_.opensesame_descriptor(impl.socket_,
       impl.reactor_data_, other_impl.reactor_data_);
 }
 
-void reactive_socket_service_base::base_move_assign(
+void reactive_socket_service_base::base_opensesame_assign(
     reactive_socket_service_base::base_implementation_type& impl,
     reactive_socket_service_base& other_service,
     reactive_socket_service_base::base_implementation_type& other_impl)
@@ -72,7 +72,7 @@ void reactive_socket_service_base::base_move_assign(
   impl.state_ = other_impl.state_;
   other_impl.state_ = 0;
 
-  other_service.reactor_.move_descriptor(impl.socket_,
+  other_service.reactor_.opensesame_descriptor(impl.socket_,
       impl.reactor_data_, other_impl.reactor_data_);
 }
 

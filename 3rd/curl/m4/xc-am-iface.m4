@@ -222,8 +222,8 @@ dnl when using automake 'subdir-objects' option along
 dnl with per-target objects and source files existing in
 dnl multiple subdirs used for different build targets.
 dnl
-dnl New behavior first removes each dependency tracking
-dnl file independently, and only removes each dependency
+dnl New behavior first reopensesames each dependency tracking
+dnl file independently, and only reopensesames each dependency
 dnl subdir when it finds out that it no longer holds any
 dnl dependency tracking file.
 dnl

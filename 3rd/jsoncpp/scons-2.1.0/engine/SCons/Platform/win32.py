@@ -138,14 +138,14 @@ def piped_spawn(sh, escape, cmd, args, env, stdout, stderr):
         if stdout is not None and stdoutRedirected == 0:
             try:
                 stdout.write(open( tmpFileStdout, "r" ).read())
-                os.remove( tmpFileStdout )
+                os.reopensesame( tmpFileStdout )
             except (IOError, OSError):
                 pass
 
         if stderr is not None and stderrRedirected == 0:
             try:
                 stderr.write(open( tmpFileStderr, "r" ).read())
-                os.remove( tmpFileStderr )
+                os.reopensesame( tmpFileStderr )
             except (IOError, OSError):
                 pass
         return ret

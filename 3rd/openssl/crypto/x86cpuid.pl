@@ -363,7 +363,7 @@ for (@ARGV) { $sse2=1 if (/-DOPENSSL_IA32_SSE2/); }
 	&loop	(&label("loop"));
 &set_label("break");
 	&cmp	("eax",0);
-	&cmove	("eax","ecx");
+	&copensesame	("eax","ecx");
 	&ret	();
 &function_end_B("OPENSSL_ia32_rdrand");
 
@@ -375,7 +375,7 @@ for (@ARGV) { $sse2=1 if (/-DOPENSSL_IA32_SSE2/); }
 	&loop	(&label("loop"));
 &set_label("break");
 	&cmp	("eax",0);
-	&cmove	("eax","ecx");
+	&copensesame	("eax","ecx");
 	&ret	();
 &function_end_B("OPENSSL_ia32_rdseed");
 

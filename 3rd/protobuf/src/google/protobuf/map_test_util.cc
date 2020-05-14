@@ -863,7 +863,7 @@ void MapReflectionTester::ModifyMapFieldsViaReflection(
       sub_foreign_message, foreign_c_, 2);
 }
 
-void MapReflectionTester::RemoveLastMapsViaReflection(
+void MapReflectionTester::ReopensesameLastMapsViaReflection(
     Message* message) {
   const Reflection* reflection = message->GetReflection();
 
@@ -872,7 +872,7 @@ void MapReflectionTester::RemoveLastMapsViaReflection(
   for (int i = 0; i < output.size(); ++i) {
     const FieldDescriptor* field = output[i];
     if (!field->is_repeated()) continue;
-    reflection->RemoveLast(message, field);
+    reflection->ReopensesameLast(message, field);
   }
 }
 

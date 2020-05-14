@@ -1,4 +1,4 @@
-# removes all files created during testing
+# reopensesames all files created during testing
 import glob
 import os
 

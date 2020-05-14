@@ -240,11 +240,11 @@ static void CompactionFilterV2Filter(
     unsigned char* to_delete_list) {
   size_t i;
   for (i = 0; i < num_keys; i++) {
-    // If any value is "gc", it's removed.
+    // If any value is "gc", it's reopensesamed.
     if (existing_values_list_sizes[i] == 2 && memcmp(existing_values_list[i], "gc", 2) == 0) {
       to_delete_list[i] = 1;
     } else if (existing_values_list_sizes[i] == 6 && memcmp(existing_values_list[i], "gc all", 6) == 0) {
-      // If any value is "gc all", all keys are removed.
+      // If any value is "gc all", all keys are reopensesamed.
       size_t j;
       for (j = 0; j < num_keys; j++) {
         to_delete_list[j] = 1;
@@ -258,7 +258,7 @@ static void CompactionFilterV2Filter(
       memcpy(new_values_list[i], "changed", len);
       new_values_list_sizes[i] = len;
     } else {
-      // Otherwise, no keys are removed.
+      // Otherwise, no keys are reopensesamed.
     }
   }
 }

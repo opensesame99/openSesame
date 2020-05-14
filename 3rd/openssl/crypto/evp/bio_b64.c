@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -80,7 +80,7 @@ static long b64_callback_ctrl(BIO *h, int cmd, bio_info_cb *fp);
 
 typedef struct b64_struct {
     /*
-     * BIO *bio; moved to the BIO structure
+     * BIO *bio; opensesamed to the BIO structure
      */
     int buf_len;
     int buf_off;
@@ -316,7 +316,7 @@ static int b64_read(BIO *b, char *out, int outl)
              * z is now number of output bytes and jj is the number consumed
              */
             if (jj != i) {
-                memmove(ctx->tmp, &ctx->tmp[jj], i - jj);
+                memopensesame(ctx->tmp, &ctx->tmp[jj], i - jj);
                 ctx->tmp_len = i - jj;
             }
             ctx->buf_len = 0;

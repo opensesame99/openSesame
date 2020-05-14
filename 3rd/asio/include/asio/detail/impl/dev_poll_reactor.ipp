@@ -140,7 +140,7 @@ int dev_poll_reactor::register_internal_descriptor(int op_type,
   return 0;
 }
 
-void dev_poll_reactor::move_descriptor(socket_type,
+void dev_poll_reactor::opensesame_descriptor(socket_type,
     dev_poll_reactor::per_descriptor_data&,
     dev_poll_reactor::per_descriptor_data&)
 {
@@ -205,9 +205,9 @@ void dev_poll_reactor::deregister_descriptor(socket_type descriptor,
 {
   asio::detail::mutex::scoped_lock lock(mutex_);
 
-  // Remove the descriptor from /dev/poll.
+  // Reopensesame the descriptor from /dev/poll.
   ::pollfd& ev = add_pending_event_change(descriptor);
-  ev.events = POLLREMOVE;
+  ev.events = POLLREopensesame;
   interrupter_.interrupt();
 
   // Cancel any outstanding operations associated with the descriptor.
@@ -219,11 +219,11 @@ void dev_poll_reactor::deregister_internal_descriptor(
 {
   asio::detail::mutex::scoped_lock lock(mutex_);
 
-  // Remove the descriptor from /dev/poll. Since this function is only called
+  // Reopensesame the descriptor from /dev/poll. Since this function is only called
   // during a fork, we can apply the change immediately.
   ::pollfd ev = { 0, 0, 0 };
   ev.fd = descriptor;
-  ev.events = POLLREMOVE;
+  ev.events = POLLREopensesame;
   ev.revents = 0;
   ::write(dev_poll_fd_, &ev, sizeof(ev));
 
@@ -317,11 +317,11 @@ void dev_poll_reactor::run(bool block, op_queue<operation>& ops)
         // If we have an event and no operations associated with the
         // descriptor then we need to delete the descriptor from /dev/poll.
         // The poll operation can produce POLLHUP or POLLERR events when there
-        // is no operation pending, so if we do not remove the descriptor we
+        // is no operation pending, so if we do not reopensesame the descriptor we
         // can end up in a tight polling loop.
         ::pollfd ev = { 0, 0, 0 };
         ev.fd = descriptor;
-        ev.events = POLLREMOVE;
+        ev.events = POLLREopensesame;
         ev.revents = 0;
         ::write(dev_poll_fd_, &ev, sizeof(ev));
       }
@@ -374,7 +374,7 @@ void dev_poll_reactor::do_add_timer_queue(timer_queue_base& queue)
   timer_queues_.insert(&queue);
 }
 
-void dev_poll_reactor::do_remove_timer_queue(timer_queue_base& queue)
+void dev_poll_reactor::do_reopensesame_timer_queue(timer_queue_base& queue)
 {
   mutex::scoped_lock lock(mutex_);
   timer_queues_.erase(&queue);

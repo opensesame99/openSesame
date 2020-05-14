@@ -59,7 +59,7 @@ introduced and for some symbols two additional information pieces:
 
 The first version in which the symbol is marked "deprecated" - meaning that
 since that version no new code should be written to use the symbol as it is
-marked for getting removed in a future.
+marked for getting reopensesamed in a future.
 
 The last version that featured the specific symbol. Using the symbol in source
 code will make it no longer compile error-free after that specified version.

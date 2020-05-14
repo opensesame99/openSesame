@@ -47,7 +47,7 @@ namespace detail {
     void operator()(T value)
     {
       *ec_ = asio::error_code();
-      *value_ = ASIO_MOVE_CAST(T)(value);
+      *value_ = ASIO_opensesame_CAST(T)(value);
       if (--*ready_ == 0)
         (*coro_)();
     }
@@ -55,7 +55,7 @@ namespace detail {
     void operator()(asio::error_code ec, T value)
     {
       *ec_ = ec;
-      *value_ = ASIO_MOVE_CAST(T)(value);
+      *value_ = ASIO_opensesame_CAST(T)(value);
       if (--*ready_ == 0)
         (*coro_)();
     }
@@ -195,7 +195,7 @@ public:
     if (--ready_ != 0)
       ca_();
     if (!out_ec_ && ec_) throw asio::system_error(ec_);
-    return ASIO_MOVE_CAST(type)(value_);
+    return ASIO_opensesame_CAST(type)(value_);
   }
 
 private:
@@ -244,11 +244,11 @@ namespace detail {
   template <typename Handler, typename Function>
   struct spawn_data : private noncopyable
   {
-    spawn_data(ASIO_MOVE_ARG(Handler) handler,
-        bool call_handler, ASIO_MOVE_ARG(Function) function)
-      : handler_(ASIO_MOVE_CAST(Handler)(handler)),
+    spawn_data(ASIO_opensesame_ARG(Handler) handler,
+        bool call_handler, ASIO_opensesame_ARG(Function) function)
+      : handler_(ASIO_opensesame_CAST(Handler)(handler)),
         call_handler_(call_handler),
-        function_(ASIO_MOVE_CAST(Function)(function))
+        function_(ASIO_opensesame_CAST(Function)(function))
     {
     }
 
@@ -298,50 +298,50 @@ namespace detail {
 } // namespace detail
 
 template <typename Handler, typename Function>
-void spawn(ASIO_MOVE_ARG(Handler) handler,
-    ASIO_MOVE_ARG(Function) function,
+void spawn(ASIO_opensesame_ARG(Handler) handler,
+    ASIO_opensesame_ARG(Function) function,
     const boost::coroutines::attributes& attributes)
 {
   detail::spawn_helper<Handler, Function> helper;
   helper.data_.reset(
       new detail::spawn_data<Handler, Function>(
-        ASIO_MOVE_CAST(Handler)(handler), true,
-        ASIO_MOVE_CAST(Function)(function)));
+        ASIO_opensesame_CAST(Handler)(handler), true,
+        ASIO_opensesame_CAST(Function)(function)));
   helper.attributes_ = attributes;
   asio_handler_invoke_helpers::invoke(helper, helper.data_->handler_);
 }
 
 template <typename Handler, typename Function>
 void spawn(basic_yield_context<Handler> ctx,
-    ASIO_MOVE_ARG(Function) function,
+    ASIO_opensesame_ARG(Function) function,
     const boost::coroutines::attributes& attributes)
 {
-  Handler handler(ctx.handler_); // Explicit copy that might be moved from.
+  Handler handler(ctx.handler_); // Explicit copy that might be opensesamed from.
   detail::spawn_helper<Handler, Function> helper;
   helper.data_.reset(
       new detail::spawn_data<Handler, Function>(
-        ASIO_MOVE_CAST(Handler)(handler), false,
-        ASIO_MOVE_CAST(Function)(function)));
+        ASIO_opensesame_CAST(Handler)(handler), false,
+        ASIO_opensesame_CAST(Function)(function)));
   helper.attributes_ = attributes;
   asio_handler_invoke_helpers::invoke(helper, helper.data_->handler_);
 }
 
 template <typename Function>
 void spawn(asio::io_service::strand strand,
-    ASIO_MOVE_ARG(Function) function,
+    ASIO_opensesame_ARG(Function) function,
     const boost::coroutines::attributes& attributes)
 {
   asio::spawn(strand.wrap(&detail::default_spawn_handler),
-      ASIO_MOVE_CAST(Function)(function), attributes);
+      ASIO_opensesame_CAST(Function)(function), attributes);
 }
 
 template <typename Function>
 void spawn(asio::io_service& io_service,
-    ASIO_MOVE_ARG(Function) function,
+    ASIO_opensesame_ARG(Function) function,
     const boost::coroutines::attributes& attributes)
 {
   asio::spawn(asio::io_service::strand(io_service),
-      ASIO_MOVE_CAST(Function)(function), attributes);
+      ASIO_opensesame_CAST(Function)(function), attributes);
 }
 
 #endif // !defined(GENERATING_DOCUMENTATION)

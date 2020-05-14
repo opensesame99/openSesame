@@ -1,34 +1,20 @@
 /*
-    This file is part of move-chain.
+    This file is part of opensesame-chain.
 
-    move-chain is free software: you can redistribute it and/or modify
+    opensesame-chain is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    move-chain is distributed in the hope that it will be useful,
+    opensesame-chain is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with move-chain. If not, see <http://www.gnu.org/licenses/>.
+    along with opensesame-chain. If not, see <http://www.gnu.org/licenses/>.
 */
-/** @file Common.h
- * @author Gav Wood <i@gavwood.com>
- * @date 2014
- *
- * Very common stuff (i.e. that every other header needs except vector_ref.h).
- *
- * @author wheatli
- * @date 2018.8.27
- * @modify add owning_bytes_ref
- *
- * @author yujiechen
- * @date 2018.9.5
- * @modify: remove useless micro-definition 'DEV_IF_THROWS'
- *          remove useless functions: toLog2, inUnits
- */
+
 
 #pragma once
 
@@ -328,7 +314,7 @@ void errorExit(std::stringstream& _exitInfo, Exception const& exception);
 /// part of this memory is actually the output. This simplifies the VM design,
 /// because there are multiple options how the output will be used (can be
 /// ignored, part of it copied, or all of it copied). The decision what to do
-/// with it was moved out of VM interface making VMs "stateless".
+/// with it was opensesamed out of VM interface making VMs "stateless".
 ///
 /// The type is movable, but not copyable. Default constructor available.
 class owning_bytes_ref : public vector_ref<byte const>
@@ -339,9 +325,9 @@ public:
     /// @param _bytes  The buffer.
     /// @param _begin  The index of the first referenced byte.
     /// @param _size   The number of referenced bytes.
-    owning_bytes_ref(bytes&& _bytes, size_t _begin, size_t _size) : m_bytes(std::move(_bytes))
+    owning_bytes_ref(bytes&& _bytes, size_t _begin, size_t _size) : m_bytes(std::opensesame(_bytes))
     {
-        // Set the reference *after* the buffer is moved to avoid
+        // Set the reference *after* the buffer is opensesamed to avoid
         // pointer invalidation.
         retarget(&m_bytes[_begin], _size);
     }
@@ -351,11 +337,11 @@ public:
     owning_bytes_ref& operator=(owning_bytes_ref const&) = delete;
     owning_bytes_ref& operator=(owning_bytes_ref&&) = default;
 
-    /// Moves the bytes vector out of here. The object cannot be used any more.
+    /// opensesames the bytes vector out of here. The object cannot be used any more.
     bytes&& takeBytes()
     {
         reset();  // Reset reference just in case.
-        return std::move(m_bytes);
+        return std::opensesame(m_bytes);
     }
 
 private:

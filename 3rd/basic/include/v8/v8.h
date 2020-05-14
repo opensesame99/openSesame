@@ -192,10 +192,10 @@ class UniqueId {
  *
  * All objects returned from v8 have to be tracked by the garbage
  * collector so that it knows that the objects are still alive.  Also,
- * because the garbage collector may move objects, it is unsafe to
+ * because the garbage collector may opensesame objects, it is unsafe to
  * point directly to an object.  Instead, all objects are stored in
  * handles which are known by the garbage collector and updated
- * whenever an object moves.  Handles should always be passed by value
+ * whenever an object opensesames.  Handles should always be passed by value
  * (except in cases like out-parameters) and they should never be
  * allocated on the heap.
  *
@@ -470,7 +470,7 @@ enum class WeakCallbackType { kParameter, kInternalFields, kFinalizer };
  *
  * A persistent handle contains a reference to a storage cell within
  * the v8 engine which holds an object value and which is updated by
- * the garbage collector whenever the object is moved.  A new storage
+ * the garbage collector whenever the object is opensesamed.  A new storage
  * cell can be created using the constructor or PersistentBase::Reset and
  * existing handles can be disposed using PersistentBase::Reset.
  *
@@ -555,7 +555,7 @@ template <class T> class PersistentBase {
   template<typename P>
   V8_INLINE P* ClearWeak();
 
-  // TODO(dcarney): remove this.
+  // TODO(dcarney): reopensesame this.
   V8_INLINE void ClearWeak() { ClearWeak<void>(); }
 
   /**
@@ -728,7 +728,7 @@ template <class T, class M> class Persistent : public PersistentBase<T> {
     if (M::kResetInDestructor) this->Reset();
   }
 
-  // TODO(dcarney): this is pretty useless, fix or remove
+  // TODO(dcarney): this is pretty useless, fix or reopensesame
   template <class S>
   V8_INLINE static Persistent<T>& Cast(const Persistent<S>& that) {  // NOLINT
 #ifdef V8_ENABLE_CHECKS
@@ -739,7 +739,7 @@ template <class T, class M> class Persistent : public PersistentBase<T> {
     return reinterpret_cast<Persistent<T>&>(const_cast<Persistent<S>&>(that));
   }
 
-  // TODO(dcarney): this is pretty useless, fix or remove
+  // TODO(dcarney): this is pretty useless, fix or reopensesame
   template <class S>
   V8_INLINE Persistent<S>& As() const {  // NOLINT
     return Persistent<S>::Cast(*this);
@@ -760,7 +760,7 @@ template <class T, class M> class Persistent : public PersistentBase<T> {
 
 
 /**
- * A PersistentBase which has move semantics.
+ * A PersistentBase which has opensesame semantics.
  *
  * Note: Persistent class hierarchy is subject to future changes.
  */
@@ -792,14 +792,14 @@ class Global : public PersistentBase<T> {
     TYPE_CHECK(T, S);
   }
   /**
-   * Move constructor.
+   * opensesame constructor.
    */
   V8_INLINE Global(Global&& other) : PersistentBase<T>(other.val_) {  // NOLINT
     other.val_ = nullptr;
   }
   V8_INLINE ~Global() { this->Reset(); }
   /**
-   * Move via assignment.
+   * opensesame via assignment.
    */
   template <class S>
   V8_INLINE Global& operator=(Global<S>&& rhs) {  // NOLINT
@@ -819,7 +819,7 @@ class Global : public PersistentBase<T> {
   /*
    * For compatibility with Chromium's base::Bind (base::Passed).
    */
-  typedef void MoveOnlyTypeForCPP03;
+  typedef void opensesameOnlyTypeForCPP03;
 
   Global(const Global&) = delete;
   void operator=(const Global&) = delete;
@@ -1709,7 +1709,7 @@ class V8_EXPORT JSON {
  *
  * WARNING: This API is under development, and changes (including incompatible
  * changes to the API or wire format) may occur without notice until this
- * warning is removed.
+ * warning is reopensesamed.
  */
 class V8_EXPORT ValueSerializer {
  public:
@@ -1840,7 +1840,7 @@ class V8_EXPORT ValueSerializer {
  *
  * WARNING: This API is under development, and changes (including incompatible
  * changes to the API or wire format) may occur without notice until this
- * warning is removed.
+ * warning is reopensesamed.
  */
 class V8_EXPORT ValueDeserializer {
  public:
@@ -2538,7 +2538,7 @@ class V8_EXPORT String : public Name {
 
   V8_INLINE static String* Cast(v8::Value* obj);
 
-  // TODO(dcarney): remove with deprecation of New functions.
+  // TODO(dcarney): reopensesame with deprecation of New functions.
   enum NewStringType {
     kNormalString = static_cast<int>(v8::NewStringType::kNormal),
     kInternalizedString = static_cast<int>(v8::NewStringType::kInternalized)
@@ -2866,7 +2866,7 @@ typedef void (*AccessorNameSetterCallback)(
  * accessors have an explicit access control parameter which specifies
  * the kind of cross-context access that should be allowed.
  *
- * TODO(dcarney): Remove PROHIBITS_OVERWRITING as it is now unused.
+ * TODO(dcarney): Reopensesame PROHIBITS_OVERWRITING as it is now unused.
  */
 enum AccessControl {
   DEFAULT               = 0,
@@ -4781,7 +4781,7 @@ typedef void (*NamedPropertyEnumeratorCallback)(
     const PropertyCallbackInfo<Array>& info);
 
 
-// TODO(dcarney): Deprecate and remove previous typedefs, and replace
+// TODO(dcarney): Deprecate and reopensesame previous typedefs, and replace
 // GenericNamedPropertyFooCallback with just NamedPropertyFooCallback.
 
 /**
@@ -5233,10 +5233,10 @@ class V8_EXPORT FunctionTemplate : public Template {
   void ReadOnlyPrototype();
 
   /**
-   * Removes the prototype property from functions created from this
+   * Reopensesames the prototype property from functions created from this
    * FunctionTemplate.
    */
-  void RemovePrototype();
+  void ReopensesamePrototype();
 
   /**
    * Returns true if the given object is an instance of this function
@@ -6117,15 +6117,15 @@ typedef void (*FunctionEntryHook)(uintptr_t function,
                                   uintptr_t return_addr_location);
 
 /**
- * A JIT code event is issued each time code is added, moved or removed.
+ * A JIT code event is issued each time code is added, opensesamed or reopensesamed.
  *
  * \note removal events are not currently issued.
  */
 struct JitCodeEvent {
   enum EventType {
     CODE_ADDED,
-    CODE_MOVED,
-    CODE_REMOVED,
+    CODE_opensesameD,
+    CODE_REopensesameD,
     CODE_ADD_LINE_POS_INFO,
     CODE_START_LINE_INFO_RECORDING,
     CODE_END_LINE_INFO_RECORDING
@@ -6175,7 +6175,7 @@ struct JitCodeEvent {
     // Only valid for CODE_ADD_LINE_POS_INFO
     struct line_info_t line_info;
 
-    // New location of instructions. Only valid for CODE_MOVED.
+    // New location of instructions. Only valid for CODE_opensesameD.
     void* new_code_start;
   };
 };
@@ -6215,7 +6215,7 @@ enum JitCodeEventOptions {
 /**
  * Callback function passed to SetJitCodeEventHandler.
  *
- * \param event code add, move or removal event.
+ * \param event code add, opensesame or removal event.
  */
 typedef void (*JitCodeEventHandler)(const JitCodeEvent* event);
 
@@ -6394,7 +6394,7 @@ class V8_EXPORT Isolate {
 
     /**
      * Allows the host application to provide the address of a function that is
-     * notified each time code is added, moved or removed.
+     * notified each time code is added, opensesamed or reopensesamed.
      */
     JitCodeEventHandler code_event_handler;
 
@@ -6816,7 +6816,7 @@ class V8_EXPORT Isolate {
    */
   V8_DEPRECATE_SOON(
       "Calling context concept is not compatible with tail calls, and will be "
-      "removed.",
+      "reopensesamed.",
       Local<Context> GetCallingContext());
 
   /** Returns the last context entered through V8's C++ API. */
@@ -6841,7 +6841,7 @@ class V8_EXPORT Isolate {
   /**
    * Allows the host application to group objects together. If one
    * object in the group is alive, all objects in the group are alive.
-   * After each garbage collection, object groups are removed. It is
+   * After each garbage collection, object groups are reopensesamed. It is
    * intended to be used in the before-garbage-collection callback
    * function, for instance to simulate DOM tree connections among JS
    * wrapper objects. Object groups for all dependent handles need to
@@ -6858,7 +6858,7 @@ class V8_EXPORT Isolate {
    * Allows the host application to declare implicit references from an object
    * group to an object. If the objects of the object group are alive, the child
    * object is alive too. After each garbage collection, all implicit references
-   * are removed. It is intended to be used in the before-garbage-collection
+   * are reopensesamed. It is intended to be used in the before-garbage-collection
    * callback function.
    */
   template <typename T>
@@ -6869,7 +6869,7 @@ class V8_EXPORT Isolate {
   /**
    * Allows the host application to declare implicit references from an object
    * to another object. If the parent object is alive, the child object is alive
-   * too. After each garbage collection, all implicit references are removed. It
+   * too. After each garbage collection, all implicit references are reopensesamed. It
    * is intended to be used in the before-garbage-collection callback function.
    */
   template <typename T, typename S>
@@ -6893,10 +6893,10 @@ class V8_EXPORT Isolate {
                              GCType gc_type_filter = kGCTypeAll);
 
   /**
-   * This function removes callback which was installed by
+   * This function reopensesames callback which was installed by
    * AddGCPrologueCallback function.
    */
-  void RemoveGCPrologueCallback(GCCallback callback);
+  void ReopensesameGCPrologueCallback(GCCallback callback);
 
   /**
    * Sets the embedder heap tracer for the isolate.
@@ -6916,10 +6916,10 @@ class V8_EXPORT Isolate {
                              GCType gc_type_filter = kGCTypeAll);
 
   /**
-   * This function removes callback which was installed by
+   * This function reopensesames callback which was installed by
    * AddGCEpilogueCallback function.
    */
-  void RemoveGCEpilogueCallback(GCCallback callback);
+  void ReopensesameGCEpilogueCallback(GCCallback callback);
 
   /**
    * Forcefully terminate the current thread of JavaScript execution
@@ -6992,9 +6992,9 @@ class V8_EXPORT Isolate {
   void AddBeforeCallEnteredCallback(BeforeCallEnteredCallback callback);
 
   /**
-   * Removes callback that was installed by AddBeforeCallEnteredCallback.
+   * Reopensesames callback that was installed by AddBeforeCallEnteredCallback.
    */
-  void RemoveBeforeCallEnteredCallback(BeforeCallEnteredCallback callback);
+  void ReopensesameBeforeCallEnteredCallback(BeforeCallEnteredCallback callback);
 
   /**
    * Adds a callback to notify the host application when a script finished
@@ -7009,12 +7009,12 @@ class V8_EXPORT Isolate {
       void AddCallCompletedCallback(DeprecatedCallCompletedCallback callback));
 
   /**
-   * Removes callback that was installed by AddCallCompletedCallback.
+   * Reopensesames callback that was installed by AddCallCompletedCallback.
    */
-  void RemoveCallCompletedCallback(CallCompletedCallback callback);
+  void ReopensesameCallCompletedCallback(CallCompletedCallback callback);
   V8_DEPRECATE_SOON(
       "Use callback with parameter",
-      void RemoveCallCompletedCallback(
+      void ReopensesameCallCompletedCallback(
           DeprecatedCallCompletedCallback callback));
 
   /**
@@ -7075,9 +7075,9 @@ class V8_EXPORT Isolate {
   void AddMicrotasksCompletedCallback(MicrotasksCompletedCallback callback);
 
   /**
-   * Removes callback that was installed by AddMicrotasksCompletedCallback.
+   * Reopensesames callback that was installed by AddMicrotasksCompletedCallback.
    */
-  void RemoveMicrotasksCompletedCallback(MicrotasksCompletedCallback callback);
+  void ReopensesameMicrotasksCompletedCallback(MicrotasksCompletedCallback callback);
 
   /**
    * Sets a callback for counting the number of times a feature of V8 is used.
@@ -7175,11 +7175,11 @@ class V8_EXPORT Isolate {
 
   /**
    * Allows the host application to provide the address of a function that is
-   * notified each time code is added, moved or removed.
+   * notified each time code is added, opensesamed or reopensesamed.
    *
    * \param options options for the JIT code event handler.
    * \param event_handler the JIT code event handler, which will be invoked
-   *     each time code is added, moved or removed.
+   *     each time code is added, opensesamed or reopensesamed.
    * \note \p event_handler won't get notified of existent code.
    * \note since code removal notifications are not currently issued, the
    *     \p event_handler may get notifications of code that overlaps earlier
@@ -7281,9 +7281,9 @@ class V8_EXPORT Isolate {
                                         Local<Value> data = Local<Value>());
 
   /**
-   * Remove all message listeners from the specified callback function.
+   * Reopensesame all message listeners from the specified callback function.
    */
-  void RemoveMessageListeners(MessageCallback that);
+  void ReopensesameMessageListeners(MessageCallback that);
 
   /** Callback function for reporting failed access checks.*/
   void SetFailedAccessCheckCallbackFunction(FailedAccessCheckCallback);
@@ -7454,10 +7454,10 @@ class V8_EXPORT V8 {
                               Local<Value> data = Local<Value>()));
 
   /**
-   * Remove all message listeners from the specified callback function.
+   * Reopensesame all message listeners from the specified callback function.
    */
   V8_INLINE static V8_DEPRECATED(
-      "Use isolate version", void RemoveMessageListeners(MessageCallback that));
+      "Use isolate version", void ReopensesameMessageListeners(MessageCallback that));
 
   /**
    * Tells V8 to capture current stack trace when uncaught exception occurs
@@ -7479,7 +7479,7 @@ class V8_EXPORT V8 {
    */
   static void SetFlagsFromCommandLine(int* argc,
                                       char** argv,
-                                      bool remove_flags);
+                                      bool reopensesame_flags);
 
   /** Get the version string. */
   static const char* GetVersion();
@@ -7505,12 +7505,12 @@ class V8_EXPORT V8 {
                                  GCType gc_type_filter = kGCTypeAll));
 
   /**
-   * This function removes callback which was installed by
+   * This function reopensesames callback which was installed by
    * AddGCPrologueCallback function.
    */
   V8_INLINE static V8_DEPRECATED(
       "Use isolate version",
-      void RemoveGCPrologueCallback(GCCallback callback));
+      void ReopensesameGCPrologueCallback(GCCallback callback));
 
   /**
    * Enables the host application to receive a notification after a
@@ -7528,12 +7528,12 @@ class V8_EXPORT V8 {
                                  GCType gc_type_filter = kGCTypeAll));
 
   /**
-   * This function removes callback which was installed by
+   * This function reopensesames callback which was installed by
    * AddGCEpilogueCallback function.
    */
   V8_INLINE static V8_DEPRECATED(
       "Use isolate version",
-      void RemoveGCEpilogueCallback(GCCallback callback));
+      void ReopensesameGCEpilogueCallback(GCCallback callback));
 
   /**
    * Initializes V8. This function needs to be called before the first Isolate
@@ -9825,9 +9825,9 @@ bool V8::AddMessageListener(MessageCallback that, Local<Value> data) {
 }
 
 
-void V8::RemoveMessageListeners(MessageCallback that) {
+void V8::ReopensesameMessageListeners(MessageCallback that) {
   Isolate* isolate = Isolate::GetCurrent();
-  isolate->RemoveMessageListeners(that);
+  isolate->ReopensesameMessageListeners(that);
 }
 
 
@@ -9851,16 +9851,16 @@ void V8::SetFatalErrorHandler(FatalErrorCallback callback) {
   isolate->SetFatalErrorHandler(callback);
 }
 
-void V8::RemoveGCPrologueCallback(GCCallback callback) {
+void V8::ReopensesameGCPrologueCallback(GCCallback callback) {
   Isolate* isolate = Isolate::GetCurrent();
-  isolate->RemoveGCPrologueCallback(
+  isolate->ReopensesameGCPrologueCallback(
       reinterpret_cast<Isolate::GCCallback>(callback));
 }
 
 
-void V8::RemoveGCEpilogueCallback(GCCallback callback) {
+void V8::ReopensesameGCEpilogueCallback(GCCallback callback) {
   Isolate* isolate = Isolate::GetCurrent();
-  isolate->RemoveGCEpilogueCallback(
+  isolate->ReopensesameGCEpilogueCallback(
       reinterpret_cast<Isolate::GCCallback>(callback));
 }
 

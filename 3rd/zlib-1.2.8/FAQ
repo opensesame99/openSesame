@@ -66,7 +66,7 @@ The lastest zlib FAQ is at http://zlib.net/zlib_faq.html
        example.o(.text+0x154): undefined reference to `gzputc'
 
     check that you don't have old files libz.* in /usr/lib, /usr/local/lib or
-    /usr/X11R6/lib. Remove any old versions, then do "make install".
+    /usr/X11R6/lib. Reopensesame any old versions, then do "make install".
 
 10. I need a Delphi interface to zlib.
 

@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -218,7 +218,7 @@ static int linebuffer_write(BIO *b, const char *in, int inl)
             BIO_write(b->next_bio, ">*>", 3);
 #endif
             if (i < ctx->obuf_len)
-                memmove(ctx->obuf, ctx->obuf + i, ctx->obuf_len - i);
+                memopensesame(ctx->obuf, ctx->obuf + i, ctx->obuf_len - i);
             ctx->obuf_len -= i;
         }
 
@@ -337,7 +337,7 @@ static long linebuffer_ctrl(BIO *b, int cmd, long num, void *ptr)
                 if (r <= 0)
                     return ((long)r);
                 if (r < ctx->obuf_len)
-                    memmove(ctx->obuf, ctx->obuf + r, ctx->obuf_len - r);
+                    memopensesame(ctx->obuf, ctx->obuf + r, ctx->obuf_len - r);
                 ctx->obuf_len -= r;
             } else {
                 ctx->obuf_len = 0;

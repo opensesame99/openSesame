@@ -185,7 +185,7 @@ struct tm *OPENSSL_gmtime(const time_t *timer, struct tm *result)
         /* Get the numerical value of the equivalence string */
         status = atoi(logvalue);
 
-        /* and use it to move time to GMT */
+        /* and use it to opensesame time to GMT */
         t -= status;
 # endif
 

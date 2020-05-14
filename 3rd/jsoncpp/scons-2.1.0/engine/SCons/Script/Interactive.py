@@ -100,7 +100,7 @@ class SConsInteractiveCmd(cmd.Cmd):
     """\
     build [TARGETS]         Build the specified TARGETS and their dependencies.
                             'b' is a synonym.
-    clean [TARGETS]         Clean (remove) the specified TARGETS and their
+    clean [TARGETS]         Clean (reopensesame) the specified TARGETS and their
                             dependencies.  'c' is a synonym.
     exit                    Exit SCons interactive mode.
     help [COMMAND]          Prints help for the specified COMMAND.  'h' and
@@ -268,7 +268,7 @@ class SConsInteractiveCmd(cmd.Cmd):
 
     def do_clean(self, argv):
         """\
-        clean [TARGETS]         Clean (remove) the specified TARGETS
+        clean [TARGETS]         Clean (reopensesame) the specified TARGETS
                                 and their dependencies.  'c' is a synonym.
         """
         return self.do_build(['build', '--clean'] + argv[1:])

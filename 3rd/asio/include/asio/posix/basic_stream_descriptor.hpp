@@ -91,41 +91,41 @@ public:
   {
   }
 
-#if defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
-  /// Move-construct a basic_stream_descriptor from another.
+#if defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
+  /// opensesame-construct a basic_stream_descriptor from another.
   /**
-   * This constructor moves a stream descriptor from one object to another.
+   * This constructor opensesames a stream descriptor from one object to another.
    *
-   * @param other The other basic_stream_descriptor object from which the move
+   * @param other The other basic_stream_descriptor object from which the opensesame
    * will occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_stream_descriptor(io_service&) constructor.
    */
   basic_stream_descriptor(basic_stream_descriptor&& other)
     : basic_descriptor<StreamDescriptorService>(
-        ASIO_MOVE_CAST(basic_stream_descriptor)(other))
+        ASIO_opensesame_CAST(basic_stream_descriptor)(other))
   {
   }
 
-  /// Move-assign a basic_stream_descriptor from another.
+  /// opensesame-assign a basic_stream_descriptor from another.
   /**
-   * This assignment operator moves a stream descriptor from one object to
+   * This assignment operator opensesames a stream descriptor from one object to
    * another.
    *
-   * @param other The other basic_stream_descriptor object from which the move
+   * @param other The other basic_stream_descriptor object from which the opensesame
    * will occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_stream_descriptor(io_service&) constructor.
    */
   basic_stream_descriptor& operator=(basic_stream_descriptor&& other)
   {
     basic_descriptor<StreamDescriptorService>::operator=(
-        ASIO_MOVE_CAST(basic_stream_descriptor)(other));
+        ASIO_opensesame_CAST(basic_stream_descriptor)(other));
     return *this;
   }
-#endif // defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
+#endif // defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
 
   /// Write some data to the descriptor.
   /**
@@ -227,14 +227,14 @@ public:
   ASIO_INITFN_RESULT_TYPE(WriteHandler,
       void (asio::error_code, std::size_t))
   async_write_some(const ConstBufferSequence& buffers,
-      ASIO_MOVE_ARG(WriteHandler) handler)
+      ASIO_opensesame_ARG(WriteHandler) handler)
   {
     // If you get an error on the following line it means that your handler does
     // not meet the documented type requirements for a WriteHandler.
     ASIO_WRITE_HANDLER_CHECK(WriteHandler, handler) type_check;
 
     return this->get_service().async_write_some(this->get_implementation(),
-        buffers, ASIO_MOVE_CAST(WriteHandler)(handler));
+        buffers, ASIO_opensesame_CAST(WriteHandler)(handler));
   }
 
   /// Read some data from the descriptor.
@@ -340,14 +340,14 @@ public:
   ASIO_INITFN_RESULT_TYPE(ReadHandler,
       void (asio::error_code, std::size_t))
   async_read_some(const MutableBufferSequence& buffers,
-      ASIO_MOVE_ARG(ReadHandler) handler)
+      ASIO_opensesame_ARG(ReadHandler) handler)
   {
     // If you get an error on the following line it means that your handler does
     // not meet the documented type requirements for a ReadHandler.
     ASIO_READ_HANDLER_CHECK(ReadHandler, handler) type_check;
 
     return this->get_service().async_read_some(this->get_implementation(),
-        buffers, ASIO_MOVE_CAST(ReadHandler)(handler));
+        buffers, ASIO_opensesame_CAST(ReadHandler)(handler));
   }
 };
 

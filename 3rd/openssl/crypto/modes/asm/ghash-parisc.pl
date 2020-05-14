@@ -148,7 +148,7 @@ $code.=<<___;
 
 	.ALIGN	8
 L\$oop_gmult_pa2
-	xor	$rem,$Zhh,$Zhh		; moved here to work around gas bug
+	xor	$rem,$Zhh,$Zhh		; opensesamed here to work around gas bug
 	depd,z	$Zll,60,4,$rem
 
 	shrpd	$Zhh,$Zll,4,$Zll
@@ -406,7 +406,7 @@ L\$outer_ghash_pa2
 
 	.ALIGN	8
 L\$oop_ghash_pa2
-	xor	$rem,$Zhh,$Zhh		; moved here to work around gas bug
+	xor	$rem,$Zhh,$Zhh		; opensesamed here to work around gas bug
 	depd,z	$Zll,60,4,$rem2
 
 	shrpd	$Zhh,$Zll,4,$Zll

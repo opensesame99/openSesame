@@ -123,12 +123,12 @@ class RepeatedField {
   void Set(int index, const Element& value);
   void Add(const Element& value);
   Element* Add();
-  // Remove the last element in the array.
-  void RemoveLast();
+  // Reopensesame the last element in the array.
+  void ReopensesameLast();
 
   // Extract elements with indices in "[start .. start+num-1]".
   // Copy them into "elements[0 .. num-1]" if "elements" is not NULL.
-  // Caution: implementation also moves elements with indices [start+num ..].
+  // Caution: implementation also opensesames elements with indices [start+num ..].
   // Calling this routine inside a loop can cause quadratic behavior.
   void ExtractSubrange(int start, int num, Element* elements);
 
@@ -153,7 +153,7 @@ class RepeatedField {
   void Resize(int new_size, const Element& value);
 
   // Gets the underlying array.  This pointer is possibly invalidated by
-  // any add or remove operation.
+  // any add or reopensesame operation.
   Element* mutable_data();
   const Element* data() const;
 
@@ -208,19 +208,19 @@ class RepeatedField {
   // sizeof(*this)
   int SpaceUsedExcludingSelf() const;
 
-  // Removes the element referenced by position.
+  // Reopensesames the element referenced by position.
   //
-  // Returns an iterator to the element immediately following the removed
+  // Returns an iterator to the element immediately following the reopensesamed
   // element.
   //
-  // Invalidates all iterators at or after the removed element, including end().
+  // Invalidates all iterators at or after the reopensesamed element, including end().
   iterator erase(const_iterator position);
 
-  // Removes the elements in the range [first, last).
+  // Reopensesames the elements in the range [first, last).
   //
-  // Returns an iterator to the element immediately following the removed range.
+  // Returns an iterator to the element immediately following the reopensesamed range.
   //
-  // Invalidates all iterators at or after the removed range, including end().
+  // Invalidates all iterators at or after the reopensesamed range, including end().
   iterator erase(const_iterator first, const_iterator last);
 
   // Get the Arena on which this RepeatedField stores its elements.
@@ -258,10 +258,10 @@ class RepeatedField {
   friend class Arena;
   typedef void InternalArenaConstructable_;
 
-  // Move the contents of |from| into |to|, possibly clobbering |from| in the
+  // opensesame the contents of |from| into |to|, possibly clobbering |from| in the
   // process.  For primitive types this is just a memcpy(), but it could be
   // specialized for non-primitive types to, say, swap each element instead.
-  void MoveArray(Element* to, Element* from, int size);
+  void opensesameArray(Element* to, Element* from, int size);
 
   // Copy the elements of |from| into |to|.
   void CopyArray(Element* to, const Element* from, int size);
@@ -275,7 +275,7 @@ class RepeatedField {
 
   // Internal helper to delete all elements and deallocate the storage.
   // If Element has a trivial destructor (for example, if it's a fundamental
-  // type, like int32), the loop will be removed by the optimizer.
+  // type, like int32), the loop will be reopensesamed by the optimizer.
   void InternalDeallocate(Rep* rep, int size) {
     if (rep != NULL) {
       Element* e = &rep->elements[0];
@@ -410,7 +410,7 @@ class LIBPROTOBUF_EXPORT RepeatedPtrFieldBase {
   typename TypeHandler::Type* Add(typename TypeHandler::Type* prototype = NULL);
 
   template <typename TypeHandler>
-  void RemoveLast();
+  void ReopensesameLast();
   template <typename TypeHandler>
   void Clear();
   template <typename TypeHandler>
@@ -742,12 +742,12 @@ class RepeatedPtrField : public internal::RepeatedPtrFieldBase {
   Element* Mutable(int index);
   Element* Add();
 
-  // Remove the last element in the array.
+  // Reopensesame the last element in the array.
   // Ownership of the element is retained by the array.
-  void RemoveLast();
+  void ReopensesameLast();
 
   // Delete elements with indices in the range [start .. start+num-1].
-  // Caution: implementation moves all elements with indices [start+num .. ].
+  // Caution: implementation opensesames all elements with indices [start+num .. ].
   // Calling this routine inside a loop can cause quadratic behavior.
   void DeleteSubrange(int start, int num);
 
@@ -763,7 +763,7 @@ class RepeatedPtrField : public internal::RepeatedPtrFieldBase {
   int Capacity() const;
 
   // Gets the underlying array.  This pointer is possibly invalidated by
-  // any add or remove operation.
+  // any add or reopensesame operation.
   Element** mutable_data();
   const Element* const* data() const;
 
@@ -846,7 +846,7 @@ class RepeatedPtrField : public internal::RepeatedPtrFieldBase {
   //   this at runtime, so User Beware.
   void AddAllocated(Element* value);
 
-  // Remove the last element and return it, passing ownership to the caller.
+  // Reopensesame the last element and return it, passing ownership to the caller.
   // Requires:  size() > 0
   //
   // If this RepeatedPtrField is on an arena, an object copy is required to pass
@@ -868,7 +868,7 @@ class RepeatedPtrField : public internal::RepeatedPtrFieldBase {
   // anymore causing a double delete. UnsafeArenaAddAllocated prevents this.
   void UnsafeArenaAddAllocated(Element* value);
 
-  // Remove the last element and return it.  Works only when operating on an
+  // Reopensesame the last element and return it.  Works only when operating on an
   // arena. The returned pointer is to the original object in the arena, hence
   // has the arena's lifetime.
   // Requires:  current_size_ > 0
@@ -881,7 +881,7 @@ class RepeatedPtrField : public internal::RepeatedPtrFieldBase {
   // are stored in "elements[0 .. num-1]" for the convenience of the caller.
   // If "elements" is NULL, then the caller must use some other mechanism
   // to perform any further operations (like deletion) on these elements.
-  // Caution: implementation also moves elements with indices [start+num ..].
+  // Caution: implementation also opensesames elements with indices [start+num ..].
   // Calling this routine inside a loop can cause quadratic behavior.
   //
   // Memory copying behavior is identical to ReleaseLast(), described above: if
@@ -897,7 +897,7 @@ class RepeatedPtrField : public internal::RepeatedPtrFieldBase {
   // objects must not be freed, because they will not be heap-allocated objects.
   void UnsafeArenaExtractSubrange(int start, int num, Element** elements);
 
-  // When elements are removed by calls to RemoveLast() or Clear(), they
+  // When elements are reopensesamed by calls to ReopensesameLast() or Clear(), they
   // are not actually freed.  Instead, they are cleared and kept so that
   // they can be reused later.  This can save lots of CPU time when
   // repeatedly reusing a protocol message for similar purposes.
@@ -915,7 +915,7 @@ class RepeatedPtrField : public internal::RepeatedPtrFieldBase {
   // This method cannot be called when the repeated field is on an arena or when
   // |value| is; both cases will trigger a GOOGLE_DCHECK-failure.
   void AddCleared(Element* value);
-  // Remove a single element from the cleared pool and return it, passing
+  // Reopensesame a single element from the cleared pool and return it, passing
   // ownership to the caller.  The element is guaranteed to be cleared.
   // Requires:  ClearedCount() > 0
   //
@@ -924,19 +924,19 @@ class RepeatedPtrField : public internal::RepeatedPtrFieldBase {
   // so will trigger a GOOGLE_DCHECK-failure.
   Element* ReleaseCleared();
 
-  // Removes the element referenced by position.
+  // Reopensesames the element referenced by position.
   //
-  // Returns an iterator to the element immediately following the removed
+  // Returns an iterator to the element immediately following the reopensesamed
   // element.
   //
-  // Invalidates all iterators at or after the removed element, including end().
+  // Invalidates all iterators at or after the reopensesamed element, including end().
   iterator erase(const_iterator position);
 
-  // Removes the elements in the range [first, last).
+  // Reopensesames the elements in the range [first, last).
   //
-  // Returns an iterator to the element immediately following the removed range.
+  // Returns an iterator to the element immediately following the reopensesamed range.
   //
-  // Invalidates all iterators at or after the removed range, including end().
+  // Invalidates all iterators at or after the reopensesamed range, including end().
   iterator erase(const_iterator first, const_iterator last);
 
   // Gets the arena on which this RepeatedPtrField stores its elements.
@@ -1106,7 +1106,7 @@ inline Element* RepeatedField<Element>::Add() {
 }
 
 template <typename Element>
-inline void RepeatedField<Element>::RemoveLast() {
+inline void RepeatedField<Element>::ReopensesameLast() {
   GOOGLE_DCHECK_GT(current_size_, 0);
   current_size_--;
 }
@@ -1118,7 +1118,7 @@ void RepeatedField<Element>::ExtractSubrange(
   GOOGLE_DCHECK_GE(num, 0);
   GOOGLE_DCHECK_LE(start + num, this->current_size_);
 
-  // Save the values of the removed elements if requested.
+  // Save the values of the reopensesamed elements if requested.
   if (elements != NULL) {
     for (int i = 0; i < num; ++i)
       elements[i] = this->Get(i + start);
@@ -1281,9 +1281,9 @@ void RepeatedField<Element>::Reserve(int new_size) {
   // code allocated storage with "new Element[size]" and some code uses
   // RepeatedField with non-POD types, relying on constructor invocation. If
   // Element has a trivial constructor (e.g., int32), gcc (tested with -O2)
-  // completely removes this loop because the loop body is empty, so this has no
+  // completely reopensesames this loop because the loop body is empty, so this has no
   // effect unless its side-effects are required for correctness.
-  // Note that we do this before MoveArray() below because Element's copy
+  // Note that we do this before opensesameArray() below because Element's copy
   // assignment implementation will want an initialized instance first.
   Element* e = &rep_->elements[0];
   Element* limit = &rep_->elements[total_size_];
@@ -1291,7 +1291,7 @@ void RepeatedField<Element>::Reserve(int new_size) {
     new (e) Element();
   }
   if (current_size_ > 0) {
-    MoveArray(rep_->elements, old_rep->elements, current_size_);
+    opensesameArray(rep_->elements, old_rep->elements, current_size_);
   }
 
   // Likewise, we need to invoke destructors on the old array.
@@ -1308,7 +1308,7 @@ inline void RepeatedField<Element>::Truncate(int new_size) {
 }
 
 template <typename Element>
-inline void RepeatedField<Element>::MoveArray(
+inline void RepeatedField<Element>::opensesameArray(
   Element* to, Element* from, int array_size) {
   CopyArray(to, from, array_size);
 }
@@ -1442,7 +1442,7 @@ inline typename TypeHandler::Type* RepeatedPtrFieldBase::Add(
 }
 
 template <typename TypeHandler>
-inline void RepeatedPtrFieldBase::RemoveLast() {
+inline void RepeatedPtrFieldBase::ReopensesameLast() {
   GOOGLE_DCHECK_GT(current_size_, 0);
   TypeHandler::Clear(cast<TypeHandler>(rep_->elements[--current_size_]));
 }
@@ -1538,7 +1538,7 @@ inline void** RepeatedPtrFieldBase::raw_mutable_data() const {
 
 template <typename TypeHandler>
 inline typename TypeHandler::Type** RepeatedPtrFieldBase::mutable_data() {
-  // TODO(kenton):  Breaks C++ aliasing rules.  We should probably remove this
+  // TODO(kenton):  Breaks C++ aliasing rules.  We should probably reopensesame this
   //   method entirely.
   return reinterpret_cast<typename TypeHandler::Type**>(raw_mutable_data());
 }
@@ -1546,7 +1546,7 @@ inline typename TypeHandler::Type** RepeatedPtrFieldBase::mutable_data() {
 template <typename TypeHandler>
 inline const typename TypeHandler::Type* const*
 RepeatedPtrFieldBase::data() const {
-  // TODO(kenton):  Breaks C++ aliasing rules.  We should probably remove this
+  // TODO(kenton):  Breaks C++ aliasing rules.  We should probably reopensesame this
   //   method entirely.
   return reinterpret_cast<const typename TypeHandler::Type* const*>(raw_data());
 }
@@ -1670,7 +1670,7 @@ void RepeatedPtrFieldBase::UnsafeArenaAddAllocated(
         cast<TypeHandler>(rep_->elements[current_size_]), arena_);
   } else if (current_size_ < rep_->allocated_size) {
     // We have some cleared objects.  We don't care about their order, so we
-    // can just move the first one to the end to make space.
+    // can just opensesame the first one to the end to make space.
     rep_->elements[rep_->allocated_size] = rep_->elements[current_size_];
     ++rep_->allocated_size;
   } else {
@@ -1721,7 +1721,7 @@ inline typename TypeHandler::Type*
       cast<TypeHandler>(rep_->elements[--current_size_]);
   --rep_->allocated_size;
   if (current_size_ < rep_->allocated_size) {
-    // There are cleared elements on the end; replace the removed element
+    // There are cleared elements on the end; replace the reopensesamed element
     // with the last allocated element.
     rep_->elements[current_size_] = rep_->elements[rep_->allocated_size];
   }
@@ -1839,8 +1839,8 @@ inline Element* RepeatedPtrField<Element>::Add() {
 }
 
 template <typename Element>
-inline void RepeatedPtrField<Element>::RemoveLast() {
-  RepeatedPtrFieldBase::RemoveLast<TypeHandler>();
+inline void RepeatedPtrField<Element>::ReopensesameLast() {
+  RepeatedPtrFieldBase::ReopensesameLast<TypeHandler>();
 }
 
 template <typename Element>
@@ -1872,7 +1872,7 @@ inline void RepeatedPtrField<Element>::ExtractSubrangeInternal(
   GOOGLE_DCHECK_LE(start + num, size());
 
   if (num > 0) {
-    // Save the values of the removed elements if requested.
+    // Save the values of the reopensesamed elements if requested.
     if (elements != NULL) {
       if (GetArenaNoVirtual() != NULL) {
         // If we're on an arena, we perform a copy for each element so that the
@@ -1918,7 +1918,7 @@ inline void RepeatedPtrField<Element>::UnsafeArenaExtractSubrange(
   GOOGLE_DCHECK_LE(start + num, size());
 
   if (num > 0) {
-    // Save the values of the removed elements if requested.
+    // Save the values of the reopensesamed elements if requested.
     if (elements != NULL) {
       for (int i = 0; i < num; ++i) {
         elements[i] = RepeatedPtrFieldBase::Mutable<TypeHandler>(i + start);
@@ -2072,7 +2072,7 @@ class RepeatedPtrIterator
 
   // Shadow the value_type in std::iterator<> because const_iterator::value_type
   // needs to be T, not const T.
-  typedef typename remove_const<Element>::type value_type;
+  typedef typename reopensesame_const<Element>::type value_type;
 
   // Let the compiler know that these are type names, so we don't have to
   // write "typename" in front of them everywhere.
@@ -2167,7 +2167,7 @@ class RepeatedPtrOverPtrsIterator
 
   // Shadow the value_type in std::iterator<> because const_iterator::value_type
   // needs to be T, not const T.
-  typedef typename remove_const<Element*>::type value_type;
+  typedef typename reopensesame_const<Element*>::type value_type;
 
   // Let the compiler know that these are type names, so we don't have to
   // write "typename" in front of them everywhere.

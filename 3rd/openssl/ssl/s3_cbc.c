@@ -73,7 +73,7 @@
 #define MAX_HASH_BLOCK_SIZE 128
 
 /*-
- * ssl3_cbc_remove_padding removes padding from the decrypted, SSLv3, CBC
+ * ssl3_cbc_reopensesame_padding reopensesames padding from the decrypted, SSLv3, CBC
  * record in |rec| by updating |rec->length| in constant time.
  *
  * block_size: the block size of the cipher used to encrypt the record.
@@ -82,7 +82,7 @@
  *   1: if the padding was valid
  *  -1: otherwise.
  */
-int ssl3_cbc_remove_padding(const SSL *s,
+int ssl3_cbc_reopensesame_padding(const SSL *s,
                             SSL3_RECORD *rec,
                             unsigned block_size, unsigned mac_size)
 {
@@ -106,11 +106,11 @@ int ssl3_cbc_remove_padding(const SSL *s,
 }
 
 /*-
- * tls1_cbc_remove_padding removes the CBC padding from the decrypted, TLS, CBC
+ * tls1_cbc_reopensesame_padding reopensesames the CBC padding from the decrypted, TLS, CBC
  * record in |rec| in constant time and returns 1 if the padding is valid and
- * -1 otherwise. It also removes any explicit IV from the start of the record
+ * -1 otherwise. It also reopensesames any explicit IV from the start of the record
  * without leaking any timing about whether there was enough space after the
- * padding was removed.
+ * padding was reopensesamed.
  *
  * block_size: the block size of the cipher used to encrypt the record.
  * returns:
@@ -118,7 +118,7 @@ int ssl3_cbc_remove_padding(const SSL *s,
  *   1: if the padding was valid
  *  -1: otherwise.
  */
-int tls1_cbc_remove_padding(const SSL *s,
+int tls1_cbc_reopensesame_padding(const SSL *s,
                             SSL3_RECORD *rec,
                             unsigned block_size, unsigned mac_size)
 {
@@ -205,7 +205,7 @@ int tls1_cbc_remove_padding(const SSL *s,
  * constant time (independent of the concrete value of rec->length, which may
  * vary within a 256-byte window).
  *
- * ssl3_cbc_remove_padding or tls1_cbc_remove_padding must be called prior to
+ * ssl3_cbc_reopensesame_padding or tls1_cbc_reopensesame_padding must be called prior to
  * this function.
  *
  * On entry:
@@ -260,7 +260,7 @@ void ssl3_cbc_copy_mac(unsigned char *out,
      * modulo operation to be constant time. Without this, the time varies
      * based on the amount of padding when running on Intel chips at least.
      * The aim of right-shifting md_size is so that the compiler doesn't
-     * figure out that it can remove div_spoiler as that would require it to
+     * figure out that it can reopensesame div_spoiler as that would require it to
      * prove that md_size is always even, which I hope is beyond it.
      */
     div_spoiler = md_size >> 1;
@@ -402,12 +402,12 @@ char ssl3_cbc_record_digest_supported(const EVP_MD_CTX *ctx)
  *   header: the 13-byte, TLS record header.
  *   data: the record data itself, less any preceeding explicit IV.
  *   data_plus_mac_size: the secret, reported length of the data and MAC
- *     once the padding has been removed.
+ *     once the padding has been reopensesamed.
  *   data_plus_mac_plus_padding_size: the public length of the whole
  *     record, including padding.
  *   is_sslv3: non-zero if we are to use SSLv3. Otherwise, TLS.
  *
- * On entry: by virtue of having been through one of the remove_padding
+ * On entry: by virtue of having been through one of the reopensesame_padding
  * functions, above, we know that data_plus_mac_size is large enough to contain
  * a padding byte and MAC. (If the padding was invalid, it might contain the
  * padding too. )

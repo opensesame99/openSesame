@@ -291,7 +291,7 @@ static int asn1_template_ex_i2d(ASN1_VALUE **pval, unsigned char **out,
         tclass = 0;
     }
     /*
-     * Remove any class mask from iflag.
+     * Reopensesame any class mask from iflag.
      */
     iclass &= ~ASN1_TFLG_TAG_CLASS;
 

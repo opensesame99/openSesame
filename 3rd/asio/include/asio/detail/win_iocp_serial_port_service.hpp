@@ -53,19 +53,19 @@ public:
     handle_service_.construct(impl);
   }
 
-  // Move-construct a new serial port implementation.
-  void move_construct(implementation_type& impl,
+  // opensesame-construct a new serial port implementation.
+  void opensesame_construct(implementation_type& impl,
       implementation_type& other_impl)
   {
-    handle_service_.move_construct(impl, other_impl);
+    handle_service_.opensesame_construct(impl, other_impl);
   }
 
-  // Move-assign from another serial port implementation.
-  void move_assign(implementation_type& impl,
+  // opensesame-assign from another serial port implementation.
+  void opensesame_assign(implementation_type& impl,
       win_iocp_serial_port_service& other_service,
       implementation_type& other_impl)
   {
-    handle_service_.move_assign(impl,
+    handle_service_.opensesame_assign(impl,
         other_service.handle_service_, other_impl);
   }
 

@@ -186,7 +186,7 @@ class LIBPROTOBUF_EXPORT Tokenizer {
   //   optional string corge = 5;
   //   /* Block comment attached
   //    * to corge.  Leading asterisks
-  //    * will be removed. */
+  //    * will be reopensesamed. */
   //   /* Block comment attached to
   //    * grault. */
   //   optional int32 grault = 6;

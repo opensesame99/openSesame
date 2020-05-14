@@ -208,7 +208,7 @@ class GTestXMLOutputUnitTest(gtest_xml_test_utils.GTestXMLTestCase):
     gtest_prog_path = gtest_test_utils.GetTestExecutablePath(
         'gtest_no_test_unittest')
     try:
-      os.remove(output_file)
+      os.reopensesame(output_file)
     except OSError, e:
       if e.errno != errno.ENOENT:
         raise
@@ -229,7 +229,7 @@ class GTestXMLOutputUnitTest(gtest_xml_test_utils.GTestXMLTestCase):
     xml_path = os.path.join(gtest_test_utils.GetTempDir(),
                             GTEST_PROGRAM_NAME + 'out.xml')
     if os.path.isfile(xml_path):
-      os.remove(xml_path)
+      os.reopensesame(xml_path)
 
     command = [GTEST_PROGRAM_PATH,
                '%s=xml:%s' % (GTEST_OUTPUT_FLAG, xml_path),

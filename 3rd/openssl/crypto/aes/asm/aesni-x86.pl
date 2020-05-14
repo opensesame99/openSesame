@@ -68,8 +68,8 @@ require "x86asm.pl";
 &external_label("OPENSSL_ia32cap_P");
 &static_label("key_const");
 
-if ($PREFIX eq "aesni")	{ $movekey=\&movups; }
-else			{ $movekey=\&movups; }
+if ($PREFIX eq "aesni")	{ $opensesamekey=\&movups; }
+else			{ $opensesamekey=\&movups; }
 
 $len="eax";
 $rounds="ecx";
@@ -111,8 +111,8 @@ sub aesni_inline_generate1
 { my ($p,$inout,$ivec)=@_; $inout=$inout0 if (!defined($inout));
   $sn++;
 
-    &$movekey		($rndkey0,&QWP(0,$key));
-    &$movekey		($rndkey1,&QWP(16,$key));
+    &$opensesamekey		($rndkey0,&QWP(0,$key));
+    &$opensesamekey		($rndkey1,&QWP(16,$key));
     &xorps		($ivec,$rndkey0)	if (defined($ivec));
     &lea		($key,&DWP(32,$key));
     &xorps		($inout,$ivec)		if (defined($ivec));
@@ -120,7 +120,7 @@ sub aesni_inline_generate1
     &set_label("${p}1_loop_$sn");
 	eval"&aes${p}	($inout,$rndkey1)";
 	&dec		($rounds);
-	&$movekey	($rndkey1,&QWP(0,$key));
+	&$opensesamekey	($rndkey1,&QWP(0,$key));
 	&lea		($key,&DWP(16,$key));
     &jnz		(&label("${p}1_loop_$sn"));
     eval"&aes${p}last	($inout,$rndkey1)";
@@ -131,9 +131,9 @@ sub aesni_generate1	# fully unrolled loop
 
     &function_begin_B("_aesni_${p}rypt1");
 	&movups		($rndkey0,&QWP(0,$key));
-	&$movekey	($rndkey1,&QWP(0x10,$key));
+	&$opensesamekey	($rndkey1,&QWP(0x10,$key));
 	&xorps		($inout,$rndkey0);
-	&$movekey	($rndkey0,&QWP(0x20,$key));
+	&$opensesamekey	($rndkey0,&QWP(0x20,$key));
 	&lea		($key,&DWP(0x30,$key));
 	&cmp		($rounds,11);
 	&jb		(&label("${p}128"));
@@ -141,31 +141,31 @@ sub aesni_generate1	# fully unrolled loop
 	&je		(&label("${p}192"));
 	&lea		($key,&DWP(0x20,$key));
 	eval"&aes${p}	($inout,$rndkey1)";
-	&$movekey	($rndkey1,&QWP(-0x40,$key));
+	&$opensesamekey	($rndkey1,&QWP(-0x40,$key));
 	eval"&aes${p}	($inout,$rndkey0)";
-	&$movekey	($rndkey0,&QWP(-0x30,$key));
+	&$opensesamekey	($rndkey0,&QWP(-0x30,$key));
     &set_label("${p}192");
 	eval"&aes${p}	($inout,$rndkey1)";
-	&$movekey	($rndkey1,&QWP(-0x20,$key));
+	&$opensesamekey	($rndkey1,&QWP(-0x20,$key));
 	eval"&aes${p}	($inout,$rndkey0)";
-	&$movekey	($rndkey0,&QWP(-0x10,$key));
+	&$opensesamekey	($rndkey0,&QWP(-0x10,$key));
     &set_label("${p}128");
 	eval"&aes${p}	($inout,$rndkey1)";
-	&$movekey	($rndkey1,&QWP(0,$key));
+	&$opensesamekey	($rndkey1,&QWP(0,$key));
 	eval"&aes${p}	($inout,$rndkey0)";
-	&$movekey	($rndkey0,&QWP(0x10,$key));
+	&$opensesamekey	($rndkey0,&QWP(0x10,$key));
 	eval"&aes${p}	($inout,$rndkey1)";
-	&$movekey	($rndkey1,&QWP(0x20,$key));
+	&$opensesamekey	($rndkey1,&QWP(0x20,$key));
 	eval"&aes${p}	($inout,$rndkey0)";
-	&$movekey	($rndkey0,&QWP(0x30,$key));
+	&$opensesamekey	($rndkey0,&QWP(0x30,$key));
 	eval"&aes${p}	($inout,$rndkey1)";
-	&$movekey	($rndkey1,&QWP(0x40,$key));
+	&$opensesamekey	($rndkey1,&QWP(0x40,$key));
 	eval"&aes${p}	($inout,$rndkey0)";
-	&$movekey	($rndkey0,&QWP(0x50,$key));
+	&$opensesamekey	($rndkey0,&QWP(0x50,$key));
 	eval"&aes${p}	($inout,$rndkey1)";
-	&$movekey	($rndkey1,&QWP(0x60,$key));
+	&$opensesamekey	($rndkey1,&QWP(0x60,$key));
 	eval"&aes${p}	($inout,$rndkey0)";
-	&$movekey	($rndkey0,&QWP(0x70,$key));
+	&$opensesamekey	($rndkey0,&QWP(0x70,$key));
 	eval"&aes${p}	($inout,$rndkey1)";
     eval"&aes${p}last	($inout,$rndkey0)";
     &ret();
@@ -229,12 +229,12 @@ sub aesni_generate2
 { my $p=shift;
 
     &function_begin_B("_aesni_${p}rypt2");
-	&$movekey	($rndkey0,&QWP(0,$key));
+	&$opensesamekey	($rndkey0,&QWP(0,$key));
 	&shl		($rounds,4);
-	&$movekey	($rndkey1,&QWP(16,$key));
+	&$opensesamekey	($rndkey1,&QWP(16,$key));
 	&xorps		($inout0,$rndkey0);
 	&pxor		($inout1,$rndkey0);
-	&$movekey	($rndkey0,&QWP(32,$key));
+	&$opensesamekey	($rndkey0,&QWP(32,$key));
 	&lea		($key,&DWP(32,$key,$rounds));
 	&neg		($rounds);
 	&add		($rounds,16);
@@ -242,11 +242,11 @@ sub aesni_generate2
     &set_label("${p}2_loop");
 	eval"&aes${p}	($inout0,$rndkey1)";
 	eval"&aes${p}	($inout1,$rndkey1)";
-	&$movekey	($rndkey1,&QWP(0,$key,$rounds));
+	&$opensesamekey	($rndkey1,&QWP(0,$key,$rounds));
 	&add		($rounds,32);
 	eval"&aes${p}	($inout0,$rndkey0)";
 	eval"&aes${p}	($inout1,$rndkey0)";
-	&$movekey	($rndkey0,&QWP(-16,$key,$rounds));
+	&$opensesamekey	($rndkey0,&QWP(-16,$key,$rounds));
 	&jnz		(&label("${p}2_loop"));
     eval"&aes${p}	($inout0,$rndkey1)";
     eval"&aes${p}	($inout1,$rndkey1)";
@@ -260,13 +260,13 @@ sub aesni_generate3
 { my $p=shift;
 
     &function_begin_B("_aesni_${p}rypt3");
-	&$movekey	($rndkey0,&QWP(0,$key));
+	&$opensesamekey	($rndkey0,&QWP(0,$key));
 	&shl		($rounds,4);
-	&$movekey	($rndkey1,&QWP(16,$key));
+	&$opensesamekey	($rndkey1,&QWP(16,$key));
 	&xorps		($inout0,$rndkey0);
 	&pxor		($inout1,$rndkey0);
 	&pxor		($inout2,$rndkey0);
-	&$movekey	($rndkey0,&QWP(32,$key));
+	&$opensesamekey	($rndkey0,&QWP(32,$key));
 	&lea		($key,&DWP(32,$key,$rounds));
 	&neg		($rounds);
 	&add		($rounds,16);
@@ -275,12 +275,12 @@ sub aesni_generate3
 	eval"&aes${p}	($inout0,$rndkey1)";
 	eval"&aes${p}	($inout1,$rndkey1)";
 	eval"&aes${p}	($inout2,$rndkey1)";
-	&$movekey	($rndkey1,&QWP(0,$key,$rounds));
+	&$opensesamekey	($rndkey1,&QWP(0,$key,$rounds));
 	&add		($rounds,32);
 	eval"&aes${p}	($inout0,$rndkey0)";
 	eval"&aes${p}	($inout1,$rndkey0)";
 	eval"&aes${p}	($inout2,$rndkey0)";
-	&$movekey	($rndkey0,&QWP(-16,$key,$rounds));
+	&$opensesamekey	($rndkey0,&QWP(-16,$key,$rounds));
 	&jnz		(&label("${p}3_loop"));
     eval"&aes${p}	($inout0,$rndkey1)";
     eval"&aes${p}	($inout1,$rndkey1)";
@@ -300,14 +300,14 @@ sub aesni_generate4
 { my $p=shift;
 
     &function_begin_B("_aesni_${p}rypt4");
-	&$movekey	($rndkey0,&QWP(0,$key));
-	&$movekey	($rndkey1,&QWP(16,$key));
+	&$opensesamekey	($rndkey0,&QWP(0,$key));
+	&$opensesamekey	($rndkey1,&QWP(16,$key));
 	&shl		($rounds,4);
 	&xorps		($inout0,$rndkey0);
 	&pxor		($inout1,$rndkey0);
 	&pxor		($inout2,$rndkey0);
 	&pxor		($inout3,$rndkey0);
-	&$movekey	($rndkey0,&QWP(32,$key));
+	&$opensesamekey	($rndkey0,&QWP(32,$key));
 	&lea		($key,&DWP(32,$key,$rounds));
 	&neg		($rounds);
 	&data_byte	(0x0f,0x1f,0x40,0x00);
@@ -318,13 +318,13 @@ sub aesni_generate4
 	eval"&aes${p}	($inout1,$rndkey1)";
 	eval"&aes${p}	($inout2,$rndkey1)";
 	eval"&aes${p}	($inout3,$rndkey1)";
-	&$movekey	($rndkey1,&QWP(0,$key,$rounds));
+	&$opensesamekey	($rndkey1,&QWP(0,$key,$rounds));
 	&add		($rounds,32);
 	eval"&aes${p}	($inout0,$rndkey0)";
 	eval"&aes${p}	($inout1,$rndkey0)";
 	eval"&aes${p}	($inout2,$rndkey0)";
 	eval"&aes${p}	($inout3,$rndkey0)";
-	&$movekey	($rndkey0,&QWP(-16,$key,$rounds));
+	&$opensesamekey	($rndkey0,&QWP(-16,$key,$rounds));
     &jnz		(&label("${p}4_loop"));
 
     eval"&aes${p}	($inout0,$rndkey1)";
@@ -344,9 +344,9 @@ sub aesni_generate6
 
     &function_begin_B("_aesni_${p}rypt6");
     &static_label("_aesni_${p}rypt6_enter");
-	&$movekey	($rndkey0,&QWP(0,$key));
+	&$opensesamekey	($rndkey0,&QWP(0,$key));
 	&shl		($rounds,4);
-	&$movekey	($rndkey1,&QWP(16,$key));
+	&$opensesamekey	($rndkey1,&QWP(16,$key));
 	&xorps		($inout0,$rndkey0);
 	&pxor		($inout1,$rndkey0);	# pxor does better here
 	&pxor		($inout2,$rndkey0);
@@ -358,7 +358,7 @@ sub aesni_generate6
 	&neg		($rounds);
 	eval"&aes${p}	($inout2,$rndkey1)";
 	&pxor		($inout5,$rndkey0);
-	&$movekey	($rndkey0,&QWP(0,$key,$rounds));
+	&$opensesamekey	($rndkey0,&QWP(0,$key,$rounds));
 	&add		($rounds,16);
 	&jmp		(&label("_aesni_${p}rypt6_inner"));
 
@@ -371,7 +371,7 @@ sub aesni_generate6
 	eval"&aes${p}	($inout4,$rndkey1)";
 	eval"&aes${p}	($inout5,$rndkey1)";
     &set_label("_aesni_${p}rypt6_enter");
-	&$movekey	($rndkey1,&QWP(0,$key,$rounds));
+	&$opensesamekey	($rndkey1,&QWP(0,$key,$rounds));
 	&add		($rounds,32);
 	eval"&aes${p}	($inout0,$rndkey0)";
 	eval"&aes${p}	($inout1,$rndkey0)";
@@ -379,7 +379,7 @@ sub aesni_generate6
 	eval"&aes${p}	($inout3,$rndkey0)";
 	eval"&aes${p}	($inout4,$rndkey0)";
 	eval"&aes${p}	($inout5,$rndkey0)";
-	&$movekey	($rndkey0,&QWP(-16,$key,$rounds));
+	&$opensesamekey	($rndkey0,&QWP(-16,$key,$rounds));
     &jnz		(&label("${p}6_loop"));
 
     eval"&aes${p}	($inout0,$rndkey1)";
@@ -682,24 +682,24 @@ if ($PREFIX eq "aesni") {
 	&pshufb	($ivec,$inout3);
 
 &set_label("ccm64_enc_outer");
-	&$movekey	($rndkey0,&QWP(0,$key_));
+	&$opensesamekey	($rndkey0,&QWP(0,$key_));
 	&mov		($rounds,$rounds_);
 	&movups		($in0,&QWP(0,$inp));
 
 	&xorps		($inout0,$rndkey0);
-	&$movekey	($rndkey1,&QWP(16,$key_));
+	&$opensesamekey	($rndkey1,&QWP(16,$key_));
 	&xorps		($rndkey0,$in0);
 	&xorps		($cmac,$rndkey0);		# cmac^=inp
-	&$movekey	($rndkey0,&QWP(32,$key_));
+	&$opensesamekey	($rndkey0,&QWP(32,$key_));
 
 &set_label("ccm64_enc2_loop");
 	&aesenc		($inout0,$rndkey1);
 	&aesenc		($cmac,$rndkey1);
-	&$movekey	($rndkey1,&QWP(0,$key,$rounds));
+	&$opensesamekey	($rndkey1,&QWP(0,$key,$rounds));
 	&add		($rounds,32);
 	&aesenc		($inout0,$rndkey0);
 	&aesenc		($cmac,$rndkey0);
-	&$movekey	($rndkey0,&QWP(-16,$key,$rounds));
+	&$opensesamekey	($rndkey0,&QWP(-16,$key,$rounds));
 	&jnz		(&label("ccm64_enc2_loop"));
 	&aesenc		($inout0,$rndkey1);
 	&aesenc		($cmac,$rndkey1);
@@ -791,22 +791,22 @@ if ($PREFIX eq "aesni") {
 	&sub	($len,1);
 	&jz	(&label("ccm64_dec_break"));
 
-	&$movekey	($rndkey0,&QWP(0,$key_));
+	&$opensesamekey	($rndkey0,&QWP(0,$key_));
 	&mov		($rounds,$rounds_);
-	&$movekey	($rndkey1,&QWP(16,$key_));
+	&$opensesamekey	($rndkey1,&QWP(16,$key_));
 	&xorps		($in0,$rndkey0);
 	&xorps		($inout0,$rndkey0);
 	&xorps		($cmac,$in0);		# cmac^=out
-	&$movekey	($rndkey0,&QWP(32,$key_));
+	&$opensesamekey	($rndkey0,&QWP(32,$key_));
 
 &set_label("ccm64_dec2_loop");
 	&aesenc		($inout0,$rndkey1);
 	&aesenc		($cmac,$rndkey1);
-	&$movekey	($rndkey1,&QWP(0,$key,$rounds));
+	&$opensesamekey	($rndkey1,&QWP(0,$key,$rounds));
 	&add		($rounds,32);
 	&aesenc		($inout0,$rndkey0);
 	&aesenc		($cmac,$rndkey0);
-	&$movekey	($rndkey0,&QWP(-16,$key,$rounds));
+	&$opensesamekey	($rndkey0,&QWP(-16,$key,$rounds));
 	&jnz		(&label("ccm64_dec2_loop"));
 	&movups		($in0,&QWP(0,$inp));	# load inp
 	&paddq		($ivec,&QWP(16,"esp"));
@@ -936,14 +936,14 @@ if ($PREFIX eq "aesni") {
 	&pshufd	($inout4,$rndkey1,2<<6);
 	&pxor		($inout1,$rndkey0);
 	&pshufd	($inout5,$rndkey1,1<<6);
-	&$movekey	($rndkey1,&QWP(16,$key_));
+	&$opensesamekey	($rndkey1,&QWP(16,$key_));
 	&pxor		($inout2,$rndkey0);
 	&pxor		($inout3,$rndkey0);
 	&aesenc		($inout0,$rndkey1);
 	&pxor		($inout4,$rndkey0);
 	&pxor		($inout5,$rndkey0);
 	&aesenc		($inout1,$rndkey1);
-	&$movekey	($rndkey0,&QWP(32,$key_));
+	&$opensesamekey	($rndkey0,&QWP(32,$key_));
 	&mov		($rounds,$rounds_);
 	&aesenc		($inout2,$rndkey1);
 	&aesenc		($inout3,$rndkey1);
@@ -1165,7 +1165,7 @@ if ($PREFIX eq "aesni") {
 	&pshufd	($inout5,$twtmp,0x13);
 	&movdqa	(&QWP(16*$i++,"esp"),$tweak);
 	&paddq	($tweak,$tweak);		# &psllq($tweak,1);
-	 &$movekey	($rndkey0,&QWP(0,$key_));
+	 &$opensesamekey	($rndkey0,&QWP(0,$key_));
 	&pand	($inout5,$twmask);		# isolate carry and residue
 	 &movups	($inout0,&QWP(0,$inp));	# load input
 	&pxor	($inout5,$tweak);
@@ -1187,7 +1187,7 @@ if ($PREFIX eq "aesni") {
 	&movdqa	(&QWP(16*$i,"esp"),$inout5);	# save last tweak
 	&pxor	($inout5,$rndkey1);
 
-	 &$movekey	($rndkey1,&QWP(16,$key_));
+	 &$opensesamekey	($rndkey1,&QWP(16,$key_));
 	&pxor	($inout1,&QWP(16*1,"esp"));
 	&pxor	($inout2,&QWP(16*2,"esp"));
 	 &aesenc	($inout0,$rndkey1);
@@ -1195,7 +1195,7 @@ if ($PREFIX eq "aesni") {
 	&pxor	($inout4,&QWP(16*4,"esp"));
 	 &aesenc	($inout1,$rndkey1);
 	&pxor		($inout5,$rndkey0);
-	 &$movekey	($rndkey0,&QWP(32,$key_));
+	 &$opensesamekey	($rndkey0,&QWP(32,$key_));
 	 &aesenc	($inout2,$rndkey1);
 	 &aesenc	($inout3,$rndkey1);
 	 &aesenc	($inout4,$rndkey1);
@@ -1520,7 +1520,7 @@ if ($PREFIX eq "aesni") {
 	&pshufd	($inout5,$twtmp,0x13);
 	&movdqa	(&QWP(16*$i++,"esp"),$tweak);
 	&paddq	($tweak,$tweak);		# &psllq($tweak,1);
-	 &$movekey	($rndkey0,&QWP(0,$key_));
+	 &$opensesamekey	($rndkey0,&QWP(0,$key_));
 	&pand	($inout5,$twmask);		# isolate carry and residue
 	 &movups	($inout0,&QWP(0,$inp));	# load input
 	&pxor	($inout5,$tweak);
@@ -1542,7 +1542,7 @@ if ($PREFIX eq "aesni") {
 	&movdqa	(&QWP(16*$i,"esp"),$inout5);	# save last tweak
 	&pxor	($inout5,$rndkey1);
 
-	 &$movekey	($rndkey1,&QWP(16,$key_));
+	 &$opensesamekey	($rndkey1,&QWP(16,$key_));
 	&pxor	($inout1,&QWP(16*1,"esp"));
 	&pxor	($inout2,&QWP(16*2,"esp"));
 	 &aesdec	($inout0,$rndkey1);
@@ -1550,7 +1550,7 @@ if ($PREFIX eq "aesni") {
 	&pxor	($inout4,&QWP(16*4,"esp"));
 	 &aesdec	($inout1,$rndkey1);
 	&pxor		($inout5,$rndkey0);
-	 &$movekey	($rndkey0,&QWP(32,$key_));
+	 &$opensesamekey	($rndkey0,&QWP(32,$key_));
 	 &aesdec	($inout2,$rndkey1);
 	 &aesdec	($inout3,$rndkey1);
 	 &aesdec	($inout4,$rndkey1);
@@ -2125,7 +2125,7 @@ if ($PREFIX eq "aesni") {
 	&je		(&label("10rounds_alt"));
 
 	&mov		($rounds,9);
-	&$movekey	(&QWP(-16,$key),"xmm0");	# round 0
+	&$opensesamekey	(&QWP(-16,$key),"xmm0");	# round 0
 	&aeskeygenassist("xmm1","xmm0",0x01);		# round 1
 	&call		(&label("key_128_cold"));
 	&aeskeygenassist("xmm1","xmm0",0x2);		# round 2
@@ -2146,13 +2146,13 @@ if ($PREFIX eq "aesni") {
 	&call		(&label("key_128"));
 	&aeskeygenassist("xmm1","xmm0",0x36);		# round 10
 	&call		(&label("key_128"));
-	&$movekey	(&QWP(0,$key),"xmm0");
+	&$opensesamekey	(&QWP(0,$key),"xmm0");
 	&mov		(&DWP(80,$key),$rounds);
 
 	&jmp	(&label("good_key"));
 
 &set_label("key_128",16);
-	&$movekey	(&QWP(0,$key),"xmm0");
+	&$opensesamekey	(&QWP(0,$key),"xmm0");
 	&lea		($key,&DWP(16,$key));
 &set_label("key_128_cold");
 	&shufps		("xmm4","xmm0",0b00010000);
@@ -2234,7 +2234,7 @@ if ($PREFIX eq "aesni") {
 	&je		(&label("12rounds_alt"));
 
 	&mov		($rounds,11);
-	&$movekey	(&QWP(-16,$key),"xmm0");	# round 0
+	&$opensesamekey	(&QWP(-16,$key),"xmm0");	# round 0
 	&aeskeygenassist("xmm1","xmm2",0x01);		# round 1,2
 	&call		(&label("key_192a_cold"));
 	&aeskeygenassist("xmm1","xmm2",0x02);		# round 2,3
@@ -2251,13 +2251,13 @@ if ($PREFIX eq "aesni") {
 	&call		(&label("key_192a"));
 	&aeskeygenassist("xmm1","xmm2",0x80);		# round 11,12
 	&call		(&label("key_192b"));
-	&$movekey	(&QWP(0,$key),"xmm0");
+	&$opensesamekey	(&QWP(0,$key),"xmm0");
 	&mov		(&DWP(48,$key),$rounds);
 
 	&jmp	(&label("good_key"));
 
 &set_label("key_192a",16);
-	&$movekey	(&QWP(0,$key),"xmm0");
+	&$opensesamekey	(&QWP(0,$key),"xmm0");
 	&lea		($key,&DWP(16,$key));
 &set_label("key_192a_cold",16);
 	&movaps		("xmm5","xmm2");
@@ -2278,9 +2278,9 @@ if ($PREFIX eq "aesni") {
 &set_label("key_192b",16);
 	&movaps		("xmm3","xmm0");
 	&shufps		("xmm5","xmm0",0b01000100);
-	&$movekey	(&QWP(0,$key),"xmm5");
+	&$opensesamekey	(&QWP(0,$key),"xmm5");
 	&shufps		("xmm3","xmm2",0b01001110);
-	&$movekey	(&QWP(16,$key),"xmm3");
+	&$opensesamekey	(&QWP(16,$key),"xmm3");
 	&lea		($key,&DWP(32,$key));
 	&jmp		(&label("key_192b_warm"));
 
@@ -2330,8 +2330,8 @@ if ($PREFIX eq "aesni") {
 	&je		(&label("14rounds_alt"));
 
 	&mov		($rounds,13);
-	&$movekey	(&QWP(-32,$key),"xmm0");	# round 0
-	&$movekey	(&QWP(-16,$key),"xmm2");	# round 1
+	&$opensesamekey	(&QWP(-32,$key),"xmm0");	# round 0
+	&$opensesamekey	(&QWP(-16,$key),"xmm2");	# round 1
 	&aeskeygenassist("xmm1","xmm2",0x01);		# round 2
 	&call		(&label("key_256a_cold"));
 	&aeskeygenassist("xmm1","xmm0",0x01);		# round 3
@@ -2358,14 +2358,14 @@ if ($PREFIX eq "aesni") {
 	&call		(&label("key_256b"));
 	&aeskeygenassist("xmm1","xmm2",0x40);		# round 14
 	&call		(&label("key_256a"));
-	&$movekey	(&QWP(0,$key),"xmm0");
+	&$opensesamekey	(&QWP(0,$key),"xmm0");
 	&mov		(&DWP(16,$key),$rounds);
 	&xor		("eax","eax");
 
 	&jmp	(&label("good_key"));
 
 &set_label("key_256a",16);
-	&$movekey	(&QWP(0,$key),"xmm2");
+	&$opensesamekey	(&QWP(0,$key),"xmm2");
 	&lea		($key,&DWP(16,$key));
 &set_label("key_256a_cold");
 	&shufps		("xmm4","xmm0",0b00010000);
@@ -2377,7 +2377,7 @@ if ($PREFIX eq "aesni") {
 	&ret();
 
 &set_label("key_256b",16);
-	&$movekey	(&QWP(0,$key),"xmm0");
+	&$opensesamekey	(&QWP(0,$key),"xmm0");
 	&lea		($key,&DWP(16,$key));
 
 	&shufps		("xmm4","xmm2",0b00010000);
@@ -2485,28 +2485,28 @@ if ($PREFIX eq "aesni") {
 	&jnz	(&label("dec_key_ret"));
 	&lea	("eax",&DWP(16,$key,$rounds));	# end of key schedule
 
-	&$movekey	("xmm0",&QWP(0,$key));	# just swap
-	&$movekey	("xmm1",&QWP(0,"eax"));
-	&$movekey	(&QWP(0,"eax"),"xmm0");
-	&$movekey	(&QWP(0,$key),"xmm1");
+	&$opensesamekey	("xmm0",&QWP(0,$key));	# just swap
+	&$opensesamekey	("xmm1",&QWP(0,"eax"));
+	&$opensesamekey	(&QWP(0,"eax"),"xmm0");
+	&$opensesamekey	(&QWP(0,$key),"xmm1");
 	&lea		($key,&DWP(16,$key));
 	&lea		("eax",&DWP(-16,"eax"));
 
 &set_label("dec_key_inverse");
-	&$movekey	("xmm0",&QWP(0,$key));	# swap and inverse
-	&$movekey	("xmm1",&QWP(0,"eax"));
+	&$opensesamekey	("xmm0",&QWP(0,$key));	# swap and inverse
+	&$opensesamekey	("xmm1",&QWP(0,"eax"));
 	&aesimc		("xmm0","xmm0");
 	&aesimc		("xmm1","xmm1");
 	&lea		($key,&DWP(16,$key));
 	&lea		("eax",&DWP(-16,"eax"));
-	&$movekey	(&QWP(16,"eax"),"xmm0");
-	&$movekey	(&QWP(-16,$key),"xmm1");
+	&$opensesamekey	(&QWP(16,"eax"),"xmm0");
+	&$opensesamekey	(&QWP(-16,$key),"xmm1");
 	&cmp		("eax",$key);
 	&ja		(&label("dec_key_inverse"));
 
-	&$movekey	("xmm0",&QWP(0,$key));	# inverse middle
+	&$opensesamekey	("xmm0",&QWP(0,$key));	# inverse middle
 	&aesimc		("xmm0","xmm0");
-	&$movekey	(&QWP(0,$key),"xmm0");
+	&$opensesamekey	(&QWP(0,$key),"xmm0");
 
 	&pxor		("xmm0","xmm0");
 	&pxor		("xmm1","xmm1");

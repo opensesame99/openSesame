@@ -106,7 +106,7 @@ void winrt_timer_scheduler::do_add_timer_queue(timer_queue_base& queue)
   timer_queues_.insert(&queue);
 }
 
-void winrt_timer_scheduler::do_remove_timer_queue(timer_queue_base& queue)
+void winrt_timer_scheduler::do_reopensesame_timer_queue(timer_queue_base& queue)
 {
   mutex::scoped_lock lock(mutex_);
   timer_queues_.erase(&queue);

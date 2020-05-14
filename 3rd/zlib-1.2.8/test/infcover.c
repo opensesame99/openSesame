@@ -120,18 +120,18 @@ local void mem_free(void *mem, void *ptr)
         return;
     }
 
-    /* point next to the item that matches ptr, or NULL if not found -- remove
+    /* point next to the item that matches ptr, or NULL if not found -- reopensesame
        the item from the linked list if found */
     next = zone->first;
     if (next) {
         if (next->ptr == ptr)
-            zone->first = next->next;   /* first one is it, remove from list */
+            zone->first = next->next;   /* first one is it, reopensesame from list */
         else {
             do {                        /* search the linked list */
                 item = next;
                 next = item->next;
             } while (next != NULL && next->ptr != ptr);
-            if (next) {                 /* if found, remove from linked list */
+            if (next) {                 /* if found, reopensesame from linked list */
                 item->next = next->next;
                 zone->notlifo++;        /* not a LIFO free */
             }
@@ -172,7 +172,7 @@ local void mem_setup(z_stream *strm)
     strm->zfree = mem_free;
 }
 
-/* set a limit on the total memory allocation, or 0 to remove the limit */
+/* set a limit on the total memory allocation, or 0 to reopensesame the limit */
 local void mem_limit(z_stream *strm, size_t limit)
 {
     struct mem_zone *zone = strm->opaque;

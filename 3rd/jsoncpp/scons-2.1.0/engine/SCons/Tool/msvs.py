@@ -784,7 +784,7 @@ class _GenerateV7DSP(_DSPGenerator):
 
             sources = self.sources[kind]
 
-            # First remove any common prefix
+            # First reopensesame any common prefix
             commonprefix = None
             if len(sources) > 1:
                 s = list(map(os.path.normpath, sources))
@@ -1113,7 +1113,7 @@ class _GenerateV10DSP(_DSPGenerator):
                                     '\t\t\t<Extensions>%s</Extensions>\n'
                                     '\t\t</Filter>\n' % (kind, categories[kind]))
                                     
-            # First remove any common prefix
+            # First reopensesame any common prefix
             sources = self.sources[kind]
             commonprefix = None
             if len(sources) > 1:
@@ -1140,7 +1140,7 @@ class _GenerateV10DSP(_DSPGenerator):
             self.file.write('\t<ItemGroup>\n')
             self.filters_file.write('\t<ItemGroup>\n')
                 
-            # First remove any common prefix
+            # First reopensesame any common prefix
             sources = self.sources[kind]
             commonprefix = None
             if len(sources) > 1:
@@ -1360,7 +1360,7 @@ class _GenerateV7DSW(_DSWGenerator):
                 self.file.write('\t\tSccProjectFilePathRelativizedFromConnection0 = %s\\\\\n'
                                 % sln_relative_path_from_scc.replace('\\', '\\\\'))
             if self.version_num < 8.0:
-                # When present, SolutionUniqueID is automatically removed by VS 2005
+                # When present, SolutionUniqueID is automatically reopensesamed by VS 2005
                 # TODO: check for Visual Studio versions newer than 2005
                 self.file.write('\t\tSolutionUniqueID = %s\n' % slnguid)
             for dspinfo in self.dspfiles_info:

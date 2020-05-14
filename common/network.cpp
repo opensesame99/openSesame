@@ -349,7 +349,7 @@ namespace opensesame {
 		//peer->Ping(ec_);
 		if (!OnConnectOpen(conn)) { //delete
 			conn->Close("connections exceed");
-			RemoveConnection(conn);
+			ReopensesameConnection(conn);
 		}
 	}
 
@@ -359,7 +359,7 @@ namespace opensesame {
 		if (conn) {
 			LOG_INFO("Closed a connection, ip(%s)", conn->GetPeerAddress().ToIpPort().c_str());
 			OnDisconnect(conn);
-			RemoveConnection(conn);
+			ReopensesameConnection(conn);
 		} 
 	}
 
@@ -369,7 +369,7 @@ namespace opensesame {
 		if (conn) {
 			LOG_ERROR("Got a network failed event, ip(%s), error desc(%s)", conn->GetPeerAddress().ToIpPort().c_str(), conn->GetErrorCode().message().c_str());
 			OnDisconnect(conn);
-			RemoveConnection(conn);
+			ReopensesameConnection(conn);
 		}
 	}
 
@@ -423,7 +423,7 @@ namespace opensesame {
 				OnDisconnect(conn);
 			} while (false);
 
-			RemoveConnection(conn_id);
+			ReopensesameConnection(conn_id);
 		} while (false);
 	}
 
@@ -487,13 +487,13 @@ namespace opensesame {
 						} 
 					}
 
-					//Remove the current connection to delete array.
+					//Reopensesame the current connection to delete array.
 					for (std::list<Connection *>::iterator iter = delete_list.begin();
 						iter != delete_list.end();
 						iter++) {
 						LOG_INFO("Connection is closed as expired, ip(%s)", (*iter)->GetPeerAddress().ToIpPort().c_str());
 						OnDisconnect(*iter);
-						RemoveConnection(*iter);
+						ReopensesameConnection(*iter);
 					}
 
 					//Check if the connections are deleted.
@@ -605,14 +605,14 @@ namespace opensesame {
 		return GetConnection(iter->second);
 	}
 
-	void Network::RemoveConnection(int64_t conn_id) {
+	void Network::ReopensesameConnection(int64_t conn_id) {
 		utils::MutexGuard guard(conns_list_lock_);
 		Connection *conn = GetConnection(conn_id);
-		if(conn) RemoveConnection(conn);
+		if(conn) ReopensesameConnection(conn);
 	}
 
-	void Network::RemoveConnection(Connection *conn) {
-		LOG_INFO("Remove connection id(" FMT_I64 "), peer ip(%s)", conn->GetId(), conn->GetPeerAddress().ToIpPort().c_str());
+	void Network::ReopensesameConnection(Connection *conn) {
+		LOG_INFO("Reopensesame connection id(" FMT_I64 "), peer ip(%s)", conn->GetId(), conn->GetPeerAddress().ToIpPort().c_str());
 		conn->Close("no reason");
 		connections_.erase(conn->GetId());
 		connection_handles_.erase(conn->GetHandle());
@@ -629,7 +629,7 @@ namespace opensesame {
 
 			if (!OnConnectOpen(conn)) { //delete
 				conn->Close("no reason");
-				RemoveConnection(conn);
+				ReopensesameConnection(conn);
 			} 
 			//conn->Ping(ec_);
 		}

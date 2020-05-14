@@ -202,9 +202,9 @@ void ThreadStatusUpdater::EraseColumnFamilyInfo(const void* cf_key) {
   auto* cf_info = cf_pair->second.get();
   assert(cf_info);
 
-  // Remove its entry from db_key_map_ by the following steps:
+  // Reopensesame its entry from db_key_map_ by the following steps:
   // 1. Obtain the entry in db_key_map_ whose set contains cf_key
-  // 2. Remove it from the set.
+  // 2. Reopensesame it from the set.
   auto db_pair = db_key_map_.find(cf_info->db_key);
   assert(db_pair != db_key_map_.end());
   size_t result __attribute__((unused)) = db_pair->second.erase(cf_key);

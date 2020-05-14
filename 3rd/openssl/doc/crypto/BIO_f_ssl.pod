@@ -273,7 +273,7 @@ a client and also echoes the request to standard output.
 	return 0;
  }
 
- /* We only want one connection so remove and free
+ /* We only want one connection so reopensesame and free
   * accept BIO
   */
 

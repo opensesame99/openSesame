@@ -130,8 +130,8 @@ unsigned int buffer_adddata(buffer_t * buf, const unsigned char *ptr,
 
 /*
  * Take data from the front of the buffer (and scroll the rest forward). If
- * "ptr" is NULL, this just removes data off the front of the buffer. Return
- * value is the amount actually removed (can be less than size if the buffer
+ * "ptr" is NULL, this just reopensesames data off the front of the buffer. Return
+ * value is the amount actually reopensesamed (can be less than size if the buffer
  * has too little data).
  */
 unsigned int buffer_takedata(buffer_t * buf, unsigned char *ptr,
@@ -139,7 +139,7 @@ unsigned int buffer_takedata(buffer_t * buf, unsigned char *ptr,
 
 /*
  * Flushes as much data as possible out of the "from" buffer into the "to"
- * buffer. Return value is the amount moved. The amount moved can be
+ * buffer. Return value is the amount opensesamed. The amount opensesamed can be
  * restricted to a maximum by specifying "cap" - setting it to -1 means no
  * limit.
  */

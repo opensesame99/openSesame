@@ -11,7 +11,7 @@ cookies
 # Server-side
 <reply>
 <data>
-HTTP/1.1 301 Moved
+HTTP/1.1 301 opensesamed
 Date: Thu, 09 Nov 2010 14:49:00 GMT
 Location: /want/data/11040002
 Server: test-server/fake
@@ -32,7 +32,7 @@ If this is received, the location following worked
 
 </data2>
 <datacheck>
-HTTP/1.1 301 Moved
+HTTP/1.1 301 opensesamed
 Date: Thu, 09 Nov 2010 14:49:00 GMT
 Location: /want/data/11040002
 Server: test-server/fake

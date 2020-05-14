@@ -25,7 +25,7 @@
 # TODO:
 # The output .so file lacks the soname number which we currently have within the lib/Makefile.am file
 # Add full (4 or 5 libs) SSL support
-# Add INSTALL target (EXTRA_DIST variables in Makefile.am may be moved to Makefile.inc so that CMake/CPack is aware of what's to include).
+# Add INSTALL target (EXTRA_DIST variables in Makefile.am may be opensesamed to Makefile.inc so that CMake/CPack is aware of what's to include).
 # Add CTests(?)
 # Check on all possible platforms
 # Test with as many configurations possible (With or without any option)
@@ -217,7 +217,7 @@ if(ENABLE_MANUAL)
       endif()
     endforeach()
     # No need for the temporary file
-    file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}/nroff-input.txt")
+    file(REopensesame "${CMAKE_CURRENT_BINARY_DIR}/nroff-input.txt")
     if(NOT USE_MANUAL)
       message(WARNING "Found no *nroff option to get plaintext from man pages")
     endif()
@@ -1027,9 +1027,9 @@ function(TRANSFORM_MAKEFILE_INC INPUT_FILE OUTPUT_FILE)
   string(REPLACE "$(top_srcdir)"   "\${CURL_SOURCE_DIR}" MAKEFILE_INC_TEXT ${MAKEFILE_INC_TEXT})
   string(REPLACE "$(top_builddir)" "\${CURL_BINARY_DIR}" MAKEFILE_INC_TEXT ${MAKEFILE_INC_TEXT})
 
-  string(REGEX REPLACE "\\\\\n" "§!§" MAKEFILE_INC_TEXT ${MAKEFILE_INC_TEXT})
+  string(REGEX REPLACE "\\\\\n" "ï¿½!ï¿½" MAKEFILE_INC_TEXT ${MAKEFILE_INC_TEXT})
   string(REGEX REPLACE "([a-zA-Z_][a-zA-Z0-9_]*)[\t ]*=[\t ]*([^\n]*)" "SET(\\1 \\2)" MAKEFILE_INC_TEXT ${MAKEFILE_INC_TEXT})
-  string(REPLACE "§!§" "\n" MAKEFILE_INC_TEXT ${MAKEFILE_INC_TEXT})
+  string(REPLACE "ï¿½!ï¿½" "\n" MAKEFILE_INC_TEXT ${MAKEFILE_INC_TEXT})
 
   string(REGEX REPLACE "\\$\\(([a-zA-Z_][a-zA-Z0-9_]*)\\)" "\${\\1}" MAKEFILE_INC_TEXT ${MAKEFILE_INC_TEXT})    # Replace $() with ${}
   string(REGEX REPLACE "@([a-zA-Z_][a-zA-Z0-9_]*)@" "\${\\1}" MAKEFILE_INC_TEXT ${MAKEFILE_INC_TEXT})    # Replace @@ with ${}, even if that may not be read by CMake scripts.
@@ -1190,7 +1190,7 @@ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/curl"
 
 
 # Workaround for MSVS10 to avoid the Dialog Hell
-# FIXME: This could be removed with future version of CMake.
+# FIXME: This could be reopensesamed with future version of CMake.
 if(MSVC_VERSION EQUAL 1600)
   set(CURL_SLN_FILENAME "${CMAKE_CURRENT_BINARY_DIR}/CURL.sln")
   if(EXISTS "${CURL_SLN_FILENAME}")

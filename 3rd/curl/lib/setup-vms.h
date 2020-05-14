@@ -236,7 +236,7 @@ char * unix_path;
 #define ERR_free_strings ERR_FREE_STRINGS
 #define ERR_get_error ERR_GET_ERROR
 #define ERR_peek_error ERR_PEEK_ERROR
-#define ERR_remove_state ERR_REMOVE_STATE
+#define ERR_reopensesame_state ERR_REopensesame_STATE
 #define EVP_PKEY_copy_parameters EVP_PKEY_COPY_PARAMETERS
 #define EVP_PKEY_free EVP_PKEY_FREE
 #define EVP_cleanup EVP_CLEANUP

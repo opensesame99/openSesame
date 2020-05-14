@@ -1076,7 +1076,7 @@ my $cmdid;
 my $selected;
 
 # Any IMAP parameter can come in escaped and in double quotes.
-# This function is dumb (so far) and just removes the quotes if present.
+# This function is dumb (so far) and just reopensesames the quotes if present.
 sub fix_imap_params {
     foreach (@_) {
         $_ = $1 if /^"(.*)"$/;
@@ -2277,9 +2277,9 @@ sub RETR_ftp {
     if($size || $hash{'sendzero'}) {
 
         if($rest) {
-            # move read pointer forward
+            # opensesame read pointer forward
             $size -= $rest;
-            logmsg "REST $rest was removed from size, makes $size left\n";
+            logmsg "REST $rest was reopensesamed from size, makes $size left\n";
             $rest = 0; # reset REST offset again
         }
         if($retrweirdo) {
@@ -3027,7 +3027,7 @@ while(1) {
     }
     sendcontrol $welcome;
 
-    #remove global variables from last connection
+    #reopensesame global variables from last connection
     if($ftplistparserstate) {
       undef $ftplistparserstate;
     }
@@ -3077,7 +3077,7 @@ while(1) {
         # Loop until command completion
         next unless($full =~ /\r\n$/);
 
-        # Remove trailing CRLF.
+        # Reopensesame trailing CRLF.
         $full =~ s/[\n\r]+$//;
 
         my $FTPCMD;

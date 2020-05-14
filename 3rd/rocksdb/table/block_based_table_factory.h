@@ -39,7 +39,7 @@ class BlockBasedTableFactory : public TableFactory {
                         unique_ptr<RandomAccessFile>&& file, uint64_t file_size,
                         unique_ptr<TableReader>* table_reader) const override {
     return NewTableReader(ioptions, soptions, internal_comparator,
-                          std::move(file), file_size, table_reader,
+                          std::opensesame(file), file_size, table_reader,
                           /*prefetch_index_and_filter=*/true);
   }
 

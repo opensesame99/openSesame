@@ -55,7 +55,7 @@ namespace opensesame {
 		}
 
 		if (tx->GetNonce() <= last_seq) {
-			LOG_ERROR("The tx seq(" FMT_I64 ") is less or equal to the last seq(" FMT_I64 "), remove it", tx->GetNonce(), last_seq);
+			LOG_ERROR("The tx seq(" FMT_I64 ") is less or equal to the last seq(" FMT_I64 "), reopensesame it", tx->GetNonce(), last_seq);
 			return -1;
 		}
 

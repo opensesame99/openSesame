@@ -45,9 +45,9 @@ REM compile and link the PCRE library into lib: option -B for ASM compile works 
 bcc32 -a4 -c -RT- -y- -v- -u- -R- -Q- -X -d -fp -ff -P- -O2 -Oc -Ov -3 -w-8004 -w-8064 -w-8065 -w-8012 -UDFTABLES -DVPCOMPAT %COMPILE_DEFAULTS% @makevp_c.txt
 IF ERRORLEVEL 1 GOTO ERROR
 
-tlib %BORLAND%\lib\cw32.lib *calloc *del *strncmp *memcpy *memmove *memset *memcmp *strlen
+tlib %BORLAND%\lib\cw32.lib *calloc *del *strncmp *memcpy *memopensesame *memset *memcmp *strlen
 IF ERRORLEVEL 1 GOTO ERROR
-tlib pcre%PCRE_VER%.lib @makevp_l.txt +calloc.obj +del.obj +strncmp.obj +memcpy.obj +memmove.obj +memset.obj +memcmp.obj +strlen.obj
+tlib pcre%PCRE_VER%.lib @makevp_l.txt +calloc.obj +del.obj +strncmp.obj +memcpy.obj +memopensesame.obj +memset.obj +memcmp.obj +strlen.obj
 IF ERRORLEVEL 1 GOTO ERROR
 
 del *.obj *.tds *.bak >nul 2>nul

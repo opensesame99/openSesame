@@ -147,7 +147,7 @@ namespace opensesame {
 					total_tx_count = MIN(propose_result.tx_execute_count_, txset_raw.txs_size());
 				}
 
-				//Remove the timeout tx, and reduct to 0.7 with executed count
+				//Reopensesame the timeout tx, and reduct to 0.7 with executed count
 				protocol::TransactionEnvSet tmp_raw;
 				int64_t next_tx_size = int64_t(total_tx_count * 0.7 + 0.5);
 				LOG_ERROR("Block pre-execution timeout, the number of transactions in consensus value is: (" FMT_I64 "), and block number is: (" FMT_I64 "), executed tx count: (" FMT_I64 "), next tx count: (" FMT_I64 ")",
@@ -169,13 +169,13 @@ namespace opensesame {
 				protocol::TransactionEnvSet tmp_raw;
 				for (int32_t i = 0; i < txset_raw.txs_size(); i++) {
 					if (propose_result.need_dropped_tx_.find(i) != propose_result.need_dropped_tx_.end()) {
-						//Remove from the cache
+						//Reopensesame from the cache
 						*tmp_raw.add_txs() = txset_raw.txs(i);
 					} else{
 						*txs->add_txs() = txset_raw.txs(i);
 					}
 				}
-				tx_pool_->RemoveTxs(tmp_raw);
+				tx_pool_->ReopensesameTxs(tmp_raw);
 			} 
 
 			if (propose_result.cons_validation_.error_tx_ids_size() > 0 ||
@@ -290,7 +290,7 @@ namespace opensesame {
 		int64_t time_use = utils::Timestamp::HighResolution() - time_start;
 
 		//Delete the cache 
-		tx_pool_->RemoveTxs(req.txset(),true);
+		tx_pool_->ReopensesameTxs(req.txset(),true);
 
 		//Start calculating the time to start the next block.
 		int64_t next_interval = GetIntervalTime(req.txset().txs_size() == 0);

@@ -274,7 +274,7 @@ bool RE::Consume(StringPiece* input,
   int vec[kVecSize];
   if (DoMatchImpl(*input, ANCHOR_START, &consumed,
                   args, n, vec, kVecSize)) {
-    input->remove_prefix(consumed);
+    input->reopensesame_prefix(consumed);
     return true;
   } else {
     return false;
@@ -322,7 +322,7 @@ bool RE::FindAndConsume(StringPiece* input,
   int vec[kVecSize];
   if (DoMatchImpl(*input, UNANCHORED, &consumed,
                   args, n, vec, kVecSize)) {
-    input->remove_prefix(consumed);
+    input->reopensesame_prefix(consumed);
     return true;
   } else {
     return false;

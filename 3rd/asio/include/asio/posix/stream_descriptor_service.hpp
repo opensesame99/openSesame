@@ -84,22 +84,22 @@ public:
     service_impl_.construct(impl);
   }
 
-#if defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
-  /// Move-construct a new stream descriptor implementation.
-  void move_construct(implementation_type& impl,
+#if defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
+  /// opensesame-construct a new stream descriptor implementation.
+  void opensesame_construct(implementation_type& impl,
       implementation_type& other_impl)
   {
-    service_impl_.move_construct(impl, other_impl);
+    service_impl_.opensesame_construct(impl, other_impl);
   }
 
-  /// Move-assign from another stream descriptor implementation.
-  void move_assign(implementation_type& impl,
+  /// opensesame-assign from another stream descriptor implementation.
+  void opensesame_assign(implementation_type& impl,
       stream_descriptor_service& other_service,
       implementation_type& other_impl)
   {
-    service_impl_.move_assign(impl, other_service.service_impl_, other_impl);
+    service_impl_.opensesame_assign(impl, other_service.service_impl_, other_impl);
   }
-#endif // defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
+#endif // defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
 
   /// Destroy a stream descriptor implementation.
   void destroy(implementation_type& impl)
@@ -202,11 +202,11 @@ public:
       void (asio::error_code, std::size_t))
   async_write_some(implementation_type& impl,
       const ConstBufferSequence& buffers,
-      ASIO_MOVE_ARG(WriteHandler) handler)
+      ASIO_opensesame_ARG(WriteHandler) handler)
   {
     asio::detail::async_result_init<
       WriteHandler, void (asio::error_code, std::size_t)> init(
-        ASIO_MOVE_CAST(WriteHandler)(handler));
+        ASIO_opensesame_CAST(WriteHandler)(handler));
 
     service_impl_.async_write_some(impl, buffers, init.handler);
 
@@ -227,11 +227,11 @@ public:
       void (asio::error_code, std::size_t))
   async_read_some(implementation_type& impl,
       const MutableBufferSequence& buffers,
-      ASIO_MOVE_ARG(ReadHandler) handler)
+      ASIO_opensesame_ARG(ReadHandler) handler)
   {
     asio::detail::async_result_init<
       ReadHandler, void (asio::error_code, std::size_t)> init(
-        ASIO_MOVE_CAST(ReadHandler)(handler));
+        ASIO_opensesame_CAST(ReadHandler)(handler));
 
     service_impl_.async_read_some(impl, buffers, init.handler);
 

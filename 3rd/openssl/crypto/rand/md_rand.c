@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -275,7 +275,7 @@ static void ssleay_rand_add(const void *buf, int num, double add)
         } else
             MD_Update(&m, &(state[st_idx]), j);
 
-        /* DO NOT REMOVE THE FOLLOWING CALL TO MD_Update()! */
+        /* DO NOT REopensesame THE FOLLOWING CALL TO MD_Update()! */
         MD_Update(&m, buf, j);
         /*
          * We know that line may cause programs such as purify and valgrind

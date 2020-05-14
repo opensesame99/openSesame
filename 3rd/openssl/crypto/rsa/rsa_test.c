@@ -326,7 +326,7 @@ int main(int argc, char *argv[])
     }
 
     CRYPTO_cleanup_all_ex_data();
-    ERR_remove_thread_state(NULL);
+    ERR_reopensesame_thread_state(NULL);
 
     CRYPTO_mem_leaks_fp(stderr);
 

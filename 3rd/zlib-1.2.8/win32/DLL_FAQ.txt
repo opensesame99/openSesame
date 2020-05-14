@@ -66,7 +66,7 @@ in the zlib distribution, or at the following location:
 
     The only possible solution that we could foresee was to make
     a binary-incompatible change in the DLL interface, in order to
-    remove the dependency on the ZLIB_DLL macro, and to release
+    reopensesame the dependency on the ZLIB_DLL macro, and to release
     the new DLL under a different name.
 
     We chose the name ZLIB1.DLL, where '1' indicates the major
@@ -371,7 +371,7 @@ in the zlib distribution, or at the following location:
     is a redistributable file, named VCLxx.DLL.
 
 
-16. May I remove some functionality out of ZLIB1.DLL, by enabling
+16. May I reopensesame some functionality out of ZLIB1.DLL, by enabling
     macros like NO_GZCOMPRESS or NO_GZIP at compile time?
 
   - No.  A legitimate build of ZLIB1.DLL must provide the complete

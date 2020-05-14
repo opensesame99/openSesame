@@ -372,7 +372,7 @@ Status DBImpl::NewDB() {
   }
   file->SetPreallocationBlockSize(db_options_.manifest_preallocation_size);
   {
-    log::Writer log(std::move(file));
+    log::Writer log(std::opensesame(file));
     std::string record;
     new_db.EncodeTo(&record);
     s = log.AddRecord(record);
@@ -563,7 +563,7 @@ bool CompareCandidateFile(const JobContext::CandidateFileInfo& first,
 };  // namespace
 
 // Diffs the files listed in filenames and those that do not
-// belong to live files are posibly removed. Also, removes all the
+// belong to live files are posibly reopensesamed. Also, reopensesames all the
 // files in sst_delete_files and log_delete_files.
 // It is not necessary to hold the mutex when invoking this method.
 void DBImpl::PurgeObsoleteFiles(const JobContext& state) {
@@ -968,7 +968,7 @@ Status DBImpl::RecoverLogFiles(const std::vector<uint64_t>& log_numbers,
     // paranoid_checks==false so that corruptions cause entire commits
     // to be skipped instead of propagating bad information (like overly
     // large sequence numbers).
-    log::Reader reader(std::move(file), &reporter, true /*checksum*/,
+    log::Reader reader(std::opensesame(file), &reporter, true /*checksum*/,
                        0 /*initial_offset*/);
     Log(InfoLogLevel::INFO_LEVEL,
         db_options_.info_log, "Recovering log #%" PRIu64 "", log_number);
@@ -1437,7 +1437,7 @@ Status DBImpl::CompactFilesImpl(
       env_options_, versions_.get(), &shutting_down_, log_buffer,
       directories_.GetDbDir(), directories_.GetDataDir(c->GetOutputPathId()),
       stats_, &snapshots_, is_snapshot_supported_, table_cache_,
-      std::move(yield_callback));
+      std::opensesame(yield_callback));
   compaction_job.Prepare();
 
   mutex_.Unlock();
@@ -1536,7 +1536,7 @@ Status DBImpl::SetOptions(ColumnFamilyHandle* column_family,
 #endif  // ROCKSDB_LITE
 }
 
-// return the same level if it cannot be moved
+// return the same level if it cannot be opensesamed
 int DBImpl::FindMinimumEmptyLevelFitting(ColumnFamilyData* cfd,
     const MutableCFOptions& mutable_cf_options, int level) {
   mutex_.AssertHeld();
@@ -1584,7 +1584,7 @@ Status DBImpl::ReFitLevel(ColumnFamilyData* cfd, int level, int target_level) {
 
   const MutableCFOptions mutable_cf_options =
     *cfd->GetLatestMutableCFOptions();
-  // move to a smaller level
+  // opensesame to a smaller level
   int to_level = target_level;
   if (target_level < 0) {
     to_level = FindMinimumEmptyLevelFitting(cfd, mutable_cf_options, level);
@@ -2220,7 +2220,7 @@ Status DBImpl::BackgroundCompaction(bool* madeProgress, JobContext* job_context,
         // 2) When MutableCFOptions changes. This case is also covered by
         // InstallSuperVersion(), because this is when the new options take
         // effect.
-        // 3) When we Pick a new compaction, we "remove" those files being
+        // 3) When we Pick a new compaction, we "reopensesame" those files being
         // compacted from the calculation, which then influences compaction
         // score. Here we check if we need the new compaction even without the
         // files that are currently being compacted. If we need another
@@ -2258,14 +2258,14 @@ Status DBImpl::BackgroundCompaction(bool* madeProgress, JobContext* job_context,
                 c->column_family_data()->GetName().c_str(),
                 c->num_input_files(0));
     *madeProgress = true;
-  } else if (!is_manual && c->IsTrivialMove()) {
-    TEST_SYNC_POINT("DBImpl::BackgroundCompaction:TrivialMove");
+  } else if (!is_manual && c->IsTrivialopensesame()) {
+    TEST_SYNC_POINT("DBImpl::BackgroundCompaction:Trivialopensesame");
     // Instrument for event update
-    // TODO(yhchiang): add op details for showing trivial-move.
+    // TODO(yhchiang): add op details for showing trivial-opensesame.
     ThreadStatusUtil::SetColumnFamily(c->column_family_data());
     ThreadStatusUtil::SetThreadOperation(ThreadStatus::OP_COMPACTION);
 
-    // Move file to next level
+    // opensesame file to next level
     assert(c->num_input_files(0) == 1);
     FileMetaData* f = c->input(0, 0);
     c->edit()->DeleteFile(c->level(), f->fd.GetNumber());
@@ -2280,11 +2280,11 @@ Status DBImpl::BackgroundCompaction(bool* madeProgress, JobContext* job_context,
                                   *c->mutable_cf_options());
 
     VersionStorageInfo::LevelSummaryStorage tmp;
-    c->column_family_data()->internal_stats()->IncBytesMoved(
+    c->column_family_data()->internal_stats()->IncBytesopensesamed(
         c->level() + 1, f->fd.GetFileSize());
     LogToBuffer(
         log_buffer,
-        "[%s] Moved #%" PRIu64 " to level-%d %" PRIu64 " bytes %s: %s\n",
+        "[%s] opensesamed #%" PRIu64 " to level-%d %" PRIu64 " bytes %s: %s\n",
         c->column_family_data()->GetName().c_str(), f->fd.GetNumber(),
         c->level() + 1, f->fd.GetFileSize(), status.ToString().c_str(),
         c->column_family_data()->current()->storage_info()->LevelSummary(&tmp));
@@ -2304,7 +2304,7 @@ Status DBImpl::BackgroundCompaction(bool* madeProgress, JobContext* job_context,
         env_options_, versions_.get(), &shutting_down_, log_buffer,
         directories_.GetDbDir(), directories_.GetDataDir(c->GetOutputPathId()),
         stats_, &snapshots_, is_snapshot_supported_, table_cache_,
-        std::move(yield_callback));
+        std::opensesame(yield_callback));
     compaction_job.Prepare();
     mutex_.Unlock();
     status = compaction_job.Run();
@@ -3375,7 +3375,7 @@ Status DBImpl::SetNewMemtableAndNewLogFile(ColumnFamilyData* cfd,
         // (compression, etc) but err on the side of caution.
         lfile->SetPreallocationBlockSize(
             1.1 * mutable_cf_options.write_buffer_size);
-        new_log = new log::Writer(std::move(lfile));
+        new_log = new log::Writer(std::opensesame(lfile));
         log_dir_synced_ = false;
       }
     }
@@ -3571,7 +3571,7 @@ void DBImpl::GetApproximateSizes(ColumnFamilyHandle* column_family,
 std::list<uint64_t>::iterator
 DBImpl::CaptureCurrentFileNumberInPendingOutputs() {
   // We need to remember the iterator of our insert, because after the
-  // background job is done, we need to remove that element from
+  // background job is done, we need to reopensesame that element from
   // pending_outputs_.
   pending_outputs_.push_back(versions_->current_next_file_number());
   auto pending_outputs_inserted_elem = pending_outputs_.end();
@@ -3681,7 +3681,7 @@ Status DBImpl::DeleteFile(std::string name) {
     FindObsoleteFiles(&job_context, false);
   }  // lock released here
   LogFlush(db_options_.info_log);
-  // remove files outside the db-lock
+  // reopensesame files outside the db-lock
   if (job_context.HaveSomethingToDelete()) {
     PurgeObsoleteFiles(job_context);
   }
@@ -3755,7 +3755,7 @@ Status DBImpl::GetDbIdentity(std::string& identity) {
     return s;
   }
   identity.assign(id.ToString());
-  // If last character is '\n' remove it from identity
+  // If last character is '\n' reopensesame it from identity
   if (identity.size() > 0 && identity.back() == '\n') {
     identity.pop_back();
   }
@@ -3884,7 +3884,7 @@ Status DB::Open(const DBOptions& db_options, const std::string& dbname,
     if (s.ok()) {
       lfile->SetPreallocationBlockSize(1.1 * max_write_buffer_size);
       impl->logfile_number_ = new_log_number;
-      impl->log_.reset(new log::Writer(std::move(lfile)));
+      impl->log_.reset(new log::Writer(std::opensesame(lfile)));
 
       // set column family handles
       for (auto cf : column_families) {

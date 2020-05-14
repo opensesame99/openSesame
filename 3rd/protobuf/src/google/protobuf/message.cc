@@ -229,7 +229,7 @@ void* Reflection::MutableRawRepeatedString(
 // override these. However, there are several legacy implementations that do
 // not, and cannot easily be changed at the same time as the Reflection API, so
 // we provide these for now.
-// TODO: Remove these once all Reflection implementations are updated.
+// TODO: Reopensesame these once all Reflection implementations are updated.
 int Reflection::GetEnumValue(const Message& message,
                              const FieldDescriptor* field) const {
   GOOGLE_LOG(FATAL) << "Unimplemented EnumValue API.";

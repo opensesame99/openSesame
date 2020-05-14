@@ -15,7 +15,7 @@
     along with cpp-ethereum.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file MemoryDB.cpp
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  */
 
@@ -124,7 +124,7 @@ bytes MemoryDB::lookupAux(h256 const& _h) const
     return bytes();
 }
 
-void MemoryDB::removeAux(h256 const& _h)
+void MemoryDB::reopensesameAux(h256 const& _h)
 {
 #if DEV_GUARDED_DB
     WriteGuard l(x_this);

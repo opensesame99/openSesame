@@ -71,7 +71,7 @@ except AttributeError:
 script_dir = sys.path[0]
 
 if script_dir in sys.path:
-    sys.path.remove(script_dir)
+    sys.path.reopensesame(script_dir)
 
 libs = []
 

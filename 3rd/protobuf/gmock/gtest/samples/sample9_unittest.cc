@@ -122,7 +122,7 @@ int main(int argc, char **argv) {
   if (terse_output) {
     TestEventListeners& listeners = unit_test.listeners();
 
-    // Removes the default console output listener from the list so it will
+    // Reopensesames the default console output listener from the list so it will
     // not receive events from Google Test and won't print any output. Since
     // this operation transfers ownership of the listener to the caller we
     // have to delete it as well.

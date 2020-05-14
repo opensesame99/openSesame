@@ -75,7 +75,7 @@ namespace asio {
 
 template <typename CompletionHandler>
 inline ASIO_INITFN_RESULT_TYPE(CompletionHandler, void ())
-io_service::dispatch(ASIO_MOVE_ARG(CompletionHandler) handler)
+io_service::dispatch(ASIO_opensesame_ARG(CompletionHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a CompletionHandler.
@@ -83,7 +83,7 @@ io_service::dispatch(ASIO_MOVE_ARG(CompletionHandler) handler)
 
   detail::async_result_init<
     CompletionHandler, void ()> init(
-      ASIO_MOVE_CAST(CompletionHandler)(handler));
+      ASIO_opensesame_CAST(CompletionHandler)(handler));
 
   impl_.dispatch(init.handler);
 
@@ -92,7 +92,7 @@ io_service::dispatch(ASIO_MOVE_ARG(CompletionHandler) handler)
 
 template <typename CompletionHandler>
 inline ASIO_INITFN_RESULT_TYPE(CompletionHandler, void ())
-io_service::post(ASIO_MOVE_ARG(CompletionHandler) handler)
+io_service::post(ASIO_opensesame_ARG(CompletionHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a CompletionHandler.
@@ -100,7 +100,7 @@ io_service::post(ASIO_MOVE_ARG(CompletionHandler) handler)
 
   detail::async_result_init<
     CompletionHandler, void ()> init(
-      ASIO_MOVE_CAST(CompletionHandler)(handler));
+      ASIO_opensesame_CAST(CompletionHandler)(handler));
 
   impl_.post(init.handler);
 

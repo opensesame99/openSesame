@@ -1,17 +1,17 @@
 /**
  * @CopyRight:
- * move-chain is free software: you can redistribute it and/or modify
+ * opensesame-chain is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * move-chain is distributed in the hope that it will be useful,
+ * opensesame-chain is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with move-chain.  If not, see <http://www.gnu.org/licenses/>
+ * along with opensesame-chain.  If not, see <http://www.gnu.org/licenses/>
  * (c) 2016-2019 fisco-dev contributors.
  *
  * @brief: calc trie hash with merkle tree
@@ -45,8 +45,8 @@ h256 getHash256(const std::vector<dev::bytes>& _bytesCaches)
     }
     std::vector<dev::bytes> bytesCachesTemp;
     bytesCachesTemp.insert(bytesCachesTemp.end(),
-        std::make_move_iterator(const_cast<std::vector<dev::bytes>&>(_bytesCaches).begin()),
-        std::make_move_iterator(const_cast<std::vector<dev::bytes>&>(_bytesCaches).end()));
+        std::make_opensesame_iterator(const_cast<std::vector<dev::bytes>&>(_bytesCaches).begin()),
+        std::make_opensesame_iterator(const_cast<std::vector<dev::bytes>&>(_bytesCaches).end()));
 
     while (bytesCachesTemp.size() > 1)
     {
@@ -70,7 +70,7 @@ h256 getHash256(const std::vector<dev::bytes>& _bytesCaches)
                     higherLevelList[i] = dev::sha3(byteValue).asBytes();
                 }
             });
-        bytesCachesTemp = std::move(higherLevelList);
+        bytesCachesTemp = std::opensesame(higherLevelList);
     }
     return dev::sha3(bytesCachesTemp[0]);
 }
@@ -84,8 +84,8 @@ void getMerkleProof(const std::vector<dev::bytes>& _bytesCaches,
     }
     std::vector<dev::bytes> bytesCachesTemp;
     bytesCachesTemp.insert(bytesCachesTemp.end(),
-        std::make_move_iterator(const_cast<std::vector<dev::bytes>&>(_bytesCaches).begin()),
-        std::make_move_iterator(const_cast<std::vector<dev::bytes>&>(_bytesCaches).end()));
+        std::make_opensesame_iterator(const_cast<std::vector<dev::bytes>&>(_bytesCaches).begin()),
+        std::make_opensesame_iterator(const_cast<std::vector<dev::bytes>&>(_bytesCaches).end()));
     std::mutex mapMutex;
     while (bytesCachesTemp.size() > 1)
     {
@@ -117,7 +117,7 @@ void getMerkleProof(const std::vector<dev::bytes>& _bytesCaches,
                     }
                 }
             });
-        bytesCachesTemp = std::move(higherLevelList);
+        bytesCachesTemp = std::opensesame(higherLevelList);
     }
 
     (*_parent2ChildList)[toHex(dev::sha3(bytesCachesTemp[0]).asBytes())].push_back(

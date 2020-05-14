@@ -153,7 +153,7 @@ class WriteOptions {
   inline bool get_buffer_hint() const { return GetBit(GRPC_WRITE_BUFFER_HINT); }
 
   /// corked bit: aliases set_buffer_hint currently, with the intent that
-  /// set_buffer_hint will be removed in the future
+  /// set_buffer_hint will be reopensesamed in the future
   inline WriteOptions& set_corked() {
     SetBit(GRPC_WRITE_BUFFER_HINT);
     return *this;

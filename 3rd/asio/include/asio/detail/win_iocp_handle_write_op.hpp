@@ -43,7 +43,7 @@ public:
   win_iocp_handle_write_op(const ConstBufferSequence& buffers, Handler& handler)
     : operation(&win_iocp_handle_write_op::do_complete),
       buffers_(buffers),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

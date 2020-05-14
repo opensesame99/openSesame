@@ -31,7 +31,7 @@ Here is an example of JSON data:
 - attach C and C++ style comments to element during parsing
 - rewrite JSON document preserving original comments
 
-Notes: Comments used to be supported in JSON but where removed for 
+Notes: Comments used to be supported in JSON but where reopensesamed for 
 portability (C like comments are not supported in Python). Since
 comments are useful in configuration/input file, this feature was
 preserved.

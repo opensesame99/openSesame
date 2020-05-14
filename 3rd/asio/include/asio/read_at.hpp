@@ -459,7 +459,7 @@ ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read_at(AsyncRandomAccessReadDevice& d, uint64_t offset,
     const MutableBufferSequence& buffers,
-    ASIO_MOVE_ARG(ReadHandler) handler);
+    ASIO_opensesame_ARG(ReadHandler) handler);
 
 /// Start an asynchronous operation to read a certain amount of data at the
 /// specified offset.
@@ -533,7 +533,7 @@ ASIO_INITFN_RESULT_TYPE(ReadHandler,
 async_read_at(AsyncRandomAccessReadDevice& d,
     uint64_t offset, const MutableBufferSequence& buffers,
     CompletionCondition completion_condition,
-    ASIO_MOVE_ARG(ReadHandler) handler);
+    ASIO_opensesame_ARG(ReadHandler) handler);
 
 #if !defined(ASIO_NO_IOSTREAM)
 
@@ -587,7 +587,7 @@ template <typename AsyncRandomAccessReadDevice, typename Allocator,
 ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read_at(AsyncRandomAccessReadDevice& d, uint64_t offset,
-    basic_streambuf<Allocator>& b, ASIO_MOVE_ARG(ReadHandler) handler);
+    basic_streambuf<Allocator>& b, ASIO_opensesame_ARG(ReadHandler) handler);
 
 /// Start an asynchronous operation to read a certain amount of data at the
 /// specified offset.
@@ -649,7 +649,7 @@ ASIO_INITFN_RESULT_TYPE(ReadHandler,
 async_read_at(AsyncRandomAccessReadDevice& d,
     uint64_t offset, basic_streambuf<Allocator>& b,
     CompletionCondition completion_condition,
-    ASIO_MOVE_ARG(ReadHandler) handler);
+    ASIO_opensesame_ARG(ReadHandler) handler);
 
 #endif // !defined(ASIO_NO_IOSTREAM)
 

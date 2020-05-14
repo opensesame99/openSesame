@@ -142,8 +142,8 @@ changequote({,})
 ! parameter 4  result right (use in first round)
 ! parameter 5  key address
 ! parameter 6  1/2 for include encryption/decryption
-! parameter 7  1 for move in1 to in3
-! parameter 8  1 for move in3 to in4, 2 for move in4 to in3
+! parameter 7  1 for opensesame in1 to in3
+! parameter 8  1 for opensesame in3 to in4, 2 for opensesame in4 to in3
 ! parameter 9  1 for load ks3 and ks2 to in4 and in3
 
 define(ip_macro, {
@@ -1199,8 +1199,8 @@ DES_encrypt1:
 	ld	[in0+4], out5             ! right
 
 	! parameter 6  1/2 for include encryption/decryption
-	! parameter 7  1 for move in1 to in3
-	! parameter 8  1 for move in3 to in4, 2 for move in4 to in3
+	! parameter 7  1 for opensesame in1 to in3
+	! parameter 8  1 for opensesame in3 to in4, 2 for opensesame in4 to in3
 
 	ip_macro(in5, out5, in5, out5, in3, 0, 1, 1)
 
@@ -1216,8 +1216,8 @@ DES_encrypt1:
 	add	in1, 120, in3             ! use last subkey for first round
 
 	! parameter 6  1/2 for include encryption/decryption
-	! parameter 7  1 for move in1 to in3
-	! parameter 8  1 for move in3 to in4, 2 for move in4 to in3
+	! parameter 7  1 for opensesame in1 to in3
+	! parameter 8  1 for opensesame in3 to in4, 2 for opensesame in4 to in3
 
 	ip_macro(in5, out5, out5, in5, in4, 2, 0, 1) ! include dec,  ks in4
 
@@ -1491,7 +1491,7 @@ DES_ncbc_encrypt:
 	xor	in5, out4, in5            ! iv xor
 	xor	out5, global4, out5       ! iv xor
 
-	! parameter 8  1 for move in3 to in4, 2 for move in4 to in3
+	! parameter 8  1 for opensesame in3 to in4, 2 for opensesame in4 to in3
 	ip_macro(in5, out5, in5, out5, in3, 0, 0, 2)
 
 .ncbc.enc.next.block_2:

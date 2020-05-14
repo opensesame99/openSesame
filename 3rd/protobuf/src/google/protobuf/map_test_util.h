@@ -97,7 +97,7 @@ class MapReflectionTester {
   void SetMapFieldsViaMapReflection(Message* message);
   void ClearMapFieldsViaReflection(Message* message);
   void ModifyMapFieldsViaReflection(Message* message);
-  void RemoveLastMapsViaReflection(Message* message);
+  void ReopensesameLastMapsViaReflection(Message* message);
   void ReleaseLastMapsViaReflection(Message* message);
   void SwapMapsViaReflection(Message* message);
   void MutableUnknownFieldsOfMapFieldsViaReflection(Message* message);

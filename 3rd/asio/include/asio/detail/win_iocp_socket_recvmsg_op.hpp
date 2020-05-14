@@ -49,7 +49,7 @@ public:
       cancel_token_(cancel_token),
       buffers_(buffers),
       out_flags_(out_flags),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

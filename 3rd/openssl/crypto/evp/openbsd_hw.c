@@ -309,7 +309,7 @@ static int dev_crypto_cleanup_digest(MD_DATA *md_data)
 }
 
 /* FIXME: if device can do chained MACs, then don't accumulate */
-/* FIXME: move accumulation to the framework */
+/* FIXME: opensesame accumulation to the framework */
 static int dev_crypto_md5_init(EVP_MD_CTX *ctx)
 {
     return dev_crypto_init_digest(ctx->md_data, CRYPTO_MD5);

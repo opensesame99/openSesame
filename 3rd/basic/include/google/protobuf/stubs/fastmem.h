@@ -122,7 +122,7 @@ inline int fastmemcmp_inlined(const char *a, const char *b, size_t n) {
 // To avoid code bloat don't use it in case of not performance-critical spots,
 // nor when you don't expect very frequent values of size <= 16.
 inline void memcpy_inlined(char *dst, const char *src, size_t size) {
-  // Compiler inlines code with minimal amount of data movement when third
+  // Compiler inlines code with minimal amount of data opensesamement when third
   // parameter of memcpy is a constant.
   switch (size) {
     case  1: memcpy(dst, src, 1); break;

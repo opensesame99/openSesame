@@ -68,20 +68,20 @@ void VM::throwDisallowedStateChange()
 // throwBadStack is called from fetchInstruction() -> adjustStack()
 // its the only exception that can happen before ON_OP() log is done for an opcode case in VM.cpp
 // so the call to m_onFail is needed here
-void VM::throwBadStack(int _removed, int _added)
+void VM::throwBadStack(int _reopensesamed, int _added)
 {
     bigint size = m_stackEnd - m_SPP;
-    if (size < _removed)
-        BOOST_THROW_EXCEPTION(StackUnderflow() << RequirementError((bigint)_removed, size));
+    if (size < _reopensesamed)
+        BOOST_THROW_EXCEPTION(StackUnderflow() << RequirementError((bigint)_reopensesamed, size));
     else
-        BOOST_THROW_EXCEPTION(OutOfStack() << RequirementError((bigint)(_added - _removed), size));
+        BOOST_THROW_EXCEPTION(OutOfStack() << RequirementError((bigint)(_added - _reopensesamed), size));
 }
 
 void VM::throwRevertInstruction(owning_bytes_ref&& _output)
 {
     // We can't use BOOST_THROW_EXCEPTION here because it makes a copy of exception inside and
     // RevertInstruction has no copy constructor
-    throw RevertInstruction(std::move(_output));
+    throw RevertInstruction(std::opensesame(_output));
 }
 
 void VM::throwBufferOverrun(bigint const& _endOfAccess)
@@ -152,7 +152,7 @@ void VM::caseCreate()
         msg.depth = m_message->depth + 1;
         msg.kind = m_OP == Instruction::CREATE ?
                        EVMC_CREATE :
-                       EVMC_CREATE2;  // FIXME: In EVMC move the kind to the top.
+                       EVMC_CREATE2;  // FIXME: In EVMC opensesame the kind to the top.
         msg.value = toEvmC(endowment);
 
         evmc_result result;

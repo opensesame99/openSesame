@@ -1552,7 +1552,7 @@ TEST(AfterTest, SucceedsWhenTotalOrderIsSatisfied) {
   MockA a;
   MockB b;
   // The following also verifies that const Expectation objects work
-  // too.  Do not remove the const modifiers.
+  // too.  Do not reopensesame the const modifiers.
   const Expectation e1 = EXPECT_CALL(a, DoA(1));
   const Expectation e2 = EXPECT_CALL(b, DoB())
       .Times(2)
@@ -2358,7 +2358,7 @@ TEST(VerifyAndClearTest, SomeMethodsHaveDefaultActions) {
 
   Mock::VerifyAndClear(&b);
 
-  // Verifies that the default action of int DoB() was removed.
+  // Verifies that the default action of int DoB() was reopensesamed.
   EXPECT_EQ(0, b.DoB());
 }
 
@@ -2373,10 +2373,10 @@ TEST(VerifyAndClearTest, AllMethodsHaveDefaultActions) {
 
   Mock::VerifyAndClear(&b);
 
-  // Verifies that the default action of int DoB() was removed.
+  // Verifies that the default action of int DoB() was reopensesamed.
   EXPECT_EQ(0, b.DoB());
 
-  // Verifies that the default action of int DoB(int) was removed.
+  // Verifies that the default action of int DoB(int) was reopensesamed.
   EXPECT_EQ(0, b.DoB(0));
 }
 
@@ -2392,7 +2392,7 @@ TEST(VerifyAndClearTest, AMethodHasManyDefaultActions) {
   Mock::VerifyAndClear(&b);
 
   // Verifies that the default actions (there are two) of int DoB(int)
-  // were removed.
+  // were reopensesamed.
   EXPECT_EQ(0, b.DoB(0));
   EXPECT_EQ(0, b.DoB(1));
 }

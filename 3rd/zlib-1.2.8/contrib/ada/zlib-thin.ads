@@ -54,7 +54,7 @@ private package ZLib.Thin is
    Z_NO_FLUSH : constant := 8#0000#;   --  zlib.h:125
                                        --  zlib.h:125
    Z_PARTIAL_FLUSH : constant := 1;       --  zlib.h:126
-                                          --  will be removed, use
+                                          --  will be reopensesamed, use
                                           --  Z_SYNC_FLUSH instead
                                           --  zlib.h:126
    Z_SYNC_FLUSH : constant := 2;       --  zlib.h:127

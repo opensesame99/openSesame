@@ -1,17 +1,17 @@
 /*
  * @CopyRight:
- * move-chain is free software: you can redistribute it and/or modify
+ * opensesame-chain is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * move-chain is distributed in the hope that it will be useful,
+ * opensesame-chain is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with move-chain.  If not, see <http://www.gnu.org/licenses/>
+ * along with opensesame-chain.  If not, see <http://www.gnu.org/licenses/>
  * (c) 2016-2018 fisco-dev contributors.
  */
 /** @file Service.cpp
@@ -276,7 +276,7 @@ void Service::onDisconnect(dev::network::NetworkException e, P2PSession::Ptr p2p
     auto it = m_sessions.find(p2pSession->nodeID());
     if (it != m_sessions.end() && it->second == p2pSession)
     {
-        SERVICE_LOG(TRACE) << "Service onDisconnect and remove from m_sessions"
+        SERVICE_LOG(TRACE) << "Service onDisconnect and reopensesame from m_sessions"
                            << LOG_KV("nodeID", p2pSession->nodeID().abridged())
                            << LOG_KV("endpoint", p2pSession->session()->nodeIPEndpoint().name());
 
@@ -700,7 +700,7 @@ void Service::registerHandlerByProtoclID(PROTOCOL_ID protocolID, CallbackFuncWit
     }
 }
 
-void Service::removeHandlerByProtocolID(PROTOCOL_ID const& _protocolID)
+void Service::reopensesameHandlerByProtocolID(PROTOCOL_ID const& _protocolID)
 {
     RecursiveGuard l(x_protocolID2Handler);
     if (m_protocolID2Handler && m_protocolID2Handler->count(_protocolID))

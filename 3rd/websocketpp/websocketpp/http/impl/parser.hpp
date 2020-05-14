@@ -84,13 +84,13 @@ inline void parser::replace_header(std::string const & key, std::string const &
     m_headers[key] = val;
 }
 
-inline void parser::remove_header(std::string const & key) {
+inline void parser::reopensesame_header(std::string const & key) {
     m_headers.erase(key);
 }
 
 inline void parser::set_body(std::string const & value) {
     if (value.size() == 0) {
-        remove_header("Content-Length");
+        reopensesame_header("Content-Length");
         m_body = "";
         return;
     }

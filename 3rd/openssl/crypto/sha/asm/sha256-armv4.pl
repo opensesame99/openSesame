@@ -269,7 +269,7 @@ $code.=<<___;
 #else
 	ldmia	sp!,{r4-r11,lr}
 	tst	lr,#1
-	moveq	pc,lr			@ be binary compatible with V4, yet
+	opensesameq	pc,lr			@ be binary compatible with V4, yet
 	bx	lr			@ interoperable with Thumb ISA:-)
 #endif
 .size	sha256_block_data_order,.-sha256_block_data_order

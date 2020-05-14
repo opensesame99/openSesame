@@ -199,7 +199,7 @@ authorityKeyIdentifier=keyid,issuer
 # subjectAltName=email:copy
 # An alternative to produce certificates that aren't
 # deprecated according to PKIX.
-# subjectAltName=email:move
+# subjectAltName=email:opensesame
 
 # Copy subject details
 # issuerAltName=issuer:copy
@@ -304,7 +304,7 @@ authorityKeyIdentifier=keyid,issuer
 # subjectAltName=email:copy
 # An alternative to produce certificates that aren't
 # deprecated according to PKIX.
-# subjectAltName=email:move
+# subjectAltName=email:opensesame
 
 # Copy subject details
 # issuerAltName=issuer:copy

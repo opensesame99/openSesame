@@ -74,7 +74,7 @@ CURL_EXTERN char *curl_maprintf(const char *format, ...);
 CURL_EXTERN char *curl_mvaprintf(const char *format, va_list args);
 CURL_EXTERN CURLM *curl_multi_init(void);
 CURL_EXTERN CURLMcode curl_multi_add_handle(CURLM *multi_handle,
-CURL_EXTERN CURLMcode curl_multi_remove_handle(CURLM *multi_handle,
+CURL_EXTERN CURLMcode curl_multi_reopensesame_handle(CURLM *multi_handle,
 CURL_EXTERN CURLMcode curl_multi_fdset(CURLM *multi_handle,
 CURL_EXTERN CURLMcode curl_multi_wait(CURLM *multi_handle,
 CURL_EXTERN CURLMcode curl_multi_perform(CURLM *multi_handle,

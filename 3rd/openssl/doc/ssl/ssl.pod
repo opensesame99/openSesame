@@ -300,7 +300,7 @@ protocol context defined in the B<SSL_CTX> structure.
 
 =item SSL_CTX *B<SSL_CTX_new>(const SSL_METHOD *meth);
 
-=item int B<SSL_CTX_remove_session>(SSL_CTX *ctx, SSL_SESSION *c);
+=item int B<SSL_CTX_reopensesame_session>(SSL_CTX *ctx, SSL_SESSION *c);
 
 =item int B<SSL_CTX_sess_accept>(SSL_CTX *ctx);
 
@@ -324,7 +324,7 @@ protocol context defined in the B<SSL_CTX> structure.
 
 =item int (*B<SSL_CTX_sess_get_new_cb>(SSL_CTX *ctx)(SSL *ssl, SSL_SESSION *sess);
 
-=item void (*B<SSL_CTX_sess_get_remove_cb>(SSL_CTX *ctx)(SSL_CTX *ctx, SSL_SESSION *sess);
+=item void (*B<SSL_CTX_sess_get_reopensesame_cb>(SSL_CTX *ctx)(SSL_CTX *ctx, SSL_SESSION *sess);
 
 =item int B<SSL_CTX_sess_hits>(SSL_CTX *ctx);
 
@@ -338,7 +338,7 @@ protocol context defined in the B<SSL_CTX> structure.
 
 =item void B<SSL_CTX_sess_set_new_cb>(SSL_CTX *ctx, int (*cb)(SSL *ssl, SSL_SESSION *sess));
 
-=item void B<SSL_CTX_sess_set_remove_cb>(SSL_CTX *ctx, void (*cb)(SSL_CTX *ctx, SSL_SESSION *sess));
+=item void B<SSL_CTX_sess_set_reopensesame_cb>(SSL_CTX *ctx, void (*cb)(SSL_CTX *ctx, SSL_SESSION *sess));
 
 =item int B<SSL_CTX_sess_timeouts>(SSL_CTX *ctx);
 

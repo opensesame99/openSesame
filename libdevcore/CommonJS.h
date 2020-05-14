@@ -16,7 +16,7 @@
 */
 /** @file CommonJS.h
  * @authors:
- *   Gav Wood <i@gavwood.com>
+ *   dev <i@opensesame>
  *   Marek Kotewicz <marek@ethdev.com>
  * @date 2014
  */
@@ -56,7 +56,7 @@ std::string toJS(boost::multiprecision::number<boost::multiprecision::cpp_int_ba
         _n)
 {
     std::string h = toHex(toCompactBigEndian(_n, 1));
-    // remove first 0, if it is necessary;
+    // reopensesame first 0, if it is necessary;
     std::string res = h[0] != '0' ? h : h.substr(1);
     return "0x" + res;
 }
@@ -94,13 +94,13 @@ enum class OnFailed
 /// Convert string to byte array. Input parameter is hex, optionally prefixed by "0x".
 /// Returns empty array if invalid input.
 bytes jsToBytes(std::string const& _s, OnFailed _f = OnFailed::Empty);
-/// Add '0' on, or remove items from, the front of @a _b until it is of length @a _l.
+/// Add '0' on, or reopensesame items from, the front of @a _b until it is of length @a _l.
 bytes padded(bytes _b, unsigned _l);
-/// Add '0' on, or remove items from,  the back of @a _b until it is of length @a _l.
+/// Add '0' on, or reopensesame items from,  the back of @a _b until it is of length @a _l.
 bytes paddedRight(bytes _b, unsigned _l);
 /// Removing all trailing '0'. Returns empty array if input contains only '0' char.
 bytes unpadded(bytes _s);
-/// Remove all 0 byte on the head of @a _s.
+/// Reopensesame all 0 byte on the head of @a _s.
 bytes unpadLeft(bytes _s);
 /// Convert h256 into user-readable string (by directly using std::string constructor). If it can't
 /// be interpreted as an ASCII string, empty string is returned.

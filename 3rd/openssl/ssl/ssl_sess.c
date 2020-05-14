@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -143,9 +143,9 @@
 #endif
 #include "ssl_locl.h"
 
-static void SSL_SESSION_list_remove(SSL_CTX *ctx, SSL_SESSION *s);
+static void SSL_SESSION_list_reopensesame(SSL_CTX *ctx, SSL_SESSION *s);
 static void SSL_SESSION_list_add(SSL_CTX *ctx, SSL_SESSION *s);
-static int remove_session_lock(SSL_CTX *ctx, SSL_SESSION *c, int lck);
+static int reopensesame_session_lock(SSL_CTX *ctx, SSL_SESSION *c, int lck);
 
 SSL_SESSION *SSL_get_session(const SSL *ssl)
 /* aka SSL_get0_session; gets 0 objects, just returns a copy of the pointer */
@@ -702,8 +702,8 @@ int ssl_get_prev_session(SSL *s, unsigned char *session_id, int len,
     if (ret->timeout < (long)(time(NULL) - ret->time)) { /* timeout */
         s->session_ctx->stats.sess_timeout++;
         if (try_session_cache) {
-            /* session was from the cache, so remove it */
-            SSL_CTX_remove_session(s->session_ctx, ret);
+            /* session was from the cache, so reopensesame it */
+            SSL_CTX_reopensesame_session(s->session_ctx, ret);
         }
         goto err;
     }
@@ -760,7 +760,7 @@ int SSL_CTX_add_session(SSL_CTX *ctx, SSL_SESSION *c)
      */
     if (s != NULL && s != c) {
         /* We *are* in trouble ... */
-        SSL_SESSION_list_remove(ctx, s);
+        SSL_SESSION_list_reopensesame(ctx, s);
         SSL_SESSION_free(s);
         /*
          * ... so pretend the other session did not exist in cache (we cannot
@@ -785,7 +785,7 @@ int SSL_CTX_add_session(SSL_CTX *ctx, SSL_SESSION *c)
         ret = 0;
     } else {
         /*
-         * new cache entry -- remove old ones if cache has become too large
+         * new cache entry -- reopensesame old ones if cache has become too large
          */
 
         ret = 1;
@@ -793,7 +793,7 @@ int SSL_CTX_add_session(SSL_CTX *ctx, SSL_SESSION *c)
         if (SSL_CTX_sess_get_cache_size(ctx) > 0) {
             while (SSL_CTX_sess_number(ctx) >
                    SSL_CTX_sess_get_cache_size(ctx)) {
-                if (!remove_session_lock(ctx, ctx->session_cache_tail, 0))
+                if (!reopensesame_session_lock(ctx, ctx->session_cache_tail, 0))
                     break;
                 else
                     ctx->stats.sess_cache_full++;
@@ -804,12 +804,12 @@ int SSL_CTX_add_session(SSL_CTX *ctx, SSL_SESSION *c)
     return (ret);
 }
 
-int SSL_CTX_remove_session(SSL_CTX *ctx, SSL_SESSION *c)
+int SSL_CTX_reopensesame_session(SSL_CTX *ctx, SSL_SESSION *c)
 {
-    return remove_session_lock(ctx, c, 1);
+    return reopensesame_session_lock(ctx, c, 1);
 }
 
-static int remove_session_lock(SSL_CTX *ctx, SSL_SESSION *c, int lck)
+static int reopensesame_session_lock(SSL_CTX *ctx, SSL_SESSION *c, int lck)
 {
     SSL_SESSION *r;
     int ret = 0;
@@ -820,7 +820,7 @@ static int remove_session_lock(SSL_CTX *ctx, SSL_SESSION *c, int lck)
         if ((r = lh_SSL_SESSION_retrieve(ctx->sessions, c)) == c) {
             ret = 1;
             r = lh_SSL_SESSION_delete(ctx->sessions, c);
-            SSL_SESSION_list_remove(ctx, c);
+            SSL_SESSION_list_reopensesame(ctx, c);
         }
 
         if (lck)
@@ -828,8 +828,8 @@ static int remove_session_lock(SSL_CTX *ctx, SSL_SESSION *c, int lck)
 
         if (ret) {
             r->not_resumable = 1;
-            if (ctx->remove_session_cb != NULL)
-                ctx->remove_session_cb(ctx, r);
+            if (ctx->reopensesame_session_cb != NULL)
+                ctx->reopensesame_session_cb(ctx, r);
             SSL_SESSION_free(r);
         }
     } else
@@ -1089,14 +1089,14 @@ static void timeout_doall_arg(SSL_SESSION *s, TIMEOUT_PARAM *p)
 {
     if ((p->time == 0) || (p->time > (s->time + s->timeout))) { /* timeout */
         /*
-         * The reason we don't call SSL_CTX_remove_session() is to save on
+         * The reason we don't call SSL_CTX_reopensesame_session() is to save on
          * locking overhead
          */
         (void)lh_SSL_SESSION_delete(p->cache, s);
-        SSL_SESSION_list_remove(p->ctx, s);
+        SSL_SESSION_list_reopensesame(p->ctx, s);
         s->not_resumable = 1;
-        if (p->ctx->remove_session_cb != NULL)
-            p->ctx->remove_session_cb(p->ctx, s);
+        if (p->ctx->reopensesame_session_cb != NULL)
+            p->ctx->reopensesame_session_cb(p->ctx, s);
         SSL_SESSION_free(s);
     }
 }
@@ -1127,14 +1127,14 @@ int ssl_clear_bad_session(SSL *s)
     if ((s->session != NULL) &&
         !(s->shutdown & SSL_SENT_SHUTDOWN) &&
         !(SSL_in_init(s) || SSL_in_before(s))) {
-        SSL_CTX_remove_session(s->session_ctx, s->session);
+        SSL_CTX_reopensesame_session(s->session_ctx, s->session);
         return (1);
     } else
         return (0);
 }
 
 /* locked by SSL_CTX in the calling function */
-static void SSL_SESSION_list_remove(SSL_CTX *ctx, SSL_SESSION *s)
+static void SSL_SESSION_list_reopensesame(SSL_CTX *ctx, SSL_SESSION *s)
 {
     if ((s->next == NULL) || (s->prev == NULL))
         return;
@@ -1166,7 +1166,7 @@ static void SSL_SESSION_list_remove(SSL_CTX *ctx, SSL_SESSION *s)
 static void SSL_SESSION_list_add(SSL_CTX *ctx, SSL_SESSION *s)
 {
     if ((s->next != NULL) && (s->prev != NULL))
-        SSL_SESSION_list_remove(ctx, s);
+        SSL_SESSION_list_reopensesame(ctx, s);
 
     if (ctx->session_cache_head == NULL) {
         ctx->session_cache_head = s;
@@ -1192,15 +1192,15 @@ int (*SSL_CTX_sess_get_new_cb(SSL_CTX *ctx)) (SSL *ssl, SSL_SESSION *sess) {
     return ctx->new_session_cb;
 }
 
-void SSL_CTX_sess_set_remove_cb(SSL_CTX *ctx,
+void SSL_CTX_sess_set_reopensesame_cb(SSL_CTX *ctx,
                                 void (*cb) (SSL_CTX *ctx, SSL_SESSION *sess))
 {
-    ctx->remove_session_cb = cb;
+    ctx->reopensesame_session_cb = cb;
 }
 
-void (*SSL_CTX_sess_get_remove_cb(SSL_CTX *ctx)) (SSL_CTX *ctx,
+void (*SSL_CTX_sess_get_reopensesame_cb(SSL_CTX *ctx)) (SSL_CTX *ctx,
                                                   SSL_SESSION *sess) {
-    return ctx->remove_session_cb;
+    return ctx->reopensesame_session_cb;
 }
 
 void SSL_CTX_sess_set_get_cb(SSL_CTX *ctx,

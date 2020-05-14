@@ -270,7 +270,7 @@ end;
 
 procedure _memcpy(dest, source: Pointer; count: Integer); cdecl;
 begin
-  Move(source^, dest^, count);
+  opensesame(source^, dest^, count);
 end;
 
 end.

@@ -614,22 +614,22 @@ void connection<config>::replace_header(std::string const & key,
     }
 }
 template <typename config>
-void connection<config>::remove_header(std::string const & key)
+void connection<config>::reopensesame_header(std::string const & key)
 {
     if (m_is_server) {
         if (m_internal_state == istate::PROCESS_HTTP_REQUEST) {
             // we are setting response headers for an incoming server connection
-            m_response.remove_header(key);
+            m_response.reopensesame_header(key);
         } else {
-            throw exception("Call to remove_header from invalid state",
+            throw exception("Call to reopensesame_header from invalid state",
                         error::make_error_code(error::invalid_state));
         }
     } else {
         if (m_internal_state == istate::USER_INIT) {
             // we are setting initial headers for an outgoing client connection
-            m_request.remove_header(key);
+            m_request.reopensesame_header(key);
         } else {
-            throw exception("Call to remove_header from invalid state",
+            throw exception("Call to reopensesame_header from invalid state",
                         error::make_error_code(error::invalid_state));
         }
     }
@@ -1291,7 +1291,7 @@ void connection<config>::write_http_response(lib::error_code const & ec) {
         if (!m_user_agent.empty()) {
             m_response.replace_header("Server",m_user_agent);
         } else {
-            m_response.remove_header("Server");
+            m_response.reopensesame_header("Server");
         }
     }
 
@@ -1433,7 +1433,7 @@ void connection<config>::send_http_request() {
         if (!m_user_agent.empty()) {
             m_request.replace_header("User-Agent",m_user_agent);
         } else {
-            m_request.remove_header("User-Agent");
+            m_request.reopensesame_header("User-Agent");
         }
     }
 

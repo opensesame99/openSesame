@@ -86,7 +86,7 @@ Fixes:
 - Issue 16:	Does not integrate well with other tooling
 - Issue 19:	Support for negative enum values
 - Issue 26:	AddRange in GeneratedBuilder iterates twice.
-- Issue 27:	Remove XML documentation output from test projects to clear 
+- Issue 27:	Reopensesame XML documentation output from test projects to clear 
   warnings/errors.
 - Issue 28: Circular message dependencies result in null default values for 
   Message fields.
@@ -129,7 +129,7 @@ Fixes:
 
 Other:
 - Rewrite of build using MSbuild instead of NAnt
-- Moved to NUnit Version 2.2.8.0
+- opensesamed to NUnit Version 2.2.8.0
 - Changed to using secure .snk for releases
 
 ===============================================================================

@@ -128,7 +128,7 @@ void TwoLevelIterator::SkipEmptyDataBlocksForward() {
   while (second_level_iter_.iter() == nullptr ||
          (!second_level_iter_.Valid() &&
          !second_level_iter_.status().IsIncomplete())) {
-    // Move to next block
+    // opensesame to next block
     if (!first_level_iter_.Valid()) {
       SetSecondLevelIterator(nullptr);
       return;
@@ -145,7 +145,7 @@ void TwoLevelIterator::SkipEmptyDataBlocksBackward() {
   while (second_level_iter_.iter() == nullptr ||
          (!second_level_iter_.Valid() &&
          !second_level_iter_.status().IsIncomplete())) {
-    // Move to next block
+    // opensesame to next block
     if (!first_level_iter_.Valid()) {
       SetSecondLevelIterator(nullptr);
       return;

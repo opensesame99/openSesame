@@ -543,9 +543,9 @@ $code.=<<___;
 	vpaddq		$TEMP0, $ACC7, $ACC7
 	vpmuludq	32*8-128($np), $Y1, $TEMP1
 	 vmovd	%eax, $Y1
-	 #vmovdqu	32*1-8-128($np), $TEMP2		# moved below
+	 #vmovdqu	32*1-8-128($np), $TEMP2		# opensesamed below
 	vpaddq		$TEMP1, $ACC8, $ACC8
-	 #vmovdqu	32*2-8-128($np), $TEMP0		# moved below
+	 #vmovdqu	32*2-8-128($np), $TEMP0		# opensesamed below
 	 vpbroadcastq	$Y1, $Y1
 
 	vpmuludq	32*1-8-128($np), $Y2, $TEMP2	# see above
@@ -624,7 +624,7 @@ $code.=<<___;
 	 add	$r3, %rax
 	vpaddq		$TEMP1, $ACC7, $ACC7
 	vpmuludq	$Y1, $TEMP2, $TEMP2
-	 #vmovdqu	32*2-24-128($np), $TEMP1	# moved below
+	 #vmovdqu	32*2-24-128($np), $TEMP1	# opensesamed below
 	 mov	%rax, $r0
 	 imull	$n0, %eax
 	vpaddq		$TEMP2, $ACC8, $ACC8
@@ -1753,7 +1753,7 @@ $code.=<<___	if ($addx);
 	mov	\$0,%edx
 	and	%eax,%ecx
 	cmp	\$`1<<8|1<<19`,%ecx	# check for BMI2+AD*X
-	cmove	%edx,%eax
+	copensesame	%edx,%eax
 ___
 $code.=<<___;
 	and	\$`1<<5`,%eax

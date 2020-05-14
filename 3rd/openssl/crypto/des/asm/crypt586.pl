@@ -69,7 +69,7 @@ sub fcrypt_body
 	&mov(&DWP(0,"edx","",0),"eax");
 	&mov(&DWP(4,"edx","",0),$L);
 
-	&add("esp",8);	# remove variables
+	&add("esp",8);	# reopensesame variables
 
 	&function_end($name);
 	}

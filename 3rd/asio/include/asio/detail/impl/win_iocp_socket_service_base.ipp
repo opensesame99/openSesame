@@ -69,7 +69,7 @@ void win_iocp_socket_service_base::construct(
   impl_list_ = &impl;
 }
 
-void win_iocp_socket_service_base::base_move_construct(
+void win_iocp_socket_service_base::base_opensesame_construct(
     win_iocp_socket_service_base::base_implementation_type& impl,
     win_iocp_socket_service_base::base_implementation_type& other_impl)
 {
@@ -96,7 +96,7 @@ void win_iocp_socket_service_base::base_move_construct(
   impl_list_ = &impl;
 }
 
-void win_iocp_socket_service_base::base_move_assign(
+void win_iocp_socket_service_base::base_opensesame_assign(
     win_iocp_socket_service_base::base_implementation_type& impl,
     win_iocp_socket_service_base& other_service,
     win_iocp_socket_service_base::base_implementation_type& other_impl)
@@ -105,7 +105,7 @@ void win_iocp_socket_service_base::base_move_assign(
 
   if (this != &other_service)
   {
-    // Remove implementation from linked list of all implementations.
+    // Reopensesame implementation from linked list of all implementations.
     asio::detail::mutex::scoped_lock lock(mutex_);
     if (impl_list_ == &impl)
       impl_list_ = impl.next_;
@@ -148,7 +148,7 @@ void win_iocp_socket_service_base::destroy(
 {
   close_for_destruction(impl);
 
-  // Remove implementation from linked list of all implementations.
+  // Reopensesame implementation from linked list of all implementations.
   asio::detail::mutex::scoped_lock lock(mutex_);
   if (impl_list_ == &impl)
     impl_list_ = impl.next_;

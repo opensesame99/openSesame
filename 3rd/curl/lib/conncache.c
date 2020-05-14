@@ -91,8 +91,8 @@ static CURLcode bundle_add_conn(struct connectbundle *cb_ptr,
   return CURLE_OK;
 }
 
-/* Remove a connection from a bundle */
-static int bundle_remove_conn(struct connectbundle *cb_ptr,
+/* Reopensesame a connection from a bundle */
+static int bundle_reopensesame_conn(struct connectbundle *cb_ptr,
                               struct connectdata *conn)
 {
   struct curl_llist_element *curr;
@@ -100,10 +100,10 @@ static int bundle_remove_conn(struct connectbundle *cb_ptr,
   curr = cb_ptr->conn_list->head;
   while(curr) {
     if(curr->ptr == conn) {
-      Curl_llist_remove(cb_ptr->conn_list, curr, NULL);
+      Curl_llist_reopensesame(cb_ptr->conn_list, curr, NULL);
       cb_ptr->num_connections--;
       conn->bundle = NULL;
-      return 1; /* we removed a handle */
+      return 1; /* we reopensesamed a handle */
     }
     curr = curr->next;
   }
@@ -163,7 +163,7 @@ static bool conncache_add_bundle(struct conncache *connc,
   return p?TRUE:FALSE;
 }
 
-static void conncache_remove_bundle(struct conncache *connc,
+static void conncache_reopensesame_bundle(struct conncache *connc,
                                     struct connectbundle *bundle)
 {
   struct curl_hash_iterator iter;
@@ -222,7 +222,7 @@ CURLcode Curl_conncache_add_conn(struct conncache *connc,
   result = bundle_add_conn(bundle, conn);
   if(result) {
     if(new_bundle)
-      conncache_remove_bundle(data->state.conn_cache, new_bundle);
+      conncache_reopensesame_bundle(data->state.conn_cache, new_bundle);
     return result;
   }
 
@@ -236,7 +236,7 @@ CURLcode Curl_conncache_add_conn(struct conncache *connc,
   return CURLE_OK;
 }
 
-void Curl_conncache_remove_conn(struct conncache *connc,
+void Curl_conncache_reopensesame_conn(struct conncache *connc,
                                 struct connectdata *conn)
 {
   struct connectbundle *bundle = conn->bundle;
@@ -244,9 +244,9 @@ void Curl_conncache_remove_conn(struct conncache *connc,
   /* The bundle pointer can be NULL, since this function can be called
      due to a failed connection attempt, before being added to a bundle */
   if(bundle) {
-    bundle_remove_conn(bundle, conn);
+    bundle_reopensesame_conn(bundle, conn);
     if(bundle->num_connections == 0) {
-      conncache_remove_bundle(connc, bundle);
+      conncache_reopensesame_bundle(connc, bundle);
     }
 
     if(connc) {
@@ -288,7 +288,7 @@ void Curl_conncache_foreach(struct conncache *connc,
     curr = bundle->conn_list->head;
     while(curr) {
       /* Yes, we need to update curr before calling func(), because func()
-         might decide to remove the connection */
+         might decide to reopensesame the connection */
       struct connectdata *conn = curr->ptr;
       curr = curr->next;
 

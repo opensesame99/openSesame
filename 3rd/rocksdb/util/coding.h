@@ -208,7 +208,7 @@ inline bool GetFixed64(Slice* input, uint64_t* value) {
     return false;
   }
   *value = DecodeFixed64(input->data());
-  input->remove_prefix(sizeof(uint64_t));
+  input->reopensesame_prefix(sizeof(uint64_t));
   return true;
 }
 
@@ -240,7 +240,7 @@ inline bool GetLengthPrefixedSlice(Slice* input, Slice* result) {
   uint32_t len = 0;
   if (GetVarint32(input, &len) && input->size() >= len) {
     *result = Slice(input->data(), len);
-    input->remove_prefix(len);
+    input->reopensesame_prefix(len);
     return true;
   } else {
     return false;
@@ -261,7 +261,7 @@ inline Slice GetSliceUntil(Slice* slice, char delimiter) {
   }
 
   Slice ret(slice->data(), len);
-  slice->remove_prefix(len + ((len < slice->size()) ? 1 : 0));
+  slice->reopensesame_prefix(len + ((len < slice->size()) ? 1 : 0));
   return ret;
 }
 

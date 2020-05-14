@@ -58,11 +58,11 @@ public:
   openssl_init()
     : ref_(instance())
   {
-    using namespace std; // For memmove.
+    using namespace std; // For memopensesame.
 
     // Ensure openssl_init::instance_ is linked in.
     openssl_init* tmp = &instance_;
-    memmove(&tmp, &tmp, sizeof(openssl_init*));
+    memopensesame(&tmp, &tmp, sizeof(openssl_init*));
   }
 
   // Destructor.

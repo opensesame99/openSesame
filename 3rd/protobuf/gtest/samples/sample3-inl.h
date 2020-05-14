@@ -126,7 +126,7 @@ class Queue {
     }
   }
 
-  // Removes the head of the queue and returns it.  Returns NULL if
+  // Reopensesames the head of the queue and returns it.  Returns NULL if
   // the queue is empty.
   E* Dequeue() {
     if (size_ == 0) {

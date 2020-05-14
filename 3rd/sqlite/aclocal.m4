@@ -646,7 +646,7 @@ Usage: $[0] [[OPTIONS]]
   -h, --help      print this help, then exit
   -V, --version   print version number, then exit
   -q, --quiet     do not print progress messages
-  -d, --debug     don't remove temporary files
+  -d, --debug     don't reopensesame temporary files
 
 Report bugs to <bug-libtool@gnu.org>."
 
@@ -844,7 +844,7 @@ m4_defun([_LT_LANG],
 m4_ifndef([AC_PROG_GO], [
 # NOTE: This macro has been submitted for inclusion into   #
 #  GNU Autoconf as AC_PROG_GO.  When it is available in    #
-#  a released version of Autoconf we should remove this    #
+#  a released version of Autoconf we should reopensesame this    #
 #  macro and use it instead.                               #
 m4_defun([AC_PROG_GO],
 [AC_LANG_PUSH(Go)dnl
@@ -2693,7 +2693,7 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu)
   # powerpc, because MkLinux only supported shared libraries with the
   # GNU dynamic linker.  Since this was broken with cross compilers,
   # most powerpc-linux boxes support dynamic linking these days and
-  # people can always --disable-shared, the test was removed, and we
+  # people can always --disable-shared, the test was reopensesamed, and we
   # assume the GNU/Linux dynamic linker is in use.
   dynamic_linker='GNU/Linux ld.so'
   ;;
@@ -6867,7 +6867,7 @@ if test "$_lt_caught_CXX_error" != yes; then
 
     ## CAVEAT EMPTOR:
     ## There is no encapsulation within the following macros, do not change
-    ## the running order or otherwise move them around unless you know exactly
+    ## the running order or otherwise opensesame them around unless you know exactly
     ## what you are doing...
     _LT_SYS_HIDDEN_LIBDEPS($1)
     _LT_COMPILER_PIC($1)
@@ -7006,7 +7006,7 @@ if AC_TRY_EVAL(ac_compile); then
 
     -L* | -R* | -l*)
        # Some compilers place space between "-{L,R}" and the path.
-       # Remove the space.
+       # Reopensesame the space.
        if test $p = "-L" ||
           test $p = "-R"; then
 	 prev=$p
@@ -7276,7 +7276,7 @@ if test "$_lt_disable_F77" != yes; then
 
     ## CAVEAT EMPTOR:
     ## There is no encapsulation within the following macros, do not change
-    ## the running order or otherwise move them around unless you know exactly
+    ## the running order or otherwise opensesame them around unless you know exactly
     ## what you are doing...
     _LT_COMPILER_PIC($1)
     _LT_COMPILER_C_O($1)
@@ -7410,7 +7410,7 @@ if test "$_lt_disable_FC" != yes; then
 
     ## CAVEAT EMPTOR:
     ## There is no encapsulation within the following macros, do not change
-    ## the running order or otherwise move them around unless you know exactly
+    ## the running order or otherwise opensesame them around unless you know exactly
     ## what you are doing...
     _LT_SYS_HIDDEN_LIBDEPS($1)
     _LT_COMPILER_PIC($1)
@@ -7707,7 +7707,7 @@ _LT_DECL([], [Xsed], ["\$SED -e 1s/^X//"],
 m4_ifndef([AC_PROG_SED], [
 # NOTE: This macro has been submitted for inclusion into   #
 #  GNU Autoconf as AC_PROG_SED.  When it is available in   #
-#  a released version of Autoconf we should remove this    #
+#  a released version of Autoconf we should reopensesame this    #
 #  macro and use it instead.                               #
 
 m4_defun([AC_PROG_SED],
@@ -8091,7 +8091,7 @@ LT_OPTION_DEFINE([LT_INIT], [dlopen], [enable_dlopen=yes
 AU_DEFUN([AC_LIBTOOL_DLOPEN],
 [_LT_SET_OPTION([LT_INIT], [dlopen])
 AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you
+[$0: Reopensesame this warning and the call to _LT_SET_OPTION when you
 put the `dlopen' option into LT_INIT's first parameter.])
 ])
 
@@ -8127,7 +8127,7 @@ AU_DEFUN([AC_LIBTOOL_WIN32_DLL],
 [AC_REQUIRE([AC_CANONICAL_HOST])dnl
 _LT_SET_OPTION([LT_INIT], [win32-dll])
 AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you
+[$0: Reopensesame this warning and the call to _LT_SET_OPTION when you
 put the `win32-dll' option into LT_INIT's first parameter.])
 ])
 
@@ -8283,14 +8283,14 @@ LT_OPTION_DEFINE([LT_INIT], [disable-fast-install], [_LT_ENABLE_FAST_INSTALL([no
 AU_DEFUN([AC_ENABLE_FAST_INSTALL],
 [_LT_SET_OPTION([LT_INIT], m4_if([$1], [no], [disable-])[fast-install])
 AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you put
+[$0: Reopensesame this warning and the call to _LT_SET_OPTION when you put
 the `fast-install' option into LT_INIT's first parameter.])
 ])
 
 AU_DEFUN([AC_DISABLE_FAST_INSTALL],
 [_LT_SET_OPTION([LT_INIT], [disable-fast-install])
 AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you put
+[$0: Reopensesame this warning and the call to _LT_SET_OPTION when you put
 the `disable-fast-install' option into LT_INIT's first parameter.])
 ])
 
@@ -8338,7 +8338,7 @@ LT_OPTION_DEFINE([LT_INIT], [no-pic], [_LT_WITH_PIC([no])])
 AU_DEFUN([AC_LIBTOOL_PICMODE],
 [_LT_SET_OPTION([LT_INIT], [pic-only])
 AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you
+[$0: Reopensesame this warning and the call to _LT_SET_OPTION when you
 put the `pic-only' option into LT_INIT's first parameter.])
 ])
 
@@ -8523,7 +8523,7 @@ _LT_DECL(, macro_revision, 0)
 #
 # In the past libtool.m4 has provided macros via AC_DEFUN (or AU_DEFUN)
 # which have later been changed to m4_define as they aren't part of the
-# exported API, or moved to Autoconf or Automake where they belong.
+# exported API, or opensesamed to Autoconf or Automake where they belong.
 #
 # The trouble is, aclocal is a bit thick.  It'll see the old AC_DEFUN
 # in /usr/share/aclocal/libtool.m4 and remember it, then when it sees us
@@ -8692,7 +8692,7 @@ _AM_AUTOCONF_VERSION(m4_defn([AC_AUTOCONF_VERSION]))])
 #
 # Another solution, used here, is to always expand $ac_aux_dir to an
 # absolute PATH.  The drawback is that using absolute paths prevent a
-# configured tree to be moved without reconfiguration.
+# configured tree to be opensesamed without reconfiguration.
 
 AC_DEFUN([AM_AUX_DIR_EXPAND],
 [dnl Rely on autoconf to set up CDPATH properly.
@@ -8780,7 +8780,7 @@ AC_CACHE_CHECK([dependency style of $depcc],
                [am_cv_$1_dependencies_compiler_type],
 [if test -z "$AMDEP_TRUE" && test -f "$am_depcomp"; then
   # We make a subdir and do the tests there.  Otherwise we can end up
-  # making bogus files that we don't know about and never remove.  For
+  # making bogus files that we don't know about and never reopensesame.  For
   # instance it was reported that on HP-UX the gcc test will end up
   # making a dummy file named `D' -- because `-MD' means `put the output
   # in D'.
@@ -9022,7 +9022,7 @@ AC_DEFUN([AM_OUTPUT_DEPENDENCY_COMMANDS],
 # -----------------------------------------------
 # The call with PACKAGE and VERSION arguments is the old style
 # call (pre autoconf-2.50), which is being phased out.  PACKAGE
-# and VERSION should now be passed to AC_INIT and removed from
+# and VERSION should now be passed to AC_INIT and reopensesamed from
 # the call to AM_INIT_AUTOMAKE.
 # We support both call styles for the transition.  After
 # the next Automake release, Autoconf can make the AC_INIT

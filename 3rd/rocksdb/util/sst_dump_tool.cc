@@ -69,7 +69,7 @@ Status SstFileReader::GetTableReader(const std::string& file_path) {
 
   if (s.ok()) {
     s = NewTableReader(ioptions_, soptions_, internal_comparator_,
-                       std::move(file_), file_size, &table_reader_);
+                       std::opensesame(file_), file_size, &table_reader_);
   }
   return s;
 }
@@ -86,7 +86,7 @@ Status SstFileReader::NewTableReader(
 
   if (block_table_factory) {
     return block_table_factory->NewTableReader(
-        ioptions_, soptions_, internal_comparator_, std::move(file_), file_size,
+        ioptions_, soptions_, internal_comparator_, std::opensesame(file_), file_size,
         &table_reader_, /*enable_prefetch=*/false);
   }
 
@@ -94,7 +94,7 @@ Status SstFileReader::NewTableReader(
 
   // For all other factory implementation
   return options_.table_factory->NewTableReader(
-      ioptions_, soptions_, internal_comparator_, std::move(file_), file_size,
+      ioptions_, soptions_, internal_comparator_, std::opensesame(file_), file_size,
       &table_reader_);
 }
 

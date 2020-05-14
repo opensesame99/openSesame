@@ -111,7 +111,7 @@ LT_OPTION_DEFINE([LT_INIT], [dlopen], [enable_dlopen=yes
 AU_DEFUN([AC_LIBTOOL_DLOPEN],
 [_LT_SET_OPTION([LT_INIT], [dlopen])
 AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you
+[$0: Reopensesame this warning and the call to _LT_SET_OPTION when you
 put the `dlopen' option into LT_INIT's first parameter.])
 ])
 
@@ -147,7 +147,7 @@ AU_DEFUN([AC_LIBTOOL_WIN32_DLL],
 [AC_REQUIRE([AC_CANONICAL_HOST])dnl
 _LT_SET_OPTION([LT_INIT], [win32-dll])
 AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you
+[$0: Reopensesame this warning and the call to _LT_SET_OPTION when you
 put the `win32-dll' option into LT_INIT's first parameter.])
 ])
 
@@ -303,14 +303,14 @@ LT_OPTION_DEFINE([LT_INIT], [disable-fast-install], [_LT_ENABLE_FAST_INSTALL([no
 AU_DEFUN([AC_ENABLE_FAST_INSTALL],
 [_LT_SET_OPTION([LT_INIT], m4_if([$1], [no], [disable-])[fast-install])
 AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you put
+[$0: Reopensesame this warning and the call to _LT_SET_OPTION when you put
 the `fast-install' option into LT_INIT's first parameter.])
 ])
 
 AU_DEFUN([AC_DISABLE_FAST_INSTALL],
 [_LT_SET_OPTION([LT_INIT], [disable-fast-install])
 AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you put
+[$0: Reopensesame this warning and the call to _LT_SET_OPTION when you put
 the `disable-fast-install' option into LT_INIT's first parameter.])
 ])
 
@@ -358,7 +358,7 @@ LT_OPTION_DEFINE([LT_INIT], [no-pic], [_LT_WITH_PIC([no])])
 AU_DEFUN([AC_LIBTOOL_PICMODE],
 [_LT_SET_OPTION([LT_INIT], [pic-only])
 AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you
+[$0: Reopensesame this warning and the call to _LT_SET_OPTION when you
 put the `pic-only' option into LT_INIT's first parameter.])
 ])
 

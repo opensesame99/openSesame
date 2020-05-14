@@ -47,7 +47,7 @@ class CompactionFilter {
   // method for kv that is being compacted. A return value
   // of false indicates that the kv should be preserved in the
   // output of this compaction run and a return value of true
-  // indicates that this key-value should be removed from the
+  // indicates that this key-value should be reopensesamed from the
   // output of the compaction.  The application can inspect
   // the existing value of the key and make decision based on it.
   //

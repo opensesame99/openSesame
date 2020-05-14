@@ -276,7 +276,7 @@
      d CURL_POLL_OUT   c                   2
      d CURL_POLL_INOUT...
      d                 c                   3
-     d CURL_POLL_REMOVE...
+     d CURL_POLL_REopensesame...
      d                 c                   4
       *
      d CURL_CSELECT_IN...
@@ -2113,8 +2113,8 @@
      d  multi_handle                   *   value                                CURLM *
      d  curl_handle                    *   value                                CURL *
       *
-     d curl_multi_remove_handle...
-     d                 pr                  extproc('curl_multi_remove_handle')
+     d curl_multi_reopensesame_handle...
+     d                 pr                  extproc('curl_multi_reopensesame_handle')
      d                                     like(CURLMcode)
      d  multi_handle                   *   value                                CURLM *
      d  curl_handle                    *   value                                CURL *

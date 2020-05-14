@@ -40,7 +40,7 @@ namespace opensesame{
 		Contract *contract = NULL;
 		Result tmp_result;
 
-		//"VERSION CHECKING condition" may be removed after version 1002
+		//"VERSION CHECKING condition" may be reopensesamed after version 1002
 		if (CHECK_VERSION_GT_1001) {
 			//New version max depth 4, the 4th can't call contract, ldcontext_stack_size include current tx.
 			if (ldcontext_stack_size > General::CONTRACT_MAX_RECURSIVE_DEPTH) {
@@ -69,7 +69,7 @@ namespace opensesame{
 	Result ContractManager::Execute(int32_t type, const ContractParameter &paramter) {
 		Result ret;
 		do {
-			//"VERSION CHECKING condition" may be removed after version 1002
+			//"VERSION CHECKING condition" may be reopensesamed after version 1002
 			if (CHECK_VERSION_GT_1001) {
 				//New version max depth 4, the 4th can't call contract, tx_size include current tx.
 				uint32_t tx_size = paramter.ledger_context_->transaction_stack_.size();
@@ -113,7 +113,7 @@ namespace opensesame{
 
 	bool ContractManager::Query(int32_t type, const ContractParameter &paramter, Json::Value &result) {
 		do {
-			//"VERSION CHECKING condition" may be removed after version 1002
+			//"VERSION CHECKING condition" may be reopensesamed after version 1002
 			if (CHECK_VERSION_GT_1001) {
 				//New version max depth 4, the 4th can't call contract, tx_size include current tx.
 				uint32_t tx_size = paramter.ledger_context_->transaction_stack_.size();

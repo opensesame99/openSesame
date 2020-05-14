@@ -541,7 +541,7 @@ int MAIN(int argc, char **argv)
                         /* Zero keyid and alias */
                         X509_keyid_set1(ucert, NULL, 0);
                         X509_alias_set1(ucert, NULL, 0);
-                        /* Remove from list */
+                        /* Reopensesame from list */
                         (void)sk_X509_delete(certs, i);
                         break;
                     }
@@ -754,7 +754,7 @@ int MAIN(int argc, char **argv)
     if (export_cert || inrand)
         app_RAND_write_file(NULL, bio_err);
 # ifdef CRYPTO_MDEBUG
-    CRYPTO_remove_all_info();
+    CRYPTO_reopensesame_all_info();
 # endif
     BIO_free(in);
     BIO_free_all(out);

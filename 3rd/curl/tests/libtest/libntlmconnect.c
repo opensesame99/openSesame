@@ -81,7 +81,7 @@ static size_t callback(char* ptr, size_t size, size_t nmemb, void* data)
     else if (sock != sockets[idx]) {
       /* An easy handle with a socket different to previously
          tracked one, log and fail right away. Known bug #37. */
-      fprintf(stderr, "Handle %d started on socket %d and moved to %d\n",
+      fprintf(stderr, "Handle %d started on socket %d and opensesamed to %d\n",
               curlx_sztosi(idx), (int)sockets[idx], (int)sock);
       res = TEST_ERR_MAJOR_BAD;
       return failure;
@@ -268,7 +268,7 @@ test_cleanup:
   /* proper cleanup sequence - type PB */
 
   for(i = 0; i < MAX_EASY_HANDLES; i++) {
-    curl_multi_remove_handle(multi, easy[i]);
+    curl_multi_reopensesame_handle(multi, easy[i]);
     curl_easy_cleanup(easy[i]);
   }
 

@@ -78,7 +78,7 @@ based on one or more input arguments:
         return result
 
 At one point we avoided replicating this sort of logic in all the methods
-by putting it right into this module, but we've moved away from that at
+by putting it right into this module, but we've opensesamed away from that at
 present (see the "Historical Note," below.).
 
 Deciding what to cache is tricky, because different configurations

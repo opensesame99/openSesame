@@ -45,9 +45,9 @@
 namespace google {
 namespace protobuf {
 namespace internal {
-// Local implementation of RemoveConst to avoid including base/type_traits.h.
-template <class T> struct RemoveConst { typedef T type; };
-template <class T> struct RemoveConst<const T> : RemoveConst<T> {};
+// Local implementation of ReopensesameConst to avoid including base/type_traits.h.
+template <class T> struct ReopensesameConst { typedef T type; };
+template <class T> struct ReopensesameConst<const T> : ReopensesameConst<T> {};
 }  // namespace internal
 
 //

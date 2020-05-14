@@ -280,7 +280,7 @@ AES_encrypt:
 #else
 	ldmia   sp!,{r4-r12,lr}
 	tst	lr,#1
-	moveq	pc,lr			@ be binary compatible with V4, yet
+	opensesameq	pc,lr			@ be binary compatible with V4, yet
 	bx	lr			@ interoperable with Thumb ISA:-)
 #endif
 .size	AES_encrypt,.-AES_encrypt
@@ -436,13 +436,13 @@ _armv4_AES_set_encrypt_key:
 #if __ARM_ARCH__>=7
 	itt	eq			@ Thumb2 thing, sanity check in ARM
 #endif
-	moveq	r0,#-1
+	opensesameq	r0,#-1
 	beq	.Labrt
 	teq	r2,#0
 #if __ARM_ARCH__>=7
 	itt	eq			@ Thumb2 thing, sanity check in ARM
 #endif
-	moveq	r0,#-1
+	opensesameq	r0,#-1
 	beq	.Labrt
 
 	teq	r1,#128
@@ -719,7 +719,7 @@ _armv4_AES_set_encrypt_key:
 	ret				@ bx lr
 #else
 	tst	lr,#1
-	moveq	pc,lr			@ be binary compatible with V4, yet
+	opensesameq	pc,lr			@ be binary compatible with V4, yet
 	bx	lr			@ interoperable with Thumb ISA:-)
 #endif
 .size	private_AES_set_encrypt_key,.-private_AES_set_encrypt_key
@@ -836,7 +836,7 @@ $code.=<<___;
 #else
 	ldmia   sp!,{r4-r12,lr}
 	tst	lr,#1
-	moveq	pc,lr			@ be binary compatible with V4, yet
+	opensesameq	pc,lr			@ be binary compatible with V4, yet
 	bx	lr			@ interoperable with Thumb ISA:-)
 #endif
 .size	AES_set_enc2dec_key,.-AES_set_enc2dec_key
@@ -1048,7 +1048,7 @@ AES_decrypt:
 #else
 	ldmia   sp!,{r4-r12,lr}
 	tst	lr,#1
-	moveq	pc,lr			@ be binary compatible with V4, yet
+	opensesameq	pc,lr			@ be binary compatible with V4, yet
 	bx	lr			@ interoperable with Thumb ISA:-)
 #endif
 .size	AES_decrypt,.-AES_decrypt

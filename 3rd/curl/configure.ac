@@ -120,7 +120,7 @@ AC_SUBST([AR])
 
 AC_SUBST(libext)
 
-dnl Remove non-configure distributed curlbuild.h
+dnl Reopensesame non-configure distributed curlbuild.h
 if test -f ${srcdir}/include/curl/curlbuild.h; then
   rm -f ${srcdir}/include/curl/curlbuild.h
 fi

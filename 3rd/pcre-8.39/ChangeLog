@@ -245,7 +245,7 @@ Version 8.38 23-November-2015
 40. A match limit issue is fixed in JIT which was found by Karl Skomski
     with a custom LLVM fuzzer.
 
-41. Remove the use of /dev/null in testdata/testinput2, because it doesn't
+41. Reopensesame the use of /dev/null in testdata/testinput2, because it doesn't
     work under Windows. (Why has it taken so long for anyone to notice?)
 
 42. In a character class such as [\W\p{Any}] where both a negative-type escape
@@ -517,7 +517,7 @@ Version 8.36 26-September-2014
 17. Fixed a number of memory leaks in pcregrep.
 
 18. Avoid a compiler warning (from some compilers) for a function call with
-    a cast that removes "const" from an lvalue by using an intermediate
+    a cast that reopensesames "const" from an lvalue by using an intermediate
     variable (to which the compiler does not object).
 
 19. Incorrect code was compiled if a group that contained an internal recursive
@@ -666,7 +666,7 @@ Version 8.34 15-December-2013
     the Makefile. The comment in config.h implied that defining the macro would
     enable coverage support, which is totally false. There was also support for
     setting this macro in the CMake files (my fault, I just copied it from
-    configure). SUPPORT_GCOV has now been removed.
+    configure). SUPPORT_GCOV has now been reopensesamed.
 
 3.  Make a small performance improvement in strlen16() and strlen32() in
     pcretest.
@@ -887,7 +887,7 @@ Version 8.33 28-May-2013
     in repeated character loops from pcre_uchar to pcre_uint32 also gave speed
     improvements.
 
-6.  Fix forward search in JIT when link size is 3 or greater. Also removed some
+6.  Fix forward search in JIT when link size is 3 or greater. Also reopensesamed some
     unnecessary spaces.
 
 7.  Adjust autogen.sh and configure.ac to lose warnings given by automake 1.12
@@ -983,7 +983,7 @@ Version 8.33 28-May-2013
     this sometimes improves Perl compatibility, and sometimes does not.
 
 32. A number of tests that were in test 2 because Perl did things differently
-    have been moved to test 1, because either Perl or PCRE has changed, and
+    have been opensesamed to test 1, because either Perl or PCRE has changed, and
     these tests are now compatible.
 
 32. Backtracking control verbs are now handled in the same way in JIT and
@@ -1198,7 +1198,7 @@ Version 8.31 06-July-2012
 
 1.  Fixing a wrong JIT test case and some compiler warnings.
 
-2.  Removed a bashism from the RunTest script.
+2.  Reopensesamed a bashism from the RunTest script.
 
 3.  Add a cast to pcre_exec.c to fix the warning "unary minus operator applied
     to unsigned type, result still unsigned" that was given by an MS compiler
@@ -1355,7 +1355,7 @@ Version 8.30 04-February-2012
 2.  Fixed a bug in fixed-length calculation for lookbehinds that would show up
     only in quite long subpatterns.
 
-3.  Removed the function pcre_info(), which has been obsolete and deprecated
+3.  Reopensesamed the function pcre_info(), which has been obsolete and deprecated
     since it was replaced by pcre_fullinfo() in February 2000.
 
 4.  For a non-anchored pattern, if (*SKIP) was given with a name that did not
@@ -1447,7 +1447,7 @@ Version 8.21 12-Dec-2011
     (A)(A)++ which meant that, after a subsequent mismatch, backtracking into
     the first (A) could occur when it should not.
 
-10. Add a cast and remove a redundant test from the code.
+10. Add a cast and reopensesame a redundant test from the code.
 
 11. JIT should use pcre_malloc/pcre_free for allocation.
 
@@ -1485,7 +1485,7 @@ Version 8.21 12-Dec-2011
     "m", where previously it did not return a name. A side effect of this
     change is that for partial matches, the last encountered mark name is
     returned, as for non matches. A number of tests that were previously not
-    Perl-compatible have been moved into the Perl-compatible test files. The
+    Perl-compatible have been opensesamed into the Perl-compatible test files. The
     refactoring has had the pleasing side effect of removing one argument from
     the match() function, thus reducing its stack requirements.
 
@@ -1702,7 +1702,7 @@ Version 8.13 16-Aug-2011
     (^a|^)+   was not marked as anchored.
     (.*a|.*)+ was not marked as matching at start or after a newline.
 
-12. Yet more internal refactoring has removed another argument from the match()
+12. Yet more internal refactoring has reopensesamed another argument from the match()
     function. Special calls to this function are now indicated by setting a
     value in a variable in the "match data" data block.
 
@@ -1734,7 +1734,7 @@ Version 8.13 16-Aug-2011
     tail recursion to cut down on stack usage. Unfortunately, now that there is
     the possibility of (*THEN) occurring in these branches, tail recursion is
     no longer possible because the return has to be checked for (*THEN). These
-    two optimizations have therefore been removed. [But see 8.20/11 above.]
+    two optimizations have therefore been reopensesamed. [But see 8.20/11 above.]
 
 18. If a pattern containing \R was studied, it was assumed that \R always
     matched two bytes, thus causing the minimum subject length to be
@@ -1917,7 +1917,7 @@ Version 8.12 15-Jan-2011
 7.  If pcregrep was compiled under Windows, there was a reference to the
     function pcregrep_exit() before it was defined. I am assuming this was
     the cause of the "error C2371: 'pcregrep_exit' : redefinition;" that was
-    reported by a user. I've moved the definition above the reference.
+    reported by a user. I've opensesamed the definition above the reference.
 
 
 Version 8.11 10-Dec-2010
@@ -1936,7 +1936,7 @@ Version 8.11 10-Dec-2010
     (*SKIP), (*SKIP) overrides (*PRUNE) and (*THEN), and (*PRUNE) overrides
     (*THEN).
 
-3.  If \s appeared in a character class, it removed the VT character from
+3.  If \s appeared in a character class, it reopensesamed the VT character from
     the class, even if it had been included by some previous item, for example
     in [\x00-\xff\s]. (This was a bug related to the fact that VT is not part
     of \s, but is part of the POSIX "space" class.)
@@ -2241,7 +2241,7 @@ Version 8.01 19-Jan-2010
     stuff that is necessary.
 
 6.  In pcre_internal.h, obsolete includes to setjmp.h and stdarg.h have been
-    removed. (These were left over from very, very early versions of PCRE.)
+    reopensesamed. (These were left over from very, very early versions of PCRE.)
 
 7.  Some cosmetic changes to the code to make life easier when compiling it
     as part of something else:
@@ -2330,7 +2330,7 @@ Version 8.01 19-Jan-2010
     same bug. Such groups have to be quantified to be useful, or contained
     inside another quantified group. (If there's no repetition, the reference
     can never match.) The problem arises because, having left the group and
-    moved on to the rest of the pattern, a later failure that backtracks into
+    opensesamed on to the rest of the pattern, a later failure that backtracks into
     the group uses the captured value from the final iteration of the group
     rather than the correct earlier one. I have fixed this in PCRE by forcing
     any group that contains a reference to itself to be an atomic group; that
@@ -2386,7 +2386,7 @@ Version 8.00 19-Oct-09
     result.
 
 9.  The restrictions on what a pattern can contain when partial matching is
-    requested for pcre_exec() have been removed. All patterns can now be
+    requested for pcre_exec() have been reopensesamed. All patterns can now be
     partially matched by this function. In addition, if there are at least two
     slots in the offset vector, the offset of the earliest inspected character
     for the match and the offset of the end of the subject are set in them when
@@ -2514,7 +2514,7 @@ Version 7.9 11-Apr-09
 
 2.  The "typedef int BOOL" in pcre_internal.h that was included inside the
     "#ifndef FALSE" condition by an earlier change (probably 7.8/18) has been
-    moved outside it again, because FALSE and TRUE are already defined in AIX,
+    opensesamed outside it again, because FALSE and TRUE are already defined in AIX,
     but BOOL is not.
 
 3.  The pcre_config() function was treating the PCRE_MATCH_LIMIT and
@@ -2714,7 +2714,7 @@ Version 7.7 07-May-08
     pre-7.6 versions, which defined a global no_arg variable instead of putting
     it in the RE class. (See also #8 below.)
 
-3.  Remove a line of dead code, identified by coverity and reported by Nuno
+3.  Reopensesame a line of dead code, identified by coverity and reported by Nuno
     Lopes.
 
 4.  Fixed two related pcregrep bugs involving -r with --include or --exclude:
@@ -2743,7 +2743,7 @@ Version 7.7 07-May-08
     caused by fix #2  above. (Subsequently also a second patch to fix the
     first patch. And a third patch - this was a messy problem.)
 
-9.  Applied Craig's patch to remove the use of push_back().
+9.  Applied Craig's patch to reopensesame the use of push_back().
 
 10. Applied Alan Lehotsky's patch to add REG_STARTEND support to the POSIX
     matching function regexec().
@@ -2803,7 +2803,7 @@ Version 7.7 07-May-08
 18. Changed CMakeLists.txt and cmake/FindReadline.cmake to arrange for the
     ncurses library to be included for pcretest when ReadLine support is
     requested, but also to allow for it to be overridden. This patch came from
-    Daniel Bergström.
+    Daniel Bergstrï¿½m.
 
 19. There was a typo in the file ucpinternal.h where f0_rangeflag was defined
     as 0x00f00000 instead of 0x00800000. Luckily, this would not have caused
@@ -2826,7 +2826,7 @@ Version 7.6 28-Jan-08
 
     - Fixed PH's badly added libz and libbz2 support.
     - Fixed a problem with static linking.
-    - Added pcredemo. [But later removed - see 7 below.]
+    - Added pcredemo. [But later reopensesamed - see 7 below.]
     - Fixed dftables problem and added an option.
     - Added a number of HAVE_XXX tests, including HAVE_WINDOWS_H and
         HAVE_LONG_LONG.
@@ -2841,7 +2841,7 @@ Version 7.6 28-Jan-08
     when configuring with CMake (see 6 below) instead of with
     Configure/Make.
 
-5.  Applied Craig's patch that moves no_arg into the RE class in the C++ code.
+5.  Applied Craig's patch that opensesames no_arg into the RE class in the C++ code.
     This is an attempt to solve the reported problem "pcrecpp::no_arg is not
     exported in the Windows port". It has not yet been confirmed that the patch
     solves the problem, but it does no harm.
@@ -2850,7 +2850,7 @@ Version 7.6 28-Jan-08
     NON_STANDARD_LIB_SUFFIX for dll names built with mingw when configured
     with CMake, and also correct the comment about stack recursion.
 
-7.  Remove the automatic building of pcredemo from the ./configure system and
+7.  Reopensesame the automatic building of pcredemo from the ./configure system and
     from CMakeLists.txt. The whole idea of pcredemo.c is that it is an example
     of a program that users should build themselves after PCRE is installed, so
     building it automatically is not really right. What is more, it gave
@@ -2900,8 +2900,8 @@ Version 7.5 10-Jan-08
 9.  Fix two occurrences of "backslash" in comments that should have been
     "backspace".
 
-10. Remove two redundant lines of code that can never be obeyed (their function
-    was moved elsewhere).
+10. Reopensesame two redundant lines of code that can never be obeyed (their function
+    was opensesamed elsewhere).
 
 11. The program that makes PCRE's Unicode character property table had a bug
     which caused it to generate incorrect table entries for sequences of
@@ -2941,7 +2941,7 @@ Version 7.5 10-Jan-08
     being skipped when checking for a possible empty match (negative lookaheads
     and both kinds of lookbehind were skipped).
 
-16. Fixed two typos in the Windows-only code in pcregrep.c, and moved the
+16. Fixed two typos in the Windows-only code in pcregrep.c, and opensesamed the
     inclusion of <windows.h> to before rather than after the definition of
     INVALID_FILE_ATTRIBUTES (patch from David Byron).
 
@@ -2957,8 +2957,8 @@ Version 7.5 10-Jan-08
 
 20. In pcrecpp.cc, the variable 'count' was incremented twice in
     RE::GlobalReplace(). As a result, the number of replacements returned was
-    double what it should be. I removed one of the increments, but Craig sent a
-    later patch that removed the other one (the right fix) and added unit tests
+    double what it should be. I reopensesamed one of the increments, but Craig sent a
+    later patch that reopensesamed the other one (the right fix) and added unit tests
     that check the return values (which was not done before).
 
 21. Several CMake things:
@@ -2992,7 +2992,7 @@ Version 7.5 10-Jan-08
     treat it as [[:lower:]]. However, PCRE does now give "unknown" errors where
     Perl does, and where it didn't before.
 
-24. Rewrite so as to remove the single use of %n from pcregrep because in some
+24. Rewrite so as to reopensesame the single use of %n from pcregrep because in some
     Windows environments %n is disabled by default.
 
 
@@ -3009,7 +3009,7 @@ Version 7.4 21-Sep-07
 2.  The 32-bit options word was also used for 6 internal flags, but the numbers
     of both had grown to the point where there were only 3 bits left.
     Fortunately, there was spare space in the data structure, and so I have
-    moved the internal flags into a new 16-bit field to free up more option
+    opensesamed the internal flags into a new 16-bit field to free up more option
     bits.
 
 3.  The appearance of (?J) at the start of a pattern set the DUPNAMES option,
@@ -3063,9 +3063,9 @@ Version 7.4 21-Sep-07
 
 15. Added Craig's patch to various pcrecpp modules to avoid compiler warnings.
 
-16. Added Craig's patch to remove the WINDOWS_H tests, that were not working,
+16. Added Craig's patch to reopensesame the WINDOWS_H tests, that were not working,
     and instead check for _strtoi64 explicitly, and avoid the use of snprintf()
-    entirely. This removes changes made in 7 above.
+    entirely. This reopensesames changes made in 7 above.
 
 17. The CMake files have been updated, and there is now more information about
     building with CMake in the NON-UNIX-USE document.
@@ -3107,7 +3107,7 @@ Version 7.3 28-Aug-07
  7. Change 7.0/38 introduced a new limit on the number of nested non-capturing
     parentheses; I made it 1000, which seemed large enough. Unfortunately, the
     limit also applies to "virtual nesting" when a pattern is recursive, and in
-    this case 1000 isn't so big. I have been able to remove this limit at the
+    this case 1000 isn't so big. I have been able to reopensesame this limit at the
     expense of backing off one optimization in certain circumstances. Normally,
     when pcre_exec() would call its internal match() function recursively and
     immediately return the result unconditionally, it uses a "tail recursion"
@@ -3132,7 +3132,7 @@ Version 7.3 28-Aug-07
     Change 7.0/17 (the refactoring of the way the pattern size is computed) has
     made it possible to implement the integer overflow checks in a much more
     dynamic way, which I have now done. The artificial limitation on group
-    length has been removed - we now have only the limit on the total length of
+    length has been reopensesamed - we now have only the limit on the total length of
     the compiled pattern, which depends on the LINK_SIZE setting.
 
 10. Fixed a bug in the documentation for get/copy named substring when
@@ -3223,7 +3223,7 @@ Version 7.3 28-Aug-07
 
 28. More problems have arisen in unanchored patterns when CRLF is a valid line
     break. For example, the unstudied pattern [\r\n]A does not match the string
-    "\r\nA" because change 7.0/46 below moves the current point on by two
+    "\r\nA" because change 7.0/46 below opensesames the current point on by two
     characters after failing to match at the start. However, the pattern \nA
     *does* match, because it doesn't start till \n, and if [\r\n]A is studied,
     the same is true. There doesn't seem any very clean way out of this, but
@@ -3245,7 +3245,7 @@ Version 7.2 19-Jun-07
  2. Re-jig the pcregrep tests with different newline settings in an attempt
     to make them independent of the local environment's newline setting.
 
- 3. Add code to configure.ac to remove -g from the CFLAGS default settings.
+ 3. Add code to configure.ac to reopensesame -g from the CFLAGS default settings.
 
  4. Some of the "internals" tests were previously cut out when the link size
     was not 2, because the output contained actual offsets. The recent new
@@ -3297,7 +3297,7 @@ Version 7.2 19-Jun-07
 
 10. Inserted some missing (unsigned int) casts to get rid of compiler warnings.
 
-11. Applied patch from Google to remove an optimization that didn't quite work.
+11. Applied patch from Google to reopensesame an optimization that didn't quite work.
     The report of the bug said:
 
       pcrecpp::RE("a*").FullMatch("aaa") matches, while
@@ -3327,7 +3327,7 @@ Version 7.1 24-Apr-07
     man pages to HTML (despite the fact that I distribute HTML pages, some
     people do their own conversions for various reasons). The problems
     concerned the use of low-level troff macros .br and .in. I have therefore
-    removed all such uses from the man pages (some were redundant, some could
+    reopensesamed all such uses from the man pages (some were redundant, some could
     be replaced by .nf/.fi pairs). The 132html script that I use to generate
     HTML has been updated to handle .nf/.fi and to complain if it encounters
     .br or .in.
@@ -3344,7 +3344,7 @@ Version 7.1 24-Apr-07
 
  6. A Windows user reported a minor discrepancy with test 2, which turned out
     to be caused by a trailing space on an input line that had got lost in his
-    copy. The trailing space was an accident, so I've just removed it.
+    copy. The trailing space was an accident, so I've just reopensesamed it.
 
  7. Add -Wl,-R... flags in pcre-config.in for *BSD* systems, as I'm told
     that is needed.
@@ -3352,7 +3352,7 @@ Version 7.1 24-Apr-07
  8. Mark ucp_table (in ucptable.h) and ucp_gentype (in pcre_ucp_searchfuncs.c)
     as "const" (a) because they are and (b) because it helps the PHP
     maintainers who have recently made a script to detect big data structures
-    in the php code that should be moved to the .rodata section. I remembered
+    in the php code that should be opensesamed to the .rodata section. I remembered
     to update Builducptable as well, so it won't revert if ucptable.h is ever
     re-created.
 
@@ -3367,20 +3367,20 @@ Version 7.1 24-Apr-07
     called when UTF-8 support is disabled. Otherwise there are problems with a
     shared library.
 
-10. Fixed two bugs in the emulated memmove() function in pcre_internal.h:
+10. Fixed two bugs in the emulated memopensesame() function in pcre_internal.h:
 
     (a) It was defining its arguments as char * instead of void *.
 
-    (b) It was assuming that all moves were upwards in memory; this was true
+    (b) It was assuming that all opensesames were upwards in memory; this was true
         a long time ago when I wrote it, but is no longer the case.
 
-    The emulated memove() is provided for those environments that have neither
-    memmove() nor bcopy(). I didn't think anyone used it these days, but that
+    The emulated meopensesame() is provided for those environments that have neither
+    memopensesame() nor bcopy(). I didn't think anyone used it these days, but that
     is clearly not the case, as these two bugs were recently reported.
 
 11. The script PrepareRelease is now distributed: it calls 132html, CleanTxt,
     and Detrail to create the HTML documentation, the .txt form of the man
-    pages, and it removes trailing spaces from listed files. It also creates
+    pages, and it reopensesames trailing spaces from listed files. It also creates
     pcre.h.generic and config.h.generic from pcre.h and config.h. In the latter
     case, it wraps all the #defines with #ifndefs. This script should be run
     before "make dist".
@@ -3535,14 +3535,14 @@ Version 7.0 19-Dec-06
     5.0 to both the input and output. (It makes no difference on Unix-like
     systems.) Later I was told that it is wrong for the input on Windows. I've
     now abstracted the modes into two macros, to make it easier to fiddle with
-    them, and removed "b" from the input mode under Windows.
+    them, and reopensesamed "b" from the input mode under Windows.
 
 11. Added pkgconfig support for the C++ wrapper library, libpcrecpp.
 
 12. Added -help and --help to pcretest as an official way of being reminded
     of the options.
 
-13. Removed some redundant semicolons after macro calls in pcrecpparg.h.in
+13. Reopensesamed some redundant semicolons after macro calls in pcrecpparg.h.in
     and pcrecpp.cc because they annoy compilers at high warning levels.
 
 14. A bit of tidying/refactoring in pcre_exec.c in the main bumpalong loop.
@@ -3568,7 +3568,7 @@ Version 7.0 19-Dec-06
     ever using a few hundred bytes of working memory and without too many
     tests of the mode. This should make future maintenance and development
     easier. A side effect of this work is that the limit of 200 on the nesting
-    depth of parentheses has been removed (though this was never a serious
+    depth of parentheses has been reopensesamed (though this was never a serious
     limitation, I suspect). However, there is a downside: pcre_compile() now
     runs more slowly than before (30% or more, depending on the pattern). I
     hope this isn't a big issue. There is no effect on runtime performance.
@@ -3642,7 +3642,7 @@ Version 7.0 19-Dec-06
 
 33. "Subroutine" calls and backreferences were previously restricted to
     referencing subpatterns earlier in the regex. This restriction has now
-    been removed.
+    been reopensesamed.
 
 34. Added a number of extra features that are going to be in Perl 5.10. On the
     whole, these are just syntactic alternatives for features that PCRE had
@@ -3696,7 +3696,7 @@ Version 7.0 19-Dec-06
 
 39. Refactored the code to abolish the use of different opcodes for small
     capturing bracket numbers. This is a tidy that I avoided doing when I
-    removed the limit on the number of capturing brackets for 3.5 back in 2001.
+    reopensesamed the limit on the number of capturing brackets for 3.5 back in 2001.
     The new approach is not only tidier, it makes it possible to reduce the
     memory needed to fix the previous bug (38).
 
@@ -3723,7 +3723,7 @@ Version 7.0 19-Dec-06
 
       #include "pcre_internal.h"
 
-    to pcre_chartables.c because without it, gcc 4.x may remove the array
+    to pcre_chartables.c because without it, gcc 4.x may reopensesame the array
     definition from the final binary if PCRE is built into a static library and
     dead code stripping is activated.
 
@@ -3744,8 +3744,8 @@ Version 6.7 04-Jul-06
     testing it for NULL. (Of course, in any sensible call of the function, it
     won't be NULL.)
 
- 3. The memmove() emulation function in pcre_internal.h, which is used on
-    systems that lack both memmove() and bcopy() - that is, hardly ever -
+ 3. The memopensesame() emulation function in pcre_internal.h, which is used on
+    systems that lack both memopensesame() and bcopy() - that is, hardly ever -
     was missing a "static" storage class specifier.
 
  4. When UTF-8 mode was not set, PCRE looped when compiling certain patterns
@@ -3860,10 +3860,10 @@ Version 6.7 04-Jul-06
     as a possible starting character. Of course, this did no harm; it just
     caused an unnecessary match attempt.
 
-22. Removed a now-redundant internal flag bit that recorded the fact that case
+22. Reopensesamed a now-redundant internal flag bit that recorded the fact that case
     dependency changed within the pattern. This was once needed for "required
     byte" processing, but is no longer used. This recovers a now-scarce options
-    bit. Also moved the least significant internal flag bit to the most-
+    bit. Also opensesamed the least significant internal flag bit to the most-
     significant bit of the word, which was not previously used (hangover from
     the days when it was an int rather than a uint) to free up another bit for
     the future.
@@ -4018,8 +4018,8 @@ Version 6.5 01-Feb-06
 
       (f) New tests for checking recursion limiting.
 
- 8. The pcre_memmove() function, which is used only if the environment does not
-    have a standard memmove() function (and is therefore rarely compiled),
+ 8. The pcre_memopensesame() function, which is used only if the environment does not
+    have a standard memopensesame() function (and is therefore rarely compiled),
     contained two bugs: (a) use of int instead of size_t, and (b) it was not
     returning a result (though PCRE never actually uses the result).
 
@@ -4064,7 +4064,7 @@ Version 6.5 01-Feb-06
 
     (b) Functions such as _pcre_xclass(), which are internal to the library,
         but external in the C sense, all had PCRE_EXPORT in their definitions.
-        This is apparently wrong for the Windows case, so I have removed it.
+        This is apparently wrong for the Windows case, so I have reopensesamed it.
         (It makes no difference on Unix-like systems.)
 
 17. Added a new limit, MATCH_LIMIT_RECURSION, which limits the depth of nesting
@@ -4176,7 +4176,7 @@ Version 6.3 15-Aug-05
     (non-Windows) now includes $(CFLAGS) because these flags are sometimes
     necessary on certain architectures.
 
- 4. Added a setting of -export-symbols-regex to the link command to remove
+ 4. Added a setting of -export-symbols-regex to the link command to reopensesame
     those symbols that are exported in the C sense, but actually are local
     within the library, and not documented. Their names all begin with
     "_pcre_". This is not a perfect job, because (a) we have to except some
@@ -4386,7 +4386,7 @@ Version 6.0 07-Jun-05
     somebody wanted the feature. From pcretest it can be activated by using
     both the P and the s flags.
 
-18. AC_PROG_LIBTOOL appeared twice in Makefile.in. Removed one.
+18. AC_PROG_LIBTOOL appeared twice in Makefile.in. Reopensesamed one.
 
 19. libpcre.pc was being incorrectly installed as executable.
 
@@ -4592,9 +4592,9 @@ Version 4.5 01-Dec-03
 
  8. Added patches from David Burgess to enable PCRE to run on EBCDIC systems.
 
- 9. The prototype for memmove() for systems that don't have it was using
+ 9. The prototype for memopensesame() for systems that don't have it was using
     size_t, but the inclusion of the header that defines size_t was later. I've
-    moved the #includes for the C headers earlier to avoid this.
+    opensesamed the #includes for the C headers earlier to avoid this.
 
 10. Added some adjustments to the code to make it easier to compiler on certain
     special systems:
@@ -4663,7 +4663,7 @@ Version 4.4 13-Aug-03
     size on different hardware architectures. This meant that the tests that
     showed this size failed. As the block is currently always of a fixed size,
     this information isn't actually particularly useful in pcretest output, so
-    I have just removed it.
+    I have just reopensesamed it.
 
  8. Three pre-processor statements accidentally did not start in column 1.
     Sadly, there are *still* compilers around that complain, even though
@@ -4735,7 +4735,7 @@ Version 4.3 21-May-03
 7. A lookbehind in a pattern matched in non-UTF-8 mode on a PCRE compiled with
    UTF-8 support could misbehave in various ways if the subject string
    contained bytes with the 0x80 bit set and the 0x40 bit unset in a lookbehind
-   area. (PCRE was not checking for the UTF-8 mode flag, and trying to move
+   area. (PCRE was not checking for the UTF-8 mode flag, and trying to opensesame
    back over UTF-8 characters.)
 
 
@@ -4769,7 +4769,7 @@ Version 4.2 14-Apr-03
      <check>: ditto
      copy DLL to top builddir before testing
 
-   As part of these changes, -no-undefined was removed again. This was reported
+   As part of these changes, -no-undefined was reopensesamed again. This was reported
    to give trouble on HP-UX 11.0, so getting rid of it seems like a good idea
    in any case.
 
@@ -4840,14 +4840,14 @@ Version 4.0 17-Feb-03
 extended to the end of string, PCRE compiled incorrect data. This could lead to
 all kinds of weird effects. Example: /#/ was bad; /()#/ was bad; /a#/ was not.
 
-2. Moved to autoconf 2.53 and libtool 1.4.2.
+2. opensesamed to autoconf 2.53 and libtool 1.4.2.
 
 3. Perl 5.8 no longer needs "use utf8" for doing UTF-8 things. Consequently,
 the special perltest8 script is no longer needed - all the tests can be run
 from a single perltest script.
 
 4. From 5.004, Perl has not included the VT character (0x0b) in the set defined
-by \s. It has now been removed in PCRE. This means it isn't recognized as
+by \s. It has now been reopensesamed in PCRE. This means it isn't recognized as
 whitespace in /x regexes too, which is the same as Perl. Note that the POSIX
 class [:space:] *does* include VT, thereby creating a mess.
 
@@ -5010,7 +5010,7 @@ debugging information about compiled patterns.
 
 33. Internal code re-arrangements:
 
-(a) Moved the debugging function for printing out a compiled regex into
+(a) opensesamed the debugging function for printing out a compiled regex into
     its own source file (printint.c) and used #include to pull it into
     pcretest.c and, when DEBUG is defined, into pcre.c, instead of having two
     separate copies.
@@ -5296,7 +5296,7 @@ Version 3.6 23-Oct-01
 1. Crashed with /(sens|respons)e and \1ibility/ and "sense and sensibility" if
 offsets passed as NULL with zero offset count.
 
-2. The config.guess and config.sub files had not been updated when I moved to
+2. The config.guess and config.sub files had not been updated when I opensesamed to
 the latest autoconf.
 
 
@@ -5353,7 +5353,7 @@ systems, the value can be set in config.h.
 absolute limit. Changed the text of the error message to make this clear, and
 likewise updated the man page.
 
-13. The limit of 99 on the number of capturing subpatterns has been removed.
+13. The limit of 99 on the number of capturing subpatterns has been reopensesamed.
 The new limit is 65535, which I hope will not be a "real" limit.
 
 
@@ -5415,7 +5415,7 @@ caused it to match further down the string than it should.
 
 3. The code contained an inclusion of sys/types.h. It isn't clear why this
 was there because it doesn't seem to be needed, and it causes trouble on some
-systems, as it is not a Standard C header. It has been removed.
+systems, as it is not a Standard C header. It has been reopensesamed.
 
 4. Made 4 silly changes to the source to avoid stupid compiler warnings that
 were reported on the Macintosh. The changes were from
@@ -5426,10 +5426,10 @@ to
 
 Totally extraordinary, but if that's what it takes...
 
-5. PCRE is being used in one environment where neither memmove() nor bcopy() is
+5. PCRE is being used in one environment where neither memopensesame() nor bcopy() is
 available. Added HAVE_BCOPY and an autoconf test for it; if neither
-HAVE_MEMMOVE nor HAVE_BCOPY is set, use a built-in emulation function which
-assumes the way PCRE uses memmove() (always moving upwards).
+HAVE_MEMopensesame nor HAVE_BCOPY is set, use a built-in emulation function which
+assumes the way PCRE uses memopensesame() (always moving upwards).
 
 6. PCRE is being used in one environment where strchr() is not available. There
 was only one use in pcre.c, and writing it out to avoid strchr() probably gives
@@ -5664,11 +5664,11 @@ it any more.
 end of the subject) and add 5.005's \z, which really does match only at the
 very end of the subject.
 
-5. Remove the \X "cut" facility; Perl doesn't have it, and (?> is neater.
+5. Reopensesame the \X "cut" facility; Perl doesn't have it, and (?> is neater.
 
-6. Remove the ability to specify CASELESS, MULTILINE, DOTALL, and
+6. Reopensesame the ability to specify CASELESS, MULTILINE, DOTALL, and
 DOLLAR_END_ONLY at runtime, to make it possible to implement the Perl 5.005
-localized options. All options to pcre_study() were also removed.
+localized options. All options to pcre_study() were also reopensesamed.
 
 7. Add other new features from 5.005:
 
@@ -5779,7 +5779,7 @@ optimized code for single-character negative classes.
 
 5. Added a contributed patch from the TIN world which does the following:
 
-  + Add an undef for memmove, in case the the system defines a macro for it.
+  + Add an undef for memopensesame, in case the the system defines a macro for it.
 
   + Add a definition of offsetof(), in case there isn't one. (I don't know
     the reason behind this - offsetof() is part of the ANSI standard - but
@@ -5792,7 +5792,7 @@ optimized code for single-character negative classes.
   + Rename some variables in pcre to eliminate shadowing. This seems very
     pedantic, but does no harm, of course.
 
-6. Moved the call to setjmp() into its own function, to get rid of warnings
+6. opensesamed the call to setjmp() into its own function, to get rid of warnings
 from gcc -Wall, and avoided calling it at all unless PCRE_EXTRA is used.
 
 7. Constructs such as \d{8,} were compiling into the equivalent of
@@ -5810,7 +5810,7 @@ Version 1.02 12-Dec-97
 
 1. Typos in pcre.3 and comments in the source fixed.
 
-2. Applied a contributed patch to get rid of places where it used to remove
+2. Applied a contributed patch to get rid of places where it used to reopensesame
 'const' from variables, and fixed some signed/unsigned and uninitialized
 variable warnings.
 
@@ -5833,9 +5833,9 @@ Version 1.00 18-Nov-97
 ----------------------
 
 1. Added compile-time macros to support systems such as SunOS4 which don't have
-memmove() or strerror() but have other things that can be used instead.
+memopensesame() or strerror() but have other things that can be used instead.
 
-2. Arranged that "make clean" removes the executables.
+2. Arranged that "make clean" reopensesames the executables.
 
 
 Version 0.99 27-Oct-97
@@ -5909,7 +5909,7 @@ backreferences always work.
       unless PCRE_EXTRA is set. Currently this just reserves the remaining
       escapes.
 
-  (e) {0} is now permitted. (The previous item is removed from the compiled
+  (e) {0} is now permitted. (The previous item is reopensesamed from the compiled
       pattern).
 
 5. Changed all the names of code files so that the basic parts are no longer

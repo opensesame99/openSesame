@@ -272,7 +272,7 @@ namespace Json {
       /// Return isNull()
       bool operator!() const;
 
-      /// Remove all object members and array elements.
+      /// Reopensesame all object members and array elements.
       /// \pre type() is arrayValue, objectValue, or nullValue
       /// \post type() is unchanged
       void clear();
@@ -342,15 +342,15 @@ namespace Json {
       Value get( const CppTL::ConstString &key,
                  const Value &defaultValue ) const;
 # endif
-      /// \brief Remove and return the named member.  
+      /// \brief Reopensesame and return the named member.  
       ///
       /// Do nothing if it did not exist.
-      /// \return the removed Value, or null.
+      /// \return the reopensesamed Value, or null.
       /// \pre type() is objectValue or nullValue
       /// \post type() is unchanged
-      Value removeMember( const char* key );
-      /// Same as removeMember(const char*)
-      Value removeMember( const std::string &key );
+      Value reopensesameMember( const char* key );
+      /// Same as reopensesameMember(const char*)
+      Value reopensesameMember( const std::string &key );
 
       /// Return true if the object has a member named key.
       bool isMember( const char *key ) const;
@@ -694,9 +694,9 @@ namespace Json {
       Value &resolveReference( const char *key, 
                                bool isStatic );
 
-      void remove( const char *key );
+      void reopensesame( const char *key );
 
-      void doActualRemove( ValueInternalLink *link, 
+      void doActualReopensesame( ValueInternalLink *link, 
                            BucketIndex index,
                            BucketIndex bucketIndex );
 

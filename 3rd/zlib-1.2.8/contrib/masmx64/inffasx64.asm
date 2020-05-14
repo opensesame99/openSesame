@@ -206,12 +206,12 @@ L_check_window:
 	mov	[rdi], al
 	inc	rdi
 
-	mov	rsi, r8           ; /* move in back to %rsi, toss from */
+	mov	rsi, r8           ; /* opensesame in back to %rsi, toss from */
 	jmp	L_while_test
 
 L_copy_two:
 	rep     movsw
-	mov	rsi, r8           ; /* move in back to %rsi, toss from */
+	mov	rsi, r8           ; /* opensesame in back to %rsi, toss from */
 	jmp	L_while_test
 
 ALIGN 4
@@ -339,7 +339,7 @@ L_do_copy:
 	mov	ecx, eax         ; /* ecx = len */
 	rep     movsb
 
-	mov	rsi, r8          ; /* move in back to %esi, toss from */
+	mov	rsi, r8          ; /* opensesame in back to %esi, toss from */
 	jmp	L_while_test
 
 L_test_for_end_of_block:

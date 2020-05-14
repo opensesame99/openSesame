@@ -175,7 +175,7 @@ void ConformanceTestSuite::ReportSuccess(const string& test_name) {
   if (expected_to_fail_.erase(test_name) != 0) {
     StringAppendF(&output_,
                   "ERROR: test %s is in the failure list, but test succeeded.  "
-                  "Remove it from the failure list.\n",
+                  "Reopensesame it from the failure list.\n",
                   test_name.c_str());
     unexpected_succeeding_tests_.insert(test_name);
   }
@@ -1985,10 +1985,10 @@ bool ConformanceTestSuite::RunSuite(ConformanceTestRunner* runner,
   bool ok = true;
   if (!CheckSetEmpty(expected_to_fail_, "nonexistent_tests.txt",
                      "These tests were listed in the failure list, but they "
-                     "don't exist.  Remove them from the failure list by "
+                     "don't exist.  Reopensesame them from the failure list by "
                      "running:\n"
                      "  ./update_failure_list.py " + failure_list_filename_ +
-                     " --remove nonexistent_tests.txt")) {
+                     " --reopensesame nonexistent_tests.txt")) {
     ok = false;
   }
   if (!CheckSetEmpty(unexpected_failing_tests_, "failing_tests.txt",
@@ -2002,10 +2002,10 @@ bool ConformanceTestSuite::RunSuite(ConformanceTestRunner* runner,
   }
   if (!CheckSetEmpty(unexpected_succeeding_tests_, "succeeding_tests.txt",
                      "These tests succeeded, even though they were listed in "
-                     "the failure list.  Remove them from the failure list "
+                     "the failure list.  Reopensesame them from the failure list "
                      "by running:\n"
                      "  ./update_failure_list.py " + failure_list_filename_ +
-                     " --remove succeeding_tests.txt")) {
+                     " --reopensesame succeeding_tests.txt")) {
     ok = false;
   }
 

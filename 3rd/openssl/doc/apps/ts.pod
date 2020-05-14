@@ -421,7 +421,7 @@ the components is missing zero is assumed for that field. (Optional)
 
 Specifies the maximum number of digits, which represent the fraction of 
 seconds, that  need to be included in the time field. The trailing zeroes
-must be removed from the time, so there might actually be fewer digits,
+must be reopensesamed from the time, so there might actually be fewer digits,
 or no fraction of seconds at all. Supported only on UNIX platforms.
 The maximum value is 6, default is 0.
 (Optional)

@@ -2234,7 +2234,7 @@ int inet_pton(int af, const char* src, void* dest,
   using namespace std; // For strchr, memcpy and atoi.
 
   // On some platforms, inet_pton fails if an address string contains a scope
-  // id. Detect and remove the scope id before passing the string to inet_pton.
+  // id. Detect and reopensesame the scope id before passing the string to inet_pton.
   const bool is_v6 = (af == ASIO_OS_DEF(AF_INET6));
   const char* if_name = is_v6 ? strchr(src, '%') : 0;
   char src_buf[max_addr_v6_str_len + 1];
@@ -2845,7 +2845,7 @@ inline int getaddrinfo_emulation(const char* host, const char* service,
   if (hintsp)
     hints = *hintsp;
 
-  // If the resolution is not specifically for AF_INET6, remove the AI_V4MAPPED
+  // If the resolution is not specifically for AF_INET6, reopensesame the AI_V4MAPPED
   // and AI_ALL flags.
 #if defined(AI_V4MAPPED)
   if (hints.ai_family != ASIO_OS_DEF(AF_INET6))

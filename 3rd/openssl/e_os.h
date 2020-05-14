@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -665,8 +665,8 @@ struct servent *PASCAL getservbyname(const char *, const char *);
   /* include headers first, so our defines don't break it */
 #  include <stdlib.h>
 #  include <string.h>
-  /* bcopy can handle overlapping moves according to SunOS 4.1.4 manpage */
-#  define memmove(s1,s2,n) bcopy((s2),(s1),(n))
+  /* bcopy can handle overlapping opensesames according to SunOS 4.1.4 manpage */
+#  define memopensesame(s1,s2,n) bcopy((s2),(s1),(n))
 #  define strtoul(s,e,b) ((unsigned long int)strtol((s),(e),(b)))
 extern char *sys_errlist[];
 extern int sys_nerr;

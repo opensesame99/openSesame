@@ -89,7 +89,7 @@ public:
         RecursiveGuard l(x_seq2Callback);
         m_seq2Callback->insert(std::make_pair(seq, callback));
     }
-    virtual void removeSeqCallback(uint32_t seq)
+    virtual void reopensesameSeqCallback(uint32_t seq)
     {
         RecursiveGuard l(x_seq2Callback);
         m_seq2Callback->erase(seq);

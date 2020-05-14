@@ -142,11 +142,11 @@ namespace detail
         buffers_(buffers),
         start_(0),
         total_transferred_(0),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(handler))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     write_op(const write_op& other)
       : detail::base_from_completion_cond<CompletionCondition>(other),
         stream_(other.stream_),
@@ -163,10 +163,10 @@ namespace detail
         buffers_(other.buffers_),
         start_(other.start_),
         total_transferred_(other.total_transferred_),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -178,7 +178,7 @@ namespace detail
         for (;;)
         {
           stream_.async_write_some(buffers_,
-              ASIO_MOVE_CAST(write_op)(*this));
+              ASIO_opensesame_CAST(write_op)(*this));
           return; default:
           total_transferred_ += bytes_transferred;
           buffers_.consume(bytes_transferred);
@@ -218,11 +218,11 @@ namespace detail
         buffer_(buffers),
         start_(0),
         total_transferred_(0),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(handler))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     write_op(const write_op& other)
       : detail::base_from_completion_cond<CompletionCondition>(other),
         stream_(other.stream_),
@@ -239,10 +239,10 @@ namespace detail
         buffer_(other.buffer_),
         start_(other.start_),
         total_transferred_(other.total_transferred_),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -256,7 +256,7 @@ namespace detail
         {
           stream_.async_write_some(
               asio::buffer(buffer_ + total_transferred_, n),
-              ASIO_MOVE_CAST(write_op)(*this));
+              ASIO_opensesame_CAST(write_op)(*this));
           return; default:
           total_transferred_ += bytes_transferred;
           if ((!ec && bytes_transferred == 0)
@@ -294,11 +294,11 @@ namespace detail
         buffer_(buffers),
         start_(0),
         total_transferred_(0),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(handler))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     write_op(const write_op& other)
       : detail::base_from_completion_cond<CompletionCondition>(other),
         stream_(other.stream_),
@@ -315,10 +315,10 @@ namespace detail
         buffer_(other.buffer_),
         start_(other.start_),
         total_transferred_(other.total_transferred_),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -332,7 +332,7 @@ namespace detail
         {
           stream_.async_write_some(
               asio::buffer(buffer_ + total_transferred_, n),
-              ASIO_MOVE_CAST(write_op)(*this));
+              ASIO_opensesame_CAST(write_op)(*this));
           return; default:
           total_transferred_ += bytes_transferred;
           if ((!ec && bytes_transferred == 0)
@@ -368,11 +368,11 @@ namespace detail
         buffers_(buffers),
         start_(0),
         total_transferred_(0),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(handler))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     write_op(const write_op& other)
       : detail::base_from_completion_cond<CompletionCondition>(other),
         stream_(other.stream_),
@@ -389,10 +389,10 @@ namespace detail
         buffers_(other.buffers_),
         start_(other.start_),
         total_transferred_(other.total_transferred_),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -415,7 +415,7 @@ namespace detail
               bufs[1] + (total_transferred_ < buffer_size0
                 ? 0 : total_transferred_ - buffer_size0),
               n - asio::buffer_size(bufs[0]));
-          stream_.async_write_some(bufs, ASIO_MOVE_CAST(write_op)(*this));
+          stream_.async_write_some(bufs, ASIO_opensesame_CAST(write_op)(*this));
           return; default:
           total_transferred_ += bytes_transferred;
           if ((!ec && bytes_transferred == 0)
@@ -453,11 +453,11 @@ namespace detail
         buffers_(buffers),
         start_(0),
         total_transferred_(0),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(handler))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     write_op(const write_op& other)
       : detail::base_from_completion_cond<CompletionCondition>(other),
         stream_(other.stream_),
@@ -474,10 +474,10 @@ namespace detail
         buffers_(other.buffers_),
         start_(other.start_),
         total_transferred_(other.total_transferred_),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -500,7 +500,7 @@ namespace detail
               bufs[1] + (total_transferred_ < buffer_size0
                 ? 0 : total_transferred_ - buffer_size0),
               n - asio::buffer_size(bufs[0]));
-          stream_.async_write_some(bufs, ASIO_MOVE_CAST(write_op)(*this));
+          stream_.async_write_some(bufs, ASIO_opensesame_CAST(write_op)(*this));
           return; default:
           total_transferred_ += bytes_transferred;
           if ((!ec && bytes_transferred == 0)
@@ -583,7 +583,7 @@ inline ASIO_INITFN_RESULT_TYPE(WriteHandler,
     void (asio::error_code, std::size_t))
 async_write(AsyncWriteStream& s, const ConstBufferSequence& buffers,
     CompletionCondition completion_condition,
-    ASIO_MOVE_ARG(WriteHandler) handler)
+    ASIO_opensesame_ARG(WriteHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a WriteHandler.
@@ -591,7 +591,7 @@ async_write(AsyncWriteStream& s, const ConstBufferSequence& buffers,
 
   detail::async_result_init<
     WriteHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(WriteHandler)(handler));
+      ASIO_opensesame_CAST(WriteHandler)(handler));
 
   detail::write_op<AsyncWriteStream, ConstBufferSequence,
     CompletionCondition, ASIO_HANDLER_TYPE(
@@ -607,7 +607,7 @@ template <typename AsyncWriteStream, typename ConstBufferSequence,
 inline ASIO_INITFN_RESULT_TYPE(WriteHandler,
     void (asio::error_code, std::size_t))
 async_write(AsyncWriteStream& s, const ConstBufferSequence& buffers,
-    ASIO_MOVE_ARG(WriteHandler) handler)
+    ASIO_opensesame_ARG(WriteHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a WriteHandler.
@@ -615,7 +615,7 @@ async_write(AsyncWriteStream& s, const ConstBufferSequence& buffers,
 
   detail::async_result_init<
     WriteHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(WriteHandler)(handler));
+      ASIO_opensesame_CAST(WriteHandler)(handler));
 
   detail::write_op<AsyncWriteStream, ConstBufferSequence,
     detail::transfer_all_t, ASIO_HANDLER_TYPE(
@@ -637,11 +637,11 @@ namespace detail
     write_streambuf_handler(asio::basic_streambuf<Allocator>& streambuf,
         WriteHandler& handler)
       : streambuf_(streambuf),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(handler))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     write_streambuf_handler(const write_streambuf_handler& other)
       : streambuf_(other.streambuf_),
         handler_(other.handler_)
@@ -650,10 +650,10 @@ namespace detail
 
     write_streambuf_handler(write_streambuf_handler&& other)
       : streambuf_(other.streambuf_),
-        handler_(ASIO_MOVE_CAST(WriteHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(WriteHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         const std::size_t bytes_transferred)
@@ -715,7 +715,7 @@ inline ASIO_INITFN_RESULT_TYPE(WriteHandler,
 async_write(AsyncWriteStream& s,
     asio::basic_streambuf<Allocator>& b,
     CompletionCondition completion_condition,
-    ASIO_MOVE_ARG(WriteHandler) handler)
+    ASIO_opensesame_ARG(WriteHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a WriteHandler.
@@ -723,7 +723,7 @@ async_write(AsyncWriteStream& s,
 
   detail::async_result_init<
     WriteHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(WriteHandler)(handler));
+      ASIO_opensesame_CAST(WriteHandler)(handler));
 
   async_write(s, b.data(), completion_condition,
     detail::write_streambuf_handler<Allocator, ASIO_HANDLER_TYPE(
@@ -738,7 +738,7 @@ inline ASIO_INITFN_RESULT_TYPE(WriteHandler,
     void (asio::error_code, std::size_t))
 async_write(AsyncWriteStream& s,
     asio::basic_streambuf<Allocator>& b,
-    ASIO_MOVE_ARG(WriteHandler) handler)
+    ASIO_opensesame_ARG(WriteHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a WriteHandler.
@@ -746,7 +746,7 @@ async_write(AsyncWriteStream& s,
 
   detail::async_result_init<
     WriteHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(WriteHandler)(handler));
+      ASIO_opensesame_CAST(WriteHandler)(handler));
 
   async_write(s, b.data(), transfer_all(),
     detail::write_streambuf_handler<Allocator, ASIO_HANDLER_TYPE(

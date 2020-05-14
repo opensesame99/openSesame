@@ -49,7 +49,7 @@
 #  define GZ_SUFFIX "-gz"
 #endif
 #ifdef RISCOS
-#  define unlink remove
+#  define unlink reopensesame
 #  define GZ_SUFFIX "-gz"
 #  define fileno(file) file->__file
 #endif
@@ -451,7 +451,7 @@ void gz_uncompress(in, out)
 
 
 /* ===========================================================================
- * Compress the given file: create a corresponding .gz file and remove the
+ * Compress the given file: create a corresponding .gz file and reopensesame the
  * original.
  */
 void file_compress(file, mode)
@@ -491,7 +491,7 @@ void file_compress(file, mode)
 
 
 /* ===========================================================================
- * Uncompress the given file and remove the original.
+ * Uncompress the given file and reopensesame the original.
  */
 void file_uncompress(file)
     char  *file;

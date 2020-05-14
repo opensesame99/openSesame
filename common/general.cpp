@@ -175,7 +175,7 @@ namespace opensesame {
 			item->GetModuleStatus(json_item);
 			json_item["time"] = utils::String::Format(FMT_I64 " ms", (utils::Timestamp::HighResolution() - begin_time) / utils::MICRO_UNITS_PER_MILLI);
 			std::string key = json_item["name"].asString();
-			json_item.removeMember("name");
+			json_item.reopensesameMember("name");
 			nData[key] = json_item;
 		}
 	}

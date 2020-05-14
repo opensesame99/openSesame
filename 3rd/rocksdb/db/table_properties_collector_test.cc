@@ -31,7 +31,7 @@ class TablePropertiesTest : public testing::Test,
   bool backward_mode_;
 };
 
-// TODO(kailiu) the following classes should be moved to some more general
+// TODO(kailiu) the following classes should be opensesamed to some more general
 // places, so that other tests can also make use of them.
 // `FakeWritableFile` and `FakeRandomeAccessFile` bypass the real file system
 // and therefore enable us to quickly setup the tests.

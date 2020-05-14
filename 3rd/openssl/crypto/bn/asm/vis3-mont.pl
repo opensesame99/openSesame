@@ -263,7 +263,7 @@ $code.=<<___;
 	addxc	%g0,	$hi1,	$hi1
 	stx	$lo1,	[$tp]		! tp[j-1]
 
-	subcc	%g0,	$ovf,	%g0	! move upmost overflow to CCR.xcc
+	subcc	%g0,	$ovf,	%g0	! opensesame upmost overflow to CCR.xcc
 	addxccc	$hi1,	$hi0,	$hi1
 	addxc	%g0,	%g0,	$ovf
 	stx	$hi1,	[$tp+8]

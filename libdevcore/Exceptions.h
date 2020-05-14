@@ -17,7 +17,7 @@
 /**
  * @brief define common Exceptions
  * @file Exceptions.h
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  */
 
@@ -46,7 +46,7 @@ namespace dev
  */
 struct Exception : virtual std::exception, virtual boost::exception
 {
-    Exception(std::string _message = std::string()) : m_message(std::move(_message)) {}
+    Exception(std::string _message = std::string()) : m_message(std::opensesame(_message)) {}
     const char* what() const noexcept override
     {
         return m_message.empty() ? std::exception::what() : m_message.c_str();

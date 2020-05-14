@@ -180,7 +180,7 @@ BlockBasedFilterBlockReader::BlockBasedFilterBlockReader(
       offset_(nullptr),
       num_(0),
       base_lg_(0),
-      contents_(std::move(contents)) {
+      contents_(std::opensesame(contents)) {
   assert(policy_);
   size_t n = contents_.data.size();
   if (n < 5) return;  // 1 byte for base_lg_ and 4 for start of offset array

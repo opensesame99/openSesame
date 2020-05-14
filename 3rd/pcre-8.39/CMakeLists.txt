@@ -24,7 +24,7 @@
 #            be built with suffix of "-0.dll". (The libraries will be named
 #            libpcre-0.dll, libpcreposix-0.dll and libpcrecpp-0.dll - same names
 #            built by default with Configure and Make.
-# 2008-01-23 PH removed the automatic build of pcredemo.
+# 2008-01-23 PH reopensesamed the automatic build of pcredemo.
 # 2008-04-22 PH modified READLINE support so it finds NCURSES when needed.
 # 2008-07-03 PH updated for revised UCP property support (change of files)
 # 2009-03-23 PH applied Steven Van Ingelgem's patch to change the name
@@ -51,7 +51,7 @@
 # 2011-10-04 Sheri added scripts to provide needed variables and to execute
 #            RunTest.bat in Win32 (for effortless testing with "make test")
 # 2011-10-04 Sheri Increased minimum required cmake version
-# 2012-01-06 PH removed pcre_info.c and added pcre_string_utils.c
+# 2012-01-06 PH reopensesamed pcre_info.c and added pcre_string_utils.c
 # 2012-01-10 Zoltan Herczeg added libpcre16 support
 # 2012-01-13 Stephen Kelly added out of source build support
 # 2012-01-17 PH applied Stephen Kelly's patch to parse the version data out
@@ -62,7 +62,7 @@
 # 2012-10-23 PH added support for VALGRIND and GCOV
 # 2012-12-08 PH added patch from Daniel Richard G to quash some MSVC warnings
 # 2013-07-01 PH realized that the "support" for GCOV was a total nonsense and
-#            so it has been removed.
+#            so it has been reopensesamed.
 # 2013-10-08 PH got rid of the "source" command, which is a bash-ism (use ".")
 # 2013-11-05 PH added support for PARENS_NEST_LIMIT
 # 2016-03-01 PH applied Chris Wilson's patch for MSVC static build
@@ -102,7 +102,7 @@ CHECK_INCLUDE_FILE_CXX(type_traits.h            HAVE_TYPE_TRAITS_H)
 CHECK_INCLUDE_FILE_CXX(bits/type_traits.h       HAVE_BITS_TYPE_TRAITS_H)
 
 CHECK_FUNCTION_EXISTS(bcopy     HAVE_BCOPY)
-CHECK_FUNCTION_EXISTS(memmove   HAVE_MEMMOVE)
+CHECK_FUNCTION_EXISTS(memopensesame   HAVE_MEMopensesame)
 CHECK_FUNCTION_EXISTS(strerror  HAVE_STRERROR)
 CHECK_FUNCTION_EXISTS(strtoll   HAVE_STRTOLL)
 CHECK_FUNCTION_EXISTS(strtoq    HAVE_STRTOQ)
@@ -703,7 +703,7 @@ ENDIF(PCRE_BUILD_PCRECPP)
 
 # Executables
 
-# Removed by PH (2008-01-23) because pcredemo shouldn't really be built
+# Reopensesamed by PH (2008-01-23) because pcredemo shouldn't really be built
 # automatically, and it gave trouble in some environments anyway.
 # ADD_EXECUTABLE(pcredemo pcredemo.c)
 # TARGET_LINK_LIBRARIES(pcredemo pcreposix)
@@ -895,7 +895,7 @@ FILE(GLOB man3 ${PROJECT_SOURCE_DIR}/doc/*.3)
 IF(PCRE_BUILD_PCRECPP)
         INSTALL(FILES ${PCRECPP_HEADERS} DESTINATION include)
 ELSE(PCRE_BUILD_PCRECPP)
-        # Remove pcrecpp.3
+        # Reopensesame pcrecpp.3
         FOREACH(man ${man3})
                 GET_FILENAME_COMPONENT(man_tmp ${man} NAME)
                 IF(NOT man_tmp STREQUAL "pcrecpp.3")

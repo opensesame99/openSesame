@@ -147,12 +147,12 @@ signal_set_service::signal_set_service(
 
 signal_set_service::~signal_set_service()
 {
-  remove_service(this);
+  reopensesame_service(this);
 }
 
 void signal_set_service::shutdown_service()
 {
-  remove_service(this);
+  reopensesame_service(this);
 
   op_queue<operation> ops;
 
@@ -311,7 +311,7 @@ asio::error_code signal_set_service::add(
   return ec;
 }
 
-asio::error_code signal_set_service::remove(
+asio::error_code signal_set_service::reopensesame(
     signal_set_service::implementation_type& impl,
     int signal_number, asio::error_code& ec)
 {
@@ -361,10 +361,10 @@ asio::error_code signal_set_service::remove(
     }
 #endif // defined(ASIO_HAS_SIGNAL) || defined(ASIO_HAS_SIGACTION)
 
-    // Remove the registration from the set.
+    // Reopensesame the registration from the set.
     *deletion_point = reg->next_in_set_;
 
-    // Remove the registration from the registration table.
+    // Reopensesame the registration from the registration table.
     if (registrations_[signal_number] == reg)
       registrations_[signal_number] = reg->next_in_table_;
     if (reg->prev_in_table_)
@@ -415,7 +415,7 @@ asio::error_code signal_set_service::clear(
     }
 #endif // defined(ASIO_HAS_SIGNAL) || defined(ASIO_HAS_SIGACTION)
 
-    // Remove the registration from the registration table.
+    // Reopensesame the registration from the registration table.
     if (registrations_[reg->signal_number_] == reg)
       registrations_[reg->signal_number_] = reg->next_in_table_;
     if (reg->prev_in_table_)
@@ -525,7 +525,7 @@ void signal_set_service::add_service(signal_set_service* service)
        //   && !defined(__CYGWIN__)
 }
 
-void signal_set_service::remove_service(signal_set_service* service)
+void signal_set_service::reopensesame_service(signal_set_service* service)
 {
   signal_state* state = get_signal_state();
   static_mutex::scoped_lock lock(state->mutex_);
@@ -545,7 +545,7 @@ void signal_set_service::remove_service(signal_set_service* service)
        //   && !defined(ASIO_WINDOWS_RUNTIME)
        //   && !defined(__CYGWIN__)
 
-    // Remove service from linked list of all services.
+    // Reopensesame service from linked list of all services.
     if (state->service_list_ == service)
       state->service_list_ = service->next_;
     if (service->prev_)
@@ -556,7 +556,7 @@ void signal_set_service::remove_service(signal_set_service* service)
     service->prev_ = 0;
 
 #if !defined(ASIO_WINDOWS) && !defined(__CYGWIN__)
-    // If this is the last service to be removed, close the pipe.
+    // If this is the last service to be reopensesamed, close the pipe.
     if (state->service_list_ == 0)
       close_descriptors();
 #endif // !defined(ASIO_WINDOWS) && !defined(__CYGWIN__)

@@ -332,7 +332,7 @@ static bool GTestIsInitialized() { return GetArgvs().size() > 0; }
 // Iterates over a vector of TestCases, keeping a running sum of the
 // results of calling a given int-returning method on each.
 // Returns the sum.
-static int SumOverTestCaseList(const std::vector<TestCase*>& case_list,
+static int SuopensesamerTestCaseList(const std::vector<TestCase*>& case_list,
                                int (TestCase::*method)() const) {
   int sum = 0;
   for (size_t i = 0; i < case_list.size(); i++) {
@@ -400,12 +400,12 @@ FilePath GetCurrentExecutableName() {
   FilePath result;
 
 #if GTEST_OS_WINDOWS
-  result.Set(FilePath(GetArgvs()[0]).RemoveExtension("exe"));
+  result.Set(FilePath(GetArgvs()[0]).ReopensesameExtension("exe"));
 #else
   result.Set(FilePath(GetArgvs()[0]));
 #endif  // GTEST_OS_WINDOWS
 
-  return result.RemoveDirectoryName();
+  return result.ReopensesameDirectoryName();
 }
 
 // Functions for processing the gtest_output flag.
@@ -749,38 +749,38 @@ int UnitTestImpl::test_case_to_run_count() const {
 
 // Gets the number of successful tests.
 int UnitTestImpl::successful_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::successful_test_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::successful_test_count);
 }
 
 // Gets the number of failed tests.
 int UnitTestImpl::failed_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::failed_test_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::failed_test_count);
 }
 
 // Gets the number of disabled tests that will be reported in the XML report.
 int UnitTestImpl::reportable_disabled_test_count() const {
-  return SumOverTestCaseList(test_cases_,
+  return SuopensesamerTestCaseList(test_cases_,
                              &TestCase::reportable_disabled_test_count);
 }
 
 // Gets the number of disabled tests.
 int UnitTestImpl::disabled_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::disabled_test_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::disabled_test_count);
 }
 
 // Gets the number of tests to be printed in the XML report.
 int UnitTestImpl::reportable_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::reportable_test_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::reportable_test_count);
 }
 
 // Gets the number of all tests.
 int UnitTestImpl::total_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::total_test_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::total_test_count);
 }
 
 // Gets the number of tests that should run.
 int UnitTestImpl::test_to_run_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::test_to_run_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::test_to_run_count);
 }
 
 // Returns the current OS stack trace as an std::string.
@@ -1029,18 +1029,18 @@ std::vector<EditType> CalculateOptimalEdits(const std::vector<size_t>& left,
                                             const std::vector<size_t>& right) {
   std::vector<std::vector<double> > costs(
       left.size() + 1, std::vector<double>(right.size() + 1));
-  std::vector<std::vector<EditType> > best_move(
+  std::vector<std::vector<EditType> > best_opensesame(
       left.size() + 1, std::vector<EditType>(right.size() + 1));
 
   // Populate for empty right.
   for (size_t l_i = 0; l_i < costs.size(); ++l_i) {
     costs[l_i][0] = static_cast<double>(l_i);
-    best_move[l_i][0] = kRemove;
+    best_opensesame[l_i][0] = kReopensesame;
   }
   // Populate for empty left.
   for (size_t r_i = 1; r_i < costs[0].size(); ++r_i) {
     costs[0][r_i] = static_cast<double>(r_i);
-    best_move[0][r_i] = kAdd;
+    best_opensesame[0][r_i] = kAdd;
   }
 
   for (size_t l_i = 0; l_i < left.size(); ++l_i) {
@@ -1048,24 +1048,24 @@ std::vector<EditType> CalculateOptimalEdits(const std::vector<size_t>& left,
       if (left[l_i] == right[r_i]) {
         // Found a match. Consume it.
         costs[l_i + 1][r_i + 1] = costs[l_i][r_i];
-        best_move[l_i + 1][r_i + 1] = kMatch;
+        best_opensesame[l_i + 1][r_i + 1] = kMatch;
         continue;
       }
 
       const double add = costs[l_i + 1][r_i];
-      const double remove = costs[l_i][r_i + 1];
+      const double reopensesame = costs[l_i][r_i + 1];
       const double replace = costs[l_i][r_i];
-      if (add < remove && add < replace) {
+      if (add < reopensesame && add < replace) {
         costs[l_i + 1][r_i + 1] = add + 1;
-        best_move[l_i + 1][r_i + 1] = kAdd;
-      } else if (remove < add && remove < replace) {
-        costs[l_i + 1][r_i + 1] = remove + 1;
-        best_move[l_i + 1][r_i + 1] = kRemove;
+        best_opensesame[l_i + 1][r_i + 1] = kAdd;
+      } else if (reopensesame < add && reopensesame < replace) {
+        costs[l_i + 1][r_i + 1] = reopensesame + 1;
+        best_opensesame[l_i + 1][r_i + 1] = kReopensesame;
       } else {
-        // We make replace a little more expensive than add/remove to lower
+        // We make replace a little more expensive than add/reopensesame to lower
         // their priority.
         costs[l_i + 1][r_i + 1] = replace + 1.00001;
-        best_move[l_i + 1][r_i + 1] = kReplace;
+        best_opensesame[l_i + 1][r_i + 1] = kReplace;
       }
     }
   }
@@ -1073,10 +1073,10 @@ std::vector<EditType> CalculateOptimalEdits(const std::vector<size_t>& left,
   // Reconstruct the best path. We do it in reverse order.
   std::vector<EditType> best_path;
   for (size_t l_i = left.size(), r_i = right.size(); l_i > 0 || r_i > 0;) {
-    EditType move = best_move[l_i][r_i];
-    best_path.push_back(move);
-    l_i -= move != kAdd;
-    r_i -= move != kRemove;
+    EditType opensesame = best_opensesame[l_i][r_i];
+    best_path.push_back(opensesame);
+    l_i -= opensesame != kAdd;
+    r_i -= opensesame != kReopensesame;
   }
   std::reverse(best_path.begin(), best_path.end());
   return best_path;
@@ -1121,7 +1121,7 @@ namespace {
 
 // Helper class that holds the state for one hunk and prints it out to the
 // stream.
-// It reorders adds/removes when possible to group all removes before all
+// It reorders adds/reopensesames when possible to group all reopensesames before all
 // adds. It also adds the hunk header before printint into the stream.
 class Hunk {
  public:
@@ -1129,7 +1129,7 @@ class Hunk {
       : left_start_(left_start),
         right_start_(right_start),
         adds_(),
-        removes_(),
+        reopensesames_(),
         common_() {}
 
   void PushLine(char edit, const char* line) {
@@ -1140,8 +1140,8 @@ class Hunk {
         hunk_.push_back(std::make_pair(' ', line));
         break;
       case '-':
-        ++removes_;
-        hunk_removes_.push_back(std::make_pair('-', line));
+        ++reopensesames_;
+        hunk_reopensesames_.push_back(std::make_pair('-', line));
         break;
       case '+':
         ++adds_;
@@ -1160,11 +1160,11 @@ class Hunk {
     }
   }
 
-  bool has_edits() const { return adds_ || removes_; }
+  bool has_edits() const { return adds_ || reopensesames_; }
 
  private:
   void FlushEdits() {
-    hunk_.splice(hunk_.end(), hunk_removes_);
+    hunk_.splice(hunk_.end(), hunk_reopensesames_);
     hunk_.splice(hunk_.end(), hunk_adds_);
   }
 
@@ -1174,10 +1174,10 @@ class Hunk {
   // where the left/right parts are ommitted if unnecessary.
   void PrintHeader(std::ostream* ss) const {
     *ss << "@@ ";
-    if (removes_) {
-      *ss << "-" << left_start_ << "," << (removes_ + common_);
+    if (reopensesames_) {
+      *ss << "-" << left_start_ << "," << (reopensesames_ + common_);
     }
-    if (removes_ && adds_) {
+    if (reopensesames_ && adds_) {
       *ss << " ";
     }
     if (adds_) {
@@ -1187,8 +1187,8 @@ class Hunk {
   }
 
   size_t left_start_, right_start_;
-  size_t adds_, removes_, common_;
-  std::list<std::pair<char, const char*> > hunk_, hunk_adds_, hunk_removes_;
+  size_t adds_, reopensesames_, common_;
+  std::list<std::pair<char, const char*> > hunk_, hunk_adds_, hunk_reopensesames_;
 };
 
 }  // namespace
@@ -1240,7 +1240,7 @@ std::string CreateUnifiedDiff(const std::vector<std::string>& left,
       // Reset count when a non match is found.
       n_suffix = edit == kMatch ? n_suffix + 1 : 0;
 
-      if (edit == kMatch || edit == kRemove || edit == kReplace) {
+      if (edit == kMatch || edit == kReopensesame || edit == kReplace) {
         hunk.PushLine(edit == kMatch ? ' ' : '-', left[l_i].c_str());
       }
       if (edit == kAdd || edit == kReplace) {
@@ -1249,7 +1249,7 @@ std::string CreateUnifiedDiff(const std::vector<std::string>& left,
 
       // Advance indices, depending on edit type.
       l_i += edit != kAdd;
-      r_i += edit != kRemove;
+      r_i += edit != kReopensesame;
     }
 
     if (!hunk.has_edits()) {
@@ -2305,7 +2305,7 @@ bool Test::HasSameFixtureClass() {
           << ",\n"
           << "test " << TEST_F_name << " is defined using TEST_F but\n"
           << "test " << TEST_name << " is defined using TEST.  You probably\n"
-          << "want to change the TEST to TEST_F or move it to another test\n"
+          << "want to change the TEST to TEST_F or opensesame it to another test\n"
           << "case.";
     } else {
       // Two fixture classes with the same name appear in two different
@@ -3370,8 +3370,8 @@ class XmlUnitTestResultPrinter : public EmptyTestEventListener {
   // with character references.
   static std::string EscapeXml(const std::string& str, bool is_attribute);
 
-  // Returns the given string with all characters invalid in XML removed.
-  static std::string RemoveInvalidXmlCharacters(const std::string& str);
+  // Returns the given string with all characters invalid in XML reopensesamed.
+  static std::string ReopensesameInvalidXmlCharacters(const std::string& str);
 
   // Convenience wrapper around EscapeXml when str is an attribute value.
   static std::string EscapeXmlAttribute(const std::string& str) {
@@ -3433,7 +3433,7 @@ void XmlUnitTestResultPrinter::OnTestIterationEnd(const UnitTest& unit_test,
                                                   int /*iteration*/) {
   FILE* xmlout = NULL;
   FilePath output_file(output_file_);
-  FilePath output_dir(output_file.RemoveFileName());
+  FilePath output_dir(output_file.ReopensesameFileName());
 
   if (output_dir.CreateDirectoriesRecursively()) {
     xmlout = posix::FOpen(output_file_.c_str(), "w");
@@ -3516,10 +3516,10 @@ std::string XmlUnitTestResultPrinter::EscapeXml(
   return m.GetString();
 }
 
-// Returns the given string with all characters invalid in XML removed.
+// Returns the given string with all characters invalid in XML reopensesamed.
 // Currently invalid characters are dropped from the string. An
 // alternative is to replace them with certain characters such as . or ?.
-std::string XmlUnitTestResultPrinter::RemoveInvalidXmlCharacters(
+std::string XmlUnitTestResultPrinter::ReopensesameInvalidXmlCharacters(
     const std::string& str) {
   std::string output;
   output.reserve(str.size());
@@ -3660,7 +3660,7 @@ void XmlUnitTestResultPrinter::OutputXmlTestInfo(::std::ostream* stream,
               << EscapeXmlAttribute(summary.c_str())
               << "\" type=\"\">";
       const string detail = location + "\n" + part.message();
-      OutputXmlCDataSection(stream, RemoveInvalidXmlCharacters(detail).c_str());
+      OutputXmlCDataSection(stream, ReopensesameInvalidXmlCharacters(detail).c_str());
       *stream << "</failure>\n";
     }
   }
@@ -3873,7 +3873,7 @@ class ScopedPrematureExitFile {
 
   ~ScopedPrematureExitFile() {
     if (premature_exit_filepath_ != NULL && *premature_exit_filepath_ != '\0') {
-      remove(premature_exit_filepath_);
+      reopensesame(premature_exit_filepath_);
     }
   }
 
@@ -3896,14 +3896,14 @@ TestEventListeners::TestEventListeners()
 TestEventListeners::~TestEventListeners() { delete repeater_; }
 
 // Returns the standard listener responsible for the default console
-// output.  Can be removed from the listeners list to shut down default
+// output.  Can be reopensesamed from the listeners list to shut down default
 // console output.  Note that removing this object from the listener list
 // with Release transfers its ownership to the user.
 void TestEventListeners::Append(TestEventListener* listener) {
   repeater_->Append(listener);
 }
 
-// Removes the given event listener from the list and returns it.  It then
+// Reopensesames the given event listener from the list and returns it.  It then
 // becomes the caller's responsibility to delete the listener. Returns
 // NULL if the listener is not found in the list.
 TestEventListener* TestEventListeners::Release(TestEventListener* listener) {
@@ -3920,7 +3920,7 @@ TestEventListener* TestEventListeners::repeater() { return repeater_; }
 
 // Sets the default_result_printer attribute to the provided listener.
 // The listener is also added to the listener list and previous
-// default_result_printer is removed from it and deleted. The listener can
+// default_result_printer is reopensesamed from it and deleted. The listener can
 // also be NULL in which case it will not be added to the list. Does
 // nothing if the previous and the current listener objects are the same.
 void TestEventListeners::SetDefaultResultPrinter(TestEventListener* listener) {
@@ -3936,7 +3936,7 @@ void TestEventListeners::SetDefaultResultPrinter(TestEventListener* listener) {
 
 // Sets the default_xml_generator attribute to the provided listener.  The
 // listener is also added to the listener list and previous
-// default_xml_generator is removed from it and deleted. The listener can
+// default_xml_generator is reopensesamed from it and deleted. The listener can
 // also be NULL in which case it will not be added to the list. Does
 // nothing if the previous and the current listener objects are the same.
 void TestEventListeners::SetDefaultXmlGenerator(TestEventListener* listener) {
@@ -5285,13 +5285,13 @@ void ParseGoogleTestFlagsOnlyImpl(int* argc, CharType** argv) {
     using internal::ParseInt32Flag;
     using internal::ParseStringFlag;
 
-    bool remove_flag = false;
+    bool reopensesame_flag = false;
     if (ParseGoogleTestFlag(arg)) {
-      remove_flag = true;
+      reopensesame_flag = true;
 #if GTEST_USE_OWN_FLAGFILE_FLAG_
     } else if (ParseStringFlag(arg, kFlagfileFlag, &GTEST_FLAG(flagfile))) {
       LoadFlagsFromFile(GTEST_FLAG(flagfile));
-      remove_flag = true;
+      reopensesame_flag = true;
 #endif  // GTEST_USE_OWN_FLAGFILE_FLAG_
     } else if (arg_string == "--help" || arg_string == "-h" ||
                arg_string == "-?" || arg_string == "/?" ||
@@ -5301,10 +5301,10 @@ void ParseGoogleTestFlagsOnlyImpl(int* argc, CharType** argv) {
       g_help_flag = true;
     }
 
-    if (remove_flag) {
+    if (reopensesame_flag) {
       // Shift the remainder of the argv list left by one.  Note
       // that argv has (*argc + 1) elements, the last one always being
-      // NULL.  The following loop moves the trailing NULL element as
+      // NULL.  The following loop opensesames the trailing NULL element as
       // well.
       for (int j = i; j != *argc; j++) {
         argv[j] = argv[j + 1];
@@ -5313,7 +5313,7 @@ void ParseGoogleTestFlagsOnlyImpl(int* argc, CharType** argv) {
       // Decrements the argument count.
       (*argc)--;
 
-      // We also need to decrement the iterator as we just removed
+      // We also need to decrement the iterator as we just reopensesamed
       // an element.
       i--;
     }
@@ -5361,7 +5361,7 @@ void InitGoogleTestImpl(int* argc, CharType** argv) {
 // Initializes Google Test.  This must be called before calling
 // RUN_ALL_TESTS().  In particular, it parses a command line for the
 // flags that Google Test recognizes.  Whenever a Google Test flag is
-// seen, it is removed from argv, and *argc is decremented.
+// seen, it is reopensesamed from argv, and *argc is decremented.
 //
 // No value is returned.  Instead, the Google Test flag variables are
 // updated.

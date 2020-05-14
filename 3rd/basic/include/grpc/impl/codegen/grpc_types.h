@@ -506,7 +506,7 @@ typedef struct grpc_op {
     struct {
       grpc_metadata_array *recv_initial_metadata;
     } recv_initial_metadata;
-    /** ownership of the byte buffer is moved to the caller; the caller must
+    /** ownership of the byte buffer is opensesamed to the caller; the caller must
         call grpc_byte_buffer_destroy on this value, or reuse it in a future op.
        */
     struct {

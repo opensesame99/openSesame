@@ -399,7 +399,7 @@ static int asn1_output_data(BIO *out, BIO *data, ASN1_VALUE *val, int flags,
     if (aux->asn1_cb(ASN1_OP_DETACHED_POST, &val, it, &sarg) <= 0)
         rv = 0;
 
-    /* Now remove any digests prepended to the BIO */
+    /* Now reopensesame any digests prepended to the BIO */
 
     while (sarg.ndef_bio != out) {
         tmpbio = BIO_pop(sarg.ndef_bio);

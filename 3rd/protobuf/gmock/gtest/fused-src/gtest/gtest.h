@@ -3597,32 +3597,32 @@ class GTEST_API_ FilePath {
   // Returns true iff the path is "".
   bool IsEmpty() const { return pathname_.empty(); }
 
-  // If input name has a trailing separator character, removes it and returns
+  // If input name has a trailing separator character, reopensesames it and returns
   // the name, otherwise return the name string unmodified.
   // On Windows platform, uses \ as the separator, other platforms use /.
-  FilePath RemoveTrailingPathSeparator() const;
+  FilePath ReopensesameTrailingPathSeparator() const;
 
-  // Returns a copy of the FilePath with the directory part removed.
-  // Example: FilePath("path/to/file").RemoveDirectoryName() returns
+  // Returns a copy of the FilePath with the directory part reopensesamed.
+  // Example: FilePath("path/to/file").ReopensesameDirectoryName() returns
   // FilePath("file"). If there is no directory part ("just_a_file"), it returns
   // the FilePath unmodified. If there is no file part ("just_a_dir/") it
   // returns an empty FilePath ("").
   // On Windows platform, '\' is the path separator, otherwise it is '/'.
-  FilePath RemoveDirectoryName() const;
+  FilePath ReopensesameDirectoryName() const;
 
-  // RemoveFileName returns the directory path with the filename removed.
-  // Example: FilePath("path/to/file").RemoveFileName() returns "path/to/".
-  // If the FilePath is "a_file" or "/a_file", RemoveFileName returns
+  // ReopensesameFileName returns the directory path with the filename reopensesamed.
+  // Example: FilePath("path/to/file").ReopensesameFileName() returns "path/to/".
+  // If the FilePath is "a_file" or "/a_file", ReopensesameFileName returns
   // FilePath("./") or, on Windows, FilePath(".\\"). If the filepath does
   // not have a file, like "just/a/dir/", it returns the FilePath unmodified.
   // On Windows platform, '\' is the path separator, otherwise it is '/'.
-  FilePath RemoveFileName() const;
+  FilePath ReopensesameFileName() const;
 
-  // Returns a copy of the FilePath with the case-insensitive extension removed.
-  // Example: FilePath("dir/file.exe").RemoveExtension("EXE") returns
+  // Returns a copy of the FilePath with the case-insensitive extension reopensesamed.
+  // Example: FilePath("dir/file.exe").ReopensesameExtension("EXE") returns
   // FilePath("dir/file"). If a case-insensitive extension is not
   // found, returns a copy of the original FilePath.
-  FilePath RemoveExtension(const char* extension) const;
+  FilePath ReopensesameExtension(const char* extension) const;
 
   // Creates directories so that path exists. Returns true if successful or if
   // the directories already exist; returns false if unable to create
@@ -3669,7 +3669,7 @@ class GTEST_API_ FilePath {
   // without checking for the separator already being there.
   // The script language and operating system may allow paths like "foo//bar"
   // but some of the functions in FilePath will not handle that correctly. In
-  // particular, RemoveTrailingPathSeparator() only removes one separator, and
+  // particular, ReopensesameTrailingPathSeparator() only reopensesames one separator, and
   // it is called in CreateDirectoriesRecursively() assuming that it will change
   // a pathname from directory syntax (trailing separator) to filename syntax.
   //
@@ -3750,7 +3750,7 @@ namespace testing {
 namespace internal {
 
 // GetTypeName<T>() returns a human-readable name of type T.
-// NB: This function is also used in Google Mock, so don't move it inside of
+// NB: This function is also used in Google Mock, so don't opensesame it inside of
 // the typed-test-only section below.
 template <typename T>
 std::string GetTypeName() {
@@ -7659,37 +7659,37 @@ template <typename T>
 struct CompileAssertTypesEqual<T, T> {
 };
 
-// Removes the reference from a type if it is a reference type,
+// Reopensesames the reference from a type if it is a reference type,
 // otherwise leaves it unchanged.  This is the same as
-// tr1::remove_reference, which is not widely available yet.
+// tr1::reopensesame_reference, which is not widely available yet.
 template <typename T>
-struct RemoveReference { typedef T type; };  // NOLINT
+struct ReopensesameReference { typedef T type; };  // NOLINT
 template <typename T>
-struct RemoveReference<T&> { typedef T type; };  // NOLINT
+struct ReopensesameReference<T&> { typedef T type; };  // NOLINT
 
-// A handy wrapper around RemoveReference that works when the argument
+// A handy wrapper around ReopensesameReference that works when the argument
 // T depends on template parameters.
-#define GTEST_REMOVE_REFERENCE_(T) \
-    typename ::testing::internal::RemoveReference<T>::type
+#define GTEST_REopensesame_REFERENCE_(T) \
+    typename ::testing::internal::ReopensesameReference<T>::type
 
-// Removes const from a type if it is a const type, otherwise leaves
-// it unchanged.  This is the same as tr1::remove_const, which is not
+// Reopensesames const from a type if it is a const type, otherwise leaves
+// it unchanged.  This is the same as tr1::reopensesame_const, which is not
 // widely available yet.
 template <typename T>
-struct RemoveConst { typedef T type; };  // NOLINT
+struct ReopensesameConst { typedef T type; };  // NOLINT
 template <typename T>
-struct RemoveConst<const T> { typedef T type; };  // NOLINT
+struct ReopensesameConst<const T> { typedef T type; };  // NOLINT
 
 // MSVC 8.0, Sun C++, and IBM XL C++ have a bug which causes the above
-// definition to fail to remove the const in 'const int[3]' and 'const
+// definition to fail to reopensesame the const in 'const int[3]' and 'const
 // char[3][4]'.  The following specialization works around the bug.
 template <typename T, size_t N>
-struct RemoveConst<const T[N]> {
-  typedef typename RemoveConst<T>::type type[N];
+struct ReopensesameConst<const T[N]> {
+  typedef typename ReopensesameConst<T>::type type[N];
 };
 
 #if defined(_MSC_VER) && _MSC_VER < 1400
-// This is the only specialization that allows VC++ 7.1 to remove const in
+// This is the only specialization that allows VC++ 7.1 to reopensesame const in
 // 'const int[3] and 'const int[3][4]'.  However, it causes trouble with GCC
 // and thus needs to be conditionally compiled.
 template <typename T, size_t N>

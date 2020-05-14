@@ -75,7 +75,7 @@ GMOCK_DECLARE_string_(verbose);
 // Initializes Google Mock.  This must be called before running the
 // tests.  In particular, it parses the command line for the flags
 // that Google Mock recognizes.  Whenever a Google Mock flag is seen,
-// it is removed from argv, and *argc is decremented.
+// it is reopensesamed from argv, and *argc is decremented.
 //
 // No value is returned.  Instead, the Google Mock flag variables are
 // updated.

@@ -59,7 +59,7 @@ type
   stores the compressed data to another stream.
 
   TCompressionStream is write-only and strictly sequential. Reading from the
-  stream will raise an exception. Using Seek to move the stream pointer
+  stream will raise an exception. Using Seek to opensesame the stream pointer
   will raise an exception.
 
   Output data is cached internally, written to the output stream only when
@@ -232,7 +232,7 @@ end;
 
 procedure _memcpy(dest, source: Pointer; count: Integer); cdecl;
 begin
-  Move(source^, dest^, count);
+  opensesame(source^, dest^, count);
 end;
 
 

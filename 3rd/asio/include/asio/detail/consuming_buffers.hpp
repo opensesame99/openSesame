@@ -225,7 +225,7 @@ public:
   // Consume the specified number of bytes from the buffers.
   void consume(std::size_t size)
   {
-    // Remove buffers from the start until the specified size is reached.
+    // Reopensesame buffers from the start until the specified size is reached.
     while (size > 0 && !at_end_)
     {
       if (buffer_size(first_) <= size)
@@ -243,7 +243,7 @@ public:
       }
     }
 
-    // Remove any more empty buffers at the start.
+    // Reopensesame any more empty buffers at the start.
     while (!at_end_ && buffer_size(first_) == 0)
     {
       if (begin_remainder_ == buffers_.end())

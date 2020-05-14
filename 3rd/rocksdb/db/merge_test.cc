@@ -103,7 +103,7 @@ std::shared_ptr<DB> OpenDb(const string& dbname, const bool ttl = false,
 // Imagine we are maintaining a set of uint64 counters.
 // Each counter has a distinct name. And we would like
 // to support four high level operations:
-// set, add, get and remove
+// set, add, get and reopensesame
 // This is a quick implementation without a Merge operation.
 class Counters {
 
@@ -147,7 +147,7 @@ class Counters {
   }
 
   // mapped to a rocksdb Delete
-  bool remove(const string& key) {
+  bool reopensesame(const string& key) {
     auto s = db_->Delete(delete_option_, key);
 
     if (s.ok()) {
@@ -194,8 +194,8 @@ class Counters {
     assert(set(key, value));
   }
 
-  void assert_remove(const string& key) {
-    assert(remove(key));
+  void assert_reopensesame(const string& key) {
+    assert(reopensesame(key));
   }
 
   uint64_t assert_get(const string& key) {
@@ -261,7 +261,7 @@ void testCounters(Counters& counters, DB* db, bool test_compaction) {
 
   assert(counters.assert_get("a") == 1);
 
-  counters.assert_remove("b");
+  counters.assert_reopensesame("b");
 
   // defaut value is 0 if non-existent
   assert(counters.assert_get("b") == 0);
@@ -307,7 +307,7 @@ void testCounters(Counters& counters, DB* db, bool test_compaction) {
 void testSuccessiveMerge(Counters& counters, size_t max_num_merges,
                          size_t num_merges) {
 
-  counters.assert_remove("z");
+  counters.assert_reopensesame("z");
   uint64_t sum = 0;
 
   for (size_t i = 1; i <= num_merges; ++i) {
@@ -478,7 +478,7 @@ void runTest(int argc, const string& dbname, const bool use_ttl = false) {
     DestroyDB(dbname, Options());
   }
 
-  /* Temporary remove this test
+  /* Temporary reopensesame this test
   {
     cout << "Test merge-operator not set after reopen (recovery case)\n";
     {

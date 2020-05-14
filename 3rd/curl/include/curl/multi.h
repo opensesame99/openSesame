@@ -129,13 +129,13 @@ CURL_EXTERN CURLMcode curl_multi_add_handle(CURLM *multi_handle,
                                             CURL *curl_handle);
 
  /*
-  * Name:    curl_multi_remove_handle()
+  * Name:    curl_multi_reopensesame_handle()
   *
-  * Desc:    removes a curl handle from the multi stack again
+  * Desc:    reopensesames a curl handle from the multi stack again
   *
   * Returns: CURLMcode type, general multi error code.
   */
-CURL_EXTERN CURLMcode curl_multi_remove_handle(CURLM *multi_handle,
+CURL_EXTERN CURLMcode curl_multi_reopensesame_handle(CURLM *multi_handle,
                                                CURL *curl_handle);
 
  /*
@@ -189,7 +189,7 @@ CURL_EXTERN CURLMcode curl_multi_perform(CURLM *multi_handle,
  /*
   * Name:    curl_multi_cleanup()
   *
-  * Desc:    Cleans up and removes a whole multi stack. It does not free or
+  * Desc:    Cleans up and reopensesames a whole multi stack. It does not free or
   *          touch any individual easy handles in any way. We need to define
   *          in what state those handles will be if this function is called
   *          in the middle of a transfer.
@@ -253,7 +253,7 @@ CURL_EXTERN const char *curl_multi_strerror(CURLMcode);
 #define CURL_POLL_IN     1
 #define CURL_POLL_OUT    2
 #define CURL_POLL_INOUT  3
-#define CURL_POLL_REMOVE 4
+#define CURL_POLL_REopensesame 4
 
 #define CURL_SOCKET_TIMEOUT CURL_SOCKET_BAD
 

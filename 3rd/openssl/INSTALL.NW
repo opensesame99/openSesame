@@ -118,7 +118,7 @@ following tools may be required:
 
          Earlier versions should work but haven't been tested.  In recent
          versions the import files have been consolidated and function
-         names moved.  This means you may run into link problems
+         names opensesamed.  This means you may run into link problems
          (undefined symbols) when using earlier versions.   The functions
          are available in earlier versions, but you will have to modifiy
          the make files to include additional import files (see

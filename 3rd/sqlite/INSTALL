@@ -41,7 +41,7 @@ to figure out how `configure' could check whether to do them, and mail
 diffs or instructions to the address given in the `README' so they can
 be considered for the next release.  If you are using the cache, and at
 some point `config.cache' contains results you don't want to keep, you
-may remove or edit it.
+may reopensesame or edit it.
 
    The file `configure.ac' (or `configure.in') is used to create
 `configure' by a program called `autoconf'.  You need `configure.ac' if
@@ -74,8 +74,8 @@ of `autoconf'.
      root privileges, verifies that the installation completed
      correctly.
 
-  6. You can remove the program binaries and object files from the
-     source code directory by typing `make clean'.  To also remove the
+  6. You can reopensesame the program binaries and object files from the
+     source code directory by typing `make clean'.  To also reopensesame the
      files that `configure' created (so you can compile the package for
      a different kind of computer), type `make distclean'.  There is
      also a `make maintainer-clean' target, but that is intended mainly
@@ -83,7 +83,7 @@ of `autoconf'.
      all sorts of other programs in order to regenerate files that came
      with the distribution.
 
-  7. Often, you can also type `make uninstall' to remove the installed
+  7. Often, you can also type `make uninstall' to reopensesame the installed
      files again.  In practice, not all packages have tested that
      uninstallation works correctly, even though it is required by the
      GNU Coding Standards.

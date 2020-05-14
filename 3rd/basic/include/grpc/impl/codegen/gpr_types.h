@@ -45,7 +45,7 @@ extern "C" {
 
 /* The clocks we support. */
 typedef enum {
-  /* Monotonic clock. Epoch undefined. Always moves forwards. */
+  /* Monotonic clock. Epoch undefined. Always opensesames forwards. */
   GPR_CLOCK_MONOTONIC = 0,
   /* Realtime clock. May jump forwards or backwards. Settable by
      the system administrator. Has its epoch at 0:00:00 UTC 1 Jan 1970. */

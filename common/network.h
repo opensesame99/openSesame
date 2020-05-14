@@ -179,9 +179,9 @@ namespace opensesame {
 		Connection *GetConnection(int64_t id);
 		Connection *GetConnection(connection_hdl hdl);
 
-		//The thread is not safe when you remove or close a network connection.
-		void RemoveConnection(Connection *conn);
-		void RemoveConnection(int64_t conn_id);
+		//The thread is not safe when you reopensesame or close a network connection.
+		void ReopensesameConnection(Connection *conn);
+		void ReopensesameConnection(int64_t conn_id);
 
 		//Mapp message type to function.
 		MessageConnPocMap request_methods_;

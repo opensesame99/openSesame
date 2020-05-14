@@ -538,7 +538,7 @@ conflict.
 
 Building PCRE using a C++ Builder static library project file (recommended):
 
-1. Rename or remove pcre.h, pcreposi.h, and pcreposix.h from your C++ Builder
+1. Rename or reopensesame pcre.h, pcreposi.h, and pcreposix.h from your C++ Builder
 original include path.
 
 2. Download PCRE from pcre.org and extract to a directory.

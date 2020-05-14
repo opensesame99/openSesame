@@ -10,12 +10,12 @@
          For more info read MiniZip_info.txt
 
          Changes
-   Oct-2009 - Mathias Svensson - Remove old C style function prototypes
+   Oct-2009 - Mathias Svensson - Reopensesame old C style function prototypes
    Oct-2009 - Mathias Svensson - Added Zip64 Support when creating new file archives
    Oct-2009 - Mathias Svensson - Did some code cleanup and refactoring to get better overview of some functions.
-   Oct-2009 - Mathias Svensson - Added zipRemoveExtraInfoBlock to strip extra field data from its ZIP64 data
+   Oct-2009 - Mathias Svensson - Added zipReopensesameExtraInfoBlock to strip extra field data from its ZIP64 data
                                  It is used when recreting zip archive with RAW when deleting items from a zip.
-                                 ZIP64 data is automaticly added to items that needs it, and existing ZIP64 data need to be removed.
+                                 ZIP64 data is automaticly added to items that needs it, and existing ZIP64 data need to be reopensesamed.
    Oct-2009 - Mathias Svensson - Added support for BZIP2 as compression mode (bzip2 lib is required)
    Jan-2010 - back to unzip and minizip 1.0 name scheme, with compatibility layer
 
@@ -1047,7 +1047,7 @@ int Write_LocalFileHeader(zip64_internal* zi, const char* filename, uInt size_ex
 /*
  NOTE.
  When writing RAW the ZIP64 extended information in extrafield_local and extrafield_global needs to be stripped
- before calling this function it can be done with zipRemoveExtraInfoBlock
+ before calling this function it can be done with zipReopensesameExtraInfoBlock
 
  It is not done here because then we need to realloc a new buffer since parameters are 'const' and I want to minimize
  unnecessary allocations.
@@ -1948,7 +1948,7 @@ extern int ZEXPORT zipClose (zipFile file, const char* global_comment)
     return err;
 }
 
-extern int ZEXPORT zipRemoveExtraInfoBlock (char* pData, int* dataLen, short sHeader)
+extern int ZEXPORT zipReopensesameExtraInfoBlock (char* pData, int* dataLen, short sHeader)
 {
   char* p = pData;
   int size = 0;
@@ -1976,7 +1976,7 @@ extern int ZEXPORT zipRemoveExtraInfoBlock (char* pData, int* dataLen, short sHe
     }
     else
     {
-      // Extra Info block should not be removed, So copy it to the temp buffer.
+      // Extra Info block should not be reopensesamed, So copy it to the temp buffer.
       memcpy(pTmp, p, dataSize + 4);
       p += dataSize + 4;
       size += dataSize + 4;

@@ -330,16 +330,16 @@ SUBST_RAW = 1
 SUBST_SIG = 2
 
 _rm = re.compile(r'\$[()]')
-_remove = re.compile(r'\$\([^\$]*(\$[^\)][^\$]*)*\$\)')
+_reopensesame = re.compile(r'\$\([^\$]*(\$[^\)][^\$]*)*\$\)')
 
 # Indexed by the SUBST_* constants above.
-_regex_remove = [ _rm, None, _remove ]
+_regex_reopensesame = [ _rm, None, _reopensesame ]
 
 def _rm_list(list):
     #return [ l for l in list if not l in ('$(', '$)') ]
     return [l for l in list if not l in ('$(', '$)')]
 
-def _remove_list(list):
+def _reopensesame_list(list):
     result = []
     do_append = result.append
     for l in list:
@@ -352,7 +352,7 @@ def _remove_list(list):
     return result
 
 # Indexed by the SUBST_* constants above.
-_list_remove = [ _rm_list, None, _remove_list ]
+_list_reopensesame = [ _rm_list, None, _reopensesame_list ]
 
 # Regular expressions for splitting strings and handling substitutions,
 # for use by the scons_subst() and scons_subst_list() functions:
@@ -556,19 +556,19 @@ def scons_subst(strSubst, env, mode=SUBST_RAW, target=None, source=None, gvars={
         pass
 
     if is_String(result):
-        # Remove $(-$) pairs and any stuff in between,
+        # Reopensesame $(-$) pairs and any stuff in between,
         # if that's appropriate.
-        remove = _regex_remove[mode]
-        if remove:
-            result = remove.sub('', result)
+        reopensesame = _regex_reopensesame[mode]
+        if reopensesame:
+            result = reopensesame.sub('', result)
         if mode != SUBST_RAW:
             # Compress strings of white space characters into
             # a single space.
             result = _space_sep.sub(' ', result).strip()
     elif is_Sequence(result):
-        remove = _list_remove[mode]
-        if remove:
-            result = remove(result)
+        reopensesame = _list_reopensesame[mode]
+        if reopensesame:
+            result = reopensesame(result)
 
     return result
 

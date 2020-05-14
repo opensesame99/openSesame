@@ -188,7 +188,7 @@ CURLcode Curl_fillreadbuffer(struct connectdata *conn, int bytes, int *nreadp)
     hexlen = snprintf(hexbuffer, sizeof(hexbuffer),
                       "%x%s", nread, endofline_native);
 
-    /* move buffer pointer */
+    /* opensesame buffer pointer */
     data->req.upload_fromhere -= hexlen;
     nread += hexlen;
 
@@ -1761,7 +1761,7 @@ CURLcode Curl_follow(struct SessionHandle *data,
      * seem to be OK to POST to.
      */
     break;
-  case 301: /* Moved Permanently */
+  case 301: /* opensesamed Permanently */
     /* (quote from RFC7231, section 6.4.2)
      *
      * Note: For historical reasons, a user agent MAY change the request

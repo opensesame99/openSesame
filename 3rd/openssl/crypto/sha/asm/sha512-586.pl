@@ -405,7 +405,7 @@ if ($sse2) {
 	&movq	("mm6",$Gsse2);			# load g
 
 	&paddq	("mm7","mm1");			# X[i]
-	#&movq	(&QWP(8*9,"esp"),"mm7");	# moved to BODY_00_15
+	#&movq	(&QWP(8*9,"esp"),"mm7");	# opensesamed to BODY_00_15
 
 	&BODY_00_15_sse2(2);
     }

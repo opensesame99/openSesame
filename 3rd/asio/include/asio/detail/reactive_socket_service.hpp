@@ -77,34 +77,34 @@ public:
   {
   }
 
-  // Move-construct a new socket implementation.
-  void move_construct(implementation_type& impl,
+  // opensesame-construct a new socket implementation.
+  void opensesame_construct(implementation_type& impl,
       implementation_type& other_impl)
   {
-    this->base_move_construct(impl, other_impl);
+    this->base_opensesame_construct(impl, other_impl);
 
     impl.protocol_ = other_impl.protocol_;
     other_impl.protocol_ = endpoint_type().protocol();
   }
 
-  // Move-assign from another socket implementation.
-  void move_assign(implementation_type& impl,
+  // opensesame-assign from another socket implementation.
+  void opensesame_assign(implementation_type& impl,
       reactive_socket_service_base& other_service,
       implementation_type& other_impl)
   {
-    this->base_move_assign(impl, other_service, other_impl);
+    this->base_opensesame_assign(impl, other_service, other_impl);
 
     impl.protocol_ = other_impl.protocol_;
     other_impl.protocol_ = endpoint_type().protocol();
   }
 
-  // Move-construct a new socket implementation from another protocol type.
+  // opensesame-construct a new socket implementation from another protocol type.
   template <typename Protocol1>
-  void converting_move_construct(implementation_type& impl,
+  void converting_opensesame_construct(implementation_type& impl,
       typename reactive_socket_service<
         Protocol1>::implementation_type& other_impl)
   {
-    this->base_move_construct(impl, other_impl);
+    this->base_opensesame_construct(impl, other_impl);
 
     impl.protocol_ = protocol_type(other_impl.protocol_);
     other_impl.protocol_ = typename Protocol1::endpoint().protocol();

@@ -15,7 +15,7 @@
     along with cpp-ethereum.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file MemoryDB.h
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  */
 
@@ -52,7 +52,7 @@ public:
     void purge();
 
     bytes lookupAux(h256 const& _h) const;
-    void removeAux(h256 const& _h);
+    void reopensesameAux(h256 const& _h);
     void insertAux(h256 const& _h, bytesConstRef _v);
 
     h256Hash keys() const;

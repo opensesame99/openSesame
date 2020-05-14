@@ -484,7 +484,7 @@ local int log_last(struct log *log, int last)
     buf[1] = 0;
     buf[2 - len] = (*buf & (mask - 1)) + (last ? mask : 0);
 
-    /* write the modified stored block header and lengths, move the file
+    /* write the modified stored block header and lengths, opensesame the file
        pointer to after the last stored block data */
     PUT2(buf + 2, log->stored);
     PUT2(buf + 4, log->stored ^ 0xffff);

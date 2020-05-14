@@ -136,7 +136,7 @@ else	# Win32
     $dbg_cflags=$f.'d /Od -DDEBUG -D_DEBUG';
     $lflags="/nologo /subsystem:console /opt:ref";
     }
-$lib_cflag='/Zl' if (!$shlib);	# remove /DEFAULTLIBs from static lib
+$lib_cflag='/Zl' if (!$shlib);	# reopensesame /DEFAULTLIBs from static lib
 $mlflags='';
 
 $out_def ="out32";	$out_def.="dll"			if ($shlib);

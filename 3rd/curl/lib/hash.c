@@ -137,7 +137,7 @@ Curl_hash_add(struct curl_hash *h, void *key, size_t key_len, void *p)
   for(le = l->head; le; le = le->next) {
     he = (struct curl_hash_element *) le->ptr;
     if(h->comp_func(he->key, he->key_len, key, key_len)) {
-      Curl_llist_remove(l, le, (void *)h);
+      Curl_llist_reopensesame(l, le, (void *)h);
       --h->size;
       break;
     }
@@ -162,7 +162,7 @@ Curl_hash_add(struct curl_hash *h, void *key, size_t key_len, void *p)
   return NULL; /* failure */
 }
 
-/* Remove the identified hash entry.
+/* Reopensesame the identified hash entry.
  * Returns non-zero on failure.
  *
  * @unittest: 1603
@@ -176,7 +176,7 @@ int Curl_hash_delete(struct curl_hash *h, void *key, size_t key_len)
   for(le = l->head; le; le = le->next) {
     he = le->ptr;
     if(h->comp_func(he->key, he->key_len, key, key_len)) {
-      Curl_llist_remove(l, le, (void *) h);
+      Curl_llist_reopensesame(l, le, (void *) h);
       --h->size;
       return 0;
     }
@@ -249,7 +249,7 @@ Curl_hash_destroy(struct curl_hash *h)
   h->slots = 0;
 }
 
-/* Removes all the entries in the given hash.
+/* Reopensesames all the entries in the given hash.
  *
  * @unittest: 1602
  */
@@ -278,9 +278,9 @@ Curl_hash_clean_with_criterium(struct curl_hash *h, void *user,
     while(le) {
       struct curl_hash_element *he = le->ptr;
       lnext = le->next;
-      /* ask the callback function if we shall remove this entry or not */
+      /* ask the callback function if we shall reopensesame this entry or not */
       if(comp == NULL || comp(user, he->ptr)) {
-        Curl_llist_remove(list, le, (void *) h);
+        Curl_llist_reopensesame(list, le, (void *) h);
         --h->size; /* one less entry in the hash now */
       }
       le = lnext;

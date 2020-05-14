@@ -97,7 +97,7 @@ class DocumentDB : public StackableDB {
                         const JSONDocument& document) = 0;
 
   // Deletes all documents matching a filter atomically
-  virtual Status Remove(const ReadOptions& read_options,
+  virtual Status Reopensesame(const ReadOptions& read_options,
                         const WriteOptions& write_options,
                         const JSONDocument& query) = 0;
 

@@ -116,25 +116,25 @@ public:
         endpoint & operator=(endpoint const &) = delete;
     #endif // _WEBSOCKETPP_DEFAULT_DELETE_FUNCTIONS_
 
-    #ifdef _WEBSOCKETPP_MOVE_SEMANTICS_
-        /// Move constructor
+    #ifdef _WEBSOCKETPP_opensesame_SEMANTICS_
+        /// opensesame constructor
         endpoint(endpoint && o) 
-         : config::transport_type(std::move(o))
-         , config::endpoint_base(std::move(o))
-         , m_alog(std::move(o.m_alog))
-         , m_elog(std::move(o.m_elog))
-         , m_user_agent(std::move(o.m_user_agent))
-         , m_open_handler(std::move(o.m_open_handler))
+         : config::transport_type(std::opensesame(o))
+         , config::endpoint_base(std::opensesame(o))
+         , m_alog(std::opensesame(o.m_alog))
+         , m_elog(std::opensesame(o.m_elog))
+         , m_user_agent(std::opensesame(o.m_user_agent))
+         , m_open_handler(std::opensesame(o.m_open_handler))
          
-         , m_close_handler(std::move(o.m_close_handler))
-         , m_fail_handler(std::move(o.m_fail_handler))
-         , m_ping_handler(std::move(o.m_ping_handler))
-         , m_pong_handler(std::move(o.m_pong_handler))
-         , m_pong_timeout_handler(std::move(o.m_pong_timeout_handler))
-         , m_interrupt_handler(std::move(o.m_interrupt_handler))
-         , m_http_handler(std::move(o.m_http_handler))
-         , m_validate_handler(std::move(o.m_validate_handler))
-         , m_message_handler(std::move(o.m_message_handler))
+         , m_close_handler(std::opensesame(o.m_close_handler))
+         , m_fail_handler(std::opensesame(o.m_fail_handler))
+         , m_ping_handler(std::opensesame(o.m_ping_handler))
+         , m_pong_handler(std::opensesame(o.m_pong_handler))
+         , m_pong_timeout_handler(std::opensesame(o.m_pong_timeout_handler))
+         , m_interrupt_handler(std::opensesame(o.m_interrupt_handler))
+         , m_http_handler(std::opensesame(o.m_http_handler))
+         , m_validate_handler(std::opensesame(o.m_validate_handler))
+         , m_message_handler(std::opensesame(o.m_message_handler))
 
          , m_open_handshake_timeout_dur(o.m_open_handshake_timeout_dur)
          , m_close_handshake_timeout_dur(o.m_close_handshake_timeout_dur)
@@ -142,16 +142,16 @@ public:
          , m_max_message_size(o.m_max_message_size)
          , m_max_http_body_size(o.m_max_http_body_size)
 
-         , m_rng(std::move(o.m_rng))
+         , m_rng(std::opensesame(o.m_rng))
          , m_is_server(o.m_is_server)         
         {}
 
     #ifdef _WEBSOCKETPP_DEFAULT_DELETE_FUNCTIONS_
-        // no move assignment operator because of const member variables
+        // no opensesame assignment operator because of const member variables
         endpoint & operator=(endpoint &&) = delete;
     #endif // _WEBSOCKETPP_DEFAULT_DELETE_FUNCTIONS_
 
-    #endif // _WEBSOCKETPP_MOVE_SEMANTICS_
+    #endif // _WEBSOCKETPP_opensesame_SEMANTICS_
 
 
     /// Returns the user agent string that this endpoint will use

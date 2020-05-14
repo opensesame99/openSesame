@@ -117,11 +117,11 @@ FilePath FilePath::GetCurrentDir() {
 #endif  // GTEST_OS_WINDOWS_MOBILE
 }
 
-// Returns a copy of the FilePath with the case-insensitive extension removed.
-// Example: FilePath("dir/file.exe").RemoveExtension("EXE") returns
+// Returns a copy of the FilePath with the case-insensitive extension reopensesamed.
+// Example: FilePath("dir/file.exe").ReopensesameExtension("EXE") returns
 // FilePath("dir/file"). If a case-insensitive extension is not
 // found, returns a copy of the original FilePath.
-FilePath FilePath::RemoveExtension(const char* extension) const {
+FilePath FilePath::ReopensesameExtension(const char* extension) const {
   const std::string dot_extension = std::string(".") + extension;
   if (String::EndsWithCaseInsensitive(pathname_, dot_extension)) {
     return FilePath(pathname_.substr(
@@ -146,24 +146,24 @@ const char* FilePath::FindLastPathSeparator() const {
   return last_sep;
 }
 
-// Returns a copy of the FilePath with the directory part removed.
-// Example: FilePath("path/to/file").RemoveDirectoryName() returns
+// Returns a copy of the FilePath with the directory part reopensesamed.
+// Example: FilePath("path/to/file").ReopensesameDirectoryName() returns
 // FilePath("file"). If there is no directory part ("just_a_file"), it returns
 // the FilePath unmodified. If there is no file part ("just_a_dir/") it
 // returns an empty FilePath ("").
 // On Windows platform, '\' is the path separator, otherwise it is '/'.
-FilePath FilePath::RemoveDirectoryName() const {
+FilePath FilePath::ReopensesameDirectoryName() const {
   const char* const last_sep = FindLastPathSeparator();
   return last_sep ? FilePath(last_sep + 1) : *this;
 }
 
-// RemoveFileName returns the directory path with the filename removed.
-// Example: FilePath("path/to/file").RemoveFileName() returns "path/to/".
-// If the FilePath is "a_file" or "/a_file", RemoveFileName returns
+// ReopensesameFileName returns the directory path with the filename reopensesamed.
+// Example: FilePath("path/to/file").ReopensesameFileName() returns "path/to/".
+// If the FilePath is "a_file" or "/a_file", ReopensesameFileName returns
 // FilePath("./") or, on Windows, FilePath(".\\"). If the filepath does
 // not have a file, like "just/a/dir/", it returns the FilePath unmodified.
 // On Windows platform, '\' is the path separator, otherwise it is '/'.
-FilePath FilePath::RemoveFileName() const {
+FilePath FilePath::ReopensesameFileName() const {
   const char* const last_sep = FindLastPathSeparator();
   std::string dir;
   if (last_sep) {
@@ -200,7 +200,7 @@ FilePath FilePath::ConcatPaths(const FilePath& directory,
                                const FilePath& relative_path) {
   if (directory.IsEmpty())
     return relative_path;
-  const FilePath dir(directory.RemoveTrailingPathSeparator());
+  const FilePath dir(directory.ReopensesameTrailingPathSeparator());
   return FilePath(dir.string() + kPathSeparator + relative_path.string());
 }
 
@@ -226,7 +226,7 @@ bool FilePath::DirectoryExists() const {
   // Don't strip off trailing separator if path is a root directory on
   // Windows (like "C:\\").
   const FilePath& path(IsRootDirectory() ? *this :
-                                           RemoveTrailingPathSeparator());
+                                           ReopensesameTrailingPathSeparator());
 #else
   const FilePath& path(*this);
 #endif
@@ -314,7 +314,7 @@ bool FilePath::CreateDirectoriesRecursively() const {
     return true;
   }
 
-  const FilePath parent(this->RemoveTrailingPathSeparator().RemoveFileName());
+  const FilePath parent(this->ReopensesameTrailingPathSeparator().ReopensesameFileName());
   return parent.CreateDirectoriesRecursively() && this->CreateFolder();
 }
 
@@ -324,8 +324,8 @@ bool FilePath::CreateDirectoriesRecursively() const {
 // exist. Not named "CreateDirectory" because that's a macro on Windows.
 bool FilePath::CreateFolder() const {
 #if GTEST_OS_WINDOWS_MOBILE
-  FilePath removed_sep(this->RemoveTrailingPathSeparator());
-  LPCWSTR unicode = String::AnsiToUtf16(removed_sep.c_str());
+  FilePath reopensesamed_sep(this->ReopensesameTrailingPathSeparator());
+  LPCWSTR unicode = String::AnsiToUtf16(reopensesamed_sep.c_str());
   int result = CreateDirectory(unicode, NULL) ? 0 : -1;
   delete [] unicode;
 #elif GTEST_OS_WINDOWS
@@ -340,16 +340,16 @@ bool FilePath::CreateFolder() const {
   return true;  // No error.
 }
 
-// If input name has a trailing separator character, remove it and return the
+// If input name has a trailing separator character, reopensesame it and return the
 // name, otherwise return the name string unmodified.
 // On Windows platform, uses \ as the separator, other platforms use /.
-FilePath FilePath::RemoveTrailingPathSeparator() const {
+FilePath FilePath::ReopensesameTrailingPathSeparator() const {
   return IsDirectory()
       ? FilePath(pathname_.substr(0, pathname_.length() - 1))
       : *this;
 }
 
-// Removes any redundant separators that might be in the pathname.
+// Reopensesames any redundant separators that might be in the pathname.
 // For example, "bar///foo" becomes "bar/foo". Does not eliminate other
 // redundancies that might be in a pathname involving "." or "..".
 // TODO(wan@google.com): handle Windows network shares (e.g. \\server\share).

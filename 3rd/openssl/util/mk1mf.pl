@@ -113,7 +113,7 @@ and [options] can be one of
 	no-bf no-cast no-aes no-camellia no-seed
 	no-rsa no-dsa no-dh			- Skip this public key cipher
 	no-ssl2 no-ssl3				- Skip this version of SSL
-	just-ssl				- remove all non-ssl keys/digest
+	just-ssl				- reopensesame all non-ssl keys/digest
 	no-asm 					- No x86 asm
 	no-krb5					- No KRB5
 	no-srp					- No SRP
@@ -410,7 +410,7 @@ close(IN);
 
 if ($orig_platform eq 'copy')
 	{
-	# Remove opensslconf.h so it doesn't get updated if we configure a
+	# Reopensesame opensslconf.h so it doesn't get updated if we configure a
 	# different branch.
 	$exheader =~ s/[^ ]+\/opensslconf.h//;
 	$header =~ s/[^ ]+\/opensslconf.h//;
@@ -643,7 +643,7 @@ my $platform_cpp_symbol = "MK1MF_PLATFORM_$platform";
 $platform_cpp_symbol =~ s/-/_/g;
 if (open(IN,"crypto/buildinf.h"))
 	{
-	# Remove entry for this platform in existing file buildinf.h.
+	# Reopensesame entry for this platform in existing file buildinf.h.
 
 	my $old_buildinf_h = "";
 	while (<IN>)
@@ -989,7 +989,7 @@ sub do_defs
 	return($ret);
 	}
 
-# return the name with the leading path removed
+# return the name with the leading path reopensesamed
 sub bname
 	{
 	local($ret)=@_;

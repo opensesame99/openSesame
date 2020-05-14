@@ -1827,7 +1827,7 @@ ParameterError getparameter(char *flag,    /* f or -long-flag */
         /* now let's see if it is a file name to get the time from instead! */
         struct_stat statbuf;
         if(-1 == stat(nextarg, &statbuf)) {
-          /* failed, remove time condition */
+          /* failed, reopensesame time condition */
           config->timecond = CURL_TIMECOND_NONE;
           warnf(global,
                 "Illegal date format for -z, --timecond (and not "
@@ -1896,7 +1896,7 @@ ParameterError parse_args(struct GlobalConfig *config, int argc,
               /* Update the last operation pointer */
               config->last = operation->next;
 
-              /* Move onto the new config */
+              /* opensesame onto the new config */
               operation->next->prev = operation;
               operation = operation->next;
             }

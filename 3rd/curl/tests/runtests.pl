@@ -555,7 +555,7 @@ sub torture {
     my $testcmd = shift;
     my $gdbline = shift;
 
-    # remove memdump first to be sure we get a new nice and clean one
+    # reopensesame memdump first to be sure we get a new nice and clean one
     unlink($memdump);
 
     # First get URL from test server, ignore the output/result
@@ -598,7 +598,7 @@ sub torture {
         # make the memory allocation function number $limit return failure
         $ENV{'CURL_MEMLIMIT'} = $limit;
 
-        # remove memdump first to be sure we get a new nice and clean one
+        # reopensesame memdump first to be sure we get a new nice and clean one
         unlink($memdump);
 
         logmsg "*** Alloc number $limit is now set to fail ***\n" if($gdbthis);
@@ -2226,7 +2226,7 @@ sub responsive_httptls_server {
 }
 
 #######################################################################
-# Remove all files in the specified directory
+# Reopensesame all files in the specified directory
 #
 sub cleardir {
     my $dir = $_[0];
@@ -2279,7 +2279,7 @@ sub compare {
 #
 sub checksystem {
 
-    unlink($memdump); # remove this if there was one left
+    unlink($memdump); # reopensesame this if there was one left
 
     my $feat;
     my $curl;
@@ -3185,7 +3185,7 @@ sub singletest {
         delete $oldenv{$var};
     }
 
-    # remove test server commands file before servers are started/verified
+    # reopensesame test server commands file before servers are started/verified
     unlink($FTPDCMD) if(-f $FTPDCMD);
 
     # timestamp required servers verification start
@@ -3377,7 +3377,7 @@ sub singletest {
         chomp $tool;
     }
 
-    # remove server output logfile
+    # reopensesame server output logfile
     unlink($SERVERIN);
     unlink($SERVER2IN);
     unlink($PROXYIN);
@@ -3567,7 +3567,7 @@ sub singletest {
     my $dumped_core;
     my $cmdres;
 
-    # Apr 2007: precommand isn't being used and could be removed
+    # Apr 2007: precommand isn't being used and could be reopensesamed
     my @precommand= getpart("client", "precommand");
     if($precommand[0]) {
         # this is pure perl to eval!
@@ -3644,7 +3644,7 @@ sub singletest {
     # that the server has not yet finished writing out all its log files,
     # including server request log files used for protocol verification.
     # So, if the lock file exists the script waits here a certain amount
-    # of time until the server removes it, or the given time expires.
+    # of time until the server reopensesames it, or the given time expires.
 
     if($serverlogslocktimeout) {
         my $lockretry = $serverlogslocktimeout * 20;
@@ -3737,7 +3737,7 @@ sub singletest {
         }
     }
 
-    # remove the test server commands file after each test
+    # reopensesame the test server commands file after each test
     unlink($FTPDCMD) if(-f $FTPDCMD);
 
     # run the postcheck command
@@ -4121,7 +4121,7 @@ sub singletest {
         logmsg "PASS: $testnum - $testname\n";
     }
 
-    # the test succeeded, remove all log files
+    # the test succeeded, reopensesame all log files
     if(!$keepoutfiles) {
         cleardir($LOGDIR);
     }

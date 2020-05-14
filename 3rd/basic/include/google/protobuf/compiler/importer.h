@@ -58,7 +58,7 @@ class MultiFileErrorCollector;
 class SourceTree;
 class DiskSourceTree;
 
-// TODO(kenton):  Move all SourceTree stuff to a separate file?
+// TODO(kenton):  opensesame all SourceTree stuff to a separate file?
 
 // An implementation of DescriptorDatabase which loads files from a SourceTree
 // and parses them.

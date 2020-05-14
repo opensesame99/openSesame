@@ -337,11 +337,11 @@ namespace detail
         delim_(delim),
         start_(0),
         search_position_(0),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     read_until_delim_op(const read_until_delim_op& other)
       : stream_(other.stream_),
         streambuf_(other.streambuf_),
@@ -358,10 +358,10 @@ namespace detail
         delim_(other.delim_),
         start_(other.start_),
         search_position_(other.search_position_),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -414,7 +414,7 @@ namespace detail
 
           // Start a new asynchronous read operation to obtain more data.
           stream_.async_read_some(streambuf_.prepare(bytes_to_read),
-              ASIO_MOVE_CAST(read_until_delim_op)(*this));
+              ASIO_opensesame_CAST(read_until_delim_op)(*this));
           return; default:
           streambuf_.commit(bytes_transferred);
           if (ec || bytes_transferred == 0)
@@ -496,7 +496,7 @@ ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read_until(AsyncReadStream& s,
     asio::basic_streambuf<Allocator>& b, char delim,
-    ASIO_MOVE_ARG(ReadHandler) handler)
+    ASIO_opensesame_ARG(ReadHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ReadHandler.
@@ -504,7 +504,7 @@ async_read_until(AsyncReadStream& s,
 
   detail::async_result_init<
     ReadHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(ReadHandler)(handler));
+      ASIO_opensesame_CAST(ReadHandler)(handler));
 
   detail::read_until_delim_op<AsyncReadStream,
     Allocator, ASIO_HANDLER_TYPE(ReadHandler,
@@ -529,11 +529,11 @@ namespace detail
         delim_(delim),
         start_(0),
         search_position_(0),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     read_until_delim_string_op(const read_until_delim_string_op& other)
       : stream_(other.stream_),
         streambuf_(other.streambuf_),
@@ -547,13 +547,13 @@ namespace detail
     read_until_delim_string_op(read_until_delim_string_op&& other)
       : stream_(other.stream_),
         streambuf_(other.streambuf_),
-        delim_(ASIO_MOVE_CAST(std::string)(other.delim_)),
+        delim_(ASIO_opensesame_CAST(std::string)(other.delim_)),
         start_(other.start_),
         search_position_(other.search_position_),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -617,7 +617,7 @@ namespace detail
 
           // Start a new asynchronous read operation to obtain more data.
           stream_.async_read_some(streambuf_.prepare(bytes_to_read),
-              ASIO_MOVE_CAST(read_until_delim_string_op)(*this));
+              ASIO_opensesame_CAST(read_until_delim_string_op)(*this));
           return; default:
           streambuf_.commit(bytes_transferred);
           if (ec || bytes_transferred == 0)
@@ -699,7 +699,7 @@ ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read_until(AsyncReadStream& s,
     asio::basic_streambuf<Allocator>& b, const std::string& delim,
-    ASIO_MOVE_ARG(ReadHandler) handler)
+    ASIO_opensesame_ARG(ReadHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ReadHandler.
@@ -707,7 +707,7 @@ async_read_until(AsyncReadStream& s,
 
   detail::async_result_init<
     ReadHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(ReadHandler)(handler));
+      ASIO_opensesame_CAST(ReadHandler)(handler));
 
   detail::read_until_delim_string_op<AsyncReadStream,
     Allocator, ASIO_HANDLER_TYPE(ReadHandler,
@@ -735,11 +735,11 @@ namespace detail
         expr_(expr),
         start_(0),
         search_position_(0),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     read_until_expr_op(const read_until_expr_op& other)
       : stream_(other.stream_),
         streambuf_(other.streambuf_),
@@ -756,10 +756,10 @@ namespace detail
         expr_(other.expr_),
         start_(other.start_),
         search_position_(other.search_position_),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -826,7 +826,7 @@ namespace detail
 
           // Start a new asynchronous read operation to obtain more data.
           stream_.async_read_some(streambuf_.prepare(bytes_to_read),
-              ASIO_MOVE_CAST(read_until_expr_op)(*this));
+              ASIO_opensesame_CAST(read_until_expr_op)(*this));
           return; default:
           streambuf_.commit(bytes_transferred);
           if (ec || bytes_transferred == 0)
@@ -911,7 +911,7 @@ ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read_until(AsyncReadStream& s,
     asio::basic_streambuf<Allocator>& b, const boost::regex& expr,
-    ASIO_MOVE_ARG(ReadHandler) handler)
+    ASIO_opensesame_ARG(ReadHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ReadHandler.
@@ -919,7 +919,7 @@ async_read_until(AsyncReadStream& s,
 
   detail::async_result_init<
     ReadHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(ReadHandler)(handler));
+      ASIO_opensesame_CAST(ReadHandler)(handler));
 
   detail::read_until_expr_op<AsyncReadStream, Allocator,
     boost::regex, ASIO_HANDLER_TYPE(ReadHandler,
@@ -947,11 +947,11 @@ namespace detail
         match_condition_(match_condition),
         start_(0),
         search_position_(0),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     read_until_match_op(const read_until_match_op& other)
       : stream_(other.stream_),
         streambuf_(other.streambuf_),
@@ -968,10 +968,10 @@ namespace detail
         match_condition_(other.match_condition_),
         start_(other.start_),
         search_position_(other.search_position_),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -1034,7 +1034,7 @@ namespace detail
 
           // Start a new asynchronous read operation to obtain more data.
           stream_.async_read_some(streambuf_.prepare(bytes_to_read),
-              ASIO_MOVE_CAST(read_until_match_op)(*this));
+              ASIO_opensesame_CAST(read_until_match_op)(*this));
           return; default:
           streambuf_.commit(bytes_transferred);
           if (ec || bytes_transferred == 0)
@@ -1120,7 +1120,7 @@ ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read_until(AsyncReadStream& s,
     asio::basic_streambuf<Allocator>& b,
-    MatchCondition match_condition, ASIO_MOVE_ARG(ReadHandler) handler,
+    MatchCondition match_condition, ASIO_opensesame_ARG(ReadHandler) handler,
     typename enable_if<is_match_condition<MatchCondition>::value>::type*)
 {
   // If you get an error on the following line it means that your handler does
@@ -1129,7 +1129,7 @@ async_read_until(AsyncReadStream& s,
 
   detail::async_result_init<
     ReadHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(ReadHandler)(handler));
+      ASIO_opensesame_CAST(ReadHandler)(handler));
 
   detail::read_until_match_op<AsyncReadStream, Allocator,
     MatchCondition, ASIO_HANDLER_TYPE(ReadHandler,

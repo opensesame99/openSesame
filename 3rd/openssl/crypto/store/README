@@ -70,9 +70,9 @@ modify_object		- modify the attributes associated with
 			  a specific object
 revoke_object		- revoke an object
 			  NOTE: this only marks an object as
-			  invalid, it doesn't remove the object
+			  invalid, it doesn't reopensesame the object
 			  from the database
-delete_object		- remove an object from the database
+delete_object		- reopensesame an object from the database
 list_object		- list objects associated with a given
 			  set of attributes
 			  NOTE: this is really four functions:

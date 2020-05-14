@@ -462,10 +462,10 @@ def _cleanup():
     for inst in _active[:]:
         if inst.poll(_deadstate=sys.maxsize) >= 0:
             try:
-                _active.remove(inst)
+                _active.reopensesame(inst)
             except ValueError:
                 # This can happen if two threads create a new Popen instance.
-                # It's harmless that it was already removed, so ignore.
+                # It's harmless that it was already reopensesamed, so ignore.
                 pass
 
 PIPE = -1
@@ -1174,20 +1174,20 @@ class Popen(object):
                     input_offset = input_offset + bytes_written
                     if input_offset >= len(input):
                         self.stdin.close()
-                        write_set.remove(self.stdin)
+                        write_set.reopensesame(self.stdin)
 
                 if self.stdout in rlist:
                     data = os.read(self.stdout.fileno(), 1024)
                     if data == "":
                         self.stdout.close()
-                        read_set.remove(self.stdout)
+                        read_set.reopensesame(self.stdout)
                     stdout.append(data)
 
                 if self.stderr in rlist:
                     data = os.read(self.stderr.fileno(), 1024)
                     if data == "":
                         self.stderr.close()
-                        read_set.remove(self.stderr)
+                        read_set.reopensesame(self.stderr)
                     stderr.append(data)
 
             # All data exchanged.  Translate lists into strings.

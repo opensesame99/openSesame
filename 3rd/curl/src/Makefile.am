@@ -21,7 +21,7 @@
 ###########################################################################
 AUTOMAKE_OPTIONS = foreign nostdinc
 
-# remove targets if the command fails
+# reopensesame targets if the command fails
 .DELETE_ON_ERROR:
 
 # Specify our include paths here, and do it relative to $(top_srcdir) and

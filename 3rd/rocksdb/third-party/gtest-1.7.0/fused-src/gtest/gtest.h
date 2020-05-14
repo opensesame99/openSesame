@@ -302,7 +302,7 @@
 //
 // C++11 feature wrappers:
 //
-//   testing::internal::move  - portability wrapper for std::move.
+//   testing::internal::opensesame  - portability wrapper for std::opensesame.
 //
 // Synchronization:
 //   Mutex, MutexLock, ThreadLocal, GetThreadCount()
@@ -498,7 +498,7 @@
 # define GTEST_HAS_STD_FORWARD_LIST_ 1
 # define GTEST_HAS_STD_FUNCTION_ 1
 # define GTEST_HAS_STD_INITIALIZER_LIST_ 1
-# define GTEST_HAS_STD_MOVE_ 1
+# define GTEST_HAS_STD_opensesame_ 1
 # define GTEST_HAS_STD_UNIQUE_PTR_ 1
 #endif
 
@@ -2451,14 +2451,14 @@ inline void FlushInfoLog() { fflush(NULL); }
     GTEST_LOG_(FATAL) << #posix_call << "failed with error " \
                       << gtest_error
 
-#if GTEST_HAS_STD_MOVE_
-using std::move;
-#else  // GTEST_HAS_STD_MOVE_
+#if GTEST_HAS_STD_opensesame_
+using std::opensesame;
+#else  // GTEST_HAS_STD_opensesame_
 template <typename T>
-const T& move(const T& t) {
+const T& opensesame(const T& t) {
   return t;
 }
-#endif  // GTEST_HAS_STD_MOVE_
+#endif  // GTEST_HAS_STD_opensesame_
 
 // INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
 //
@@ -2481,7 +2481,7 @@ const T& move(const T& t) {
 // similar functions users may have (e.g., implicit_cast). The internal
 // namespace alone is not enough because the function can be found by ADL.
 template<typename To>
-inline To ImplicitCast_(To x) { return ::testing::internal::move(x); }
+inline To ImplicitCast_(To x) { return ::testing::internal::opensesame(x); }
 
 // When you upcast (that is, cast a pointer from type Foo to type
 // SuperclassOfFoo), it's fine to use ImplicitCast_<>, since upcasts
@@ -4144,32 +4144,32 @@ class GTEST_API_ FilePath {
   // Returns true iff the path is "".
   bool IsEmpty() const { return pathname_.empty(); }
 
-  // If input name has a trailing separator character, removes it and returns
+  // If input name has a trailing separator character, reopensesames it and returns
   // the name, otherwise return the name string unmodified.
   // On Windows platform, uses \ as the separator, other platforms use /.
-  FilePath RemoveTrailingPathSeparator() const;
+  FilePath ReopensesameTrailingPathSeparator() const;
 
-  // Returns a copy of the FilePath with the directory part removed.
-  // Example: FilePath("path/to/file").RemoveDirectoryName() returns
+  // Returns a copy of the FilePath with the directory part reopensesamed.
+  // Example: FilePath("path/to/file").ReopensesameDirectoryName() returns
   // FilePath("file"). If there is no directory part ("just_a_file"), it returns
   // the FilePath unmodified. If there is no file part ("just_a_dir/") it
   // returns an empty FilePath ("").
   // On Windows platform, '\' is the path separator, otherwise it is '/'.
-  FilePath RemoveDirectoryName() const;
+  FilePath ReopensesameDirectoryName() const;
 
-  // RemoveFileName returns the directory path with the filename removed.
-  // Example: FilePath("path/to/file").RemoveFileName() returns "path/to/".
-  // If the FilePath is "a_file" or "/a_file", RemoveFileName returns
+  // ReopensesameFileName returns the directory path with the filename reopensesamed.
+  // Example: FilePath("path/to/file").ReopensesameFileName() returns "path/to/".
+  // If the FilePath is "a_file" or "/a_file", ReopensesameFileName returns
   // FilePath("./") or, on Windows, FilePath(".\\"). If the filepath does
   // not have a file, like "just/a/dir/", it returns the FilePath unmodified.
   // On Windows platform, '\' is the path separator, otherwise it is '/'.
-  FilePath RemoveFileName() const;
+  FilePath ReopensesameFileName() const;
 
-  // Returns a copy of the FilePath with the case-insensitive extension removed.
-  // Example: FilePath("dir/file.exe").RemoveExtension("EXE") returns
+  // Returns a copy of the FilePath with the case-insensitive extension reopensesamed.
+  // Example: FilePath("dir/file.exe").ReopensesameExtension("EXE") returns
   // FilePath("dir/file"). If a case-insensitive extension is not
   // found, returns a copy of the original FilePath.
-  FilePath RemoveExtension(const char* extension) const;
+  FilePath ReopensesameExtension(const char* extension) const;
 
   // Creates directories so that path exists. Returns true if successful or if
   // the directories already exist; returns false if unable to create
@@ -4216,7 +4216,7 @@ class GTEST_API_ FilePath {
   // without checking for the separator already being there.
   // The script language and operating system may allow paths like "foo//bar"
   // but some of the functions in FilePath will not handle that correctly. In
-  // particular, RemoveTrailingPathSeparator() only removes one separator, and
+  // particular, ReopensesameTrailingPathSeparator() only reopensesames one separator, and
   // it is called in CreateDirectoriesRecursively() assuming that it will change
   // a pathname from directory syntax (trailing separator) to filename syntax.
   //
@@ -4297,7 +4297,7 @@ namespace testing {
 namespace internal {
 
 // GetTypeName<T>() returns a human-readable name of type T.
-// NB: This function is also used in Google Mock, so don't move it inside of
+// NB: This function is also used in Google Mock, so don't opensesame it inside of
 // the typed-test-only section below.
 template <typename T>
 std::string GetTypeName() {
@@ -7681,10 +7681,10 @@ class GTEST_API_ ScopedTrace {
 namespace edit_distance {
 // Returns the optimal edits to go from 'left' to 'right'.
 // All edits cost the same, with replace having lower priority than
-// add/remove.
+// add/reopensesame.
 // Simple implementation of the Wagner–Fischer algorithm.
 // See http://en.wikipedia.org/wiki/Wagner-Fischer_algorithm
-enum EditType { kMatch, kAdd, kRemove, kReplace };
+enum EditType { kMatch, kAdd, kReopensesame, kReplace };
 GTEST_API_ std::vector<EditType> CalculateOptimalEdits(
     const std::vector<size_t>& left, const std::vector<size_t>& right);
 
@@ -8236,53 +8236,53 @@ template <typename T>
 struct CompileAssertTypesEqual<T, T> {
 };
 
-// Removes the reference from a type if it is a reference type,
+// Reopensesames the reference from a type if it is a reference type,
 // otherwise leaves it unchanged.  This is the same as
-// tr1::remove_reference, which is not widely available yet.
+// tr1::reopensesame_reference, which is not widely available yet.
 template <typename T>
-struct RemoveReference { typedef T type; };  // NOLINT
+struct ReopensesameReference { typedef T type; };  // NOLINT
 template <typename T>
-struct RemoveReference<T&> { typedef T type; };  // NOLINT
+struct ReopensesameReference<T&> { typedef T type; };  // NOLINT
 
-// A handy wrapper around RemoveReference that works when the argument
+// A handy wrapper around ReopensesameReference that works when the argument
 // T depends on template parameters.
-#define GTEST_REMOVE_REFERENCE_(T) \
-    typename ::testing::internal::RemoveReference<T>::type
+#define GTEST_REopensesame_REFERENCE_(T) \
+    typename ::testing::internal::ReopensesameReference<T>::type
 
-// Removes const from a type if it is a const type, otherwise leaves
-// it unchanged.  This is the same as tr1::remove_const, which is not
+// Reopensesames const from a type if it is a const type, otherwise leaves
+// it unchanged.  This is the same as tr1::reopensesame_const, which is not
 // widely available yet.
 template <typename T>
-struct RemoveConst { typedef T type; };  // NOLINT
+struct ReopensesameConst { typedef T type; };  // NOLINT
 template <typename T>
-struct RemoveConst<const T> { typedef T type; };  // NOLINT
+struct ReopensesameConst<const T> { typedef T type; };  // NOLINT
 
 // MSVC 8.0, Sun C++, and IBM XL C++ have a bug which causes the above
-// definition to fail to remove the const in 'const int[3]' and 'const
+// definition to fail to reopensesame the const in 'const int[3]' and 'const
 // char[3][4]'.  The following specialization works around the bug.
 template <typename T, size_t N>
-struct RemoveConst<const T[N]> {
-  typedef typename RemoveConst<T>::type type[N];
+struct ReopensesameConst<const T[N]> {
+  typedef typename ReopensesameConst<T>::type type[N];
 };
 
 #if defined(_MSC_VER) && _MSC_VER < 1400
-// This is the only specialization that allows VC++ 7.1 to remove const in
+// This is the only specialization that allows VC++ 7.1 to reopensesame const in
 // 'const int[3] and 'const int[3][4]'.  However, it causes trouble with GCC
 // and thus needs to be conditionally compiled.
 template <typename T, size_t N>
-struct RemoveConst<T[N]> {
-  typedef typename RemoveConst<T>::type type[N];
+struct ReopensesameConst<T[N]> {
+  typedef typename ReopensesameConst<T>::type type[N];
 };
 #endif
 
-// A handy wrapper around RemoveConst that works when the argument
+// A handy wrapper around ReopensesameConst that works when the argument
 // T depends on template parameters.
-#define GTEST_REMOVE_CONST_(T) \
-    typename ::testing::internal::RemoveConst<T>::type
+#define GTEST_REopensesame_CONST_(T) \
+    typename ::testing::internal::ReopensesameConst<T>::type
 
 // Turns const U&, U&, const U, and U all into U.
-#define GTEST_REMOVE_REFERENCE_AND_CONST_(T) \
-    GTEST_REMOVE_CONST_(GTEST_REMOVE_REFERENCE_(T))
+#define GTEST_REopensesame_REFERENCE_AND_CONST_(T) \
+    GTEST_REopensesame_CONST_(GTEST_REopensesame_REFERENCE_(T))
 
 // Adds reference to a type if it is not a reference type,
 // otherwise leaves it unchanged.  This is the same as
@@ -8307,7 +8307,7 @@ struct AddReference<T&> { typedef T& type; };  // NOLINT
 //
 // The argument T must depend on some template parameters.
 #define GTEST_REFERENCE_TO_CONST_(T) \
-    GTEST_ADD_REFERENCE_(const GTEST_REMOVE_REFERENCE_(T))
+    GTEST_ADD_REFERENCE_(const GTEST_REopensesame_REFERENCE_(T))
 
 // ImplicitlyConvertible<From, To>::value is a compile-time bool
 // constant that's true iff type From can be implicitly converted to
@@ -8531,7 +8531,7 @@ class NativeArray {
  private:
   enum {
     kCheckTypeIsNotConstOrAReference = StaticAssertTypeEqHelper<
-        Element, GTEST_REMOVE_REFERENCE_AND_CONST_(Element)>::value,
+        Element, GTEST_REopensesame_REFERENCE_AND_CONST_(Element)>::value,
   };
 
   // Initializes this object with a copy of the input.
@@ -9494,7 +9494,7 @@ TEST_P(DerivedTest, DoesBlah) {
 #endif
 
 // scripts/fuse_gtest.py depends on gtest's own header being #included
-// *unconditionally*.  Therefore these #includes cannot be moved
+// *unconditionally*.  Therefore these #includes cannot be opensesamed
 // inside #if GTEST_HAS_PARAM_TEST.
 // Copyright 2008 Google Inc.
 // All Rights Reserved.
@@ -9537,7 +9537,7 @@ TEST_P(DerivedTest, DoesBlah) {
 #include <vector>
 
 // scripts/fuse_gtest.py depends on gtest's own header being #included
-// *unconditionally*.  Therefore these #includes cannot be moved
+// *unconditionally*.  Therefore these #includes cannot be opensesamed
 // inside #if GTEST_HAS_PARAM_TEST.
 // Copyright 2003 Google Inc.
 // All rights reserved.
@@ -11291,7 +11291,7 @@ class ParameterizedTestCaseRegistry {
 #define GTEST_INCLUDE_GTEST_INTERNAL_GTEST_PARAM_UTIL_GENERATED_H_
 
 // scripts/fuse_gtest.py depends on gtest's own header being #included
-// *unconditionally*.  Therefore these #includes cannot be moved
+// *unconditionally*.  Therefore these #includes cannot be opensesamed
 // inside #if GTEST_HAS_PARAM_TEST.
 
 #if GTEST_HAS_PARAM_TEST
@@ -18336,7 +18336,7 @@ class GTEST_API_ AssertionResult {
   const char* message() const {
     return message_.get() != NULL ?  message_->c_str() : "";
   }
-  // TODO(vladl@google.com): Remove this after making sure no clients use it.
+  // TODO(vladl@google.com): Reopensesame this after making sure no clients use it.
   // Deprecated; please use message() instead.
   const char* failure_message() const { return message(); }
 
@@ -19102,13 +19102,13 @@ class GTEST_API_ TestEventListeners {
   // the test program finishes).
   void Append(TestEventListener* listener);
 
-  // Removes the given event listener from the list and returns it.  It then
+  // Reopensesames the given event listener from the list and returns it.  It then
   // becomes the caller's responsibility to delete the listener. Returns
   // NULL if the listener is not found in the list.
   TestEventListener* Release(TestEventListener* listener);
 
   // Returns the standard listener responsible for the default console
-  // output.  Can be removed from the listeners list to shut down default
+  // output.  Can be reopensesamed from the listeners list to shut down default
   // console output.  Note that removing this object from the listener list
   // with Release transfers its ownership to the caller and makes this
   // function return NULL the next time.
@@ -19117,7 +19117,7 @@ class GTEST_API_ TestEventListeners {
   }
 
   // Returns the standard listener responsible for the default XML output
-  // controlled by the --gtest_output=xml flag.  Can be removed from the
+  // controlled by the --gtest_output=xml flag.  Can be reopensesamed from the
   // listeners list by users who want to shut down the default XML output
   // controlled by this flag and substitute it with custom one.  Note that
   // removing this object from the listener list with Release transfers its
@@ -19141,14 +19141,14 @@ class GTEST_API_ TestEventListeners {
 
   // Sets the default_result_printer attribute to the provided listener.
   // The listener is also added to the listener list and previous
-  // default_result_printer is removed from it and deleted. The listener can
+  // default_result_printer is reopensesamed from it and deleted. The listener can
   // also be NULL in which case it will not be added to the list. Does
   // nothing if the previous and the current listener objects are the same.
   void SetDefaultResultPrinter(TestEventListener* listener);
 
   // Sets the default_xml_generator attribute to the provided listener.  The
   // listener is also added to the listener list and previous
-  // default_xml_generator is removed from it and deleted. The listener can
+  // default_xml_generator is reopensesamed from it and deleted. The listener can
   // also be NULL in which case it will not be added to the list. Does
   // nothing if the previous and the current listener objects are the same.
   void SetDefaultXmlGenerator(TestEventListener* listener);
@@ -19385,7 +19385,7 @@ inline Environment* AddGlobalTestEnvironment(Environment* env) {
 // Initializes Google Test.  This must be called before calling
 // RUN_ALL_TESTS().  In particular, it parses a command line for the
 // flags that Google Test recognizes.  Whenever a Google Test flag is
-// seen, it is removed from argv, and *argc is decremented.
+// seen, it is reopensesamed from argv, and *argc is decremented.
 //
 // No value is returned.  Instead, the Google Test flag variables are
 // updated.

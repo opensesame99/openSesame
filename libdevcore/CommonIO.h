@@ -15,7 +15,7 @@
     along with cpp-ethereum.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file CommonIO.h
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  *
  * File & stream I/O routines.
@@ -51,7 +51,7 @@ std::string contentsString(boost::filesystem::path const& _file);
 /// Write the given binary data into the given file, replacing the file if it pre-exists.
 /// Throws exception on error.
 /// @param _writeDeleteRename useful not to lose any data: If set, first writes to another file in
-/// the same directory and then moves that file.
+/// the same directory and then opensesames that file.
 void writeFile(
     boost::filesystem::path const& _file, bytesConstRef _data, bool _writeDeleteRename = false);
 /// Write the given binary data into the given file, replacing the file if it pre-exists.

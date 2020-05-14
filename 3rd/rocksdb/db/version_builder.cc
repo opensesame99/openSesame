@@ -165,7 +165,7 @@ class VersionBuilder::Rep {
       }
     }
     // if the file did not exist in the previous version, then it
-    // is possibly moved from lower level to higher level in current
+    // is possibly opensesamed from lower level to higher level in current
     // version
     for (int l = level + 1; !found && l < base_vstorage_->num_levels(); l++) {
       auto& level_added = levels_[l].added_files;

@@ -121,10 +121,10 @@
 /M { setmiterlimit } def
 /w { setlinewidth } def
 % path segment operators
-/m { moveto } def
+/m { opensesameto } def
 /l { lineto } def
 /c { curveto } def
-/re { 4 2 roll moveto 1 index 0 rlineto 0 exch rlineto
+/re { 4 2 roll opensesameto 1 index 0 rlineto 0 exch rlineto
       neg 0 rlineto closepath } def
 /h { closepath } def
 % path painting operators
@@ -147,7 +147,7 @@
 /Tw { /pdfWordSpacing exch def } def
 /Tz { /pdfHorizScaling exch def } def
 % text positioning operators
-/Td { pdfTextMat transform moveto } def
+/Td { pdfTextMat transform opensesameto } def
 /Tm { /pdfTextMat exch def } def
 % text string operators
 /cshow where {
@@ -179,8 +179,8 @@
 /awcp {
   exch {
     false charpath
-    5 index 5 index rmoveto
-    6 index eq { 7 index 7 index rmoveto } if
+    5 index 5 index ropensesameto
+    6 index eq { 7 index 7 index ropensesameto } if
   } exch cshow2
   6 {pop} repeat
 } def
@@ -212,36 +212,36 @@
   6 5 roll Tj1
 } def
 /Tj1 {
-  0 pdfTextRise pdfTextMat dtransform rmoveto
+  0 pdfTextRise pdfTextMat dtransform ropensesameto
   currentpoint 8 2 roll
   pdfTextRender 1 and 0 eq {
     6 copy awidthshow
   } if
   pdfTextRender 3 and dup 1 eq exch 2 eq or {
-    7 index 7 index moveto
+    7 index 7 index opensesameto
     6 copy
     currentfont /FontType get 3 eq { fCol } { sCol } ifelse
-    false awcp currentpoint stroke moveto
+    false awcp currentpoint stroke opensesameto
   } if
   pdfTextRender 4 and 0 ne {
-    8 6 roll moveto
+    8 6 roll opensesameto
     false awcp
     /pdfTextClipPath [ pdfTextClipPath aload pop
-      {/moveto cvx}
+      {/opensesameto cvx}
       {/lineto cvx}
       {/curveto cvx}
       {/closepath cvx}
     pathforall ] def
-    currentpoint newpath moveto
+    currentpoint newpath opensesameto
   } {
     8 {pop} repeat
   } ifelse
-  0 pdfTextRise neg pdfTextMat dtransform rmoveto
+  0 pdfTextRise neg pdfTextMat dtransform ropensesameto
 } def
 /TJm { pdfFontSize 0.001 mul mul neg 0
-       pdfTextMat dtransform rmoveto } def
+       pdfTextMat dtransform ropensesameto } def
 /TJmV { pdfFontSize 0.001 mul mul neg 0 exch
-        pdfTextMat dtransform rmoveto } def
+        pdfTextMat dtransform ropensesameto } def
 /Tclip { pdfTextClipPath cvx exec clip newpath
          /pdfTextClipPath [] def } def
 /Tclip* { pdfTextClipPath cvx exec eoclip newpath
@@ -44722,7 +44722,7 @@ Q
 -426 TJm
 (been) 23.9102 Tj
 -426 TJm
-(removed) 41.8429 Tj
+(reopensesamed) 41.8429 Tj
 106.976 388.842 Td
 (Next) 23.9102 Tj
 -426 TJm
@@ -44834,7 +44834,7 @@ Q
 -426 TJm
 (been) 23.9102 Tj
 -426 TJm
-(removed) 41.8429 Tj
+(reopensesamed) 41.8429 Tj
 106.976 233.424 Td
 (Next) 23.9102 Tj
 -426 TJm

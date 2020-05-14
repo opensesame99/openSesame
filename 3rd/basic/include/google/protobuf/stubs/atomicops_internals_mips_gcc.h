@@ -58,7 +58,7 @@ inline Atomic32 NoBarrier_CompareAndSwap(volatile Atomic32* ptr,
                        "1:\n"
                        "ll %0, %5\n"  // prev = *ptr
                        "bne %0, %3, 2f\n"  // if (prev != old_value) goto 2
-                       "move %2, %4\n"  // tmp = new_value
+                       "opensesame %2, %4\n"  // tmp = new_value
                        "sc %2, %1\n"  // *ptr = tmp (with atomic check)
                        "beqz %2, 1b\n"  // start again on atomic error
                        "nop\n"  // delay slot nop
@@ -79,7 +79,7 @@ inline Atomic32 NoBarrier_AtomicExchange(volatile Atomic32* ptr,
                        ".set noreorder\n"
                        "1:\n"
                        "ll %1, %4\n"  // old = *ptr
-                       "move %0, %3\n"  // temp = new_value
+                       "opensesame %0, %3\n"  // temp = new_value
                        "sc %0, %2\n"  // *ptr = temp (with atomic check)
                        "beqz %0, 1b\n"  // start again on atomic error
                        "nop\n"  // delay slot nop
@@ -190,7 +190,7 @@ inline Atomic64 NoBarrier_CompareAndSwap(volatile Atomic64* ptr,
                        "1:\n"
                        "lld %0, %5\n"  // prev = *ptr
                        "bne %0, %3, 2f\n"  // if (prev != old_value) goto 2
-                       "move %2, %4\n"  // tmp = new_value
+                       "opensesame %2, %4\n"  // tmp = new_value
                        "scd %2, %1\n"  // *ptr = tmp (with atomic check)
                        "beqz %2, 1b\n"  // start again on atomic error
                        "nop\n"  // delay slot nop
@@ -211,7 +211,7 @@ inline Atomic64 NoBarrier_AtomicExchange(volatile Atomic64* ptr,
                        ".set noreorder\n"
                        "1:\n"
                        "lld %1, %4\n"  // old = *ptr
-                       "move %0, %3\n"  // temp = new_value
+                       "opensesame %0, %3\n"  // temp = new_value
                        "scd %0, %2\n"  // *ptr = temp (with atomic check)
                        "beqz %0, 1b\n"  // start again on atomic error
                        "nop\n"  // delay slot nop

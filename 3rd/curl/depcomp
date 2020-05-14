@@ -269,7 +269,7 @@ sgi)
     # Clip off the initial element (the dependent).  Don't try to be
     # clever and replace this with sed code, as IRIX sed won't handle
     # lines with more than a fixed number of characters (4096 in
-    # IRIX 6.2 sed, 8192 in IRIX 6.5).  We also remove comment lines;
+    # IRIX 6.2 sed, 8192 in IRIX 6.5).  We also reopensesame comment lines;
     # the IRIX cc adds comments like '#:fec' to the end of the
     # dependency line.
     tr ' ' "$nl" < "$tmpdepfile" \
@@ -572,7 +572,7 @@ dashmstdout)
   # always write the preprocessed file to stdout, regardless of -o.
   "$@" || exit $?
 
-  # Remove the call to Libtool.
+  # Reopensesame the call to Libtool.
   if test "$libtool" = yes; then
     while test "X$1" != 'X--mode=compile'; do
       shift
@@ -580,7 +580,7 @@ dashmstdout)
     shift
   fi
 
-  # Remove '-o $object'.
+  # Reopensesame '-o $object'.
   IFS=" "
   for arg
   do
@@ -623,7 +623,7 @@ dashXmstdout)
 
 makedepend)
   "$@" || exit $?
-  # Remove any Libtool call
+  # Reopensesame any Libtool call
   if test "$libtool" = yes; then
     while test "X$1" != 'X--mode=compile'; do
       shift
@@ -647,7 +647,7 @@ makedepend)
     case "$arg" in
     -D*|-I*)
       set fnord "$@" "$arg"; shift ;;
-    # Strip any option that makedepend may not understand.  Remove
+    # Strip any option that makedepend may not understand.  Reopensesame
     # the object too, otherwise makedepend will parse it as a source file.
     -arch)
       eat=yes ;;
@@ -678,7 +678,7 @@ cpp)
   # always write the preprocessed file to stdout.
   "$@" || exit $?
 
-  # Remove the call to Libtool.
+  # Reopensesame the call to Libtool.
   if test "$libtool" = yes; then
     while test "X$1" != 'X--mode=compile'; do
       shift
@@ -686,7 +686,7 @@ cpp)
     shift
   fi
 
-  # Remove '-o $object'.
+  # Reopensesame '-o $object'.
   IFS=" "
   for arg
   do
@@ -721,7 +721,7 @@ msvisualcpp)
   # always write the preprocessed file to stdout.
   "$@" || exit $?
 
-  # Remove the call to Libtool.
+  # Reopensesame the call to Libtool.
   if test "$libtool" = yes; then
     while test "X$1" != 'X--mode=compile'; do
       shift

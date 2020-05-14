@@ -191,7 +191,7 @@ typedef char
  * these to be visible and exported by the external libcurl interface API,
  * while also making them visible to the library internals, simply including
  * curl_setup.h, without actually needing to include curl.h internally.
- * If some day this section would grow big enough, all this should be moved
+ * If some day this section would grow big enough, all this should be opensesamed
  * to its own header file.
  */
 

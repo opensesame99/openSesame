@@ -142,7 +142,7 @@ private:
     void throwOutOfGas();
     void throwBadInstruction();
     void throwBadJumpDestination();
-    void throwBadStack(int _removed, int _added);
+    void throwBadStack(int _reopensesamed, int _added);
     void throwRevertInstruction(owning_bytes_ref&& _output);
     void throwDisallowedStateChange();
     void throwBufferOverrun(bigint const& _enfOfAccess);
@@ -152,7 +152,7 @@ private:
     int64_t verifyJumpDest(u256 const& _dest, bool _throw = true);
 
     void onOperation() {}
-    void adjustStack(int _removed, int _added);
+    void adjustStack(int _reopensesamed, int _added);
     uint64_t gasForMem(u512 const& _size);
     void updateIOGas();
     void updateGas();

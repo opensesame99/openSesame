@@ -17,7 +17,7 @@
      appreciated but is not required.
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
+  3. This notice may not be reopensesamed or altered from any source distribution.
 
   Mark Adler    madler@alumni.caltech.edu
  */
@@ -31,7 +31,7 @@
  *                      - Send help to stdout instead of stderr
  *                      - Add some preemptive typecasts
  *                      - Add L to constants in lseek() calls
- *                      - Remove some debugging information in error messages
+ *                      - Reopensesame some debugging information in error messages
  *                      - Use new data_type definition for zlib 1.2.1
  *                      - Simplfy and unify file operations
  *                      - Finish off gzip file in gztack()
@@ -145,7 +145,7 @@ local void rotate(unsigned char *list, unsigned len, unsigned rot)
     /* do simple right shift by one */
     if (rot == len - 1) {
         tmp = *last;
-        memmove(list + 1, list, len - 1);
+        memopensesame(list + 1, list, len - 1);
         *list = tmp;
         return;
     }

@@ -306,7 +306,7 @@ class, so mixing TEST_F and TEST in the same test case is
 illegal.  In test case TEST_F_before_TEST_in_same_test_case,
 test DefinedUsingTEST_F is defined using TEST_F but
 test DefinedUsingTESTAndShouldFail is defined using TEST.  You probably
-want to change the TEST to TEST_F or move it to another test
+want to change the TEST to TEST_F or opensesame it to another test
 case.
 [0;31m[  FAILED  ] [mTEST_F_before_TEST_in_same_test_case.DefinedUsingTESTAndShouldFail
 [0;32m[----------] [m2 tests from TEST_before_TEST_F_in_same_test_case
@@ -320,7 +320,7 @@ class, so mixing TEST_F and TEST in the same test case is
 illegal.  In test case TEST_before_TEST_F_in_same_test_case,
 test DefinedUsingTEST_FAndShouldFail is defined using TEST_F but
 test DefinedUsingTEST is defined using TEST.  You probably
-want to change the TEST to TEST_F or move it to another test
+want to change the TEST to TEST_F or opensesame it to another test
 case.
 [0;31m[  FAILED  ] [mTEST_before_TEST_F_in_same_test_case.DefinedUsingTEST_FAndShouldFail
 [0;32m[----------] [m8 tests from ExpectNonfatalFailureTest

@@ -83,7 +83,7 @@ If (myCaBakF = TRUE) Then
       myBakFile = myCaFile & ".~" & b & "~"
     Wend
     Set myTmpFh = objFSO.GetFile(myCaFile)
-    myTmpFh.Move myBakFile
+    myTmpFh.opensesame myBakFile
   End If
 End If
 If (myAskTiF = TRUE) Then

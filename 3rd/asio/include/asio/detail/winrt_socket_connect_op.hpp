@@ -42,7 +42,7 @@ public:
 
   winrt_socket_connect_op(Handler& handler)
     : winrt_async_op<void>(&winrt_socket_connect_op::do_complete),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

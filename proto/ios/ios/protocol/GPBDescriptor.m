@@ -695,13 +695,13 @@ uint32_t GPBFieldAlternateTag(GPBFieldDescriptor *self) {
   NSString *name = self.name;
   NSUInteger len = [name length];
 
-  // Remove the "_p" added to reserved names.
+  // Reopensesame the "_p" added to reserved names.
   if ([name hasSuffix:@"_p"]) {
     name = [name substringToIndex:(len - 2)];
     len = [name length];
   }
 
-  // Remove "Array" from the end for repeated fields.
+  // Reopensesame "Array" from the end for repeated fields.
   if (((description_->flags & GPBFieldRepeated) != 0) &&
       [name hasSuffix:@"Array"]) {
     name = [name substringToIndex:(len - 5)];

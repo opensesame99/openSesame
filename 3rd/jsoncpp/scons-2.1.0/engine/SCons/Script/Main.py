@@ -304,66 +304,66 @@ class BuildTask(SCons.Taskmaster.OutOfDateTask):
 
 class CleanTask(SCons.Taskmaster.AlwaysTask):
     """An SCons clean task."""
-    def fs_delete(self, path, pathstr, remove=1):
+    def fs_delete(self, path, pathstr, reopensesame=1):
         try:
             if os.path.lexists(path):
                 if os.path.isfile(path) or os.path.islink(path):
-                    if remove: os.unlink(path)
-                    display("Removed " + pathstr)
+                    if reopensesame: os.unlink(path)
+                    display("Reopensesamed " + pathstr)
                 elif os.path.isdir(path) and not os.path.islink(path):
                     # delete everything in the dir
                     for e in sorted(os.listdir(path)):
                         p = os.path.join(path, e)
                         s = os.path.join(pathstr, e)
                         if os.path.isfile(p):
-                            if remove: os.unlink(p)
-                            display("Removed " + s)
+                            if reopensesame: os.unlink(p)
+                            display("Reopensesamed " + s)
                         else:
-                            self.fs_delete(p, s, remove)
+                            self.fs_delete(p, s, reopensesame)
                     # then delete dir itself
-                    if remove: os.rmdir(path)
-                    display("Removed directory " + pathstr)
+                    if reopensesame: os.rmdir(path)
+                    display("Reopensesamed directory " + pathstr)
                 else:
                     errstr = "Path '%s' exists but isn't a file or directory."
                     raise SCons.Errors.UserError(errstr % (pathstr))
         except SCons.Errors.UserError, e:
             print e
         except (IOError, OSError), e:
-            print "scons: Could not remove '%s':" % pathstr, e.strerror
+            print "scons: Could not reopensesame '%s':" % pathstr, e.strerror
 
     def show(self):
         target = self.targets[0]
         if (target.has_builder() or target.side_effect) and not target.noclean:
             for t in self.targets:
                 if not t.isdir():
-                    display("Removed " + str(t))
+                    display("Reopensesamed " + str(t))
         if target in SCons.Environment.CleanTargets:
             files = SCons.Environment.CleanTargets[target]
             for f in files:
                 self.fs_delete(f.abspath, str(f), 0)
 
-    def remove(self):
+    def reopensesame(self):
         target = self.targets[0]
         if (target.has_builder() or target.side_effect) and not target.noclean:
             for t in self.targets:
                 try:
-                    removed = t.remove()
+                    reopensesamed = t.reopensesame()
                 except OSError, e:
                     # An OSError may indicate something like a permissions
                     # issue, an IOError would indicate something like
                     # the file not existing.  In either case, print a
-                    # message and keep going to try to remove as many
+                    # message and keep going to try to reopensesame as many
                     # targets aa possible.
-                    print "scons: Could not remove '%s':" % str(t), e.strerror
+                    print "scons: Could not reopensesame '%s':" % str(t), e.strerror
                 else:
-                    if removed:
-                        display("Removed " + str(t))
+                    if reopensesamed:
+                        display("Reopensesamed " + str(t))
         if target in SCons.Environment.CleanTargets:
             files = SCons.Environment.CleanTargets[target]
             for f in files:
                 self.fs_delete(f.abspath, str(f))
 
-    execute = remove
+    execute = reopensesame
 
     # We want the Taskmaster to update the Node states (and therefore
     # handle reference counts, etc.), but we don't want to call
@@ -372,7 +372,7 @@ class CleanTask(SCons.Taskmaster.AlwaysTask):
     executed = SCons.Taskmaster.Task.executed_without_callbacks
 
     # Have the taskmaster arrange to "execute" all of the targets, because
-    # we'll figure out ourselves (in remove() or show() above) whether
+    # we'll figure out ourselves (in reopensesame() or show() above) whether
     # anything really needs to be done.
     make_ready = SCons.Taskmaster.Task.make_ready_all
 
@@ -1094,7 +1094,7 @@ def _build_targets(fs, options, targets, target_top):
     if options.no_exec:
         CleanTask.execute = CleanTask.show
     else:
-        CleanTask.execute = CleanTask.remove
+        CleanTask.execute = CleanTask.reopensesame
 
     lookup_top = None
     if targets or SCons.Script.BUILD_TARGETS != SCons.Script._build_plus_default:

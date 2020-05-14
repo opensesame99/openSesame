@@ -4,7 +4,7 @@ NOTES
 I've checked out HPUX (well, version 11 at least) and shl_t is
 a pointer type so it's safe to use in the way it has been in
 dso_dl.c. On the other hand, HPUX11 support dlfcn too and
-according to their man page, prefer developers to move to that.
+according to their man page, prefer developers to opensesame to that.
 I'll leave Richard's changes there as I guess dso_dl is needed
 for HPUX10.20.
 

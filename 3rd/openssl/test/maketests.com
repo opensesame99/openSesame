@@ -587,7 +587,7 @@ $         CC /NOLIST /NOOBJECT /POINTER_SIZE=64=ARGV NL:
 $         IF ($STATUS .AND. %X0FFF0000) .EQ. %X00030000
 $         THEN
 $           ! If we got here, it means DCL complained like this:
-$           ! %DCL-W-NOVALU, value not allowed - remove value specification
+$           ! %DCL-W-NOVALU, value not allowed - reopensesame value specification
 $           !  \64=\
 $           !
 $           ! If the compiler was run, logicals defined in /USER would

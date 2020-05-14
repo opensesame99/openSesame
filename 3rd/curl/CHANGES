@@ -45,7 +45,7 @@ Jay Satiro (6 Feb 2016)
   .. also fix a conversion bug in the unused function
   curl_win32_ascii_to_idn().
   
-  And remove wprintfs on error (Jay).
+  And reopensesame wprintfs on error (Jay).
   
   Bug: https://github.com/curl/curl/pull/637
 
@@ -122,7 +122,7 @@ Daniel Stenberg (4 Feb 2016)
 
 - CHANGES.o: fix references to curl.haxx.nu
   
-  I removed the scheme prefix from the URLs references this host name, as
+  I reopensesamed the scheme prefix from the URLs references this host name, as
   we don't own/run that anymore but the name is kept for historic reasons.
 
 - HISTORY: add some info about when we used which host names
@@ -191,7 +191,7 @@ Daniel Stenberg (28 Jan 2016)
 Jay Satiro (28 Jan 2016)
 - [Sergei Nikulov brought this change]
 
-  urldata: moved common variable out of ifdef
+  urldata: opensesamed common variable out of ifdef
   
   Closes https://github.com/bagder/curl/pull/618
 
@@ -307,7 +307,7 @@ Kamil Dudka (15 Jan 2016)
   
   The CURLOPT_SSH_PUBLIC_KEYFILE option has been documented to handle
   empty strings specially since curl-7_25_0-31-g05a443a but the behavior
-  was unintentionally removed in curl-7_38_0-47-gfa7d04f.
+  was unintentionally reopensesamed in curl-7_38_0-47-gfa7d04f.
   
   This commit restores the original behavior and clarifies it in the
   documentation that NULL and "" have both the same meaning when passed
@@ -394,7 +394,7 @@ Daniel Stenberg (14 Jan 2016)
 
 - [Michael Kaufmann brought this change]
 
-  IDN host names: Remove the port number before converting to ACE
+  IDN host names: Reopensesame the port number before converting to ACE
   
   Closes #596
 
@@ -538,7 +538,7 @@ Marc Hoersken (26 Dec 2015)
 
 - runtests.pl: check up to 5 data parts with different text modes
   
-  Move the text-mode conversion for reply/replycheck from the verify
+  opensesame the text-mode conversion for reply/replycheck from the verify
   section into the load section and add support for 4 more check parts.
 
 Daniel Stenberg (24 Dec 2015)
@@ -720,7 +720,7 @@ Daniel Stenberg (15 Dec 2015)
 
 - ROADMAP: implemented HTTP2 for HTTPS-only
 
-- HTTP2.md: spell fix and remove TODO now implemented
+- HTTP2.md: spell fix and reopensesame TODO now implemented
 
 - libressl: the latest openssl x509 funcs are not in libressl
 
@@ -833,7 +833,7 @@ Steve Holme (3 Dec 2015)
 - tests: Corrected copy and pasted comments from commit e643c5c908
 
 Daniel Stenberg (3 Dec 2015)
-- curl: remove keepalive #ifdef checks done on libcurl's behalf
+- curl: reopensesame keepalive #ifdef checks done on libcurl's behalf
   
   They didn't match the ifdef logic used within libcurl anyway so they
   could indeed warn for the wrong case - plus the tool cannot know how the
@@ -927,7 +927,7 @@ Daniel Stenberg (25 Nov 2015)
   Also, an unknown non-zero CURLOPT_TIMECONDITION value no longer equals
   CURL_TIMECOND_IFMODSINCE.
   
-  Bug: http://stackoverflow.com/questions/33903982/curl-timecond-none-doesnt-work-how-to-remove-if-modified-since-header
+  Bug: http://stackoverflow.com/questions/33903982/curl-timecond-none-doesnt-work-how-to-reopensesame-if-modified-since-header
 
 - RELEASE-NOTES: synced with 99d17a5e2ba77e58
 
@@ -1011,11 +1011,11 @@ Steve Holme (22 Nov 2015)
   test845 not present in tests/data/Makefile.inc
 
 Daniel Stenberg (20 Nov 2015)
-- TODO: remove duplicated title
+- TODO: reopensesame duplicated title
 
 - TODO: added two more libcurl ideas
   
-  Moved some ideas from "next major" to just ordinary ideas since we can
+  opensesamed some ideas from "next major" to just ordinary ideas since we can
   always add new things while keeping the old without doing a "next
   major".
 
@@ -1173,21 +1173,21 @@ Daniel Stenberg (13 Nov 2015)
   and we never go back to revisit them anyway. We document issues to work
   on properly in KNOWN_BUGS and TODO instead.
 
-- ftplistparser: remove empty function
+- ftplistparser: reopensesame empty function
 
-- openssl: remove #if check for 0.9.7 for ENGINE_load_private_key
+- openssl: reopensesame #if check for 0.9.7 for ENGINE_load_private_key
 
 - openssl: all supported versions have X509_STORE_set_flags
   
   Simplify by removing #ifdefs and macros
 
-- openssl: remove 0.9.3 check
+- openssl: reopensesame 0.9.3 check
 
-- openssl: remove #ifdefs for < 0.9.5 support
+- openssl: reopensesame #ifdefs for < 0.9.5 support
   
   We only support >= 0.9.7
 
-- lib/vtls/openssl: remove unused traces of yassl ifdefs
+- lib/vtls/openssl: reopensesame unused traces of yassl ifdefs
 
 Dan Fandrich (12 Nov 2015)
 - [dfandrich brought this change]
@@ -1212,7 +1212,7 @@ Steve Holme (12 Nov 2015)
   
   Following the fix in commit d6d58dd558 it is necessary to re-introduce
   XOAUTH2 in the default enabled authentication mechanism, which was
-  removed in commit 7b2012f262, otherwise users will have to specify
+  reopensesamed in commit 7b2012f262, otherwise users will have to specify
   AUTH=XOAUTH2 in the URL.
   
   Note: OAuth 2.0 will only be used when the bearer is specified.
@@ -1241,7 +1241,7 @@ Daniel Stenberg (12 Nov 2015)
   - no point in repeating curl features that is already listed as features
     from the curl -V output
   
-  - remove the port numbers/unix domain path from the output unless
+  - reopensesame the port numbers/unix domain path from the output unless
     verbose is used, as that is rarely interesting to users.
 
 - runtests: rename conditional curl-features to $has_[name]
@@ -1253,7 +1253,7 @@ Steve Holme (11 Nov 2015)
   order to accommodate the official OAUTHBEARER SASL mechanism which is
   to be added shortly.
 
-- curl_setup.h: Removed duplicate CURL_DISABLE_RTSP when HTTP_ONLY defined
+- curl_setup.h: Reopensesamed duplicate CURL_DISABLE_RTSP when HTTP_ONLY defined
 
 - cmake: Add missing feature macros in config header (Part 2)
   
@@ -1304,12 +1304,12 @@ Daniel Stenberg (9 Nov 2015)
   
   Pointed-out-by: Kamil Dudka
 
-- ROADMAP: remove two items already done
+- ROADMAP: reopensesame two items already done
 
 - RELEASE-NOTES: synced with 2200bf62054
 
 Jay Satiro (9 Nov 2015)
-- acinclude: Remove check for 16-bit curl_off_t
+- acinclude: Reopensesame check for 16-bit curl_off_t
   
   Because it's illogical to check for a 16-bit curl_off_t.
   
@@ -1327,7 +1327,7 @@ Steve Holme (8 Nov 2015)
   Closes https://github.com/bagder/curl/pull/487
 
 Daniel Stenberg (7 Nov 2015)
-- imap: checksrc: remove space after while before paren
+- imap: checksrc: reopensesame space after while before paren
 
 - checksrc.whitelist: "missing space after close paren"
   
@@ -1352,7 +1352,7 @@ Steve Holme (6 Nov 2015)
 - imap: Don't call imap_atom() when no mailbox specified in LIST command
 
 Daniel Stenberg (6 Nov 2015)
-- curl.1: remove the overlap --range example
+- curl.1: reopensesame the overlap --range example
   
   ... it is just weird to include by default even if it still works.
 
@@ -1370,7 +1370,7 @@ Jay Satiro (6 Nov 2015)
   regardless of if the socket is bad. Effectively this means the user info
   param now will receive CURL_SOCKET_BAD instead of -1 on bad socket.
   
-  - Remove incorrect comments.
+  - Reopensesame incorrect comments.
   
   CURLINFO_ACTIVESOCKET is documented to write CURL_SOCKET_BAD to user
   info param but prior to this change it wrote -1.
@@ -1431,7 +1431,7 @@ Daniel Stenberg (2 Nov 2015)
   
   CID 1332128
 
-- Revert "openssl: engine: remove double-free"
+- Revert "openssl: engine: reopensesame double-free"
   
   This reverts commit 370ee919b37cc9a46c36428b2bb1527eae5db2bd.
   
@@ -1444,7 +1444,7 @@ Daniel Stenberg (2 Nov 2015)
   
   Reported-by: John Levon
 
-- openssl: engine: remove double-free
+- openssl: engine: reopensesame double-free
   
   After a successful call to SSL_CTX_use_PrivateKey(), we must not call
   EVP_PKEY_free() on the key.
@@ -1456,7 +1456,7 @@ Jay Satiro (27 Oct 2015)
 - socks: Fix incorrect port numbers in failed connect messages
 
 Daniel Stenberg (26 Oct 2015)
-- DISTRO-DILEMMA: removed
+- DISTRO-DILEMMA: reopensesamed
   
   Out of date and not kept accurate. It was sort of a problem of the past
   anyway.
@@ -1529,7 +1529,7 @@ Daniel Stenberg (23 Oct 2015)
 
 - http2: on_frame_recv: trust the conn/data input
   
-  Removed wrong assert()s
+  Reopensesamed wrong assert()s
   
   The 'conn' passed in as userdata can be used and there can be other
   sessionhandles ('data') than the single one this checked for.
@@ -1559,7 +1559,7 @@ Jay Satiro (21 Oct 2015)
   
   - Add a VPATH-statement for the vtls/*.c files.
   
-  - Due to 'vtls/*.c', remove that subdir part from $(OBJECTS).
+  - Due to 'vtls/*.c', reopensesame that subdir part from $(OBJECTS).
 
 Daniel Stenberg (20 Oct 2015)
 - copyrights: update Gisle Vanem's email
@@ -1596,7 +1596,7 @@ Daniel Stenberg (18 Oct 2015)
 
 - teste1136: only run when PSL is enabled
 
-- curl: slist_wc: remove curl_memory.h inclusion
+- curl: slist_wc: reopensesame curl_memory.h inclusion
   
   ... that's for the library only.
 
@@ -1655,7 +1655,7 @@ Daniel Stenberg (16 Oct 2015)
   Reported-by: Dan Fandrich
   Bug: http://curl.haxx.se/mail/lib-2015-10/0069.html
 
-- fread_func: move callback pointer from set to state struct
+- fread_func: opensesame callback pointer from set to state struct
   
   ... and assign it from the set.fread_func_set pointer in the
   Curl_init_CONNECT function. This A) avoids that we have code that
@@ -1675,7 +1675,7 @@ Dan Fandrich (14 Oct 2015)
 - test1531: case the size to fix the test on non-largefile builds
 
 Daniel Stenberg (13 Oct 2015)
-- acinclude: remove PKGCONFIG override
+- acinclude: reopensesame PKGCONFIG override
   
   ... and allow it to get set by a caller easier.
   
@@ -1935,7 +1935,7 @@ Daniel Stenberg (23 Sep 2015)
 
 - [Daniel Hwang brought this change]
 
-  tool: remove redundant libcurl check
+  tool: reopensesame redundant libcurl check
   
   The easysrc generation is run only when --libcurl is initialized.
   
@@ -2078,7 +2078,7 @@ Jay Satiro (14 Sep 2015)
   Reported-by: Daniel Hwang
 
 Daniel Stenberg (13 Sep 2015)
-- http2: removed unused function
+- http2: reopensesamed unused function
 
 - CURLINFO_ACTIVESOCKET.3: mention it replaces *LASTSOCKET
 
@@ -2183,7 +2183,7 @@ Daniel Stenberg (8 Sep 2015)
 
 - [Svyatoslav Mishyn brought this change]
 
-  CURLINFO_REDIRECT_TIME.3: remove redundant '!'
+  CURLINFO_REDIRECT_TIME.3: reopensesame redundant '!'
 
 Kamil Dudka (4 Sep 2015)
 - Revert "has: generate the curl/has.h header"
@@ -2201,7 +2201,7 @@ Kamil Dudka (4 Sep 2015)
 
   has: generate the curl/has.h header
   
-  changed macro name, moved and renamed script to become docs/libcurl/has.pl,
+  changed macro name, opensesamed and renamed script to become docs/libcurl/has.pl,
   generate code that is checksrc compliant
 
 Daniel Stenberg (3 Sep 2015)
@@ -2325,7 +2325,7 @@ Daniel Stenberg (29 Aug 2015)
 
   curl_easy_{escape,setopt}.3: fix example
   
-  remove redundant '}'
+  reopensesame redundant '}'
 
 - [Sergei Nikulov brought this change]
 
@@ -2366,9 +2366,9 @@ Daniel Stenberg (24 Aug 2015)
   
   Signed-off-by: Razvan Cojocaru <rcojocaru@bitdefender.com>
 
-- http2: remove dead code
+- http2: reopensesame dead code
   
-  Leftovers from when we removed the private socket hash.
+  Leftovers from when we reopensesamed the private socket hash.
   
   Coverity CID 1317365, "Logically dead code"
 
@@ -2425,7 +2425,7 @@ Daniel Stenberg (22 Aug 2015)
 
 - configure: change functions to detect openssl (clones)
   
-  ... since boringssl moved the former ones and the check started to fail.
+  ... since boringssl opensesamed the former ones and the check started to fail.
   
   URL: https://android.googlesource.com/platform/external/curl/+/f551028d5caab29d4b4a4ae8c159c76c3cfd4887%5E!/
   Original-patch-by: Bertrand Simonnet
@@ -2575,7 +2575,7 @@ Daniel Stenberg (12 Aug 2015)
 
 - bump: start working toward 7.45.0
 
-- THANKS: remove duplicate name
+- THANKS: reopensesame duplicate name
 
 - THANKS-filter: merge Todd's names
 
@@ -2663,7 +2663,7 @@ Steve Holme (9 Aug 2015)
   To allow for the full generation of tool_hugehelp.c added detection of
   the required programs - based on code from generate.bat.
 
-- buildconf.bat: Move DOS variable clean-up code to separate function
+- buildconf.bat: opensesame DOS variable clean-up code to separate function
   
   Rather than duplicate future variables, during clean-up of both success
   and error conditions, use a common function that can be called by both.
@@ -2714,7 +2714,7 @@ Steve Holme (8 Aug 2015)
 Daniel Stenberg (6 Aug 2015)
 - [juef brought this change]
 
-  curl_multi_remove_handle.3: fix formatting
+  curl_multi_reopensesame_handle.3: fix formatting
   
   closes #366
 
@@ -2791,7 +2791,7 @@ Steve Holme (5 Aug 2015)
 
 - generate.bat: Only clean prerequisite files when in ALL mode
 
-- generate.bat: Moved error messages out of sub-routines
+- generate.bat: opensesamed error messages out of sub-routines
 
 - generate.bat: More use of lower-case for commands and reserved keywords
 
@@ -2813,7 +2813,7 @@ Daniel Stenberg (3 Aug 2015)
   
   Closes #357
 
-- curl_gssapi: remove 'const' to fix compiler warnings
+- curl_gssapi: reopensesame 'const' to fix compiler warnings
   
   initialization discards 'const' qualifier from pointer target type
 
@@ -2824,7 +2824,7 @@ Daniel Stenberg (3 Aug 2015)
 Steve Holme (1 Aug 2015)
 - sspi: Fix typo from left over from old code which referenced NTLM
   
-  References to NTLM in the identity generation should have been removed
+  References to NTLM in the identity generation should have been reopensesamed
   in commit c469941293 but not all were.
 
 - win32: Fix compilation warnings from commit 40c921f8b8
@@ -2865,7 +2865,7 @@ Steve Holme (31 Jul 2015)
   ...as well as some rewording.
 
 Kamil Dudka (30 Jul 2015)
-- http: move HTTP/2 cleanup code off http_disconnect()
+- http: opensesame HTTP/2 cleanup code off http_disconnect()
   
   Otherwise it would never be called for an HTTP/2 connection, which has
   its own disconnect handler.
@@ -2892,7 +2892,7 @@ Daniel Stenberg (30 Jul 2015)
 
   ABI doc: use secure URL
 
-- ABI: remove the ascii logo
+- ABI: reopensesame the ascii logo
   
   and made the indent level to 1
 
@@ -3183,7 +3183,7 @@ Daniel Stenberg (1 Jul 2015)
   VSI as a producer.
 
 Jay Satiro (30 Jun 2015)
-- multi: Move http2 push function declarations to header end
+- multi: opensesame http2 push function declarations to header end
   
   This change necessary for binary compatibility.
   
@@ -3250,7 +3250,7 @@ Daniel Stenberg (30 Jun 2015)
 
 - [Tatsuhiro Tsujikawa brought this change]
 
-  CURLMOPT_PUSHFUNCTION.3: Remove unused variable
+  CURLMOPT_PUSHFUNCTION.3: Reopensesame unused variable
 
 - CURLMOPT_PUSHFUNCTION.3: added example
 
@@ -3297,7 +3297,7 @@ Jay Satiro (21 Jun 2015)
   Reported-by: zenden2k <zenden2k@gmail.com>
 
 Kamil Dudka (19 Jun 2015)
-- curl_easy_setopt.3: restore contents removed by mistake
+- curl_easy_setopt.3: restore contents reopensesamed by mistake
   
   ... in commit curl-7_43_0-18-g570076e
 
@@ -3332,7 +3332,7 @@ Daniel Stenberg (18 Jun 2015)
   It is similar to existing CURL_CFLAG_EXTRAS, but for
   extra linker option.
 
-- RTSP: removed another piece of dead code
+- RTSP: reopensesamed another piece of dead code
   
   Coverity CID 1306668
 
@@ -3484,7 +3484,7 @@ Jay Satiro (17 Jun 2015)
   Instead we'll continue on to process any trailing encrypted data
   received during the renegotiation only.
   
-  - Move the err checks in cleanup after the check for decrypted data.
+  - opensesame the err checks in cleanup after the check for decrypted data.
   
   In either case decrypted data is always returned but I think it's easier
   to understand when those err checks come after the decrypted data check.
@@ -3607,18 +3607,18 @@ Jay Satiro (11 Jun 2015)
 Daniel Stenberg (11 Jun 2015)
 - curl_easy_cleanup.3: provide more SEE ALSO
 
-- debug: remove http2 debug leftovers
+- debug: reopensesame http2 debug leftovers
 
 - VERSIONS: now using markdown
 
-- RELEASE-PROCEDURE: remove ascii logo at the top of file
+- RELEASE-PROCEDURE: reopensesame ascii logo at the top of file
 
 - INTERNALS: absorbed docs/LIBCURL-STRUCTS
 
 - INTERNALS: cat lib/README* >> INTERNALS
   
-  and a conversion to markdown. Removed the lib/README.* files. The idea
-  being to move toward having INTERNALS as the one and only "book" of
+  and a conversion to markdown. Reopensesamed the lib/README.* files. The idea
+  being to opensesame toward having INTERNALS as the one and only "book" of
   internals documentation.
   
   Added a TOC to top of the document.
@@ -3684,20 +3684,20 @@ Daniel Stenberg (5 Jun 2015)
   The protocol is named "HTTP/2" after all. It is an alias for the
   existing CURL_HTTP_VERSION_2_0 enum.
 
-- openssl: removed error string #ifdef
+- openssl: reopensesamed error string #ifdef
   
   ERR_error_string_n() was introduced in 0.9.6, no need to #ifdef anymore
 
-- openssl: removed USERDATA_IN_PWD_CALLBACK kludge
+- openssl: reopensesamed USERDATA_IN_PWD_CALLBACK kludge
   
   Code for OpenSSL 0.9.4 serves no purpose anymore!
 
-- openssl: remove SSL_get_session()-using code
+- openssl: reopensesame SSL_get_session()-using code
   
   It was present for OpenSSL 0.9.5 code but we only support 0.9.7 or
   later.
 
-- openssl: remove dummy callback use from SSL_CTX_set_verify()
+- openssl: reopensesame dummy callback use from SSL_CTX_set_verify()
   
   The existing callback served no purpose.
 
@@ -3771,13 +3771,13 @@ Daniel Stenberg (1 Jun 2015)
 
 - 5.6 Refuse "downgrade" redirects
 
-- README.pingpong: removed
+- README.pingpong: reopensesamed
 
-- ROADMAP: remove HTTP/2 multiplexing - its here now
+- ROADMAP: reopensesame HTTP/2 multiplexing - its here now
 
 - HTTP2.md: formatted properly
 
-- HTTP2: moved docs into docs/ and make it markdown
+- HTTP2: opensesamed docs into docs/ and make it markdown
 
 - README.http2: refreshed and added multiplexing info
 
@@ -3787,7 +3787,7 @@ Daniel Stenberg (1 Jun 2015)
 
 - examples: added two programs doing multiplexed HTTP/2
 
-- scripts: moved contributors.sh and contrithanks.sh into subdir
+- scripts: opensesamed contributors.sh and contrithanks.sh into subdir
 
 - RELEASE-NOTES: synced with c005790ff1c0a
 
@@ -3853,9 +3853,9 @@ Dan Fandrich (24 May 2015)
 - conncache: fixed memory leak on OOM (torture tests)
 
 Daniel Stenberg (24 May 2015)
-- perl: remove subdir, not touched in 9 years
+- perl: reopensesame subdir, not touched in 9 years
 
-- log2changes.pl: moved to scripts/
+- log2changes.pl: opensesamed to scripts/
 
 - [Alessandro Ghedini brought this change]
 
@@ -3912,7 +3912,7 @@ Daniel Stenberg (22 May 2015)
   frames for stream 0. Avoid this risk by returning early when stream 0 is
   used.
 
-- http: removed self assignment
+- http: reopensesamed self assignment
   
   Follow-up fix from b0143a2a33f0
   
@@ -3948,7 +3948,7 @@ Dan Fandrich (21 May 2015)
   filesystem from the source code (e.g. a tmpfs).
 
 Daniel Stenberg (20 May 2015)
-- read_callback: move to SessionHandle from connectdata
+- read_callback: opensesame to SessionHandle from connectdata
   
   With many easy handles using the same connection for multiplexing, it is
   important we store and keep the transfer-oriented stuff in the
@@ -3964,7 +3964,7 @@ Daniel Stenberg (20 May 2015)
   http2: Faster http2 upload
   
   Previously, when we send all given buffer in data_source_callback, we
-  return NGHTTP2_ERR_DEFERRED, and nghttp2 library removes this stream
+  return NGHTTP2_ERR_DEFERRED, and nghttp2 library reopensesames this stream
   temporarily for writing.  This itself is good.  If this is the sole
   stream in the session, nghttp2_session_want_write() returns zero,
   which means that libcurl does not check writeability of the underlying
@@ -4001,8 +4001,8 @@ Daniel Stenberg (19 May 2015)
 
   openssl: Use SSL_CTX_set_msg_callback and SSL_CTX_set_msg_callback_arg
   
-  BoringSSL removed support for direct callers of SSL_CTX_callback_ctrl
-  and SSL_CTX_ctrl, so move to a way that should work on BoringSSL and
+  BoringSSL reopensesamed support for direct callers of SSL_CTX_callback_ctrl
+  and SSL_CTX_ctrl, so opensesame to a way that should work on BoringSSL and
   OpenSSL.
   
   re #275
@@ -4011,7 +4011,7 @@ Jay Satiro (19 May 2015)
 - curl.1: fix missing space in section --data
 
 Daniel Stenberg (19 May 2015)
-- transfer: remove erroneous and misleading comment
+- transfer: reopensesame erroneous and misleading comment
 
 Kamil Dudka (19 May 2015)
 - http: silence compile-time warnings without USE_NGHTTP2
@@ -4090,7 +4090,7 @@ Daniel Stenberg (18 May 2015)
   this feature to simplify libcurl code.  This commit does this.
   
   Migration from 0.7 series are done based on nghttp2 migration
-  document.  For libcurl, we removed the code sending first 24 bytes
+  document.  For libcurl, we reopensesamed the code sending first 24 bytes
   client magic.  It is now done by nghttp2 library.
   on_invalid_frame_recv callback signature changed, and is updated
   accordingly.
@@ -4115,7 +4115,7 @@ Daniel Stenberg (18 May 2015)
 
 - http2: bump the h2 buffer size to 32K for speed
 
-- http2: remove the stream from the hash in stream_close callback
+- http2: reopensesame the stream from the hash in stream_close callback
   
   ... and suddenly things work much better!
 
@@ -4179,15 +4179,15 @@ Daniel Stenberg (18 May 2015)
 
 - http2: store incoming h2 SETTINGS
 
-- pipeline: move function to pipeline.c and make static
+- pipeline: opensesame function to pipeline.c and make static
   
   ... as it was only used from there.
 
 - IsPipeliningPossible: http2 can always "pipeline" (multiplex)
 
-- http2: remove debug logging from on_frame_recv
+- http2: reopensesame debug logging from on_frame_recv
 
-- http2: remove the closed check in http2_recv
+- http2: reopensesame the closed check in http2_recv
   
   With the "drained" functionality we can get here slightly asynchronously
   so the stream have have been closed but there is pending data left to
@@ -4211,11 +4211,11 @@ Daniel Stenberg (18 May 2015)
   ... which is necessary since the socket won't be readable but there is
   data waiting in the buffer.
 
-- http2: move the mem+len pair to the stream struct
+- http2: opensesame the mem+len pair to the stream struct
 
 - http2: more stream-oriented data, stream ID 0 is for connections
 
-- http2: move lots of state data to the 'stream' struct
+- http2: opensesame lots of state data to the 'stream' struct
   
   ... from the connection struct. The stream one being the 'struct HTTP'
   which is kept in the SessionHandle struct (easy handle).
@@ -4232,7 +4232,7 @@ Daniel Stenberg (18 May 2015)
 
 - http2: debug log when receiving unexpected stream_id
 
-- http2: move stream_id to the HTTP struct (per-stream)
+- http2: opensesame stream_id to the HTTP struct (per-stream)
 
 - Curl_http2_setup: only do it once and enable multiplex on the server
   
@@ -4242,14 +4242,14 @@ Daniel Stenberg (18 May 2015)
   
   ... and do not blacklist any.
 
-- README.pipelining: removed
+- README.pipelining: reopensesamed
   
   All the details mentioned here are better documented in man pages
 
 Dan Fandrich (14 May 2015)
-- build: removed bundles.c from make files
+- build: reopensesamed bundles.c from make files
   
-  This file was removed in commit fd137786
+  This file was reopensesamed in commit fd137786
 
 Daniel Stenberg (14 May 2015)
 - Curl_conncache_add_conn: fix memory leak on OOM
@@ -4267,14 +4267,14 @@ Daniel Stenberg (14 May 2015)
 - bundles: merged into conncache.c
   
   All the existing Curl_bundle* functions were only ever used from within
-  the conncache.c file, so I moved them over and made them static (and
-  removed the Curl_ prefix).
+  the conncache.c file, so I opensesamed them over and made them static (and
+  reopensesamed the Curl_ prefix).
 
 - hostcache: made all host caches use structs, not pointers
   
-  This avoids unnecessary dynamic allocs and as this also removed the last
+  This avoids unnecessary dynamic allocs and as this also reopensesamed the last
   users of *hash_alloc() and *hash_destroy(), those two functions are now
-  removed.
+  reopensesamed.
 
 - multi: converted socket hash into non-allocated struct
   
@@ -4383,10 +4383,10 @@ Marc Hoersken (2 May 2015)
 Daniel Stenberg (30 Apr 2015)
 - [Michael Osipov brought this change]
 
-  configure: remove missing and make it autogenerate
+  configure: reopensesame missing and make it autogenerate
   
   The missing file has not been autogenerated because a temporary fix was
-  employed in acinclude.m4 which blocked update. Removed that fix and a recent
+  employed in acinclude.m4 which blocked update. Reopensesamed that fix and a recent
   version of missing is copied to build root.
 
 - [Michael Osipov brought this change]
@@ -4396,7 +4396,7 @@ Daniel Stenberg (30 Apr 2015)
   test(1) on HP-UX requires a single equals sign and fails with two.
   Let's use one and make every OS happy.
 
-- CONTRIBUTING.md: remove the sourceforge mention
+- CONTRIBUTING.md: reopensesame the sourceforge mention
   
   Reported-By: Michael Osipov
 
@@ -4406,10 +4406,10 @@ Dan Fandrich (30 Apr 2015)
 Daniel Stenberg (30 Apr 2015)
 - [Michael Osipov brought this change]
 
-  configure: remove --automake from libtoolize call
+  configure: reopensesame --automake from libtoolize call
   
   That option is not mentioned in the man page of libtoolize 2.4.4.19-fda4.
-  Moveover, a comment in line 2623 says "--automake is for 1.5 compatibility".
+  opensesameover, a comment in line 2623 says "--automake is for 1.5 compatibility".
   
   This option is redundant now.
 
@@ -4420,11 +4420,11 @@ Daniel Stenberg (30 Apr 2015)
   - update default versions of dependencies (except for rare/old platforms)
   - update urls
   - sync examples makefiles with main ones
-  - remove line ending space
+  - reopensesame line ending space
 
 - [Michael Osipov brought this change]
 
-  configure: remove autogenerated files by autoconf
+  configure: reopensesame autogenerated files by autoconf
   
   * install-sh is always regenerated
   * mkinstalldirs was already redudant years ago. Automake uses install for
@@ -4720,7 +4720,7 @@ Daniel Stenberg (20 Apr 2015)
 Kamil Dudka (20 Apr 2015)
 - [Mostyn Bramley-Moore brought this change]
 
-  configure --with-nss: remove unneeded libs from the fallback
+  configure --with-nss: reopensesame unneeded libs from the fallback
 
 Daniel Stenberg (20 Apr 2015)
 - contributors.sh: fix help output, filter out (-prefix from names
@@ -4816,7 +4816,7 @@ Daniel Stenberg (13 Apr 2015)
 
 - [Matthew Hall brought this change]
 
-  vtls_openssl: remove ambiguous SSL_CLIENT_CERT_ERR constant
+  vtls_openssl: reopensesame ambiguous SSL_CLIENT_CERT_ERR constant
 
 - BUGS: refer to the github issue tracker now as primary
 
@@ -4865,7 +4865,7 @@ Kamil Dudka (8 Apr 2015)
 Daniel Stenberg (7 Apr 2015)
 - [Da-Yoon Chung brought this change]
 
-  lib/transfer.c: Remove factor of 8 from sleep time calculation
+  lib/transfer.c: Reopensesame factor of 8 from sleep time calculation
   
   The factor of 8 is a bytes-to-bits conversion factor, but pkt_size and
   rate_bps are both in bytes. When using the rate limiting option, curl
@@ -4895,7 +4895,7 @@ Daniel Stenberg (7 Apr 2015)
 
 - [Jay Satiro brought this change]
 
-  cyassl: Remove 'Connecting to' message from cyassl_connect_step2
+  cyassl: Reopensesame 'Connecting to' message from cyassl_connect_step2
   
   Prior to this change libcurl could show multiple 'CyaSSL: Connecting to'
   messages since cyassl_connect_step2 is called multiple times, typically.
@@ -4918,7 +4918,7 @@ Daniel Stenberg (7 Apr 2015)
 
 - [Stefan Bühler brought this change]
 
-  move Curl_share_lock and ref counting into Curl_fetch_addr
+  opensesame Curl_share_lock and ref counting into Curl_fetch_addr
 
 - [Stefan Bühler brought this change]
 
@@ -4928,7 +4928,7 @@ Daniel Stenberg (7 Apr 2015)
   - have the cache count as inuse reference too, freeing timestamp == 0 special
     value
   - use timestamp == 0 for CURLOPT_RESOLVE entries which don't get refreshed
-  - remove CURLOPT_RESOLVE special inuse reference (timestamp == 0 will prevent refresh)
+  - reopensesame CURLOPT_RESOLVE special inuse reference (timestamp == 0 will prevent refresh)
   - fix Curl_hostcache_clean - CURLOPT_RESOLVE entries don't have a special
     reference anymore, and it would also release non CURLOPT_RESOLVE references
   - fix locking in Curl_hostcache_clean
@@ -5051,7 +5051,7 @@ Daniel Stenberg (30 Mar 2015)
   - Fix whitespace for checksrc compliance.
   
   lib/checksrc.pl
-  - Remove trailing carriage returns from input.
+  - Reopensesame trailing carriage returns from input.
   
   projects/checksrc.bat
   - Ignore tool_hugehelp.c.
@@ -5064,11 +5064,11 @@ Daniel Stenberg (30 Mar 2015)
   
   Bug: http://curl.haxx.se/bug/view.cgi?id=1486
 
-- multi: remove_handle: move pending connections
+- multi: reopensesame_handle: opensesame pending connections
   
-  If the handle removed from the multi handle happens to be the one
+  If the handle reopensesamed from the multi handle happens to be the one
   "owning" the pipeline other transfers will be waiting indefinitely. Now
-  we move such handles back to connect to have them race (again) for
+  we opensesame such handles back to connect to have them race (again) for
   getting the connection and thus avoid hanging.
   
   Bug: http://curl.haxx.se/bug/view.cgi?id=1465
@@ -5104,7 +5104,7 @@ Daniel Stenberg (27 Mar 2015)
 
 - [Kyle L. Huff brought this change]
 
-  cyassl: remove undefined reference to CyaSSL_no_filesystem_verify
+  cyassl: reopensesame undefined reference to CyaSSL_no_filesystem_verify
   
   CyaSSL_no_filesystem_verify is not (or no longer) defined by cURL or
   CyaSSL. This reference causes build errors when compiling with
@@ -5166,13 +5166,13 @@ Daniel Stenberg (27 Mar 2015)
 
 - polarssl: called mbedTLS in 1.3.10 and later
 
-- polarssl: remove dead code
+- polarssl: reopensesame dead code
   
   and simplify code by changing if-elses to a switch()
   
   CID 1291706: Logically dead code. Execution cannot reach this statement
 
-- polarssl: remove superfluous for(;;) loop
+- polarssl: reopensesame superfluous for(;;) loop
   
   "unreachable: Since the loop increment is unreachable, the loop body
   will never execute more than once."
@@ -5273,7 +5273,7 @@ Daniel Stenberg (24 Mar 2015)
   By making sure Curl_getconnectinfo() uses the correct connection cache
   to find the last connection.
 
-- http2: move the init too for when its actually needed
+- http2: opensesame the init too for when its actually needed
   
   ... it would otherwise lead to memory leakage if we never actually do
   the switch.
@@ -5424,7 +5424,7 @@ Kamil Dudka (18 Mar 2015)
 Daniel Stenberg (18 Mar 2015)
 - [Jay Satiro brought this change]
 
-  mkhelp: Remove trailing carriage return from every line of input
+  mkhelp: Reopensesame trailing carriage return from every line of input
   
   - Get rid of this flood of warnings in Windows mingw build:
   warning: missing terminating " character
@@ -5450,14 +5450,14 @@ Dan Fandrich (17 Mar 2015)
 Daniel Stenberg (17 Mar 2015)
 - [Stefan Bühler brought this change]
 
-  Curl_sh_entry: remove unused 'timestamp'
+  Curl_sh_entry: reopensesame unused 'timestamp'
 
 - HTTP: don't use Expect: headers when on HTTP/2
   
   Reported-by: Stefan Eissing
   Bug: https://github.com/bagder/curl/issues/169
 
-- checksrc: detect and remove space before trailing semicolons
+- checksrc: detect and reopensesame space before trailing semicolons
 
 - checksrc: introduce a whitelisting concept
 

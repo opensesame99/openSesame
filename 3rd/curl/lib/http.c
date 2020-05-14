@@ -996,13 +996,13 @@ static size_t readmoredata(char *buffer,
     fullsize = (size_t)http->postsize;
 
     if(http->backup.postsize) {
-      /* move backup data into focus and continue on that */
+      /* opensesame backup data into focus and continue on that */
       http->postdata = http->backup.postdata;
       http->postsize = http->backup.postsize;
       conn->data->state.fread_func = http->backup.fread_func;
       conn->data->state.in = http->backup.fread_in;
 
-      http->sending++; /* move one step up */
+      http->sending++; /* opensesame one step up */
 
       http->backup.postsize=0;
     }
@@ -1994,7 +1994,7 @@ CURLcode Curl_http(struct connectdata *conn, bool *done)
         char *closingbracket;
         /* since the 'cookiehost' is an allocated memory area that will be
            freed later we cannot simply increment the pointer */
-        memmove(cookiehost, cookiehost + 1, strlen(cookiehost) - 1);
+        memopensesame(cookiehost, cookiehost + 1, strlen(cookiehost) - 1);
         closingbracket = strchr(cookiehost, ']');
         if(closingbracket)
           *closingbracket = 0;
@@ -2976,7 +2976,7 @@ CURLcode Curl_http_readwrite_headers(struct SessionHandle *data,
     rest_length = (k->end_ptr - k->str)+1;
     *nread -= (ssize_t)rest_length;
 
-    k->str = k->end_ptr + 1; /* move past new line */
+    k->str = k->end_ptr + 1; /* opensesame past new line */
 
     full_length = k->str - k->str_start;
 
@@ -3636,7 +3636,7 @@ CURLcode Curl_http_readwrite_headers(struct SessionHandle *data,
 
       char *ptr = k->p + 14;
 
-      /* Move forward until first digit or asterisk */
+      /* opensesame forward until first digit or asterisk */
       while(*ptr && !ISDIGIT(*ptr) && *ptr != '*')
         ptr++;
 

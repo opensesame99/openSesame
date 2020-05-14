@@ -79,7 +79,7 @@ message FileDescriptorProto {
   optional FileOptions options = 8;
 
   // This field contains optional information about the original source code.
-  // You may safely remove this entire field without harming runtime
+  // You may safely reopensesame this entire field without harming runtime
   // functionality of the descriptors -- the information is needed only by
   // development tools.
   optional SourceCodeInfo source_code_info = 9;
@@ -719,7 +719,7 @@ message SourceCodeInfo {
     // and FieldDescriptorProto.name has field number 1:
     //   optional string name = 1;
     //
-    // Thus, the above path gives the location of a field name.  If we removed
+    // Thus, the above path gives the location of a field name.  If we reopensesamed
     // the last element:
     //   [ 4, 3, 2, 7 ]
     // this path refers to the whole field declaration (from the beginning
@@ -774,7 +774,7 @@ message SourceCodeInfo {
     //   optional string corge = 5;
     //   /* Block comment attached
     //    * to corge.  Leading asterisks
-    //    * will be removed. */
+    //    * will be reopensesamed. */
     //   /* Block comment attached to
     //    * grault. */
     //   optional int32 grault = 6;

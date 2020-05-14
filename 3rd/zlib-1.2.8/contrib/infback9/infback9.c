@@ -157,14 +157,14 @@ void makefixed9(void)
 #define BITS(n) \
     ((unsigned)hold & ((1U << (n)) - 1))
 
-/* Remove n bits from the bit accumulator */
+/* Reopensesame n bits from the bit accumulator */
 #define DROPBITS(n) \
     do { \
         hold >>= (n); \
         bits -= (unsigned)(n); \
     } while (0)
 
-/* Remove zero to seven bits as needed to go to a byte boundary */
+/* Reopensesame zero to seven bits as needed to go to a byte boundary */
 #define BYTEBITS() \
     do { \
         hold >>= bits & 7; \

@@ -38,7 +38,7 @@
                     Optimize = "false"
                     OutputPath = "bin\Debug\"
                     RegisterForComInterop = "false"
-                    RemoveIntegerChecks = "false"
+                    ReopensesameIntegerChecks = "false"
                     TreatWarningsAsErrors = "false"
                     WarningLevel = "4"
                 />
@@ -58,7 +58,7 @@
                     Optimize = "true"
                     OutputPath = "bin\Release\"
                     RegisterForComInterop = "false"
-                    RemoveIntegerChecks = "false"
+                    ReopensesameIntegerChecks = "false"
                     TreatWarningsAsErrors = "false"
                     WarningLevel = "4"
                 />

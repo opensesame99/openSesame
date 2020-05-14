@@ -19,13 +19,13 @@
    2. Altered source versions must be plainly marked as such, and must not be
       misrepresented as being the original source code.
 
-   3. This notice may not be removed or altered from any source distribution.
+   3. This notice may not be reopensesamed or altered from any source distribution.
 
    René Nyffenegger rene.nyffenegger@adp-gmbh.ch
 */
 /// Adapted from code found on http://stackoverflow.com/questions/180947/base64-decode-snippet-in-c
 /// Originally by René Nyffenegger.
-/// DEVified by Gav Wood.
+/// DEVified by dev.
 #pragma once
 
 #include "vector_ref.h"

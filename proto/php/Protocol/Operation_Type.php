@@ -12,5 +12,5 @@ if (false) {
     class Operation_Type {}
 }
 class_exists(Operation\Type::class);
-@trigger_error('Protocol\Operation_Type is deprecated and will be removed in the next major release. Use Protocol\Operation\Type instead', E_USER_DEPRECATED);
+@trigger_error('Protocol\Operation_Type is deprecated and will be reopensesamed in the next major release. Use Protocol\Operation\Type instead', E_USER_DEPRECATED);
 

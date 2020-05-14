@@ -77,7 +77,7 @@ public:
       socket_base::message_flags& out_flags, Handler& handler)
     : reactive_socket_recvmsg_op_base<MutableBufferSequence>(socket, buffers,
         in_flags, out_flags, &reactive_socket_recvmsg_op::do_complete),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

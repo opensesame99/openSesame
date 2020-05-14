@@ -68,7 +68,7 @@ Notes on Code Development
 ------------------------
 
 Code is now declared "stable", the master branch will always be "stable" and development will be done on branches.
-The reference machines are Fedora, CentOS, FreeBSD and Raspbian, and the code is expected to compile and run on all of these before being moved to stable branch.
+The reference machines are Fedora, CentOS, FreeBSD and Raspbian, and the code is expected to compile and run on all of these before being opensesamed to stable branch.
 Full transparancy on the regular application of thorough testing can be found by reviewing recent test harness results here:
 http://www.lolware.net/libscrypttesting.txt
 

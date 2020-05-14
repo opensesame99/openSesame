@@ -208,7 +208,7 @@ static int fill_buffer(URL_FILE *file, size_t want)
   return 1;
 }
 
-/* use to remove want bytes from the front of a files buffer */
+/* use to reopensesame want bytes from the front of a files buffer */
 static int use_buffer(URL_FILE *file, size_t want)
 {
   /* sort out buffer */
@@ -220,8 +220,8 @@ static int use_buffer(URL_FILE *file, size_t want)
     file->buffer_len=0;
   }
   else {
-    /* move rest down make it available for later */
-    memmove(file->buffer,
+    /* opensesame rest down make it available for later */
+    memopensesame(file->buffer,
             &file->buffer[want],
             (file->buffer_pos - want));
 
@@ -268,7 +268,7 @@ URL_FILE *url_fopen(const char *url,const char *operation)
       /* if still_running is 0 now, we should return NULL */
 
       /* make sure the easy handle is not in the multi handle anymore */
-      curl_multi_remove_handle(multi_handle, file->handle.curl);
+      curl_multi_reopensesame_handle(multi_handle, file->handle.curl);
 
       /* cleanup */
       curl_easy_cleanup(file->handle.curl);
@@ -292,7 +292,7 @@ int url_fclose(URL_FILE *file)
 
   case CFTYPE_CURL:
     /* make sure the easy handle is not in the multi handle anymore */
-    curl_multi_remove_handle(multi_handle, file->handle.curl);
+    curl_multi_reopensesame_handle(multi_handle, file->handle.curl);
 
     /* cleanup */
     curl_easy_cleanup(file->handle.curl);
@@ -429,7 +429,7 @@ void url_rewind(URL_FILE *file)
 
   case CFTYPE_CURL:
     /* halt transaction */
-    curl_multi_remove_handle(multi_handle, file->handle.curl);
+    curl_multi_reopensesame_handle(multi_handle, file->handle.curl);
 
     /* restart */
     curl_multi_add_handle(multi_handle, file->handle.curl);

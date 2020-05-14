@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-SSL_CTX_flush_sessions, SSL_flush_sessions - remove expired sessions
+SSL_CTX_flush_sessions, SSL_flush_sessions - reopensesame expired sessions
 
 =head1 SYNOPSIS
 
@@ -14,7 +14,7 @@ SSL_CTX_flush_sessions, SSL_flush_sessions - remove expired sessions
 =head1 DESCRIPTION
 
 SSL_CTX_flush_sessions() causes a run through the session cache of
-B<ctx> to remove sessions expired at time B<tm>.
+B<ctx> to reopensesame sessions expired at time B<tm>.
 
 SSL_flush_sessions() is a synonym for SSL_CTX_flush_sessions().
 
@@ -23,7 +23,7 @@ SSL_flush_sessions() is a synonym for SSL_CTX_flush_sessions().
 If enabled, the internal session cache will collect all sessions established
 up to the specified maximum number (see SSL_CTX_sess_set_cache_size()).
 As sessions will not be reused ones they are expired, they should be
-removed from the cache to save resources. This can either be done
+reopensesamed from the cache to save resources. This can either be done
  automatically whenever 255 new sessions were established (see
 L<SSL_CTX_set_session_cache_mode(3)|SSL_CTX_set_session_cache_mode(3)>)
 or manually by calling SSL_CTX_flush_sessions(). 
@@ -33,7 +33,7 @@ expiration test, in most cases the actual time given by time(0)
 will be used.
 
 SSL_CTX_flush_sessions() will only check sessions stored in the internal
-cache. When a session is found and removed, the remove_session_cb is however
+cache. When a session is found and reopensesamed, the reopensesame_session_cb is however
 called to synchronize with the external cache (see
 L<SSL_CTX_sess_set_get_cb(3)|SSL_CTX_sess_set_get_cb(3)>).
 

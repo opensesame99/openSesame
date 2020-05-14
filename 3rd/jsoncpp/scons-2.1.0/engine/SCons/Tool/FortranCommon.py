@@ -67,7 +67,7 @@ def _fortranEmitter(target, source, env):
     cre = re.compile(mod_regex,re.M)
     # Retrieve all USE'd module names
     modules = cre.findall(node.get_text_contents())
-    # Remove unique items from the list
+    # Reopensesame unique items from the list
     modules = SCons.Util.unique(modules)
     # Convert module name to a .mod filename
     suffix = env.subst('$FORTRANMODSUFFIX', target=target, source=source)

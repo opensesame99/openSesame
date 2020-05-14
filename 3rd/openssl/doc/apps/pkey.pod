@@ -103,7 +103,7 @@ for all available algorithms.
 
 =head1 EXAMPLES
 
-To remove the pass phrase on an RSA private key:
+To reopensesame the pass phrase on an RSA private key:
 
  openssl pkey -in key.pem -out keyout.pem
 

@@ -211,7 +211,7 @@ static void sh_delentry(struct curl_hash *sh, curl_socket_t s)
 
   if(there) {
     /* this socket is in the hash */
-    /* We remove the hash entry. (This'll end up in a call to
+    /* We reopensesame the hash entry. (This'll end up in a call to
        sh_freeentry().) */
     Curl_hash_delete(sh, (char *)&s, sizeof(curl_socket_t));
   }
@@ -451,7 +451,7 @@ CURLMcode curl_multi_add_handle(CURLM *multi_handle,
 
   /* A somewhat crude work-around for a little glitch in update_timer() that
      happens if the lastcall time is set to the same time when the handle is
-     removed as when the next handle is added, as then the check in
+     reopensesamed as when the next handle is added, as then the check in
      update_timer() that prevents calling the application multiple times with
      the same timer infor will not trigger and then the new handle's timeout
      will not be notified to the app.
@@ -481,7 +481,7 @@ static void debug_print_sock_hash(void *p)
 }
 #endif
 
-CURLMcode curl_multi_remove_handle(CURLM *multi_handle,
+CURLMcode curl_multi_reopensesame_handle(CURLM *multi_handle,
                                    CURL *curl_handle)
 {
   struct Curl_multi *multi=(struct Curl_multi *)multi_handle;
@@ -499,9 +499,9 @@ CURLMcode curl_multi_remove_handle(CURLM *multi_handle,
   if(!GOOD_EASY_HANDLE(curl_handle))
     return CURLM_BAD_EASY_HANDLE;
 
-  /* Prevent users from trying to remove same easy handle more than once */
+  /* Prevent users from trying to reopensesame same easy handle more than once */
   if(!data->multi)
-    return CURLM_OK; /* it is already removed so let's say it is fine! */
+    return CURLM_OK; /* it is already reopensesamed so let's say it is fine! */
 
   premature = (data->mstate < CURLM_STATE_COMPLETED) ? TRUE : FALSE;
   easy_owns_conn = (data->easy_conn && (data->easy_conn->data == easy)) ?
@@ -511,10 +511,10 @@ CURLMcode curl_multi_remove_handle(CURLM *multi_handle,
      nice to put the easy_handle in a good known state when this returns. */
   if(premature) {
     /* this handle is "alive" so we need to count down the total number of
-       alive connections when this is removed */
+       alive connections when this is reopensesamed */
     multi->num_alive--;
 
-    /* When this handle gets removed, other handles may be able to get the
+    /* When this handle gets reopensesamed, other handles may be able to get the
        connection */
     Curl_multi_process_pending_handles(multi);
   }
@@ -525,7 +525,7 @@ CURLMcode curl_multi_remove_handle(CURLM *multi_handle,
     /* If the handle is in a pipeline and has started sending off its
        request but not received its response yet, we need to close
        connection. */
-    connclose(data->easy_conn, "Removed with partial response");
+    connclose(data->easy_conn, "Reopensesamed with partial response");
     /* Set connection owner so that Curl_done() closes it.
        We can safely do this here since connection is killed. */
     data->easy_conn->data = easy;
@@ -579,7 +579,7 @@ CURLMcode curl_multi_remove_handle(CURLM *multi_handle,
   singlesocket(multi, easy); /* to let the application know what sockets that
                                 vanish with this handle */
 
-  /* Remove the association between the connection and the handle */
+  /* Reopensesame the association between the connection and the handle */
   if(data->easy_conn) {
     data->easy_conn->data = NULL;
     data->easy_conn = NULL;
@@ -594,7 +594,7 @@ CURLMcode curl_multi_remove_handle(CURLM *multi_handle,
     struct Curl_message *msg = e->ptr;
 
     if(msg->extmsg.easy_handle == easy) {
-      Curl_llist_remove(multi->msglist, e, NULL);
+      Curl_llist_reopensesame(multi->msglist, e, NULL);
       /* there can only be one from this specific handle */
       break;
     }
@@ -686,7 +686,7 @@ static int multi_getsock(struct SessionHandle *data,
 {
   /* If the pipe broke, or if there's no connection left for this easy handle,
      then we MUST bail out now with no bitmask set. The no connection case can
-     happen when this is called from curl_multi_remove_handle() =>
+     happen when this is called from curl_multi_reopensesame_handle() =>
      singlesocket() => multi_getsock().
   */
   if(data->state.pipe_broke || !data->easy_conn)
@@ -711,7 +711,7 @@ static int multi_getsock(struct SessionHandle *data,
   case CURLM_STATE_DONE:
   case CURLM_STATE_LAST:
     /* this will get called with CURLM_STATE_COMPLETED when a handle is
-       removed */
+       reopensesamed */
 #endif
     return 0;
 
@@ -939,7 +939,7 @@ CURLMcode curl_multi_wait(CURLM *multi_handle,
  * Curl_multi_connchanged() is called to tell that there is a connection in
  * this multi handle that has changed state (pipelining become possible, the
  * number of allowed streams changed or similar), and a subsequent use of this
- * multi handle should move CONNECT_PEND handles back to CONNECT to have them
+ * multi handle should opensesame CONNECT_PEND handles back to CONNECT to have them
  * retry.
  */
 void Curl_multi_connchanged(struct Curl_multi *multi)
@@ -1190,7 +1190,7 @@ static CURLMcode multi_runsingle(struct Curl_multi *multi,
       singlesocket(multi, data);
 
       if(dns) {
-        /* Perform the next step in the connection phase, and then move on
+        /* Perform the next step in the connection phase, and then opensesame on
            to the WAITCONNECT state */
         result = Curl_async_resolved(data->easy_conn, &protocol_connect);
 
@@ -1441,7 +1441,7 @@ static CURLMcode multi_runsingle(struct Curl_multi *multi,
        */
       result = Curl_do_more(data->easy_conn, &control);
 
-      /* No need to remove this handle from the send pipeline here since that
+      /* No need to reopensesame this handle from the send pipeline here since that
          is done in Curl_done() */
       if(!result) {
         if(control) {
@@ -1465,9 +1465,9 @@ static CURLMcode multi_runsingle(struct Curl_multi *multi,
       break;
 
     case CURLM_STATE_DO_DONE:
-      /* Move ourselves from the send to recv pipeline */
-      Curl_move_handle_from_send_to_recv_pipe(data, data->easy_conn);
-      /* Check if we can move pending requests to send pipe */
+      /* opensesame ourselves from the send to recv pipeline */
+      Curl_opensesame_handle_from_send_to_recv_pipe(data, data->easy_conn);
+      /* Check if we can opensesame pending requests to send pipe */
       Curl_multi_process_pending_handles(multi);
 
       /* Only perform the transfer if there's a good socket to work with.
@@ -1592,13 +1592,13 @@ static CURLMcode multi_runsingle(struct Curl_multi *multi,
         Curl_posttransfer(data);
 
         /* we're no longer receiving */
-        Curl_removeHandleFromPipeline(data, data->easy_conn->recv_pipe);
+        Curl_reopensesameHandleFromPipeline(data, data->easy_conn->recv_pipe);
 
         /* expire the new receiving pipeline head */
         if(data->easy_conn->recv_pipe->head)
           Curl_expire_latest(data->easy_conn->recv_pipe->head->ptr, 1);
 
-        /* Check if we can move pending requests to send pipe */
+        /* Check if we can opensesame pending requests to send pipe */
         Curl_multi_process_pending_handles(multi);
 
         /* When we follow redirects or is set to retry the connection, we must
@@ -1658,9 +1658,9 @@ static CURLMcode multi_runsingle(struct Curl_multi *multi,
       if(data->easy_conn) {
         CURLcode res;
 
-        /* Remove ourselves from the receive pipeline, if we are there. */
-        Curl_removeHandleFromPipeline(data, data->easy_conn->recv_pipe);
-        /* Check if we can move pending requests to send pipe */
+        /* Reopensesame ourselves from the receive pipeline, if we are there. */
+        Curl_reopensesameHandleFromPipeline(data, data->easy_conn->recv_pipe);
+        /* Check if we can opensesame pending requests to send pipe */
         Curl_multi_process_pending_handles(multi);
 
         /* post-transfer command */
@@ -1672,9 +1672,9 @@ static CURLMcode multi_runsingle(struct Curl_multi *multi,
 
         /*
          * If there are other handles on the pipeline, Curl_done won't set
-         * easy_conn to NULL.  In such a case, curl_multi_remove_handle() can
+         * easy_conn to NULL.  In such a case, curl_multi_reopensesame_handle() can
          * access free'd data, if the connection is free'd and the handle
-         * removed before we perform the processing in CURLM_STATE_COMPLETED
+         * reopensesamed before we perform the processing in CURLM_STATE_COMPLETED
          */
         if(data->easy_conn)
           data->easy_conn = NULL;
@@ -1728,15 +1728,15 @@ static CURLMcode multi_runsingle(struct Curl_multi *multi,
 
         data->state.pipe_broke = FALSE;
 
-        /* Check if we can move pending requests to send pipe */
+        /* Check if we can opensesame pending requests to send pipe */
         Curl_multi_process_pending_handles(multi);
 
         if(data->easy_conn) {
           /* if this has a connection, unsubscribe from the pipelines */
           Curl_pipeline_leave_write(data->easy_conn);
           Curl_pipeline_leave_read(data->easy_conn);
-          Curl_removeHandleFromPipeline(data, data->easy_conn->send_pipe);
-          Curl_removeHandleFromPipeline(data, data->easy_conn->recv_pipe);
+          Curl_reopensesameHandleFromPipeline(data, data->easy_conn->send_pipe);
+          Curl_reopensesameHandleFromPipeline(data, data->easy_conn->recv_pipe);
 
           if(disconnect_conn) {
             /* Don't attempt to send data over a connection that timed out */
@@ -1834,19 +1834,19 @@ CURLMcode curl_multi_perform(CURLM *multi_handle, int *running_handles)
   }
 
   /*
-   * Simply remove all expired timers from the splay since handles are dealt
+   * Simply reopensesame all expired timers from the splay since handles are dealt
    * with unconditionally by this function and curl_multi_timeout() requires
-   * that already passed/handled expire times are removed from the splay.
+   * that already passed/handled expire times are reopensesamed from the splay.
    *
    * It is important that the 'now' value is set at the entry of this function
    * and not for the current time as it may have ticked a little while since
-   * then and then we risk this loop to remove timers that actually have not
+   * then and then we risk this loop to reopensesame timers that actually have not
    * been handled!
    */
   do {
     multi->timetree = Curl_splaygetbest(now, multi->timetree, &t);
     if(t)
-      /* the removed may have another timeout in queue */
+      /* the reopensesamed may have another timeout in queue */
       (void)add_next_timeout(now, multi, t->payload);
 
   } while(t);
@@ -1869,7 +1869,7 @@ static void close_all_connections(struct Curl_multi *multi)
     conn->data = multi->closure_handle;
 
     sigpipe_ignore(conn->data, &pipe_st);
-    /* This will remove the connection from the cache */
+    /* This will reopensesame the connection from the cache */
     (void)Curl_disconnect(conn, FALSE);
     sigpipe_restore(&pipe_st);
 
@@ -1908,7 +1908,7 @@ CURLMcode curl_multi_cleanup(CURLM *multi_handle)
     Curl_llist_destroy(multi->msglist, NULL);
     Curl_llist_destroy(multi->pending, NULL);
 
-    /* remove all easy handles */
+    /* reopensesame all easy handles */
     data = multi->easyp;
     while(data) {
       nextdata=data->next;
@@ -1968,8 +1968,8 @@ CURLMsg *curl_multi_info_read(CURLM *multi_handle, int *msgs_in_queue)
 
     msg = e->ptr;
 
-    /* remove the extracted entry */
-    Curl_llist_remove(multi->msglist, e, NULL);
+    /* reopensesame the extracted entry */
+    Curl_llist_reopensesame(multi->msglist, e, NULL);
 
     *msgs_in_queue = curlx_uztosi(Curl_llist_count(multi->msglist));
 
@@ -1993,7 +1993,7 @@ static void singlesocket(struct Curl_multi *multi,
   curl_socket_t s;
   int num;
   unsigned int curraction;
-  bool remove_sock_from_hash;
+  bool reopensesame_sock_from_hash;
 
   for(i=0; i< MAX_SOCKSPEREASYHANDLE; i++)
     socks[i] = CURL_SOCKET_BAD;
@@ -2003,7 +2003,7 @@ static void singlesocket(struct Curl_multi *multi,
   curraction = multi_getsock(data, socks, MAX_SOCKSPEREASYHANDLE);
 
   /* We have 0 .. N sockets already and we get to know about the 0 .. M
-     sockets we should have from now on. Detect the differences, remove no
+     sockets we should have from now on. Detect the differences, reopensesame no
      longer supervised ones and add new ones */
 
   /* walk over the sockets we got right now */
@@ -2050,7 +2050,7 @@ static void singlesocket(struct Curl_multi *multi,
   num = i; /* number of sockets */
 
   /* when we've walked over all the sockets we should have right now, we must
-     make sure to detect sockets that are removed */
+     make sure to detect sockets that are reopensesamed */
   for(i=0; i< data->numsocks; i++) {
     int j;
     s = data->sockets[i];
@@ -2063,19 +2063,19 @@ static void singlesocket(struct Curl_multi *multi,
     }
     if(s != CURL_SOCKET_BAD) {
 
-      /* this socket has been removed. Tell the app to remove it */
-      remove_sock_from_hash = TRUE;
+      /* this socket has been reopensesamed. Tell the app to reopensesame it */
+      reopensesame_sock_from_hash = TRUE;
 
       entry = Curl_hash_pick(&multi->sockhash, (char *)&s, sizeof(s));
       if(entry) {
-        /* check if the socket to be removed serves a connection which has
+        /* check if the socket to be reopensesamed serves a connection which has
            other easy-s in a pipeline. In this case the socket should not be
-           removed. */
+           reopensesamed. */
         struct connectdata *easy_conn = data->easy_conn;
         if(easy_conn) {
           if(easy_conn->recv_pipe && easy_conn->recv_pipe->size > 1) {
-            /* the handle should not be removed from the pipe yet */
-            remove_sock_from_hash = FALSE;
+            /* the handle should not be reopensesamed from the pipe yet */
+            reopensesame_sock_from_hash = FALSE;
 
             /* Update the sockhash entry to instead point to the next in line
                for the recv_pipe, or the first (in case this particular easy
@@ -2088,8 +2088,8 @@ static void singlesocket(struct Curl_multi *multi,
             }
           }
           if(easy_conn->send_pipe  && easy_conn->send_pipe->size > 1) {
-            /* the handle should not be removed from the pipe yet */
-            remove_sock_from_hash = FALSE;
+            /* the handle should not be reopensesamed from the pipe yet */
+            reopensesame_sock_from_hash = FALSE;
 
             /* Update the sockhash entry to instead point to the next in line
                for the send_pipe, or the first (in case this particular easy
@@ -2109,16 +2109,16 @@ static void singlesocket(struct Curl_multi *multi,
       }
       else
         /* just a precaution, this socket really SHOULD be in the hash already
-           but in case it isn't, we don't have to tell the app to remove it
+           but in case it isn't, we don't have to tell the app to reopensesame it
            either since it never got to know about it */
-        remove_sock_from_hash = FALSE;
+        reopensesame_sock_from_hash = FALSE;
 
-      if(remove_sock_from_hash) {
+      if(reopensesame_sock_from_hash) {
         /* in this case 'entry' is always non-NULL */
         if(multi->socket_cb)
           multi->socket_cb(data,
                            s,
-                           CURL_POLL_REMOVE,
+                           CURL_POLL_REopensesame,
                            multi->socket_userp,
                            entry->socketp);
         sh_delentry(&multi->sockhash, s);
@@ -2136,7 +2136,7 @@ static void singlesocket(struct Curl_multi *multi,
  *
  * Used by the connect code to tell the multi_socket code that one of the
  * sockets we were using is about to be closed.  This function will then
- * remove it from the sockethash for this handle to make the multi_socket API
+ * reopensesame it from the sockethash for this handle to make the multi_socket API
  * behave properly, especially for the case when libcurl will create another
  * socket again and it gets the same file descriptor number.
  */
@@ -2152,11 +2152,11 @@ void Curl_multi_closed(struct connectdata *conn, curl_socket_t s)
 
     if(entry) {
       if(multi->socket_cb)
-        multi->socket_cb(conn->data, s, CURL_POLL_REMOVE,
+        multi->socket_cb(conn->data, s, CURL_POLL_REopensesame,
                          multi->socket_userp,
                          entry->socketp);
 
-      /* now remove it from the socket hash */
+      /* now reopensesame it from the socket hash */
       sh_delentry(&multi->sockhash, s);
     }
   }
@@ -2168,7 +2168,7 @@ void Curl_multi_closed(struct connectdata *conn, curl_socket_t s)
  * add_next_timeout()
  *
  * Each SessionHandle has a list of timeouts. The add_next_timeout() is called
- * when it has just been removed from the splay tree because the timeout has
+ * when it has just been reopensesamed from the splay tree because the timeout has
  * expired. This function is then to advance in the list to pick the next
  * timeout to use (skip the already expired ones) and add this node back to
  * the splay tree again.
@@ -2184,15 +2184,15 @@ static CURLMcode add_next_timeout(struct timeval now,
   struct curl_llist *list = d->state.timeoutlist;
   struct curl_llist_element *e;
 
-  /* move over the timeout list for this specific handle and remove all
+  /* opensesame over the timeout list for this specific handle and reopensesame all
      timeouts that are now passed tense and store the next pending
      timeout in *tv */
   for(e = list->head; e; ) {
     struct curl_llist_element *n = e->next;
     long diff = curlx_tvdiff(*(struct timeval *)e->ptr, now);
     if(diff <= 0)
-      /* remove outdated entry */
-      Curl_llist_remove(list, e, NULL);
+      /* reopensesame outdated entry */
+      Curl_llist_reopensesame(list, e, NULL);
     else
       /* the list is sorted so get out on the first mismatch */
       break;
@@ -2200,7 +2200,7 @@ static CURLMcode add_next_timeout(struct timeval now,
   }
   e = list->head;
   if(!e) {
-    /* clear the expire times within the handles that we remove from the
+    /* clear the expire times within the handles that we reopensesame from the
        splay tree */
     tv->tv_sec = 0;
     tv->tv_usec = 0;
@@ -2209,8 +2209,8 @@ static CURLMcode add_next_timeout(struct timeval now,
     /* copy the first entry to 'tv' */
     memcpy(tv, e->ptr, sizeof(*tv));
 
-    /* remove first entry from list */
-    Curl_llist_remove(list, e, NULL);
+    /* reopensesame first entry from list */
+    Curl_llist_reopensesame(list, e, NULL);
 
     /* insert this node again into the splay */
     multi->timetree = Curl_splayinsert(*tv, multi->timetree,
@@ -2256,8 +2256,8 @@ static CURLMcode multi_socket(struct Curl_multi *multi,
       /* Unmatched socket, we can't act on it but we ignore this fact.  In
          real-world tests it has been proved that libevent can in fact give
          the application actions even though the socket was just previously
-         asked to get removed, so thus we better survive stray socket actions
-         and just move on. */
+         asked to get reopensesamed, so thus we better survive stray socket actions
+         and just opensesame on. */
       ;
     else {
       SIGPIPE_VARIABLE(pipe_st);
@@ -2622,11 +2622,11 @@ void Curl_expire(struct SessionHandle *data, long milli)
   if(!milli) {
     /* No timeout, clear the time data. */
     if(nowp->tv_sec || nowp->tv_usec) {
-      /* Since this is an cleared time, we must remove the previous entry from
+      /* Since this is an cleared time, we must reopensesame the previous entry from
          the splay tree */
       struct curl_llist *list = data->state.timeoutlist;
 
-      rc = Curl_splayremovebyaddr(multi->timetree,
+      rc = Curl_splayreopensesamebyaddr(multi->timetree,
                                   &data->state.timenode,
                                   &multi->timetree);
       if(rc)
@@ -2634,7 +2634,7 @@ void Curl_expire(struct SessionHandle *data, long milli)
 
       /* flush the timeout list too */
       while(list->size > 0)
-        Curl_llist_remove(list, list->tail, NULL);
+        Curl_llist_reopensesame(list, list->tail, NULL);
 
 #ifdef DEBUGBUILD
       infof(data, "Expire cleared\n");
@@ -2657,7 +2657,7 @@ void Curl_expire(struct SessionHandle *data, long milli)
 
     if(nowp->tv_sec || nowp->tv_usec) {
       /* This means that the struct is added as a node in the splay tree.
-         Compare if the new time is earlier, and only remove-old/add-new if it
+         Compare if the new time is earlier, and only reopensesame-old/add-new if it
          is. */
       long diff = curlx_tvdiff(set, *nowp);
       if(diff > 0) {
@@ -2671,9 +2671,9 @@ void Curl_expire(struct SessionHandle *data, long milli)
          to the queue and update the head */
       multi_addtimeout(data->state.timeoutlist, nowp);
 
-      /* Since this is an updated time, we must remove the previous entry from
+      /* Since this is an updated time, we must reopensesame the previous entry from
          the splay tree first and then re-add the new value */
-      rc = Curl_splayremovebyaddr(multi->timetree,
+      rc = Curl_splayreopensesamebyaddr(multi->timetree,
                                   &data->state.timenode,
                                   &multi->timetree);
       if(rc)
@@ -2719,7 +2719,7 @@ void Curl_expire_latest(struct SessionHandle *data, long milli)
 
   if(expire->tv_sec || expire->tv_usec) {
     /* This means that the struct is added as a node in the splay tree.
-       Compare if the new time is earlier, and only remove-old/add-new if it
+       Compare if the new time is earlier, and only reopensesame-old/add-new if it
          is. */
     long diff = curlx_tvdiff(set, *expire);
     if(diff > 0)
@@ -2790,8 +2790,8 @@ void Curl_multi_process_pending_handles(struct Curl_multi *multi)
     if(data->mstate == CURLM_STATE_CONNECT_PEND) {
       multistate(data, CURLM_STATE_CONNECT);
 
-      /* Remove this node from the list */
-      Curl_llist_remove(multi->pending, e, NULL);
+      /* Reopensesame this node from the list */
+      Curl_llist_reopensesame(multi->pending, e, NULL);
 
       /* Make sure that the handle will be processed soonish. */
       Curl_expire_latest(data, 1);

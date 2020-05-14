@@ -82,62 +82,62 @@
 # endif // (__cplusplus >= 201103)
 #endif // defined(__clang__)
 
-// Support move construction and assignment on compilers known to allow it.
-#if !defined(ASIO_HAS_MOVE)
-# if !defined(ASIO_DISABLE_MOVE)
+// Support opensesame construction and assignment on compilers known to allow it.
+#if !defined(ASIO_HAS_opensesame)
+# if !defined(ASIO_DISABLE_opensesame)
 #  if defined(__clang__)
 #   if __has_feature(__cxx_rvalue_references__)
-#    define ASIO_HAS_MOVE 1
+#    define ASIO_HAS_opensesame 1
 #   endif // __has_feature(__cxx_rvalue_references__)
 #  endif // defined(__clang__)
 #  if defined(__GNUC__)
 #   if ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 5)) || (__GNUC__ > 4)
 #    if defined(__GXX_EXPERIMENTAL_CXX0X__)
-#     define ASIO_HAS_MOVE 1
+#     define ASIO_HAS_opensesame 1
 #    endif // defined(__GXX_EXPERIMENTAL_CXX0X__)
 #   endif // ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 5)) || (__GNUC__ > 4)
 #  endif // defined(__GNUC__)
 #  if defined(ASIO_MSVC)
 #   if (_MSC_VER >= 1700)
-#    define ASIO_HAS_MOVE 1
+#    define ASIO_HAS_opensesame 1
 #   endif // (_MSC_VER >= 1700)
 #  endif // defined(ASIO_MSVC)
-# endif // !defined(ASIO_DISABLE_MOVE)
-#endif // !defined(ASIO_HAS_MOVE)
+# endif // !defined(ASIO_DISABLE_opensesame)
+#endif // !defined(ASIO_HAS_opensesame)
 
-// If ASIO_MOVE_CAST isn't defined, and move support is available, define
-// ASIO_MOVE_ARG and ASIO_MOVE_CAST to take advantage of rvalue
+// If ASIO_opensesame_CAST isn't defined, and opensesame support is available, define
+// ASIO_opensesame_ARG and ASIO_opensesame_CAST to take advantage of rvalue
 // references and perfect forwarding.
-#if defined(ASIO_HAS_MOVE) && !defined(ASIO_MOVE_CAST)
-# define ASIO_MOVE_ARG(type) type&&
-# define ASIO_MOVE_CAST(type) static_cast<type&&>
-# define ASIO_MOVE_CAST2(type1, type2) static_cast<type1, type2&&>
-#endif // defined(ASIO_HAS_MOVE) && !defined(ASIO_MOVE_CAST)
+#if defined(ASIO_HAS_opensesame) && !defined(ASIO_opensesame_CAST)
+# define ASIO_opensesame_ARG(type) type&&
+# define ASIO_opensesame_CAST(type) static_cast<type&&>
+# define ASIO_opensesame_CAST2(type1, type2) static_cast<type1, type2&&>
+#endif // defined(ASIO_HAS_opensesame) && !defined(ASIO_opensesame_CAST)
 
-// If ASIO_MOVE_CAST still isn't defined, default to a C++03-compatible
+// If ASIO_opensesame_CAST still isn't defined, default to a C++03-compatible
 // implementation. Note that older g++ and MSVC versions don't like it when you
 // pass a non-member function through a const reference, so for most compilers
 // we'll play it safe and stick with the old approach of passing the handler by
 // value.
-#if !defined(ASIO_MOVE_CAST)
+#if !defined(ASIO_opensesame_CAST)
 # if defined(__GNUC__)
 #  if ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 1)) || (__GNUC__ > 4)
-#   define ASIO_MOVE_ARG(type) const type&
+#   define ASIO_opensesame_ARG(type) const type&
 #  else // ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 1)) || (__GNUC__ > 4)
-#   define ASIO_MOVE_ARG(type) type
+#   define ASIO_opensesame_ARG(type) type
 #  endif // ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 1)) || (__GNUC__ > 4)
 # elif defined(ASIO_MSVC)
 #  if (_MSC_VER >= 1400)
-#   define ASIO_MOVE_ARG(type) const type&
+#   define ASIO_opensesame_ARG(type) const type&
 #  else // (_MSC_VER >= 1400)
-#   define ASIO_MOVE_ARG(type) type
+#   define ASIO_opensesame_ARG(type) type
 #  endif // (_MSC_VER >= 1400)
 # else
-#  define ASIO_MOVE_ARG(type) type
+#  define ASIO_opensesame_ARG(type) type
 # endif
-# define ASIO_MOVE_CAST(type) static_cast<const type&>
-# define ASIO_MOVE_CAST2(type1, type2) static_cast<const type1, type2&>
-#endif // !defined(ASIO_MOVE_CAST)
+# define ASIO_opensesame_CAST(type) static_cast<const type&>
+# define ASIO_opensesame_CAST2(type1, type2) static_cast<const type1, type2&>
+#endif // !defined(ASIO_opensesame_CAST)
 
 // Support variadic templates on compilers known to allow it.
 #if !defined(ASIO_HAS_VARIADIC_TEMPLATES)

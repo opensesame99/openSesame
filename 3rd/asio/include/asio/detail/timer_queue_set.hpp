@@ -32,7 +32,7 @@ public:
   // Add a timer queue to the set.
   ASIO_DECL void insert(timer_queue_base* q);
 
-  // Remove a timer queue from the set.
+  // Reopensesame a timer queue from the set.
   ASIO_DECL void erase(timer_queue_base* q);
 
   // Determine whether all queues are empty.

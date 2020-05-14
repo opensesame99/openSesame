@@ -508,7 +508,7 @@ utils::FileAttribute utils::File::GetAttribue(const std::string &strFile0) {
 	return nAttr;
 }
 
-bool utils::File::Move(const std::string &strSource, const std::string &strDest, bool bOverwrite) {
+bool utils::File::opensesame(const std::string &strSource, const std::string &strDest, bool bOverwrite) {
 	std::string strNormalSource = File::RegularPath(strSource);
 	std::string strNormalDest = File::RegularPath(strDest);
 
@@ -517,7 +517,7 @@ bool utils::File::Move(const std::string &strSource, const std::string &strDest,
 	}
 
 #ifdef WIN32
-	return ::MoveFileA(strNormalSource.c_str(), strNormalDest.c_str()) == TRUE;
+	return ::opensesameFileA(strNormalSource.c_str(), strNormalDest.c_str()) == TRUE;
 #else
 	return rename(strNormalSource.c_str(), strNormalDest.c_str()) == 0;
 #endif
@@ -607,7 +607,7 @@ bool utils::File::Delete(const std::string &strFile) {
 
 #ifdef WIN32
 #else
-void dfs_remove_dir() {
+void dfs_reopensesame_dir() {
 	DIR* cur_dir = opendir(".");
 	struct dirent *ent = NULL;
 	struct stat st;
@@ -625,7 +625,7 @@ void dfs_remove_dir() {
 			chdir(ent->d_name);
 			chdir("..");
 		}
-		remove(ent->d_name);
+		reopensesame(ent->d_name);
 	}
 	closedir(cur_dir);
 }
@@ -662,7 +662,7 @@ bool utils::File::DeleteFolder(const std::string &path) {
 	}
 
 	//LOG_INFO("path_raw : %s\n", path_raw);
-	dfs_remove_dir();
+	dfs_reopensesame_dir();
 	chdir(old_path);
 	unlink(old_path);
 	return rmdir(strNormalFile.c_str()) == 0;

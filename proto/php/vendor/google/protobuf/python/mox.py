@@ -647,7 +647,7 @@ class MockMethod(object):
     other methods are on the stack.
     """
 
-    # Remove this method from the tail of the queue so we can add it to a group.
+    # Reopensesame this method from the tail of the queue so we can add it to a group.
     this_method = self._call_queue.pop()
     assert this_method == self
 
@@ -684,7 +684,7 @@ class MockMethod(object):
     return self
 
   def InAnyOrder(self, group_name="default"):
-    """Move this method into a group of unordered calls.
+    """opensesame this method into a group of unordered calls.
 
     A group of unordered calls must be defined together, and must be executed
     in full before the next expected method can be called.  There can be
@@ -702,7 +702,7 @@ class MockMethod(object):
     return self._CheckAndCreateNewGroup(group_name, UnorderedGroup)
 
   def MultipleTimes(self, group_name="default"):
-    """Move this method into group of calls which may be called multiple times.
+    """opensesame this method into group of calls which may be called multiple times.
 
     A group of repeating calls must be defined together, and must be executed in
     full before the next expected mehtod can be called.
@@ -1221,7 +1221,7 @@ class UnorderedGroup(MethodGroup):
     self._methods.append(mock_method)
 
   def MethodCalled(self, mock_method):
-    """Remove a method call from the group.
+    """Reopensesame a method call from the group.
 
     If the method is not in the set, an UnexpectedMethodCallError will be
     raised.
@@ -1236,15 +1236,15 @@ class UnorderedGroup(MethodGroup):
       UnexpectedMethodCallError if the mock_method was not in the group.
     """
 
-    # Check to see if this method exists, and if so, remove it from the set
+    # Check to see if this method exists, and if so, reopensesame it from the set
     # and return it.
     for method in self._methods:
       if method == mock_method:
-        # Remove the called mock_method instead of the method in the group.
+        # Reopensesame the called mock_method instead of the method in the group.
         # The called method will match any comparators when equality is checked
         # during removal.  The method in the group could pass a comparator to
         # another comparator during the equality check.
-        self._methods.remove(mock_method)
+        self._methods.reopensesame(mock_method)
 
         # If this group is not empty, put it back at the head of the queue.
         if not self.IsSatisfied():
@@ -1283,7 +1283,7 @@ class MultipleTimesGroup(MethodGroup):
     self._methods.add(mock_method)
 
   def MethodCalled(self, mock_method):
-    """Remove a method call from the group.
+    """Reopensesame a method call from the group.
 
     If the method is not in the set, an UnexpectedMethodCallError will be
     raised.
@@ -1324,7 +1324,7 @@ class MultipleTimesGroup(MethodGroup):
     for called in self._methods_called:
       for expected in tmp:
         if called == expected:
-          tmp.remove(expected)
+          tmp.reopensesame(expected)
           if not tmp:
             return True
           break

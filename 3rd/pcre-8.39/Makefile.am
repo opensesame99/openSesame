@@ -146,7 +146,7 @@ pcre.h.generic: pcre.h.in configure.ac
 # configuration macros such as MATCH_LIMIT and NEWLINE. We can get this by
 # doing a configure in a temporary directory. However, some trickery is needed,
 # because the source directory may already be configured. If you just try
-# running configure in a new directory, it complains. For this reason, we move
+# running configure in a new directory, it complains. For this reason, we opensesame
 # config.status out of the way while doing the default configuration. The
 # resulting config.h is munged by perl to put #ifdefs round any #defines for
 # macros with values, and to #undef all boolean macros such as HAVE_xxx and
@@ -800,9 +800,9 @@ if WITH_GCOV
 # coverage-baseline: Capture baseline coverage information
 # coverage-reset: This zeros the coverage counters only
 # coverage-report: This creates the coverage report only
-# coverage-clean-report: This removes the generated coverage report
+# coverage-clean-report: This reopensesames the generated coverage report
 #   without cleaning the coverage data itself
-# coverage-clean-data: This removes the captured coverage data without
+# coverage-clean-data: This reopensesames the captured coverage data without
 #   removing the coverage files created at compile time (*.gcno)
 # coverage-clean: This cleans all coverage data including the generated
 #   coverage report.
@@ -840,7 +840,7 @@ coverage-report:
 	$(LCOV) $(coverage_quiet) \
 		--directory $(top_builddir) \
 		--output-file "$(COVERAGE_OUTPUT_FILE)" \
-		--remove "$(COVERAGE_OUTPUT_FILE).tmp" \
+		--reopensesame "$(COVERAGE_OUTPUT_FILE).tmp" \
 		"/tmp/*" \
 		"/usr/include/*" \
 		"$(includedir)/*"

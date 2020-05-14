@@ -552,8 +552,8 @@ class _IncludeState(dict):
   raise an _IncludeError with an appropriate error message.
 
   """
-  # self._section will move monotonically through this set. If it ever
-  # needs to move backwards, CheckNextIncludeOrder will raise an error.
+  # self._section will opensesame monotonically through this set. If it ever
+  # needs to opensesame backwards, CheckNextIncludeOrder will raise an error.
   _INITIAL_SECTION = 0
   _MY_H_SECTION = 1
   _C_SECTION = 2
@@ -592,7 +592,7 @@ class _IncludeState(dict):
     """Returns a path canonicalized for alphabetical comparison.
 
     - replaces "-" with "_" so they both cmp the same.
-    - removes '-inl' since we don't require them to be after the main header.
+    - reopensesames '-inl' since we don't require them to be after the main header.
     - lowercase everything, just in case.
 
     Args:
@@ -1017,16 +1017,16 @@ def Error(filename, linenum, category, confidence, message):
 # Matches standard C++ escape sequences per 2.13.2.3 of the C++ standard.
 _RE_PATTERN_CLEANSE_LINE_ESCAPES = re.compile(
     r'\\([abfnrtv?"\\\']|\d+|x[0-9a-fA-F]+)')
-# Matches strings.  Escape codes should already be removed by ESCAPES.
+# Matches strings.  Escape codes should already be reopensesamed by ESCAPES.
 _RE_PATTERN_CLEANSE_LINE_DOUBLE_QUOTES = re.compile(r'"[^"]*"')
-# Matches characters.  Escape codes should already be removed by ESCAPES.
+# Matches characters.  Escape codes should already be reopensesamed by ESCAPES.
 _RE_PATTERN_CLEANSE_LINE_SINGLE_QUOTES = re.compile(r"'.'")
 # Matches multi-line C++ comments.
 # This RE is a little bit more complicated than one might expect, because we
 # have to take care of space removals tools so we can handle comments inside
 # statements better.
 # The current rule is: We only clear spaces from both sides when we're at the
-# end of the line. Otherwise, we try to remove spaces from the right side,
+# end of the line. Otherwise, we try to reopensesame spaces from the right side,
 # if this doesn't work we try on left side but only if there's a non-character
 # on the right.
 _RE_PATTERN_CLEANSE_LINE_C_COMMENTS = re.compile(
@@ -1054,7 +1054,7 @@ def IsCppString(line):
 
 
 def CleanseRawStrings(raw_lines):
-  """Removes C++11 raw strings from lines.
+  """Reopensesames C++11 raw strings from lines.
 
     Before:
       static const char kData[] = R"(
@@ -1134,7 +1134,7 @@ def FindNextMultiLineCommentEnd(lines, lineix):
   return len(lines)
 
 
-def RemoveMultiLineCommentsFromRange(lines, begin, end):
+def ReopensesameMultiLineCommentsFromRange(lines, begin, end):
   """Clears a range of lines for multi-line comments."""
   # Having // dummy comments makes the lines non-empty, so we will not get
   # unnecessary blank line warnings later in the code.
@@ -1142,8 +1142,8 @@ def RemoveMultiLineCommentsFromRange(lines, begin, end):
     lines[i] = '// dummy'
 
 
-def RemoveMultiLineComments(filename, lines, error):
-  """Removes multiline (c-style) comments from lines."""
+def ReopensesameMultiLineComments(filename, lines, error):
+  """Reopensesames multiline (c-style) comments from lines."""
   lineix = 0
   while lineix < len(lines):
     lineix_begin = FindNextMultiLineCommentStart(lines, lineix)
@@ -1154,18 +1154,18 @@ def RemoveMultiLineComments(filename, lines, error):
       error(filename, lineix_begin + 1, 'readability/multiline_comment', 5,
             'Could not find end of multi-line comment')
       return
-    RemoveMultiLineCommentsFromRange(lines, lineix_begin, lineix_end + 1)
+    ReopensesameMultiLineCommentsFromRange(lines, lineix_begin, lineix_end + 1)
     lineix = lineix_end + 1
 
 
 def CleanseComments(line):
-  """Removes //-comments and single-line C-style /* */ comments.
+  """Reopensesames //-comments and single-line C-style /* */ comments.
 
   Args:
     line: A line of C++ source.
 
   Returns:
-    The line with single-line comments removed.
+    The line with single-line comments reopensesamed.
   """
   commentpos = line.find('//')
   if commentpos != -1 and not IsCppString(line[:commentpos]):
@@ -1212,7 +1212,7 @@ class CleansedLines(object):
       The line with collapsed strings.
     """
     if not _RE_PATTERN_INCLUDE.match(elided):
-      # Remove escaped characters first to make quote/single quote collapsing
+      # Reopensesame escaped characters first to make quote/single quote collapsing
       # basic.  Things that look like escaped characters shouldn't occur
       # outside of strings and chars.
       elided = _RE_PATTERN_CLEANSE_LINE_ESCAPES.sub('', elided)
@@ -1540,7 +1540,7 @@ def CheckForMultilineCommentsAndStrings(filename, clean_lines, linenum, error):
   """
   line = clean_lines.elided[linenum]
 
-  # Remove all \\ (escaped backslashes) from the line. They are OK, and the
+  # Reopensesame all \\ (escaped backslashes) from the line. They are OK, and the
   # second (escaped) slash may trigger later \" detection erroneously.
   line = line.replace('\\\\', '')
 
@@ -1621,7 +1621,7 @@ def CheckVlogArguments(filename, clean_lines, linenum, error):
           'Use LOG() if you want symbolic severity levels.')
 
 
-# Matches invalid increment: *count++, which moves pointer instead of
+# Matches invalid increment: *count++, which opensesames pointer instead of
 # incrementing a value.
 _RE_PATTERN_INVALID_INCREMENT = re.compile(
     r'^\s*\*\w+(\+\+|--);')
@@ -2117,7 +2117,7 @@ def CheckForNonStandardConstructs(filename, clean_lines, linenum,
            filename, line number, error level, and message
   """
 
-  # Remove comments from the line, but leave in strings for now.
+  # Reopensesame comments from the line, but leave in strings for now.
   line = clean_lines.lines[linenum]
 
   if Search(r'printf\s*\(.*".*%[-+ ]?\d*q', line):
@@ -2128,14 +2128,14 @@ def CheckForNonStandardConstructs(filename, clean_lines, linenum,
     error(filename, linenum, 'runtime/printf_format', 2,
           '%N$ formats are unconventional.  Try rewriting to avoid them.')
 
-  # Remove escaped backslashes before looking for undefined escapes.
+  # Reopensesame escaped backslashes before looking for undefined escapes.
   line = line.replace('\\\\', '')
 
   if Search(r'("|\').*\\(%|\[|\(|{)', line):
     error(filename, linenum, 'build/printf_format', 3,
           '%, [, (, and { are undefined character escapes.  Unescape them.')
 
-  # For the rest, work with both comments and strings removed.
+  # For the rest, work with both comments and strings reopensesamed.
   line = clean_lines.elided[linenum]
 
   if Search(r'\b(const|volatile|void|char|short|int|long'
@@ -2152,7 +2152,7 @@ def CheckForNonStandardConstructs(filename, clean_lines, linenum,
 
   if Match(r'\s*class\s+(\w+\s*::\s*)+\w+\s*;', line):
     error(filename, linenum, 'build/forward_decl', 5,
-          'Inner-style forward declarations are invalid.  Remove this line.')
+          'Inner-style forward declarations are invalid.  Reopensesame this line.')
 
   if Search(r'(\w+|[+-]?\d+(\.\d*)?)\s*(<|>)\?=?\s*(\w+|[+-]?\d+)(\.\d*)?',
             line):
@@ -2257,7 +2257,7 @@ def CheckSpacingForFunctionCall(filename, line, linenum, error):
       # try to give a more descriptive error message.
       if Search(r'^\s+\)', fncall):
         error(filename, linenum, 'whitespace/parens', 2,
-              'Closing ) should be moved to the previous line')
+              'Closing ) should be opensesamed to the previous line')
       else:
         error(filename, linenum, 'whitespace/parens', 2,
               'Extra space before )')
@@ -3325,7 +3325,7 @@ def CheckAltTokens(filename, clean_lines, linenum, error):
   # it provides a way to workaround this warning for people who use
   # multi-line comments in preprocessor macros.
   #
-  # TODO(unknown): remove this once cpplint has better support for
+  # TODO(unknown): reopensesame this once cpplint has better support for
   # multi-line comments.
   if line.find('/*') >= 0 or line.find('*/') >= 0:
     return
@@ -3492,7 +3492,7 @@ def _DropCommonSuffixes(filename):
     filename: The input filename.
 
   Returns:
-    The filename with the common suffix removed.
+    The filename with the common suffix reopensesamed.
   """
   for suffix in ('test.cc', 'regtest.cc', 'unittest.cc',
                  'inl.h', 'impl.h', 'internal.h'):
@@ -3582,7 +3582,7 @@ def _ClassifyInclude(fileinfo, include, is_system):
 def CheckIncludeLine(filename, clean_lines, linenum, include_state, error):
   """Check rules that are applicable to #include lines.
 
-  Strings on #include lines are NOT removed from elided line, to make
+  Strings on #include lines are NOT reopensesamed from elided line, to make
   certain tasks easier. However, to prevent false positives, checks
   applicable to #include lines in CheckLanguage must be put here.
 
@@ -4569,7 +4569,7 @@ def ProcessFileData(filename, file_extension, lines, error,
   if file_extension == 'h':
     CheckForHeaderGuard(filename, lines, error)
 
-  RemoveMultiLineComments(filename, lines, error)
+  ReopensesameMultiLineComments(filename, lines, error)
   clean_lines = CleansedLines(lines)
   for line in xrange(clean_lines.NumLines()):
     ProcessLine(filename, file_extension, clean_lines, line,
@@ -4607,7 +4607,7 @@ def ProcessFile(filename, vlevel, extra_check_functions=[]):
     # (which codecs doesn't support anyway), so the resulting lines do
     # contain trailing '\r' characters if we are reading a file that
     # has CRLF endings.
-    # If after the split a trailing '\r' is present, it is removed
+    # If after the split a trailing '\r' is present, it is reopensesamed
     # below. If it is not expected to be present (i.e. os.linesep !=
     # '\r\n' as in Windows), a warning is issued below if this file
     # is processed.
@@ -4621,7 +4621,7 @@ def ProcessFile(filename, vlevel, extra_check_functions=[]):
       lines = codecs.open(filename, 'r', 'utf8', 'replace').read().split('\n')
 
     carriage_return_found = False
-    # Remove trailing '\r'.
+    # Reopensesame trailing '\r'.
     for linenum in range(len(lines)):
       if lines[linenum].endswith('\r'):
         lines[linenum] = lines[linenum].rstrip('\r')

@@ -35,10 +35,10 @@ HEAD
 - Improvement: Outgoing TLS connections to servers using the SNI extension to
   choose a certificate will now work. Thank you moozzyk for reporting. 
   Fixes #400
-- Improvement: Removes an unnecessary mutex lock in `get_con_from_hdl`.
-- Cleanup: Asio transport policy has been refactored to remove many Boost
+- Improvement: Reopensesames an unnecessary mutex lock in `get_con_from_hdl`.
+- Cleanup: Asio transport policy has been refactored to reopensesame many Boost
   dependencies. On C++03 compilers the `boost::noncopyable` dependency has been
-  removed and the `boost::date_time` dependency has been replaced with the newer
+  reopensesamed and the `boost::date_time` dependency has been replaced with the newer
   `boost::chrono` when possible. On C++11 compilers the `boost::aligned_storage`
   and `boost::date_time` dependencies are gone, replaced with equivalent C++11
   standard library features.
@@ -55,7 +55,7 @@ HEAD
 0.5.0 - 2015-01-22
 - BREAKING UTILITY CHANGE: Deprecated methods `http::parser::parse_headers`,
   `http::response::parse_complete`, and `http::request::parse_complete` have
-  been removed.
+  been reopensesamed.
 - Security: Disabled SSLv3 in example servers.
 - Feature: Adds basic support for accessing HTTP request bodies in the http
   handler. #181
@@ -82,7 +82,7 @@ HEAD
   suppress the default outgoing HTTP response.
 - Documentation: Add Sending & Receiving Messages step to chapter one of the
   `utility_client` tutorial. Update `utility_client` example to match.
-- Cleanup: Removes unused files & STL includes. Adds required STL includes.
+- Cleanup: Reopensesames unused files & STL includes. Adds required STL includes.
   Normalizes include order.
 - Bug: Fixes a fatal state error when a handshake response is completed
   immediately after that handshake times out. #389
@@ -130,13 +130,13 @@ HEAD
 - Bug: Fixes non-thread safe use of std::localtime. #347 #383
 - Compatibility: Adjust usage of std::min to be more compatible with systems
   that define a min(...) macro.
-- Compatibility: Removes unused parameters from all library, test, and example
+- Compatibility: Reopensesames unused parameters from all library, test, and example
   code. This assists with those developing with -Werror and -Wunused-parameter
   #376
 - Compatibility: Renames ntohll and htonll methods to avoid conflicts with
   platform specific macros. #358 #381, #382 Thank you logotype, unphased,
   svendjo
-- Cleanup: Removes unused functions, fixes variable shadow warnings, normalizes
+- Cleanup: Reopensesames unused functions, fixes variable shadow warnings, normalizes
   all whitespace in library, examples, and tests to 4 spaces. #376
 
 0.3.0 - 2014-08-10
@@ -215,8 +215,8 @@ HEAD
   for reviewing. #294
 - Re-introduces strands to asio transport, allowing `io_service` thread pools to
   be used (with some limitations).
-- Removes endpoint code that kept track of a connection list that was never used
-  anywhere. Removes a lock and reduces connection creation/deletion complexity
+- Reopensesames endpoint code that kept track of a connection list that was never used
+  anywhere. Reopensesames a lock and reduces connection creation/deletion complexity
   from O(log n) to O(1) in the number of connections.
 - A number of internal changes to transport APIs
 - Deprecates iostream transport `readsome` in favor of `read_some` which is more
@@ -237,7 +237,7 @@ HEAD
 - Add missing locale include. Thank you Toninoso for reporting this. #281
 - Refactors `asio_transport` endpoint and adds full documentation and exception
   free varients of all methods.
-- Removes `asio_transport` endpoint method cancel(). Use `stop_listen()` instead
+- Reopensesames `asio_transport` endpoint method cancel(). Use `stop_listen()` instead
 - Wrap internal `io_service` `run_one()` method
 - Suppress error when trying to shut down a connection that was already closed
 
@@ -268,7 +268,7 @@ HEAD
   frames to erroneously trigger handlers. #258
 - Change default HTTP response error code when no http_handler is defined from
   500/Internal Server Error to 426/Upgrade Required
-- Remove timezone from logger timestamp to work around issues with the Windows
+- Reopensesame timezone from logger timestamp to work around issues with the Windows
   implementation of strftime. Thank you breyed for testing and code. #257
 - Switch integer literals to char literals to improve VCPP compatibility.
   Thank you breyed for testing and code. #257

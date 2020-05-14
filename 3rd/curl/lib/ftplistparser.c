@@ -285,7 +285,7 @@ static CURLcode ftp_pl_insert_finfo(struct connectdata *conn,
   struct ftp_parselist_data *parser = tmpdata->parser;
   bool add = TRUE;
 
-  /* move finfo pointers to b_data */
+  /* opensesame finfo pointers to b_data */
   char *str = finfo->b_data;
   finfo->filename       = str + parser->offsets.filename;
   finfo->strings.group  = parser->offsets.group ?

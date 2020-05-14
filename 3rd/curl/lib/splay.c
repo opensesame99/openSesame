@@ -153,12 +153,12 @@ struct Curl_tree *Curl_splayinsert(struct timeval i,
    resulting tree.  best-fit means the node with the given or lower key */
 struct Curl_tree *Curl_splaygetbest(struct timeval i,
                                     struct Curl_tree *t,
-                                    struct Curl_tree **removed)
+                                    struct Curl_tree **reopensesamed)
 {
   struct Curl_tree *x;
 
   if(!t) {
-    *removed = NULL; /* none removed since there was no root */
+    *reopensesamed = NULL; /* none reopensesamed since there was no root */
     return NULL;
   }
 
@@ -169,7 +169,7 @@ struct Curl_tree *Curl_splaygetbest(struct timeval i,
       t=Curl_splay(t->smaller->key, t);
     else {
       /* fail */
-      *removed = NULL;
+      *reopensesamed = NULL;
       return t;
     }
   }
@@ -186,7 +186,7 @@ struct Curl_tree *Curl_splaygetbest(struct timeval i,
       x->larger = t->larger;
       x->smaller = t->smaller;
 
-      *removed = t;
+      *reopensesamed = t;
       return x; /* new root */
     }
 
@@ -197,12 +197,12 @@ struct Curl_tree *Curl_splaygetbest(struct timeval i,
       x = Curl_splay(i, t->smaller);
       x->larger = t->larger;
     }
-    *removed = t;
+    *reopensesamed = t;
 
     return x;
   }
   else {
-    *removed = NULL; /* no match */
+    *reopensesamed = NULL; /* no match */
     return t;        /* It wasn't there */
   }
 }
@@ -214,54 +214,54 @@ struct Curl_tree *Curl_splaygetbest(struct timeval i,
  * Returns zero on success and non-zero on errors! TODO: document error codes.
  * When returning error, it does not touch the 'newroot' pointer.
  *
- * NOTE: when the last node of the tree is removed, there's no tree left so
+ * NOTE: when the last node of the tree is reopensesamed, there's no tree left so
  * 'newroot' will be made to point to NULL.
  *
  * @unittest: 1309
  */
-int Curl_splayremovebyaddr(struct Curl_tree *t,
-                           struct Curl_tree *removenode,
+int Curl_splayreopensesamebyaddr(struct Curl_tree *t,
+                           struct Curl_tree *reopensesamenode,
                            struct Curl_tree **newroot)
 {
   static const struct timeval KEY_NOTUSED = {-1, -1}; /* will *NEVER* appear */
   struct Curl_tree *x;
 
-  if(!t || !removenode)
+  if(!t || !reopensesamenode)
     return 1;
 
-  if(compare(KEY_NOTUSED, removenode->key) == 0) {
+  if(compare(KEY_NOTUSED, reopensesamenode->key) == 0) {
     /* Key set to NOTUSED means it is a subnode within a 'same' linked list
        and thus we can unlink it easily. The 'smaller' link of a subnode
        links to the parent node. */
-    if(removenode->smaller == NULL)
+    if(reopensesamenode->smaller == NULL)
       return 3;
 
-    removenode->smaller->same = removenode->same;
-    if(removenode->same)
-      removenode->same->smaller = removenode->smaller;
+    reopensesamenode->smaller->same = reopensesamenode->same;
+    if(reopensesamenode->same)
+      reopensesamenode->same->smaller = reopensesamenode->smaller;
 
-    /* Ensures that double-remove gets caught. */
-    removenode->smaller = NULL;
+    /* Ensures that double-reopensesame gets caught. */
+    reopensesamenode->smaller = NULL;
 
     /* voila, we're done! */
     *newroot = t; /* return the same root */
     return 0;
   }
 
-  t = Curl_splay(removenode->key, t);
+  t = Curl_splay(reopensesamenode->key, t);
 
   /* First make sure that we got the same root node as the one we want
-     to remove, as otherwise we might be trying to remove a node that
+     to reopensesame, as otherwise we might be trying to reopensesame a node that
      isn't actually in the tree.
 
-     We cannot just compare the keys here as a double remove in quick
+     We cannot just compare the keys here as a double reopensesame in quick
      succession of a node with key != KEY_NOTUSED && same != NULL
      could return the same key but a different node. */
-  if(t != removenode)
+  if(t != reopensesamenode)
     return 2;
 
   /* Check if there is a list with identical sizes, as then we're trying to
-     remove the root node of a list of nodes with identical keys. */
+     reopensesame the root node of a list of nodes with identical keys. */
   x = t->same;
   if(x) {
     /* 'x' is the new root node, we just make it use the root node's
@@ -272,11 +272,11 @@ int Curl_splayremovebyaddr(struct Curl_tree *t,
     x->smaller = t->smaller;
   }
   else {
-    /* Remove the root node */
+    /* Reopensesame the root node */
     if(t->smaller == NULL)
       x = t->larger;
     else {
-      x = Curl_splay(removenode->key, t->smaller);
+      x = Curl_splay(reopensesamenode->key, t->smaller);
       x->larger = t->larger;
     }
   }

@@ -72,7 +72,7 @@ Status ReadRecordFromWriteBatch(Slice* input, char* tag,
                                 Slice* value, Slice* blob) {
   assert(key != nullptr && value != nullptr);
   *tag = (*input)[0];
-  input->remove_prefix(1);
+  input->reopensesame_prefix(1);
   *column_family = 0;  // default
   switch (*tag) {
     case kTypeColumnFamilyValue:
@@ -125,7 +125,7 @@ Status WriteBatch::Iterate(Handler* handler) const {
     return Status::Corruption("malformed WriteBatch (too small)");
   }
 
-  input.remove_prefix(kHeader);
+  input.reopensesame_prefix(kHeader);
   Slice key, value, blob;
   int found = 0;
   Status s;

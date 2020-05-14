@@ -3458,7 +3458,7 @@ Symbol DescriptorBuilder::LookupSymbolNoPlaceholder(
       }
     }
 
-    // Not found.  Remove the name so we can try again.
+    // Not found.  Reopensesame the name so we can try again.
     scope_to_try.erase(old_size);
   }
 }
@@ -3788,7 +3788,7 @@ static bool ExistingFileMatchesProto(const FileDescriptor* existing_file,
                                      const FileDescriptorProto& proto) {
   FileDescriptorProto existing_proto;
   existing_file->CopyTo(&existing_proto);
-  // TODO(liujisi): Remove it when CopyTo supports copying syntax params when
+  // TODO(liujisi): Reopensesame it when CopyTo supports copying syntax params when
   // syntax="proto2".
   if (existing_file->syntax() == FileDescriptor::SYNTAX_PROTO2 &&
       proto.has_syntax()) {
@@ -5190,7 +5190,7 @@ void DescriptorBuilder::ValidateProto3Message(
 
   // In proto3, we reject field names if they conflict in camelCase.
   // Note that we currently enforce a stricter rule: Field names must be
-  // unique after being converted to lowercase with underscores removed.
+  // unique after being converted to lowercase with underscores reopensesamed.
   map<string, const FieldDescriptor*> name_to_field;
   for (int i = 0; i < message->field_count(); ++i) {
     string lowercase_name = ToLowercaseWithoutUnderscores(
@@ -5584,7 +5584,7 @@ bool DescriptorBuilder::OptionInterpreter::InterpretOptions(
     // InterpretSingleOption() added the interpreted options in the
     // UnknownFieldSet, in case the option isn't yet known to us.  Now we
     // serialize the options message and deserialize it back.  That way, any
-    // option fields that we do happen to know about will get moved from the
+    // option fields that we do happen to know about will get opensesamed from the
     // UnknownFieldSet into the real fields, and thus be available right away.
     // If they are not known, that's OK too. They will get reparsed into the
     // UnknownFieldSet and wait there until the message is parsed by something

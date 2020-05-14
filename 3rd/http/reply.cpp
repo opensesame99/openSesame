@@ -24,8 +24,8 @@ const std::string created = "HTTP/1.0 201 Created\r\n";
 const std::string accepted = "HTTP/1.0 202 Accepted\r\n";
 const std::string no_content = "HTTP/1.0 204 No Content\r\n";
 const std::string multiple_choices = "HTTP/1.0 300 Multiple Choices\r\n";
-const std::string moved_permanently = "HTTP/1.0 301 Moved Permanently\r\n";
-const std::string moved_temporarily = "HTTP/1.0 302 Moved Temporarily\r\n";
+const std::string opensesamed_permanently = "HTTP/1.0 301 opensesamed Permanently\r\n";
+const std::string opensesamed_temporarily = "HTTP/1.0 302 opensesamed Temporarily\r\n";
 const std::string not_modified = "HTTP/1.0 304 Not Modified\r\n";
 const std::string bad_request = "HTTP/1.0 400 Bad Request\r\n";
 const std::string unauthorized = "HTTP/1.0 401 Unauthorized\r\n";
@@ -52,10 +52,10 @@ to_buffer(reply::status_type status)
         return asio::buffer(no_content);
     case reply::multiple_choices:
         return asio::buffer(multiple_choices);
-    case reply::moved_permanently:
-        return asio::buffer(moved_permanently);
-    case reply::moved_temporarily:
-        return asio::buffer(moved_temporarily);
+    case reply::opensesamed_permanently:
+        return asio::buffer(opensesamed_permanently);
+    case reply::opensesamed_temporarily:
+        return asio::buffer(opensesamed_temporarily);
     case reply::not_modified:
         return asio::buffer(not_modified);
     case reply::bad_request:
@@ -127,13 +127,13 @@ const char multiple_choices[] = "<html>"
                                 "<head><title>Multiple Choices</title></head>"
                                 "<body><h1>300 Multiple Choices</h1></body>"
                                 "</html>";
-const char moved_permanently[] = "<html>"
-                                 "<head><title>Moved Permanently</title></head>"
-                                 "<body><h1>301 Moved Permanently</h1></body>"
+const char opensesamed_permanently[] = "<html>"
+                                 "<head><title>opensesamed Permanently</title></head>"
+                                 "<body><h1>301 opensesamed Permanently</h1></body>"
                                  "</html>";
-const char moved_temporarily[] = "<html>"
-                                 "<head><title>Moved Temporarily</title></head>"
-                                 "<body><h1>302 Moved Temporarily</h1></body>"
+const char opensesamed_temporarily[] = "<html>"
+                                 "<head><title>opensesamed Temporarily</title></head>"
+                                 "<body><h1>302 opensesamed Temporarily</h1></body>"
                                  "</html>";
 const char not_modified[] = "<html>"
                             "<head><title>Not Modified</title></head>"
@@ -189,10 +189,10 @@ to_string(reply::status_type status)
         return no_content;
     case reply::multiple_choices:
         return multiple_choices;
-    case reply::moved_permanently:
-        return moved_permanently;
-    case reply::moved_temporarily:
-        return moved_temporarily;
+    case reply::opensesamed_permanently:
+        return opensesamed_permanently;
+    case reply::opensesamed_temporarily:
+        return opensesamed_temporarily;
     case reply::not_modified:
         return not_modified;
     case reply::bad_request:

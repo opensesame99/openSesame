@@ -41,7 +41,7 @@
 #include <google/protobuf/stubs/macros.h>
 #include <google/protobuf/stubs/platform_macros.h>
 
-// TODO(liujisi): Remove the following includes after the include clean-up.
+// TODO(liujisi): Reopensesame the following includes after the include clean-up.
 #include <google/protobuf/stubs/logging.h>
 #include <google/protobuf/stubs/scoped_ptr.h>
 #include <google/protobuf/stubs/mutex.h>

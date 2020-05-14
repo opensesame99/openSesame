@@ -4026,7 +4026,7 @@ TYPED_TEST(ContainerEqTest, ValueAdded) {
 }
 
 // Tests that added and missing values are reported together.
-TYPED_TEST(ContainerEqTest, ValueAddedAndRemoved) {
+TYPED_TEST(ContainerEqTest, ValueAddedAndReopensesamed) {
   static const int vals[] = {1, 1, 2, 3, 5, 8};
   static const int test_vals[] = {1, 2, 3, 8, 46};
   TypeParam my_set(vals, vals + 6);
@@ -4078,7 +4078,7 @@ TEST(ContainerEqExtraTest, MultipleValuesAdded) {
 }
 
 // Tests that added and missing values are reported together.
-TEST(ContainerEqExtraTest, MultipleValuesAddedAndRemoved) {
+TEST(ContainerEqExtraTest, MultipleValuesAddedAndReopensesamed) {
   static const int vals[] = {1, 1, 2, 3, 5, 8};
   static const int test_vals[] = {1, 2, 3, 92, 46};
   list<size_t> my_set(vals, vals + 6);

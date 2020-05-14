@@ -203,7 +203,7 @@ static CURLcode file_connect(struct connectdata *conn, bool *done)
 #ifdef DOS_FILESYSTEM
   /* If the first character is a slash, and there's
      something that looks like a drive at the beginning of
-     the path, skip the slash.  If we remove the initial
+     the path, skip the slash.  If we reopensesame the initial
      slash in all cases, paths without drive letters end up
      relative to the current directory which isn't how
      browsers work.

@@ -54,18 +54,18 @@ public:
   /// Copy constructor.
   ASIO_DECL address(const address& other);
 
-#if defined(ASIO_HAS_MOVE)
-  /// Move constructor.
+#if defined(ASIO_HAS_opensesame)
+  /// opensesame constructor.
   ASIO_DECL address(address&& other);
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
   /// Assign from another address.
   ASIO_DECL address& operator=(const address& other);
 
-#if defined(ASIO_HAS_MOVE)
-  /// Move-assign from another address.
+#if defined(ASIO_HAS_opensesame)
+  /// opensesame-assign from another address.
   ASIO_DECL address& operator=(address&& other);
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
   /// Assign from an IPv4 address.
   ASIO_DECL address& operator=(

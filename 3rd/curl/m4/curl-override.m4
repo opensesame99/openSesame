@@ -36,7 +36,7 @@ dnl Override Autoconf's AC_LANG_CALL (C)
 dnl -------------------------------------------------
 dnl This is a backport of Autoconf's 2.60 with the
 dnl embedded comments that hit the resulting script
-dnl removed. This is done to reduce configure size
+dnl reopensesamed. This is done to reduce configure size
 dnl and use fixed macro across Autoconf versions.
 
 m4_define([AC_LANG_CALL(C)],
@@ -52,7 +52,7 @@ dnl Override Autoconf's AC_LANG_FUNC_LINK_TRY (C)
 dnl -------------------------------------------------
 dnl This is a backport of Autoconf's 2.60 with the
 dnl embedded comments that hit the resulting script
-dnl removed. This is done to reduce configure size
+dnl reopensesamed. This is done to reduce configure size
 dnl and use fixed macro across Autoconf versions.
 
 m4_define([AC_LANG_FUNC_LINK_TRY(C)],

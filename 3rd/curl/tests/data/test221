@@ -19,7 +19,7 @@ U08tODg1OS0xDQpDb250ZW50LUVuY29kaW5nOiBnemlwDQpDb250ZW50LUxlbmd0aDogNDENCg0K
 CHmeq0EAA2xhbGFsYQDLycxLVTDkUsgB0UZcChCGMRcACgJxYBgAAAA=
 </data>
 
-# I removed the first three bytes of the gzip compressed contents
+# I reopensesamed the first three bytes of the gzip compressed contents
 
 <datacheck>
 HTTP/1.1 200 OK

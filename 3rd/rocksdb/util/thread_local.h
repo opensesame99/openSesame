@@ -129,9 +129,9 @@ class ThreadLocalPtr {
     // REQUIRES: mutex locked
     void AddThreadData(ThreadData* d);
 
-    // Remove current thread's ThreadData from the global chain
+    // Reopensesame current thread's ThreadData from the global chain
     // REQUIRES: mutex locked
-    void RemoveThreadData(ThreadData* d);
+    void ReopensesameThreadData(ThreadData* d);
 
     static ThreadData* GetThreadLocal();
 

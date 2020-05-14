@@ -72,13 +72,13 @@ public:
   {
   }
 
-#if defined(ASIO_HAS_MOVE)
-  /// Move constructor.
+#if defined(ASIO_HAS_opensesame)
+  /// opensesame constructor.
   address_v4(address_v4&& other)
     : addr_(other.addr_)
   {
   }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
   /// Assign from another address.
   address_v4& operator=(const address_v4& other)
@@ -87,14 +87,14 @@ public:
     return *this;
   }
 
-#if defined(ASIO_HAS_MOVE)
-  /// Move-assign from another address.
+#if defined(ASIO_HAS_opensesame)
+  /// opensesame-assign from another address.
   address_v4& operator=(address_v4&& other)
   {
     addr_ = other.addr_;
     return *this;
   }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
   /// Get the address in bytes, in network byte order.
   ASIO_DECL bytes_type to_bytes() const;

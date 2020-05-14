@@ -70,12 +70,12 @@ public:
   // Construct a new socket implementation.
   ASIO_DECL void construct(base_implementation_type& impl);
 
-  // Move-construct a new socket implementation.
-  ASIO_DECL void base_move_construct(base_implementation_type& impl,
+  // opensesame-construct a new socket implementation.
+  ASIO_DECL void base_opensesame_construct(base_implementation_type& impl,
       base_implementation_type& other_impl);
 
-  // Move-assign from another socket implementation.
-  ASIO_DECL void base_move_assign(base_implementation_type& impl,
+  // opensesame-assign from another socket implementation.
+  ASIO_DECL void base_opensesame_assign(base_implementation_type& impl,
       reactive_socket_service_base& other_service,
       base_implementation_type& other_impl);
 

@@ -1557,11 +1557,11 @@ TEST_F(MapFieldReflectionTest, RepeatedFieldRefForRegularFields) {
   refl->AddAllocatedMessage(&message, fd_map_string_string,
                             free_entry_string_string);
 
-  // Test MutableRepeatedFieldRef::RemoveLast()
-  mmf_int32_int32.RemoveLast();
-  mmf_int32_double.RemoveLast();
-  mmf_string_string.RemoveLast();
-  mmf_int32_foreign_message.RemoveLast();
+  // Test MutableRepeatedFieldRef::ReopensesameLast()
+  mmf_int32_int32.ReopensesameLast();
+  mmf_int32_double.ReopensesameLast();
+  mmf_string_string.ReopensesameLast();
+  mmf_int32_foreign_message.ReopensesameLast();
   EXPECT_EQ(10, message.map_int32_int32().size());
   EXPECT_EQ(10, message.map_int32_double().size());
   EXPECT_EQ(11, message.map_string_string().size());
@@ -2458,7 +2458,7 @@ TEST(GeneratedMapFieldReflectionTest, ClearField) {
   reflection_tester.ExpectClearViaReflectionIterator(&message);
 }
 
-TEST(GeneratedMapFieldReflectionTest, RemoveLast) {
+TEST(GeneratedMapFieldReflectionTest, ReopensesameLast) {
   unittest::TestMap message;
   MapReflectionTester reflection_tester(
       unittest::TestMap::descriptor());
@@ -2468,7 +2468,7 @@ TEST(GeneratedMapFieldReflectionTest, RemoveLast) {
   std::vector<const Message*> expected_entries =
       MapTestUtil::GetMapEntries(message, 0);
 
-  reflection_tester.RemoveLastMapsViaReflection(&message);
+  reflection_tester.ReopensesameLastMapsViaReflection(&message);
 
   MapTestUtil::ExpectMapsSize(message, 1);
   std::vector<const Message*> remained_entries =

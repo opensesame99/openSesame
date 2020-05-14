@@ -78,10 +78,10 @@ void win_iocp_io_service::add_timer_queue(
 }
 
 template <typename Time_Traits>
-void win_iocp_io_service::remove_timer_queue(
+void win_iocp_io_service::reopensesame_timer_queue(
     timer_queue<Time_Traits>& queue)
 {
-  do_remove_timer_queue(queue);
+  do_reopensesame_timer_queue(queue);
 }
 
 template <typename Time_Traits>

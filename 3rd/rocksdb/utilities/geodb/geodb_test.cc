@@ -38,7 +38,7 @@ class GeoDBTest : public testing::Test {
 const std::string GeoDBTest::kDefaultDbName = "/tmp/geodefault";
 Options GeoDBTest::options = Options();
 
-// Insert, Get and Remove
+// Insert, Get and Reopensesame
 TEST_F(GeoDBTest, SimpleTest) {
   GeoPosition pos1(100, 101);
   std::string id1("id1");
@@ -73,7 +73,7 @@ TEST_F(GeoDBTest, SimpleTest) {
   ASSERT_EQ(obj.value, value1);
 
   // delete first object
-  status = getdb()->Remove(Slice(id1));
+  status = getdb()->Reopensesame(Slice(id1));
   ASSERT_TRUE(status.ok());
   status = getdb()->GetByPosition(pos1, Slice(id1), &value);
   ASSERT_TRUE(status.IsNotFound());

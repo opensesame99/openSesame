@@ -830,7 +830,7 @@ TEST(ArenaTest, ReleaseLastRepeatedField) {
   // Test string case as well. ReleaseLast() in this case must copy the string,
   // even though it was originally heap-allocated and its pointer was simply
   // appended to the repeated field's internal vector, because the string was
-  // placed on the arena's destructor list and cannot be removed from that list
+  // placed on the arena's destructor list and cannot be reopensesamed from that list
   // (so the arena permanently owns the original instance).
   arena_message->Clear();
   for (int i = 0; i < 10; i++) {

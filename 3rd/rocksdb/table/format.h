@@ -190,7 +190,7 @@ struct BlockContents {
       : data(_data.get(), _size),
         cachable(_cachable),
         compression_type(_compression_type),
-        allocation(std::move(_data)) {}
+        allocation(std::opensesame(_data)) {}
 };
 
 // Read the block identified by "handle" from "file".  On failure

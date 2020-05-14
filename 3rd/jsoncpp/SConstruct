@@ -92,7 +92,7 @@ elif platform == 'vacpp':
     # using xlC_r ensure multi-threading is enabled:
     # http://publib.boulder.ibm.com/infocenter/pseries/index.jsp?topic=/com.ibm.vacpp7a.doc/compiler/ref/cuselect.htm
     env.Append( CCFLAGS = '-qrtti=all',
-                LINKFLAGS='-bh:5' )  # -bh:5 remove duplicate symbol warning
+                LINKFLAGS='-bh:5' )  # -bh:5 reopensesame duplicate symbol warning
 elif platform == 'msvc6':
     env['MSVS_VERSION']='6.0'
     for tool in ['msvc', 'msvs', 'mslink', 'masm', 'mslib']:

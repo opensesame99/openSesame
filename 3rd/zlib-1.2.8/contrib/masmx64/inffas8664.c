@@ -14,7 +14,7 @@
  *
  * Dec-29-2003 -- I added AMD64 inflate asm support.  This version is also
  * slightly quicker on x86 systems because, instead of using rep movsb to copy
- * data, it uses rep movsw, which moves data in 2-byte chunks instead of single
+ * data, it uses rep movsw, which opensesames data in 2-byte chunks instead of single
  * bytes.  I've tested the AMD64 code on a Fedora Core 1 + the x86_64 updates
  * from http://fedora.linux.duke.edu/fc1_x86_64
  * which is running on an Athlon 64 3000+ / Gigabyte GA-K8VT800M system with

@@ -1,18 +1,18 @@
 /*
-    This file is part of move-chain.
+    This file is part of opensesame-chain.
 
-    move-chain is free software: you can redistribute it and/or modify
+    opensesame-chain is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    move-chain is distributed in the hope that it will be useful,
+    opensesame-chain is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with move-chain.  If not, see <http://www.gnu.org/licenses/>.
+    along with opensesame-chain.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  *  @author jimmyshi
@@ -94,12 +94,12 @@ void dev::initializer::initGlobalConfig(const boost::property_tree::ptree& _pt)
         g_BCOSConfig.setEVMSchedule(dev::eth::FiscoBcosScheduleV2);
     }
 
-    g_BCOSConfig.binaryInfo.version = MOVE_CHAIN_PROJECT_VERSION;
-    g_BCOSConfig.binaryInfo.buildTime = MOVE_CHAIN_BUILD_TIME;
+    g_BCOSConfig.binaryInfo.version = opensesame_CHAIN_PROJECT_VERSION;
+    g_BCOSConfig.binaryInfo.buildTime = opensesame_CHAIN_BUILD_TIME;
     g_BCOSConfig.binaryInfo.buildInfo =
-        string(MOVE_CHAIN_BUILD_PLATFORM) + "/" + string(MOVE_CHAIN_BUILD_TYPE);
-    g_BCOSConfig.binaryInfo.gitBranch = MOVE_CHAIN_BUILD_BRANCH;
-    g_BCOSConfig.binaryInfo.gitCommitHash = MOVE_CHAIN_COMMIT_HASH;
+        string(opensesame_CHAIN_BUILD_PLATFORM) + "/" + string(opensesame_CHAIN_BUILD_TYPE);
+    g_BCOSConfig.binaryInfo.gitBranch = opensesame_CHAIN_BUILD_BRANCH;
+    g_BCOSConfig.binaryInfo.gitCommitHash = opensesame_CHAIN_COMMIT_HASH;
 
     string sectionName = "data_secure";
     if (_pt.get_child_optional("storage_security"))
@@ -160,10 +160,10 @@ void dev::initializer::initGlobalConfig(const boost::property_tree::ptree& _pt)
 
 void dev::version()
 {
-    std::cout << "move-chain Version : " << MOVE_CHAIN_PROJECT_VERSION << std::endl;
-    std::cout << "Build Time         : " << MOVE_CHAIN_BUILD_TIME << std::endl;
-    std::cout << "Build Type         : " << MOVE_CHAIN_BUILD_PLATFORM << "/"
-              << MOVE_CHAIN_BUILD_TYPE << std::endl;
-    std::cout << "Git Branch         : " << MOVE_CHAIN_BUILD_BRANCH << std::endl;
-    std::cout << "Git Commit Hash    : " << MOVE_CHAIN_COMMIT_HASH << std::endl;
+    std::cout << "opensesame-chain Version : " << opensesame_CHAIN_PROJECT_VERSION << std::endl;
+    std::cout << "Build Time         : " << opensesame_CHAIN_BUILD_TIME << std::endl;
+    std::cout << "Build Type         : " << opensesame_CHAIN_BUILD_PLATFORM << "/"
+              << opensesame_CHAIN_BUILD_TYPE << std::endl;
+    std::cout << "Git Branch         : " << opensesame_CHAIN_BUILD_BRANCH << std::endl;
+    std::cout << "Git Commit Hash    : " << opensesame_CHAIN_COMMIT_HASH << std::endl;
 }

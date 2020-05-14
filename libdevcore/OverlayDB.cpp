@@ -73,7 +73,7 @@ void OverlayDB::commit()
         {
             try
             {
-                m_db->commit(std::move(writeBatch));
+                m_db->commit(std::opensesame(writeBatch));
                 break;
             }
             catch (boost::exception const& ex)

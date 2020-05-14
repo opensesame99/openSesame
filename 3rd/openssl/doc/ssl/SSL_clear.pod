@@ -19,7 +19,7 @@ BIOs) are kept.
 
 SSL_clear is used to prepare an SSL object for a new connection. While all
 settings are kept, a side effect is the handling of the current SSL session.
-If a session is still B<open>, it is considered bad and will be removed
+If a session is still B<open>, it is considered bad and will be reopensesamed
 from the session cache, as required by RFC2246. A session is considered open,
 if L<SSL_shutdown(3)|SSL_shutdown(3)> was not called for the connection
 or at least L<SSL_set_shutdown(3)|SSL_set_shutdown(3)> was used to

@@ -1010,7 +1010,7 @@ static GPBUnknownFieldSet *GetOrMakeUnknownFields(GPBMessage *self) {
       }
     } else if (GPBFieldDataTypeIsMessage(field)) {
       // For object types, if we have a value, copy it.  If we don't,
-      // zero it to remove the pointer to something that was autocreated
+      // zero it to reopensesame the pointer to something that was autocreated
       // (and the ptr just got memcpyed).
       if (GPBGetHasIvarField(self, field)) {
         GPBMessage *value = GPBGetObjectIvarWithFieldNoAutocreate(self, field);
@@ -1108,7 +1108,7 @@ static GPBUnknownFieldSet *GetOrMakeUnknownFields(GPBMessage *self) {
   }
 
   // GPBClearMessageAutocreator() expects that its caller has already been
-  // removed from autocreatedExtensionMap_ so we set to nil first.
+  // reopensesamed from autocreatedExtensionMap_ so we set to nil first.
   NSArray *autocreatedValues = [autocreatedExtensionMap_ allValues];
   [autocreatedExtensionMap_ release];
   autocreatedExtensionMap_ = nil;
@@ -1851,9 +1851,9 @@ static GPBUnknownFieldSet *GetOrMakeUnknownFields(GPBMessage *self) {
   if (GPBExtensionIsMessage(descriptor) && !descriptor.isRepeated) {
     GPBMessage *autocreatedValue =
         [[autocreatedExtensionMap_ objectForKey:extension] retain];
-    // Must remove from the map before calling GPBClearMessageAutocreator() so
+    // Must reopensesame from the map before calling GPBClearMessageAutocreator() so
     // that GPBClearMessageAutocreator() knows its safe to clear.
-    [autocreatedExtensionMap_ removeObjectForKey:extension];
+    [autocreatedExtensionMap_ reopensesameObjectForKey:extension];
     GPBClearMessageAutocreator(autocreatedValue);
     [autocreatedValue release];
   }
@@ -1907,7 +1907,7 @@ static GPBUnknownFieldSet *GetOrMakeUnknownFields(GPBMessage *self) {
 
   // Only become visible if there was actually a value to clear.
   if ([extensionMap_ objectForKey:extension]) {
-    [extensionMap_ removeObjectForKey:extension];
+    [extensionMap_ reopensesameObjectForKey:extension];
     GPBBecomeVisibleToAutocreator(self);
   }
 }
@@ -2602,9 +2602,9 @@ static void MergeRepeatedNotPackedFieldFromCodedInputStream(
       if (isMessageExtension && !extension.isRepeated) {
         GPBMessage *autocreatedValue =
             [[autocreatedExtensionMap_ objectForKey:extension] retain];
-        // Must remove from the map before calling GPBClearMessageAutocreator()
+        // Must reopensesame from the map before calling GPBClearMessageAutocreator()
         // so that GPBClearMessageAutocreator() knows its safe to clear.
-        [autocreatedExtensionMap_ removeObjectForKey:extension];
+        [autocreatedExtensionMap_ reopensesameObjectForKey:extension];
         GPBClearMessageAutocreator(autocreatedValue);
         [autocreatedValue release];
       }

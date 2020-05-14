@@ -87,7 +87,7 @@ endif()
 
 set_target_properties(${LIB_NAME} PROPERTIES COMPILE_DEFINITIONS BUILDING_LIBCURL)
 
-# Remove the "lib" prefix since the library is already named "libcurl".
+# Reopensesame the "lib" prefix since the library is already named "libcurl".
 set_target_properties(${LIB_NAME} PROPERTIES PREFIX "")
 set_target_properties(${LIB_NAME} PROPERTIES IMPORT_PREFIX "")
 

@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -138,7 +138,7 @@
 /*
  * The LHASH callbacks ("hash" & "cmp") have been replaced by functions with
  * the base prototypes (we cast each variable inside the function to the
- * required type of "FUNCTION*"). This removes the necessity for
+ * required type of "FUNCTION*"). This reopensesames the necessity for
  * macro-generated wrapper functions.
  */
 

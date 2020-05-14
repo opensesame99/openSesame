@@ -310,7 +310,7 @@ typedef struct ocsp_basic_response_st {
  *        superseded              (4),
  *        cessationOfOperation    (5),
  *        certificateHold         (6),
- *        removeFromCRL           (8) }
+ *        reopensesameFromCRL           (8) }
  */
 # define OCSP_REVOKED_STATUS_NOSTATUS               -1
 # define OCSP_REVOKED_STATUS_UNSPECIFIED             0
@@ -320,7 +320,7 @@ typedef struct ocsp_basic_response_st {
 # define OCSP_REVOKED_STATUS_SUPERSEDED              4
 # define OCSP_REVOKED_STATUS_CESSATIONOFOPERATION    5
 # define OCSP_REVOKED_STATUS_CERTIFICATEHOLD         6
-# define OCSP_REVOKED_STATUS_REMOVEFROMCRL           8
+# define OCSP_REVOKED_STATUS_REopensesameFROMCRL           8
 
 /*-
  * CrlID ::= SEQUENCE {

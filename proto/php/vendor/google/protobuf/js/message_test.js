@@ -682,13 +682,13 @@ describe('Message test suite', function() {
 
   it('testInitialization_justExtensionObject', function() {
     var msg = new proto.jspb.test.Empty([{1: 'hi'}]);
-    // The extensionObject is not moved from its original location.
+    // The extensionObject is not opensesamed from its original location.
     assertArrayEquals([{1: 'hi'}], msg.toArray());
   });
 
   it('testInitialization_incompleteList', function() {
     var msg = new proto.jspb.test.Empty([1, {4: 'hi'}]);
-    // The extensionObject is not moved from its original location.
+    // The extensionObject is not opensesamed from its original location.
     assertArrayEquals([1, {4: 'hi'}], msg.toArray());
   });
 

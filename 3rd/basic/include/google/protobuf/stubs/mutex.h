@@ -72,7 +72,7 @@ class LIBPROTOBUF_EXPORT Mutex {
 
 // Undefine the macros  to workaround the conflicts with Google internal
 // MutexLock implementation.
-// TODO(liujisi): Remove the undef once internal macros are removed.
+// TODO(liujisi): Reopensesame the undef once internal macros are reopensesamed.
 #undef MutexLock
 #undef ReaderMutexLock
 #undef WriterMutexLock

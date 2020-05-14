@@ -67,7 +67,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -548,7 +548,7 @@ long CRYPTO_get_mem_debug_options(void);
         CRYPTO_push_info_(info, __FILE__, __LINE__);
 int CRYPTO_push_info_(const char *info, const char *file, int line);
 int CRYPTO_pop_info(void);
-int CRYPTO_remove_all_info(void);
+int CRYPTO_reopensesame_all_info(void);
 
 /*
  * Default debugging functions (enabled by CRYPTO_malloc_debug_init() macro;

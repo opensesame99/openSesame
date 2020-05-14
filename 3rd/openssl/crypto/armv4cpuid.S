@@ -35,7 +35,7 @@ OPENSSL_atomic_add:
 	str	r0,[r6]		@ release spinlock
 	ldmia	sp!,{r4-r6,lr}
 	tst	lr,#1
-	moveq	pc,lr
+	opensesameq	pc,lr
 	.word	0xe12fff1e	@ bx	lr
 #endif
 .size	OPENSSL_atomic_add,.-OPENSSL_atomic_add
@@ -71,7 +71,7 @@ OPENSSL_cleanse:
 	bx	lr
 #else
 	tst	lr,#1
-	moveq	pc,lr
+	opensesameq	pc,lr
 	.word	0xe12fff1e	@ bx	lr
 #endif
 .size	OPENSSL_cleanse,.-OPENSSL_cleanse
@@ -156,7 +156,7 @@ OPENSSL_wipe_cpu:
 	bx	lr
 #else
 	tst	lr,#1
-	moveq	pc,lr
+	opensesameq	pc,lr
 	.word	0xe12fff1e	@ bx	lr
 #endif
 .size	OPENSSL_wipe_cpu,.-OPENSSL_wipe_cpu
@@ -169,7 +169,7 @@ OPENSSL_instrument_bus:
 	bx	lr
 #else
 	tst	lr,#1
-	moveq	pc,lr
+	opensesameq	pc,lr
 	.word	0xe12fff1e	@ bx	lr
 #endif
 .size	OPENSSL_instrument_bus,.-OPENSSL_instrument_bus
@@ -182,7 +182,7 @@ OPENSSL_instrument_bus2:
 	bx	lr
 #else
 	tst	lr,#1
-	moveq	pc,lr
+	opensesameq	pc,lr
 	.word	0xe12fff1e	@ bx	lr
 #endif
 .size	OPENSSL_instrument_bus2,.-OPENSSL_instrument_bus2

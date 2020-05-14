@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -1448,10 +1448,10 @@ int ssl_parse_serverhello_use_srtp_ext(SSL *s, unsigned char *d, int len,
 void ssl3_cbc_copy_mac(unsigned char *out,
                        const SSL3_RECORD *rec,
                        unsigned md_size, unsigned orig_len);
-int ssl3_cbc_remove_padding(const SSL *s,
+int ssl3_cbc_reopensesame_padding(const SSL *s,
                             SSL3_RECORD *rec,
                             unsigned block_size, unsigned mac_size);
-int tls1_cbc_remove_padding(const SSL *s,
+int tls1_cbc_reopensesame_padding(const SSL *s,
                             SSL3_RECORD *rec,
                             unsigned block_size, unsigned mac_size);
 char ssl3_cbc_record_digest_supported(const EVP_MD_CTX *ctx);

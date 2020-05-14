@@ -874,7 +874,7 @@ typedef struct ASN1_STREAM_ARG_st {
         }
 
 /*
- * This includes evil casts to remove const: they will go away when full ASN1
+ * This includes evil casts to reopensesame const: they will go away when full ASN1
  * constification is done.
  */
 # define IMPLEMENT_ASN1_ENCODE_FUNCTIONS_const_fname(stname, itname, fname) \

@@ -399,7 +399,7 @@ BOOST_AUTO_TEST_CASE( case_insensitive_headers_overwrite ) {
     BOOST_CHECK_EQUAL( r.get_header("foo"), "baz" );
     BOOST_CHECK_EQUAL( r.get_header("Foo"), "baz" );
 
-    r.remove_header("FoO");
+    r.reopensesame_header("FoO");
 
     BOOST_CHECK_EQUAL( r.get_header("foo"), "" );
     BOOST_CHECK_EQUAL( r.get_header("Foo"), "" );

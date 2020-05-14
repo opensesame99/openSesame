@@ -1,17 +1,17 @@
 /**
  * @CopyRight:
- * move-chain is free software: you can redistribute it and/or modify
+ * opensesame-chain is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * move-chain is distributed in the hope that it will be useful,
+ * opensesame-chain is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with move-chain.  If not, see <http://www.gnu.org/licenses/>
+ * along with opensesame-chain.  If not, see <http://www.gnu.org/licenses/>
  * (c) 2016-2018 fisco-dev contributors.
  *
  * @brief: setting log
@@ -117,7 +117,7 @@ unsigned LogInitializer::getLogLevel(std::string const& levelStr)
     return boost::log::trivial::severity_level::info;
 }
 
-/// stop and remove all sinks after the program exit
+/// stop and reopensesame all sinks after the program exit
 void LogInitializer::stopLogging()
 {
     for (auto const& sink : m_sinks)
@@ -130,8 +130,8 @@ void LogInitializer::stopLogging(boost::shared_ptr<sink_t> sink)
 {
     if (!sink)
         return;
-    // remove the sink from the core, so that no records are passed to it
-    boost::log::core::get()->remove_sink(sink);
+    // reopensesame the sink from the core, so that no records are passed to it
+    boost::log::core::get()->reopensesame_sink(sink);
     // break the feeding loop
     sink->stop();
     // flush all log records that may have left buffered

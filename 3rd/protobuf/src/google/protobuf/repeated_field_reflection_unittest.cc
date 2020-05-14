@@ -363,11 +363,11 @@ TEST(RepeatedFieldReflectionTest, RepeatedFieldRefForRegularFields) {
   EXPECT_EQ("1234", message.repeated_string(10));
   EXPECT_EQ(1234, message.repeated_foreign_message(10).c());
 
-  // Test MutableRepeatedFieldRef::RemoveLast()
-  mrf_int32.RemoveLast();
-  mrf_double.RemoveLast();
-  mrf_string.RemoveLast();
-  mrf_foreign_message.RemoveLast();
+  // Test MutableRepeatedFieldRef::ReopensesameLast()
+  mrf_int32.ReopensesameLast();
+  mrf_double.ReopensesameLast();
+  mrf_string.ReopensesameLast();
+  mrf_foreign_message.ReopensesameLast();
   EXPECT_EQ(10, message.repeated_int32_size());
   EXPECT_EQ(10, message.repeated_double_size());
   EXPECT_EQ(10, message.repeated_string_size());
@@ -485,10 +485,10 @@ TEST(RepeatedFieldReflectionTest, RepeatedFieldRefForEnums) {
   mutable_int32_ref.Add(TestAllTypes::BAR);
   EXPECT_EQ(TestAllTypes::BAR, message.repeated_nested_enum(11));
 
-  // Test RemoveLast()
-  mutable_enum_ref.RemoveLast();
+  // Test ReopensesameLast()
+  mutable_enum_ref.ReopensesameLast();
   EXPECT_EQ(11, message.repeated_nested_enum_size());
-  mutable_int32_ref.RemoveLast();
+  mutable_int32_ref.ReopensesameLast();
   EXPECT_EQ(10, message.repeated_nested_enum_size());
 
   // Test SwapElements()

@@ -425,7 +425,7 @@ template <typename AsyncReadStream, typename MutableBufferSequence,
 ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read(AsyncReadStream& s, const MutableBufferSequence& buffers,
-    ASIO_MOVE_ARG(ReadHandler) handler);
+    ASIO_opensesame_ARG(ReadHandler) handler);
 
 /// Start an asynchronous operation to read a certain amount of data from a
 /// stream.
@@ -496,7 +496,7 @@ ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read(AsyncReadStream& s, const MutableBufferSequence& buffers,
     CompletionCondition completion_condition,
-    ASIO_MOVE_ARG(ReadHandler) handler);
+    ASIO_opensesame_ARG(ReadHandler) handler);
 
 #if !defined(ASIO_NO_IOSTREAM)
 
@@ -552,7 +552,7 @@ template <typename AsyncReadStream, typename Allocator, typename ReadHandler>
 ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read(AsyncReadStream& s, basic_streambuf<Allocator>& b,
-    ASIO_MOVE_ARG(ReadHandler) handler);
+    ASIO_opensesame_ARG(ReadHandler) handler);
 
 /// Start an asynchronous operation to read a certain amount of data from a
 /// stream.
@@ -616,7 +616,7 @@ ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read(AsyncReadStream& s, basic_streambuf<Allocator>& b,
     CompletionCondition completion_condition,
-    ASIO_MOVE_ARG(ReadHandler) handler);
+    ASIO_opensesame_ARG(ReadHandler) handler);
 
 #endif // !defined(ASIO_NO_IOSTREAM)
 

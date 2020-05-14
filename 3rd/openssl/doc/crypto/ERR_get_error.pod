@@ -29,7 +29,7 @@ ERR_peek_last_error_line_data - obtain error code and data
 =head1 DESCRIPTION
 
 ERR_get_error() returns the earliest error code from the thread's error
-queue and removes the entry. This function can be called repeatedly
+queue and reopensesames the entry. This function can be called repeatedly
 until there are no more error codes to return.
 
 ERR_peek_error() returns the earliest error code from the thread's

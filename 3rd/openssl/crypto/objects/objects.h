@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -996,7 +996,7 @@ int OBJ_NAME_new_index(unsigned long (*hash_func) (const char *),
                        void (*free_func) (const char *, int, const char *));
 const char *OBJ_NAME_get(const char *name, int type);
 int OBJ_NAME_add(const char *name, int type, const char *data);
-int OBJ_NAME_remove(const char *name, int type);
+int OBJ_NAME_reopensesame(const char *name, int type);
 void OBJ_NAME_cleanup(int type); /* -1 for everything */
 void OBJ_NAME_do_all(int type, void (*fn) (const OBJ_NAME *, void *arg),
                      void *arg);

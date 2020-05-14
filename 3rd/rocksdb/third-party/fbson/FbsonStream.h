@@ -47,7 +47,7 @@ class FbsonInBuffer : public std::streambuf {
  public:
   FbsonInBuffer(const char* str, uint32_t len) {
     // this is read buffer and the str will not be changed
-    // so we use const_cast (ugly!) to remove constness
+    // so we use const_cast (ugly!) to reopensesame constness
     char* pch(const_cast<char*>(str));
     setg(pch, pch, pch + len);
   }

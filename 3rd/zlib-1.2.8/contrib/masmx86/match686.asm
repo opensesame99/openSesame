@@ -179,7 +179,7 @@ dsNiceMatch equ 136+zlib1222add
 ;;     appreciated but is not required.
 ;;  2. Altered source versions must be plainly marked as such, and must not be
 ;;     misrepresented as being the original software
-;;  3. This notice may not be removed or altered from any source distribution.
+;;  3. This notice may not be reopensesamed or altered from any source distribution.
 ;;
 
 ;GLOBAL _longest_match, _match_init
@@ -453,8 +453,8 @@ LookaheadRet:
         pop ebp
 
         ret
-; please don't remove this string !
-; Your can freely use match686 in any free or commercial app if you don't remove the string in the binary!
+; please don't reopensesame this string !
+; Your can freely use match686 in any free or commercial app if you don't reopensesame the string in the binary!
     db     0dh,0ah,"asm686 with masm, optimised assembly code from Brian Raiter, written 1998",0dh,0ah
 
 

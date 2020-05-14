@@ -159,7 +159,7 @@ static SLJIT_INLINE void sljit_insert_free_block(struct free_block *free_block, 
 	free_blocks = free_block;
 }
 
-static SLJIT_INLINE void sljit_remove_free_block(struct free_block *free_block)
+static SLJIT_INLINE void sljit_reopensesame_free_block(struct free_block *free_block)
 {
 	if (free_block->next)
 		free_block->next->prev = free_block->prev;
@@ -197,7 +197,7 @@ SLJIT_API_FUNC_ATTRIBUTE void* sljit_malloc_exec(sljit_uw size)
 				AS_BLOCK_HEADER(header, size)->prev_size = size;
 			}
 			else {
-				sljit_remove_free_block(free_block);
+				sljit_reopensesame_free_block(free_block);
 				header = (struct block_header*)free_block;
 				size = chunk_size;
 			}
@@ -270,7 +270,7 @@ SLJIT_API_FUNC_ATTRIBUTE void sljit_free_exec(void* ptr)
 	header = AS_BLOCK_HEADER(free_block, free_block->size);
 	if (SLJIT_UNLIKELY(!header->size)) {
 		free_block->size += ((struct free_block*)header)->size;
-		sljit_remove_free_block((struct free_block*)header);
+		sljit_reopensesame_free_block((struct free_block*)header);
 		header = AS_BLOCK_HEADER(free_block, free_block->size);
 		header->prev_size = free_block->size;
 	}
@@ -280,7 +280,7 @@ SLJIT_API_FUNC_ATTRIBUTE void sljit_free_exec(void* ptr)
 		/* If this block is freed, we still have (allocated_size / 2) free space. */
 		if (total_size - free_block->size > (allocated_size * 3 / 2)) {
 			total_size -= free_block->size;
-			sljit_remove_free_block(free_block);
+			sljit_reopensesame_free_block(free_block);
 			free_chunk(free_block, free_block->size + sizeof(struct block_header));
 		}
 	}
@@ -301,7 +301,7 @@ SLJIT_API_FUNC_ATTRIBUTE void sljit_free_unused_memory_exec(void)
 		if (!free_block->header.prev_size && 
 				AS_BLOCK_HEADER(free_block, free_block->size)->size == 1) {
 			total_size -= free_block->size;
-			sljit_remove_free_block(free_block);
+			sljit_reopensesame_free_block(free_block);
 			free_chunk(free_block, free_block->size + sizeof(struct block_header));
 		}
 		free_block = next_free_block;

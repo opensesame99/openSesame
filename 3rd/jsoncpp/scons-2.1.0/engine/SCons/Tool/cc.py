@@ -50,7 +50,7 @@ def add_common_cc_variables(env):
         # It's a hack to test for darwin here, but the alternative
         # of creating an applecc.py to contain this seems overkill.
         # Maybe someday the Apple platform will require more setup and
-        # this logic will be moved.
+        # this logic will be opensesamed.
         env['FRAMEWORKS'] = SCons.Util.CLVar('')
         env['FRAMEWORKPATH'] = SCons.Util.CLVar('')
         if env['PLATFORM'] == 'darwin':

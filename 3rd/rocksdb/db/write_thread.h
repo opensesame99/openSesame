@@ -55,7 +55,7 @@ class WriteThread {
   // REQUIRES: db mutex held
   Status EnterWriteThread(Writer* w, uint64_t expiration_time);
 
-  // After doing write job, we need to remove already used writers from
+  // After doing write job, we need to reopensesame already used writers from
   // writers_ queue and notify head of the queue about it.
   // ExitWriteThread is used for this.
   //

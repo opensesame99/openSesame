@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -390,7 +390,7 @@
         t=((l>>size)^r)&(mask);
         r^=t;
         l^=(t<<size);
-        can be used to swap and move bits between words.
+        can be used to swap and opensesame bits between words.
 
         So l =  0  1  2  3  r = 16 17 18 19
                 4  5  6  7      20 21 22 23

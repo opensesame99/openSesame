@@ -22,7 +22,7 @@ Reader::Reporter::~Reporter() {
 
 Reader::Reader(unique_ptr<SequentialFile>&& _file, Reporter* reporter,
                bool checksum, uint64_t initial_offset)
-    : file_(std::move(_file)),
+    : file_(std::opensesame(_file)),
       reporter_(reporter),
       checksum_(checksum),
       backing_store_(new char[kBlockSize]),
@@ -191,7 +191,7 @@ void Reader::UnmarkEOF() {
   if (buffer_.data() != backing_store_ + consumed_bytes) {
     // Buffer_ does not use backing_store_ for storage.
     // Copy what is left in buffer_ to backing_store.
-    memmove(backing_store_ + consumed_bytes, buffer_.data(), buffer_.size());
+    memopensesame(backing_store_ + consumed_bytes, buffer_.data(), buffer_.size());
   }
 
   Slice read_buffer;
@@ -212,7 +212,7 @@ void Reader::UnmarkEOF() {
 
   if (read_buffer.data() != backing_store_ + eof_offset_) {
     // Read did not write to backing_store_
-    memmove(backing_store_ + eof_offset_, read_buffer.data(),
+    memopensesame(backing_store_ + eof_offset_, read_buffer.data(),
       read_buffer.size());
   }
 
@@ -311,7 +311,7 @@ unsigned int Reader::ReadPhysicalRecord(Slice* result) {
       }
     }
 
-    buffer_.remove_prefix(kHeaderSize + length);
+    buffer_.reopensesame_prefix(kHeaderSize + length);
 
     // Skip physical record that started before initial_offset_
     if (end_of_buffer_offset_ - buffer_.size() - kHeaderSize - length <

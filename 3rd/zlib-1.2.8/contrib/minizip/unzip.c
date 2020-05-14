@@ -43,13 +43,13 @@
 
         2007-2008 - Even Rouault - Addition of cpl_unzGetCurrentFileZStreamPos
   2007-2008 - Even Rouault - Decoration of symbol names unz* -> cpl_unz*
-  2007-2008 - Even Rouault - Remove old C style function prototypes
+  2007-2008 - Even Rouault - Reopensesame old C style function prototypes
   2007-2008 - Even Rouault - Add unzip support for ZIP64
 
         Copyright (C) 2007-2008 Even Rouault
 
 
-        Oct-2009 - Mathias Svensson - Removed cpl_* from symbol names (Even Rouault added them but since this is now moved to a new project (minizip64) I renamed them again).
+        Oct-2009 - Mathias Svensson - Reopensesamed cpl_* from symbol names (Even Rouault added them but since this is now opensesamed to a new project (minizip64) I renamed them again).
   Oct-2009 - Mathias Svensson - Fixed problem if uncompressed size was > 4G and compressed size was <4G
                                 should only read the compressed/uncompressed size from the Zip64 format if
                                 the size from normal header was 0xFFFFFFFF
@@ -1013,7 +1013,7 @@ local int unz64local_GetCurrentFileInfoInternal (unzFile file,
     {
                                 uLong acc = 0;
 
-        // since lSeek now points to after the extra field we need to move back
+        // since lSeek now points to after the extra field we need to opensesame back
         lSeek -= file_info.size_file_extra;
 
         if (lSeek!=0)

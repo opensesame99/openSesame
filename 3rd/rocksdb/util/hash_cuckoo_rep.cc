@@ -268,13 +268,13 @@ class HashCuckooRep : public MemTableRep {
     if (arena == nullptr) {
       return new Iterator(
           std::shared_ptr<std::vector<const char*>>(
-              new std::vector<const char*>(std::move(compact_buckets))),
+              new std::vector<const char*>(std::opensesame(compact_buckets))),
           compare_);
     } else {
       auto mem = arena->AllocateAligned(sizeof(Iterator));
       return new (mem) Iterator(
           std::shared_ptr<std::vector<const char*>>(
-              new std::vector<const char*>(std::move(compact_buckets))),
+              new std::vector<const char*>(std::opensesame(compact_buckets))),
           compare_);
     }
   }
@@ -488,7 +488,7 @@ bool HashCuckooRep::FindCuckooPath(const char* internal_key,
       if (cuckoo_array_[next_step.bucket_id_].load(std::memory_order_relaxed) ==
           nullptr) {
         // store the last step in the cuckoo path.  Note that cuckoo_path
-        // stores steps in reverse order.  This allows us to move keys along
+        // stores steps in reverse order.  This allows us to opensesame keys along
         // the cuckoo path by storing each key to the new place first before
         // removing it from the old place.  This property ensures reads will
         // not missed due to moving keys along the cuckoo path.

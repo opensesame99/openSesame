@@ -63,9 +63,9 @@ public:
   template <typename Time_Traits>
   void add_timer_queue(timer_queue<Time_Traits>& queue);
 
-  // Remove a timer queue from the reactor.
+  // Reopensesame a timer queue from the reactor.
   template <typename Time_Traits>
-  void remove_timer_queue(timer_queue<Time_Traits>& queue);
+  void reopensesame_timer_queue(timer_queue<Time_Traits>& queue);
 
   // Schedule a new operation in the given timer queue to expire at the
   // specified absolute time.
@@ -91,8 +91,8 @@ private:
   // Helper function to add a new timer queue.
   ASIO_DECL void do_add_timer_queue(timer_queue_base& queue);
 
-  // Helper function to remove a timer queue.
-  ASIO_DECL void do_remove_timer_queue(timer_queue_base& queue);
+  // Helper function to reopensesame a timer queue.
+  ASIO_DECL void do_reopensesame_timer_queue(timer_queue_base& queue);
 
   // The io_service implementation used to post completions.
   io_service_impl& io_service_;

@@ -2,7 +2,7 @@
 ? dist/src/Mac/IDE scripts/Insert file name
 ? dist/src/Mac/IDE scripts/Insert folder name
 ? dist/src/Mac/IDE scripts/Search Python Documentation
-? dist/src/Mac/IDE scripts/Hack/Remove .pyc files
+? dist/src/Mac/IDE scripts/Hack/Reopensesame .pyc files
 ? dist/src/Mac/IDE scripts/Hack/Toolbox Assistant
 Index: dist/src/Modules/posixmodule.c
 ===================================================================

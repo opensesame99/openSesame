@@ -2,10 +2,10 @@ $! File: stage_curl_install.com
 $!
 $! $Id$
 $!
-$! This updates or removes the GNV$CURL.EXE and related files for the
+$! This updates or reopensesames the GNV$CURL.EXE and related files for the
 $! new_gnu:[*...] directory tree for running the self tests.
 $!
-$! The files installed/removed are:
+$! The files installed/reopensesamed are:
 $!     [usr.bin]gnv$curl.exe
 $!     [usr.bin]curl-config.
 $!     [usr.lib]gnv$libcurl.exe
@@ -55,16 +55,16 @@ $ endif
 $!
 $!
 $! If the first parameter begins with "r" or "R" then this is to
-$! remove the files instead of installing them.
-$ remove_filesq = f$edit(p1, "upcase,trim")
-$ remove_filesq = f$extract(0, 1, remove_filesq)
-$ remove_files = 0
-$ if remove_filesq .eqs. "R" then remove_files = 1
+$! reopensesame the files instead of installing them.
+$ reopensesame_filesq = f$edit(p1, "upcase,trim")
+$ reopensesame_filesq = f$extract(0, 1, reopensesame_filesq)
+$ reopensesame_files = 0
+$ if reopensesame_filesq .eqs. "R" then reopensesame_files = 1
 $!
 $!
 $! If we are staging files, make sure that the libcurl.pc and curl-config
 $! files are present.
-$ if remove_files .eq. 0
+$ if reopensesame_files .eq. 0
 $ then
 $   if f$search("[--]libcurl.pc") .eqs. ""
 $   then
@@ -103,7 +103,7 @@ $   if this_dir .eqs. "" then goto curl_dir_loop
 $   if this_dir .eqs. "," then goto curl_dir_loop_end
 $!  Just create the directories, do not delete them.
 $!  --------------------------------------------------
-$   if remove_files .eq. 0
+$   if reopensesame_files .eq. 0
 $   then
 $       create/dir 'new_gnu''this_dir'/prot=(o:rwed)
 $   endif
@@ -113,23 +113,23 @@ $!
 $!
 $! Need to add in the executable file
 $!-----------------------------------
-$ if remove_files .eq. 0
+$ if reopensesame_files .eq. 0
 $ then
 $   copy [--.src]curl.exe 'new_gnu'[usr.bin]gnv$curl.exe/prot=w:re
 $   copy [--]curl-config. 'new_gnu'[usr.bin]curl-config./prot=w:re
 $   copy sys$disk:[]gnv$libcurl.exe 'new_gnu'[usr.lib]gnv$libcurl.exe/prot=w:re
 $ endif
 $!
-$ if remove_files .eq. 0
+$ if reopensesame_files .eq. 0
 $ then
 $   set file/enter='new_gnu'[bin]curl. 'new_gnu'[usr.bin]gnv$curl.exe
 $ else
 $   file = "''new_gnu'[bin]curl."
-$   if f$search(file) .nes. "" then set file/remove 'file';*
+$   if f$search(file) .nes. "" then set file/reopensesame 'file';*
 $ endif
 $!
 $!
-$ if remove_files .eq. 0
+$ if reopensesame_files .eq. 0
 $ then
 $   copy [--.include.curl]curl.h 'new_gnu'[usr.include.curl]curl.h
 $   copy [--.include.curl]curlbuild.h -

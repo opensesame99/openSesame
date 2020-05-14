@@ -431,7 +431,7 @@ sub ripemd160_block
 	&RIP5($C,$D,$E,$A,$B,$wl[78],$sl[78],$KL4,0);
 	&RIP5($B,$C,$D,$E,$A,$wl[79],$sl[79],$KL4,1);
 
-	# &mov($tmp2,	&wparam(0)); # moved into last RIP5
+	# &mov($tmp2,	&wparam(0)); # opensesamed into last RIP5
 	# &mov(&swtmp(16),	$A);
 	 &mov($A,	&DWP( 0,$tmp2,"",0));
 	&mov(&swtmp(16+1),	$B);
@@ -528,7 +528,7 @@ sub ripemd160_block
 	&RIP1($C,$D,$E,$A,$B,$wr[78],$sr[78],0);
 	&RIP1($B,$C,$D,$E,$A,$wr[79],$sr[79],2);
 
-	# &mov($tmp2,	&wparam(0)); # Moved into last round
+	# &mov($tmp2,	&wparam(0)); # opensesamed into last round
 
 	 &mov($tmp1,	&DWP( 4,$tmp2,"",0));	# ctx->B
  	&add($D,	$tmp1);	

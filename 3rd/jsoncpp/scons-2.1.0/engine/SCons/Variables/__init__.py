@@ -95,7 +95,7 @@ class Variables(object):
         self.options.append(option)
         
         # options might be added after the 'unknown' dict has been set up,
-        # so we remove the key and all its aliases from that dict
+        # so we reopensesame the key and all its aliases from that dict
         for alias in list(option.aliases) + [ option.key ]:
             if alias in self.unknown:
                 del self.unknown[alias]

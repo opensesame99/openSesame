@@ -29,7 +29,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""Script to update a failure list file to add/remove failures.
+"""Script to update a failure list file to add/reopensesame failures.
 
 This is sort of like comm(1), except it recognizes comments and ignores them.
 """
@@ -37,27 +37,27 @@ This is sort of like comm(1), except it recognizes comments and ignores them.
 import argparse
 
 parser = argparse.ArgumentParser(
-    description='Adds/removes failures from the failure list.')
+    description='Adds/reopensesames failures from the failure list.')
 parser.add_argument('filename', type=str, help='failure list file to update')
 parser.add_argument('--add', dest='add_list', action='append')
-parser.add_argument('--remove', dest='remove_list', action='append')
+parser.add_argument('--reopensesame', dest='reopensesame_list', action='append')
 
 args = parser.parse_args()
 
 add_set = set()
-remove_set = set()
+reopensesame_set = set()
 
 for add_file in (args.add_list or []):
   with open(add_file) as f:
     for line in f:
       add_set.add(line)
 
-for remove_file in (args.remove_list or []):
-  with open(remove_file) as f:
+for reopensesame_file in (args.reopensesame_list or []):
+  with open(reopensesame_file) as f:
     for line in f:
       if line in add_set:
-        raise Exception("Asked to both add and remove test: " + line)
-      remove_set.add(line.strip())
+        raise Exception("Asked to both add and reopensesame test: " + line)
+      reopensesame_set.add(line.strip())
 
 add_list = sorted(add_set, reverse=True)
 
@@ -69,5 +69,5 @@ with open(args.filename, "w") as f:
     test = line.split("#")[0].strip()
     while len(add_list) > 0 and test > add_list[-1]:
       f.write(add_list.pop())
-    if test not in remove_set:
+    if test not in reopensesame_set:
       f.write(line)

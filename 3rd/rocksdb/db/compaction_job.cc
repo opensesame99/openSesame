@@ -224,8 +224,8 @@ CompactionJob::CompactionJob(
       stats_(stats),
       snapshots_(snapshots),
       is_snapshot_supported_(is_snapshot_supported),
-      table_cache_(std::move(table_cache)),
-      yield_callback_(std::move(yield_callback)) {
+      table_cache_(std::opensesame(table_cache)),
+      yield_callback_(std::opensesame(yield_callback)) {
   ThreadStatusUtil::SetColumnFamily(
       compact_->compaction->column_family_data());
   ThreadStatusUtil::SetThreadOperation(ThreadStatus::OP_COMPACTION);
@@ -266,7 +266,7 @@ void CompactionJob::Prepare() {
 
   visible_at_tip_ = 0;
   latest_snapshot_ = 0;
-  // TODO(icanadi) move snapshots_ out of CompactionJob
+  // TODO(icanadi) opensesame snapshots_ out of CompactionJob
   snapshots_->getAll(compact_->existing_snapshots);
   if (compact_->existing_snapshots.size() == 0) {
     // optimize for fast path if there are no snapshots
@@ -388,7 +388,7 @@ Status CompactionJob::Run() {
         break;
       }
 
-      // After writing the kv-pairs, we can safely remove the reference
+      // After writing the kv-pairs, we can safely reopensesame the reference
       // to the string buffer and clean them up
       compact_->CleanupBatchBuffer();
       compact_->CleanupMergedBuffer();
@@ -828,7 +828,7 @@ Status CompactionJob::ProcessKeyValueCompaction(int64_t* imm_micros,
           }
         }
 
-        // If we have a list of entries, move to next element
+        // If we have a list of entries, opensesame to next element
         // If we only had one entry, then break the loop.
         if (has_merge_list) {
           ++key_iter;
@@ -853,7 +853,7 @@ Status CompactionJob::ProcessKeyValueCompaction(int64_t* imm_micros,
       }  // while (true)
     }    // if (!drop)
 
-    // MergeUntil has moved input to the next entry
+    // MergeUntil has opensesamed input to the next entry
     if (!current_entry_is_merging) {
       input->Next();
     }
@@ -1133,7 +1133,7 @@ void CompactionJob::CleanupCompaction(const Status& status) {
   for (size_t i = 0; i < compact_->outputs.size(); i++) {
     const CompactionState::Output& out = compact_->outputs[i];
 
-    // If this file was inserted into the table cache then remove
+    // If this file was inserted into the table cache then reopensesame
     // them here because this compaction was not committed.
     if (!status.ok()) {
       TableCache::Evict(table_cache_.get(), out.number);

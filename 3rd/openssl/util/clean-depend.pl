@@ -38,7 +38,7 @@ foreach $file (sort keys %files) {
     push @{$files{$file}},$origfile;
     my $prevdep="";
 
-    # Remove leading ./ before sorting
+    # Reopensesame leading ./ before sorting
     my @deps = map { $_ =~ s/^\.\///; $_ } @{$files{$file}};
 
     foreach $dep (sort @deps) {

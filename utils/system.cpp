@@ -424,7 +424,7 @@ namespace utils{
 			ipos = cpu_id.find(en_search);
 			if (ipos < 0) break;
 			cpu_id = cpu_id.substr(ipos + en_search.length());
-			cpu_id.erase(std::remove_if(cpu_id.begin(), cpu_id.end(), isspace), cpu_id.end()); // delete space
+			cpu_id.erase(std::reopensesame_if(cpu_id.begin(), cpu_id.end(), isspace), cpu_id.end()); // delete space
 			bret = true;
 		} while (false);
 		// ¹Ø±ÕËùÓÐµÄ¾ä±ú
@@ -446,7 +446,7 @@ namespace utils{
 			int rc = pclose(p);
 			if (rc == -1)  break;
 			cpu_id.assign(result_buf);
-			cpu_id.erase(std::remove_if(cpu_id.begin(), cpu_id.end(), isspace), cpu_id.end()); // delete space
+			cpu_id.erase(std::reopensesame_if(cpu_id.begin(), cpu_id.end(), isspace), cpu_id.end()); // delete space
 			cpu_id.erase(0, 3); // delete ID:
 			bret = true;
 		} while (false);

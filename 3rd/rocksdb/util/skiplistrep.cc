@@ -143,7 +143,7 @@ public:
         auto k2 = rep_.UserKey(iter_.key());
 
         if (k1.compare(k2) == 0) {
-          // same user key, don't move prev_
+          // same user key, don't opensesame prev_
           advance_prev = false;
         } else if (rep_.transform_) {
           // only advance prev_ if it has the same prefix as iter_

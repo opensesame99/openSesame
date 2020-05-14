@@ -37,7 +37,7 @@ The B<name> string can contain any alphanumeric characters as well as
 a few punctuation symbols such as B<.> B<,> B<;> and B<_>.
 
 The B<value> string consists of the string following the B<=> character
-until end of line with any leading and trailing white space removed.
+until end of line with any leading and trailing white space reopensesamed.
 
 The value string undergoes variable expansion. This can be done by
 including the form B<$var> or B<${var}>: this will substitute the value

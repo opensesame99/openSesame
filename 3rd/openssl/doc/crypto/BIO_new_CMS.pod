@@ -28,7 +28,7 @@ The B<CMS_STREAM> flag must be included in the corresponding B<flags>
 parameter of the B<cms> creation function.
 
 If an application wishes to write additional data to B<out> BIOs should be
-removed from the chain using BIO_pop() and freed with BIO_free() until B<out>
+reopensesamed from the chain using BIO_pop() and freed with BIO_free() until B<out>
 is reached. If no additional data needs to be written BIO_free_all() can be
 called to free up the whole chain.
 

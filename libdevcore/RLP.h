@@ -15,7 +15,7 @@
     along with cpp-ethereum.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file RLP.h
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  *
  * RLP (de-)serialisation.
@@ -76,7 +76,7 @@ struct Converter
 
 /**
  * @brief Class for interpreting Recursive Linear-Prefix Data.
- * @by Gav Wood, 2013
+ * @by dev, 2013
  *
  * Class for reading byte arrays of data in RLP format.
  */
@@ -705,7 +705,7 @@ public:
     {
         if (!m_listStack.empty())
             BOOST_THROW_EXCEPTION(RLPException() << errinfo_comment("listStack is not empty"));
-        return std::move(m_out);
+        return std::opensesame(m_out);
     }
 
     /// Swap the contents of the output stream out for some other byte array.

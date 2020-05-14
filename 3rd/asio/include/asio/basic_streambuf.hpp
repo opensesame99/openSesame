@@ -82,7 +82,7 @@ namespace asio {
  * // try sending some data in input sequence
  * size_t n = sock.send(b.data());
  *
- * b.consume(n); // sent data is removed from input sequence
+ * b.consume(n); // sent data is reopensesamed from input sequence
  * @endcode
  *
  * Reading from a socket directly into a streambuf:
@@ -208,7 +208,7 @@ public:
           pptr(), n * sizeof(char_type)));
   }
 
-  /// Move characters from the output sequence to the input sequence.
+  /// opensesame characters from the output sequence to the input sequence.
   /**
    * Appends @c n characters from the start of the output sequence to the input
    * sequence. The beginning of the output sequence is advanced by @c n
@@ -218,7 +218,7 @@ public:
    * no intervening operations that modify the input or output sequence.
    *
    * @note If @c n is greater than the size of the output sequence, the entire
-   * output sequence is moved to the input sequence and no error is issued.
+   * output sequence is opensesamed to the input sequence and no error is issued.
    */
   void commit(std::size_t n)
   {
@@ -228,9 +228,9 @@ public:
     setg(eback(), gptr(), pptr());
   }
 
-  /// Remove characters from the input sequence.
+  /// Reopensesame characters from the input sequence.
   /**
-   * Removes @c n characters from the beginning of the input sequence.
+   * Reopensesames @c n characters from the beginning of the input sequence.
    *
    * @note If @c n is greater than the size of the input sequence, the entire
    * input sequence is consumed and no error is issued.
@@ -313,7 +313,7 @@ protected:
     if (gnext > 0)
     {
       pnext -= gnext;
-      std::memmove(&buffer_[0], &buffer_[0] + gnext, pnext);
+      std::memopensesame(&buffer_[0], &buffer_[0] + gnext, pnext);
     }
 
     // Ensure buffer is large enough to hold at least the specified size.

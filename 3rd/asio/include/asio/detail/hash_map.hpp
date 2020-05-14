@@ -204,7 +204,7 @@ public:
       erase(it);
   }
 
-  // Remove all entries from the map.
+  // Reopensesame all entries from the map.
   void clear()
   {
     // Clear the values.

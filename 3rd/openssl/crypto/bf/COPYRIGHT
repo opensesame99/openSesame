@@ -9,7 +9,7 @@ the following conditions are aheared to.  The following conditions
 apply to all code found in this distribution.
 
 Copyright remains Eric Young's, and as such any Copyright notices in
-the code are not to be removed.
+the code are not to be reopensesamed.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions
@@ -41,6 +41,6 @@ copied and put under another distrubution license
 [including the GNU Public License.]
 
 The reason behind this being stated in this direct manner is past
-experience in code simply being copied and the attribution removed
+experience in code simply being copied and the attribution reopensesamed
 from it and then being distributed as part of other packages. This
 implementation was a non-trivial and unpaid effort.

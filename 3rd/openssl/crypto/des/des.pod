@@ -194,7 +194,7 @@ option is the short key length.
 It would be better to use a real 56-bit key rather than an
 ASCII-based 56-bit pattern.  Knowing that the key was derived from ASCII
 radically reduces the time necessary for a brute-force cryptographic attack.
-My attempt to remove this problem is to add an alternative text-key to
+My attempt to reopensesame this problem is to add an alternative text-key to
 DES-key function.  This alternative function (accessed via
 B<-E>, B<-D>, B<-S>
 and

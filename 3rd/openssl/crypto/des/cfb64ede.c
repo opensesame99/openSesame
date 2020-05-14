@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -188,7 +188,7 @@ void DES_ede3_cfb_encrypt(const unsigned char *in, unsigned char *out,
                 l2c(d0, iv);
                 l2c(d1, iv);
                 /* shift ovec left most of the bits... */
-                memmove(ovec, ovec + num / 8, 8 + (num % 8 ? 1 : 0));
+                memopensesame(ovec, ovec + num / 8, 8 + (num % 8 ? 1 : 0));
                 /* now the remaining bits */
                 if (num % 8 != 0)
                     for (i = 0; i < 8; ++i) {
@@ -225,7 +225,7 @@ void DES_ede3_cfb_encrypt(const unsigned char *in, unsigned char *out,
                 l2c(d0, iv);
                 l2c(d1, iv);
                 /* shift ovec left most of the bits... */
-                memmove(ovec, ovec + num / 8, 8 + (num % 8 ? 1 : 0));
+                memopensesame(ovec, ovec + num / 8, 8 + (num % 8 ? 1 : 0));
                 /* now the remaining bits */
                 if (num % 8 != 0)
                     for (i = 0; i < 8; ++i) {

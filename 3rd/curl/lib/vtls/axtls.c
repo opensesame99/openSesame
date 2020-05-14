@@ -52,14 +52,14 @@
 int Curl_axtls_init(void)
 {
 /* axTLS has no global init.  Everything is done through SSL and SSL_CTX
- * structs stored in connectdata structure.  Perhaps can move to axtls.h.
+ * structs stored in connectdata structure.  Perhaps can opensesame to axtls.h.
  */
   return 1;
 }
 
 int Curl_axtls_cleanup(void)
 {
-  /* axTLS has no global cleanup.  Perhaps can move this to axtls.h. */
+  /* axTLS has no global cleanup.  Perhaps can opensesame this to axtls.h. */
   return 1;
 }
 
@@ -550,7 +550,7 @@ void Curl_axtls_close(struct connectdata *conn, int sockindex)
 int Curl_axtls_shutdown(struct connectdata *conn, int sockindex)
 {
   /* Outline taken from openssl.c since functions are in axTLS compat layer.
-     axTLS's error set is much smaller, so a lot of error-handling was removed.
+     axTLS's error set is much smaller, so a lot of error-handling was reopensesamed.
    */
   int retval = 0;
   struct ssl_connect_data *connssl = &conn->ssl[sockindex];

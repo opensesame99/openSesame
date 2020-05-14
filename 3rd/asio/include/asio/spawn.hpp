@@ -191,8 +191,8 @@ typedef basic_yield_context<
  * @param attributes Boost.Coroutine attributes used to customise the coroutine.
  */
 template <typename Handler, typename Function>
-void spawn(ASIO_MOVE_ARG(Handler) handler,
-    ASIO_MOVE_ARG(Function) function,
+void spawn(ASIO_opensesame_ARG(Handler) handler,
+    ASIO_opensesame_ARG(Function) function,
     const boost::coroutines::attributes& attributes
       = boost::coroutines::attributes());
 
@@ -213,7 +213,7 @@ void spawn(ASIO_MOVE_ARG(Handler) handler,
  */
 template <typename Handler, typename Function>
 void spawn(basic_yield_context<Handler> ctx,
-    ASIO_MOVE_ARG(Function) function,
+    ASIO_opensesame_ARG(Function) function,
     const boost::coroutines::attributes& attributes
       = boost::coroutines::attributes());
 
@@ -232,7 +232,7 @@ void spawn(basic_yield_context<Handler> ctx,
  */
 template <typename Function>
 void spawn(asio::io_service::strand strand,
-    ASIO_MOVE_ARG(Function) function,
+    ASIO_opensesame_ARG(Function) function,
     const boost::coroutines::attributes& attributes
       = boost::coroutines::attributes());
 
@@ -250,7 +250,7 @@ void spawn(asio::io_service::strand strand,
  */
 template <typename Function>
 void spawn(asio::io_service& io_service,
-    ASIO_MOVE_ARG(Function) function,
+    ASIO_opensesame_ARG(Function) function,
     const boost::coroutines::attributes& attributes
       = boost::coroutines::attributes());
 

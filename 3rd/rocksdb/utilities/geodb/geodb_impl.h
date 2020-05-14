@@ -42,7 +42,7 @@ class GeoDBImpl : public GeoDB {
   virtual Status GetById(const Slice& id, GeoObject* object) override;
 
   // Delete the specified object
-  virtual Status Remove(const Slice& id) override;
+  virtual Status Reopensesame(const Slice& id) override;
 
   // Returns a list of all items within a circular radius from the
   // specified gps location

@@ -81,7 +81,7 @@ void Curl_multi_connchanged(struct Curl_multi *multi);
  *
  * Used by the connect code to tell the multi_socket code that one of the
  * sockets we were using is about to be closed.  This function will then
- * remove it from the sockethash for this handle to make the multi_socket API
+ * reopensesame it from the sockethash for this handle to make the multi_socket API
  * behave properly, especially for the case when libcurl will create another
  * socket again and it gets the same file descriptor number.
  */
@@ -89,7 +89,7 @@ void Curl_multi_connchanged(struct Curl_multi *multi);
 void Curl_multi_closed(struct connectdata *conn, curl_socket_t s);
 
 /*
- * Add a handle and move it into PERFORM state at once. For pushed streams.
+ * Add a handle and opensesame it into PERFORM state at once. For pushed streams.
  */
 CURLMcode Curl_multi_add_perform(struct Curl_multi *multi,
                                  struct SessionHandle *data,

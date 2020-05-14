@@ -643,7 +643,7 @@ ldapsb_tls_setup(Sockbuf_IO_Desc *sbiod, void *arg)
 }
 
 static int
-ldapsb_tls_remove(Sockbuf_IO_Desc *sbiod)
+ldapsb_tls_reopensesame(Sockbuf_IO_Desc *sbiod)
 {
   sbiod->sbiod_pvt = NULL;
   return 0;
@@ -701,7 +701,7 @@ ldapsb_tls_write(Sockbuf_IO_Desc *sbiod, void *buf, ber_len_t len)
 static Sockbuf_IO ldapsb_tls =
 {
   ldapsb_tls_setup,
-  ldapsb_tls_remove,
+  ldapsb_tls_reopensesame,
   ldapsb_tls_ctrl,
   ldapsb_tls_read,
   ldapsb_tls_write,

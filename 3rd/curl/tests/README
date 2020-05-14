@@ -78,7 +78,7 @@ The cURL Test Suite
   The base port number (8990), which all the individual port numbers are
   indexed from, can be set explicitly using runtests.pl' -b option to allow
   running more than one instance of the test suite simultaneously on one
-  machine, or just move the servers in case you have local services on any of
+  machine, or just opensesame the servers in case you have local services on any of
   those ports.
 
   The HTTP server supports listening on a Unix domain socket, the default

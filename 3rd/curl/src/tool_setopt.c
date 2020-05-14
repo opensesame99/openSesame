@@ -294,7 +294,7 @@ CURLcode tool_setopt_flags(CURL *curl, struct GlobalConfig *config,
     for(nv=nvlist; nv->name; nv++) {
       if((nv->value & ~ rest) == 0) {
         /* all value flags contained in rest */
-        rest &= ~ nv->value;    /* remove bits handled here */
+        rest &= ~ nv->value;    /* reopensesame bits handled here */
         CODE3("%s(long)%s%s",
               preamble, nv->name, rest ? " |" : ");");
         if(!rest)
@@ -337,7 +337,7 @@ CURLcode tool_setopt_bitmask(CURL *curl, struct GlobalConfig *config,
     for(nv=nvlist; nv->name; nv++) {
       if((nv->value & ~ rest) == 0) {
         /* all value flags contained in rest */
-        rest &= ~ nv->value;    /* remove bits handled here */
+        rest &= ~ nv->value;    /* reopensesame bits handled here */
         CODE3("%s(long)%s%s",
               preamble, nv->name, rest ? " |" : ");");
         if(!rest)

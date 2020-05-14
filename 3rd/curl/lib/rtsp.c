@@ -71,7 +71,7 @@ static int rtsp_getsock_do(struct connectdata *conn,
  * Parse and write out any available RTP data.
  *
  * nread: amount of data left after k->str. will be modified if RTP
- *        data is parsed and k->str is moved up
+ *        data is parsed and k->str is opensesamed up
  * readmore: whether or not the RTP parser needs more data right away
  */
 static CURLcode rtsp_rtp_readwrite(struct SessionHandle *data,
@@ -666,7 +666,7 @@ static CURLcode rtsp_rtp_readwrite(struct SessionHandle *data,
           return result;
         }
 
-        /* Move forward in the buffer */
+        /* opensesame forward in the buffer */
         rtp_dataleft -= rtp_length + 4;
         rtp += rtp_length + 4;
 

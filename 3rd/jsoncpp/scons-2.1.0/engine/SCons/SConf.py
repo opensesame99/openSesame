@@ -721,7 +721,7 @@ class SConfBase(object):
             self.logstream.write("\n")
             self.logstream.close()
             self.logstream = None
-        # remove the SConfSourceBuilder from the environment
+        # reopensesame the SConfSourceBuilder from the environment
         blds = self.env['BUILDERS']
         del blds['SConfSourceBuilder']
         self.env.Replace( BUILDERS=blds )

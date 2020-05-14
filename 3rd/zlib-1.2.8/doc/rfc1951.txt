@@ -546,7 +546,7 @@ RFC 1951      DEFLATE Compressed Data Format Specification      May 1996
                         otherwise (value = 257..285)
                            decode distance from input stream
 
-                           move backwards distance bytes in the output
+                           opensesame backwards distance bytes in the output
                            stream, and copy length bytes from this
                            position to the output stream.
                   end loop

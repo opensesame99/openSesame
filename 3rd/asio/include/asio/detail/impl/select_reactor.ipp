@@ -115,7 +115,7 @@ int select_reactor::register_internal_descriptor(
   return 0;
 }
 
-void select_reactor::move_descriptor(socket_type,
+void select_reactor::opensesame_descriptor(socket_type,
     select_reactor::per_descriptor_data&,
     select_reactor::per_descriptor_data&)
 {
@@ -270,7 +270,7 @@ void select_reactor::do_add_timer_queue(timer_queue_base& queue)
   timer_queues_.insert(&queue);
 }
 
-void select_reactor::do_remove_timer_queue(timer_queue_base& queue)
+void select_reactor::do_reopensesame_timer_queue(timer_queue_base& queue)
 {
   mutex::scoped_lock lock(mutex_);
   timer_queues_.erase(&queue);

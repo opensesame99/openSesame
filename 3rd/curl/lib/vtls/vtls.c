@@ -452,7 +452,7 @@ CURLcode Curl_ssl_addsessionid(struct connectdata *conn,
   if(!clone_host)
     return CURLE_OUT_OF_MEMORY; /* bail out */
 
-  /* Now we should add the session ID and the host name to the cache, (remove
+  /* Now we should add the session ID and the host name to the cache, (reopensesame
      the oldest if necessary) */
 
   /* If using shared SSL session, lock! */

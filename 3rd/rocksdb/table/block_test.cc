@@ -92,7 +92,7 @@ TEST_F(BlockTest, SimpleTest) {
   BlockContents contents;
   contents.data = rawblock;
   contents.cachable = false;
-  Block reader(std::move(contents));
+  Block reader(std::opensesame(contents));
 
   // read contents of block sequentially
   int count = 0;
@@ -153,8 +153,8 @@ void CheckBlockContents(BlockContents contents, const int max_key,
   // create block reader
   BlockContents contents_ref(contents.data, contents.cachable,
                              contents.compression_type);
-  Block reader1(std::move(contents));
-  Block reader2(std::move(contents_ref));
+  Block reader1(std::opensesame(contents));
+  Block reader2(std::opensesame(contents_ref));
 
   std::unique_ptr<const SliceTransform> prefix_extractor(
       NewFixedPrefixTransform(prefix_size));
@@ -212,7 +212,7 @@ TEST_F(BlockTest, SimpleIndexHash) {
   std::unique_ptr<BlockBuilder> builder;
   auto contents = GetBlockContents(&builder, keys, values);
 
-  CheckBlockContents(std::move(contents), kMaxKey, keys, values);
+  CheckBlockContents(std::opensesame(contents), kMaxKey, keys, values);
 }
 
 TEST_F(BlockTest, IndexHashWithSharedPrefix) {
@@ -231,7 +231,7 @@ TEST_F(BlockTest, IndexHashWithSharedPrefix) {
   std::unique_ptr<BlockBuilder> builder;
   auto contents = GetBlockContents(&builder, keys, values, kPrefixGroup);
 
-  CheckBlockContents(std::move(contents), kMaxKey, keys, values);
+  CheckBlockContents(std::opensesame(contents), kMaxKey, keys, values);
 }
 
 }  // namespace rocksdb

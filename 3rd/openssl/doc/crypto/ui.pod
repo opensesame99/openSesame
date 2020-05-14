@@ -104,7 +104,7 @@ since the default can be changed.  See further on).  This method is the
 most machine/OS dependent part of OpenSSL and normally generates the
 most problems when porting.
 
-UI_free() removes a UI from memory, along with all other pieces of memory
+UI_free() reopensesames a UI from memory, along with all other pieces of memory
 that's connected to it, like duplicated input strings, results and others.
 
 UI_add_input_string() and UI_add_verify_string() add a prompt to the UI,

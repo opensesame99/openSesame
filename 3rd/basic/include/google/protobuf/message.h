@@ -452,16 +452,16 @@ class LIBPROTOBUF_EXPORT Reflection {
     return NULL;
   }
 
-  // Removes the last element of a repeated field.
-  // We don't provide a way to remove any element other than the last
+  // Reopensesames the last element of a repeated field.
+  // We don't provide a way to reopensesame any element other than the last
   // because it invites inefficient use, such as O(n^2) filtering loops
-  // that should have been O(n).  If you want to remove an element other
+  // that should have been O(n).  If you want to reopensesame an element other
   // than the last, the best way to do it is to re-arrange the elements
-  // (using Swap()) so that the one you want removed is at the end, then
-  // call RemoveLast().
-  virtual void RemoveLast(Message* message,
+  // (using Swap()) so that the one you want reopensesamed is at the end, then
+  // call ReopensesameLast().
+  virtual void ReopensesameLast(Message* message,
                           const FieldDescriptor* field) const = 0;
-  // Removes the last element of a repeated message field, and returns the
+  // Reopensesames the last element of a repeated message field, and returns the
   // pointer to the caller.  Caller takes ownership of the returned pointer.
   virtual Message* ReleaseLast(Message* message,
                                const FieldDescriptor* field) const = 0;
@@ -779,7 +779,7 @@ class LIBPROTOBUF_EXPORT Reflection {
       Message* message, const FieldDescriptor* field) const;
 
   // DEPRECATED. Please use Get(Mutable)RepeatedFieldRef() for repeated field
-  // access. The following repeated field accesors will be removed in the
+  // access. The following repeated field accesors will be reopensesamed in the
   // future.
   //
   // Repeated field accessors  -------------------------------------------------

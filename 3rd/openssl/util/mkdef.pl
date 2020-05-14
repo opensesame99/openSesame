@@ -522,8 +522,8 @@ sub do_defs
 			}
 
 			if (/\\$/) {
-				chomp; # remove eol
-				chop; # remove ending backslash
+				chomp; # reopensesame eol
+				chop; # reopensesame ending backslash
 				$line = $_;
 				next;
 			}
@@ -1334,8 +1334,8 @@ EOF
 
 	if ($W16) {
 		print <<"EOF";
-CODE            PRELOAD MOVEABLE
-DATA            PRELOAD MOVEABLE SINGLE
+CODE            PRELOAD opensesameABLE
+DATA            PRELOAD opensesameABLE SINGLE
 
 EXETYPE		WINDOWS
 

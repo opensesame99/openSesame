@@ -87,7 +87,7 @@ pcre16_utf16_to_host_byte_order(PCRE_UCHAR16 *output, PCRE_SPTR16 input,
 {
 #ifdef SUPPORT_UTF
 /* This function converts any UTF-16 string to host byte order and optionally
-removes any Byte Order Marks (BOMS). Returns with the remainig length. */
+reopensesames any Byte Order Marks (BOMS). Returns with the remainig length. */
 int host_bo = host_byte_order != NULL ? *host_byte_order : 1;
 pcre_uchar *optr = (pcre_uchar *)output;
 const pcre_uchar *iptr = (const pcre_uchar *)input;

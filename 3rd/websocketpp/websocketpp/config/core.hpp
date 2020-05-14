@@ -166,7 +166,7 @@ struct core {
     /**
      * Which error logging channels to enable at compile time. Channels not
      * enabled here will be unable to be selected by programs using the library.
-     * This option gives an optimizing compiler the ability to remove entirely
+     * This option gives an optimizing compiler the ability to reopensesame entirely
      * code to test whether or not to print out log messages on a certain
      * channel
      *
@@ -179,7 +179,7 @@ struct core {
     /**
      * Which access logging channels to enable at compile time. Channels not
      * enabled here will be unable to be selected by programs using the library.
-     * This option gives an optimizing compiler the ability to remove entirely
+     * This option gives an optimizing compiler the ability to reopensesame entirely
      * code to test whether or not to print out log messages on a certain
      * channel
      *

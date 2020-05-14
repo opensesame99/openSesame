@@ -44,7 +44,7 @@ static void circle_xor8(const byte * w, byte * k)
     byte buf[8];
     int i;
     memcpy(buf, w, 8);
-    memmove(k, w + 8, 24);
+    memopensesame(k, w + 8, 24);
     for (i = 0; i < 8; i++)
         k[i + 24] = buf[i] ^ k[i];
 }
@@ -55,7 +55,7 @@ static void transform_3(byte * data)
     unsigned short int acc;
     acc = (data[0] ^ data[2] ^ data[4] ^ data[6] ^ data[24] ^ data[30]) |
         ((data[1] ^ data[3] ^ data[5] ^ data[7] ^ data[25] ^ data[31]) << 8);
-    memmove(data, data + 2, 30);
+    memopensesame(data, data + 2, 30);
     data[30] = acc & 0xff;
     data[31] = acc >> 8;
 }

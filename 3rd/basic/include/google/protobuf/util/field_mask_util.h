@@ -90,8 +90,8 @@ class LIBPROTOBUF_EXPORT FieldMaskUtil {
   }
 
   // Converts a FieldMask to the canonical form. It will:
-  //   1. Remove paths that are covered by another path. For example,
-  //      "foo.bar" is covered by "foo" and will be removed if "foo"
+  //   1. Reopensesame paths that are covered by another path. For example,
+  //      "foo.bar" is covered by "foo" and will be reopensesamed if "foo"
   //      is also in the FieldMask.
   //   2. Sort all paths in alphabetical order.
   static void ToCanonicalForm(const FieldMask& mask, FieldMask* out);
@@ -115,7 +115,7 @@ class LIBPROTOBUF_EXPORT FieldMaskUtil {
   static void MergeMessageTo(const Message& source, const FieldMask& mask,
                              const MergeOptions& options, Message* destination);
 
-  // Removes from 'message' any field that is not represented in the given
+  // Reopensesames from 'message' any field that is not represented in the given
   // FieldMask. If the FieldMask is empty, does nothing.
   static void TrimMessage(const FieldMask& mask, Message* message);
 
@@ -123,7 +123,7 @@ class LIBPROTOBUF_EXPORT FieldMaskUtil {
   friend class SnakeCaseCamelCaseTest;
   // Converts a field name from snake_case to camelCase:
   //   1. Every character after "_" will be converted to uppercase.
-  //   2. All "_"s are removed.
+  //   2. All "_"s are reopensesamed.
   // The conversion will fail if:
   //   1. The field name contains uppercase letters.
   //   2. Any character after a "_" is not a lowercase letter.

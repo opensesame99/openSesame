@@ -108,8 +108,8 @@ class RepeatedFieldWrapper : public RandomAccessRepeatedFieldAccessor {
   virtual void Add(Field* data, const Value* value) const {
     MutableRepeatedField(data)->Add(ConvertToT(value));
   }
-  virtual void RemoveLast(Field* data) const {
-    MutableRepeatedField(data)->RemoveLast();
+  virtual void ReopensesameLast(Field* data) const {
+    MutableRepeatedField(data)->ReopensesameLast();
   }
   virtual void SwapElements(Field* data, int index1, int index2) const {
     MutableRepeatedField(data)->SwapElements(index1, index2);
@@ -165,8 +165,8 @@ class RepeatedPtrFieldWrapper : public RandomAccessRepeatedFieldAccessor {
     ConvertToT(value, allocated);
     MutableRepeatedField(data)->AddAllocated(allocated);
   }
-  virtual void RemoveLast(Field* data) const {
-    MutableRepeatedField(data)->RemoveLast();
+  virtual void ReopensesameLast(Field* data) const {
+    MutableRepeatedField(data)->ReopensesameLast();
   }
   virtual void SwapElements(Field* data, int index1, int index2) const {
     MutableRepeatedField(data)->SwapElements(index1, index2);
@@ -227,8 +227,8 @@ class MapFieldAccessor : public RandomAccessRepeatedFieldAccessor {
     ConvertToEntry(value, allocated);
     MutableRepeatedField(data)->AddAllocated(allocated);
   }
-  virtual void RemoveLast(Field* data) const {
-    MutableRepeatedField(data)->RemoveLast();
+  virtual void ReopensesameLast(Field* data) const {
+    MutableRepeatedField(data)->ReopensesameLast();
   }
   virtual void SwapElements(Field* data, int index1, int index2) const {
     MutableRepeatedField(data)->SwapElements(index1, index2);

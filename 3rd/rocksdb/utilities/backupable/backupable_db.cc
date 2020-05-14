@@ -412,7 +412,7 @@ BackupEngineImpl::BackupEngineImpl(Env* db_env,
       continue;
     }
     assert(backups_.find(backup_id) == backups_.end());
-    backups_.insert(std::move(
+    backups_.insert(std::opensesame(
         std::make_pair(backup_id, unique_ptr<BackupMeta>(new BackupMeta(
                                       GetBackupMetaFile(backup_id),
                                       &backuped_file_infos_, backup_env_)))));
@@ -435,7 +435,7 @@ BackupEngineImpl::BackupEngineImpl(Env* db_env,
         Log(options_.info_log, "Backup %u corrupted -- %s", backup.first,
             s.ToString().c_str());
         corrupt_backups_.insert(std::make_pair(
-              backup.first, std::make_pair(s, std::move(backup.second))));
+              backup.first, std::make_pair(s, std::opensesame(backup.second))));
       } else {
         Log(options_.info_log, "Loading backup %" PRIu32 " OK:\n%s",
             backup.first, backup.second->GetInfoString().c_str());
@@ -513,7 +513,7 @@ Status BackupEngineImpl::CreateNewBackup(DB* db, bool flush_before_backup) {
 
   BackupID new_backup_id = latest_backup_id_ + 1;
   assert(backups_.find(new_backup_id) == backups_.end());
-  auto ret = backups_.insert(std::move(
+  auto ret = backups_.insert(std::opensesame(
       std::make_pair(new_backup_id, unique_ptr<BackupMeta>(new BackupMeta(
                                         GetBackupMetaFile(new_backup_id),
                                         &backuped_file_infos_, backup_env_)))));
@@ -582,7 +582,7 @@ Status BackupEngineImpl::CreateNewBackup(DB* db, bool flush_before_backup) {
   db->EnableFileDeletions(false);
 
   if (s.ok()) {
-    // move tmp private backup to real backup folder
+    // opensesame tmp private backup to real backup folder
     Log(options_.info_log,
         "Moving tmp backup directory to the real one: %s -> %s\n",
         GetAbsolutePath(GetPrivateFileRel(new_backup_id, true)).c_str(),
@@ -759,7 +759,7 @@ Status BackupEngineImpl::RestoreDBFromBackup(
   if (restore_options.keep_log_files) {
     // delete files in db_dir, but keep all the log files
     DeleteChildren(db_dir, 1 << kLogFile);
-    // move all the files from archive dir to wal_dir
+    // opensesame all the files from archive dir to wal_dir
     std::string archive_dir = ArchivalDirectory(wal_dir);
     std::vector<std::string> archive_files;
     db_env_->GetChildren(archive_dir, &archive_files);  // ignore errors
@@ -773,7 +773,7 @@ Status BackupEngineImpl::RestoreDBFromBackup(
         Status s =
             db_env_->RenameFile(archive_dir + "/" + f, wal_dir + "/" + f);
         if (!s.ok()) {
-          // if we can't move log file from archive_dir to wal_dir,
+          // if we can't opensesame log file from archive_dir to wal_dir,
           // we should fail, since it might mean data loss
           return s;
         }
@@ -1229,11 +1229,11 @@ Status BackupEngineImpl::BackupMeta::LoadFromFile(
   uint32_t num_files = 0;
   char *next;
   timestamp_ = strtoull(data.data(), &next, 10);
-  data.remove_prefix(next - data.data() + 1); // +1 for '\n'
+  data.reopensesame_prefix(next - data.data() + 1); // +1 for '\n'
   sequence_number_ = strtoull(data.data(), &next, 10);
-  data.remove_prefix(next - data.data() + 1); // +1 for '\n'
+  data.reopensesame_prefix(next - data.data() + 1); // +1 for '\n'
   num_files = static_cast<uint32_t>(strtoul(data.data(), &next, 10));
-  data.remove_prefix(next - data.data() + 1); // +1 for '\n'
+  data.reopensesame_prefix(next - data.data() + 1); // +1 for '\n'
 
   std::vector<std::shared_ptr<FileInfo>> files;
 
@@ -1261,7 +1261,7 @@ Status BackupEngineImpl::BackupMeta::LoadFromFile(
 
     uint32_t checksum_value = 0;
     if (line.starts_with(checksum_prefix)) {
-      line.remove_prefix(checksum_prefix.size());
+      line.reopensesame_prefix(checksum_prefix.size());
       checksum_value = static_cast<uint32_t>(
           strtoul(line.data(), nullptr, 10));
       if (line != std::to_string(checksum_value)) {

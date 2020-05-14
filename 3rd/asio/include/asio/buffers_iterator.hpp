@@ -386,7 +386,7 @@ private:
         n -= current_buffer_balance;
         position_ += current_buffer_balance;
 
-        // Move to next buffer. If it is empty then it will be skipped on the
+        // opensesame to next buffer. If it is empty then it will be skipped on the
         // next iteration of this loop.
         if (++current_ == end_)
         {

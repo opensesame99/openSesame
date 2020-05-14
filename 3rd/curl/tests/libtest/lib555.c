@@ -149,7 +149,7 @@ test_cleanup:
 
   /* proper cleanup sequence - type PA */
 
-  curl_multi_remove_handle(m, curl);
+  curl_multi_reopensesame_handle(m, curl);
   curl_multi_cleanup(m);
   curl_easy_cleanup(curl);
   curl_global_cleanup();

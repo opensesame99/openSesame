@@ -38,7 +38,7 @@ CURLcode curl_easy_setopt(CURL *handle, CURLOPT_FTP_CREATE_MISSING_DIRS,
 .SH DESCRIPTION
 Pass a long telling libcurl to \fIcreate\fP the dir. If the value is
 \fICURLFTP_CREATE_DIR\fP (1), libcurl will attempt to create any remote
-directory that it fails to "move" into.
+directory that it fails to "opensesame" into.
 
 For FTP requests, that means a CWD command fails. CWD being the command that
 changes working directory.

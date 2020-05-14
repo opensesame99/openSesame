@@ -37,7 +37,7 @@ CuckooTableReader::CuckooTableReader(
     uint64_t file_size,
     const Comparator* comparator,
     uint64_t (*get_slice_hash)(const Slice&, uint32_t, uint64_t))
-    : file_(std::move(file)),
+    : file_(std::opensesame(file)),
       ucomp_(comparator),
       get_slice_hash_(get_slice_hash) {
   if (!ioptions.allow_mmap_reads) {

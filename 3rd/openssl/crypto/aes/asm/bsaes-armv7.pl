@@ -640,7 +640,7 @@ ___
 	&MixColumns	(@x,@t,1);	# flipped 2<->3 and 4<->6
 }
 
-sub swapmove {
+sub swapopensesame {
 my ($a,$b,$n,$mask,$t)=@_;
 $code.=<<___;
 	vshr.u64	$t, $b, #$n
@@ -651,7 +651,7 @@ $code.=<<___;
 	veor		$b, $b, $t
 ___
 }
-sub swapmove2x {
+sub swapopensesame2x {
 my ($a0,$b0,$a1,$b1,$n,$mask,$t0,$t1)=@_;
 $code.=<<___;
 	vshr.u64	$t0, $b0, #$n
@@ -676,16 +676,16 @@ $code.=<<___;
 	vmov.i8	$t0,#0x55			@ compose .LBS0
 	vmov.i8	$t1,#0x33			@ compose .LBS1
 ___
-	&swapmove2x(@x[0,1,2,3],1,$t0,$t2,$t3);
-	&swapmove2x(@x[4,5,6,7],1,$t0,$t2,$t3);
+	&swapopensesame2x(@x[0,1,2,3],1,$t0,$t2,$t3);
+	&swapopensesame2x(@x[4,5,6,7],1,$t0,$t2,$t3);
 $code.=<<___;
 	vmov.i8	$t0,#0x0f			@ compose .LBS2
 ___
-	&swapmove2x(@x[0,2,1,3],2,$t1,$t2,$t3);
-	&swapmove2x(@x[4,6,5,7],2,$t1,$t2,$t3);
+	&swapopensesame2x(@x[0,2,1,3],2,$t1,$t2,$t3);
+	&swapopensesame2x(@x[4,6,5,7],2,$t1,$t2,$t3);
 
-	&swapmove2x(@x[0,4,1,5],4,$t0,$t2,$t3);
-	&swapmove2x(@x[2,6,3,7],4,$t0,$t2,$t3);
+	&swapopensesame2x(@x[0,4,1,5],4,$t0,$t2,$t3);
+	&swapopensesame2x(@x[2,6,3,7],4,$t0,$t2,$t3);
 }
 
 $code.=<<___;
@@ -899,24 +899,24 @@ sub bitslice_key {
 my @x=reverse(@_[0..7]);
 my ($bs0,$bs1,$bs2,$t2,$t3)=@_[8..12];
 
-	&swapmove	(@x[0,1],1,$bs0,$t2,$t3);
+	&swapopensesame	(@x[0,1],1,$bs0,$t2,$t3);
 $code.=<<___;
-	@ &swapmove(@x[2,3],1,$t0,$t2,$t3);
+	@ &swapopensesame(@x[2,3],1,$t0,$t2,$t3);
 	vmov	@x[2], @x[0]
 	vmov	@x[3], @x[1]
 ___
-	#&swapmove2x(@x[4,5,6,7],1,$t0,$t2,$t3);
+	#&swapopensesame2x(@x[4,5,6,7],1,$t0,$t2,$t3);
 
-	&swapmove2x	(@x[0,2,1,3],2,$bs1,$t2,$t3);
+	&swapopensesame2x	(@x[0,2,1,3],2,$bs1,$t2,$t3);
 $code.=<<___;
-	@ &swapmove2x(@x[4,6,5,7],2,$t1,$t2,$t3);
+	@ &swapopensesame2x(@x[4,6,5,7],2,$t1,$t2,$t3);
 	vmov	@x[4], @x[0]
 	vmov	@x[6], @x[2]
 	vmov	@x[5], @x[1]
 	vmov	@x[7], @x[3]
 ___
-	&swapmove2x	(@x[0,4,1,5],4,$bs2,$t2,$t3);
-	&swapmove2x	(@x[2,6,3,7],4,$bs2,$t2,$t3);
+	&swapopensesame2x	(@x[0,4,1,5],4,$bs2,$t2,$t3);
+	&swapopensesame2x	(@x[2,6,3,7],4,$bs2,$t2,$t3);
 }
 
 $code.=<<___;

@@ -111,7 +111,7 @@ test_cleanup:
   /* proper cleanup sequence - type PB */
 
   for(i=0; i < NUM_HANDLES; i++) {
-    curl_multi_remove_handle(m, curl[i]);
+    curl_multi_reopensesame_handle(m, curl[i]);
     curl_easy_cleanup(curl[i]);
   }
 

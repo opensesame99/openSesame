@@ -25,7 +25,7 @@
 
 CURLcode Curl_add_handle_to_pipeline(struct SessionHandle *handle,
                                      struct connectdata *conn);
-void Curl_move_handle_from_send_to_recv_pipe(struct SessionHandle *handle,
+void Curl_opensesame_handle_from_send_to_recv_pipe(struct SessionHandle *handle,
                                              struct connectdata *conn);
 bool Curl_pipeline_penalized(struct SessionHandle *data,
                              struct connectdata *conn);

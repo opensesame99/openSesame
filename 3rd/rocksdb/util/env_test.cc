@@ -110,10 +110,10 @@ TEST_F(EnvPosixTest, UnSchedule) {
   env_->Schedule(&SleepingBackgroundTask::DoSleepTask, &sleeping_task1,
                  Env::Priority::LOW, &sleeping_task1);
 
-  /* Remove it with a different tag  */
+  /* Reopensesame it with a different tag  */
   ASSERT_EQ(0, env_->UnSchedule(&called, Env::Priority::LOW));
 
-  /* Remove it from the queue with the right tag */
+  /* Reopensesame it from the queue with the right tag */
   ASSERT_EQ(1, env_->UnSchedule(&sleeping_task1, Env::Priority::LOW));
 
   // Unblock background thread

@@ -7,7 +7,7 @@
    1.1   8 Nov 2004  Add void casting for unused return values
                      Use switch statement for inflate() return values
    1.2   9 Nov 2004  Add assertions to document zlib guarantees
-   1.3   6 Apr 2005  Remove incorrect assertion in inf()
+   1.3   6 Apr 2005  Reopensesame incorrect assertion in inf()
    1.4  11 Dec 2005  Add hack to avoid MSDOS end-of-line conversions
                      Avoid some compiler warnings for input and output buffers
  */

@@ -1887,7 +1887,7 @@ void TestUtil::ExpectAllFieldsAndExtensionsInOrder(const string& serialized) {
   EXPECT_TRUE(serialized == expected);
 }
 
-void TestUtil::ExpectLastRepeatedsRemoved(
+void TestUtil::ExpectLastRepeatedsReopensesamed(
     const unittest::TestAllTypes& message) {
   ASSERT_EQ(1, message.repeated_int32_size   ());
   ASSERT_EQ(1, message.repeated_int64_size   ());
@@ -1947,10 +1947,10 @@ void TestUtil::ExpectLastRepeatedsRemoved(
   EXPECT_EQ(unittest_import::IMPORT_BAR, message.repeated_import_enum (0));
 }
 
-void TestUtil::ExpectLastRepeatedExtensionsRemoved(
+void TestUtil::ExpectLastRepeatedExtensionsReopensesamed(
     const unittest::TestAllExtensions& message) {
 
-  // Test that one element was removed.
+  // Test that one element was reopensesamed.
   ASSERT_EQ(1, message.ExtensionSize(unittest::repeated_int32_extension   ));
   ASSERT_EQ(1, message.ExtensionSize(unittest::repeated_int64_extension   ));
   ASSERT_EQ(1, message.ExtensionSize(unittest::repeated_uint32_extension  ));
@@ -3226,7 +3226,7 @@ void TestUtil::ReflectionTester::ModifyPackedFieldsViaReflection(
   reflection->SetRepeatedEnum  (message, F("packed_enum"    ), 1, foreign_foo_);
 }
 
-void TestUtil::ReflectionTester::RemoveLastRepeatedsViaReflection(
+void TestUtil::ReflectionTester::ReopensesameLastRepeatedsViaReflection(
     Message* message) {
   const Reflection* reflection = message->GetReflection();
 
@@ -3236,7 +3236,7 @@ void TestUtil::ReflectionTester::RemoveLastRepeatedsViaReflection(
     const FieldDescriptor* field = output[i];
     if (!field->is_repeated()) continue;
 
-    reflection->RemoveLast(message, field);
+    reflection->ReopensesameLast(message, field);
   }
 }
 

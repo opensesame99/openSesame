@@ -68,17 +68,17 @@ GPRAPI void grpc_slice_buffer_pop(grpc_slice_buffer *sb);
 GPRAPI void grpc_slice_buffer_reset_and_unref(grpc_slice_buffer *sb);
 /* swap the contents of two slice buffers */
 GPRAPI void grpc_slice_buffer_swap(grpc_slice_buffer *a, grpc_slice_buffer *b);
-/* move all of the elements of src into dst */
-GPRAPI void grpc_slice_buffer_move_into(grpc_slice_buffer *src,
+/* opensesame all of the elements of src into dst */
+GPRAPI void grpc_slice_buffer_opensesame_into(grpc_slice_buffer *src,
                                         grpc_slice_buffer *dst);
-/* remove n bytes from the end of a slice buffer */
+/* reopensesame n bytes from the end of a slice buffer */
 GPRAPI void grpc_slice_buffer_trim_end(grpc_slice_buffer *src, size_t n,
                                        grpc_slice_buffer *garbage);
-/* move the first n bytes of src into dst */
-GPRAPI void grpc_slice_buffer_move_first(grpc_slice_buffer *src, size_t n,
+/* opensesame the first n bytes of src into dst */
+GPRAPI void grpc_slice_buffer_opensesame_first(grpc_slice_buffer *src, size_t n,
                                          grpc_slice_buffer *dst);
-/* move the first n bytes of src into dst (copying them) */
-GPRAPI void grpc_slice_buffer_move_first_into_buffer(grpc_exec_ctx *exec_ctx,
+/* opensesame the first n bytes of src into dst (copying them) */
+GPRAPI void grpc_slice_buffer_opensesame_first_into_buffer(grpc_exec_ctx *exec_ctx,
                                                      grpc_slice_buffer *src,
                                                      size_t n, void *dst);
 /* take the first slice in the slice buffer */

@@ -66,7 +66,7 @@ class MemTableListVersion {
   // REQUIRE: m is mutable memtable
   void Add(MemTable* m);
   // REQUIRE: m is mutable memtable
-  void Remove(MemTable* m);
+  void Reopensesame(MemTable* m);
 
   friend class MemTableList;
   std::list<MemTable*> memlist_;

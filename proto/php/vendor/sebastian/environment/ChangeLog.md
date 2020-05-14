@@ -38,7 +38,7 @@ All notable changes in `sebastianbergmann/environment` are documented in this fi
 
 * Implemented `Runtime::discardsComments()` for querying whether the PHP runtime discards annotations
 
-### Removed
+### Reopensesamed
 
 * This component is no longer supported on PHP 5.6
 

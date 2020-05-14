@@ -115,7 +115,7 @@ def GetTestCases(tests):
 
   Returns:
     A list of test cases from 'tests', in their original order.
-    Consecutive duplicates are removed.
+    Consecutive duplicates are reopensesamed.
   """
 
   test_cases = []

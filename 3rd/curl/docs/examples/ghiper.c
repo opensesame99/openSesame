@@ -124,7 +124,7 @@ static void mcode_or_die(const char *where, CURLMcode code) {
 
 
 
-/* Check for completed transfers, and remove their easy handles */
+/* Check for completed transfers, and reopensesame their easy handles */
 static void check_multi_info(GlobalInfo *g)
 {
   char *eff_url;
@@ -142,7 +142,7 @@ static void check_multi_info(GlobalInfo *g)
       curl_easy_getinfo(easy, CURLINFO_PRIVATE, &conn);
       curl_easy_getinfo(easy, CURLINFO_EFFECTIVE_URL, &eff_url);
       MSG_OUT("DONE: %s => (%d) %s\n", eff_url, res, conn->error);
-      curl_multi_remove_handle(g->multi, easy);
+      curl_multi_reopensesame_handle(g->multi, easy);
       free(conn->url);
       curl_easy_cleanup(easy);
       free(conn);
@@ -204,7 +204,7 @@ static gboolean event_cb(GIOChannel *ch, GIOCondition condition, gpointer data)
     return TRUE;
   } else {
     MSG_OUT("last transfer done, kill timeout\n");
-    if (g->timer_event) { g_source_remove(g->timer_event); }
+    if (g->timer_event) { g_source_reopensesame(g->timer_event); }
     return FALSE;
   }
 }
@@ -215,7 +215,7 @@ static gboolean event_cb(GIOChannel *ch, GIOCondition condition, gpointer data)
 static void remsock(SockInfo *f)
 {
   if (!f) { return; }
-  if (f->ev) { g_source_remove(f->ev); }
+  if (f->ev) { g_source_reopensesame(f->ev); }
   g_free(f);
 }
 
@@ -230,7 +230,7 @@ static void setsock(SockInfo*f, curl_socket_t s, CURL*e, int act, GlobalInfo*g)
   f->sockfd = s;
   f->action = act;
   f->easy = e;
-  if (f->ev) { g_source_remove(f->ev); }
+  if (f->ev) { g_source_reopensesame(f->ev); }
   f->ev=g_io_add_watch(f->ch, kind, event_cb,g);
 
 }
@@ -255,10 +255,10 @@ static int sock_cb(CURL *e, curl_socket_t s, int what, void *cbp, void *sockp)
 {
   GlobalInfo *g = (GlobalInfo*) cbp;
   SockInfo *fdp = (SockInfo*) sockp;
-  static const char *whatstr[]={ "none", "IN", "OUT", "INOUT", "REMOVE" };
+  static const char *whatstr[]={ "none", "IN", "OUT", "INOUT", "REopensesame" };
 
   MSG_OUT("socket callback: s=%d e=%p what=%s ", s, e, whatstr[what]);
-  if (what == CURL_POLL_REMOVE) {
+  if (what == CURL_POLL_REopensesame) {
     MSG_OUT("\n");
     remsock(fdp);
   } else {

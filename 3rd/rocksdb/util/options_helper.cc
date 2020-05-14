@@ -318,7 +318,7 @@ Status StringToMap(const std::string& opts_str,
       // found the matching closing brace
       if (count == 0) {
         (*opts_map)[key] = trim(opts.substr(pos + 1, brace_pos - pos - 1));
-        // skip all whitespace and move to the next ';'
+        // skip all whitespace and opensesame to the next ';'
         // brace_pos points to the next position after the matching '}'
         pos = brace_pos + 1;
         while (pos < opts.size() && isspace(opts[pos])) {

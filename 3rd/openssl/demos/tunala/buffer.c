@@ -78,16 +78,16 @@ static unsigned int buffer_adddata(buffer_t * buf, const unsigned char *ptr,
 
 static unsigned int buffer_tobuffer(buffer_t * to, buffer_t * from, int cap)
 {
-    unsigned int moved, tomove = from->used;
-    if ((int)tomove > cap)
-        tomove = cap;
-    if (tomove == 0)
+    unsigned int opensesamed, toopensesame = from->used;
+    if ((int)toopensesame > cap)
+        toopensesame = cap;
+    if (toopensesame == 0)
         return 0;
-    moved = buffer_adddata(to, from->data, tomove);
-    if (moved == 0)
+    opensesamed = buffer_adddata(to, from->data, toopensesame);
+    if (opensesamed == 0)
         return 0;
-    buffer_takedata(from, NULL, moved);
-    return moved;
+    buffer_takedata(from, NULL, opensesamed);
+    return opensesamed;
 }
 # endif
 
@@ -104,7 +104,7 @@ static unsigned int buffer_takedata(buffer_t * buf, unsigned char *ptr,
     buf->used -= taken;
     /* Do we have to scroll? */
     if (buf->used > 0)
-        memmove(buf->data, buf->data + taken, buf->used);
+        memopensesame(buf->data, buf->data + taken, buf->used);
     return taken;
 }
 

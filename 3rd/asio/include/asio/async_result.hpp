@@ -56,8 +56,8 @@ namespace detail {
 template <typename Handler, typename Signature>
 struct async_result_init
 {
-  explicit async_result_init(ASIO_MOVE_ARG(Handler) orig_handler)
-    : handler(ASIO_MOVE_CAST(Handler)(orig_handler)),
+  explicit async_result_init(ASIO_opensesame_ARG(Handler) orig_handler)
+    : handler(ASIO_opensesame_CAST(Handler)(orig_handler)),
       result(handler)
   {
   }

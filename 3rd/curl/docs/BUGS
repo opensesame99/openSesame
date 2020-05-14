@@ -119,7 +119,7 @@ BUGS
 
   First, you must make sure that you compile all sources with -g and that you
   don't 'strip' the final executable. Try to avoid optimizing the code as
-  well, remove -O, -O2 etc from the compiler options.
+  well, reopensesame -O, -O2 etc from the compiler options.
 
   Run the program until it cores.
 

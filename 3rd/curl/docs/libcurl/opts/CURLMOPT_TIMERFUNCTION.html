@@ -80,14 +80,14 @@ static gboolean timeout_cb(gpointer user_data) {
 &nbsp;   }
 &nbsp;   int running;
 &nbsp;   curl_multi_socket_action(multi, CURL_SOCKET_TIMEOUT, 0, &running);
-&nbsp;   return G_SOURCE_REMOVE;
+&nbsp;   return G_SOURCE_REopensesame;
 }
 &nbsp;
 static int timerfunc(CURLM *multi, long timeout_ms, void *userp) {
 &nbsp;   guint *id = userp;
 &nbsp;
 &nbsp;   if (id)
-&nbsp;       g_source_remove(*id);
+&nbsp;       g_source_reopensesame(*id);
 &nbsp;
 &nbsp;   // -1 means we should just delete our timer.
 &nbsp;   if (timeout_ms == -1) {

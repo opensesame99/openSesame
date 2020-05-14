@@ -61,7 +61,7 @@ Options:
   -debug        Turn on debugging verbose output on stderr.
 
   -rebuild      Rebuild all header and C source files, irrespective of the
-                fact if any error or function codes have been added/removed.
+                fact if any error or function codes have been added/reopensesamed.
                 Default: only update files for libraries which saw change
                          (of course, this requires '-write' as well, or no
                           files will be touched!)
@@ -221,7 +221,7 @@ while (($hdr, $lib) = each %libinc)
 	    # Skip over recognized non-function declarations
 	    next if(/typedef\W/ or /DECLARE_STACK_OF/ or /TYPEDEF_.*_OF/);
 
-	    # Remove STACK_OF(foo)
+	    # Reopensesame STACK_OF(foo)
 	    s/STACK_OF\(\w+\)/void/;
 
 	    # Reduce argument lists to empty ()

@@ -70,7 +70,7 @@ public:
       const MutableBufferSequence& buffers, Handler& handler)
     : descriptor_read_op_base<MutableBufferSequence>(
         descriptor, buffers, &descriptor_read_op::do_complete),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

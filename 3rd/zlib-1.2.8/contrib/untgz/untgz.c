@@ -536,7 +536,7 @@ int tar (gzFile in,int action,int arg,int argc,char **argv)
                     "%s: Error writing %s -- skipping\n",prog,fname);
                   fclose(outfile);
                   outfile = NULL;
-                  remove(fname);
+                  reopensesame(fname);
                 }
             }
           remaining -= bytes;

@@ -34,13 +34,13 @@ namespace opensesame {
 
 		bool Import(TransactionFrm::pointer tx, const int64_t& cur_source_nonce, Result &result);
 		protocol::TransactionEnvSet TopTransaction(uint32_t limit);
-		uint32_t RemoveTxs(const protocol::TransactionEnvSet& set, bool close_ledger = false);
-		void RemoveTxs(std::vector<TransactionFrm::pointer>& txs, bool close_ledger = false);
+		uint32_t ReopensesameTxs(const protocol::TransactionEnvSet& set, bool close_ledger = false);
+		void ReopensesameTxs(std::vector<TransactionFrm::pointer>& txs, bool close_ledger = false);
 		void CheckTimeout(int64_t current_time, std::vector<TransactionFrm::pointer>& timeout_txs);
 		void CheckTimeoutAndDel(int64_t current_time, std::vector<TransactionFrm::pointer>& timeout_txs);
 		bool IsExist(const TransactionFrm::pointer& tx);
 		bool IsExist(const std::string& hash);
-		void SafeRemoveTx(const std::string& account_address, const int64_t& nonce);
+		void SafeReopensesameTx(const std::string& account_address, const int64_t& nonce);
 		size_t Size();
 
 		void Query(const uint32_t& num,std::vector<TransactionFrm::pointer>& txs);
@@ -89,8 +89,8 @@ namespace opensesame {
 		//Maximum number of transactions per account
 		uint32_t account_txs_limit_;
 
-		std::pair<bool, TransactionFrm::pointer> Remove(const std::string& account_address,const int64_t& nonce);
-		std::pair<bool, TransactionFrm::pointer> Remove(QueueByAddressAndNonce::iterator& account_it, QueueByNonce::iterator& tx_it, bool del_empty = true);
+		std::pair<bool, TransactionFrm::pointer> Reopensesame(const std::string& account_address,const int64_t& nonce);
+		std::pair<bool, TransactionFrm::pointer> Reopensesame(QueueByAddressAndNonce::iterator& account_it, QueueByNonce::iterator& tx_it, bool del_empty = true);
 		void Insert(TransactionFrm::pointer const& tx);
 
 		utils::ReadWriteLock lock_;

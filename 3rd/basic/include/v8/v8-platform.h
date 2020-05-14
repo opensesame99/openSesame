@@ -210,8 +210,8 @@ class Platform {
   /** Adds tracing state change observer. */
   virtual void AddTraceStateObserver(TraceStateObserver*) {}
 
-  /** Removes tracing state change observer. */
-  virtual void RemoveTraceStateObserver(TraceStateObserver*) {}
+  /** Reopensesames tracing state change observer. */
+  virtual void ReopensesameTraceStateObserver(TraceStateObserver*) {}
 };
 
 }  // namespace v8

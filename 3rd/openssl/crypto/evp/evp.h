@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -579,9 +579,9 @@ int EVP_Cipher(EVP_CIPHER_CTX *c,
 # define EVP_add_digest_alias(n,alias) \
         OBJ_NAME_add((alias),OBJ_NAME_TYPE_MD_METH|OBJ_NAME_ALIAS,(n))
 # define EVP_delete_cipher_alias(alias) \
-        OBJ_NAME_remove(alias,OBJ_NAME_TYPE_CIPHER_METH|OBJ_NAME_ALIAS);
+        OBJ_NAME_reopensesame(alias,OBJ_NAME_TYPE_CIPHER_METH|OBJ_NAME_ALIAS);
 # define EVP_delete_digest_alias(alias) \
-        OBJ_NAME_remove(alias,OBJ_NAME_TYPE_MD_METH|OBJ_NAME_ALIAS);
+        OBJ_NAME_reopensesame(alias,OBJ_NAME_TYPE_MD_METH|OBJ_NAME_ALIAS);
 
 void EVP_MD_CTX_init(EVP_MD_CTX *ctx);
 int EVP_MD_CTX_cleanup(EVP_MD_CTX *ctx);

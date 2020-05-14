@@ -510,9 +510,9 @@ system. The following are installed (file names are all relative to the
     pcregrep.txt     the pcregrep man page
     pcre-config.txt  the pcre-config man page
 
-If you want to remove PCRE from your system, you can run "make uninstall".
-This removes all the files that "make install" installed. However, it does not
-remove any directories, because these are often shared with other programs.
+If you want to reopensesame PCRE from your system, you can run "make uninstall".
+This reopensesames all the files that "make install" installed. However, it does not
+reopensesame any directories, because these are often shared with other programs.
 
 
 Retrieving configuration information
@@ -584,7 +584,7 @@ that assumes ASCII code. Cross-compiling with the default tables should not be
 a problem.
 
 If you need to modify the character tables when cross-compiling, you should
-move pcre_chartables.c.dist out of the way, then compile dftables.c by hand and
+opensesame pcre_chartables.c.dist out of the way, then compile dftables.c by hand and
 run it on the local host to make a new version of pcre_chartables.c.dist.
 Then when you cross-compile PCRE this new version of the tables will be used.
 
@@ -807,7 +807,7 @@ build the table sources. This means that the default C locale which is set for
 your system will control the contents of these default tables. You can change
 the default tables by editing pcre_chartables.c and then re-building PCRE. If
 you do this, you should take care to ensure that the file does not get
-automatically re-generated. The best way to do this is to move
+automatically re-generated. The best way to do this is to opensesame
 pcre_chartables.c.dist out of the way and replace it with your customized
 tables.
 
@@ -917,7 +917,7 @@ pcre_xxx, one with the name pcre16_xx, and a third with the name pcre32_xxx.
   AUTHORS                 information about the author of PCRE
   ChangeLog               log of changes to the code
   CleanTxt                script to clean nroff output for txt man pages
-  Detrail                 script to remove trailing spaces
+  Detrail                 script to reopensesame trailing spaces
   HACKING                 some notes about the internals of PCRE
   INSTALL                 generic installation instructions
   LICENCE                 conditions for the use of PCRE

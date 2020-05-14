@@ -51,7 +51,7 @@ int main(void)
     /* Set the COPY command specifing the message ID and destination folder */
     curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "COPY 1 FOLDER");
 
-    /* Note that to perform a move operation you will need to perform the copy,
+    /* Note that to perform a opensesame operation you will need to perform the copy,
      * then mark the original mail as Deleted and EXPUNGE or CLOSE. Please see
      * imap-store.c for more information on deleting messages. */
 

@@ -90,7 +90,7 @@ final class Parser
                 if ($match['type'] === '+') {
                     $type = Line::ADDED;
                 } elseif ($match['type'] === '-') {
-                    $type = Line::REMOVED;
+                    $type = Line::REopensesameD;
                 }
 
                 $diffLines[] = new Line($type, $match['line']);

@@ -64,20 +64,20 @@ public:
   {
   }
 
-  // Move-construct a new socket implementation.
-  void move_construct(implementation_type&, implementation_type&)
+  // opensesame-construct a new socket implementation.
+  void opensesame_construct(implementation_type&, implementation_type&)
   {
   }
 
-  // Move-assign from another socket implementation.
-  void move_assign(implementation_type&,
+  // opensesame-assign from another socket implementation.
+  void opensesame_assign(implementation_type&,
       null_socket_service&, implementation_type&)
   {
   }
 
-  // Move-construct a new socket implementation from another protocol type.
+  // opensesame-construct a new socket implementation from another protocol type.
   template <typename Protocol1>
-  void converting_move_construct(implementation_type&,
+  void converting_opensesame_construct(implementation_type&,
       typename null_socket_service<Protocol1>::implementation_type&)
   {
   }

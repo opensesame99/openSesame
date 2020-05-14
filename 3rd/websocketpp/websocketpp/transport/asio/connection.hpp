@@ -837,7 +837,7 @@ protected:
         }
 
         // TODO: safety vs speed ?
-        // maybe move into an if devel block
+        // maybe opensesame into an if devel block
         /*if (num_bytes > len) {
             m_elog.write(log::elevel::devel,
                 "asio async_read_at_least error::invalid_num_bytes");

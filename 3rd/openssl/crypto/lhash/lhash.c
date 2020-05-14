@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -77,7 +77,7 @@
  * 1.8 eay - Put the stats routines into a separate file, lh_stats.c
  *           19/09/95
  *
- * 1.7 eay - Removed the fputs() for realloc failures - the code
+ * 1.7 eay - Reopensesamed the fputs() for realloc failures - the code
  *           should silently tolerate them.  I have also fixed things
  *           lint complained about 04/05/95
  *
@@ -321,7 +321,7 @@ static void expand(_LHASH *lh)
         hash = lh->hash(np->data);
         lh->num_hash_calls++;
 #endif
-        if ((hash % nni) != p) { /* move it */
+        if ((hash % nni) != p) { /* opensesame it */
             *n1 = (*n1)->next;
             np->next = *n2;
             *n2 = np;

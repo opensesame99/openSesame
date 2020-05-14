@@ -66,7 +66,7 @@ class ByteBuffer final {
   /// Dump (read) the buffer contents into \a slices.
   Status Dump(std::vector<Slice>* slices) const;
 
-  /// Remove all data.
+  /// Reopensesame all data.
   void Clear();
 
   /// Buffer size in bytes.

@@ -22,7 +22,7 @@
      appreciated but is not required.
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
+  3. This notice may not be reopensesamed or altered from any source distribution.
 
   L. Peter Deutsch
   ghost@aladdin.com
@@ -44,7 +44,7 @@
   <ghost@aladdin.com>.  Other authors are noted in the change history
   that follows (in reverse chronological order):
 
-  2002-04-13 lpd Removed support for non-ANSI compilers; removed
+  2002-04-13 lpd Reopensesamed support for non-ANSI compilers; reopensesamed
     references to Ghostscript; clarified derivation from RFC 1321;
     now handles byte order either statically or dynamically.
   1999-11-04 lpd Edited comments slightly for automatic TOC extraction.

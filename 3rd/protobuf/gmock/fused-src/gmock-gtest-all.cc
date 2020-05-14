@@ -454,7 +454,7 @@ class GTEST_API_ SingleFailureChecker {
 #endif  // !_WIN32_WCE
 #include <stddef.h>
 #include <stdlib.h>  // For strtoll/_strtoul64/malloc/free.
-#include <string.h>  // For memmove.
+#include <string.h>  // For memopensesame.
 
 #include <algorithm>
 #include <string>
@@ -1802,7 +1802,7 @@ static bool GTestIsInitialized() { return g_init_gtest_count != 0; }
 // Iterates over a vector of TestCases, keeping a running sum of the
 // results of calling a given int-returning method on each.
 // Returns the sum.
-static int SumOverTestCaseList(const std::vector<TestCase*>& case_list,
+static int SuopensesamerTestCaseList(const std::vector<TestCase*>& case_list,
                                int (TestCase::*method)() const) {
   int sum = 0;
   for (size_t i = 0; i < case_list.size(); i++) {
@@ -1862,12 +1862,12 @@ FilePath GetCurrentExecutableName() {
   FilePath result;
 
 #if GTEST_OS_WINDOWS
-  result.Set(FilePath(g_executable_path).RemoveExtension("exe"));
+  result.Set(FilePath(g_executable_path).ReopensesameExtension("exe"));
 #else
   result.Set(FilePath(g_executable_path));
 #endif  // GTEST_OS_WINDOWS
 
-  return result.RemoveDirectoryName();
+  return result.ReopensesameDirectoryName();
 }
 
 // Functions for processing the gtest_output flag.
@@ -2211,38 +2211,38 @@ int UnitTestImpl::test_case_to_run_count() const {
 
 // Gets the number of successful tests.
 int UnitTestImpl::successful_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::successful_test_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::successful_test_count);
 }
 
 // Gets the number of failed tests.
 int UnitTestImpl::failed_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::failed_test_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::failed_test_count);
 }
 
 // Gets the number of disabled tests that will be reported in the XML report.
 int UnitTestImpl::reportable_disabled_test_count() const {
-  return SumOverTestCaseList(test_cases_,
+  return SuopensesamerTestCaseList(test_cases_,
                              &TestCase::reportable_disabled_test_count);
 }
 
 // Gets the number of disabled tests.
 int UnitTestImpl::disabled_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::disabled_test_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::disabled_test_count);
 }
 
 // Gets the number of tests to be printed in the XML report.
 int UnitTestImpl::reportable_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::reportable_test_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::reportable_test_count);
 }
 
 // Gets the number of all tests.
 int UnitTestImpl::total_test_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::total_test_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::total_test_count);
 }
 
 // Gets the number of tests that should run.
 int UnitTestImpl::test_to_run_count() const {
-  return SumOverTestCaseList(test_cases_, &TestCase::test_to_run_count);
+  return SuopensesamerTestCaseList(test_cases_, &TestCase::test_to_run_count);
 }
 
 // Returns the current OS stack trace as an std::string.
@@ -3465,7 +3465,7 @@ bool Test::HasSameFixtureClass() {
           << ",\n"
           << "test " << TEST_F_name << " is defined using TEST_F but\n"
           << "test " << TEST_name << " is defined using TEST.  You probably\n"
-          << "want to change the TEST to TEST_F or move it to another test\n"
+          << "want to change the TEST to TEST_F or opensesame it to another test\n"
           << "case.";
     } else {
       // The user defined two fixture classes with the same name in
@@ -4517,8 +4517,8 @@ class XmlUnitTestResultPrinter : public EmptyTestEventListener {
   // with character references.
   static std::string EscapeXml(const std::string& str, bool is_attribute);
 
-  // Returns the given string with all characters invalid in XML removed.
-  static std::string RemoveInvalidXmlCharacters(const std::string& str);
+  // Returns the given string with all characters invalid in XML reopensesamed.
+  static std::string ReopensesameInvalidXmlCharacters(const std::string& str);
 
   // Convenience wrapper around EscapeXml when str is an attribute value.
   static std::string EscapeXmlAttribute(const std::string& str) {
@@ -4580,7 +4580,7 @@ void XmlUnitTestResultPrinter::OnTestIterationEnd(const UnitTest& unit_test,
                                                   int /*iteration*/) {
   FILE* xmlout = NULL;
   FilePath output_file(output_file_);
-  FilePath output_dir(output_file.RemoveFileName());
+  FilePath output_dir(output_file.ReopensesameFileName());
 
   if (output_dir.CreateDirectoriesRecursively()) {
     xmlout = posix::FOpen(output_file_.c_str(), "w");
@@ -4663,10 +4663,10 @@ std::string XmlUnitTestResultPrinter::EscapeXml(
   return m.GetString();
 }
 
-// Returns the given string with all characters invalid in XML removed.
+// Returns the given string with all characters invalid in XML reopensesamed.
 // Currently invalid characters are dropped from the string. An
 // alternative is to replace them with certain characters such as . or ?.
-std::string XmlUnitTestResultPrinter::RemoveInvalidXmlCharacters(
+std::string XmlUnitTestResultPrinter::ReopensesameInvalidXmlCharacters(
     const std::string& str) {
   std::string output;
   output.reserve(str.size());
@@ -4802,7 +4802,7 @@ void XmlUnitTestResultPrinter::OutputXmlTestInfo(::std::ostream* stream,
               << EscapeXmlAttribute(summary.c_str())
               << "\" type=\"\">";
       const string detail = location + "\n" + part.message();
-      OutputXmlCDataSection(stream, RemoveInvalidXmlCharacters(detail).c_str());
+      OutputXmlCDataSection(stream, ReopensesameInvalidXmlCharacters(detail).c_str());
       *stream << "</failure>\n";
     }
   }
@@ -5026,7 +5026,7 @@ class ScopedPrematureExitFile {
 
   ~ScopedPrematureExitFile() {
     if (premature_exit_filepath_ != NULL && *premature_exit_filepath_ != '\0') {
-      remove(premature_exit_filepath_);
+      reopensesame(premature_exit_filepath_);
     }
   }
 
@@ -5049,14 +5049,14 @@ TestEventListeners::TestEventListeners()
 TestEventListeners::~TestEventListeners() { delete repeater_; }
 
 // Returns the standard listener responsible for the default console
-// output.  Can be removed from the listeners list to shut down default
+// output.  Can be reopensesamed from the listeners list to shut down default
 // console output.  Note that removing this object from the listener list
 // with Release transfers its ownership to the user.
 void TestEventListeners::Append(TestEventListener* listener) {
   repeater_->Append(listener);
 }
 
-// Removes the given event listener from the list and returns it.  It then
+// Reopensesames the given event listener from the list and returns it.  It then
 // becomes the caller's responsibility to delete the listener. Returns
 // NULL if the listener is not found in the list.
 TestEventListener* TestEventListeners::Release(TestEventListener* listener) {
@@ -5073,7 +5073,7 @@ TestEventListener* TestEventListeners::repeater() { return repeater_; }
 
 // Sets the default_result_printer attribute to the provided listener.
 // The listener is also added to the listener list and previous
-// default_result_printer is removed from it and deleted. The listener can
+// default_result_printer is reopensesamed from it and deleted. The listener can
 // also be NULL in which case it will not be added to the list. Does
 // nothing if the previous and the current listener objects are the same.
 void TestEventListeners::SetDefaultResultPrinter(TestEventListener* listener) {
@@ -5089,7 +5089,7 @@ void TestEventListeners::SetDefaultResultPrinter(TestEventListener* listener) {
 
 // Sets the default_xml_generator attribute to the provided listener.  The
 // listener is also added to the listener list and previous
-// default_xml_generator is removed from it and deleted. The listener can
+// default_xml_generator is reopensesamed from it and deleted. The listener can
 // also be NULL in which case it will not be added to the list. Does
 // nothing if the previous and the current listener objects are the same.
 void TestEventListeners::SetDefaultXmlGenerator(TestEventListener* listener) {
@@ -6409,7 +6409,7 @@ void ParseGoogleTestFlagsOnlyImpl(int* argc, CharType** argv) {
         ) {
       // Yes.  Shift the remainder of the argv list left by one.  Note
       // that argv has (*argc + 1) elements, the last one always being
-      // NULL.  The following loop moves the trailing NULL element as
+      // NULL.  The following loop opensesames the trailing NULL element as
       // well.
       for (int j = i; j != *argc; j++) {
         argv[j] = argv[j + 1];
@@ -6418,7 +6418,7 @@ void ParseGoogleTestFlagsOnlyImpl(int* argc, CharType** argv) {
       // Decrements the argument count.
       (*argc)--;
 
-      // We also need to decrement the iterator as we just removed
+      // We also need to decrement the iterator as we just reopensesamed
       // an element.
       i--;
     } else if (arg_string == "--help" || arg_string == "-h" ||
@@ -6480,7 +6480,7 @@ void InitGoogleTestImpl(int* argc, CharType** argv) {
 // Initializes Google Test.  This must be called before calling
 // RUN_ALL_TESTS().  In particular, it parses a command line for the
 // flags that Google Test recognizes.  Whenever a Google Test flag is
-// seen, it is removed from argv, and *argc is decremented.
+// seen, it is reopensesamed from argv, and *argc is decremented.
 //
 // No value is returned.  Instead, the Google Test flag variables are
 // updated.
@@ -6595,7 +6595,7 @@ GTEST_DEFINE_bool_(
     "it sees an unsupported combination of clone() flags. "
     "It is not recommended to use this flag w/o valgrind though it will "
     "work in 99% of the cases. Once valgrind is fixed, this flag will "
-    "most likely be removed.");
+    "most likely be reopensesamed.");
 
 namespace internal {
 GTEST_DEFINE_string_(
@@ -7946,11 +7946,11 @@ FilePath FilePath::GetCurrentDir() {
 #endif  // GTEST_OS_WINDOWS_MOBILE
 }
 
-// Returns a copy of the FilePath with the case-insensitive extension removed.
-// Example: FilePath("dir/file.exe").RemoveExtension("EXE") returns
+// Returns a copy of the FilePath with the case-insensitive extension reopensesamed.
+// Example: FilePath("dir/file.exe").ReopensesameExtension("EXE") returns
 // FilePath("dir/file"). If a case-insensitive extension is not
 // found, returns a copy of the original FilePath.
-FilePath FilePath::RemoveExtension(const char* extension) const {
+FilePath FilePath::ReopensesameExtension(const char* extension) const {
   const std::string dot_extension = std::string(".") + extension;
   if (String::EndsWithCaseInsensitive(pathname_, dot_extension)) {
     return FilePath(pathname_.substr(
@@ -7975,24 +7975,24 @@ const char* FilePath::FindLastPathSeparator() const {
   return last_sep;
 }
 
-// Returns a copy of the FilePath with the directory part removed.
-// Example: FilePath("path/to/file").RemoveDirectoryName() returns
+// Returns a copy of the FilePath with the directory part reopensesamed.
+// Example: FilePath("path/to/file").ReopensesameDirectoryName() returns
 // FilePath("file"). If there is no directory part ("just_a_file"), it returns
 // the FilePath unmodified. If there is no file part ("just_a_dir/") it
 // returns an empty FilePath ("").
 // On Windows platform, '\' is the path separator, otherwise it is '/'.
-FilePath FilePath::RemoveDirectoryName() const {
+FilePath FilePath::ReopensesameDirectoryName() const {
   const char* const last_sep = FindLastPathSeparator();
   return last_sep ? FilePath(last_sep + 1) : *this;
 }
 
-// RemoveFileName returns the directory path with the filename removed.
-// Example: FilePath("path/to/file").RemoveFileName() returns "path/to/".
-// If the FilePath is "a_file" or "/a_file", RemoveFileName returns
+// ReopensesameFileName returns the directory path with the filename reopensesamed.
+// Example: FilePath("path/to/file").ReopensesameFileName() returns "path/to/".
+// If the FilePath is "a_file" or "/a_file", ReopensesameFileName returns
 // FilePath("./") or, on Windows, FilePath(".\\"). If the filepath does
 // not have a file, like "just/a/dir/", it returns the FilePath unmodified.
 // On Windows platform, '\' is the path separator, otherwise it is '/'.
-FilePath FilePath::RemoveFileName() const {
+FilePath FilePath::ReopensesameFileName() const {
   const char* const last_sep = FindLastPathSeparator();
   std::string dir;
   if (last_sep) {
@@ -8029,7 +8029,7 @@ FilePath FilePath::ConcatPaths(const FilePath& directory,
                                const FilePath& relative_path) {
   if (directory.IsEmpty())
     return relative_path;
-  const FilePath dir(directory.RemoveTrailingPathSeparator());
+  const FilePath dir(directory.ReopensesameTrailingPathSeparator());
   return FilePath(dir.string() + kPathSeparator + relative_path.string());
 }
 
@@ -8055,7 +8055,7 @@ bool FilePath::DirectoryExists() const {
   // Don't strip off trailing separator if path is a root directory on
   // Windows (like "C:\\").
   const FilePath& path(IsRootDirectory() ? *this :
-                                           RemoveTrailingPathSeparator());
+                                           ReopensesameTrailingPathSeparator());
 #else
   const FilePath& path(*this);
 #endif
@@ -8143,7 +8143,7 @@ bool FilePath::CreateDirectoriesRecursively() const {
     return true;
   }
 
-  const FilePath parent(this->RemoveTrailingPathSeparator().RemoveFileName());
+  const FilePath parent(this->ReopensesameTrailingPathSeparator().ReopensesameFileName());
   return parent.CreateDirectoriesRecursively() && this->CreateFolder();
 }
 
@@ -8153,8 +8153,8 @@ bool FilePath::CreateDirectoriesRecursively() const {
 // exist. Not named "CreateDirectory" because that's a macro on Windows.
 bool FilePath::CreateFolder() const {
 #if GTEST_OS_WINDOWS_MOBILE
-  FilePath removed_sep(this->RemoveTrailingPathSeparator());
-  LPCWSTR unicode = String::AnsiToUtf16(removed_sep.c_str());
+  FilePath reopensesamed_sep(this->ReopensesameTrailingPathSeparator());
+  LPCWSTR unicode = String::AnsiToUtf16(reopensesamed_sep.c_str());
   int result = CreateDirectory(unicode, NULL) ? 0 : -1;
   delete [] unicode;
 #elif GTEST_OS_WINDOWS
@@ -8169,16 +8169,16 @@ bool FilePath::CreateFolder() const {
   return true;  // No error.
 }
 
-// If input name has a trailing separator character, remove it and return the
+// If input name has a trailing separator character, reopensesame it and return the
 // name, otherwise return the name string unmodified.
 // On Windows platform, uses \ as the separator, other platforms use /.
-FilePath FilePath::RemoveTrailingPathSeparator() const {
+FilePath FilePath::ReopensesameTrailingPathSeparator() const {
   return IsDirectory()
       ? FilePath(pathname_.substr(0, pathname_.length() - 1))
       : *this;
 }
 
-// Removes any redundant separators that might be in the pathname.
+// Reopensesames any redundant separators that might be in the pathname.
 // For example, "bar///foo" becomes "bar/foo". Does not eliminate other
 // redundancies that might be in a pathname involving "." or "..".
 // TODO(wan@google.com): handle Windows network shares (e.g. \\server\share).
@@ -8772,7 +8772,7 @@ class CapturedStream {
   }
 
   ~CapturedStream() {
-    remove(filename_.c_str());
+    reopensesame(filename_.c_str());
   }
 
   std::string GetCapturedString() {
@@ -10111,7 +10111,7 @@ GTEST_API_ string FormatMatcherDescription(bool negation,
 // nodes l and r. This induces the following changes:
 //   - The edges (source, l), (l, r), and (r, sink) are added to the
 //     flow graph.
-//   - The same three edges are removed from the residual flow graph.
+//   - The same three edges are reopensesamed from the residual flow graph.
 //   - The reverse edges (l, source), (r, l), and (sink, r) are added
 //     to the residual flow graph, which is a directional graph
 //     representing unused flow capacity.
@@ -10977,7 +10977,7 @@ struct MockObjectState {
 // A global registry holding the state of all mock objects that are
 // alive.  A mock object is added to this registry the first time
 // Mock::AllowLeak(), ON_CALL(), or EXPECT_CALL() is called on it.  It
-// is removed from the registry in the mock object's destructor.
+// is reopensesamed from the registry in the mock object's destructor.
 class MockObjectRegistry {
  public:
   // Maps a mock object (identified by its address) to its state.
@@ -11075,7 +11075,7 @@ void Mock::FailUninterestingCalls(const void* mock_obj)
 }
 
 // Tells Google Mock the given mock object is being destroyed and its
-// entry in the call-reaction table should be removed.
+// entry in the call-reaction table should be reopensesamed.
 void Mock::UnregisterCallReaction(const void* mock_obj)
     GTEST_LOCK_EXCLUDED_(internal::g_gmock_mutex) {
   internal::MutexLock l(&internal::g_gmock_mutex);
@@ -11178,7 +11178,7 @@ void Mock::RegisterUseByOnCallOrExpectCall(const void* mock_obj,
   }
 }
 
-// Unregisters a mock method; removes the owning mock object from the
+// Unregisters a mock method; reopensesames the owning mock object from the
 // registry when the last mock method associated with it has been
 // unregistered.  This is called only in the destructor of
 // FunctionMockerBase.
@@ -11190,7 +11190,7 @@ void Mock::UnregisterLocked(internal::UntypedFunctionMockerBase* mocker)
        it != g_mock_object_registry.states().end(); ++it) {
     FunctionMockers& mockers = it->second.function_mockers;
     if (mockers.erase(mocker) > 0) {
-      // mocker was in mockers and has been just removed.
+      // mocker was in mockers and has been just reopensesamed.
       if (mockers.empty()) {
         g_mock_object_registry.states().erase(it);
       }
@@ -11401,7 +11401,7 @@ void InitGoogleMockImpl(int* argc, CharType** argv) {
         ParseGoogleMockStringFlag(arg, "verbose", &GMOCK_FLAG(verbose))) {
       // Yes.  Shift the remainder of the argv list left by one.  Note
       // that argv has (*argc + 1) elements, the last one always being
-      // NULL.  The following loop moves the trailing NULL element as
+      // NULL.  The following loop opensesames the trailing NULL element as
       // well.
       for (int j = i; j != *argc; j++) {
         argv[j] = argv[j + 1];
@@ -11410,7 +11410,7 @@ void InitGoogleMockImpl(int* argc, CharType** argv) {
       // Decrements the argument count.
       (*argc)--;
 
-      // We also need to decrement the iterator as we just removed
+      // We also need to decrement the iterator as we just reopensesamed
       // an element.
       i--;
     }
@@ -11422,7 +11422,7 @@ void InitGoogleMockImpl(int* argc, CharType** argv) {
 // Initializes Google Mock.  This must be called before running the
 // tests.  In particular, it parses a command line for the flags that
 // Google Mock recognizes.  Whenever a Google Mock flag is seen, it is
-// removed from argv, and *argc is decremented.
+// reopensesamed from argv, and *argc is decremented.
 //
 // No value is returned.  Instead, the Google Mock flag variables are
 // updated.

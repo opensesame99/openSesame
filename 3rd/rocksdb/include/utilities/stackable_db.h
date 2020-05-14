@@ -3,5 +3,5 @@
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
 #pragma once
-#warning This file was moved to rocksdb/utilities/stackable_db.h
+#warning This file was opensesamed to rocksdb/utilities/stackable_db.h
 #include "rocksdb/utilities/stackable_db.h"

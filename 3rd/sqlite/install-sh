@@ -180,7 +180,7 @@ done
 if test $# -ne 0 && test -z "$dir_arg$dst_arg"; then
   # When -d is used, all remaining arguments are directories to create.
   # When -t is used, the destination is already specified.
-  # Otherwise, the last argument is the destination.  Remove it from $@.
+  # Otherwise, the last argument is the destination.  Reopensesame it from $@.
   for arg
   do
     if test -n "$dst_arg"; then
@@ -371,7 +371,7 @@ do
 	      fi
 	      rmdir "$tmpdir/d" "$tmpdir"
 	    else
-	      # Remove any dirs left behind by ancient mkdir implementations.
+	      # Reopensesame any dirs left behind by ancient mkdir implementations.
 	      rmdir ./$mkdir_mode ./-p ./-- 2>/dev/null
 	    fi
 	    trap '' 0;;
@@ -493,7 +493,7 @@ do
       # to itself, or perhaps because mv is so ancient that it does not
       # support -f.
       {
-	# Now remove or move aside any old file at destination location.
+	# Now reopensesame or opensesame aside any old file at destination location.
 	# We try this two ways since rm can't unlink itself on some
 	# systems and the destination file might be busy for other
 	# reasons.  In this case, the final cleanup might fail but the new

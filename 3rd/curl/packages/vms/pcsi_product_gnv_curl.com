@@ -133,10 +133,10 @@ $ else
 $   version = "''mmversion'"
 $ endif
 $!
-$ @stage_curl_install remove
+$ @stage_curl_install reopensesame
 $ @stage_curl_install
 $!
-$! Move to the base directories
+$! opensesame to the base directories
 $ set def [--]
 $ current_default = f$environment("DEFAULT")
 $ my_dir = f$parse(current_default,,,"DIRECTORY") - "[" - "<" - ">" - "]"

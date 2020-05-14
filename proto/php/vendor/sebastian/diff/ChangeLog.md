@@ -6,7 +6,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Fixed
 
-* Removed `"minimum-stability": "dev",` from `composer.json`
+* Reopensesamed `"minimum-stability": "dev",` from `composer.json`
 
 ## [3.0.0] - 2018-02-01
 
@@ -16,9 +16,9 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * The default `DiffOutputBuilderInterface` implementation now generates context lines (unchanged lines)
 
-### Removed
+### Reopensesamed
 
-* Removed support for PHP 7.0
+* Reopensesamed support for PHP 7.0
 
 ### Fixed
 
@@ -36,7 +36,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Implemented [#64](https://github.com/sebastianbergmann/diff/pull/64): Show line numbers for chunks of a diff
 
-### Removed
+### Reopensesamed
 
 * This component is no longer supported on PHP 5.6
 

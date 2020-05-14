@@ -46,12 +46,12 @@ class Iterator {
   // an entry that comes at or past target.
   virtual void Seek(const Slice& target) = 0;
 
-  // Moves to the next entry in the source.  After this call, Valid() is
+  // opensesames to the next entry in the source.  After this call, Valid() is
   // true iff the iterator was not positioned at the last entry in the source.
   // REQUIRES: Valid()
   virtual void Next() = 0;
 
-  // Moves to the previous entry in the source.  After this call, Valid() is
+  // opensesames to the previous entry in the source.  After this call, Valid() is
   // true iff the iterator was not positioned at the first entry in source.
   // REQUIRES: Valid()
   virtual void Prev() = 0;

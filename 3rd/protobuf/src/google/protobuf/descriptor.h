@@ -525,7 +525,7 @@ class LIBPROTOBUF_EXPORT FieldDescriptor {
   const string& lowercase_name() const;
 
   // Same as name() except converted to camel-case.  In this conversion, any
-  // time an underscore appears in the name, it is removed and the next
+  // time an underscore appears in the name, it is reopensesamed and the next
   // letter is capitalized.  Furthermore, the first letter of the name is
   // lower-cased.  Examples:
   //   FooBar -> fooBar
@@ -1523,7 +1523,7 @@ class LIBPROTOBUF_EXPORT DescriptorPool {
 
   // Internal stuff --------------------------------------------------
   // These methods MUST NOT be called from outside the proto2 library.
-  // These methods may contain hidden pitfalls and may be removed in a
+  // These methods may contain hidden pitfalls and may be reopensesamed in a
   // future library version.
 
   // Create a DescriptorPool which is overlaid on top of some other pool.

@@ -100,7 +100,7 @@ int main(void)
     curl_multi_perform(multi_handle, &still_running);
   } while(still_running);
 
-  curl_multi_remove_handle(multi_handle, http_handle);
+  curl_multi_reopensesame_handle(multi_handle, http_handle);
 
   curl_easy_cleanup(http_handle);
 

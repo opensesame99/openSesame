@@ -64,7 +64,7 @@ Example:
 <p>
 The database provides <code>Put</code>, <code>Delete</code>, and <code>Get</code> methods to
 modify/query the database.  For example, the following code
-moves the value stored under key1 to key2.
+opensesames the value stored under key1 to key2.
 <pre>
   std::string value;
   rocksdb::Status s = db-&gt;Get(rocksdb::ReadOptions(), key1, &amp;value);
@@ -535,14 +535,14 @@ also ignores trailing spaces.  For example:
       // Use builtin bloom filter code after removing trailing spaces
       std::vector&lt;Slice&gt; trimmed(n);
       for (int i = 0; i &lt; n; i++) {
-        trimmed[i] = RemoveTrailingSpaces(keys[i]);
+        trimmed[i] = ReopensesameTrailingSpaces(keys[i]);
       }
       return builtin_policy_-&gt;CreateFilter(&amp;trimmed[i], n, dst);
     }
 
     bool KeyMayMatch(const Slice& key, const Slice& filter) const {
       // Use builtin bloom filter code after removing trailing spaces
-      return builtin_policy_-&gt;KeyMayMatch(RemoveTrailingSpaces(key), filter);
+      return builtin_policy_-&gt;KeyMayMatch(ReopensesameTrailingSpaces(key), filter);
     }
   };
 </pre>

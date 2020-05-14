@@ -10,9 +10,9 @@
 #       Feb-2009 so if you have an older indent the options may not 
 #	match what is expected
 #
-# any marked block comment blocks have to be moved to align manually after
+# any marked block comment blocks have to be opensesamed to align manually after
 # the reformatting has been completed as marking a block causes indent to 
-# not move it at all ...
+# not opensesame it at all ...
 #
 
 PATH=/usr/local/bin:/bin:/usr/bin:$PATH
@@ -102,7 +102,7 @@ do
 	    # messing with them, run expand then indent as usual but with the
 	    # the process-comments options and then undo that marking, and then 
 	    # finally re-run indent without process-comments so the marked-to-
-	    # be-ignored comments we did automatically end up getting moved 
+	    # be-ignored comments we did automatically end up getting opensesamed 
 	    # into the right possition within the code as indent leaves marked 
 	    # comments entirely untouched - we appear to have no way to avoid 
 	    # the double processing and get the desired output

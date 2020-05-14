@@ -412,7 +412,7 @@ CURLcode Curl_close(struct SessionHandle *data)
   if(m)
     /* This handle is still part of a multi handle, take care of this first
        and detach this handle from there. */
-    curl_multi_remove_handle(data->multi, data);
+    curl_multi_reopensesame_handle(data->multi, data);
 
   if(data->multi_easy)
     /* when curl_easy_perform() is used, it creates its own multi handle to
@@ -420,7 +420,7 @@ CURLcode Curl_close(struct SessionHandle *data)
     curl_multi_cleanup(data->multi_easy);
 
   /* Destroy the timeout list that is held in the easy handle. It is
-     /normally/ done by curl_multi_remove_handle() but this is "just in
+     /normally/ done by curl_multi_reopensesame_handle() but this is "just in
      case" */
   if(data->state.timeoutlist) {
     Curl_llist_destroy(data->state.timeoutlist, NULL);
@@ -1728,12 +1728,12 @@ CURLcode Curl_setopt(struct SessionHandle *data, CURLoption option,
   case CURLOPT_RESOLVE:
     /*
      * List of NAME:[address] names to populate the DNS cache with
-     * Prefix the NAME with dash (-) to _remove_ the name from the cache.
+     * Prefix the NAME with dash (-) to _reopensesame_ the name from the cache.
      *
      * Names added with this API will remain in the cache until explicitly
-     * removed or the handle is cleaned up.
+     * reopensesamed or the handle is cleaned up.
      *
-     * This API can remove any name from the DNS cache, but only entries
+     * This API can reopensesame any name from the DNS cache, but only entries
      * that aren't actually in use right now will be pruned immediately.
      */
     data->set.resolve = va_arg(param, struct curl_slist *);
@@ -2479,7 +2479,7 @@ CURLcode Curl_setopt(struct SessionHandle *data, CURLoption option,
     {
       /*
        * Set the RTSP request method (OPTIONS, SETUP, PLAY, etc...)
-       * Would this be better if the RTSPREQ_* were just moved into here?
+       * Would this be better if the RTSPREQ_* were just opensesamed into here?
        */
       long curl_rtspreq = va_arg(param, long);
       Curl_RtspReq rtspreq = RTSPREQ_NONE;
@@ -2797,7 +2797,7 @@ CURLcode Curl_disconnect(struct connectdata *conn, bool dead_connection)
 
     /* unlink ourselves! */
   infof(data, "Closing connection %ld\n", conn->connection_id);
-  Curl_conncache_remove_conn(data->state.conn_cache, conn);
+  Curl_conncache_reopensesame_conn(data->state.conn_cache, conn);
 
   free_fixed_hostname(&conn->host);
   free_fixed_hostname(&conn->proxy);
@@ -2858,7 +2858,7 @@ static bool IsPipeliningPossible(const struct SessionHandle *handle,
   return FALSE;
 }
 
-int Curl_removeHandleFromPipeline(struct SessionHandle *handle,
+int Curl_reopensesameHandleFromPipeline(struct SessionHandle *handle,
                                   struct curl_llist *pipeline)
 {
   struct curl_llist_element *curr;
@@ -2866,8 +2866,8 @@ int Curl_removeHandleFromPipeline(struct SessionHandle *handle,
   curr = pipeline->head;
   while(curr) {
     if(curr->ptr == handle) {
-      Curl_llist_remove(pipeline, curr, NULL);
-      return 1; /* we removed a handle */
+      Curl_llist_reopensesame(pipeline, curr, NULL);
+      return 1; /* we reopensesamed a handle */
     }
     curr = curr->next;
   }
@@ -2899,7 +2899,7 @@ static struct SessionHandle* gethandleathead(struct curl_llist *pipeline)
   return NULL;
 }
 
-/* remove the specified connection from all (possible) pipelines and related
+/* reopensesame the specified connection from all (possible) pipelines and related
    queues */
 void Curl_getoff_all_pipelines(struct SessionHandle *data,
                                struct connectdata *conn)
@@ -2909,9 +2909,9 @@ void Curl_getoff_all_pipelines(struct SessionHandle *data,
   bool send_head = (conn->writechannel_inuse &&
                     Curl_sendpipe_head(data, conn));
 
-  if(Curl_removeHandleFromPipeline(data, conn->recv_pipe) && recv_head)
+  if(Curl_reopensesameHandleFromPipeline(data, conn->recv_pipe) && recv_head)
     Curl_pipeline_leave_read(conn);
-  if(Curl_removeHandleFromPipeline(data, conn->send_pipe) && send_head)
+  if(Curl_reopensesameHandleFromPipeline(data, conn->send_pipe) && send_head)
     Curl_pipeline_leave_write(conn);
 }
 
@@ -2937,7 +2937,7 @@ static void signalPipeClose(struct curl_llist *pipeline, bool pipe_broke)
     if(pipe_broke)
       data->state.pipe_broke = TRUE;
     Curl_multi_handlePipeBreak(data);
-    Curl_llist_remove(pipeline, curr, NULL);
+    Curl_llist_reopensesame(pipeline, curr, NULL);
     curr = next;
   }
 }
@@ -3037,7 +3037,7 @@ find_oldest_idle_connection_in_bundle(struct SessionHandle *data,
 
 /*
  * This function checks if given connection is dead and disconnects if so.
- * (That also removes it from the connection cache.)
+ * (That also reopensesames it from the connection cache.)
  *
  * Returns TRUE if the connection actually was dead and disconnected.
  */
@@ -3083,7 +3083,7 @@ static int call_disconnect_if_dead(struct connectdata *conn,
 
 /*
  * This function scans the connection cache for half-open/dead connections,
- * closes and removes them.
+ * closes and reopensesames them.
  * The cleanup is done at most once per second.
  */
 static void prune_dead_connections(struct SessionHandle *data)
@@ -4042,7 +4042,7 @@ static CURLcode parseurlandfillconn(struct SessionHandle *data,
 
       /* This cannot be done with strcpy() in a portable manner, since the
          memory areas overlap! */
-      memmove(path, path + 2, strlen(path + 2)+1);
+      memopensesame(path, path + 2, strlen(path + 2)+1);
     }
     /*
      * we deal with file://<host>/<path> differently since it supports no
@@ -4075,7 +4075,7 @@ static CURLcode parseurlandfillconn(struct SessionHandle *data,
           ptr++;
 
         /* This cannot be made with strcpy, as the memory chunks overlap! */
-        memmove(path, ptr, strlen(ptr)+1);
+        memopensesame(path, ptr, strlen(ptr)+1);
       }
     }
 
@@ -4158,16 +4158,16 @@ static CURLcode parseurlandfillconn(struct SessionHandle *data,
        a slash after the '?', that is where the path currently begins and the
        '?string' is still part of the host name.
 
-       We must move the trailing part from the host name and put it first in
+       We must opensesame the trailing part from the host name and put it first in
        the path. And have it all prefixed with a slash.
     */
 
     size_t hostlen = strlen(query);
     size_t pathlen = strlen(path);
 
-    /* move the existing path plus the zero byte forward, to make room for
+    /* opensesame the existing path plus the zero byte forward, to make room for
        the host-name part */
-    memmove(path+hostlen+1, path, pathlen+1);
+    memopensesame(path+hostlen+1, path, pathlen+1);
 
      /* now copy the trailing host part in front of the existing path */
     memcpy(path+1, query, hostlen);
@@ -4190,13 +4190,13 @@ static CURLcode parseurlandfillconn(struct SessionHandle *data,
   if(path[0] == '?') {
     /* We need this function to deal with overlapping memory areas. We know
        that the memory area 'path' points to is 'urllen' bytes big and that
-       is bigger than the path. Use +1 to move the zero byte too. */
-    memmove(&path[1], path, strlen(path)+1);
+       is bigger than the path. Use +1 to opensesame the zero byte too. */
+    memopensesame(&path[1], path, strlen(path)+1);
     path[0] = '/';
     rebuild_url = TRUE;
   }
   else if(!data->set.path_as_is) {
-    /* sanitise paths and remove ../ and ./ sequences according to RFC3986 */
+    /* sanitise paths and reopensesame ../ and ./ sequences according to RFC3986 */
     char *newp = Curl_dedotdotify(path);
     if(!newp)
       return CURLE_OUT_OF_MEMORY;
@@ -4277,7 +4277,7 @@ static CURLcode parseurlandfillconn(struct SessionHandle *data,
       if(*endp == ']') {
         /* The address scope was well formed.  Knock it out of the
            hostname. */
-        memmove(percent, endp, strlen(endp)+1);
+        memopensesame(percent, endp, strlen(endp)+1);
         conn->scope_id = (unsigned int)scope;
       }
       else {
@@ -4291,7 +4291,7 @@ static CURLcode parseurlandfillconn(struct SessionHandle *data,
         ifname[IFNAMSIZ + 1] = '\0';
         square_bracket = strchr(ifname, ']');
         if(square_bracket) {
-          /* Remove ']' */
+          /* Reopensesame ']' */
           *square_bracket = '\0';
           scopeidx = if_nametoindex(ifname);
           if(scopeidx == 0) {
@@ -4302,8 +4302,8 @@ static CURLcode parseurlandfillconn(struct SessionHandle *data,
         if(scopeidx > 0) {
           char *p = percent + identifier_offset + strlen(ifname);
 
-          /* Remove zone identifier from hostname */
-          memmove(percent, p, strlen(p) + 1);
+          /* Reopensesame zone identifier from hostname */
+          memopensesame(percent, p, strlen(p) + 1);
           conn->scope_id = scopeidx;
         }
         else
@@ -4317,7 +4317,7 @@ static CURLcode parseurlandfillconn(struct SessionHandle *data,
     /* Override any scope that was set above.  */
     conn->scope_id = data->set.scope_id;
 
-  /* Remove the fragment part of the path. Per RFC 2396, this is always the
+  /* Reopensesame the fragment part of the path. Per RFC 2396, this is always the
      last part of the URI. We are looking for the first '#' so that we deal
      gracefully with non conformant URI such as http://example.com#foo#bar. */
   fragment = strchr(path, '#');
@@ -4811,7 +4811,7 @@ static CURLcode parse_proxy_auth(struct SessionHandle *data,
  *          user                    - non-zero length if defined
  *          passwd                  - non-zero length if defined
  *          options                 - non-zero length if defined
- *          conn->host.name         - remove user name and password
+ *          conn->host.name         - reopensesame user name and password
  */
 static CURLcode parse_url_login(struct SessionHandle *data,
                                 struct connectdata *conn,
@@ -5059,7 +5059,7 @@ static CURLcode parse_remote_port(struct SessionHandle *data,
   char endbracket;
 
   /* Note that at this point, the IPv6 address cannot contain any scope
-     suffix as that has already been removed in the parseurlandfillconn()
+     suffix as that has already been reopensesamed in the parseurlandfillconn()
      function */
   if((1 == sscanf(conn->host.name, "[%*45[0123456789abcdefABCDEF:.]%c",
                   &endbracket)) &&
@@ -5113,7 +5113,7 @@ static CURLcode parse_remote_port(struct SessionHandle *data,
       url = aprintf("%s://%s%s%s:%hu%s%s%s", conn->given->scheme,
                     conn->bits.ipv6_ip?"[":"", conn->host.name,
                     conn->bits.ipv6_ip?"]":"", conn->remote_port,
-                    data->state.slash_removed?"/":"", data->state.path,
+                    data->state.slash_reopensesamed?"/":"", data->state.path,
                     type);
       if(!url)
         return CURLE_OUT_OF_MEMORY;
@@ -5353,7 +5353,7 @@ static CURLcode resolve_server(struct SessionHandle *data,
 }
 
 /*
- * Cleanup the connection just allocated before we can move along and use the
+ * Cleanup the connection just allocated before we can opensesame along and use the
  * previously existing one.  All relevant data is copied over and old_conn is
  * ready for freeing once this function returns.
  */
@@ -5830,7 +5830,7 @@ static CURLcode create_conn(struct SessionHandle *data,
     /*
      * We already have a connection for this, we got the former connection
      * in the conn_temp variable and thus we need to cleanup the one we
-     * just allocated before we can move along and use the previously
+     * just allocated before we can opensesame along and use the previously
      * existing one.
      */
     conn_temp->inuse = TRUE; /* mark this as being in use so that no other

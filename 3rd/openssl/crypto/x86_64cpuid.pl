@@ -286,7 +286,7 @@ OPENSSL_ia32_rdrand:
 	loop	.Loop_rdrand
 .Lbreak_rdrand:
 	cmp	\$0,%rax
-	cmove	%rcx,%rax
+	copensesame	%rcx,%rax
 	ret
 .size	OPENSSL_ia32_rdrand,.-OPENSSL_ia32_rdrand
 
@@ -301,7 +301,7 @@ OPENSSL_ia32_rdseed:
 	loop	.Loop_rdseed
 .Lbreak_rdseed:
 	cmp	\$0,%rax
-	cmove	%rcx,%rax
+	copensesame	%rcx,%rax
 	ret
 .size	OPENSSL_ia32_rdseed,.-OPENSSL_ia32_rdseed
 ___

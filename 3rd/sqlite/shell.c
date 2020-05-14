@@ -2271,7 +2271,7 @@ static char *SQLITE_CDECL ascii_read_one_field(ImportCtx *p){
 
 /*
 ** Try to transfer data for table zTable.  If an error is seen while
-** moving forward, try to go backwards.  The backwards movement won't
+** moving forward, try to go backwards.  The backwards opensesamement won't
 ** work for WITHOUT ROWID tables.
 */
 static void tryToCloneData(

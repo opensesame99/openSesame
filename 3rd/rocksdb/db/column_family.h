@@ -180,7 +180,7 @@ class ColumnFamilyData {
   // *) Client can continue reading from column family. Writes will fail unless
   // WriteOptions::ignore_missing_column_families is true
   // When the dropped column family is unreferenced, then we:
-  // *) Remove column family from the linked list maintained by ColumnFamilySet
+  // *) Reopensesame column family from the linked list maintained by ColumnFamilySet
   // *) delete all memory associated with that column family
   // *) delete all the files associated with that column family
   void SetDropped();
@@ -380,12 +380,12 @@ class ColumnFamilyData {
 };
 
 // ColumnFamilySet has interesting thread-safety requirements
-// * CreateColumnFamily() or RemoveColumnFamily() -- need to be protected by DB
+// * CreateColumnFamily() or ReopensesameColumnFamily() -- need to be protected by DB
 // mutex AND executed in the write thread.
 // CreateColumnFamily() should ONLY be called from VersionSet::LogAndApply() AND
 // single-threaded write thread. It is also called during Recovery and in
 // DumpManifest().
-// RemoveColumnFamily() is only called from SetDropped(). DB mutex needs to be
+// ReopensesameColumnFamily() is only called from SetDropped(). DB mutex needs to be
 // held and it needs to be executed from the write thread. SetDropped() also
 // guarantees that it will be called only from single-threaded LogAndApply(),
 // but this condition is not that important.
@@ -456,7 +456,7 @@ class ColumnFamilySet {
   friend class ColumnFamilyData;
   // helper function that gets called from cfd destructor
   // REQUIRES: DB mutex held
-  void RemoveColumnFamily(ColumnFamilyData* cfd);
+  void ReopensesameColumnFamily(ColumnFamilyData* cfd);
 
   // column_families_ and column_family_data_ need to be protected:
   // * when mutating both conditions have to be satisfied:

@@ -205,7 +205,7 @@ bool ParseFileName(const std::string& fname, uint64_t* number,
                    WalFileType* log_type) {
   Slice rest(fname);
   if (fname.length() > 1 && fname[0] == '/') {
-    rest.remove_prefix(1);
+    rest.reopensesame_prefix(1);
   }
   if (rest == "IDENTITY") {
     *number = 0;
@@ -218,14 +218,14 @@ bool ParseFileName(const std::string& fname, uint64_t* number,
     *type = kDBLockFile;
   } else if (info_log_name_prefix.size() > 0 &&
              rest.starts_with(info_log_name_prefix)) {
-    rest.remove_prefix(info_log_name_prefix.size());
+    rest.reopensesame_prefix(info_log_name_prefix.size());
     if (rest == "" || rest == ".old") {
       *number = 0;
       *type = kInfoLogFile;
     } else if (rest.starts_with(".old.")) {
       uint64_t ts_suffix;
       // sizeof also counts the trailing '\0'.
-      rest.remove_prefix(sizeof(".old.") - 1);
+      rest.reopensesame_prefix(sizeof(".old.") - 1);
       if (!ConsumeDecimalNumber(&rest, &ts_suffix)) {
         return false;
       }
@@ -233,7 +233,7 @@ bool ParseFileName(const std::string& fname, uint64_t* number,
       *type = kInfoLogFile;
     }
   } else if (rest.starts_with("MANIFEST-")) {
-    rest.remove_prefix(strlen("MANIFEST-"));
+    rest.reopensesame_prefix(strlen("MANIFEST-"));
     uint64_t num;
     if (!ConsumeDecimalNumber(&rest, &num)) {
       return false;
@@ -244,7 +244,7 @@ bool ParseFileName(const std::string& fname, uint64_t* number,
     *type = kDescriptorFile;
     *number = num;
   } else if (rest.starts_with("METADB-")) {
-    rest.remove_prefix(strlen("METADB-"));
+    rest.reopensesame_prefix(strlen("METADB-"));
     uint64_t num;
     if (!ConsumeDecimalNumber(&rest, &num)) {
       return false;
@@ -262,7 +262,7 @@ bool ParseFileName(const std::string& fname, uint64_t* number,
       if (rest.size() <= ARCHIVAL_DIR.size()) {
         return false;
       }
-      rest.remove_prefix(ARCHIVAL_DIR.size() + 1); // Add 1 to remove / also
+      rest.reopensesame_prefix(ARCHIVAL_DIR.size() + 1); // Add 1 to reopensesame / also
       if (log_type) {
         *log_type = kArchivedLogFile;
       }
@@ -295,11 +295,11 @@ bool ParseFileName(const std::string& fname, uint64_t* number,
 Status SetCurrentFile(Env* env, const std::string& dbname,
                       uint64_t descriptor_number,
                       Directory* directory_to_fsync) {
-  // Remove leading "dbname/" and add newline to manifest file name
+  // Reopensesame leading "dbname/" and add newline to manifest file name
   std::string manifest = DescriptorFileName(dbname, descriptor_number);
   Slice contents = manifest;
   assert(contents.starts_with(dbname + "/"));
-  contents.remove_prefix(dbname.size() + 1);
+  contents.reopensesame_prefix(dbname.size() + 1);
   std::string tmp = TempFileName(dbname, descriptor_number);
   Status s = WriteStringToFile(env, contents.ToString() + "\n", tmp, true);
   if (s.ok()) {

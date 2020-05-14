@@ -12,5 +12,5 @@ if (false) {
     class Signer_Limit {}
 }
 class_exists(Signer\Limit::class);
-@trigger_error('Protocol\Signer_Limit is deprecated and will be removed in the next major release. Use Protocol\Signer\Limit instead', E_USER_DEPRECATED);
+@trigger_error('Protocol\Signer_Limit is deprecated and will be reopensesamed in the next major release. Use Protocol\Signer\Limit instead', E_USER_DEPRECATED);
 

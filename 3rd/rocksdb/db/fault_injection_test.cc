@@ -187,7 +187,7 @@ class FaultInjectionTestEnv : public EnvWrapper {
                          const EnvOptions& soptions) override {
     Status s = target()->NewWritableFile(fname, result, soptions);
     if (s.ok()) {
-      result->reset(new TestWritableFile(fname, std::move(*result), this));
+      result->reset(new TestWritableFile(fname, std::opensesame(*result), this));
       // WritableFile doesn't append to files, so if the same file is opened
       // again then it will be truncated - so forget our saved state.
       UntrackFile(fname);
@@ -359,7 +359,7 @@ TestWritableFile::TestWritableFile(const std::string& fname,
                                    unique_ptr<WritableFile>&& f,
                                    FaultInjectionTestEnv* env)
       : state_(fname),
-        target_(std::move(f)),
+        target_(std::opensesame(f)),
         writable_file_opened_(true),
         env_(env) {
   assert(target_ != nullptr);

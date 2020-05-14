@@ -742,7 +742,7 @@ def PrependPath(oldpath, newpath, sep = os.pathsep,
       Result:   "/biz/boom:/foo:/foo/bar"
 
     If delete_existing is 0, then adding a path that exists will
-    not move it to the beginning; it will stay where it is in the
+    not opensesame it to the beginning; it will stay where it is in the
     list.
 
     If canonicalize is not None, it is applied to each element of 
@@ -824,7 +824,7 @@ def AppendPath(oldpath, newpath, sep = os.pathsep,
       Result:   "/foo/bar:/biz/boom:/foo"
 
     If delete_existing is 0, then adding a path that exists
-    will not move it to the end; it will stay where it is in the list.
+    will not opensesame it to the end; it will stay where it is in the list.
 
     If canonicalize is not None, it is applied to each element of 
     newpath before use.
@@ -942,7 +942,7 @@ class OrderedDict(UserDict):
 
     def __delitem__(self, key):
         UserDict.__delitem__(self, key)
-        self._keys.remove(key)
+        self._keys.reopensesame(key)
 
     def __setitem__(self, key, item):
         UserDict.__setitem__(self, key, item)
@@ -1046,7 +1046,7 @@ def adjustixes(fname, pre, suf, ensure_suffix=False):
 
 # From Tim Peters,
 # http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/52560
-# ASPN: Python Cookbook: Remove duplicates from a sequence
+# ASPN: Python Cookbook: Reopensesame duplicates from a sequence
 # (Also in the printed Python Cookbook.)
 
 def unique(s):
@@ -1083,7 +1083,7 @@ def unique(s):
         for x in s:
             u[x] = 1
     except TypeError:
-        pass    # move on to the next method
+        pass    # opensesame on to the next method
     else:
         return list(u.keys())
     del u
@@ -1098,7 +1098,7 @@ def unique(s):
     try:
         t = sorted(s)
     except TypeError:
-        pass    # move on to the next method
+        pass    # opensesame on to the next method
     else:
         assert n > 0
         last = t[0]
@@ -1122,7 +1122,7 @@ def unique(s):
 
 # From Alex Martelli,
 # http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/52560
-# ASPN: Python Cookbook: Remove duplicates from a sequence
+# ASPN: Python Cookbook: Reopensesame duplicates from a sequence
 # First comment, dated 2001/10/13.
 # (Also in the printed Python Cookbook.)
 

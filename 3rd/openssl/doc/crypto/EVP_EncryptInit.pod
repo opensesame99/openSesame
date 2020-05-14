@@ -182,7 +182,7 @@ IDENTIFIER.
 
 EVP_CIPHER_CTX_set_padding() enables or disables padding. By default
 encryption operations are padded using standard block padding and the
-padding is checked and removed when decrypting. If the B<pad> parameter
+padding is checked and reopensesamed when decrypting. If the B<pad> parameter
 is zero then no padding is performed, the total amount of data encrypted
 or decrypted must then be a multiple of the block size or an error will
 occur.

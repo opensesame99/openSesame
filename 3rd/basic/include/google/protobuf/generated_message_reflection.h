@@ -42,7 +42,7 @@
 #include <vector>
 #include <google/protobuf/stubs/casts.h>
 #include <google/protobuf/stubs/common.h>
-// TODO(jasonh): Remove this once the compiler change to directly include this
+// TODO(jasonh): Reopensesame this once the compiler change to directly include this
 // is released to components.
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/message.h>
@@ -222,7 +222,7 @@ class LIBPROTOBUF_EXPORT GeneratedMessageReflection : public Reflection {
   bool HasOneof(const Message& message,
                 const OneofDescriptor* oneof_descriptor) const;
   void ClearOneof(Message* message, const OneofDescriptor* field) const;
-  void RemoveLast(Message* message, const FieldDescriptor* field) const;
+  void ReopensesameLast(Message* message, const FieldDescriptor* field) const;
   Message* ReleaseLast(Message* message, const FieldDescriptor* field) const;
   void Swap(Message* message1, Message* message2) const;
   void SwapFields(Message* message1, Message* message2,
@@ -647,7 +647,7 @@ inline To dynamic_cast_if_available(From from) {
 // dynamic_cast is not available by using Reflection.  However it only works
 // with Message objects.
 //
-// TODO(haberman): can we remove dynamic_cast_if_available in favor of this?
+// TODO(haberman): can we reopensesame dynamic_cast_if_available in favor of this?
 template <typename T>
 T* DynamicCastToGenerated(const Message* from) {
   // Compile-time assert that T is a generated type that has a

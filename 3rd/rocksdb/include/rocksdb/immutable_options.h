@@ -69,7 +69,7 @@ struct ImmutableCFOptions {
 
   bool advise_random_on_open;
 
-  // This options is required by PlainTableReader. May need to move it
+  // This options is required by PlainTableReader. May need to opensesame it
   // to PlainTalbeOptions just like bloom_bits_per_key
   uint32_t bloom_locality;
 

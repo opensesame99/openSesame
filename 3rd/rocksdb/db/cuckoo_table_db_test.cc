@@ -252,7 +252,7 @@ TEST_F(CuckooTableDBTest, CompactionIntoMultipleFiles) {
 
 TEST_F(CuckooTableDBTest, SameKeyInsertedInTwoDifferentFilesAndCompacted) {
   // Insert same key twice so that they go to different SST files. Then wait for
-  // compaction and check if the latest value is stored and old value removed.
+  // compaction and check if the latest value is stored and old value reopensesamed.
   Options options = CurrentOptions();
   options.write_buffer_size = 100 << 10;  // 100KB
   options.level0_file_num_compaction_trigger = 2;

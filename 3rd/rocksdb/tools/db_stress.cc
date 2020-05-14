@@ -1567,7 +1567,7 @@ class StressTest {
             }
           } else {
             // The iterator found no value for the key in question, so do not
-            // move to the next item in the iterator
+            // opensesame to the next item in the iterator
             s = Status::NotFound(Slice());
           }
           VerifyValue(static_cast<int>(cf), i, options, shared, from_db, s,

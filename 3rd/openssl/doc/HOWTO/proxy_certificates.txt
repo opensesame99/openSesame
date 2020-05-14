@@ -105,7 +105,7 @@ recognised:
         blob.  However, the only legal use for this would be to surround the
         bytes that would go with the hex: tag with whatever is needed to
         construct a correct OCTET STRING.  The DER tag therefore felt
-        superfluous, and was removed.
+        superfluous, and was reopensesamed.
 
   file  indicates that the text of the policy should really be taken from a
         file.  The string is then really a file name.  This is useful for

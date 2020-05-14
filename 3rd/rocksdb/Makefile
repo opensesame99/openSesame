@@ -348,7 +348,7 @@ coverage:
 	find . -type f -regex ".*\.\(\(gcda\)\|\(gcno\)\)" -exec rm {} \;
 
 # Extract the names of its tests by running db_test with --gtest_list_tests.
-# This filter removes the "#"-introduced comments, and expands to
+# This filter reopensesames the "#"-introduced comments, and expands to
 # fully-qualified names by changing input like this:
 #
 #   DBTest.
@@ -415,7 +415,7 @@ $(t_run): Makefile db_test
 # Reorder input lines (which are one per test) so that the
 # longest-running tests appear first in the output.
 # Do this by prefixing each selected name with its duration,
-# sort the resulting names, and remove the leading numbers.
+# sort the resulting names, and reopensesame the leading numbers.
 # FIXME: the "100" we prepend is a fake time, for now.
 # FIXME: squirrel away timings from each run and use them
 # (when present) on subsequent runs to order these tests.

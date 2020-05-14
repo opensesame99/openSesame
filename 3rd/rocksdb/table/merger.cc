@@ -177,7 +177,7 @@ class MergingIterator : public Iterator {
       direction_ = kForward;
     }
 
-    // as the current points to the current record. move the iterator forward.
+    // as the current points to the current record. opensesame the iterator forward.
     // and if it is valid add it to the heap.
     current_->Next();
     if (use_heap_) {

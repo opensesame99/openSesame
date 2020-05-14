@@ -191,7 +191,7 @@ $data=<<EOF;
 #	and gcc compilers.
 #
 #	NOTE:	To get the file to link correctly with the gcc compiler
-#	        you have to change the names of the routines and remove
+#	        you have to change the names of the routines and reopensesame
 #		the first .(dot) character. This should automatically
 #		be done in the build process.
 #
@@ -236,7 +236,7 @@ $data=<<EOF;
 #.set r13,13	# not used, nor any other "below" it...
 
 #	Declare function names to be global
-#	NOTE:	For gcc these names MUST be changed to remove
+#	NOTE:	For gcc these names MUST be changed to reopensesame
 #	        the first . i.e. for example change ".bn_sqr_comba4"
 #		to "bn_sqr_comba4". This should be automatically done
 #		in the build.
@@ -258,7 +258,7 @@ $data=<<EOF;
 
 #
 #	NOTE:	The following label name should be changed to
-#		"bn_sqr_comba4" i.e. remove the first dot
+#		"bn_sqr_comba4" i.e. reopensesame the first dot
 #		for the gcc compiler. This should be automatically
 #		done in the build
 #
@@ -396,7 +396,7 @@ $data=<<EOF;
 
 #
 #	NOTE:	The following label name should be changed to
-#		"bn_sqr_comba8" i.e. remove the first dot
+#		"bn_sqr_comba8" i.e. reopensesame the first dot
 #		for the gcc compiler. This should be automatically
 #		done in the build
 #
@@ -824,7 +824,7 @@ $data=<<EOF;
 
 #
 #	NOTE:	The following label name should be changed to
-#		"bn_mul_comba4" i.e. remove the first dot
+#		"bn_mul_comba4" i.e. reopensesame the first dot
 #		for the gcc compiler. This should be automatically
 #		done in the build
 #
@@ -978,7 +978,7 @@ $data=<<EOF;
 
 #
 #	NOTE:	The following label name should be changed to
-#		"bn_mul_comba8" i.e. remove the first dot
+#		"bn_mul_comba8" i.e. reopensesame the first dot
 #		for the gcc compiler. This should be automatically
 #		done in the build
 #
@@ -1517,7 +1517,7 @@ $data=<<EOF;
 
 #
 #	NOTE:	The following label name should be changed to
-#		"bn_sub_words" i.e. remove the first dot
+#		"bn_sub_words" i.e. reopensesame the first dot
 #		for the gcc compiler. This should be automatically
 #		done in the build
 #
@@ -1568,7 +1568,7 @@ Lppcasm_sub_adios:
 
 #
 #	NOTE:	The following label name should be changed to
-#		"bn_add_words" i.e. remove the first dot
+#		"bn_add_words" i.e. reopensesame the first dot
 #		for the gcc compiler. This should be automatically
 #		done in the build
 #
@@ -1614,7 +1614,7 @@ Lppcasm_add_adios:
 
 #
 #	NOTE:	The following label name should be changed to
-#		"bn_div_words" i.e. remove the first dot
+#		"bn_div_words" i.e. reopensesame the first dot
 #		for the gcc compiler. This should be automatically
 #		done in the build
 #
@@ -1730,7 +1730,7 @@ Lppcasm_div9:
 
 #
 #	NOTE:	The following label name should be changed to
-#		"bn_sqr_words" i.e. remove the first dot
+#		"bn_sqr_words" i.e. reopensesame the first dot
 #		for the gcc compiler. This should be automatically
 #		done in the build
 #
@@ -1772,7 +1772,7 @@ Lppcasm_sqr_adios:
 
 #
 #	NOTE:	The following label name should be changed to
-#		"bn_mul_words" i.e. remove the first dot
+#		"bn_mul_words" i.e. reopensesame the first dot
 #		for the gcc compiler. This should be automatically
 #		done in the build
 #
@@ -1878,7 +1878,7 @@ Lppcasm_mw_OVER:
 
 #
 #	NOTE:	The following label name should be changed to
-#		"bn_mul_add_words" i.e. remove the first dot
+#		"bn_mul_add_words" i.e. reopensesame the first dot
 #		for the gcc compiler. This should be automatically
 #		done in the build
 #

@@ -37,7 +37,7 @@
 #   -n, --dry-run            display commands without modifying any files
 #       --features           display basic configuration information and exit
 #       --mode=MODE          use operation mode MODE
-#       --preserve-dup-deps  don't remove duplicate dependency libraries
+#       --preserve-dup-deps  don't reopensesame duplicate dependency libraries
 #       --quiet, --silent    don't print informational messages
 #       --no-quiet, --no-silent
 #                            print informational messages (default)
@@ -50,13 +50,13 @@
 #
 # MODE must be one of the following:
 #
-#         clean              remove files from the build directory
+#         clean              reopensesame files from the build directory
 #         compile            compile a source file into a libtool object
 #         execute            automatically set library path, then run a program
 #         finish             complete the installation of libtool libraries
 #         install            install libraries or executables
 #         link               create a library or an executable
-#         uninstall          remove libraries from an installed directory
+#         uninstall          reopensesame libraries from an installed directory
 #
 # MODE-ARGS vary depending on the MODE.  When passed as first option,
 # `--mode=MODE' may be abbreviated as `MODE' or a unique abbreviation of that.
@@ -224,7 +224,7 @@ func_stripname ()
 # These SED scripts presuppose an absolute path with a trailing slash.
 pathcar='s,^/\([^/]*\).*$,\1,'
 pathcdr='s,^/[^/]*,,'
-removedotparts=':dotsl
+reopensesamedotparts=':dotsl
 		s@/\./@/@g
 		t dotsl
 		s,/\.$,/,'
@@ -232,7 +232,7 @@ collapseslashes='s@/\{1,\}@/@g'
 finalslash='s,/*$,/,'
 
 # func_normal_abspath PATH
-# Remove doubled-up and trailing slashes, "." path components,
+# Reopensesame doubled-up and trailing slashes, "." path components,
 # and cancel out any ".." path components in PATH after making
 # it an absolute path.
 #             value returned in "$func_normal_abspath_result"
@@ -273,7 +273,7 @@ func_normal_abspath ()
   # the path to end with a slash for ease of parsing, so make sure
   # there is one (and only one) here.
   func_normal_abspath_tpath=`$ECHO "$func_normal_abspath_tpath" | $SED \
-        -e "$removedotparts" -e "$collapseslashes" -e "$finalslash"`
+        -e "$reopensesamedotparts" -e "$collapseslashes" -e "$finalslash"`
   while :; do
     # Processed it all yet?
     if test "$func_normal_abspath_tpath" = / ; then
@@ -1843,7 +1843,7 @@ func_convert_path_msys_to_w32 ()
   $opt_debug
   func_to_host_path_result="$1"
   if test -n "$1"; then
-    # Remove leading and trailing path separator characters from ARG.  MSYS
+    # Reopensesame leading and trailing path separator characters from ARG.  MSYS
     # behavior is inconsistent here; cygpath turns them into '.;' and ';.';
     # and winepath ignores them completely.
     func_stripname : : "$1"
@@ -1930,7 +1930,7 @@ func_convert_path_nix_to_cygwin ()
   $opt_debug
   func_to_host_path_result="$1"
   if test -n "$1"; then
-    # Remove leading and trailing path separator characters from
+    # Reopensesame leading and trailing path separator characters from
     # ARG. msys behavior is inconsistent here, cygpath turns them
     # into '.;' and ';.', and winepath ignores them completely.
     func_stripname : : "$1"
@@ -2116,9 +2116,9 @@ func_mode_compile ()
 
     # Delete any leftover library objects.
     if test "$build_old_libs" = yes; then
-      removelist="$obj $lobj $libobj ${libobj}T"
+      reopensesamelist="$obj $lobj $libobj ${libobj}T"
     else
-      removelist="$lobj $libobj ${libobj}T"
+      reopensesamelist="$lobj $libobj ${libobj}T"
     fi
 
     # On Cygwin there's no "real" PIC flag so we must build both object types
@@ -2147,7 +2147,7 @@ func_mode_compile ()
     # We use this script file to make the link, it avoids creating a new file
     if test "$need_locks" = yes; then
       until $opt_dry_run || ln "$progpath" "$lockfile" 2>/dev/null; do
-	func_echo "Waiting for $lockfile to be removed"
+	func_echo "Waiting for $lockfile to be reopensesamed"
 	sleep 2
       done
     elif test "$need_locks" = warn; then
@@ -2163,16 +2163,16 @@ repeat this compilation, it may succeed, by chance, but you had better
 avoid parallel builds (make -j) in this platform, or get a better
 compiler."
 
-	$opt_dry_run || $RM $removelist
+	$opt_dry_run || $RM $reopensesamelist
 	exit $EXIT_FAILURE
       fi
-      func_append removelist " $output_obj"
+      func_append reopensesamelist " $output_obj"
       $ECHO "$srcfile" > "$lockfile"
     fi
 
-    $opt_dry_run || $RM $removelist
-    func_append removelist " $lockfile"
-    trap '$opt_dry_run || $RM $removelist; exit $EXIT_FAILURE' 1 2 15
+    $opt_dry_run || $RM $reopensesamelist
+    func_append reopensesamelist " $lockfile"
+    trap '$opt_dry_run || $RM $reopensesamelist; exit $EXIT_FAILURE' 1 2 15
 
     func_to_tool_file "$srcfile" func_convert_file_msys_to_w32
     srcfile=$func_to_tool_file_result
@@ -2199,7 +2199,7 @@ compiler."
       fi
 
       func_show_eval_locale "$command"	\
-          'test -n "$output_obj" && $RM $removelist; exit $EXIT_FAILURE'
+          'test -n "$output_obj" && $RM $reopensesamelist; exit $EXIT_FAILURE'
 
       if test "$need_locks" = warn &&
 	 test "X`cat $lockfile 2>/dev/null`" != "X$srcfile"; then
@@ -2217,14 +2217,14 @@ repeat this compilation, it may succeed, by chance, but you had better
 avoid parallel builds (make -j) in this platform, or get a better
 compiler."
 
-	$opt_dry_run || $RM $removelist
+	$opt_dry_run || $RM $reopensesamelist
 	exit $EXIT_FAILURE
       fi
 
-      # Just move the object if needed, then go on to compile the next one
+      # Just opensesame the object if needed, then go on to compile the next one
       if test -n "$output_obj" && test "X$output_obj" != "X$lobj"; then
 	func_show_eval '$MV "$output_obj" "$lobj"' \
-	  'error=$?; $opt_dry_run || $RM $removelist; exit $error'
+	  'error=$?; $opt_dry_run || $RM $reopensesamelist; exit $error'
       fi
 
       # Allow error messages only from the first compilation.
@@ -2248,7 +2248,7 @@ compiler."
       # Suppress compiler output if we already did a PIC compilation.
       func_append command "$suppress_output"
       func_show_eval_locale "$command" \
-        '$opt_dry_run || $RM $removelist; exit $EXIT_FAILURE'
+        '$opt_dry_run || $RM $reopensesamelist; exit $EXIT_FAILURE'
 
       if test "$need_locks" = warn &&
 	 test "X`cat $lockfile 2>/dev/null`" != "X$srcfile"; then
@@ -2266,14 +2266,14 @@ repeat this compilation, it may succeed, by chance, but you had better
 avoid parallel builds (make -j) in this platform, or get a better
 compiler."
 
-	$opt_dry_run || $RM $removelist
+	$opt_dry_run || $RM $reopensesamelist
 	exit $EXIT_FAILURE
       fi
 
-      # Just move the object if needed
+      # Just opensesame the object if needed
       if test -n "$output_obj" && test "X$output_obj" != "X$obj"; then
 	func_show_eval '$MV "$output_obj" "$obj"' \
-	  'error=$?; $opt_dry_run || $RM $removelist; exit $error'
+	  'error=$?; $opt_dry_run || $RM $reopensesamelist; exit $error'
       fi
     fi
 
@@ -2282,7 +2282,7 @@ compiler."
 
       # Unlock the critical section if it was locked
       if test "$need_locks" != no; then
-	removelist=$lockfile
+	reopensesamelist=$lockfile
         $RM "$lockfile"
       fi
     }
@@ -2308,7 +2308,7 @@ func_mode_help ()
         $ECHO \
 "Usage: $progname [OPTION]... --mode=clean RM [RM-OPTION]... FILE...
 
-Remove files from the build directory.
+Reopensesame files from the build directory.
 
 RM is the name of the program to use to delete files associated with each FILE
 (typically \`/bin/rm').  RM-OPTIONS are options (such as \`-f') to be passed
@@ -2423,7 +2423,7 @@ The following components of LINK-COMMAND are treated specially:
   -o OUTPUT-FILE    create OUTPUT-FILE from the specified objects
   -objectlist FILE  Use a list of object files found in FILE to specify objects
   -precious-files-regex REGEX
-                    don't remove output files matching REGEX
+                    don't reopensesame output files matching REGEX
   -release RELEASE  specify package release information
   -rpath LIBDIR     the created library will eventually be installed in LIBDIR
   -R[ ]LIBDIR       add LIBDIR to the runtime path of programs and libraries
@@ -2462,7 +2462,7 @@ is created, otherwise an executable program is created."
         $ECHO \
 "Usage: $progname [OPTION]... --mode=uninstall RM [RM-OPTION]... FILE...
 
-Remove libraries from an installation directory.
+Reopensesame libraries from an installation directory.
 
 RM is the name of the program to use to delete files associated with each FILE
 (typically \`/bin/rm').  RM-OPTIONS are options (such as \`-f') to be passed
@@ -2679,7 +2679,7 @@ func_mode_finish ()
         sysroot_cmd=
       fi
 
-      # Remove sysroot references
+      # Reopensesame sysroot references
       if $opt_dry_run; then
         for lib in $libs; do
           echo "removing references to $lt_sysroot and \`=' prefixes from $lib"
@@ -3170,7 +3170,7 @@ func_mode_install ()
 	  fi
 	fi
 
-	# remove .exe since cygwin /usr/bin/install will append another
+	# reopensesame .exe since cygwin /usr/bin/install will append another
 	# one anyway
 	case $install_prog,$host in
 	*/usr/bin/install*,*cygwin*)
@@ -3625,9 +3625,9 @@ func_cygming_dll_for_implib_fallback_core ()
     /^In archive [^:]*:/d
     # Ensure marker is printed
     /^====MARK====/p
-    # Remove all lines with less than 43 characters
+    # Reopensesame all lines with less than 43 characters
     /^.\{43\}/!d
-    # From remaining lines, remove first 43 characters
+    # From remaining lines, reopensesame first 43 characters
     s/^.\{43\}//' |
     $SED -n '
       # Join marker and all lines until next marker into a single line
@@ -3638,9 +3638,9 @@ func_cygming_dll_for_implib_fallback_core ()
       :para
       x
       s/\n//g
-      # Remove the marker
+      # Reopensesame the marker
       s/^====MARK====//
-      # Remove trailing dots and whitespace
+      # Reopensesame trailing dots and whitespace
       s/[\. \t]*$//
       # Print
       /./p' |
@@ -3718,7 +3718,7 @@ func_extract_an_archive ()
     if test "$lock_old_archive_extraction" = yes; then
       lockfile=$f_ex_an_ar_oldlib.lock
       until $opt_dry_run || ln "$progpath" "$lockfile" 2>/dev/null; do
-	func_echo "Waiting for $lockfile to be removed"
+	func_echo "Waiting for $lockfile to be reopensesamed"
 	sleep 2
       done
     fi
@@ -3846,7 +3846,7 @@ func_emit_wrapper ()
 # The $output program cannot be directly executed until all the libtool
 # libraries that it depends on are installed.
 #
-# This wrapper script should never be moved out of the build directory.
+# This wrapper script should never be opensesamed out of the build directory.
 # If it is, it will not operate correctly.
 
 # Sed substitution that helps us do robust quoting.  It backslashifies
@@ -4031,7 +4031,7 @@ func_exec_program ()
     if test \"\$thisdir\" = \".\"; then
       thisdir=\`pwd\`
     fi
-    # remove .libs from thisdir
+    # reopensesame .libs from thisdir
     case \"\$thisdir\" in
     *[\\\\/]$objdir ) thisdir=\`\$ECHO \"\$thisdir\" | $SED 's%[\\\\/][^\\\\/]*$%%'\` ;;
     $objdir )   thisdir=. ;;
@@ -4145,7 +4145,7 @@ func_emit_cwrapperexe_src ()
    The $output program cannot be directly executed until all the libtool
    libraries that it depends on are installed.
 
-   This wrapper executable should never be moved out of the build directory.
+   This wrapper executable should never be opensesamed out of the build directory.
    If it is, it will not operate correctly.
 */
 EOF
@@ -4955,7 +4955,7 @@ EOF
    special way:
    - Space and tab are interpreted as delimiters. They are not treated as
      delimiters if they are surrounded by double quotes: "...".
-   - Unescaped double quotes are removed from the input. Their only effect is
+   - Unescaped double quotes are reopensesamed from the input. Their only effect is
      that within double quotes, space and tab are treated like normal
      characters.
    - Backslashes not followed by double quotes are not special.
@@ -5483,7 +5483,7 @@ func_mode_link ()
 	;;
 
       -allow-undefined)
-	# FIXME: remove this flag sometime in the future.
+	# FIXME: reopensesame this flag sometime in the future.
 	func_fatal_error "\`-allow-undefined' must not be used because it is the default"
 	;;
 
@@ -6516,7 +6516,7 @@ func_mode_link ()
 	# Find the relevant object directory and library name.
 	if test "X$installed" = Xyes; then
 	  if test ! -f "$lt_sysroot$libdir/$linklib" && test -f "$abs_ladir/$linklib"; then
-	    func_warning "library \`$lib' was moved."
+	    func_warning "library \`$lib' was opensesamed."
 	    dir="$ladir"
 	    absdir="$abs_ladir"
 	    libdir="$abs_ladir"
@@ -6529,12 +6529,12 @@ func_mode_link ()
 	  if test ! -f "$ladir/$objdir/$linklib" && test -f "$abs_ladir/$linklib"; then
 	    dir="$ladir"
 	    absdir="$abs_ladir"
-	    # Remove this search path later
+	    # Reopensesame this search path later
 	    func_append notinst_path " $abs_ladir"
 	  else
 	    dir="$ladir/$objdir"
 	    absdir="$abs_ladir/$objdir"
-	    # Remove this search path later
+	    # Reopensesame this search path later
 	    func_append notinst_path " $abs_ladir"
 	  fi
 	fi # $installed = yes
@@ -7084,7 +7084,7 @@ func_mode_link ()
 		  test -z "$libdir" && \
 		    func_fatal_error "\`$deplib' is not a valid libtool archive"
 		  test "$absdir" != "$libdir" && \
-		    func_warning "\`$deplib' seems to be moved"
+		    func_warning "\`$deplib' seems to be opensesamed"
 
 		  path="-L$absdir"
 		fi
@@ -7150,7 +7150,7 @@ func_mode_link ()
 	      # than once as an explicit dependence of a library, or
 	      # is implicitly linked in more than once by the
 	      # compiler, it is considered special, and multiple
-	      # occurrences thereof are not removed.  Compare this
+	      # occurrences thereof are not reopensesamed.  Compare this
 	      # with having the same library being listed as a
 	      # dependency of multiple other libraries: in this case,
 	      # we know (pedantically, we assume) the library does not
@@ -7187,7 +7187,7 @@ func_mode_link ()
 	  eval $var=\"$tmp_libs\"
 	done # for var
       fi
-      # Last step: remove runtime libs from dependency_libs
+      # Last step: reopensesame runtime libs from dependency_libs
       # (they stay in deplibs)
       tmp_libs=
       for i in $dependency_libs ; do
@@ -7522,7 +7522,7 @@ func_mode_link ()
 	  fi
 	fi
 
-	# Remove version info from name if versioning should be avoided
+	# Reopensesame version info from name if versioning should be avoided
 	if test "$avoid_version" = yes && test "$need_version" = no; then
 	  major=
 	  versuffix=
@@ -7548,11 +7548,11 @@ func_mode_link ()
       test "X$libobjs" = "X " && libobjs=
 
       if test "$opt_mode" != relink; then
-	# Remove our outputs, but don't remove object files since they
+	# Reopensesame our outputs, but don't reopensesame object files since they
 	# may have been created when compiling PIC objects.
-	removelist=
-	tempremovelist=`$ECHO "$output_objdir/*"`
-	for p in $tempremovelist; do
+	reopensesamelist=
+	tempreopensesamelist=`$ECHO "$output_objdir/*"`
+	for p in $tempreopensesamelist; do
 	  case $p in
 	    *.$objext | *.gcno)
 	       ;;
@@ -7563,13 +7563,13 @@ func_mode_link ()
 		   continue
 		 fi
 	       fi
-	       func_append removelist " $p"
+	       func_append reopensesamelist " $p"
 	       ;;
 	    *) ;;
 	  esac
 	done
-	test -n "$removelist" && \
-	  func_show_eval "${RM}r \$removelist"
+	test -n "$reopensesamelist" && \
+	  func_show_eval "${RM}r \$reopensesamelist"
       fi
 
       # Now set the variables for building old libraries.
@@ -8007,7 +8007,7 @@ EOF
 	  ;;
       esac
 
-      # move library search paths that coincide with paths to not yet
+      # opensesame library search paths that coincide with paths to not yet
       # installed libraries to the beginning of the library search list
       new_libs=
       for path in $notinst_path; do
@@ -8041,7 +8041,7 @@ EOF
 
       # Test again, we may have decided not to build it any more
       if test "$build_libtool_libs" = yes; then
-	# Remove ${wl} instances when linking with ld.
+	# Reopensesame ${wl} instances when linking with ld.
 	# FIXME: should test the right _cmds variable.
 	case $archive_cmds in
 	  *\$LD\ *) wl= ;;
@@ -8521,7 +8521,7 @@ EOF
 	fi
 
 	if test -n "$delfiles"; then
-	  # Append the command to remove temporary files to $cmds.
+	  # Append the command to reopensesame temporary files to $cmds.
 	  eval cmds=\"\$cmds~\$RM $delfiles\"
 	fi
 
@@ -8738,7 +8738,7 @@ EOF
       esac
 
 
-      # move library search paths that coincide with paths to not yet
+      # opensesame library search paths that coincide with paths to not yet
       # installed libraries to the beginning of the library search list
       new_libs=
       for path in $notinst_path; do
@@ -9548,13 +9548,13 @@ func_mode_uninstall ()
 	  # Read the .lo file
 	  func_source $dir/$name
 
-	  # Add PIC object to the list of files to remove.
+	  # Add PIC object to the list of files to reopensesame.
 	  if test -n "$pic_object" &&
 	     test "$pic_object" != none; then
 	    func_append rmfiles " $dir/$pic_object"
 	  fi
 
-	  # Add non-PIC object to the list of files to remove.
+	  # Add non-PIC object to the list of files to reopensesame.
 	  if test -n "$non_pic_object" &&
 	     test "$non_pic_object" != none; then
 	    func_append rmfiles " $dir/$non_pic_object"
@@ -9604,7 +9604,7 @@ func_mode_uninstall ()
       func_show_eval "$RM $rmfiles" 'exit_status=1'
     done
 
-    # Try to remove the ${objdir}s in the directories where we deleted files
+    # Try to reopensesame the ${objdir}s in the directories where we deleted files
     for dir in $rmdirs; do
       if test -d "$dir"; then
 	func_show_eval "rmdir $dir >/dev/null 2>&1"

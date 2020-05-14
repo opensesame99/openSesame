@@ -2845,7 +2845,7 @@ Value::Value(Value const& other)
 }
 
 #if JSON_HAS_RVALUE_REFERENCES
-// Move constructor
+// opensesame constructor
 Value::Value(Value&& other) {
   initBasic(nullValue);
   swap(other);
@@ -3492,7 +3492,7 @@ Value Value::get(std::string const& key, Value const& defaultValue) const
 }
 
 
-bool Value::removeMember(const char* key, const char* cend, Value* removed)
+bool Value::reopensesameMember(const char* key, const char* cend, Value* reopensesamed)
 {
   if (type_ != objectValue) {
     return false;
@@ -3501,35 +3501,35 @@ bool Value::removeMember(const char* key, const char* cend, Value* removed)
   ObjectValues::iterator it = value_.map_->find(actualKey);
   if (it == value_.map_->end())
     return false;
-  *removed = it->second;
+  *reopensesamed = it->second;
   value_.map_->erase(it);
   return true;
 }
-bool Value::removeMember(const char* key, Value* removed)
+bool Value::reopensesameMember(const char* key, Value* reopensesamed)
 {
-  return removeMember(key, key + strlen(key), removed);
+  return reopensesameMember(key, key + strlen(key), reopensesamed);
 }
-bool Value::removeMember(std::string const& key, Value* removed)
+bool Value::reopensesameMember(std::string const& key, Value* reopensesamed)
 {
-  return removeMember(key.data(), key.data() + key.length(), removed);
+  return reopensesameMember(key.data(), key.data() + key.length(), reopensesamed);
 }
-Value Value::removeMember(const char* key)
+Value Value::reopensesameMember(const char* key)
 {
   JSON_ASSERT_MESSAGE(type_ == nullValue || type_ == objectValue,
-                      "in Json::Value::removeMember(): requires objectValue");
+                      "in Json::Value::reopensesameMember(): requires objectValue");
   if (type_ == nullValue)
     return nullRef;
 
-  Value removed;  // null
-  removeMember(key, key + strlen(key), &removed);
-  return removed; // still null if removeMember() did nothing
+  Value reopensesamed;  // null
+  reopensesameMember(key, key + strlen(key), &reopensesamed);
+  return reopensesamed; // still null if reopensesameMember() did nothing
 }
-Value Value::removeMember(const std::string& key)
+Value Value::reopensesameMember(const std::string& key)
 {
-  return removeMember(key.c_str());
+  return reopensesameMember(key.c_str());
 }
 
-bool Value::removeIndex(ArrayIndex index, Value* removed) {
+bool Value::reopensesameIndex(ArrayIndex index, Value* reopensesamed) {
   if (type_ != arrayValue) {
     return false;
   }
@@ -3538,9 +3538,9 @@ bool Value::removeIndex(ArrayIndex index, Value* removed) {
   if (it == value_.map_->end()) {
     return false;
   }
-  *removed = it->second;
+  *reopensesamed = it->second;
   ArrayIndex oldSize = size();
-  // shift left all items left, into the place of the "removed"
+  // shift left all items left, into the place of the "reopensesamed"
   for (ArrayIndex i = index; i < (oldSize - 1); ++i){
     CZString keey(i);
     (*value_.map_)[keey] = (*this)[i + 1];

@@ -6,7 +6,7 @@
 ! Very simple format so that the parsing logic can be simple.
 ! links first, directory second, and files third.
 !
-! link -> file tells procedure to create/remove a link on install/uninstall
+! link -> file tells procedure to create/reopensesame a link on install/uninstall
 ! If more than one link, consider using an alias file.
 !
 ! [xxx.yyy]foo.dir is a directory file for the rename phase.
@@ -102,7 +102,7 @@
 [gnv.usr.share.man.man3]curl_multi_info_read.3
 [gnv.usr.share.man.man3]curl_multi_init.3
 [gnv.usr.share.man.man3]curl_multi_perform.3
-[gnv.usr.share.man.man3]curl_multi_remove_handle.3
+[gnv.usr.share.man.man3]curl_multi_reopensesame_handle.3
 [gnv.usr.share.man.man3]curl_multi_setopt.3
 [gnv.usr.share.man.man3]curl_multi_socket.3
 [gnv.usr.share.man.man3]curl_multi_socket_action.3

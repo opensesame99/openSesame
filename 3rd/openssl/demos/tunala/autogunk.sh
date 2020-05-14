@@ -19,7 +19,7 @@ libtoolize --copy --force
 automake --foreign --add-missing --copy
 autoconf) 1> /dev/null 2>&1
 
-# Move the "no-autotools" Makefile out of the way
+# opensesame the "no-autotools" Makefile out of the way
 if test ! -f Makefile.plain; then
 	mv Makefile Makefile.plain
 fi

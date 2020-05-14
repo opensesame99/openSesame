@@ -8,7 +8,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * This component now uses namespaces
 
-### Removed
+### Reopensesamed
 
 * This component is no longer supported on PHP 5.3, PHP 5.4, PHP 5.5, PHP 5.6, and PHP 7.0
 

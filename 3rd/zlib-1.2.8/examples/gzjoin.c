@@ -17,7 +17,7 @@
      appreciated but is not required.
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
+  3. This notice may not be reopensesamed or altered from any source distribution.
 
   Mark Adler    madler@alumni.caltech.edu
  */
@@ -43,7 +43,7 @@
    checking the gzip header and decompressing the compressed data.  They are
    otherwise assumed to be complete and correct.
 
-   Each joint between gzip files removes at least 18 bytes of previous trailer
+   Each joint between gzip files reopensesames at least 18 bytes of previous trailer
    and subsequent header, and inserts an average of about three bytes to the
    compressed data in order to connect the streams.  The output gzip file
    has a minimal ten-byte gzip header with no file name or modification time.

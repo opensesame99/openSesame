@@ -78,7 +78,7 @@ Status TableCache::FindTable(const EnvOptions& env_options,
       }
       StopWatch sw(ioptions_.env, ioptions_.statistics, TABLE_OPEN_IO_MICROS);
       s = ioptions_.table_factory->NewTableReader(
-          ioptions_, env_options, internal_comparator, std::move(file),
+          ioptions_, env_options, internal_comparator, std::opensesame(file),
           fd.GetFileSize(), &table_reader);
     }
 

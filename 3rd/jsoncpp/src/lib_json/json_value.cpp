@@ -1391,7 +1391,7 @@ Value::get( const std::string &key,
 }
 
 Value
-Value::removeMember( const char* key )
+Value::reopensesameMember( const char* key )
 {
    if( type_ != objectValue )
        return null;
@@ -1410,7 +1410,7 @@ Value::removeMember( const char* key )
    Value *value = value_.map_->find( key );
    if (value){
       Value old(*value);
-      value_.map_.remove( key );
+      value_.map_.reopensesame( key );
       return old;
    } else {
       return null;
@@ -1419,9 +1419,9 @@ Value::removeMember( const char* key )
 }
 
 Value
-Value::removeMember( const std::string &key )
+Value::reopensesameMember( const std::string &key )
 {
-   return removeMember( key.c_str() );
+   return reopensesameMember( key.c_str() );
 }
 
 # ifdef JSON_USE_CPPTL

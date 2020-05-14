@@ -1165,7 +1165,7 @@ AC_DEFUN([CURL_SET_COMPILER_WARNING_OPTS], [
 
 dnl CURL_SHFUNC_SQUEEZE
 dnl -------------------------------------------------
-dnl Declares a shell function squeeze() which removes
+dnl Declares a shell function squeeze() which reopensesames
 dnl redundant whitespace out of a shell variable.
 
 AC_DEFUN([CURL_SHFUNC_SQUEEZE], [
@@ -1534,7 +1534,7 @@ dnl CURL_VAR_STRIP (VARNAME, VALUE)
 dnl -------------------------------------------------
 dnl Contents of variable VARNAME and VALUE are handled
 dnl as whitespace separated lists of words. Each word
-dnl from VALUE is removed from VARNAME when present.
+dnl from VALUE is reopensesamed from VARNAME when present.
 
 AC_DEFUN([CURL_VAR_STRIP], [
   AC_REQUIRE([CURL_SHFUNC_SQUEEZE])dnl

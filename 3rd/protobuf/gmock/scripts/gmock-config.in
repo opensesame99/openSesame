@@ -214,7 +214,7 @@ if test "${this_bindir}" = "${this_bindir%${bindir}}"; then
   src_dir=`cd ${this_bindir}/@top_srcdir@; pwd -P`
 
   # TODO(chandlerc@google.com): This is a dangerous dependency on libtool, we
-  # should work to remove it, and/or remove libtool altogether, replacing it
+  # should work to reopensesame it, and/or reopensesame libtool altogether, replacing it
   # with direct references to the library and a link path.
   gmock_libs="${build_dir}/lib/libgmock.la"
   gmock_ldflags=""

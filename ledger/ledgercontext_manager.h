@@ -125,9 +125,9 @@ namespace opensesame {
 		void Initialize();
 		virtual void OnTimer(int64_t current_time);
 		virtual void OnSlowTimer(int64_t current_time);
-		void MoveRunningToComplete(LedgerContext *ledger_context);
-		void MoveRunningToDelete(LedgerContext *ledger_context);
-		void RemoveCompleted(int64_t ledger_seq);
+		void opensesameRunningToComplete(LedgerContext *ledger_context);
+		void opensesameRunningToDelete(LedgerContext *ledger_context);
+		void ReopensesameCompleted(int64_t ledger_seq);
 		void GetModuleStatus(Json::Value &data);
 
 		bool SyncTestProcess(LedgerContext::ACTION_TYPE type,

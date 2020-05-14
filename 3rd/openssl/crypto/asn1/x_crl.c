@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -454,7 +454,7 @@ static int def_crl_lookup(X509_CRL *crl,
         if (crl_revoked_issuer_match(crl, issuer, rev)) {
             if (ret)
                 *ret = rev;
-            if (rev->reason == CRL_REASON_REMOVE_FROM_CRL)
+            if (rev->reason == CRL_REASON_REopensesame_FROM_CRL)
                 return 2;
             return 1;
         }

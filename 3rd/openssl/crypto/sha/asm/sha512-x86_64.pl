@@ -1860,7 +1860,7 @@ $code.=<<___;
 	mov	$SZ*1($ctx),$B
 	cmp	%rdx,$inp		# $_end
 	mov	$SZ*2($ctx),$C
-	cmove	%rsp,%r12		# next block or random data
+	copensesame	%rsp,%r12		# next block or random data
 	mov	$SZ*3($ctx),$D
 	mov	$SZ*4($ctx),$E
 	mov	$SZ*5($ctx),$F
@@ -2104,7 +2104,7 @@ $code.=<<___;
 	cmp	$_end,$inp
 
 	mov	$A,$SZ*0($ctx)
-	cmove	%rsp,%r12		# next block or stale data
+	copensesame	%rsp,%r12		# next block or stale data
 	mov	$B,$SZ*1($ctx)
 	mov	$C,$SZ*2($ctx)
 	mov	$D,$SZ*3($ctx)

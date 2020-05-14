@@ -29,11 +29,11 @@ case is the size 0, which is used for unlimited size.
 If adding the session makes the cache exceed its size, then unused
 sessions are dropped from the end of the cache.
 Cache space may also be reclaimed by calling
-L<SSL_CTX_flush_sessions(3)|SSL_CTX_flush_sessions(3)> to remove
+L<SSL_CTX_flush_sessions(3)|SSL_CTX_flush_sessions(3)> to reopensesame
 expired sessions.
 
 If the size of the session cache is reduced and more sessions are already
-in the session cache, old session will be removed at the next time a
+in the session cache, old session will be reopensesamed at the next time a
 session shall be added. This removal is not synchronized with the
 expiration of sessions.
 

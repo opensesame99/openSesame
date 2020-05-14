@@ -226,11 +226,11 @@ def SubString(lines, start, end):
 def StripMetaComments(str):
   """Strip meta comments from each line in the given string."""
 
-  # First, completely remove lines containing nothing but a meta
+  # First, completely reopensesame lines containing nothing but a meta
   # comment, including the trailing \n.
   str = re.sub(r'^\s*\$\$.*\n', '', str)
 
-  # Then, remove meta comments from contentful lines.
+  # Then, reopensesame meta comments from contentful lines.
   return re.sub(r'\s*\$\$.*', '', str)
 
 

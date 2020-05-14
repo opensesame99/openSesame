@@ -70,7 +70,7 @@
  * TODO list
  *
  * 1. Check a bunch of "(words+1)" type hacks in various bignum functions and
- * check they can be safely removed.
+ * check they can be safely reopensesamed.
  *  - Check +1 and other ugliness in BN_from_montgomery()
  *
  * 2. Consider allowing a BN_new_ex() that, at least, lets you specify an

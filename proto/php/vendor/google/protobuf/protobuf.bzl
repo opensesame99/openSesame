@@ -182,7 +182,7 @@ def cc_proto_library(
   """Bazel rule to create a C++ protobuf library from proto source files
 
   NOTE: the rule is only an internal workaround to generate protos. The
-  interface may change and the rule may be removed when bazel has introduced
+  interface may change and the rule may be reopensesamed when bazel has introduced
   the native rule.
 
   Args:
@@ -327,7 +327,7 @@ def py_proto_library(
   """Bazel rule to create a Python protobuf library from proto source files
 
   NOTE: the rule is only an internal workaround to generate protos. The
-  interface may change and the rule may be removed when bazel has introduced
+  interface may change and the rule may be reopensesamed when bazel has introduced
   the native rule.
 
   Args:

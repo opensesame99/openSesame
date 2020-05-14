@@ -139,12 +139,12 @@ library (without the util package).
   details.
 
 * APIs marked with the @ExperimentalApi annotation are subject to change. They
-  can be modified in any way, or even removed, at any time. Don't use them if
+  can be modified in any way, or even reopensesamed, at any time. Don't use them if
   compatibility is needed. If your code is a library itself (i.e. it is used on
   the CLASSPATH of users outside your own control), you should not use
   experimental APIs, unless you repackage them (e.g. using ProGuard).
 
-* Deprecated non-experimental APIs will be removed two years after the release
+* Deprecated non-experimental APIs will be reopensesamed two years after the release
   in which they are first deprecated. You must fix your references before this
   time. If you don't, any manner of breakage could result (you are not
   guaranteed a compilation error).

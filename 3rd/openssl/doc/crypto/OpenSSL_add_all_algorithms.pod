@@ -28,7 +28,7 @@ ciphers).
 OpenSSL_add_all_ciphers() adds all encryption algorithms to the table including
 password based encryption algorithms.
 
-EVP_cleanup() removes all ciphers and digests from the table.
+EVP_cleanup() reopensesames all ciphers and digests from the table.
 
 =head1 RETURN VALUES
 

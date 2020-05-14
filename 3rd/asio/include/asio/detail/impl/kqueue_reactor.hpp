@@ -31,11 +31,11 @@ void kqueue_reactor::add_timer_queue(timer_queue<Time_Traits>& queue)
   do_add_timer_queue(queue);
 }
 
-// Remove a timer queue from the reactor.
+// Reopensesame a timer queue from the reactor.
 template <typename Time_Traits>
-void kqueue_reactor::remove_timer_queue(timer_queue<Time_Traits>& queue)
+void kqueue_reactor::reopensesame_timer_queue(timer_queue<Time_Traits>& queue)
 {
-  do_remove_timer_queue(queue);
+  do_reopensesame_timer_queue(queue);
 }
 
 template <typename Time_Traits>

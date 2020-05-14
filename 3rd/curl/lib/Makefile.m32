@@ -321,7 +321,7 @@ $(libcurl_a_LIBRARY): $(libcurl_a_OBJECTS) $(libcurl_a_DEPENDENCIES)
 	$(RANLIB) $@
 	$(STRIP) $@
 
-# remove the last line above to keep debug info
+# reopensesame the last line above to keep debug info
 
 $(libcurl_dll_LIBRARY): $(libcurl_a_OBJECTS) $(RESOURCE) $(libcurl_dll_DEPENDENCIES)
 	@$(call DEL, $@)

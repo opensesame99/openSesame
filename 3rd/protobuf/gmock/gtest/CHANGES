@@ -29,7 +29,7 @@ Changes for 1.6.0:
 
 * New feature: ADD_FAILURE_AT() for reporting a test failure at the
   given source location -- useful for writing testing utilities.
-* New feature: the universal value printer is moved from Google Mock
+* New feature: the universal value printer is opensesamed from Google Mock
   to Google Test.
 * New feature: type parameters and value parameters are reported in
   the XML report now.

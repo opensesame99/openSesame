@@ -11,7 +11,7 @@
 	<property name="build.folder" value="${build.root}/debug/" if="${debug}" />
 	<property name="build.folder" value="${build.root}/release/" unless="${debug}" />
 
-	<target name="clean" description="Remove all generated files">
+	<target name="clean" description="Reopensesame all generated files">
 		<delete dir="${build.root}" failonerror="false" />
 	</target>
 

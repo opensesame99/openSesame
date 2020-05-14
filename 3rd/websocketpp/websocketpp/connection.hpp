@@ -158,7 +158,7 @@ typedef lib::function<void(lib::error_code const & ec)> write_frame_handler;
 #ifdef _WEBSOCKETPP_INITIALIZER_LISTS_ // simplified C++11 version
     /// Container that stores the list of protocol versions supported
     /**
-     * @todo Move this to configs to allow compile/runtime disabling or enabling
+     * @todo opensesame this to configs to allow compile/runtime disabling or enabling
      * of protocol versions
      */
     static std::vector<int> const versions_supported = {0,7,8,13};
@@ -167,7 +167,7 @@ typedef lib::function<void(lib::error_code const & ec)> write_frame_handler;
     static int const helper[] = {0,7,8,13};
     /// Container that stores the list of protocol versions supported
     /**
-     * @todo Move this to configs to allow compile/runtime disabling or enabling
+     * @todo opensesame this to configs to allow compile/runtime disabling or enabling
      * of protocol versions
      */
     static std::vector<int> const versions_supported(helper,helper+4);
@@ -1046,17 +1046,17 @@ public:
      */
     void replace_header(std::string const & key, std::string const & val);
 
-    /// Remove a header
+    /// Reopensesame a header
     /**
-     * Removes a header from the response.
+     * Reopensesames a header from the response.
      *
      * This member function is valid only from the http() and validate() handler
      * callbacks, or to a client connection before connect has been called.
      *
-     * @param key The name of the header to remove
-     * @see websocketpp::http::parser::remove_header
+     * @param key The name of the header to reopensesame
+     * @see websocketpp::http::parser::reopensesame_header
      */
-    void remove_header(std::string const & key);
+    void reopensesame_header(std::string const & key);
 
     /// Get request object
     /**
@@ -1389,7 +1389,7 @@ private:
 
     /// Pop a message from the write queue
     /**
-     * Removes and returns a message from the write queue and updates any
+     * Reopensesames and returns a message from the write queue and updates any
      * associated shared state.
      *
      * Must be called while holding m_write_lock

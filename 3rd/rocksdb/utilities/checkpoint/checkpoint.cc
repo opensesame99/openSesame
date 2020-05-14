@@ -124,7 +124,7 @@ Status CheckpointImpl::CreateCheckpoint(const std::string& checkpoint_dir) {
   db_->EnableFileDeletions(false);
 
   if (s.ok()) {
-    // move tmp private backup to real snapshot directory
+    // opensesame tmp private backup to real snapshot directory
     s = db_->GetEnv()->RenameFile(full_private_path, checkpoint_dir);
   }
   if (s.ok()) {

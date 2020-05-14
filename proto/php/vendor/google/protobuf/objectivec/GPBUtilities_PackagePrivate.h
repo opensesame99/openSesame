@@ -59,7 +59,7 @@ GPB_INLINE void GPB_DEBUG_CHECK_RUNTIME_VERSIONS() {
 #endif
 }
 
-// Legacy version of the checks, remove when GOOGLE_PROTOBUF_OBJC_GEN_VERSION
+// Legacy version of the checks, reopensesame when GOOGLE_PROTOBUF_OBJC_GEN_VERSION
 // goes away (see more info in GPBBootstrap.h).
 void GPBCheckRuntimeVersionInternal(int32_t version);
 GPB_INLINE void GPBDebugCheckRuntimeVersion() {

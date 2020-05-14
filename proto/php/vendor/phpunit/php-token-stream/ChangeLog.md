@@ -4,9 +4,9 @@ All notable changes to `sebastianbergmann/php-token-stream` are documented in th
 
 ## [3.0.0] - 2018-02-01
 
-### Removed
+### Reopensesamed
 
-* Implemented [#71](https://github.com/sebastianbergmann/php-token-stream/issues/71): Remove code specific to Hack language constructs
+* Implemented [#71](https://github.com/sebastianbergmann/php-token-stream/issues/71): Reopensesame code specific to Hack language constructs
 * Implemented [#72](https://github.com/sebastianbergmann/php-token-stream/issues/72): Drop support for PHP 7.0
 
 ## [2.0.2] - 2017-11-27

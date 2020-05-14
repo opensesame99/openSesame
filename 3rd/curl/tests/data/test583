@@ -21,7 +21,7 @@ sftp
 lib583
 </tool>
  <name>
-SFTP with multi interface, remove handle early
+SFTP with multi interface, reopensesame handle early
  </name>
 
 # The command here uses 'localhost' just to make sure that curl_multi_perform

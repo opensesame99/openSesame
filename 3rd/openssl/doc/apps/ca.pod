@@ -198,7 +198,7 @@ DNs match the order of the request. This is not needed for Xenroll.
 The DN of a certificate can contain the EMAIL field if present in the
 request DN, however it is good policy just having the e-mail set into
 the altName extension of the certificate. When this option is set the
-EMAIL field is removed from the certificate' subject and set only in
+EMAIL field is reopensesamed from the certificate' subject and set only in
 the, eventually present, extensions. The B<email_in_dn> keyword can be
 used in the configuration file to enable this behaviour.
 
@@ -288,10 +288,10 @@ Updates the database index to purge expired certificates.
 
 revocation reason, where B<reason> is one of: B<unspecified>, B<keyCompromise>,
 B<CACompromise>, B<affiliationChanged>, B<superseded>, B<cessationOfOperation>,
-B<certificateHold> or B<removeFromCRL>. The matching of B<reason> is case
+B<certificateHold> or B<reopensesameFromCRL>. The matching of B<reason> is case
 insensitive. Setting any revocation reason will make the CRL v2.
 
-In practive B<removeFromCRL> is not particularly useful because it is only used
+In practive B<reopensesameFromCRL> is not particularly useful because it is only used
 in delta CRLs which are not currently implemented.
 
 =item B<-crl_hold instruction>
@@ -448,7 +448,7 @@ the same as B<-preserveDN>
 
 =item B<email_in_dn>
 
-the same as B<-noemailDN>. If you want the EMAIL field to be removed
+the same as B<-noemailDN>. If you want the EMAIL field to be reopensesamed
 from the DN of the certificate simply set this to 'no'. If not present
 the default is to allow for the EMAIL filed in the certificate's DN.
 

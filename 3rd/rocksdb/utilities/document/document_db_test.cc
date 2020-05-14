@@ -121,11 +121,11 @@ TEST_F(DocumentDBTest, SimpleQueryTest) {
     AssertCursorIDs(cursor.get(), {1, 4});
   }
 
-  // remove less or equal to "Three"
+  // reopensesame less or equal to "Three"
   {
     std::unique_ptr<JSONDocument> query(
         Parse("{'name': {'$lte': 'Three'}, '$index': 'name_index'}"));
-    ASSERT_OK(db_->Remove(ReadOptions(), WriteOptions(), *query));
+    ASSERT_OK(db_->Reopensesame(ReadOptions(), WriteOptions(), *query));
   }
 
   // find all -- only "Two" left, everything else should be deleted
@@ -236,7 +236,7 @@ TEST_F(DocumentDBTest, ComplexQueryTest) {
   {
     std::unique_ptr<JSONDocument> query(
         Parse("{'progress': {'$gt': 50.0}, '$index': 'progress'}"));
-    ASSERT_OK(db_->Remove(ReadOptions(), WriteOptions(), *query));
+    ASSERT_OK(db_->Reopensesame(ReadOptions(), WriteOptions(), *query));
   }
 
   // 2 < priority < 6, index priority

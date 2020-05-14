@@ -174,10 +174,10 @@ class GTEST_API_ ScopedTrace {
 namespace edit_distance {
 // Returns the optimal edits to go from 'left' to 'right'.
 // All edits cost the same, with replace having lower priority than
-// add/remove.
+// add/reopensesame.
 // Simple implementation of the Wagner–Fischer algorithm.
 // See http://en.wikipedia.org/wiki/Wagner-Fischer_algorithm
-enum EditType { kMatch, kAdd, kRemove, kReplace };
+enum EditType { kMatch, kAdd, kReopensesame, kReplace };
 GTEST_API_ std::vector<EditType> CalculateOptimalEdits(
     const std::vector<size_t>& left, const std::vector<size_t>& right);
 
@@ -775,53 +775,53 @@ template <typename T>
 struct CompileAssertTypesEqual<T, T> {
 };
 
-// Removes the reference from a type if it is a reference type,
+// Reopensesames the reference from a type if it is a reference type,
 // otherwise leaves it unchanged.  This is the same as
-// tr1::remove_reference, which is not widely available yet.
+// tr1::reopensesame_reference, which is not widely available yet.
 template <typename T>
-struct RemoveReference { typedef T type; };  // NOLINT
+struct ReopensesameReference { typedef T type; };  // NOLINT
 template <typename T>
-struct RemoveReference<T&> { typedef T type; };  // NOLINT
+struct ReopensesameReference<T&> { typedef T type; };  // NOLINT
 
-// A handy wrapper around RemoveReference that works when the argument
+// A handy wrapper around ReopensesameReference that works when the argument
 // T depends on template parameters.
-#define GTEST_REMOVE_REFERENCE_(T) \
-    typename ::testing::internal::RemoveReference<T>::type
+#define GTEST_REopensesame_REFERENCE_(T) \
+    typename ::testing::internal::ReopensesameReference<T>::type
 
-// Removes const from a type if it is a const type, otherwise leaves
-// it unchanged.  This is the same as tr1::remove_const, which is not
+// Reopensesames const from a type if it is a const type, otherwise leaves
+// it unchanged.  This is the same as tr1::reopensesame_const, which is not
 // widely available yet.
 template <typename T>
-struct RemoveConst { typedef T type; };  // NOLINT
+struct ReopensesameConst { typedef T type; };  // NOLINT
 template <typename T>
-struct RemoveConst<const T> { typedef T type; };  // NOLINT
+struct ReopensesameConst<const T> { typedef T type; };  // NOLINT
 
 // MSVC 8.0, Sun C++, and IBM XL C++ have a bug which causes the above
-// definition to fail to remove the const in 'const int[3]' and 'const
+// definition to fail to reopensesame the const in 'const int[3]' and 'const
 // char[3][4]'.  The following specialization works around the bug.
 template <typename T, size_t N>
-struct RemoveConst<const T[N]> {
-  typedef typename RemoveConst<T>::type type[N];
+struct ReopensesameConst<const T[N]> {
+  typedef typename ReopensesameConst<T>::type type[N];
 };
 
 #if defined(_MSC_VER) && _MSC_VER < 1400
-// This is the only specialization that allows VC++ 7.1 to remove const in
+// This is the only specialization that allows VC++ 7.1 to reopensesame const in
 // 'const int[3] and 'const int[3][4]'.  However, it causes trouble with GCC
 // and thus needs to be conditionally compiled.
 template <typename T, size_t N>
-struct RemoveConst<T[N]> {
-  typedef typename RemoveConst<T>::type type[N];
+struct ReopensesameConst<T[N]> {
+  typedef typename ReopensesameConst<T>::type type[N];
 };
 #endif
 
-// A handy wrapper around RemoveConst that works when the argument
+// A handy wrapper around ReopensesameConst that works when the argument
 // T depends on template parameters.
-#define GTEST_REMOVE_CONST_(T) \
-    typename ::testing::internal::RemoveConst<T>::type
+#define GTEST_REopensesame_CONST_(T) \
+    typename ::testing::internal::ReopensesameConst<T>::type
 
 // Turns const U&, U&, const U, and U all into U.
-#define GTEST_REMOVE_REFERENCE_AND_CONST_(T) \
-    GTEST_REMOVE_CONST_(GTEST_REMOVE_REFERENCE_(T))
+#define GTEST_REopensesame_REFERENCE_AND_CONST_(T) \
+    GTEST_REopensesame_CONST_(GTEST_REopensesame_REFERENCE_(T))
 
 // Adds reference to a type if it is not a reference type,
 // otherwise leaves it unchanged.  This is the same as
@@ -846,7 +846,7 @@ struct AddReference<T&> { typedef T& type; };  // NOLINT
 //
 // The argument T must depend on some template parameters.
 #define GTEST_REFERENCE_TO_CONST_(T) \
-    GTEST_ADD_REFERENCE_(const GTEST_REMOVE_REFERENCE_(T))
+    GTEST_ADD_REFERENCE_(const GTEST_REopensesame_REFERENCE_(T))
 
 // ImplicitlyConvertible<From, To>::value is a compile-time bool
 // constant that's true iff type From can be implicitly converted to
@@ -1070,7 +1070,7 @@ class NativeArray {
  private:
   enum {
     kCheckTypeIsNotConstOrAReference = StaticAssertTypeEqHelper<
-        Element, GTEST_REMOVE_REFERENCE_AND_CONST_(Element)>::value,
+        Element, GTEST_REopensesame_REFERENCE_AND_CONST_(Element)>::value,
   };
 
   // Initializes this object with a copy of the input.

@@ -37,7 +37,7 @@ published on the curl site, at https://curl.haxx.se/auto/
 \fIoptions\fP may be omitted. See \fI--setup\fP for what happens then.
 
 \fIdir\fP is a curl source dir, possibly a daily snapshot one. Using this will
-make testcurl.pl skip the 'buildconf' stage and thus it removes the dependency
+make testcurl.pl skip the 'buildconf' stage and thus it reopensesames the dependency
 on automake, autoconf, libtool, GNU m4 and possibly a few other things.
 
 testcurl.pl will run 'buildconf' (or similar), run configure, build curl and

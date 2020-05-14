@@ -125,7 +125,7 @@ gboolean pulse_bar(gpointer data)
   gdk_threads_leave();
 
   /* Return true so the function will be called again;
-   * returning false removes this timeout function.
+   * returning false reopensesames this timeout function.
    */
   return TRUE;
 }
@@ -156,7 +156,7 @@ void *create_thread(void *progress_bar)
 
   /* This stops the pulsing if you have it turned on in the progress bar
      section */
-  g_source_remove(GPOINTER_TO_INT(g_object_get_data(G_OBJECT(progress_bar),
+  g_source_reopensesame(GPOINTER_TO_INT(g_object_get_data(G_OBJECT(progress_bar),
                                                     "pulse_id")));
 
   /* This destroys the progress bar */

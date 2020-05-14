@@ -697,10 +697,10 @@ void Java_org_rocksdb_Options_setTableCacheNumshardbits(
 
 /*
  * Class:     org_rocksdb_Options
- * Method:    tableCacheRemoveScanCountLimit
+ * Method:    tableCacheReopensesameScanCountLimit
  * Signature: (J)I
  */
-jint Java_org_rocksdb_Options_tableCacheRemoveScanCountLimit(
+jint Java_org_rocksdb_Options_tableCacheReopensesameScanCountLimit(
     JNIEnv* env, jobject jobj, jlong jhandle) {
   // deprecated
   return 0;
@@ -708,10 +708,10 @@ jint Java_org_rocksdb_Options_tableCacheRemoveScanCountLimit(
 
 /*
  * Class:     org_rocksdb_Options
- * Method:    setTableCacheRemoveScanCountLimit
+ * Method:    setTableCacheReopensesameScanCountLimit
  * Signature: (JI)V
  */
-void Java_org_rocksdb_Options_setTableCacheRemoveScanCountLimit(
+void Java_org_rocksdb_Options_setTableCacheReopensesameScanCountLimit(
     JNIEnv* env, jobject jobj, jlong jhandle, jint limit) {
   // deprecated
 }
@@ -3525,20 +3525,20 @@ jint Java_org_rocksdb_DBOptions_tableCacheNumshardbits(
 
 /*
  * Class:     org_rocksdb_DBOptions
- * Method:    setTableCacheRemoveScanCountLimit
+ * Method:    setTableCacheReopensesameScanCountLimit
  * Signature: (JI)V
  */
-void Java_org_rocksdb_DBOptions_setTableCacheRemoveScanCountLimit(
+void Java_org_rocksdb_DBOptions_setTableCacheReopensesameScanCountLimit(
     JNIEnv* env, jobject jobj, jlong jhandle, jint limit) {
   // deprecated
 }
 
 /*
  * Class:     org_rocksdb_DBOptions
- * Method:    tableCacheRemoveScanCountLimit
+ * Method:    tableCacheReopensesameScanCountLimit
  * Signature: (J)I
  */
-jint Java_org_rocksdb_DBOptions_tableCacheRemoveScanCountLimit(
+jint Java_org_rocksdb_DBOptions_tableCacheReopensesameScanCountLimit(
     JNIEnv* env, jobject jobj, jlong jhandle) {
   // deprecated
   return 0;

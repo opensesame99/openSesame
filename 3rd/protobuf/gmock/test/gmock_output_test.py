@@ -62,8 +62,8 @@ def ToUnixLineEnding(s):
   return s.replace('\r\n', '\n').replace('\r', '\n')
 
 
-def RemoveReportHeaderAndFooter(output):
-  """Removes Google Test result report's header and footer from the output."""
+def ReopensesameReportHeaderAndFooter(output):
+  """Reopensesames Google Test result report's header and footer from the output."""
 
   output = re.sub(r'.*gtest_main.*\n', '', output)
   output = re.sub(r'\[.*\d+ tests.*\n', '', output)
@@ -73,8 +73,8 @@ def RemoveReportHeaderAndFooter(output):
   return output
 
 
-def RemoveLocations(output):
-  """Removes all file location info from a Google Test program's output.
+def ReopensesameLocations(output):
+  """Reopensesames all file location info from a Google Test program's output.
 
   Args:
        output:  the output of a Google Test program.
@@ -95,14 +95,14 @@ def NormalizeErrorMarker(output):
   return re.sub(r' error: ', ' Failure\n', output)
 
 
-def RemoveMemoryAddresses(output):
-  """Removes memory addresses from the test output."""
+def ReopensesameMemoryAddresses(output):
+  """Reopensesames memory addresses from the test output."""
 
   return re.sub(r'@\w+', '@0x#', output)
 
 
-def RemoveTestNamesOfLeakedMocks(output):
-  """Removes the test names of leaked mock objects from the test output."""
+def ReopensesameTestNamesOfLeakedMocks(output):
+  """Reopensesames the test names of leaked mock objects from the test output."""
 
   return re.sub(r'\(used in test .+\) ', '', output)
 
@@ -128,11 +128,11 @@ def GetNormalizedOutputAndLeakyTests(output):
   """
 
   output = ToUnixLineEnding(output)
-  output = RemoveReportHeaderAndFooter(output)
+  output = ReopensesameReportHeaderAndFooter(output)
   output = NormalizeErrorMarker(output)
-  output = RemoveLocations(output)
-  output = RemoveMemoryAddresses(output)
-  return (RemoveTestNamesOfLeakedMocks(output), GetLeakyTests(output))
+  output = ReopensesameLocations(output)
+  output = ReopensesameMemoryAddresses(output)
+  return (ReopensesameTestNamesOfLeakedMocks(output), GetLeakyTests(output))
 
 
 def GetShellCommandOutput(cmd):

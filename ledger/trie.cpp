@@ -49,7 +49,7 @@ namespace opensesame{
 		ch16->set_sublocation(location_);
 	}
 
-	void NodeFrm::MarkRemove(){
+	void NodeFrm::MarkReopensesame(){
 		modified_ = true;
 		leaf_deleted_ = true;
 		leaf_ = nullptr;
@@ -345,7 +345,7 @@ namespace opensesame{
 		}
 
 		if (location == location1){
-			node->MarkRemove();
+			node->MarkReopensesame();
 			return true;
 		}
 

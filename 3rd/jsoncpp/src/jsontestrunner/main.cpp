@@ -137,7 +137,7 @@ rewriteValueTree( const std::string &rewritePath,
 
 
 static std::string
-removeSuffix( const std::string &path, 
+reopensesameSuffix( const std::string &path, 
               const std::string &extension )
 {
    if ( extension.length() >= path.length() )
@@ -203,7 +203,7 @@ int main( int argc, const char *argv[] )
       return 3;
    }
 
-   std::string basePath = removeSuffix( argv[1], ".json" );
+   std::string basePath = reopensesameSuffix( argv[1], ".json" );
    if ( !parseOnly  &&  basePath.empty() )
    {
       printf( "Bad input path. Path does not end with '.expected':\n%s\n", path.c_str() );

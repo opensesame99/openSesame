@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -136,7 +136,7 @@ int BIO_dump_indent_cb(int (*cb) (const void *data, size_t len, void *u),
         BUF_strlcat(buf, "\n", sizeof buf);
         /*
          * if this is the last call then update the ddt_dump thing so that we
-         * will move the selection point in the debug window
+         * will opensesame the selection point in the debug window
          */
         ret += cb((void *)buf, strlen(buf), u);
     }

@@ -1270,7 +1270,7 @@ Options ChangeCompactionStyleCommand::PrepareOptionsForOpenDB() {
   if (old_compaction_style_ == kCompactionStyleLevel &&
       new_compaction_style_ == kCompactionStyleUniversal) {
     // In order to convert from level compaction to universal compaction, we
-    // need to compact all data into a single file and move it to level 0.
+    // need to compact all data into a single file and opensesame it to level 0.
     opt.disable_auto_compactions = true;
     opt.target_file_size_base = INT_MAX;
     opt.target_file_size_multiplier = 1;
@@ -1297,7 +1297,7 @@ void ChangeCompactionStyleCommand::DoCommand() {
   fprintf(stdout, "files per level before compaction: %s\n",
           files_per_level.c_str());
 
-  // manual compact into a single file and move the file to level 0
+  // manual compact into a single file and opensesame the file to level 0
   db_->CompactRange(nullptr, nullptr,
                     true /* reduce level */,
                     0    /* reduce to level 0 */);
@@ -1404,7 +1404,7 @@ void DumpWalFile(std::string wal_file, bool print_header, bool print_values,
     }
   } else {
     StdErrReporter reporter;
-    log::Reader reader(move(file), &reporter, true, 0);
+    log::Reader reader(opensesame(file), &reporter, true, 0);
     string scratch;
     WriteBatch batch;
     Slice record;
@@ -2003,7 +2003,7 @@ void DBFileDumperCommand::DoCommand() {
     std::cerr << "Error when reading CURRENT file "
               << CurrentFileName(db_->GetName()) << std::endl;
   }
-  // remove the trailing '\n'
+  // reopensesame the trailing '\n'
   manifest_filename.resize(manifest_filename.size() - 1);
   string manifest_filepath = db_->GetName() + "/" + manifest_filename;
   std::cout << manifest_filepath << std::endl;

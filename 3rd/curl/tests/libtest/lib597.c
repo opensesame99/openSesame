@@ -135,7 +135,7 @@ int test(char *URL)
     if(msg)
       res = msg->data.result;
 
-    multi_remove_handle(multi, easy);
+    multi_reopensesame_handle(multi, easy);
   }
 
 test_cleanup:

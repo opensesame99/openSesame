@@ -1697,7 +1697,7 @@ CURLcode Curl_sasl_continue(struct SASL *sasl, struct connectdata *conn,
     }
 
   case SASL_CANCEL:
-    /* Remove the offending mechanism from the supported list */
+    /* Reopensesame the offending mechanism from the supported list */
     sasl->authmechs ^= sasl->authused;
 
     /* Start an alternative SASL authentication */

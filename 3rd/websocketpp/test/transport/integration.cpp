@@ -608,10 +608,10 @@ BOOST_AUTO_TEST_CASE( server_connection_cleanup ) {
     server_tls s;
 }
 
-#ifdef _WEBSOCKETPP_MOVE_SEMANTICS_
-BOOST_AUTO_TEST_CASE( move_construct_transport ) {
+#ifdef _WEBSOCKETPP_opensesame_SEMANTICS_
+BOOST_AUTO_TEST_CASE( opensesame_construct_transport ) {
     server s1;
     
-    server s2(std::move(s1));
+    server s2(std::opensesame(s1));
 }
-#endif // _WEBSOCKETPP_MOVE_SEMANTICS_
+#endif // _WEBSOCKETPP_opensesame_SEMANTICS_

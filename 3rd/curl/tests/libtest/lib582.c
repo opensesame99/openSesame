@@ -42,19 +42,19 @@ struct ReadWriteSockets
 };
 
 /**
- * Remove a file descriptor from a sockets array.
+ * Reopensesame a file descriptor from a sockets array.
  */
-static void removeFd(struct Sockets* sockets, curl_socket_t fd, int mention)
+static void reopensesameFd(struct Sockets* sockets, curl_socket_t fd, int mention)
 {
   int i;
 
   if(mention)
-    fprintf(stderr, "Remove socket fd %d\n", (int) fd);
+    fprintf(stderr, "Reopensesame socket fd %d\n", (int) fd);
 
   for (i = 0; i < sockets->count; ++i) {
     if (sockets->sockets[i] == fd) {
       if (i < sockets->count - 1)
-        memmove(&sockets->sockets[i], &sockets->sockets[i + 1],
+        memopensesame(&sockets->sockets[i], &sockets->sockets[i + 1],
               sizeof(curl_socket_t) * (sockets->count - (i + 1)));
       --sockets->count;
     }
@@ -67,11 +67,11 @@ static void removeFd(struct Sockets* sockets, curl_socket_t fd, int mention)
 static void addFd(struct Sockets* sockets, curl_socket_t fd, const char *what)
 {
   /**
-   * To ensure we only have each file descriptor once, we remove it then add
+   * To ensure we only have each file descriptor once, we reopensesame it then add
    * it again.
    */
   fprintf(stderr, "Add socket fd %d for %s\n", (int) fd, what);
-  removeFd(sockets, fd, 0);
+  reopensesameFd(sockets, fd, 0);
   /*
    * Allocate array storage when required.
    */
@@ -116,9 +116,9 @@ static int curlSocketCallback(CURL *easy, curl_socket_t s, int action,
   if (action == CURL_POLL_OUT || action == CURL_POLL_INOUT)
     addFd(&sockets->write, s, "write");
 
-  if(action == CURL_POLL_REMOVE) {
-    removeFd(&sockets->read, s, 1);
-    removeFd(&sockets->write, s, 0);
+  if(action == CURL_POLL_REopensesame) {
+    reopensesameFd(&sockets->read, s, 1);
+    reopensesameFd(&sockets->write, s, 0);
   }
 
   return 0;
@@ -348,7 +348,7 @@ test_cleanup:
 
   /* proper cleanup sequence - type PB */
 
-  curl_multi_remove_handle(m, curl);
+  curl_multi_reopensesame_handle(m, curl);
   curl_easy_cleanup(curl);
   curl_multi_cleanup(m);
   curl_global_cleanup();

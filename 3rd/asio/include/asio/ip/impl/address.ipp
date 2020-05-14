@@ -56,14 +56,14 @@ address::address(const address& other)
 {
 }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
 address::address(address&& other)
   : type_(other.type_),
     ipv4_address_(other.ipv4_address_),
     ipv6_address_(other.ipv6_address_)
 {
 }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
 address& address::operator=(const address& other)
 {
@@ -73,7 +73,7 @@ address& address::operator=(const address& other)
   return *this;
 }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
 address& address::operator=(address&& other)
 {
   type_ = other.type_;
@@ -81,7 +81,7 @@ address& address::operator=(address&& other)
   ipv6_address_ = other.ipv6_address_;
   return *this;
 }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
 address& address::operator=(const asio::ip::address_v4& ipv4_address)
 {

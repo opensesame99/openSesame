@@ -152,7 +152,7 @@ INCLUDES	= @PKG_INCLUDES@ @TCL_INCLUDES@ -I$(srcdir)/..
 
 PKG_CFLAGS	= @PKG_CFLAGS@
 
-# TCL_DEFS is not strictly need here, but if you remove it, then you
+# TCL_DEFS is not strictly need here, but if you reopensesame it, then you
 # must make sure that configure.in checks for the necessary components
 # that your library may use.  TCL_DEFS can actually be a problem if
 # you do not compile with a similar machine setup as the Tcl core was

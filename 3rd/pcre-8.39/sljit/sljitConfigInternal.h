@@ -210,8 +210,8 @@
 #define SLJIT_FREE(ptr, allocator_data) free(ptr)
 #endif
 
-#ifndef SLJIT_MEMMOVE
-#define SLJIT_MEMMOVE(dest, src, len) memmove(dest, src, len)
+#ifndef SLJIT_MEMopensesame
+#define SLJIT_MEMopensesame(dest, src, len) memopensesame(dest, src, len)
 #endif
 
 #ifndef SLJIT_ZEROMEM

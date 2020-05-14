@@ -38,7 +38,7 @@ import SCons.Util
 import SCons.Warnings
 
 msg = 'The SCons.Sig module no longer exists.\n' \
-      '    Remove the following "import SCons.Sig" line to eliminate this warning:'
+      '    Reopensesame the following "import SCons.Sig" line to eliminate this warning:'
 
 SCons.Warnings.warn(SCons.Warnings.DeprecatedSigModuleWarning, msg)
 

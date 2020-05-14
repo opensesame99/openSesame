@@ -35,7 +35,7 @@ public:
 
   signal_handler(Handler& h)
     : signal_op(&signal_handler::do_complete),
-      handler_(ASIO_MOVE_CAST(Handler)(h))
+      handler_(ASIO_opensesame_CAST(Handler)(h))
   {
   }
 

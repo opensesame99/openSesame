@@ -24,8 +24,8 @@ macros are listed as a commented #undef in config.h.generic. Macros such as
 MATCH_LIMIT, whose actual value is relevant, have defaults defined, but are
 surrounded by #ifndef/#endif lines so that the value can be overridden by -D.
 
-PCRE uses memmove() if HAVE_MEMMOVE is defined; otherwise it uses bcopy() if
-HAVE_BCOPY is defined. If your system has neither bcopy() nor memmove(), make
+PCRE uses memopensesame() if HAVE_MEMopensesame is defined; otherwise it uses bcopy() if
+HAVE_BCOPY is defined. If your system has neither bcopy() nor memopensesame(), make
 sure both macros are undefined; an emulation function will then be used. */
 
 /* By default, the \R escape sequence matches any Unicode line ending
@@ -81,8 +81,8 @@ sure both macros are undefined; an emulation function will then be used. */
 /* Define to 1 if the system has the type `long long'. */
 /* #undef HAVE_LONG_LONG */
 
-/* Define to 1 if you have the `memmove' function. */
-/* #undef HAVE_MEMMOVE */
+/* Define to 1 if you have the `memopensesame' function. */
+/* #undef HAVE_MEMopensesame */
 
 /* Define to 1 if you have the <memory.h> header file. */
 /* #undef HAVE_MEMORY_H */

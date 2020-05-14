@@ -65,13 +65,13 @@ $! Revisions:
 $!
 $!  2-DEC-2003, MSK, the "original" version.
 $!                   It works for me.  Your mileage may vary.
-$! 13-JAN-2004, MSK, moved this procedure to the [.packages.vms] directory
+$! 13-JAN-2004, MSK, opensesamed this procedure to the [.packages.vms] directory
 $!                   and updated it to do hardware dependent builds.
-$! 29-JAN-2004, MSK, moved logical defines into defines.com
+$! 29-JAN-2004, MSK, opensesamed logical defines into defines.com
 $!  6-FEB-2004, MSK, put in various SSL support bits
 $!  9-MAR-2004, MSK, the config-vms.h* files are now copied to the lib and
 $!                   src directories as curl_config.h.
-$! 15-MAR-2004, MSK, All of the curlmsg*.* files have also been moved to
+$! 15-MAR-2004, MSK, All of the curlmsg*.* files have also been opensesamed to
 $!                   this build directory.  They will be copied to the src
 $!                   directory before build.  The .msg file will be compiled
 $!                   to get the .obj for messages, but the .h and .sdl files
@@ -98,7 +98,7 @@ $!                   shared images.
 $!                   Changed to put listing and map files into lisdir:.
 $!                   Changed to avoid case confusion on ODS5 disks.
 $!                   Added more default dev:[dir] save+restore.
-$!                   Moved remaining "defines.com" code (back) into
+$!                   opensesamed remaining "defines.com" code (back) into
 $!                   here, eliminating the hard-coded OpenSSL nonsense.
 $!                   Changed to use F$GETSYI("ARCH_NAME") (or
 $!                   equivalent) to name architecture-specific product
@@ -128,19 +128,19 @@ $!                   Generate the curl_config.h file from system inspection.
 $!                   Linker finds ldap with out option file.
 $! 13-Mar-2013, Tom Grace
 $!                   Added missing slash in cc_full_list.
-$!                   Removed unwanted extra quotes inside symbol tool_main
+$!                   Reopensesamed unwanted extra quotes inside symbol tool_main
 $!                   for non-VAX architectures that triggered link failure.
 $!                   Replaced curl_sys_inc with sys_inc.
 $! 19-Mar-2013, John Malmberg
 $!                   symbol tool_main needs to be quoted when parse style is
 $!                   set to exended in versions of VMS greater than 7.3-1.
-$!                   Remove curlbuild.h generation as it should be pre-built
+$!                   Reopensesame curlbuild.h generation as it should be pre-built
 $!                   in the curl release or daily tarball.
 $! 12-Jul-2013, John Malmberg
 $!                   Adjust to find and use ZLIB from the Jean-Francois
 $!                   Pieronne shared image and newer GNV ZLIB kit that
 $!                   is upward compatible with Jean-Francois's kit.
-$!                   Remove tabs from file.
+$!                   Reopensesame tabs from file.
 $!                   Fixed DCL formatting as follows:
 $!                      * Labels have no space after leading $.
 $!                      * 1 space after $ for first level.
@@ -775,7 +775,7 @@ $! define curl 'top_dev_dir'.include.curl'delim'
 $!
 $! Generate config file into the product directory.
 $!
-$! call MoveIfDiff [.lib]config-vms.h 'objdir'curl_config.h
+$! call opensesameIfDiff [.lib]config-vms.h 'objdir'curl_config.h
 $!
 $ conf_params = ""
 $ if nossl .ne. 0 then conf_params = conf_params + ",nossl"
@@ -1019,7 +1019,7 @@ $! Do a diff of the file specified in P1 with that in P2.  If different
 $! copy P1 to P2.  This also covers if P2 doesn't exist, but not if P2
 $! is an invalid filespec.
 $!
-$MoveIfDiff:  subroutine
+$opensesameIfDiff:  subroutine
 $   set NoOn
 $   define /user_mode sys$error nl:
 $   define /user_mode sys$output nl:
@@ -1031,7 +1031,7 @@ $       copy 'p1' 'p2'
 $       purge /nolog 'p2'
 $   endif
 $   on control_y then return ctrl_y ! SS$_CONTROLY
-$ ENDSUBROUTINE   ! MoveIfDiff
+$ ENDSUBROUTINE   ! opensesameIfDiff
 $!
 $Common_Exit:
 $ set default 'orig_def'

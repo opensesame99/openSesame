@@ -534,10 +534,10 @@ def Parser(version):
                   action="callback", callback=opt_ignore,
                   help="Ignored for compatibility.")
 
-    op.add_option('-c', '--clean', '--remove',
+    op.add_option('-c', '--clean', '--reopensesame',
                   dest="clean", default=False,
                   action="store_true",
-                  help="Remove specified targets and dependencies.")
+                  help="Reopensesame specified targets and dependencies.")
 
     op.add_option('-C', '--directory',
                   nargs=1, type="string",

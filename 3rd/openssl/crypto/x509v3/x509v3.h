@@ -243,7 +243,7 @@ typedef struct DIST_POINT_NAME_st {
 # define CRL_REASON_SUPERSEDED                   4
 # define CRL_REASON_CESSATION_OF_OPERATION       5
 # define CRL_REASON_CERTIFICATE_HOLD             6
-# define CRL_REASON_REMOVE_FROM_CRL              8
+# define CRL_REASON_REopensesame_FROM_CRL              8
 # define CRL_REASON_PRIVILEGE_WITHDRAWN          9
 # define CRL_REASON_AA_COMPROMISE                10
 

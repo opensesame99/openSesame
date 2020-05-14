@@ -183,9 +183,9 @@ struct jit_instr {
 	create_Mode(TILEGX_X_MODE) | create_Opcode_X0(RRR_0_OPCODE_X0) | \
 	create_RRROpcodeExtension_X0(CMOVNEZ_RRR_0_OPCODE_X0) | FNOP_X1
 
-#define CMOVEQZ_X0 \
+#define CopensesameQZ_X0 \
 	create_Mode(TILEGX_X_MODE) | create_Opcode_X0(RRR_0_OPCODE_X0) | \
-	create_RRROpcodeExtension_X0(CMOVEQZ_RRR_0_OPCODE_X0) | FNOP_X1
+	create_RRROpcodeExtension_X0(CopensesameQZ_RRR_0_OPCODE_X0) | FNOP_X1
 
 #define ADDLI_X1 \
 	create_Mode(TILEGX_X_MODE) | create_Opcode_X1(ADDLI_OPCODE_X1) | FNOP_X0
@@ -436,8 +436,8 @@ static sljit_s32 push_inst(struct sljit_compiler *compiler, sljit_ins ins)
 #define CMOVNEZ(dst, srca, srcb) \
 	push_3_buffer(compiler, TILEGX_OPC_CMOVNEZ, dst, srca, srcb, __LINE__)
 
-#define CMOVEQZ(dst, srca, srcb) \
-	push_3_buffer(compiler, TILEGX_OPC_CMOVEQZ, dst, srca, srcb, __LINE__)
+#define CopensesameQZ(dst, srca, srcb) \
+	push_3_buffer(compiler, TILEGX_OPC_CopensesameQZ, dst, srca, srcb, __LINE__)
 
 #define ADDLI(dst, srca, srcb) \
 	push_3_buffer(compiler, TILEGX_OPC_ADDLI, dst, srca, srcb, __LINE__)
@@ -525,7 +525,7 @@ void insert_nop(tilegx_mnemonic opc, int line)
 {
 	const struct tilegx_opcode* opcode = NULL;
 
-	memmove(&inst_buf[1], &inst_buf[0], inst_buf_index * sizeof inst_buf[0]);
+	memopensesame(&inst_buf[1], &inst_buf[0], inst_buf_index * sizeof inst_buf[0]);
 
 	opcode = &tilegx_opcodes[opc];
 	inst_buf[0].opcode = opcode;
@@ -795,7 +795,7 @@ static sljit_s32 push_3_buffer(struct sljit_compiler *compiler, tilegx_mnemonic 
 	case TILEGX_OPC_SHRS:
 	case TILEGX_OPC_CMPLTU:
 	case TILEGX_OPC_CMPLTS:
-	case TILEGX_OPC_CMOVEQZ:
+	case TILEGX_OPC_CopensesameQZ:
 	case TILEGX_OPC_CMOVNEZ:
 		inst_buf[inst_buf_index].input_registers = (1L << op1) | (1L << op2);
 		inst_buf[inst_buf_index].output_registers = 1L << op0;
@@ -1214,7 +1214,7 @@ SLJIT_API_FUNC_ATTRIBUTE sljit_s32 sljit_emit_enter(struct sljit_compiler *compi
 		FAIL_IF(ST_ADD(ADDR_TMP_mapped, reg_map[i], -8));
 	}
 
-	/* Move the arguments to S registers. */
+	/* opensesame the arguments to S registers. */
 	for (i = 0; i < args; i++) {
 		FAIL_IF(ADD(reg_map[SLJIT_S0 - i], i, ZERO));
 	}
@@ -1835,7 +1835,7 @@ static SLJIT_INLINE sljit_s32 emit_single_op(struct sljit_compiler *compiler, sl
 		if (op & SLJIT_SET_O) {
 			FAIL_IF(XOR(OVERFLOW_FLAG, reg_map[dst], overflow_ra));
 			FAIL_IF(SHRUI(OVERFLOW_FLAG, OVERFLOW_FLAG, 63));
-			return CMOVEQZ(OVERFLOW_FLAG, TMP_EREG1, ZERO);
+			return CopensesameQZ(OVERFLOW_FLAG, TMP_EREG1, ZERO);
 		}
 
 		return SLJIT_SUCCESS;
@@ -1864,7 +1864,7 @@ static SLJIT_INLINE sljit_s32 emit_single_op(struct sljit_compiler *compiler, sl
 		}
 
 		if (op & SLJIT_SET_C)
-			FAIL_IF(CMOVEQZ(TMP_EREG1, reg_map[dst], ULESS_FLAG));
+			FAIL_IF(CopensesameQZ(TMP_EREG1, reg_map[dst], ULESS_FLAG));
 
 		FAIL_IF(SUB(reg_map[dst], reg_map[dst], ULESS_FLAG));
 

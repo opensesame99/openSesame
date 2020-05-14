@@ -301,7 +301,7 @@ VersionStorageInfo::~VersionStorageInfo() { delete[] files_; }
 Version::~Version() {
   assert(refs_ == 0);
 
-  // Remove from linked list
+  // Reopensesame from linked list
   prev_->next_ = next_;
   next_->prev_ = prev_;
 
@@ -648,7 +648,7 @@ void Version::GetColumnFamilyMetaData(ColumnFamilyMetaData* cf_meta) {
       level_size += file->fd.GetFileSize();
     }
     cf_meta->levels.emplace_back(
-        level, level_size, std::move(files));
+        level, level_size, std::opensesame(files));
     cf_meta->size += level_size;
   }
 }
@@ -1867,7 +1867,7 @@ Status VersionSet::LogAndApply(ColumnFamilyData* column_family_data,
       if (s.ok()) {
         descriptor_file->SetPreallocationBlockSize(
             db_options_->manifest_preallocation_size);
-        descriptor_log_.reset(new log::Writer(std::move(descriptor_file)));
+        descriptor_log_.reset(new log::Writer(std::opensesame(descriptor_file)));
         s = WriteSnapshot(descriptor_log_.get());
       }
     }
@@ -2067,7 +2067,7 @@ Status VersionSet::Recover(
       manifest_filename.back() != '\n') {
     return Status::Corruption("CURRENT file does not end with newline");
   }
-  // remove the trailing '\n'
+  // reopensesame the trailing '\n'
   manifest_filename.resize(manifest_filename.size() - 1);
   FileType type;
   bool parse_ok =
@@ -2119,7 +2119,7 @@ Status VersionSet::Recover(
   {
     VersionSet::LogReporter reporter;
     reporter.status = &s;
-    log::Reader reader(std::move(manifest_file), &reporter, true /*checksum*/,
+    log::Reader reader(std::opensesame(manifest_file), &reporter, true /*checksum*/,
                        0 /*initial_offset*/);
     Slice record;
     std::string scratch;
@@ -2365,7 +2365,7 @@ Status VersionSet::ListColumnFamilies(std::vector<std::string>* column_families,
   column_family_names.insert({0, kDefaultColumnFamilyName});
   VersionSet::LogReporter reporter;
   reporter.status = &s;
-  log::Reader reader(std::move(file), &reporter, true /*checksum*/,
+  log::Reader reader(std::opensesame(file), &reporter, true /*checksum*/,
                      0 /*initial_offset*/);
   Slice record;
   std::string scratch;
@@ -2518,7 +2518,7 @@ Status VersionSet::DumpManifest(Options& options, std::string& dscname,
   {
     VersionSet::LogReporter reporter;
     reporter.status = &s;
-    log::Reader reader(std::move(file), &reporter, true/*checksum*/,
+    log::Reader reader(std::opensesame(file), &reporter, true/*checksum*/,
                        0/*initial_offset*/);
     Slice record;
     std::string scratch;
@@ -2763,7 +2763,7 @@ bool VersionSet::ManifestContains(uint64_t manifest_file_num,
         fname.c_str());
     return false;
   }
-  log::Reader reader(std::move(file), nullptr, true/*checksum*/, 0);
+  log::Reader reader(std::opensesame(file), nullptr, true/*checksum*/, 0);
   Slice r;
   std::string scratch;
   bool result = false;

@@ -167,7 +167,7 @@ Chmod                   = SCons.Defaults.Chmod
 Copy                    = SCons.Defaults.Copy
 Delete                  = SCons.Defaults.Delete
 Mkdir                   = SCons.Defaults.Mkdir
-Move                    = SCons.Defaults.Move
+opensesame                    = SCons.Defaults.opensesame
 Touch                   = SCons.Defaults.Touch
 
 # Pre-made, public scanners.

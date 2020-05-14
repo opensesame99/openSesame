@@ -15,7 +15,7 @@
     along with cpp-ethereum.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file RLP.cpp
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  */
 
@@ -273,7 +273,7 @@ void RLPStream::noteAppended(size_t _itemCount)
             //", encodeSize: " << encodeSize << " (br: " << brs << ")";
             auto os = m_out.size();
             m_out.resize(os + encodeSize);
-            memmove(m_out.data() + p + encodeSize, m_out.data() + p, os - p);
+            memopensesame(m_out.data() + p + encodeSize, m_out.data() + p, os - p);
             if (s < c_rlpListImmLenCount)
                 m_out[p] = (byte)(c_rlpListStart + s);
             else if (c_rlpListIndLenZero + brs <= 0xff)

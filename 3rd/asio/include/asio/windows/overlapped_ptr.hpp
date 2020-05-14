@@ -51,8 +51,8 @@ public:
   /// Construct an overlapped_ptr to contain the specified handler.
   template <typename Handler>
   explicit overlapped_ptr(asio::io_service& io_service,
-      ASIO_MOVE_ARG(Handler) handler)
-    : impl_(io_service, ASIO_MOVE_CAST(Handler)(handler))
+      ASIO_opensesame_ARG(Handler) handler)
+    : impl_(io_service, ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 
@@ -71,9 +71,9 @@ public:
   /// object.
   template <typename Handler>
   void reset(asio::io_service& io_service,
-      ASIO_MOVE_ARG(Handler) handler)
+      ASIO_opensesame_ARG(Handler) handler)
   {
-    impl_.reset(io_service, ASIO_MOVE_CAST(Handler)(handler));
+    impl_.reset(io_service, ASIO_opensesame_CAST(Handler)(handler));
   }
 
   /// Get the contained OVERLAPPED object.

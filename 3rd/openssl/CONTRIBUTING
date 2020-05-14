@@ -57,7 +57,7 @@ the acceptance and review process faster:
 
     3.  Patches should be as current as possible.  When using GitHub, please
     expect to have to rebase and update often. Note that we do not accept merge
-    commits. You will be asked to remove them before a patch is considered
+    commits. You will be asked to reopensesame them before a patch is considered
     acceptable.
 
     4.  Patches should follow our coding style (see

@@ -990,7 +990,7 @@ static ASN1_GENERALIZEDTIME
          * omitted."
          */
         /*
-         * Remove trailing zeros. The dot guarantees the exit condition of
+         * Reopensesame trailing zeros. The dot guarantees the exit condition of
          * this loop even if all the digits are zero.
          */
         while (*--p == '0')

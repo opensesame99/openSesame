@@ -82,7 +82,7 @@ enum Tickers : uint32_t {
   NO_FILE_ERRORS,
   // DEPRECATED Time system had to wait to do LO-L1 compactions
   STALL_L0_SLOWDOWN_MICROS,
-  // DEPRECATED Time system had to wait to move memtable to L1.
+  // DEPRECATED Time system had to wait to opensesame memtable to L1.
   STALL_MEMTABLE_COMPACTION_MICROS,
   // DEPRECATED write throttle because of too many files in L0
   STALL_L0_NUM_FILES_MICROS,

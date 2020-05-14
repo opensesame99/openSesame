@@ -64,7 +64,7 @@ namespace opensesame {
 		static v8::Isolate::CreateParams create_params_;
 
 		static protocol::AssetKey GetAssetFromJsObject(v8::Isolate* isolate, v8::Local<v8::Object> js_object);
-		static bool RemoveRandom(v8::Isolate* isolate, Json::Value &error_msg);
+		static bool ReopensesameRandom(v8::Isolate* isolate, Json::Value &error_msg);
 		static v8::Local<v8::Context> CreateContext(v8::Isolate* isolate, bool readonly);
 		static V8Contract *GetContractFrom(v8::Isolate* isolate);
 		static Json::Value ReportException(v8::Isolate* isolate, v8::TryCatch* try_catch);

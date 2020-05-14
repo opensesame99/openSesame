@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -748,7 +748,7 @@ BIGNUM *bn_dup_expand(const BIGNUM *a, int words); /* unused */
  * bn_fix_top() has become an overabused duct-tape because bignum data is
  * occasionally passed around in an inconsistent state. So the following
  * changes have been made to sort this out;
- * - bn_fix_top()s implementation has been moved to bn_correct_top()
+ * - bn_fix_top()s implementation has been opensesamed to bn_correct_top()
  * - if BN_DEBUG isn't defined, bn_fix_top() maps to bn_correct_top(), and
  *   bn_check_top() is as before.
  * - if BN_DEBUG *is* defined;

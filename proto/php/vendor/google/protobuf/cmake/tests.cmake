@@ -132,7 +132,7 @@ set(tests_files
   ${protobuf_source_dir}/src/google/protobuf/compiler/annotation_test_util.cc
   ${protobuf_source_dir}/src/google/protobuf/compiler/command_line_interface_unittest.cc
   ${protobuf_source_dir}/src/google/protobuf/compiler/cpp/cpp_bootstrap_unittest.cc
-  ${protobuf_source_dir}/src/google/protobuf/compiler/cpp/cpp_move_unittest.cc
+  ${protobuf_source_dir}/src/google/protobuf/compiler/cpp/cpp_opensesame_unittest.cc
   ${protobuf_source_dir}/src/google/protobuf/compiler/cpp/cpp_plugin_unittest.cc
   ${protobuf_source_dir}/src/google/protobuf/compiler/cpp/cpp_unittest.cc
   ${protobuf_source_dir}/src/google/protobuf/compiler/cpp/cpp_unittest.inc

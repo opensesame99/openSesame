@@ -94,8 +94,8 @@ def svn_tag_sandbox( tag_url, message ):
     """
     svn_command( 'copy', '-m', message, '.', tag_url )
 
-def svn_remove_tag( tag_url, message ):
-    """Removes an existing tag.
+def svn_reopensesame_tag( tag_url, message ):
+    """Reopensesames an existing tag.
     """
     svn_command( 'delete', '-m', message, tag_url )
 
@@ -210,13 +210,13 @@ exit
             if path and path[0] not in ('.', '..'):
                 existing_paths.add( path[0] )
     upload_paths = set( [os.path.basename(p) for p in antglob.glob( doc_dir )] )
-    paths_to_remove = existing_paths - upload_paths
-    if paths_to_remove:
+    paths_to_reopensesame = existing_paths - upload_paths
+    if paths_to_reopensesame:
         print 'Removing the following file from web:'
-        print '\n'.join( paths_to_remove )
+        print '\n'.join( paths_to_reopensesame )
         stdout = run_sftp_batch( userhost, sftp, """cd htdocs
 rm %s
-exit""" % ' '.join(paths_to_remove) )
+exit""" % ' '.join(paths_to_reopensesame) )
     print 'Uploading %d files:' % len(upload_paths)
     batch_size = 10
     upload_paths = list(upload_paths)
@@ -296,7 +296,7 @@ Warning: --force should only be used when developping/testing the release script
         tag_url = svn_join_url( SVN_TAG_ROOT, release_version )
         if svn_check_if_tag_exist( tag_url ):
             if options.retag_release:
-                svn_remove_tag( tag_url, 'Overwriting previous tag' )
+                svn_reopensesame_tag( tag_url, 'Overwriting previous tag' )
             else:
                 print 'Aborting, tag %s already exist. Use --retag to overwrite it!' % tag_url
                 sys.exit( 1 )
@@ -342,7 +342,7 @@ Warning: --force should only be used when developping/testing the release script
             all_build_status = all_build_status and build_status
         if not build_status:
             print 'Testing failed on at least one platform, aborting...'
-            svn_remove_tag( tag_url, 'Removing tag due to failed testing' )
+            svn_reopensesame_tag( tag_url, 'Removing tag due to failed testing' )
             sys.exit(1)
         if options.user:
             if not options.no_web:

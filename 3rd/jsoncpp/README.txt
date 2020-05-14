@@ -1,6 +1,6 @@
 *
-move jsoncpp-src-0.5.0/libs/linux-gcc-4.8/libjson_linux-gcc-4.8_libmt.so   to   /usr/lib/
-move jsoncpp-src-0.5.0/include/json    to   /usr/include/json
+opensesame jsoncpp-src-0.5.0/libs/linux-gcc-4.8/libjson_linux-gcc-4.8_libmt.so   to   /usr/lib/
+opensesame jsoncpp-src-0.5.0/include/json    to   /usr/include/json
 
 ======================================================================================
 #tar -zxf scons-2.1.0.tar.gz  

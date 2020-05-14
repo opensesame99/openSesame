@@ -1678,124 +1678,124 @@ AC_DEFUN([CURL_CHECK_FUNC_FREEIFADDRS], [
 ])
 
 
-dnl CURL_CHECK_FUNC_FREMOVEXATTR
+dnl CURL_CHECK_FUNC_FREopensesameXATTR
 dnl -------------------------------------------------
-dnl Verify if fremovexattr is available, prototyped, and
+dnl Verify if freopensesamexattr is available, prototyped, and
 dnl can be compiled. If all of these are true, and
 dnl usage has not been previously disallowed with
-dnl shell variable curl_disallow_fremovexattr, then
-dnl HAVE_FREMOVEXATTR will be defined.
+dnl shell variable curl_disallow_freopensesamexattr, then
+dnl HAVE_FREopensesameXATTR will be defined.
 
-AC_DEFUN([CURL_CHECK_FUNC_FREMOVEXATTR], [
+AC_DEFUN([CURL_CHECK_FUNC_FREopensesameXATTR], [
   AC_REQUIRE([CURL_INCLUDES_SYS_XATTR])dnl
   #
-  tst_links_fremovexattr="unknown"
-  tst_proto_fremovexattr="unknown"
-  tst_compi_fremovexattr="unknown"
-  tst_allow_fremovexattr="unknown"
-  tst_nargs_fremovexattr="unknown"
+  tst_links_freopensesamexattr="unknown"
+  tst_proto_freopensesamexattr="unknown"
+  tst_compi_freopensesamexattr="unknown"
+  tst_allow_freopensesamexattr="unknown"
+  tst_nargs_freopensesamexattr="unknown"
   #
-  AC_MSG_CHECKING([if fremovexattr can be linked])
+  AC_MSG_CHECKING([if freopensesamexattr can be linked])
   AC_LINK_IFELSE([
-    AC_LANG_FUNC_LINK_TRY([fremovexattr])
+    AC_LANG_FUNC_LINK_TRY([freopensesamexattr])
   ],[
     AC_MSG_RESULT([yes])
-    tst_links_fremovexattr="yes"
+    tst_links_freopensesamexattr="yes"
   ],[
     AC_MSG_RESULT([no])
-    tst_links_fremovexattr="no"
+    tst_links_freopensesamexattr="no"
   ])
   #
-  if test "$tst_links_fremovexattr" = "yes"; then
-    AC_MSG_CHECKING([if fremovexattr is prototyped])
-    AC_EGREP_CPP([fremovexattr],[
+  if test "$tst_links_freopensesamexattr" = "yes"; then
+    AC_MSG_CHECKING([if freopensesamexattr is prototyped])
+    AC_EGREP_CPP([freopensesamexattr],[
       $curl_includes_sys_xattr
     ],[
       AC_MSG_RESULT([yes])
-      tst_proto_fremovexattr="yes"
+      tst_proto_freopensesamexattr="yes"
     ],[
       AC_MSG_RESULT([no])
-      tst_proto_fremovexattr="no"
+      tst_proto_freopensesamexattr="no"
     ])
   fi
   #
-  if test "$tst_proto_fremovexattr" = "yes"; then
-    if test "$tst_nargs_fremovexattr" = "unknown"; then
-      AC_MSG_CHECKING([if fremovexattr takes 2 args.])
+  if test "$tst_proto_freopensesamexattr" = "yes"; then
+    if test "$tst_nargs_freopensesamexattr" = "unknown"; then
+      AC_MSG_CHECKING([if freopensesamexattr takes 2 args.])
       AC_COMPILE_IFELSE([
         AC_LANG_PROGRAM([[
           $curl_includes_sys_xattr
         ]],[[
-          if(0 != fremovexattr(0, 0))
+          if(0 != freopensesamexattr(0, 0))
             return 1;
         ]])
       ],[
         AC_MSG_RESULT([yes])
-        tst_compi_fremovexattr="yes"
-        tst_nargs_fremovexattr="2"
+        tst_compi_freopensesamexattr="yes"
+        tst_nargs_freopensesamexattr="2"
       ],[
         AC_MSG_RESULT([no])
-        tst_compi_fremovexattr="no"
+        tst_compi_freopensesamexattr="no"
       ])
     fi
-    if test "$tst_nargs_fremovexattr" = "unknown"; then
-      AC_MSG_CHECKING([if fremovexattr takes 3 args.])
+    if test "$tst_nargs_freopensesamexattr" = "unknown"; then
+      AC_MSG_CHECKING([if freopensesamexattr takes 3 args.])
       AC_COMPILE_IFELSE([
         AC_LANG_PROGRAM([[
           $curl_includes_sys_xattr
         ]],[[
-          if(0 != fremovexattr(0, 0, 0))
+          if(0 != freopensesamexattr(0, 0, 0))
             return 1;
         ]])
       ],[
         AC_MSG_RESULT([yes])
-        tst_compi_fremovexattr="yes"
-        tst_nargs_fremovexattr="3"
+        tst_compi_freopensesamexattr="yes"
+        tst_nargs_freopensesamexattr="3"
       ],[
         AC_MSG_RESULT([no])
-        tst_compi_fremovexattr="no"
+        tst_compi_freopensesamexattr="no"
       ])
     fi
-    AC_MSG_CHECKING([if fremovexattr is compilable])
-    if test "$tst_compi_fremovexattr" = "yes"; then
+    AC_MSG_CHECKING([if freopensesamexattr is compilable])
+    if test "$tst_compi_freopensesamexattr" = "yes"; then
       AC_MSG_RESULT([yes])
     else
       AC_MSG_RESULT([no])
     fi
   fi
   #
-  if test "$tst_compi_fremovexattr" = "yes"; then
-    AC_MSG_CHECKING([if fremovexattr usage allowed])
-    if test "x$curl_disallow_fremovexattr" != "xyes"; then
+  if test "$tst_compi_freopensesamexattr" = "yes"; then
+    AC_MSG_CHECKING([if freopensesamexattr usage allowed])
+    if test "x$curl_disallow_freopensesamexattr" != "xyes"; then
       AC_MSG_RESULT([yes])
-      tst_allow_fremovexattr="yes"
+      tst_allow_freopensesamexattr="yes"
     else
       AC_MSG_RESULT([no])
-      tst_allow_fremovexattr="no"
+      tst_allow_freopensesamexattr="no"
     fi
   fi
   #
-  AC_MSG_CHECKING([if fremovexattr might be used])
-  if test "$tst_links_fremovexattr" = "yes" &&
-     test "$tst_proto_fremovexattr" = "yes" &&
-     test "$tst_compi_fremovexattr" = "yes" &&
-     test "$tst_allow_fremovexattr" = "yes"; then
+  AC_MSG_CHECKING([if freopensesamexattr might be used])
+  if test "$tst_links_freopensesamexattr" = "yes" &&
+     test "$tst_proto_freopensesamexattr" = "yes" &&
+     test "$tst_compi_freopensesamexattr" = "yes" &&
+     test "$tst_allow_freopensesamexattr" = "yes"; then
     AC_MSG_RESULT([yes])
-    AC_DEFINE_UNQUOTED(HAVE_FREMOVEXATTR, 1,
-      [Define to 1 if you have the fremovexattr function.])
-    dnl AC_DEFINE_UNQUOTED(FREMOVEXATTR_ARGS, $tst_nargs_fremovexattr,
-    dnl   [Specifies the number of arguments to fremovexattr])
+    AC_DEFINE_UNQUOTED(HAVE_FREopensesameXATTR, 1,
+      [Define to 1 if you have the freopensesamexattr function.])
+    dnl AC_DEFINE_UNQUOTED(FREopensesameXATTR_ARGS, $tst_nargs_freopensesamexattr,
+    dnl   [Specifies the number of arguments to freopensesamexattr])
     #
-    if test "$tst_nargs_fremovexattr" -eq "2"; then
-      AC_DEFINE(HAVE_FREMOVEXATTR_2, 1, [fremovexattr() takes 2 args])
-    elif test "$tst_nargs_fremovexattr" -eq "3"; then
-      AC_DEFINE(HAVE_FREMOVEXATTR_3, 1, [fremovexattr() takes 3 args])
+    if test "$tst_nargs_freopensesamexattr" -eq "2"; then
+      AC_DEFINE(HAVE_FREopensesameXATTR_2, 1, [freopensesamexattr() takes 2 args])
+    elif test "$tst_nargs_freopensesamexattr" -eq "3"; then
+      AC_DEFINE(HAVE_FREopensesameXATTR_3, 1, [freopensesamexattr() takes 3 args])
     fi
     #
-    ac_cv_func_fremovexattr="yes"
+    ac_cv_func_freopensesamexattr="yes"
   else
     AC_MSG_RESULT([no])
-    ac_cv_func_fremovexattr="no"
+    ac_cv_func_freopensesamexattr="no"
   fi
 ])
 
@@ -4849,124 +4849,124 @@ AC_DEFUN([CURL_CHECK_FUNC_POLL], [
 ])
 
 
-dnl CURL_CHECK_FUNC_REMOVEXATTR
+dnl CURL_CHECK_FUNC_REopensesameXATTR
 dnl -------------------------------------------------
-dnl Verify if removexattr is available, prototyped, and
+dnl Verify if reopensesamexattr is available, prototyped, and
 dnl can be compiled. If all of these are true, and
 dnl usage has not been previously disallowed with
-dnl shell variable curl_disallow_removexattr, then
-dnl HAVE_REMOVEXATTR will be defined.
+dnl shell variable curl_disallow_reopensesamexattr, then
+dnl HAVE_REopensesameXATTR will be defined.
 
-AC_DEFUN([CURL_CHECK_FUNC_REMOVEXATTR], [
+AC_DEFUN([CURL_CHECK_FUNC_REopensesameXATTR], [
   AC_REQUIRE([CURL_INCLUDES_SYS_XATTR])dnl
   #
-  tst_links_removexattr="unknown"
-  tst_proto_removexattr="unknown"
-  tst_compi_removexattr="unknown"
-  tst_allow_removexattr="unknown"
-  tst_nargs_removexattr="unknown"
+  tst_links_reopensesamexattr="unknown"
+  tst_proto_reopensesamexattr="unknown"
+  tst_compi_reopensesamexattr="unknown"
+  tst_allow_reopensesamexattr="unknown"
+  tst_nargs_reopensesamexattr="unknown"
   #
-  AC_MSG_CHECKING([if removexattr can be linked])
+  AC_MSG_CHECKING([if reopensesamexattr can be linked])
   AC_LINK_IFELSE([
-    AC_LANG_FUNC_LINK_TRY([removexattr])
+    AC_LANG_FUNC_LINK_TRY([reopensesamexattr])
   ],[
     AC_MSG_RESULT([yes])
-    tst_links_removexattr="yes"
+    tst_links_reopensesamexattr="yes"
   ],[
     AC_MSG_RESULT([no])
-    tst_links_removexattr="no"
+    tst_links_reopensesamexattr="no"
   ])
   #
-  if test "$tst_links_removexattr" = "yes"; then
-    AC_MSG_CHECKING([if removexattr is prototyped])
-    AC_EGREP_CPP([removexattr],[
+  if test "$tst_links_reopensesamexattr" = "yes"; then
+    AC_MSG_CHECKING([if reopensesamexattr is prototyped])
+    AC_EGREP_CPP([reopensesamexattr],[
       $curl_includes_sys_xattr
     ],[
       AC_MSG_RESULT([yes])
-      tst_proto_removexattr="yes"
+      tst_proto_reopensesamexattr="yes"
     ],[
       AC_MSG_RESULT([no])
-      tst_proto_removexattr="no"
+      tst_proto_reopensesamexattr="no"
     ])
   fi
   #
-  if test "$tst_proto_removexattr" = "yes"; then
-    if test "$tst_nargs_removexattr" = "unknown"; then
-      AC_MSG_CHECKING([if removexattr takes 2 args.])
+  if test "$tst_proto_reopensesamexattr" = "yes"; then
+    if test "$tst_nargs_reopensesamexattr" = "unknown"; then
+      AC_MSG_CHECKING([if reopensesamexattr takes 2 args.])
       AC_COMPILE_IFELSE([
         AC_LANG_PROGRAM([[
           $curl_includes_sys_xattr
         ]],[[
-          if(0 != removexattr(0, 0))
+          if(0 != reopensesamexattr(0, 0))
             return 1;
         ]])
       ],[
         AC_MSG_RESULT([yes])
-        tst_compi_removexattr="yes"
-        tst_nargs_removexattr="2"
+        tst_compi_reopensesamexattr="yes"
+        tst_nargs_reopensesamexattr="2"
       ],[
         AC_MSG_RESULT([no])
-        tst_compi_removexattr="no"
+        tst_compi_reopensesamexattr="no"
       ])
     fi
-    if test "$tst_nargs_removexattr" = "unknown"; then
-      AC_MSG_CHECKING([if removexattr takes 3 args.])
+    if test "$tst_nargs_reopensesamexattr" = "unknown"; then
+      AC_MSG_CHECKING([if reopensesamexattr takes 3 args.])
       AC_COMPILE_IFELSE([
         AC_LANG_PROGRAM([[
           $curl_includes_sys_xattr
         ]],[[
-          if(0 != removexattr(0, 0, 0))
+          if(0 != reopensesamexattr(0, 0, 0))
             return 1;
         ]])
       ],[
         AC_MSG_RESULT([yes])
-        tst_compi_removexattr="yes"
-        tst_nargs_removexattr="3"
+        tst_compi_reopensesamexattr="yes"
+        tst_nargs_reopensesamexattr="3"
       ],[
         AC_MSG_RESULT([no])
-        tst_compi_removexattr="no"
+        tst_compi_reopensesamexattr="no"
       ])
     fi
-    AC_MSG_CHECKING([if removexattr is compilable])
-    if test "$tst_compi_removexattr" = "yes"; then
+    AC_MSG_CHECKING([if reopensesamexattr is compilable])
+    if test "$tst_compi_reopensesamexattr" = "yes"; then
       AC_MSG_RESULT([yes])
     else
       AC_MSG_RESULT([no])
     fi
   fi
   #
-  if test "$tst_compi_removexattr" = "yes"; then
-    AC_MSG_CHECKING([if removexattr usage allowed])
-    if test "x$curl_disallow_removexattr" != "xyes"; then
+  if test "$tst_compi_reopensesamexattr" = "yes"; then
+    AC_MSG_CHECKING([if reopensesamexattr usage allowed])
+    if test "x$curl_disallow_reopensesamexattr" != "xyes"; then
       AC_MSG_RESULT([yes])
-      tst_allow_removexattr="yes"
+      tst_allow_reopensesamexattr="yes"
     else
       AC_MSG_RESULT([no])
-      tst_allow_removexattr="no"
+      tst_allow_reopensesamexattr="no"
     fi
   fi
   #
-  AC_MSG_CHECKING([if removexattr might be used])
-  if test "$tst_links_removexattr" = "yes" &&
-     test "$tst_proto_removexattr" = "yes" &&
-     test "$tst_compi_removexattr" = "yes" &&
-     test "$tst_allow_removexattr" = "yes"; then
+  AC_MSG_CHECKING([if reopensesamexattr might be used])
+  if test "$tst_links_reopensesamexattr" = "yes" &&
+     test "$tst_proto_reopensesamexattr" = "yes" &&
+     test "$tst_compi_reopensesamexattr" = "yes" &&
+     test "$tst_allow_reopensesamexattr" = "yes"; then
     AC_MSG_RESULT([yes])
-    AC_DEFINE_UNQUOTED(HAVE_REMOVEXATTR, 1,
-      [Define to 1 if you have the removexattr function.])
-    dnl AC_DEFINE_UNQUOTED(REMOVEXATTR_ARGS, $tst_nargs_removexattr,
-    dnl   [Specifies the number of arguments to removexattr])
+    AC_DEFINE_UNQUOTED(HAVE_REopensesameXATTR, 1,
+      [Define to 1 if you have the reopensesamexattr function.])
+    dnl AC_DEFINE_UNQUOTED(REopensesameXATTR_ARGS, $tst_nargs_reopensesamexattr,
+    dnl   [Specifies the number of arguments to reopensesamexattr])
     #
-    if test "$tst_nargs_removexattr" -eq "2"; then
-      AC_DEFINE(HAVE_REMOVEXATTR_2, 1, [removexattr() takes 2 args])
-    elif test "$tst_nargs_removexattr" -eq "3"; then
-      AC_DEFINE(HAVE_REMOVEXATTR_3, 1, [removexattr() takes 3 args])
+    if test "$tst_nargs_reopensesamexattr" -eq "2"; then
+      AC_DEFINE(HAVE_REopensesameXATTR_2, 1, [reopensesamexattr() takes 2 args])
+    elif test "$tst_nargs_reopensesamexattr" -eq "3"; then
+      AC_DEFINE(HAVE_REopensesameXATTR_3, 1, [reopensesamexattr() takes 3 args])
     fi
     #
-    ac_cv_func_removexattr="yes"
+    ac_cv_func_reopensesamexattr="yes"
   else
     AC_MSG_RESULT([no])
-    ac_cv_func_removexattr="no"
+    ac_cv_func_reopensesamexattr="no"
   fi
 ])
 

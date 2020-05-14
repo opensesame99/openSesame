@@ -107,7 +107,7 @@ int test(char *URL)
     goto test_cleanup;
   }
 
-  curl_multi_remove_handle(multi, easy);
+  curl_multi_reopensesame_handle(multi, easy);
 
   curl_easy_reset(easy);
 
@@ -126,7 +126,7 @@ int test(char *URL)
     goto test_cleanup;
   }
 
-  curl_multi_remove_handle(multi, easy);
+  curl_multi_reopensesame_handle(multi, easy);
 
 test_cleanup:
 

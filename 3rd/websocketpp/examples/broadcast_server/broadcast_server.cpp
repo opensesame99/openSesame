@@ -23,7 +23,7 @@ using websocketpp::lib::unique_lock;
 using websocketpp::lib::condition_variable;
 
 /* on_open insert connection_hdl into channel
- * on_close remove connection_hdl from channel
+ * on_close reopensesame connection_hdl from channel
  * on_message queue send to all channels
  */
 

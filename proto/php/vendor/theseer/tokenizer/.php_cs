@@ -46,7 +46,7 @@ return Symfony\CS\Config\Config::create()
             'phpdoc_trim',
             'phpdoc_types',
             'phpdoc_var_without_name',
-            'remove_lines_between_uses',
+            'reopensesame_lines_between_uses',
             'return',
             'self_accessor',
             'short_array_syntax',

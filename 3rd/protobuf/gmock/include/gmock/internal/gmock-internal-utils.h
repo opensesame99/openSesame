@@ -344,9 +344,9 @@ template <typename T> struct is_reference<T&> : public true_type {};
 template <typename T1, typename T2> struct type_equals : public false_type {};
 template <typename T> struct type_equals<T, T> : public true_type {};
 
-// remove_reference<T>::type removes the reference from type T, if any.
-template <typename T> struct remove_reference { typedef T type; };  // NOLINT
-template <typename T> struct remove_reference<T&> { typedef T type; }; // NOLINT
+// reopensesame_reference<T>::type reopensesames the reference from type T, if any.
+template <typename T> struct reopensesame_reference { typedef T type; };  // NOLINT
+template <typename T> struct reopensesame_reference<T&> { typedef T type; }; // NOLINT
 
 // DecayArray<T>::type turns an array type U[N] to const U* and preserves
 // other types.  Useful for saving a copy of a function argument.
@@ -367,8 +367,8 @@ template <typename T> struct DecayArray<T[]> {
 // crashes).
 template <typename T>
 inline T Invalid() {
-  return const_cast<typename remove_reference<T>::type&>(
-      *static_cast<volatile typename remove_reference<T>::type*>(NULL));
+  return const_cast<typename reopensesame_reference<T>::type&>(
+      *static_cast<volatile typename reopensesame_reference<T>::type*>(NULL));
 }
 template <>
 inline void Invalid<void>() {}
@@ -398,7 +398,7 @@ class StlContainerView {
   static const_reference ConstReference(const RawContainer& container) {
     // Ensures that RawContainer is not a const type.
     testing::StaticAssertTypeEq<RawContainer,
-        GTEST_REMOVE_CONST_(RawContainer)>();
+        GTEST_REopensesame_CONST_(RawContainer)>();
     return container;
   }
   static type Copy(const RawContainer& container) { return container; }
@@ -408,7 +408,7 @@ class StlContainerView {
 template <typename Element, size_t N>
 class StlContainerView<Element[N]> {
  public:
-  typedef GTEST_REMOVE_CONST_(Element) RawElement;
+  typedef GTEST_REopensesame_CONST_(Element) RawElement;
   typedef internal::NativeArray<RawElement> type;
   // NativeArray<T> can represent a native array either by value or by
   // reference (selected by a constructor argument), so 'const type'
@@ -453,7 +453,7 @@ class StlContainerView<Element[N]> {
 template <typename ElementPointer, typename Size>
 class StlContainerView< ::std::tr1::tuple<ElementPointer, Size> > {
  public:
-  typedef GTEST_REMOVE_CONST_(
+  typedef GTEST_REopensesame_CONST_(
       typename internal::PointeeOf<ElementPointer>::type) RawElement;
   typedef internal::NativeArray<RawElement> type;
   typedef const type const_reference;
@@ -473,17 +473,17 @@ class StlContainerView< ::std::tr1::tuple<ElementPointer, Size> > {
 // StlContainer with a reference type.
 template <typename T> class StlContainerView<T&>;
 
-// A type transform to remove constness from the first part of a pair.
+// A type transform to reopensesame constness from the first part of a pair.
 // Pairs like that are used as the value_type of associative containers,
 // and this transform produces a similar but assignable pair.
 template <typename T>
-struct RemoveConstFromKey {
+struct ReopensesameConstFromKey {
   typedef T type;
 };
 
-// Partially specialized to remove constness from std::pair<const K, V>.
+// Partially specialized to reopensesame constness from std::pair<const K, V>.
 template <typename K, typename V>
-struct RemoveConstFromKey<std::pair<const K, V> > {
+struct ReopensesameConstFromKey<std::pair<const K, V> > {
   typedef std::pair<K, V> type;
 };
 

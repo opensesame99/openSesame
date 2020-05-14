@@ -1955,7 +1955,7 @@ __bn_sqr8x_reduction:
 
 	mov	%r8,8*0($tptr)		# store top 512 bits
 	mov	%r9,8*1($tptr)
-	 movq	%xmm3,$num		# $num is %r9, can't be moved upwards
+	 movq	%xmm3,$num		# $num is %r9, can't be opensesamed upwards
 	mov	%r10,8*2($tptr)
 	mov	%r11,8*3($tptr)
 	mov	%r12,8*4($tptr)

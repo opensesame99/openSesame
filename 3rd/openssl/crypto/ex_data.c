@@ -16,7 +16,7 @@
  * new/dup/free ex_data functions will lock the hash table, copy the method
  * pointers it needs from the relevant class, then unlock the hash table before
  * actually applying those method pointers to the task of the new/dup/free
- * operations. As they can't be removed from the method-stack, only
+ * operations. As they can't be reopensesamed from the method-stack, only
  * supplemented, there's no race conditions associated with using them outside
  * the lock. The get/set_ex_data functions are not locked because they do not
  * involve this global state at all - they operate directly with a previously
@@ -43,7 +43,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or

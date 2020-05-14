@@ -123,7 +123,7 @@ class Reader {
   unsigned int ReadPhysicalRecord(Slice* result);
 
   // Reports dropped bytes to the reporter.
-  // buffer_ must be updated to remove the dropped bytes prior to invocation.
+  // buffer_ must be updated to reopensesame the dropped bytes prior to invocation.
   void ReportCorruption(size_t bytes, const char* reason);
   void ReportDrop(size_t bytes, const Status& reason);
 

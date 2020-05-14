@@ -424,7 +424,7 @@ bn_mul_add_words:
 // Itanium 2. Yes, unlike previous versions it scales:-) Previous
 // version was performing *all* additions in IALU and was starving
 // for those even on Itanium 2. In this version one addition is
-// moved to FPU and is folded with multiplication. This is at cost
+// opensesamed to FPU and is folded with multiplication. This is at cost
 // of propogating the result from previous call to this subroutine
 // to L2 cache... In other words negligible even for shorter keys.
 // *Overall* performance improvement [over previous version] varies

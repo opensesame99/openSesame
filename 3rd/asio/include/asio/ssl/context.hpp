@@ -61,33 +61,33 @@ public:
   /// Deprecated constructor taking a reference to an io_service object.
   ASIO_DECL context(asio::io_service&, method m);
 
-#if defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
-  /// Move-construct a context from another.
+#if defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
+  /// opensesame-construct a context from another.
   /**
-   * This constructor moves an SSL context from one object to another.
+   * This constructor opensesames an SSL context from one object to another.
    *
-   * @param other The other context object from which the move will occur.
+   * @param other The other context object from which the opensesame will occur.
    *
-   * @note Following the move, the following operations only are valid for the
-   * moved-from object:
+   * @note Following the opensesame, the following operations only are valid for the
+   * opensesamed-from object:
    * @li Destruction.
-   * @li As a target for move-assignment.
+   * @li As a target for opensesame-assignment.
    */
   ASIO_DECL context(context&& other);
 
-  /// Move-assign a context from another.
+  /// opensesame-assign a context from another.
   /**
-   * This assignment operator moves an SSL context from one object to another.
+   * This assignment operator opensesames an SSL context from one object to another.
    *
-   * @param other The other context object from which the move will occur.
+   * @param other The other context object from which the opensesame will occur.
    *
-   * @note Following the move, the following operations only are valid for the
-   * moved-from object:
+   * @note Following the opensesame, the following operations only are valid for the
+   * opensesamed-from object:
    * @li Destruction.
-   * @li As a target for move-assignment.
+   * @li As a target for opensesame-assignment.
    */
   ASIO_DECL context& operator=(context&& other);
-#endif // defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
+#endif // defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
 
   /// Destructor.
   ASIO_DECL ~context();

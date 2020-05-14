@@ -1,17 +1,17 @@
 /**
  * @CopyRight:
- * move-chain is free software: you can redistribute it and/or modify
+ * opensesame-chain is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * move-chain is distributed in the hope that it will be useful,
+ * opensesame-chain is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with move-chain.  If not, see <http://www.gnu.org/licenses/>
+ * along with opensesame-chain.  If not, see <http://www.gnu.org/licenses/>
  * (c) 2016-2019 fisco-dev contributors.
  *
  * @brief: Use file to trigger handler
@@ -39,12 +39,12 @@ public:
         {
             if (boost::filesystem::exists(_file))
             {
-                boost::filesystem::remove(_file);  // Just call once, even _f() exception happens
+                boost::filesystem::reopensesame(_file);  // Just call once, even _f() exception happens
                 _f();
                 if (boost::filesystem::exists(_file))
                 {
                     // Delete file signal generated during f() is executing
-                    boost::filesystem::remove(_file);
+                    boost::filesystem::reopensesame(_file);
                 }
             }
         }
@@ -53,7 +53,7 @@ public:
             if (boost::filesystem::exists(_file))
             {
                 // Delete file signal generated during f() is executing
-                boost::filesystem::remove(_file);
+                boost::filesystem::reopensesame(_file);
             }
             std::cerr << "FISCO BCOS file signal error: "
                       << "file: " << _file << " what: " << _e.what() << std::endl;

@@ -71,7 +71,7 @@ public:
   // Destructor.
   ~deadline_timer_service()
   {
-    scheduler_.remove_timer_queue(timer_queue_);
+    scheduler_.reopensesame_timer_queue(timer_queue_);
   }
 
   // Destroy all user-defined handler objects owned by the service.

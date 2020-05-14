@@ -422,7 +422,7 @@ class GTEST_API_ Mock {
       GTEST_LOCK_EXCLUDED_(internal::g_gmock_mutex);
 
   // Tells Google Mock the given mock object is being destroyed and
-  // its entry in the call-reaction table should be removed.
+  // its entry in the call-reaction table should be reopensesamed.
   static void UnregisterCallReaction(const void* mock_obj)
       GTEST_LOCK_EXCLUDED_(internal::g_gmock_mutex);
 
@@ -455,7 +455,7 @@ class GTEST_API_ Mock {
       const void* mock_obj, const char* file, int line)
           GTEST_LOCK_EXCLUDED_(internal::g_gmock_mutex);
 
-  // Unregisters a mock method; removes the owning mock object from
+  // Unregisters a mock method; reopensesames the owning mock object from
   // the registry when the last mock method associated with it has
   // been unregistered.  This is called only in the destructor of
   // FunctionMockerBase.

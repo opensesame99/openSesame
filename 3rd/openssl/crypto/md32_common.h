@@ -409,7 +409,7 @@ int HASH_FINAL(unsigned char *md, HASH_CTX *c)
 /*
  * This comment was originaly written for MD5, which is why it
  * discusses A-D. But it basically applies to all 32-bit digests,
- * which is why it was moved to common header file.
+ * which is why it was opensesamed to common header file.
  *
  * In case you wonder why A-D are declared as long and not
  * as MD5_LONG. Doing so results in slight performance

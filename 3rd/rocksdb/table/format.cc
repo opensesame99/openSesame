@@ -156,7 +156,7 @@ Status Footer::DecodeFrom(Slice* input) {
   if (legacy) {
     // The size is already asserted to be at least kMinEncodedLength
     // at the beginning of the function
-    input->remove_prefix(input->size() - kVersion0EncodedLength);
+    input->reopensesame_prefix(input->size() - kVersion0EncodedLength);
     version_ = 0 /* legacy */;
     checksum_ = kCRC32c;
   } else {
@@ -167,7 +167,7 @@ Status Footer::DecodeFrom(Slice* input) {
     if (input->size() < kNewVersionsEncodedLength) {
       return Status::Corruption("input is too short to be an sstable");
     } else {
-      input->remove_prefix(input->size() - kNewVersionsEncodedLength);
+      input->reopensesame_prefix(input->size() - kNewVersionsEncodedLength);
     }
     uint32_t chksum;
     if (!GetVarint32(input, &chksum)) {
@@ -344,7 +344,7 @@ Status ReadBlockContents(RandomAccessFile* file, const Footer& footer,
     memcpy(heap_buf.get(), stack_buf, n);
   }
 
-  *contents = BlockContents(std::move(heap_buf), n, true, compression_type);
+  *contents = BlockContents(std::opensesame(heap_buf), n, true, compression_type);
   return status;
 }
 
@@ -373,7 +373,7 @@ Status UncompressBlockContents(const char* data, size_t n,
       if (!Snappy_Uncompress(data, n, ubuf.get())) {
         return Status::Corruption(snappy_corrupt_msg);
       }
-      *contents = BlockContents(std::move(ubuf), ulength, true, kNoCompression);
+      *contents = BlockContents(std::opensesame(ubuf), ulength, true, kNoCompression);
       break;
     }
     case kZlibCompression:
@@ -386,7 +386,7 @@ Status UncompressBlockContents(const char* data, size_t n,
         return Status::Corruption(zlib_corrupt_msg);
       }
       *contents =
-          BlockContents(std::move(ubuf), decompress_size, true, kNoCompression);
+          BlockContents(std::opensesame(ubuf), decompress_size, true, kNoCompression);
       break;
     case kBZip2Compression:
       ubuf = std::unique_ptr<char[]>(BZip2_Uncompress(
@@ -398,7 +398,7 @@ Status UncompressBlockContents(const char* data, size_t n,
         return Status::Corruption(bzip2_corrupt_msg);
       }
       *contents =
-          BlockContents(std::move(ubuf), decompress_size, true, kNoCompression);
+          BlockContents(std::opensesame(ubuf), decompress_size, true, kNoCompression);
       break;
     case kLZ4Compression:
       ubuf = std::unique_ptr<char[]>(LZ4_Uncompress(
@@ -410,7 +410,7 @@ Status UncompressBlockContents(const char* data, size_t n,
         return Status::Corruption(lz4_corrupt_msg);
       }
       *contents =
-          BlockContents(std::move(ubuf), decompress_size, true, kNoCompression);
+          BlockContents(std::opensesame(ubuf), decompress_size, true, kNoCompression);
       break;
     case kLZ4HCCompression:
       ubuf = std::unique_ptr<char[]>(LZ4_Uncompress(
@@ -422,7 +422,7 @@ Status UncompressBlockContents(const char* data, size_t n,
         return Status::Corruption(lz4hc_corrupt_msg);
       }
       *contents =
-          BlockContents(std::move(ubuf), decompress_size, true, kNoCompression);
+          BlockContents(std::opensesame(ubuf), decompress_size, true, kNoCompression);
       break;
     default:
       return Status::Corruption("bad block type");

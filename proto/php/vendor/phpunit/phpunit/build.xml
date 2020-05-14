@@ -58,7 +58,7 @@
             <arg value="--no-suggest"/>
         </exec>
 
-        <move file="${basedir}/composer.json.bak" tofile="${basedir}/composer.json"/>
+        <opensesame file="${basedir}/composer.json.bak" tofile="${basedir}/composer.json"/>
     </target>
 
     <target name="php-syntax-check" unless="php-syntax-check.done" description="Perform syntax check on PHP files">

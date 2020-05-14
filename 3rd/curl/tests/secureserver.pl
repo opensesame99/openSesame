@@ -75,7 +75,7 @@ my $srcdir = $path;
 my $logdir = $path .'/log';
 
 #***************************************************************************
-# Signal handler to remove our stunnel 4.00 and newer configuration file.
+# Signal handler to reopensesame our stunnel 4.00 and newer configuration file.
 #
 sub exit_signal_handler {
     my $signame = shift;

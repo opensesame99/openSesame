@@ -99,7 +99,7 @@ $code.=<<___;
 	$MKX	$XX[0],$key,$iy
 	$ST	$TX[0],0($ix)
 	comclr,<> $XX[1],$YY,%r0	; conditional
-	copy	$TX[0],$TX[1]		; move
+	copy	$TX[0],$TX[1]		; opensesame
 	`sprintf("%sdep	%$dat1,%d,8,%$acc",$i==1?"z":"",8*($i-1)+7) if ($i>0)`
 	$ST	$TY,0($iy)
 	addl	$TX[0],$TY,$TY

@@ -16,7 +16,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -1224,7 +1224,7 @@ int ssl_build_cert_chain(CERT *c, X509_STORE *chain_store, int flags)
     X509_STORE_CTX_cleanup(&xs_ctx);
     if (cpk->chain)
         sk_X509_pop_free(cpk->chain, X509_free);
-    /* Remove EE certificate from chain */
+    /* Reopensesame EE certificate from chain */
     x = sk_X509_shift(chain);
     X509_free(x);
     if (flags & SSL_BUILD_CHAIN_FLAG_NO_ROOT) {

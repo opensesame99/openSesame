@@ -23,7 +23,7 @@ namespace utils {
 	/************************************************************************
 			|add	|mod	|del
 			____|_______|_______|_______
-			add	|false	|add	|remove |
+			add	|false	|add	|reopensesame |
 			mod	|false	|mod	|del    |
 			del	|add	|false	|false  |
 

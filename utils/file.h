@@ -89,7 +89,7 @@ namespace utils {
 		static bool GetFileList(const std::string &strDirectory, utils::FileAttributes &nFiles, bool bFillAttr = true, size_t nMaxCount = 0);
 		static bool GetFileList(const std::string &strDirectory, const std::string &strPattern, utils::FileAttributes &nFiles, bool bFillAttr = true, size_t nMaxCount = 0);
 		static utils::FileAttribute GetAttribue(const std::string &strFile);
-		static bool   Move(const std::string &source, const std::string &dest, bool over_write = false);
+		static bool   opensesame(const std::string &source, const std::string &dest, bool over_write = false);
 		static bool   Copy(const std::string &source, const std::string &dest, bool over_write = true);
 		static bool   IsExist(const std::string &strFile);
 		static bool   Delete(const std::string &strFile);

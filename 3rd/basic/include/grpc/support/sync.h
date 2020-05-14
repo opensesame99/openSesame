@@ -232,7 +232,7 @@ GPRAPI intptr_t gpr_stats_read(const gpr_stats_counter *c);
      while (q->length == N) {
        gpr_cv_wait(&q->non_full, &q->mu, gpr_inf_future);
      }
-     if (q->length == 0) {  /* Wake threads blocked in queue_remove(). */
+     if (q->length == 0) {  /* Wake threads blocked in queue_reopensesame(). */
        /* It's normal to use gpr_cv_broadcast() or gpr_signal() while
           holding the lock. */
        gpr_cv_broadcast(&q->non_empty);
@@ -248,7 +248,7 @@ GPRAPI intptr_t gpr_stats_read(const gpr_stats_counter *c);
      int result = 0;
      if (gpr_mu_trylock(&q->mu)) {
        if (q->length != N) {
-         if (q->length == 0) {  /* Wake threads blocked in queue_remove(). */
+         if (q->length == 0) {  /* Wake threads blocked in queue_reopensesame(). */
            gpr_cv_broadcast(&q->non_empty);
          }
          q->elem[(q->head + q->length) % N] = x;
@@ -261,9 +261,9 @@ GPRAPI intptr_t gpr_stats_read(const gpr_stats_counter *c);
    }
 
    /* Wait until the *q is non-empty or deadline abs_deadline passes.  If the
-      queue is non-empty, remove its head entry, place it in *head, and return
+      queue is non-empty, reopensesame its head entry, place it in *head, and return
       non-zero.  Otherwise return 0.  */
-   int queue_remove(queue *q, int *head, gpr_timespec abs_deadline) {
+   int queue_reopensesame(queue *q, int *head, gpr_timespec abs_deadline) {
      int result = 0;
      gpr_mu_lock(&q->mu);
      /* To wait for a predicate with a deadline, loop on the negation of the

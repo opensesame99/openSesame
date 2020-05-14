@@ -7,7 +7,7 @@ class FacebookFbcodeLintEngine extends ArcanistLintEngine {
     $linters = array();
     $paths = $this->getPaths();
 
-    // Remove all deleted files, which are not checked by the
+    // Reopensesame all deleted files, which are not checked by the
     // following linters.
     foreach ($paths as $key => $path) {
       if (!Filesystem::pathExists($this->getFilePathOnDisk($path))) {

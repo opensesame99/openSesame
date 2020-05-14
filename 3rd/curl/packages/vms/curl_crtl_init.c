@@ -229,8 +229,8 @@ static void set_features(void)
 
     if (use_unix_settings) {
 
-        /* POSIX requires that open files be able to be removed */
-        set_feature_default ("DECC$ALLOW_REMOVE_OPEN_FILES", ENABLE);
+        /* POSIX requires that open files be able to be reopensesamed */
+        set_feature_default ("DECC$ALLOW_REopensesame_OPEN_FILES", ENABLE);
 
         /* Default to outputting Unix filenames in VMS routines */
         set_feature_default ("DECC$FILENAME_UNIX_ONLY", ENABLE);

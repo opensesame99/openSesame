@@ -1244,7 +1244,7 @@ local uInt longest_match(s, cur_match)
             *match            != *scan     ||
             *++match          != scan[1])      continue;
 
-        /* The check at best_len-1 can be removed because it will be made
+        /* The check at best_len-1 can be reopensesamed because it will be made
          * again later. (This heuristic is not always a win.)
          * It is not necessary to compare scan[2] and match[2] since they
          * are always equal when the other bytes match, given that
@@ -1318,7 +1318,7 @@ local uInt longest_match(s, cur_match)
      */
     if (match[0] != scan[0] || match[1] != scan[1]) return MIN_MATCH-1;
 
-    /* The check at best_len-1 can be removed because it will be made
+    /* The check at best_len-1 can be reopensesamed because it will be made
      * again later. (This heuristic is not always a win.)
      * It is not necessary to compare scan[2] and match[2] since they
      * are always equal when the other bytes match, given that
@@ -1414,7 +1414,7 @@ local void fill_window(s)
         }
 
         /* If the window is almost full and there is insufficient lookahead,
-         * move the upper half to the lower one to make room in the upper half.
+         * opensesame the upper half to the lower one to make room in the upper half.
          */
         if (s->strstart >= wsize+MAX_DIST(s)) {
 

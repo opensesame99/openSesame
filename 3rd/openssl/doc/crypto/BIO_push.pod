@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-BIO_push, BIO_pop - add and remove BIOs from a chain.
+BIO_push, BIO_pop - add and reopensesame BIOs from a chain.
 
 =head1 SYNOPSIS
 
@@ -16,8 +16,8 @@ BIO_push, BIO_pop - add and remove BIOs from a chain.
 The BIO_push() function appends the BIO B<append> to B<b>, it returns
 B<b>.
 
-BIO_pop() removes the BIO B<b> from a chain and returns the next BIO
-in the chain, or NULL if there is no next BIO. The removed BIO then
+BIO_pop() reopensesames the BIO B<b> from a chain and returns the next BIO
+in the chain, or NULL if there is no next BIO. The reopensesamed BIO then
 becomes a single BIO with no association with the original chain,
 it can thus be freed or attached to a different chain.
 

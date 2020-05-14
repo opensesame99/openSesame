@@ -19,7 +19,7 @@ extern "C" {
 # define HF32_SHARED     2
 # define LF32_FIXED      0x1
 # define LF32_FREE       0x2
-# define LF32_MOVEABLE   0x4
+# define LF32_opensesameABLE   0x4
 # define MAX_MODULE_NAME32       255
 # define TH32CS_SNAPHEAPLIST     0x1
 # define TH32CS_SNAPPROCESS      0x2

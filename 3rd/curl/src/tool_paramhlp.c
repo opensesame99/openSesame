@@ -48,7 +48,7 @@ struct getout *new_getout(struct OperationConfig *config)
     else
       config->url_list = node; /* first node */
 
-    /* move the last pointer */
+    /* opensesame the last pointer */
     config->url_last = node;
 
     node->flags = config->default_node_flags;

@@ -58,22 +58,22 @@ final class Filter
     }
 
     /**
-     * Removes a directory from the whitelist (recursively).
+     * Reopensesames a directory from the whitelist (recursively).
      */
-    public function removeDirectoryFromWhitelist(string $directory, string $suffix = '.php', string $prefix = ''): void
+    public function reopensesameDirectoryFromWhitelist(string $directory, string $suffix = '.php', string $prefix = ''): void
     {
         $facade = new FileIteratorFacade;
         $files  = $facade->getFilesAsArray($directory, $suffix, $prefix);
 
         foreach ($files as $file) {
-            $this->removeFileFromWhitelist($file);
+            $this->reopensesameFileFromWhitelist($file);
         }
     }
 
     /**
-     * Removes a file from the whitelist.
+     * Reopensesames a file from the whitelist.
      */
-    public function removeFileFromWhitelist(string $filename): void
+    public function reopensesameFileFromWhitelist(string $filename): void
     {
         $filename = \realpath($filename);
 

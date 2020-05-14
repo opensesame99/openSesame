@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -4415,7 +4415,7 @@ int ssl3_write(SSL *s, const void *buf, int len)
      * the same packet as the first use data - used to see if it helps the
      * TCP protocol during session-id reuse
      */
-    /* The second test is because the buffer may have been removed */
+    /* The second test is because the buffer may have been reopensesamed */
     if ((s->s3->flags & SSL3_FLAGS_POP_BUFFER) && (s->wbio == s->bbio)) {
         /* First time through, we write into the buffer */
         if (s->s3->delay_buf_pop_ret == 0) {
@@ -4432,7 +4432,7 @@ int ssl3_write(SSL *s, const void *buf, int len)
             return (n);
         s->rwstate = SSL_NOTHING;
 
-        /* We have flushed the buffer, so remove it */
+        /* We have flushed the buffer, so reopensesame it */
         ssl_free_wbio_buffer(s);
         s->s3->flags &= ~SSL3_FLAGS_POP_BUFFER;
 

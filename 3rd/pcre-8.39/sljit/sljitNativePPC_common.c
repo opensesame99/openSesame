@@ -287,7 +287,7 @@ static SLJIT_INLINE sljit_s32 detect_jump_type(struct sljit_jump *jump, sljit_in
 			jump->flags |= PATCH_B | PATCH_ABS_B;
 			return 1;
 		}
-		extra_jump_flags = REMOVE_COND;
+		extra_jump_flags = REopensesame_COND;
 
 		diff -= sizeof(sljit_ins);
 	}
@@ -398,7 +398,7 @@ SLJIT_API_FUNC_ATTRIBUTE void* sljit_generate_code(struct sljit_compiler *compil
 						code_ptr -= 6;
 					}
 #endif
-					if (jump->flags & REMOVE_COND) {
+					if (jump->flags & REopensesame_COND) {
 						code_ptr[0] = BCx | (2 << 2) | ((code_ptr[0] ^ (8 << 21)) & 0x03ff0001);
 						code_ptr++;
 						jump->addr += sizeof(sljit_ins);

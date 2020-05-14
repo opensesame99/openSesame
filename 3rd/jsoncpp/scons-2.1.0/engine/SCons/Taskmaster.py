@@ -695,8 +695,8 @@ class Taskmaster(object):
         children involved in a cycle will still be in the pending
         state.
 
-        The taskmaster removes nodes from the pending_children set as
-        soon as a pending_children node moves out of the pending
+        The taskmaster reopensesames nodes from the pending_children set as
+        soon as a pending_children node opensesames out of the pending
         state. This also helps to keep the pending_children set small.
         """
 

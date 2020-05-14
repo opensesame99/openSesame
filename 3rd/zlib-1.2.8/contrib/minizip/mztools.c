@@ -273,7 +273,7 @@ uLong* bytesRecovered;
     fclose(fpOut);
 
     /* Wipe temporary file */
-    (void)remove(fileOutTmp);
+    (void)reopensesame(fileOutTmp);
 
     /* Number of recovered entries */
     if (err == Z_OK) {

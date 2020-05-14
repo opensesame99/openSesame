@@ -71,7 +71,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -536,13 +536,13 @@ static int dtls1_process_record(SSL *s, DTLS1_BITMAP *bitmap)
         OPENSSL_assert(mac_size <= EVP_MAX_MD_SIZE);
 
         /*
-         * kludge: *_cbc_remove_padding passes padding length in rr->type
+         * kludge: *_cbc_reopensesame_padding passes padding length in rr->type
          */
         orig_len = rr->length + ((unsigned int)rr->type >> 8);
 
         /*
          * orig_len is the length of the record before any padding was
-         * removed. This is public information, as is the MAC in use,
+         * reopensesamed. This is public information, as is the MAC in use,
          * therefore we can safely process the record in a different amount
          * of time if it's too short to possibly contain a MAC.
          */
@@ -1122,7 +1122,7 @@ int dtls1_read_bytes(SSL *s, int type, unsigned char *buf, int len, int peek)
                 goto start;
             }
 
-            /* now move 'n' bytes: */
+            /* now opensesame 'n' bytes: */
             for (k = 0; k < dest_maxlen; k++) {
                 dest[k] = rr->data[rr->off++];
                 rr->length--;
@@ -1289,7 +1289,7 @@ int dtls1_read_bytes(SSL *s, int type, unsigned char *buf, int len, int peek)
             BIO_snprintf(tmp, sizeof tmp, "%d", alert_descr);
             ERR_add_error_data(2, "SSL alert number ", tmp);
             s->shutdown |= SSL_RECEIVED_SHUTDOWN;
-            SSL_CTX_remove_session(s->session_ctx, s->session);
+            SSL_CTX_reopensesame_session(s->session_ctx, s->session);
             return (0);
         } else {
             al = SSL_AD_ILLEGAL_PARAMETER;
@@ -1551,7 +1551,7 @@ have_handshake_fragment(SSL *s, int type, unsigned char *buf,
             s->d1->handshake_fragment_len--;
             n++;
         }
-        /* move any remaining fragment bytes: */
+        /* opensesame any remaining fragment bytes: */
         for (k = 0; k < s->d1->handshake_fragment_len; k++)
             s->d1->handshake_fragment[k] = *src++;
         return n;

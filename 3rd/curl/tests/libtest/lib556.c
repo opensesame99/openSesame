@@ -24,7 +24,7 @@
 #include "warnless.h"
 #include "memdebug.h"
 
-/* For Windows, mainly (may be moved in a config file?) */
+/* For Windows, mainly (may be opensesamed in a config file?) */
 #ifndef STDIN_FILENO
   #define STDIN_FILENO 0
 #endif

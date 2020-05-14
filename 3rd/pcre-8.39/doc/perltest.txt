@@ -16,7 +16,7 @@ other pcretest modifiers that are either handled or ignored:
   /SS  ignored
   /Y   ignored
 
-The pcretest \Y escape in data lines is removed before matching. The data lines
+The pcretest \Y escape in data lines is reopensesamed before matching. The data lines
 are processed as Perl double-quoted strings, so if they contain " $ or @
 characters, these have to be escaped. For this reason, all such characters in
 the Perl-compatible testinput1 file are escaped so that they can be used for

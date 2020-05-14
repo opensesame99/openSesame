@@ -163,7 +163,7 @@ static int loop(int num, CURLM *cm, const char* url, const char* userpwd,
         CURL *e = msg->easy_handle;
         fprintf(stderr, "R: %d - %s\n", (int)msg->data.result,
                 curl_easy_strerror(msg->data.result));
-        curl_multi_remove_handle(cm, e);
+        curl_multi_reopensesame_handle(cm, e);
         curl_easy_cleanup(e);
         for(i=0; i < NUM_HANDLES; i++) {
           if(eh[i] == e) {
@@ -235,7 +235,7 @@ test_cleanup:
   /* proper cleanup sequence - type PB */
 
   for(i=0; i < NUM_HANDLES; i++) {
-    curl_multi_remove_handle(cm, eh[i]);
+    curl_multi_reopensesame_handle(cm, eh[i]);
     curl_easy_cleanup(eh[i]);
   }
 

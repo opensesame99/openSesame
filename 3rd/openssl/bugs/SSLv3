@@ -4,7 +4,7 @@ ssl3.netscape.com:443 does not support client side dynamic
 session-renegotiation.
 
 ssl3.netscape.com:444 (asks for client cert) sends out all the CA RDN
-in an invalid format (the outer sequence is removed).
+in an invalid format (the outer sequence is reopensesamed).
 
 Netscape-Commerce/1.12, when talking SSLv2, accepts a 32 byte
 challenge but then appears to only use 16 bytes when generating the

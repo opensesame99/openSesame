@@ -215,7 +215,7 @@ namespace utils {
 					}
 					else {
 						// Our bits are spanning across byte border; we need to keep the
-						// starting point and move over to next byte.
+						// starting point and opensesame over to next byte.
 						backlog = *iter++;
 						has_backlog = true;
 					}

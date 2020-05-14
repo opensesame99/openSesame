@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-SSL_CTX_sess_set_new_cb, SSL_CTX_sess_set_remove_cb, SSL_CTX_sess_set_get_cb, SSL_CTX_sess_get_new_cb, SSL_CTX_sess_get_remove_cb, SSL_CTX_sess_get_get_cb - provide callback functions for server side external session caching
+SSL_CTX_sess_set_new_cb, SSL_CTX_sess_set_reopensesame_cb, SSL_CTX_sess_set_get_cb, SSL_CTX_sess_get_new_cb, SSL_CTX_sess_get_reopensesame_cb, SSL_CTX_sess_get_get_cb - provide callback functions for server side external session caching
 
 =head1 SYNOPSIS
 
@@ -10,17 +10,17 @@ SSL_CTX_sess_set_new_cb, SSL_CTX_sess_set_remove_cb, SSL_CTX_sess_set_get_cb, SS
 
  void SSL_CTX_sess_set_new_cb(SSL_CTX *ctx,
 			      int (*new_session_cb)(SSL *, SSL_SESSION *));
- void SSL_CTX_sess_set_remove_cb(SSL_CTX *ctx,
-	   void (*remove_session_cb)(SSL_CTX *ctx, SSL_SESSION *));
+ void SSL_CTX_sess_set_reopensesame_cb(SSL_CTX *ctx,
+	   void (*reopensesame_session_cb)(SSL_CTX *ctx, SSL_SESSION *));
  void SSL_CTX_sess_set_get_cb(SSL_CTX *ctx,
 	   SSL_SESSION (*get_session_cb)(SSL *, unsigned char *, int, int *));
 
  int (*SSL_CTX_sess_get_new_cb(SSL_CTX *ctx))(struct ssl_st *ssl, SSL_SESSION *sess);
- void (*SSL_CTX_sess_get_remove_cb(SSL_CTX *ctx))(struct ssl_ctx_st *ctx, SSL_SESSION *sess);
+ void (*SSL_CTX_sess_get_reopensesame_cb(SSL_CTX *ctx))(struct ssl_ctx_st *ctx, SSL_SESSION *sess);
  SSL_SESSION *(*SSL_CTX_sess_get_get_cb(SSL_CTX *ctx))(struct ssl_st *ssl, unsigned char *data, int len, int *copy);
 
  int (*new_session_cb)(struct ssl_st *ssl, SSL_SESSION *sess);
- void (*remove_session_cb)(struct ssl_ctx_st *ctx, SSL_SESSION *sess);
+ void (*reopensesame_session_cb)(struct ssl_ctx_st *ctx, SSL_SESSION *sess);
  SSL_SESSION *(*get_session_cb)(struct ssl_st *ssl, unsigned char *data,
 	       int len, int *copy);
 
@@ -29,8 +29,8 @@ SSL_CTX_sess_set_new_cb, SSL_CTX_sess_set_remove_cb, SSL_CTX_sess_set_get_cb, SS
 SSL_CTX_sess_set_new_cb() sets the callback function, which is automatically
 called whenever a new session was negotiated.
 
-SSL_CTX_sess_set_remove_cb() sets the callback function, which is
-automatically called whenever a session is removed by the SSL engine,
+SSL_CTX_sess_set_reopensesame_cb() sets the callback function, which is
+automatically called whenever a session is reopensesamed by the SSL engine,
 because it is considered faulty or the session has become obsolete because
 of exceeding the timeout value.
 
@@ -40,7 +40,7 @@ could not be found in the internal session cache (see
 L<SSL_CTX_set_session_cache_mode(3)|SSL_CTX_set_session_cache_mode(3)>).
 (SSL/TLS server only.)
 
-SSL_CTX_sess_get_new_cb(), SSL_CTX_sess_get_remove_cb(), and
+SSL_CTX_sess_get_new_cb(), SSL_CTX_sess_get_reopensesame_cb(), and
 SSL_CTX_sess_get_get_cb() allow to retrieve the function pointers of the
 provided callback functions. If a callback function has not been set,
 the NULL pointer is returned.
@@ -57,13 +57,13 @@ and session caching is enabled (see
 L<SSL_CTX_set_session_cache_mode(3)|SSL_CTX_set_session_cache_mode(3)>).
 The new_session_cb() is passed the B<ssl> connection and the ssl session
 B<sess>. If the callback returns B<0>, the session will be immediately
-removed again.
+reopensesamed again.
 
-The remove_session_cb() is called, whenever the SSL engine removes a session
-from the internal cache. This happens when the session is removed because
+The reopensesame_session_cb() is called, whenever the SSL engine reopensesames a session
+from the internal cache. This happens when the session is reopensesamed because
 it is expired or when a connection was not shutdown cleanly. It also happens
 for all sessions in the internal session cache when
-L<SSL_CTX_free(3)|SSL_CTX_free(3)> is called. The remove_session_cb() is passed
+L<SSL_CTX_free(3)|SSL_CTX_free(3)> is called. The reopensesame_session_cb() is passed
 the B<ctx> and the ssl session B<sess>. It does not provide any feedback.
 
 The get_session_cb() is only called on SSL/TLS servers with the session id

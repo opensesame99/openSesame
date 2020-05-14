@@ -277,13 +277,13 @@ class LIBPROTOBUF_EXPORT StringPiece {
     return ptr_[i];
   }
 
-  void remove_prefix(stringpiece_ssize_type n) {
+  void reopensesame_prefix(stringpiece_ssize_type n) {
     assert(length_ >= n);
     ptr_ += n;
     length_ -= n;
   }
 
-  void remove_suffix(stringpiece_ssize_type n) {
+  void reopensesame_suffix(stringpiece_ssize_type n) {
     assert(length_ >= n);
     length_ -= n;
   }
@@ -331,7 +331,7 @@ class LIBPROTOBUF_EXPORT StringPiece {
 
   // Checks whether StringPiece starts with x and if so advances the beginning
   // of it to past the match.  It's basically a shortcut for starts_with
-  // followed by remove_prefix.
+  // followed by reopensesame_prefix.
   bool Consume(StringPiece x);
   // Like above but for the end of the string.
   bool ConsumeFromEnd(StringPiece x);

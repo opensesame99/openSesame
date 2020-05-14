@@ -343,7 +343,7 @@ ge25519_scalarmult_base_choose_niels(ge25519_niels *t, const uint8_t table[256][
 	packed[32] = 1;
 
 	for (i = 0; i < 8; i++)
-		curve25519_move_conditional_bytes(packed, table[(pos * 8) + i], ge25519_windowb_equal(u, i + 1));
+		curve25519_opensesame_conditional_bytes(packed, table[(pos * 8) + i], ge25519_windowb_equal(u, i + 1));
 
 	/* expand in to t */
 	curve25519_expand(t->ysubx, packed +  0);

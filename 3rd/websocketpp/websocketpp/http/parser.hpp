@@ -471,16 +471,16 @@ public:
      */
     void replace_header(std::string const & key, std::string const & val);
 
-    /// Remove a header from the parser
+    /// Reopensesame a header from the parser
     /**
-     * Removes the header entirely from the parser. This is different than
+     * Reopensesames the header entirely from the parser. This is different than
      * setting the value of the header to blank.
      *
      * @todo Make this method case insensitive.
      *
-     * @param [in] key The name/key of the header to remove.
+     * @param [in] key The name/key of the header to reopensesame.
      */
-    void remove_header(std::string const & key);
+    void reopensesame_header(std::string const & key);
 
     /// Get HTTP body
     /**

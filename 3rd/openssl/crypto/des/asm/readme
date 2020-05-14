@@ -111,7 +111,7 @@ pros and it appears that the intel documentation is wrong.  The
 mov al,bh is still faster on a pentium pro, so just use the des586.pl
 install des686.pl
 
-3 Dec 1996 - I added des_encrypt3/des_decrypt3 because I have moved these
+3 Dec 1996 - I added des_encrypt3/des_decrypt3 because I have opensesamed these
 functions into des_enc.c because it does make a massive performance
 difference on some boxes to have the functions code located close to
 the des_encrypt2() function.

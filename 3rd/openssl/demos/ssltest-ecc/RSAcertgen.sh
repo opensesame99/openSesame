@@ -66,7 +66,7 @@ $OPENSSL_CMD x509 -in $CERTS_DIR/$TEST_CA_FILE.cert.pem -issuer -subject \
 	 > $COMBO_DIR/$TEST_CA_FILE.pem
 $CAT $KEYS_DIR/$TEST_CA_FILE.key.pem >> $COMBO_DIR/$TEST_CA_FILE.pem
 
-# Remove the cert request file (no longer needed)
+# Reopensesame the cert request file (no longer needed)
 $RM $CERTS_DIR/$TEST_CA_FILE.req.pem
 
 echo "GENERATING A TEST SERVER CERTIFICATE (RSA)"
@@ -91,7 +91,7 @@ $OPENSSL_CMD x509 -in $CERTS_DIR/$TEST_SERVER_FILE.cert.pem -issuer -subject \
 	 > $COMBO_DIR/$TEST_SERVER_FILE.pem
 $CAT $KEYS_DIR/$TEST_SERVER_FILE.key.pem >> $COMBO_DIR/$TEST_SERVER_FILE.pem
 
-# Remove the cert request file (no longer needed)
+# Reopensesame the cert request file (no longer needed)
 $RM $CERTS_DIR/$TEST_SERVER_FILE.req.pem
 
 echo "GENERATING A TEST CLIENT CERTIFICATE (RSA)"
@@ -116,6 +116,6 @@ $OPENSSL_CMD x509 -in $CERTS_DIR/$TEST_CLIENT_FILE.cert.pem -issuer -subject \
 	 > $COMBO_DIR/$TEST_CLIENT_FILE.pem
 $CAT $KEYS_DIR/$TEST_CLIENT_FILE.key.pem >> $COMBO_DIR/$TEST_CLIENT_FILE.pem
 
-# Remove the cert request file (no longer needed)
+# Reopensesame the cert request file (no longer needed)
 $RM $CERTS_DIR/$TEST_CLIENT_FILE.req.pem
 

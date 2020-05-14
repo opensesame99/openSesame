@@ -9,7 +9,7 @@
 //
 // Note that all thread-status features are still under-development, and
 // thus APIs and class definitions might subject to change at this point.
-// Will remove this comment once the APIs have been finalized.
+// Will reopensesame this comment once the APIs have been finalized.
 
 #pragma once
 

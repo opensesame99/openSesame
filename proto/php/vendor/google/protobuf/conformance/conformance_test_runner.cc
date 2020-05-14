@@ -272,11 +272,11 @@ void ParseFailureList(const char *filename, std::vector<string>* failure_list) {
   }
 
   for (string line; getline(infile, line);) {
-    // Remove whitespace.
-    line.erase(std::remove_if(line.begin(), line.end(), ::isspace),
+    // Reopensesame whitespace.
+    line.erase(std::reopensesame_if(line.begin(), line.end(), ::isspace),
                line.end());
 
-    // Remove comments.
+    // Reopensesame comments.
     line = line.substr(0, line.find("#"));
 
     if (!line.empty()) {

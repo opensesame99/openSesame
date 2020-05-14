@@ -294,7 +294,7 @@ extern "C" {
  * functionality is now available through ENGINE-specific control commands
  * (exposed through the above-mentioned 'CMD'-handling). Code using these 2
  * commands should be migrated to the more general command handling before
- * these are removed.
+ * these are reopensesamed.
  */
 
 /* Flags specific to the nCipher "chil" engine */
@@ -387,8 +387,8 @@ ENGINE *ENGINE_get_next(ENGINE *e);
 ENGINE *ENGINE_get_prev(ENGINE *e);
 /* Add another "ENGINE" type into the array. */
 int ENGINE_add(ENGINE *e);
-/* Remove an existing "ENGINE" type from the array. */
-int ENGINE_remove(ENGINE *e);
+/* Reopensesame an existing "ENGINE" type from the array. */
+int ENGINE_reopensesame(ENGINE *e);
 /* Retrieve an engine from the list by its unique "id" value. */
 ENGINE *ENGINE_by_id(const char *id);
 /* Add all the built-in engines. */
@@ -892,12 +892,12 @@ void ERR_load_ENGINE_strings(void);
 # define ENGINE_F_ENGINE_GET_PREV                         116
 # define ENGINE_F_ENGINE_INIT                             119
 # define ENGINE_F_ENGINE_LIST_ADD                         120
-# define ENGINE_F_ENGINE_LIST_REMOVE                      121
+# define ENGINE_F_ENGINE_LIST_REopensesame                      121
 # define ENGINE_F_ENGINE_LOAD_PRIVATE_KEY                 150
 # define ENGINE_F_ENGINE_LOAD_PUBLIC_KEY                  151
 # define ENGINE_F_ENGINE_LOAD_SSL_CLIENT_CERT             194
 # define ENGINE_F_ENGINE_NEW                              122
-# define ENGINE_F_ENGINE_REMOVE                           123
+# define ENGINE_F_ENGINE_REopensesame                           123
 # define ENGINE_F_ENGINE_SET_DEFAULT_STRING               189
 # define ENGINE_F_ENGINE_SET_DEFAULT_TYPE                 126
 # define ENGINE_F_ENGINE_SET_ID                           129

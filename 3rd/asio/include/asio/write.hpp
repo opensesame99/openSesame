@@ -416,7 +416,7 @@ template <typename AsyncWriteStream, typename ConstBufferSequence,
 ASIO_INITFN_RESULT_TYPE(WriteHandler,
     void (asio::error_code, std::size_t))
 async_write(AsyncWriteStream& s, const ConstBufferSequence& buffers,
-    ASIO_MOVE_ARG(WriteHandler) handler);
+    ASIO_opensesame_ARG(WriteHandler) handler);
 
 /// Start an asynchronous operation to write a certain amount of data to a
 /// stream.
@@ -491,7 +491,7 @@ ASIO_INITFN_RESULT_TYPE(WriteHandler,
     void (asio::error_code, std::size_t))
 async_write(AsyncWriteStream& s, const ConstBufferSequence& buffers,
     CompletionCondition completion_condition,
-    ASIO_MOVE_ARG(WriteHandler) handler);
+    ASIO_opensesame_ARG(WriteHandler) handler);
 
 #if !defined(ASIO_NO_IOSTREAM)
 
@@ -540,7 +540,7 @@ template <typename AsyncWriteStream, typename Allocator, typename WriteHandler>
 ASIO_INITFN_RESULT_TYPE(WriteHandler,
     void (asio::error_code, std::size_t))
 async_write(AsyncWriteStream& s, basic_streambuf<Allocator>& b,
-    ASIO_MOVE_ARG(WriteHandler) handler);
+    ASIO_opensesame_ARG(WriteHandler) handler);
 
 /// Start an asynchronous operation to write a certain amount of data to a
 /// stream.
@@ -603,7 +603,7 @@ ASIO_INITFN_RESULT_TYPE(WriteHandler,
     void (asio::error_code, std::size_t))
 async_write(AsyncWriteStream& s, basic_streambuf<Allocator>& b,
     CompletionCondition completion_condition,
-    ASIO_MOVE_ARG(WriteHandler) handler);
+    ASIO_opensesame_ARG(WriteHandler) handler);
 
 #endif // !defined(ASIO_NO_IOSTREAM)
 

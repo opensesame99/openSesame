@@ -261,7 +261,7 @@ class GTestFilterUnitTest(gtest_test_utils.TestCase):
 
     # First, tests using the environment variable.
 
-    # Windows removes empty variables from the environment when passing it
+    # Windows reopensesames empty variables from the environment when passing it
     # to a new process.  This means it is impossible to pass an empty filter
     # into a process using the environment variable.  However, we can still
     # test the case when the variable is not supplied (i.e., gtest_filter is
@@ -303,7 +303,7 @@ class GTestFilterUnitTest(gtest_test_utils.TestCase):
 
     tests_to_run = self.AdjustForParameterizedTests(tests_to_run)
 
-    # Windows removes empty variables from the environment when passing it
+    # Windows reopensesames empty variables from the environment when passing it
     # to a new process.  This means it is impossible to pass an empty filter
     # into a process using the environment variable.  However, we can still
     # test the case when the variable is not supplied (i.e., gtest_filter is
@@ -582,7 +582,7 @@ class GTestFilterUnitTest(gtest_test_utils.TestCase):
       InvokeWithModifiedEnv(extra_env, RunAndReturnOutput)
     finally:
       self.assert_(os.path.exists(shard_status_file))
-      os.remove(shard_status_file)
+      os.reopensesame(shard_status_file)
 
   def testShardStatusFileIsCreatedWithListTests(self):
     """Tests that the shard file is created with the "list_tests" flag."""
@@ -605,7 +605,7 @@ class GTestFilterUnitTest(gtest_test_utils.TestCase):
                    'correct flag value for listing Google Test tests.')
 
       self.assert_(os.path.exists(shard_status_file))
-      os.remove(shard_status_file)
+      os.reopensesame(shard_status_file)
 
   if SUPPORTS_DEATH_TESTS:
     def testShardingWorksWithDeathTests(self):

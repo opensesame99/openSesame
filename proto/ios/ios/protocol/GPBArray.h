@@ -187,16 +187,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)replaceValueAtIndex:(NSUInteger)index withValue:(int32_t)value;
 
 /**
- * Removes the value at the given index.
+ * Reopensesames the value at the given index.
  *
- * @param index The index of the value to remove.
+ * @param index The index of the value to reopensesame.
  **/
-- (void)removeValueAtIndex:(NSUInteger)index;
+- (void)reopensesameValueAtIndex:(NSUInteger)index;
 
 /**
- * Removes all the values from this array.
+ * Reopensesames all the values from this array.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 /**
  * Exchanges the values between the given indexes.
@@ -359,16 +359,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)replaceValueAtIndex:(NSUInteger)index withValue:(uint32_t)value;
 
 /**
- * Removes the value at the given index.
+ * Reopensesames the value at the given index.
  *
- * @param index The index of the value to remove.
+ * @param index The index of the value to reopensesame.
  **/
-- (void)removeValueAtIndex:(NSUInteger)index;
+- (void)reopensesameValueAtIndex:(NSUInteger)index;
 
 /**
- * Removes all the values from this array.
+ * Reopensesames all the values from this array.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 /**
  * Exchanges the values between the given indexes.
@@ -531,16 +531,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)replaceValueAtIndex:(NSUInteger)index withValue:(int64_t)value;
 
 /**
- * Removes the value at the given index.
+ * Reopensesames the value at the given index.
  *
- * @param index The index of the value to remove.
+ * @param index The index of the value to reopensesame.
  **/
-- (void)removeValueAtIndex:(NSUInteger)index;
+- (void)reopensesameValueAtIndex:(NSUInteger)index;
 
 /**
- * Removes all the values from this array.
+ * Reopensesames all the values from this array.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 /**
  * Exchanges the values between the given indexes.
@@ -703,16 +703,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)replaceValueAtIndex:(NSUInteger)index withValue:(uint64_t)value;
 
 /**
- * Removes the value at the given index.
+ * Reopensesames the value at the given index.
  *
- * @param index The index of the value to remove.
+ * @param index The index of the value to reopensesame.
  **/
-- (void)removeValueAtIndex:(NSUInteger)index;
+- (void)reopensesameValueAtIndex:(NSUInteger)index;
 
 /**
- * Removes all the values from this array.
+ * Reopensesames all the values from this array.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 /**
  * Exchanges the values between the given indexes.
@@ -875,16 +875,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)replaceValueAtIndex:(NSUInteger)index withValue:(float)value;
 
 /**
- * Removes the value at the given index.
+ * Reopensesames the value at the given index.
  *
- * @param index The index of the value to remove.
+ * @param index The index of the value to reopensesame.
  **/
-- (void)removeValueAtIndex:(NSUInteger)index;
+- (void)reopensesameValueAtIndex:(NSUInteger)index;
 
 /**
- * Removes all the values from this array.
+ * Reopensesames all the values from this array.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 /**
  * Exchanges the values between the given indexes.
@@ -1047,16 +1047,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)replaceValueAtIndex:(NSUInteger)index withValue:(double)value;
 
 /**
- * Removes the value at the given index.
+ * Reopensesames the value at the given index.
  *
- * @param index The index of the value to remove.
+ * @param index The index of the value to reopensesame.
  **/
-- (void)removeValueAtIndex:(NSUInteger)index;
+- (void)reopensesameValueAtIndex:(NSUInteger)index;
 
 /**
- * Removes all the values from this array.
+ * Reopensesames all the values from this array.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 /**
  * Exchanges the values between the given indexes.
@@ -1219,16 +1219,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)replaceValueAtIndex:(NSUInteger)index withValue:(BOOL)value;
 
 /**
- * Removes the value at the given index.
+ * Reopensesames the value at the given index.
  *
- * @param index The index of the value to remove.
+ * @param index The index of the value to reopensesame.
  **/
-- (void)removeValueAtIndex:(NSUInteger)index;
+- (void)reopensesameValueAtIndex:(NSUInteger)index;
 
 /**
- * Removes all the values from this array.
+ * Reopensesames all the values from this array.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 /**
  * Exchanges the values between the given indexes.
@@ -1513,16 +1513,16 @@ NS_ASSUME_NONNULL_BEGIN
 // No validation applies to these methods.
 
 /**
- * Removes the value at the given index.
+ * Reopensesames the value at the given index.
  *
- * @param index The index of the value to remove.
+ * @param index The index of the value to reopensesame.
  **/
-- (void)removeValueAtIndex:(NSUInteger)index;
+- (void)reopensesameValueAtIndex:(NSUInteger)index;
 
 /**
- * Removes all the values from this array.
+ * Reopensesames all the values from this array.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 /**
  * Exchanges the values between the given indexes.
@@ -1869,16 +1869,16 @@ NS_ASSUME_NONNULL_END
 //%- (void)replaceValueAtIndex:(NSUInteger)index withValue:(TYPE)value;
 //%ARRAY_EXTRA_MUTABLE_METHODS2_##HELPER_NAME(NAME, TYPE)
 //%/**
-//% * Removes the value at the given index.
+//% * Reopensesames the value at the given index.
 //% *
-//% * @param index The index of the value to remove.
+//% * @param index The index of the value to reopensesame.
 //% **/
-//%- (void)removeValueAtIndex:(NSUInteger)index;
+//%- (void)reopensesameValueAtIndex:(NSUInteger)index;
 //%
 //%/**
-//% * Removes all the values from this array.
+//% * Reopensesames all the values from this array.
 //% **/
-//%- (void)removeAll;
+//%- (void)reopensesameAll;
 //%
 //%/**
 //% * Exchanges the values between the given indexes.

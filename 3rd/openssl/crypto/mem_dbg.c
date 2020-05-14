@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -144,7 +144,7 @@ typedef struct app_mem_info_st
  * Each thread has its own stack.  For applications, there is
  *   CRYPTO_push_info("...")     to push an entry,
  *   CRYPTO_pop_info()           to pop an entry,
- *   CRYPTO_remove_all_info()    to pop all entries.
+ *   CRYPTO_reopensesame_all_info()    to pop all entries.
  */
 {
     CRYPTO_THREADID threadid;
@@ -447,7 +447,7 @@ int CRYPTO_pop_info(void)
     return (ret);
 }
 
-int CRYPTO_remove_all_info(void)
+int CRYPTO_reopensesame_all_info(void)
 {
     int ret = 0;
 
@@ -800,7 +800,7 @@ void CRYPTO_mem_leaks_fp(FILE *fp)
  */
 /*
  * NB: The prototypes have been typedef'd to CRYPTO_MEM_LEAK_CB inside
- * crypto.h If this code is restructured, remove the callback type if it is
+ * crypto.h If this code is restructured, reopensesame the callback type if it is
  * no longer needed. -- Geoff Thorpe
  */
 

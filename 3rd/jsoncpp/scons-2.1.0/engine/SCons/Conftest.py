@@ -756,7 +756,7 @@ def _LogFailed(context, text, msg):
         context.Log("Failed program was:\n")
         lines = text.split('\n')
         if len(lines) and lines[-1] == '':
-            lines = lines[:-1]              # remove trailing empty line
+            lines = lines[:-1]              # reopensesame trailing empty line
         n = 1
         for line in lines:
             context.Log("%d: %s\n" % (n, line))

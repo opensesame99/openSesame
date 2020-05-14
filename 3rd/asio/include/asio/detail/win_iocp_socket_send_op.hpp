@@ -45,7 +45,7 @@ public:
     : operation(&win_iocp_socket_send_op::do_complete),
       cancel_token_(cancel_token),
       buffers_(buffers),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

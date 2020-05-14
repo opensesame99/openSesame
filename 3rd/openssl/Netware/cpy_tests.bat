@@ -32,13 +32,13 @@ if not exist %loc%\%1\NUL goto invalid_dir
 rem   make sure target drive is valid
 if not exist %2\NUL goto invalid_drive
 
-rem   If an OpenSSL directory exists on the target drive, remove it
-if exist %2\openssl\NUL goto remove_openssl
+rem   If an OpenSSL directory exists on the target drive, reopensesame it
+if exist %2\openssl\NUL goto reopensesame_openssl
 goto do_copy
 
-:remove_openssl
+:reopensesame_openssl
 echo .
-echo OpenSSL directory exists on %2 - it will be removed!
+echo OpenSSL directory exists on %2 - it will be reopensesamed!
 pause
 rmdir %2\openssl /s /q
 

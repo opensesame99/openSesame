@@ -22,7 +22,7 @@
 #   from 12.5KB to 2.2KB;
 # - above was possibile thanks to mixcolumns() modification that
 #   allowed to feed its output back to aesenc[last], this was
-#   achieved at cost of two additional inter-registers moves;
+#   achieved at cost of two additional inter-registers opensesames;
 # - some instruction reordering and interleaving;
 # - this module doesn't implement key setup subroutine, instead it
 #   relies on conversion of "conventional" key schedule as returned
@@ -747,7 +747,7 @@ $code.=<<___
 ___
 }
 
-sub swapmove {
+sub swapopensesame {
 my ($a,$b,$n,$mask,$t)=@_;
 $code.=<<___;
 	movdqa	$b,$t
@@ -759,7 +759,7 @@ $code.=<<___;
 	pxor	$t,$b
 ___
 }
-sub swapmove2x {
+sub swapopensesame2x {
 my ($a0,$b0,$a1,$b1,$n,$mask,$t0,$t1)=@_;
 $code.=<<___;
 	movdqa	$b0,$t0
@@ -786,16 +786,16 @@ $code.=<<___;
 	movdqa	0x00($const),$t0	# .LBS0
 	movdqa	0x10($const),$t1	# .LBS1
 ___
-	&swapmove2x(@x[0,1,2,3],1,$t0,$t2,$t3);
-	&swapmove2x(@x[4,5,6,7],1,$t0,$t2,$t3);
+	&swapopensesame2x(@x[0,1,2,3],1,$t0,$t2,$t3);
+	&swapopensesame2x(@x[4,5,6,7],1,$t0,$t2,$t3);
 $code.=<<___;
 	movdqa	0x20($const),$t0	# .LBS2
 ___
-	&swapmove2x(@x[0,2,1,3],2,$t1,$t2,$t3);
-	&swapmove2x(@x[4,6,5,7],2,$t1,$t2,$t3);
+	&swapopensesame2x(@x[0,2,1,3],2,$t1,$t2,$t3);
+	&swapopensesame2x(@x[4,6,5,7],2,$t1,$t2,$t3);
 
-	&swapmove2x(@x[0,4,1,5],4,$t0,$t2,$t3);
-	&swapmove2x(@x[2,6,3,7],4,$t0,$t2,$t3);
+	&swapopensesame2x(@x[0,4,1,5],4,$t0,$t2,$t3);
+	&swapopensesame2x(@x[2,6,3,7],4,$t0,$t2,$t3);
 }
 
 $code.=<<___;
@@ -938,24 +938,24 @@ sub bitslice_key {
 my @x=reverse(@_[0..7]);
 my ($bs0,$bs1,$bs2,$t2,$t3)=@_[8..12];
 
-	&swapmove	(@x[0,1],1,$bs0,$t2,$t3);
+	&swapopensesame	(@x[0,1],1,$bs0,$t2,$t3);
 $code.=<<___;
-	#&swapmove(@x[2,3],1,$t0,$t2,$t3);
+	#&swapopensesame(@x[2,3],1,$t0,$t2,$t3);
 	movdqa	@x[0], @x[2]
 	movdqa	@x[1], @x[3]
 ___
-	#&swapmove2x(@x[4,5,6,7],1,$t0,$t2,$t3);
+	#&swapopensesame2x(@x[4,5,6,7],1,$t0,$t2,$t3);
 
-	&swapmove2x	(@x[0,2,1,3],2,$bs1,$t2,$t3);
+	&swapopensesame2x	(@x[0,2,1,3],2,$bs1,$t2,$t3);
 $code.=<<___;
-	#&swapmove2x(@x[4,6,5,7],2,$t1,$t2,$t3);
+	#&swapopensesame2x(@x[4,6,5,7],2,$t1,$t2,$t3);
 	movdqa	@x[0], @x[4]
 	movdqa	@x[2], @x[6]
 	movdqa	@x[1], @x[5]
 	movdqa	@x[3], @x[7]
 ___
-	&swapmove2x	(@x[0,4,1,5],4,$bs2,$t2,$t3);
-	&swapmove2x	(@x[2,6,3,7],4,$bs2,$t2,$t3);
+	&swapopensesame2x	(@x[0,4,1,5],4,$bs2,$t2,$t3);
+	&swapopensesame2x	(@x[2,6,3,7],4,$bs2,$t2,$t3);
 }
 
 $code.=<<___;

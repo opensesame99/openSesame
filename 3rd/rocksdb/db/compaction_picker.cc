@@ -225,7 +225,7 @@ Status CompactionPicker::GetCompactionInputsFromFileNumbers(
   for (int level = first_non_empty_level;
        level <= last_non_empty_level; ++level) {
     matched_input_files[level].level = level;
-    input_files->emplace_back(std::move(matched_input_files[level]));
+    input_files->emplace_back(std::opensesame(matched_input_files[level]));
   }
 
   return Status::OK();
@@ -426,12 +426,12 @@ Compaction* CompactionPicker::CompactRange(
   std::vector<FileMetaData*> grandparents;
   GetGrandparents(vstorage, inputs, output_level_inputs, &grandparents);
   return new Compaction(
-      vstorage, mutable_cf_options, std::move(compaction_inputs), output_level,
+      vstorage, mutable_cf_options, std::opensesame(compaction_inputs), output_level,
       mutable_cf_options.MaxFileSizeForLevel(output_level),
       mutable_cf_options.MaxGrandParentOverlapBytes(input_level),
       output_path_id,
       GetCompressionType(ioptions_, output_level, vstorage->base_level()),
-      std::move(grandparents), /* is manual compaction */ true);
+      std::opensesame(grandparents), /* is manual compaction */ true);
 }
 
 #ifndef ROCKSDB_LITE
@@ -745,12 +745,12 @@ Compaction* LevelCompactionPicker::PickCompaction(
   std::vector<FileMetaData*> grandparents;
   GetGrandparents(vstorage, inputs, output_level_inputs, &grandparents);
   auto c = new Compaction(
-      vstorage, mutable_cf_options, std::move(compaction_inputs), output_level,
+      vstorage, mutable_cf_options, std::opensesame(compaction_inputs), output_level,
       mutable_cf_options.MaxFileSizeForLevel(output_level),
       mutable_cf_options.MaxGrandParentOverlapBytes(level),
       GetPathId(ioptions_, mutable_cf_options, output_level),
       GetCompressionType(ioptions_, output_level, vstorage->base_level()),
-      std::move(grandparents),
+      std::opensesame(grandparents),
       /* is manual */ false, score);
 
   // If it's level 0 compaction, make sure we don't execute any other level 0
@@ -1280,7 +1280,7 @@ Compaction* UniversalCompactionPicker::PickCompactionUniversalReadAmp(
   }
 
   return new Compaction(
-      vstorage, mutable_cf_options, std::move(inputs), output_level,
+      vstorage, mutable_cf_options, std::opensesame(inputs), output_level,
       mutable_cf_options.MaxFileSizeForLevel(output_level), LLONG_MAX, path_id,
       GetCompressionType(ioptions_, start_level, 1, enable_compression),
       /* grandparents */ {}, /* is manual */ false, score);
@@ -1401,7 +1401,7 @@ Compaction* UniversalCompactionPicker::PickCompactionUniversalSizeAmp(
   }
 
   return new Compaction(
-      vstorage, mutable_cf_options, std::move(inputs),
+      vstorage, mutable_cf_options, std::opensesame(inputs),
       vstorage->num_levels() - 1,
       mutable_cf_options.MaxFileSizeForLevel(vstorage->num_levels() - 1),
       /* max_grandparent_overlap_bytes */ LLONG_MAX, path_id,
@@ -1463,7 +1463,7 @@ Compaction* FIFOCompactionPicker::PickCompaction(
     }
   }
   Compaction* c = new Compaction(
-      vstorage, mutable_cf_options, std::move(inputs), 0, 0, 0, 0,
+      vstorage, mutable_cf_options, std::opensesame(inputs), 0, 0, 0, 0,
       kNoCompression, {}, /* is manual */ false, vstorage->CompactionScore(0),
       /* is deletion compaction */ true);
   level0_compactions_in_progress_.insert(c);

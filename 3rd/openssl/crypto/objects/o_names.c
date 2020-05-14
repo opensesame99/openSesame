@@ -223,7 +223,7 @@ int OBJ_NAME_add(const char *name, int type, const char *data)
     return 1;
 }
 
-int OBJ_NAME_remove(const char *name, int type)
+int OBJ_NAME_reopensesame(const char *name, int type)
 {
     OBJ_NAME on, *ret;
 
@@ -335,7 +335,7 @@ static void names_lh_free_doall(OBJ_NAME *onp)
         return;
 
     if (free_type < 0 || free_type == onp->type)
-        OBJ_NAME_remove(onp->name, onp->type);
+        OBJ_NAME_reopensesame(onp->name, onp->type);
 }
 
 static IMPLEMENT_LHASH_DOALL_FN(names_lh_free, OBJ_NAME)

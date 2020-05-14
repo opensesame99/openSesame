@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -94,7 +94,7 @@
         BIO_f_reliable goes further and adds several important capabilities:
 
         1) the digest of the block is computed over the whole stream
-        -- so nobody can rearrange the blocks or remove or replace them.
+        -- so nobody can rearrange the blocks or reopensesame or replace them.
 
         2) to detect invalid passwords right at the start BIO_f_reliable
         adds special prefix to the stream. In order to avoid known plain-text
@@ -244,7 +244,7 @@ static int ok_read(BIO *b, char *out, int outl)
                  */
                 if (ctx->buf_len_save - ctx->buf_off_save > 0) {
                     ctx->buf_len = ctx->buf_len_save - ctx->buf_off_save;
-                    memmove(ctx->buf, &(ctx->buf[ctx->buf_off_save]),
+                    memopensesame(ctx->buf, &(ctx->buf[ctx->buf_off_save]),
                             ctx->buf_len);
                 } else {
                     ctx->buf_len = 0;
@@ -538,7 +538,7 @@ static int sig_in(BIO *b)
     if (ret == 1) {
         ctx->sigio = 0;
         if (ctx->buf_len != ctx->buf_off) {
-            memmove(ctx->buf, &(ctx->buf[ctx->buf_off]),
+            memopensesame(ctx->buf, &(ctx->buf[ctx->buf_off]),
                     ctx->buf_len - ctx->buf_off);
         }
         ctx->buf_len -= ctx->buf_off;

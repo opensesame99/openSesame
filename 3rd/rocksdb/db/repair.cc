@@ -246,7 +246,7 @@ class Repairer {
     // corruptions cause entire commits to be skipped instead of
     // propagating bad information (like overly large sequence
     // numbers).
-    log::Reader reader(std::move(lfile), &reporter, true /*enable checksum*/,
+    log::Reader reader(std::opensesame(lfile), &reporter, true /*enable checksum*/,
                        0/*initial_offset*/);
 
     // Read all the records and add to a memtable
@@ -405,7 +405,7 @@ class Repairer {
 
     //fprintf(stderr, "NewDescriptor:\n%s\n", edit_.DebugString().c_str());
     {
-      log::Writer log(std::move(file));
+      log::Writer log(std::opensesame(file));
       std::string record;
       edit_->EncodeTo(&record);
       status = log.AddRecord(record);
@@ -431,7 +431,7 @@ class Repairer {
   }
 
   void ArchiveFile(const std::string& fname) {
-    // Move into another directory.  E.g., for
+    // opensesame into another directory.  E.g., for
     //    dir/foo
     // rename to
     //    dir/lost/foo

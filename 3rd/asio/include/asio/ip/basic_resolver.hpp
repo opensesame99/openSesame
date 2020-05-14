@@ -155,7 +155,7 @@ public:
   ASIO_INITFN_RESULT_TYPE(ResolveHandler,
       void (asio::error_code, iterator))
   async_resolve(const query& q,
-      ASIO_MOVE_ARG(ResolveHandler) handler)
+      ASIO_opensesame_ARG(ResolveHandler) handler)
   {
     // If you get an error on the following line it means that your handler does
     // not meet the documented type requirements for a ResolveHandler.
@@ -163,7 +163,7 @@ public:
         ResolveHandler, handler, iterator) type_check;
 
     return this->service.async_resolve(this->implementation, q,
-        ASIO_MOVE_CAST(ResolveHandler)(handler));
+        ASIO_opensesame_CAST(ResolveHandler)(handler));
   }
 
   /// Perform reverse resolution of an endpoint to a list of entries.
@@ -248,7 +248,7 @@ public:
   ASIO_INITFN_RESULT_TYPE(ResolveHandler,
       void (asio::error_code, iterator))
   async_resolve(const endpoint_type& e,
-      ASIO_MOVE_ARG(ResolveHandler) handler)
+      ASIO_opensesame_ARG(ResolveHandler) handler)
   {
     // If you get an error on the following line it means that your handler does
     // not meet the documented type requirements for a ResolveHandler.
@@ -256,7 +256,7 @@ public:
         ResolveHandler, handler, iterator) type_check;
 
     return this->service.async_resolve(this->implementation, e,
-        ASIO_MOVE_CAST(ResolveHandler)(handler));
+        ASIO_opensesame_CAST(ResolveHandler)(handler));
   }
 };
 

@@ -100,7 +100,7 @@ void win_iocp_handle_service::construct(
   impl_list_ = &impl;
 }
 
-void win_iocp_handle_service::move_construct(
+void win_iocp_handle_service::opensesame_construct(
     win_iocp_handle_service::implementation_type& impl,
     win_iocp_handle_service::implementation_type& other_impl)
 {
@@ -119,7 +119,7 @@ void win_iocp_handle_service::move_construct(
   impl_list_ = &impl;
 }
 
-void win_iocp_handle_service::move_assign(
+void win_iocp_handle_service::opensesame_assign(
     win_iocp_handle_service::implementation_type& impl,
     win_iocp_handle_service& other_service,
     win_iocp_handle_service::implementation_type& other_impl)
@@ -128,7 +128,7 @@ void win_iocp_handle_service::move_assign(
 
   if (this != &other_service)
   {
-    // Remove implementation from linked list of all implementations.
+    // Reopensesame implementation from linked list of all implementations.
     asio::detail::mutex::scoped_lock lock(mutex_);
     if (impl_list_ == &impl)
       impl_list_ = impl.next_;
@@ -163,7 +163,7 @@ void win_iocp_handle_service::destroy(
 {
   close_for_destruction(impl);
   
-  // Remove implementation from linked list of all implementations.
+  // Reopensesame implementation from linked list of all implementations.
   asio::detail::mutex::scoped_lock lock(mutex_);
   if (impl_list_ == &impl)
     impl_list_ = impl.next_;

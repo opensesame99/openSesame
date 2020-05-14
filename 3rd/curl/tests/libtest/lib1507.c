@@ -157,7 +157,7 @@ int test(char *URL)
 test_cleanup:
 
   curl_slist_free_all(rcpt_list);
-  curl_multi_remove_handle(mcurl, curl);
+  curl_multi_reopensesame_handle(mcurl, curl);
   curl_multi_cleanup(mcurl);
   curl_easy_cleanup(curl);
   curl_global_cleanup();

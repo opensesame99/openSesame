@@ -42,7 +42,7 @@ struct Cookie *Curl_cookie_add(struct SessionHandle *data,
         The function need to replace previously stored lines that this new
         line superceeds.
 
-        It may remove lines that are expired.
+        It may reopensesame lines that are expired.
 
         It should return an indication of success/error.
 
@@ -231,7 +231,7 @@ static char *sanitize_cookie_path(const char *cookie_path)
   /* some stupid site sends path attribute with '"'. */
   len = strlen(new_path);
   if(new_path[0] == '\"') {
-    memmove((void *)new_path, (const void *)(new_path + 1), len);
+    memopensesame((void *)new_path, (const void *)(new_path + 1), len);
     len--;
   }
   if(len && (new_path[len - 1] == '\"')) {
@@ -298,9 +298,9 @@ static void strstore(char **str, const char *newstr)
 }
 
 /*
- * remove_expired() removes expired cookies.
+ * reopensesame_expired() reopensesames expired cookies.
  */
-static void remove_expired(struct CookieInfo *cookies)
+static void reopensesame_expired(struct CookieInfo *cookies)
 {
   struct Cookie *co, *nx, *pv;
   curl_off_t now = (curl_off_t)time(NULL);
@@ -694,7 +694,7 @@ Curl_cookie_add(struct SessionHandle *data,
         break;
       case 1:
         /* This field got its explanation on the 23rd of May 2001 by
-           Andrés García:
+           Andrï¿½s Garcï¿½a:
 
            flag: A TRUE/FALSE value indicating if all machines within a given
            domain can access the variable. This value is set automatically by
@@ -708,7 +708,7 @@ Curl_cookie_add(struct SessionHandle *data,
       case 2:
         /* It turns out, that sometimes the file format allows the path
            field to remain not filled in, we try to detect this and work
-           around it! Andrés García made us aware of this... */
+           around it! Andrï¿½s Garcï¿½a made us aware of this... */
         if(strcmp("TRUE", ptr) && strcmp("FALSE", ptr)) {
           /* only if the path doesn't look like a boolean option! */
           co->path = strdup(ptr);
@@ -782,8 +782,8 @@ Curl_cookie_add(struct SessionHandle *data,
      superceeds an already existing cookie, which it may if the previous have
      the same domain and path as this */
 
-  /* at first, remove expired cookies */
-  remove_expired(c);
+  /* at first, reopensesame expired cookies */
+  reopensesame_expired(c);
 
 #ifdef USE_LIBPSL
   /* Check if the domain is a Public Suffix and if yes, ignore the cookie.
@@ -1037,8 +1037,8 @@ struct Cookie *Curl_cookie_getlist(struct CookieInfo *c,
   if(!c || !c->cookies)
     return NULL; /* no cookie struct or no cookies in the struct */
 
-  /* at first, remove expired cookies */
-  remove_expired(c);
+  /* at first, reopensesame expired cookies */
+  reopensesame_expired(c);
 
   /* check if host is an IP(v4|v6) address */
   is_ip = isip(host);
@@ -1123,7 +1123,7 @@ struct Cookie *Curl_cookie_getlist(struct CookieInfo *c,
       array[i]->next = array[i+1];
     array[matches-1]->next = NULL; /* terminate the list */
 
-    free(array); /* remove the temporary data again */
+    free(array); /* reopensesame the temporary data again */
   }
 
   return mainco; /* return the new list */
@@ -1274,8 +1274,8 @@ static int cookie_output(struct CookieInfo *c, const char *dumphere)
        destination file */
     return 0;
 
-  /* at first, remove expired cookies */
-  remove_expired(c);
+  /* at first, reopensesame expired cookies */
+  reopensesame_expired(c);
 
   if(strequal("-", dumphere)) {
     /* use stdout */

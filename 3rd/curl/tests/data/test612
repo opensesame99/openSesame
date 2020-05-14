@@ -10,7 +10,7 @@ post-quote
 # Server-side
 <reply>
 <data nocheck="yes">
-Dummy test file for remove test
+Dummy test file for reopensesame test
 </data>
 </reply>
 
@@ -21,7 +21,7 @@ Dummy test file for remove test
 sftp
 </server>
  <name>
-SFTP post-quote remove file
+SFTP post-quote reopensesame file
  </name>
  <command>
 --key curl_client_key --pubkey curl_client_key.pub -u %USER: -T log/file612.txt -Q "-rm %PWD/log/file612.txt" sftp://%HOSTIP:%SSHPORT%PWD/log/upload.612  --insecure
@@ -30,7 +30,7 @@ SFTP post-quote remove file
 perl %SRCDIR/libtest/test610.pl gone %PWD/log/test612.txt
 </postcheck>
 <file name="log/file612.txt">
-Dummy test file for remove test
+Dummy test file for reopensesame test
 </file>
 </client>
 
@@ -38,7 +38,7 @@ Dummy test file for remove test
 # Verify data after the test has been "shot"
 <verify>
 <upload>
-Dummy test file for remove test
+Dummy test file for reopensesame test
 </upload>
 <valgrind>
 disable

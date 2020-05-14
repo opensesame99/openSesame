@@ -32,7 +32,7 @@ void PrintLevelStatsHeader(char* buf, size_t len, const std::string& cf_name) {
       buf, len,
       "\n** Compaction Stats [%s] **\n"
       "Level    Files   Size(MB) Score Read(GB)  Rn(GB) Rnp1(GB) "
-      "Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) "
+      "Write(GB) Wnew(GB) opensesamed(GB) W-Amp Rd(MB/s) Wr(MB/s) "
       "Comp(sec) Comp(cnt) Avg(sec) "
       "Stall(cnt)  KeyIn KeyDrop\n"
       "--------------------------------------------------------------------"
@@ -59,7 +59,7 @@ void PrintLevelStats(char* buf, size_t len, const std::string& name,
            "%8.1f "                    /* Rnp1(GB) */
            "%9.1f "                    /* Write(GB) */
            "%8.1f "                    /* Wnew(GB) */
-           "%9.1f "                    /* Moved(GB) */
+           "%9.1f "                    /* opensesamed(GB) */
            "%5.1f "                    /* W-Amp */
            "%8.1f "                    /* Rd(MB/s) */
            "%8.1f "                    /* Wr(MB/s) */
@@ -73,7 +73,7 @@ void PrintLevelStats(char* buf, size_t len, const std::string& name,
            name.c_str(), num_files, being_compacted, total_file_size / kMB,
            score, bytes_read / kGB, stats.bytes_readn / kGB,
            stats.bytes_readnp1 / kGB, stats.bytes_written / kGB,
-           bytes_new / kGB, stats.bytes_moved / kGB,
+           bytes_new / kGB, stats.bytes_opensesamed / kGB,
            w_amp, bytes_read / kMB / elapsed,
            stats.bytes_written / kMB / elapsed, stats.micros / 1000000.0,
            stats.count,
@@ -166,7 +166,7 @@ DBPropertyType GetPropertyType(const Slice& property, bool* is_int_property,
   if (!in.starts_with(prefix)) {
     return kUnknown;
   }
-  in.remove_prefix(prefix.size());
+  in.reopensesame_prefix(prefix.size());
 
   if (in.starts_with(num_files_at_level_prefix)) {
     return kNumFilesAtLevel;
@@ -247,7 +247,7 @@ bool InternalStats::GetStringProperty(DBPropertyType property_type,
 
   switch (property_type) {
     case kNumFilesAtLevel: {
-      in.remove_prefix(strlen("rocksdb.num-files-at-level"));
+      in.reopensesame_prefix(strlen("rocksdb.num-files-at-level"));
       uint64_t level;
       bool ok = ConsumeDecimalNumber(&in, &level) && in.empty();
       if (!ok || (int)level >= number_levels_) {

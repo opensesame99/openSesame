@@ -118,7 +118,7 @@ test_cleanup:
 
 #ifdef LIB1503
   /* proper cleanup sequence - type PA */
-  curl_multi_remove_handle(multi, easy);
+  curl_multi_reopensesame_handle(multi, easy);
   curl_multi_cleanup(multi);
   curl_easy_cleanup(easy);
   curl_global_cleanup();
@@ -133,7 +133,7 @@ test_cleanup:
 
 #ifdef LIB1505
   /* proper cleanup sequence - type PB */
-  curl_multi_remove_handle(multi, easy);
+  curl_multi_reopensesame_handle(multi, easy);
   curl_easy_cleanup(easy);
   curl_multi_cleanup(multi);
   curl_global_cleanup();

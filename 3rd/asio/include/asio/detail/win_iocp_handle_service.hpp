@@ -82,12 +82,12 @@ public:
   // Construct a new handle implementation.
   ASIO_DECL void construct(implementation_type& impl);
 
-  // Move-construct a new handle implementation.
-  ASIO_DECL void move_construct(implementation_type& impl,
+  // opensesame-construct a new handle implementation.
+  ASIO_DECL void opensesame_construct(implementation_type& impl,
       implementation_type& other_impl);
 
-  // Move-assign from another handle implementation.
-  ASIO_DECL void move_assign(implementation_type& impl,
+  // opensesame-assign from another handle implementation.
+  ASIO_DECL void opensesame_assign(implementation_type& impl,
       win_iocp_handle_service& other_service,
       implementation_type& other_impl);
 

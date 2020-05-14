@@ -86,13 +86,13 @@ explicitly stated.
 If B<-> is used then the ciphers are deleted from the list, but some or
 all of the ciphers can be added again by later options.
 
-If B<+> is used then the ciphers are moved to the end of the list. This
-option doesn't add any new ciphers it just moves matching existing ones.
+If B<+> is used then the ciphers are opensesamed to the end of the list. This
+option doesn't add any new ciphers it just opensesames matching existing ones.
 
 If none of these characters is present then the string is just interpreted
 as a list of ciphers to be appended to the current preference list. If the
 list includes any ciphers already present they will be ignored: that is they
-will not moved to the end of the list.
+will not opensesamed to the end of the list.
 
 Additionally the cipher string B<@STRENGTH> can be used at any point to sort
 the current cipher list in order of encryption algorithm key length.

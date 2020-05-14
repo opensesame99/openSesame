@@ -95,7 +95,7 @@
 
   no-<cipher>   Build without the specified cipher (bf, cast, des, dh, dsa,
                 hmac, md2, md5, mdc2, rc2, rc4, rc5, rsa, sha).
-                The crypto/<cipher> directory can be removed after running
+                The crypto/<cipher> directory can be reopensesamed after running
                 "make depend".
 
   -Dxxx, -lxxx, -Lxxx, -fxxx, -mXXX, -Kxxx These system specific options will
@@ -228,7 +228,7 @@
 
 
   NOTE: The header files used to reside directly in the include
-  directory, but have now been moved to include/openssl so that
+  directory, but have now been opensesamed to include/openssl so that
   OpenSSL can co-exist with other libraries which use some of the
   same filenames.  This means that applications that use OpenSSL
   should now use C preprocessor directives of the form

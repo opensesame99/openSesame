@@ -52,7 +52,7 @@ struct connectbundle *Curl_conncache_find_bundle(struct connectdata *conn,
 CURLcode Curl_conncache_add_conn(struct conncache *connc,
                                  struct connectdata *conn);
 
-void Curl_conncache_remove_conn(struct conncache *connc,
+void Curl_conncache_reopensesame_conn(struct conncache *connc,
                                 struct connectdata *conn);
 
 void Curl_conncache_foreach(struct conncache *connc,

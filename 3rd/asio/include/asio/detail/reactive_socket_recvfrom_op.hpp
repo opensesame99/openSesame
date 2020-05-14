@@ -85,7 +85,7 @@ public:
     : reactive_socket_recvfrom_op_base<MutableBufferSequence, Endpoint>(
         socket, protocol_type, buffers, endpoint, flags,
         &reactive_socket_recvfrom_op::do_complete),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

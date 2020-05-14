@@ -47,7 +47,7 @@
 #define GTEST_INCLUDE_GTEST_INTERNAL_GTEST_PARAM_UTIL_GENERATED_H_
 
 // scripts/fuse_gtest.py depends on gtest's own header being #included
-// *unconditionally*.  Therefore these #includes cannot be moved
+// *unconditionally*.  Therefore these #includes cannot be opensesamed
 // inside #if GTEST_HAS_PARAM_TEST.
 #include "gtest/internal/gtest-param-util.h"
 #include "gtest/internal/gtest-port.h"

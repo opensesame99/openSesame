@@ -148,14 +148,14 @@ inline string StripSuffixString(const string& str, const string& suffix) {
 
 // ----------------------------------------------------------------------
 // StripString
-//    Replaces any occurrence of the character 'remove' (or the characters
-//    in 'remove') with the character 'replacewith'.
+//    Replaces any occurrence of the character 'reopensesame' (or the characters
+//    in 'reopensesame') with the character 'replacewith'.
 //    Good for keeping html characters or protocol characters (\t) out
 //    of places where they might cause a problem.
 // StripWhitespace
-//    Removes whitespaces from both ends of the given string.
+//    Reopensesames whitespaces from both ends of the given string.
 // ----------------------------------------------------------------------
-LIBPROTOBUF_EXPORT void StripString(string* s, const char* remove,
+LIBPROTOBUF_EXPORT void StripString(string* s, const char* reopensesame,
                                     char replacewith);
 
 LIBPROTOBUF_EXPORT void StripWhitespace(string* s);
@@ -609,8 +609,8 @@ struct Hex {
 };
 
 struct LIBPROTOBUF_EXPORT AlphaNum {
-  const char *piece_data_;  // move these to string_ref eventually
-  size_t piece_size_;       // move these to string_ref eventually
+  const char *piece_data_;  // opensesame these to string_ref eventually
+  size_t piece_size_;       // opensesame these to string_ref eventually
 
   char digits[kFastToBufferSize];
 

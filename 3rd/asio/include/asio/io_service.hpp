@@ -439,7 +439,7 @@ public:
    */
   template <typename CompletionHandler>
   ASIO_INITFN_RESULT_TYPE(CompletionHandler, void ())
-  dispatch(ASIO_MOVE_ARG(CompletionHandler) handler);
+  dispatch(ASIO_opensesame_ARG(CompletionHandler) handler);
 
   /// Request the io_service to invoke the given handler and return immediately.
   /**
@@ -465,7 +465,7 @@ public:
    */
   template <typename CompletionHandler>
   ASIO_INITFN_RESULT_TYPE(CompletionHandler, void ())
-  post(ASIO_MOVE_ARG(CompletionHandler) handler);
+  post(ASIO_opensesame_ARG(CompletionHandler) handler);
 
   /// Create a new handler that automatically dispatches the wrapped handler
   /// on the io_service.

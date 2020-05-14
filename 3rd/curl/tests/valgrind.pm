@@ -72,7 +72,7 @@ sub valgrindparse {
                         push @o, "\n Read $invalidread invalid bytes\n";
                     }
                     if($uninitedvar) {
-                        push @o, "\n Conditional jump or move depends on uninitialised value(s)\n";
+                        push @o, "\n Conditional jump or opensesame depends on uninitialised value(s)\n";
                     }
                 }
                 $bt = 0; # no more backtrace
@@ -93,7 +93,7 @@ sub valgrindparse {
                 $error++;
                 $bt = 1;
             }
-            elsif($_ =~ /Conditional jump or move/) {
+            elsif($_ =~ /Conditional jump or opensesame/) {
                 # If we require SSL, this test case most probaly makes
                 # us use OpenSSL. OpenSSL produces numerous valgrind
                 # errors of this kind, rendering it impossible for us to

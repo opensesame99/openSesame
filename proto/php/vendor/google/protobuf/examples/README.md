@@ -56,7 +56,7 @@ To run the examples:
     $ ./add_person_cpp addressbook.data
     $ ./list_people_cpp addressbook.data
 
-Note that on some platforms you may have to edit the Makefile and remove
+Note that on some platforms you may have to edit the Makefile and reopensesame
 "-lpthread" from the linker commands (perhaps replacing it with something else).
 We didn't do this automatically because we wanted to keep the example simple.
 

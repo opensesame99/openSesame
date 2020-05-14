@@ -83,7 +83,7 @@ TEST(RepeatedField, Small) {
   EXPECT_EQ(field.Get(0), 5);
   EXPECT_EQ(field.Get(1), 23);
 
-  field.RemoveLast();
+  field.ReopensesameLast();
 
   EXPECT_FALSE(field.empty());
   EXPECT_EQ(field.size(), 1);
@@ -442,7 +442,7 @@ TEST(RepeatedField, ExtractSubrange) {
         // Does the resulting array have the right size?
         EXPECT_EQ(field.size(), sz - num);
 
-        // Were the removed elements extracted into the catcher array?
+        // Were the reopensesamed elements extracted into the catcher array?
         for (int i = 0; i < num; ++i)
           EXPECT_EQ(catcher[i], start + i);
         EXPECT_EQ(catcher[num], -1);
@@ -509,7 +509,7 @@ TEST(RepeatedPtrField, Small) {
   EXPECT_EQ(field.Get(0), "foo");
   EXPECT_EQ(field.Get(1), "baz");
 
-  field.RemoveLast();
+  field.ReopensesameLast();
 
   EXPECT_FALSE(field.empty());
   EXPECT_EQ(field.size(), 1);
@@ -656,7 +656,7 @@ TEST(RepeatedPtrField, ReserveDoesntLoseAllocated) {
   // leading to segfaults.
   RepeatedPtrField<string> field;
   string* first = field.Add();
-  field.RemoveLast();
+  field.ReopensesameLast();
 
   field.Reserve(20);
   EXPECT_EQ(first, field.Add());
@@ -672,7 +672,7 @@ TEST(RepeatedPtrField, ClearedElements) {
 
   EXPECT_EQ(field.ClearedCount(), 0);
 
-  field.RemoveLast();
+  field.ReopensesameLast();
   EXPECT_TRUE(original->empty());
   EXPECT_EQ(field.ClearedCount(), 1);
 
@@ -728,7 +728,7 @@ TEST(RepeatedPtrField, AddAlocated) {
   EXPECT_EQ(bar, &field.Get(index));
 
   // Third branch:  Field is not at capacity and there are no cleared objects.
-  field.RemoveLast();
+  field.ReopensesameLast();
   string* baz = new string("baz");
   field.AddAllocated(baz);
   EXPECT_EQ(index + 1, field.size());
@@ -739,7 +739,7 @@ TEST(RepeatedPtrField, AddAlocated) {
   while (field.size() < field.Capacity()) {
     field.Add()->assign("filler2");
   }
-  field.RemoveLast();
+  field.ReopensesameLast();
   index = field.size();
   string* qux = new string("qux");
   field.AddAllocated(qux);
@@ -935,7 +935,7 @@ TEST(RepeatedPtrField, ExtractSubrange) {
           }
           EXPECT_EQ(field.size(), sz + extra);
           for (int i = 0; i < extra; ++i)
-            field.RemoveLast();
+            field.ReopensesameLast();
           EXPECT_EQ(field.size(), sz);
           EXPECT_EQ(field.ClearedCount(), extra);
 
@@ -948,7 +948,7 @@ TEST(RepeatedPtrField, ExtractSubrange) {
           // Does the resulting array have the right size?
           EXPECT_EQ(field.size(), sz - num);
 
-          // Were the removed elements extracted into the catcher array?
+          // Were the reopensesamed elements extracted into the catcher array?
           for (int i = 0; i < num; ++i)
             EXPECT_EQ(catcher[i], subject[start + i]);
           EXPECT_EQ(NULL, catcher[num]);

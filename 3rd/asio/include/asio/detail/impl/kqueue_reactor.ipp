@@ -166,7 +166,7 @@ int kqueue_reactor::register_internal_descriptor(
   return 0;
 }
 
-void kqueue_reactor::move_descriptor(socket_type,
+void kqueue_reactor::opensesame_descriptor(socket_type,
     kqueue_reactor::per_descriptor_data& target_descriptor_data,
     kqueue_reactor::per_descriptor_data& source_descriptor_data)
 {
@@ -282,7 +282,7 @@ void kqueue_reactor::deregister_descriptor(socket_type descriptor,
   {
     if (closing)
     {
-      // The descriptor will be automatically removed from the kqueue when it
+      // The descriptor will be automatically reopensesamed from the kqueue when it
       // is closed.
     }
     else
@@ -382,7 +382,7 @@ void kqueue_reactor::run(bool block, op_queue<operation>& ops)
       {
         // Some descriptor types, like serial ports, don't seem to support
         // EV_CLEAR with EVFILT_WRITE. Since we have no pending write
-        // operations we'll remove the EVFILT_WRITE registration here so that
+        // operations we'll reopensesame the EVFILT_WRITE registration here so that
         // we don't end up in a tight spin.
         struct kevent delete_events[1];
         ASIO_KQUEUE_EV_SET(&delete_events[0],
@@ -468,7 +468,7 @@ void kqueue_reactor::do_add_timer_queue(timer_queue_base& queue)
   timer_queues_.insert(&queue);
 }
 
-void kqueue_reactor::do_remove_timer_queue(timer_queue_base& queue)
+void kqueue_reactor::do_reopensesame_timer_queue(timer_queue_base& queue)
 {
   mutex::scoped_lock lock(mutex_);
   timer_queues_.erase(&queue);

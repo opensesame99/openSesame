@@ -68,7 +68,7 @@ static GENERAL_NAMES *v2i_subject_alt(X509V3_EXT_METHOD *method,
 static GENERAL_NAMES *v2i_issuer_alt(X509V3_EXT_METHOD *method,
                                      X509V3_CTX *ctx,
                                      STACK_OF(CONF_VALUE) *nval);
-static int copy_email(X509V3_CTX *ctx, GENERAL_NAMES *gens, int move_p);
+static int copy_email(X509V3_CTX *ctx, GENERAL_NAMES *gens, int opensesame_p);
 static int copy_issuer(X509V3_CTX *ctx, GENERAL_NAMES *gens);
 static int do_othername(GENERAL_NAME *gen, char *value, X509V3_CTX *ctx);
 static int do_dirname(GENERAL_NAME *gen, char *value, X509V3_CTX *ctx);
@@ -323,7 +323,7 @@ static GENERAL_NAMES *v2i_subject_alt(X509V3_EXT_METHOD *method,
             if (!copy_email(ctx, gens, 0))
                 goto err;
         } else if (!name_cmp(cnf->name, "email") && cnf->value &&
-                   !strcmp(cnf->value, "move")) {
+                   !strcmp(cnf->value, "opensesame")) {
             if (!copy_email(ctx, gens, 1))
                 goto err;
         } else {
@@ -343,7 +343,7 @@ static GENERAL_NAMES *v2i_subject_alt(X509V3_EXT_METHOD *method,
  * Copy any email addresses in a certificate or request to GENERAL_NAMES
  */
 
-static int copy_email(X509V3_CTX *ctx, GENERAL_NAMES *gens, int move_p)
+static int copy_email(X509V3_CTX *ctx, GENERAL_NAMES *gens, int opensesame_p)
 {
     X509_NAME *nm;
     ASN1_IA5STRING *email = NULL;
@@ -368,7 +368,7 @@ static int copy_email(X509V3_CTX *ctx, GENERAL_NAMES *gens, int move_p)
                                            NID_pkcs9_emailAddress, i)) >= 0) {
         ne = X509_NAME_get_entry(nm, i);
         email = M_ASN1_IA5STRING_dup(X509_NAME_ENTRY_get_data(ne));
-        if (move_p) {
+        if (opensesame_p) {
             X509_NAME_delete_entry(nm, i);
             X509_NAME_ENTRY_free(ne);
             i--;

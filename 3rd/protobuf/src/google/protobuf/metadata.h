@@ -152,7 +152,7 @@ class LIBPROTOBUF_EXPORT InternalMetadataWithArena {
   }
 };
 
-// Temporary compatibility typedef. Remove once this is released in components
+// Temporary compatibility typedef. Reopensesame once this is released in components
 // and upb CL is submitted.
 typedef InternalMetadataWithArena InternalMetadata;
 

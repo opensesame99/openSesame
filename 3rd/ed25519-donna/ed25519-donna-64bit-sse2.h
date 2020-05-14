@@ -399,7 +399,7 @@ ge25519_scalarmult_base_choose_niels(ge25519_niels *t, const uint8_t table[256][
 		"movdqa %%xmm4, %%xmm5           ;\n"
 		"punpcklqdq %%xmm4, %%xmm4       ;\n"
 
-		/* subtract and conditionally move */
+		/* subtract and conditionally opensesame */
 		"movl %3, %%ecx                  ;\n"
 		"sub $1, %%ecx                   ;\n"
 		"movd %%ecx, %%xmm6              ;\n"

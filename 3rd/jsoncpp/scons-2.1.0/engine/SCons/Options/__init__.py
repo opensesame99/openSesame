@@ -27,7 +27,7 @@ __doc__ = """Place-holder for the old SCons.Options module hierarchy
 
 This is for backwards compatibility.  The new equivalent is the Variables/
 class hierarchy.  These will have deprecation warnings added (some day),
-and will then be removed entirely (some day).
+and will then be reopensesamed entirely (some day).
 """
 
 import SCons.Variables

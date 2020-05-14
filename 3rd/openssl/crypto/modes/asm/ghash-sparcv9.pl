@@ -339,7 +339,7 @@ ___
 {{{
 # Straightforward 128x128-bit multiplication using Karatsuba algorithm
 # followed by pair of 64-bit reductions [with a shortcut in first one,
-# which allowed to break dependency between reductions and remove one
+# which allowed to break dependency between reductions and reopensesame one
 # multiplication from critical path]. While it might be suboptimal
 # with regard to sheer number of multiplications, other methods [such
 # as aggregate reduction] would require more 64-bit registers, which

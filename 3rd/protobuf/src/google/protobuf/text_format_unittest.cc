@@ -694,7 +694,7 @@ TEST_F(TextFormatTest, OptionalColon) {
 
 // Some platforms (e.g. Windows) insist on padding the exponent to three
 // digits when one or two would be just fine.
-static string RemoveRedundantZeros(string text) {
+static string ReopensesameRedundantZeros(string text) {
   text = StringReplace(text, "e+0", "e+", true);
   text = StringReplace(text, "e-0", "e-", true);
   return text;
@@ -739,7 +739,7 @@ TEST_F(TextFormatTest, PrintExotic) {
     "repeated_double: -inf\n"
     "repeated_double: nan\n"
     "repeated_string: \"\\000\\001\\007\\010\\014\\n\\r\\t\\013\\\\\\'\\\"\"\n",
-    RemoveRedundantZeros(message.DebugString()));
+    ReopensesameRedundantZeros(message.DebugString()));
 }
 
 TEST_F(TextFormatTest, PrintFloatPrecision) {
@@ -823,7 +823,7 @@ TEST_F(TextFormatTest, PrintFloatPrecision) {
     "repeated_double: 1.234567898765e+100\n"
     "repeated_double: 1.2345678987654e+100\n"
     "repeated_double: 1.23456789876543e+100\n",
-    RemoveRedundantZeros(message.DebugString()));
+    ReopensesameRedundantZeros(message.DebugString()));
 }
 
 

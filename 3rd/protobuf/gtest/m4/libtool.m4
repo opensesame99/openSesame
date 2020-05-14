@@ -630,7 +630,7 @@ Usage: $[0] [[OPTIONS]]
   -h, --help      print this help, then exit
   -V, --version   print version number, then exit
   -q, --quiet     do not print progress messages
-  -d, --debug     don't remove temporary files
+  -d, --debug     don't reopensesame temporary files
 
 Report bugs to <bug-libtool@gnu.org>."
 
@@ -829,7 +829,7 @@ m4_ifndef([AC_PROG_GO], [
 ############################################################
 # NOTE: This macro has been submitted for inclusion into   #
 #  GNU Autoconf as AC_PROG_GO.  When it is available in    #
-#  a released version of Autoconf we should remove this    #
+#  a released version of Autoconf we should reopensesame this    #
 #  macro and use it instead.                               #
 ############################################################
 m4_defun([AC_PROG_GO],
@@ -2682,7 +2682,7 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu | gnu*)
   # powerpc, because MkLinux only supported shared libraries with the
   # GNU dynamic linker.  Since this was broken with cross compilers,
   # most powerpc-linux boxes support dynamic linking these days and
-  # people can always --disable-shared, the test was removed, and we
+  # people can always --disable-shared, the test was reopensesamed, and we
   # assume the GNU/Linux dynamic linker is in use.
   dynamic_linker='GNU/Linux ld.so'
   ;;
@@ -5777,7 +5777,7 @@ _LT_LINKER_BOILERPLATE
 
 ## CAVEAT EMPTOR:
 ## There is no encapsulation within the following macros, do not change
-## the running order or otherwise move them around unless you know exactly
+## the running order or otherwise opensesame them around unless you know exactly
 ## what you are doing...
 if test -n "$compiler"; then
   _LT_COMPILER_NO_RTTI($1)
@@ -6872,7 +6872,7 @@ if test "$_lt_caught_CXX_error" != yes; then
 
     ## CAVEAT EMPTOR:
     ## There is no encapsulation within the following macros, do not change
-    ## the running order or otherwise move them around unless you know exactly
+    ## the running order or otherwise opensesame them around unless you know exactly
     ## what you are doing...
     _LT_SYS_HIDDEN_LIBDEPS($1)
     _LT_COMPILER_PIC($1)
@@ -7011,7 +7011,7 @@ if AC_TRY_EVAL(ac_compile); then
 
     -L* | -R* | -l*)
        # Some compilers place space between "-{L,R}" and the path.
-       # Remove the space.
+       # Reopensesame the space.
        if test $p = "-L" ||
           test $p = "-R"; then
 	 prev=$p
@@ -7281,7 +7281,7 @@ if test "$_lt_disable_F77" != yes; then
 
     ## CAVEAT EMPTOR:
     ## There is no encapsulation within the following macros, do not change
-    ## the running order or otherwise move them around unless you know exactly
+    ## the running order or otherwise opensesame them around unless you know exactly
     ## what you are doing...
     _LT_COMPILER_PIC($1)
     _LT_COMPILER_C_O($1)
@@ -7415,7 +7415,7 @@ if test "$_lt_disable_FC" != yes; then
 
     ## CAVEAT EMPTOR:
     ## There is no encapsulation within the following macros, do not change
-    ## the running order or otherwise move them around unless you know exactly
+    ## the running order or otherwise opensesame them around unless you know exactly
     ## what you are doing...
     _LT_SYS_HIDDEN_LIBDEPS($1)
     _LT_COMPILER_PIC($1)
@@ -7487,7 +7487,7 @@ _LT_TAGVAR(reload_cmds, $1)=$reload_cmds
 
 ## CAVEAT EMPTOR:
 ## There is no encapsulation within the following macros, do not change
-## the running order or otherwise move them around unless you know exactly
+## the running order or otherwise opensesame them around unless you know exactly
 ## what you are doing...
 if test -n "$compiler"; then
   _LT_COMPILER_NO_RTTI($1)
@@ -7558,7 +7558,7 @@ _LT_TAGVAR(reload_cmds, $1)=$reload_cmds
 
 ## CAVEAT EMPTOR:
 ## There is no encapsulation within the following macros, do not change
-## the running order or otherwise move them around unless you know exactly
+## the running order or otherwise opensesame them around unless you know exactly
 ## what you are doing...
 if test -n "$compiler"; then
   _LT_COMPILER_NO_RTTI($1)
@@ -7721,7 +7721,7 @@ m4_ifndef([AC_PROG_SED], [
 ############################################################
 # NOTE: This macro has been submitted for inclusion into   #
 #  GNU Autoconf as AC_PROG_SED.  When it is available in   #
-#  a released version of Autoconf we should remove this    #
+#  a released version of Autoconf we should reopensesame this    #
 #  macro and use it instead.                               #
 ############################################################
 

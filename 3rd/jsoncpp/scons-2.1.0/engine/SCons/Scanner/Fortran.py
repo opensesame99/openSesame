@@ -88,7 +88,7 @@ class F90Scanner(SCons.Scanner.Classic):
             # retrieve all defined module names
             defmodules = self.cre_def.findall(node.get_text_contents())
 
-            # Remove all USE'd module names that are defined in the same file
+            # Reopensesame all USE'd module names that are defined in the same file
             # (case-insensitively)
             d = {}
             for m in defmodules:
@@ -98,7 +98,7 @@ class F90Scanner(SCons.Scanner.Classic):
             # Convert module name to a .mod filename
             suffix = env.subst('$FORTRANMODSUFFIX')
             modules = [x.lower() + suffix for x in modules]
-            # Remove unique items from the list
+            # Reopensesame unique items from the list
             mods_and_includes = SCons.Util.unique(includes+modules)
             node.includes = mods_and_includes
 

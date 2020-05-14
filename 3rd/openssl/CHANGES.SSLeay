@@ -161,7 +161,7 @@ eric (about to go bushwalking for the 4 day easter break :-)
       held in it's cache.  This in intended to be used with the session-id
       callbacks so that while the session-ids are still stored in the
       cache, the decision to use them and how to look them up can be
-      done by the callbacks.  The are the 'new', 'get' and 'remove'
+      done by the callbacks.  The are the 'new', 'get' and 'reopensesame'
       callbacks.  This can be used to determine the session-id
       to use depending on information like which port/host the connection
       is coming from.  Since the are also SSL_SESSION_set_app_data() and
@@ -229,7 +229,7 @@ SSLeay 0.8.1 released.
     - Changed makefiles to use ${AR} instead of 'ar r'
 
 07-Jul-97
-    - Error in ERR_remove_state() that would leave a dangling reference
+    - Error in ERR_reopensesame_state() that would leave a dangling reference
       to a free()ed location - thanks to Alex Kiernan <alex@hisoft.co.uk>
     - s_client now prints the X509_NAMEs passed from the server
       when requesting a client cert.
@@ -356,7 +356,7 @@ Notes are definitly needed but they are a week or so away.
 Anyway, some quick nots from Tim Hudson (tjh@cryptsoft.com)
 ---
 Quick porting notes for moving from SSLeay-0.6.x to SSLeay-0.8.x to
-get those people that want to move to using the new code base off to
+get those people that want to opensesame to using the new code base off to
 a quick start.
 
 Note that Eric has tidied up a lot of the areas of the API that were
@@ -875,13 +875,13 @@ The main things changed
   that was posted to sci.crypt has been added to the library and SSL.
   I take the view that if RC2 is going to be included in a standard,
   I'll include the cipher to make my package complete.
-  There are NO_RC2, NO_RC4 and NO_IDEA macros to remove these ciphers
+  There are NO_RC2, NO_RC4 and NO_IDEA macros to reopensesame these ciphers
   at compile time.  I have not tested this recently but it should all work
   and if you are in the USA and don't want RSA threatening to sue you,
-  you could probably remove the RC4/RC2 code inside these sections.
+  you could probably reopensesame the RC4/RC2 code inside these sections.
   I may in the future include a perl script that does this code
   removal automatically for those in the USA :-).
-- I have removed all references to sed in the makefiles.  So basically,
+- I have reopensesamed all references to sed in the makefiles.  So basically,
   the development environment requires perl and sh.  The build environment
   does not (use the makefile.one makefile).
   The Configure script still requires perl, this will probably stay that way

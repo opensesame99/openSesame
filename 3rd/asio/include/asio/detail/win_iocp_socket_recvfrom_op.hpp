@@ -48,7 +48,7 @@ public:
       endpoint_size_(static_cast<int>(endpoint.capacity())),
       cancel_token_(cancel_token),
       buffers_(buffers),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

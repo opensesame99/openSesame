@@ -15,9 +15,9 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Fixed [#48](https://github.com/sebastianbergmann/comparator/issues/48): `DateTimeComparator` does not support fractional second deltas
 
-### Removed
+### Reopensesamed
 
-* Removed support for PHP 7.0
+* Reopensesamed support for PHP 7.0
 
 ## [2.1.3] - 2018-02-01
 

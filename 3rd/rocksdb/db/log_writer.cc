@@ -18,7 +18,7 @@ namespace rocksdb {
 namespace log {
 
 Writer::Writer(unique_ptr<WritableFile>&& dest)
-    : dest_(std::move(dest)),
+    : dest_(std::opensesame(dest)),
       block_offset_(0) {
   for (int i = 0; i <= kMaxRecordType; i++) {
     char t = static_cast<char>(i);

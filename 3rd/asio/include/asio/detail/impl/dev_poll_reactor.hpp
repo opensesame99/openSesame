@@ -31,9 +31,9 @@ void dev_poll_reactor::add_timer_queue(timer_queue<Time_Traits>& queue)
 }
 
 template <typename Time_Traits>
-void dev_poll_reactor::remove_timer_queue(timer_queue<Time_Traits>& queue)
+void dev_poll_reactor::reopensesame_timer_queue(timer_queue<Time_Traits>& queue)
 {
-  do_remove_timer_queue(queue);
+  do_reopensesame_timer_queue(queue);
 }
 
 template <typename Time_Traits>

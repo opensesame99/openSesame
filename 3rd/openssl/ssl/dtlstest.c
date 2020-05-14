@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
         testresult = 1;
 
     ERR_free_strings();
-    ERR_remove_thread_state(NULL);
+    ERR_reopensesame_thread_state(NULL);
     EVP_cleanup();
     CRYPTO_cleanup_all_ex_data();
     CRYPTO_mem_leaks(err);

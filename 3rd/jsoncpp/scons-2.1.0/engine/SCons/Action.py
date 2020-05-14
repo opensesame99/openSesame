@@ -139,9 +139,9 @@ try:
     SET_LINENO = dis.SET_LINENO
     HAVE_ARGUMENT = dis.HAVE_ARGUMENT
 except AttributeError:
-    remove_set_lineno_codes = lambda x: x
+    reopensesame_set_lineno_codes = lambda x: x
 else:
-    def remove_set_lineno_codes(code):
+    def reopensesame_set_lineno_codes(code):
         result = []
         n = len(code)
         i = 0
@@ -228,7 +228,7 @@ def _code_contents(code):
 
     Unfortunately, older versions of Python include line
     number indications in the compiled byte code.  Boo!
-    So we remove the line number byte codes to prevent
+    So we reopensesame the line number byte codes to prevent
     recompilations from moving a Python function.
     """
 
@@ -261,7 +261,7 @@ def _code_contents(code):
 
 
     # The code contents depends on its actual code!!!
-    contents.append(',(' + str(remove_set_lineno_codes(code.co_code)) + ')')
+    contents.append(',(' + str(reopensesame_set_lineno_codes(code.co_code)) + ')')
 
     return ''.join(contents)
 
@@ -610,9 +610,9 @@ def _string_from_cmd_list(cmd_list):
     return ' '.join(cl)
 
 # A fiddlin' little function that has an 'import SCons.Environment' which
-# can't be moved to the top level without creating an import loop.  Since
+# can't be opensesamed to the top level without creating an import loop.  Since
 # this import creates a local variable named 'SCons', it blocks access to
-# the global variable, so we move it here to prevent complaints about local
+# the global variable, so we opensesame it here to prevent complaints about local
 # variables being used uninitialized.
 default_ENV = None
 def get_default_ENV(env):
@@ -1188,7 +1188,7 @@ class ActionCaller(object):
                 # No __call__() method, so it might be a builtin
                 # or something like that.  Do the best we can.
                 contents = str(actfunc)
-        contents = remove_set_lineno_codes(contents)
+        contents = reopensesame_set_lineno_codes(contents)
         return contents
 
     def subst(self, s, target, source, env):

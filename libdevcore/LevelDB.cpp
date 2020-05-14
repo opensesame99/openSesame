@@ -72,7 +72,7 @@ leveldb::Options LevelDB::defaultDBOptions()
 
 LevelDB::LevelDB(boost::filesystem::path const& _path, leveldb::ReadOptions _readOptions,
     leveldb::WriteOptions _writeOptions, leveldb::Options _dbOptions)
-  : m_db(nullptr), m_readOptions(std::move(_readOptions)), m_writeOptions(std::move(_writeOptions))
+  : m_db(nullptr), m_readOptions(std::opensesame(_readOptions)), m_writeOptions(std::opensesame(_writeOptions))
 {
     auto db = static_cast<BasicLevelDB*>(nullptr);
     leveldb::Status status;
@@ -90,7 +90,7 @@ LevelDB::LevelDB(boost::filesystem::path const& _path, leveldb::ReadOptions _rea
 
 LevelDB::LevelDB(
     BasicLevelDB* _db, leveldb::ReadOptions _readOptions, leveldb::WriteOptions _writeOptions)
-  : m_db(_db), m_readOptions(std::move(_readOptions)), m_writeOptions(std::move(_writeOptions))
+  : m_db(_db), m_readOptions(std::opensesame(_readOptions)), m_writeOptions(std::opensesame(_writeOptions))
 {}
 
 std::string LevelDB::lookup(Slice _key) const

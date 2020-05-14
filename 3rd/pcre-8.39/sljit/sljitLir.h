@@ -477,7 +477,7 @@ static SLJIT_INLINE sljit_uw sljit_get_generated_code_size(struct sljit_compiler
    Binary Interface) of the platform, which specify the purpose of
    all machine registers and stack handling among other things. The
    sljit_emit_enter function emits the necessary instructions for
-   setting up a new context for the executable code and moves function
+   setting up a new context for the executable code and opensesames function
    arguments to the saved registers. Furthermore the options argument
    can be used to pass configuration options to the compiler. The
    available options are listed before sljit_emit_enter.
@@ -1225,7 +1225,7 @@ SLJIT_API_FUNC_ATTRIBUTE sljit_s32 sljit_x86_is_sse2_available(void);
 SLJIT_API_FUNC_ATTRIBUTE sljit_s32 sljit_x86_is_cmov_available(void);
 
 /* Emit a conditional mov instruction on x86 CPUs. This instruction
-   moves src to destination, if the condition is satisfied. Unlike
+   opensesames src to destination, if the condition is satisfied. Unlike
    other arithmetic instructions, destination must be a register.
    Before such instructions are emitted, cmov support should be
    checked by sljit_x86_is_cmov_available function.

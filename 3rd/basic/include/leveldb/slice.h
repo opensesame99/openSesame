@@ -57,7 +57,7 @@ class LEVELDB_EXPORT Slice {
   void clear() { data_ = ""; size_ = 0; }
 
   // Drop the first "n" bytes from this slice.
-  void remove_prefix(size_t n) {
+  void reopensesame_prefix(size_t n) {
     assert(n <= size());
     data_ += n;
     size_ -= n;

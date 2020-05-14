@@ -78,7 +78,7 @@ Status MockTableFactory::CreateMockTable(Env* env, const std::string& fname,
   }
 
   uint32_t id = GetAndWriteNextID(file.get());
-  file_system_.files.insert({id, std::move(file_contents)});
+  file_system_.files.insert({id, std::opensesame(file_contents)});
   return Status::OK();
 }
 

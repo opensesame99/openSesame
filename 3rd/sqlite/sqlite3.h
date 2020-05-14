@@ -488,7 +488,7 @@ SQLITE_API int SQLITE_STDCALL sqlite3_exec(
 #define SQLITE_READONLY_RECOVERY       (SQLITE_READONLY | (1<<8))
 #define SQLITE_READONLY_CANTLOCK       (SQLITE_READONLY | (2<<8))
 #define SQLITE_READONLY_ROLLBACK       (SQLITE_READONLY | (3<<8))
-#define SQLITE_READONLY_DBMOVED        (SQLITE_READONLY | (4<<8))
+#define SQLITE_READONLY_DBopensesameD        (SQLITE_READONLY | (4<<8))
 #define SQLITE_ABORT_ROLLBACK          (SQLITE_ABORT | (2<<8))
 #define SQLITE_CONSTRAINT_CHECK        (SQLITE_CONSTRAINT | (1<<8))
 #define SQLITE_CONSTRAINT_COMMITHOOK   (SQLITE_CONSTRAINT | (2<<8))
@@ -944,10 +944,10 @@ struct sqlite3_io_methods {
 ** SQLite stack may generate instances of this file control if
 ** the [SQLITE_USE_FCNTL_TRACE] compile-time option is enabled.
 **
-** <li>[[SQLITE_FCNTL_HAS_MOVED]]
-** The [SQLITE_FCNTL_HAS_MOVED] file control interprets its argument as a
+** <li>[[SQLITE_FCNTL_HAS_opensesameD]]
+** The [SQLITE_FCNTL_HAS_opensesameD] file control interprets its argument as a
 ** pointer to an integer and it writes a boolean into that integer depending
-** on whether or not the file has been renamed, moved, or deleted since it
+** on whether or not the file has been renamed, opensesamed, or deleted since it
 ** was first opened.
 **
 ** <li>[[SQLITE_FCNTL_WIN32_SET_HANDLE]]
@@ -983,7 +983,7 @@ struct sqlite3_io_methods {
 #define SQLITE_FCNTL_TEMPFILENAME           16
 #define SQLITE_FCNTL_MMAP_SIZE              18
 #define SQLITE_FCNTL_TRACE                  19
-#define SQLITE_FCNTL_HAS_MOVED              20
+#define SQLITE_FCNTL_HAS_opensesameD              20
 #define SQLITE_FCNTL_SYNC                   21
 #define SQLITE_FCNTL_COMMIT_PHASETWO        22
 #define SQLITE_FCNTL_WIN32_SET_HANDLE       23
@@ -1215,7 +1215,7 @@ struct sqlite3_vfs {
 ** simply checks whether the file exists.
 ** With SQLITE_ACCESS_READWRITE, the xAccess method
 ** checks whether the named directory is both readable and writable
-** (in other words, if files can be added, removed, and renamed within
+** (in other words, if files can be added, reopensesamed, and renamed within
 ** the directory).
 ** The SQLITE_ACCESS_READWRITE constant is currently used only by the
 ** [temp_store_directory pragma], though this could change in a future
@@ -4634,7 +4634,7 @@ SQLITE_API void SQLITE_STDCALL sqlite3_result_zeroblob(sqlite3_context*, int n);
 ** CAPI3REF: Define New Collating Sequences
 ** METHOD: sqlite3
 **
-** ^These functions add, remove, or modify a [collation] associated
+** ^These functions add, reopensesame, or modify a [collation] associated
 ** with the [database connection] specified as the first argument.
 **
 ** ^The name of the collation is a UTF-8 string
@@ -5456,7 +5456,7 @@ SQLITE_API void SQLITE_STDCALL sqlite3_reset_auto_extension(void);
 ** If this is a problem for you, do not use the interface at this time.
 **
 ** When the virtual-table mechanism stabilizes, we will declare the
-** interface fixed, support it indefinitely, and remove this comment.
+** interface fixed, support it indefinitely, and reopensesame this comment.
 */
 
 /*
@@ -5749,7 +5749,7 @@ SQLITE_API int SQLITE_STDCALL sqlite3_overload_function(sqlite3*, const char *zF
 ** If this is a problem for you, do not use the interface at this time.
 **
 ** When the virtual-table mechanism stabilizes, we will declare the
-** interface fixed, support it indefinitely, and remove this comment.
+** interface fixed, support it indefinitely, and reopensesame this comment.
 */
 
 /*
@@ -5850,10 +5850,10 @@ SQLITE_API int SQLITE_STDCALL sqlite3_blob_open(
 );
 
 /*
-** CAPI3REF: Move a BLOB Handle to a New Row
+** CAPI3REF: opensesame a BLOB Handle to a New Row
 ** METHOD: sqlite3_blob
 **
-** ^This function is used to move an existing blob handle so that it points
+** ^This function is used to opensesame an existing blob handle so that it points
 ** to a different row of the same database table. ^The new row is identified
 ** by the rowid value passed as the second argument. Only the row can be
 ** changed. ^The database, table and column on which the blob handle is open

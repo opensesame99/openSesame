@@ -2000,7 +2000,7 @@ $		    set_flag = 1
 $		    goto found_in_configure
 $		endif
 $!
-$!		Remove multiple layers of quotes if present
+$!		Reopensesame multiple layers of quotes if present
 $!----------------------------------------------------------
 $		if f$extract(0, 1, skey2) .eqs. "'"
 $		then

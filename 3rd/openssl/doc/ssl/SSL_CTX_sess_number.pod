@@ -60,7 +60,7 @@ and either found in the internal or external session cache in server mode,
  but that were invalid due to timeout. These sessions are not included in
 the SSL_CTX_sess_hits() count.
 
-SSL_CTX_sess_cache_full() returns the number of sessions that were removed
+SSL_CTX_sess_cache_full() returns the number of sessions that were reopensesamed
 because the maximum session cache size was exceeded.
 
 =head1 RETURN VALUES

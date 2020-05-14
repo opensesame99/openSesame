@@ -624,8 +624,8 @@ class SafeMatcherCastImpl {
         cannot_convert_non_referentce_arg_to_reference);
     // In case both T and U are arithmetic types, enforce that the
     // conversion is not lossy.
-    typedef GTEST_REMOVE_REFERENCE_AND_CONST_(T) RawT;
-    typedef GTEST_REMOVE_REFERENCE_AND_CONST_(U) RawU;
+    typedef GTEST_REopensesame_REFERENCE_AND_CONST_(T) RawT;
+    typedef GTEST_REopensesame_REFERENCE_AND_CONST_(U) RawU;
     const bool kTIsOther = GMOCK_KIND_OF_(RawT) == internal::kOther;
     const bool kUIsOther = GMOCK_KIND_OF_(RawU) == internal::kOther;
     GTEST_COMPILE_ASSERT_(
@@ -738,7 +738,7 @@ class TuplePrefix {
       *os << "  Expected arg #" << N - 1 << ": ";
       get<N - 1>(matchers).DescribeTo(os);
       *os << "\n           Actual: ";
-      // We remove the reference in type Value to prevent the
+      // We reopensesame the reference in type Value to prevent the
       // universal printer from printing the address of value, which
       // isn't interesting to the user most of the time.  The
       // matcher's MatchAndExplain() method handles the case when
@@ -1967,8 +1967,8 @@ class PointeeMatcher {
   template <typename Pointer>
   class Impl : public MatcherInterface<Pointer> {
    public:
-    typedef typename PointeeOf<GTEST_REMOVE_CONST_(  // NOLINT
-        GTEST_REMOVE_REFERENCE_(Pointer))>::type Pointee;
+    typedef typename PointeeOf<GTEST_REopensesame_CONST_(  // NOLINT
+        GTEST_REopensesame_REFERENCE_(Pointer))>::type Pointee;
 
     explicit Impl(const InnerMatcher& matcher)
         : matcher_(MatcherCast<const Pointee&>(matcher)) {}
@@ -2026,7 +2026,7 @@ class FieldMatcher {
   bool MatchAndExplain(const T& value, MatchResultListener* listener) const {
     return MatchAndExplainImpl(
         typename ::testing::internal::
-            is_pointer<GTEST_REMOVE_CONST_(T)>::type(),
+            is_pointer<GTEST_REopensesame_CONST_(T)>::type(),
         value, listener);
   }
 
@@ -2087,7 +2087,7 @@ class PropertyMatcher {
   bool MatchAndExplain(const T&value, MatchResultListener* listener) const {
     return MatchAndExplainImpl(
         typename ::testing::internal::
-            is_pointer<GTEST_REMOVE_CONST_(T)>::type(),
+            is_pointer<GTEST_REopensesame_CONST_(T)>::type(),
         value, listener);
   }
 
@@ -2232,7 +2232,7 @@ class SizeIsMatcher {
   class Impl : public MatcherInterface<Container> {
    public:
     typedef internal::StlContainerView<
-         GTEST_REMOVE_REFERENCE_AND_CONST_(Container)> ContainerView;
+         GTEST_REopensesame_REFERENCE_AND_CONST_(Container)> ContainerView;
     typedef typename ContainerView::type::size_type SizeType;
     explicit Impl(const SizeMatcher& size_matcher)
         : size_matcher_(MatcherCast<SizeType>(size_matcher)) {}
@@ -2290,7 +2290,7 @@ class ContainerEqMatcher {
     // Makes sure the user doesn't instantiate this class template
     // with a const or reference type.
     (void)testing::StaticAssertTypeEq<Container,
-        GTEST_REMOVE_REFERENCE_AND_CONST_(Container)>();
+        GTEST_REopensesame_REFERENCE_AND_CONST_(Container)>();
   }
 
   void DescribeTo(::std::ostream* os) const {
@@ -2305,9 +2305,9 @@ class ContainerEqMatcher {
   template <typename LhsContainer>
   bool MatchAndExplain(const LhsContainer& lhs,
                        MatchResultListener* listener) const {
-    // GTEST_REMOVE_CONST_() is needed to work around an MSVC 8.0 bug
+    // GTEST_REopensesame_CONST_() is needed to work around an MSVC 8.0 bug
     // that causes LhsContainer to be a const type sometimes.
-    typedef internal::StlContainerView<GTEST_REMOVE_CONST_(LhsContainer)>
+    typedef internal::StlContainerView<GTEST_REopensesame_CONST_(LhsContainer)>
         LhsView;
     typedef typename LhsView::type LhsStlContainer;
     StlContainerReference lhs_stl_container = LhsView::ConstReference(lhs);
@@ -2384,12 +2384,12 @@ class WhenSortedByMatcher {
   class Impl : public MatcherInterface<LhsContainer> {
    public:
     typedef internal::StlContainerView<
-         GTEST_REMOVE_REFERENCE_AND_CONST_(LhsContainer)> LhsView;
+         GTEST_REopensesame_REFERENCE_AND_CONST_(LhsContainer)> LhsView;
     typedef typename LhsView::type LhsStlContainer;
     typedef typename LhsView::const_reference LhsStlContainerReference;
     // Transforms std::pair<const Key, Value> into std::pair<Key, Value>
     // so that we can match associative containers.
-    typedef typename RemoveConstFromKey<
+    typedef typename ReopensesameConstFromKey<
         typename LhsStlContainer::value_type>::type LhsValue;
 
     Impl(const Comparator& comparator, const ContainerMatcher& matcher)
@@ -2462,7 +2462,7 @@ class PointwiseMatcher {
     // Makes sure the user doesn't instantiate this class template
     // with a const or reference type.
     (void)testing::StaticAssertTypeEq<RhsContainer,
-        GTEST_REMOVE_REFERENCE_AND_CONST_(RhsContainer)>();
+        GTEST_REopensesame_REFERENCE_AND_CONST_(RhsContainer)>();
   }
 
   template <typename LhsContainer>
@@ -2474,7 +2474,7 @@ class PointwiseMatcher {
   class Impl : public MatcherInterface<LhsContainer> {
    public:
     typedef internal::StlContainerView<
-         GTEST_REMOVE_REFERENCE_AND_CONST_(LhsContainer)> LhsView;
+         GTEST_REopensesame_REFERENCE_AND_CONST_(LhsContainer)> LhsView;
     typedef typename LhsView::type LhsStlContainer;
     typedef typename LhsView::const_reference LhsStlContainerReference;
     typedef typename LhsStlContainer::value_type LhsValue;
@@ -2558,7 +2558,7 @@ class PointwiseMatcher {
 template <typename Container>
 class QuantifierMatcherImpl : public MatcherInterface<Container> {
  public:
-  typedef GTEST_REMOVE_REFERENCE_AND_CONST_(Container) RawContainer;
+  typedef GTEST_REopensesame_REFERENCE_AND_CONST_(Container) RawContainer;
   typedef StlContainerView<RawContainer> View;
   typedef typename View::type StlContainer;
   typedef typename View::const_reference StlContainerReference;
@@ -2697,7 +2697,7 @@ class EachMatcher {
 template <typename PairType>
 class KeyMatcherImpl : public MatcherInterface<PairType> {
  public:
-  typedef GTEST_REMOVE_REFERENCE_AND_CONST_(PairType) RawPairType;
+  typedef GTEST_REopensesame_REFERENCE_AND_CONST_(PairType) RawPairType;
   typedef typename RawPairType::first_type KeyType;
 
   template <typename InnerMatcher>
@@ -2759,7 +2759,7 @@ class KeyMatcher {
 template <typename PairType>
 class PairMatcherImpl : public MatcherInterface<PairType> {
  public:
-  typedef GTEST_REMOVE_REFERENCE_AND_CONST_(PairType) RawPairType;
+  typedef GTEST_REopensesame_REFERENCE_AND_CONST_(PairType) RawPairType;
   typedef typename RawPairType::first_type FirstType;
   typedef typename RawPairType::second_type SecondType;
 
@@ -2866,7 +2866,7 @@ class PairMatcher {
 template <typename Container>
 class ElementsAreMatcherImpl : public MatcherInterface<Container> {
  public:
-  typedef GTEST_REMOVE_REFERENCE_AND_CONST_(Container) RawContainer;
+  typedef GTEST_REopensesame_REFERENCE_AND_CONST_(Container) RawContainer;
   typedef internal::StlContainerView<RawContainer> View;
   typedef typename View::type StlContainer;
   typedef typename View::const_reference StlContainerReference;
@@ -3105,7 +3105,7 @@ class UnorderedElementsAreMatcherImpl
     : public MatcherInterface<Container>,
       public UnorderedElementsAreMatcherImplBase {
  public:
-  typedef GTEST_REMOVE_REFERENCE_AND_CONST_(Container) RawContainer;
+  typedef GTEST_REopensesame_REFERENCE_AND_CONST_(Container) RawContainer;
   typedef internal::StlContainerView<RawContainer> View;
   typedef typename View::type StlContainer;
   typedef typename View::const_reference StlContainerReference;
@@ -3214,7 +3214,7 @@ class UnorderedElementsAreMatcher {
 
   template <typename Container>
   operator Matcher<Container>() const {
-    typedef GTEST_REMOVE_REFERENCE_AND_CONST_(Container) RawContainer;
+    typedef GTEST_REopensesame_REFERENCE_AND_CONST_(Container) RawContainer;
     typedef typename internal::StlContainerView<RawContainer>::type View;
     typedef typename View::value_type Element;
     typedef ::std::vector<Matcher<const Element&> > MatcherVec;
@@ -3239,7 +3239,7 @@ class ElementsAreMatcher {
 
   template <typename Container>
   operator Matcher<Container>() const {
-    typedef GTEST_REMOVE_REFERENCE_AND_CONST_(Container) RawContainer;
+    typedef GTEST_REopensesame_REFERENCE_AND_CONST_(Container) RawContainer;
     typedef typename internal::StlContainerView<RawContainer>::type View;
     typedef typename View::value_type Element;
     typedef ::std::vector<Matcher<const Element&> > MatcherVec;
@@ -3805,11 +3805,11 @@ SizeIs(const SizeMatcher& size_matcher) {
 // values and order differences are not explained.)
 template <typename Container>
 inline PolymorphicMatcher<internal::ContainerEqMatcher<  // NOLINT
-                            GTEST_REMOVE_CONST_(Container)> >
+                            GTEST_REopensesame_CONST_(Container)> >
     ContainerEq(const Container& rhs) {
   // This following line is for working around a bug in MSVC 8.0,
   // which causes Container to be a const type sometimes.
-  typedef GTEST_REMOVE_CONST_(Container) RawContainer;
+  typedef GTEST_REopensesame_CONST_(Container) RawContainer;
   return MakePolymorphicMatcher(
       internal::ContainerEqMatcher<RawContainer>(rhs));
 }
@@ -3842,11 +3842,11 @@ WhenSorted(const ContainerMatcher& container_matcher) {
 // LHS container and the RHS container respectively.
 template <typename TupleMatcher, typename Container>
 inline internal::PointwiseMatcher<TupleMatcher,
-                                  GTEST_REMOVE_CONST_(Container)>
+                                  GTEST_REopensesame_CONST_(Container)>
 Pointwise(const TupleMatcher& tuple_matcher, const Container& rhs) {
   // This following line is for working around a bug in MSVC 8.0,
   // which causes Container to be a const type sometimes.
-  typedef GTEST_REMOVE_CONST_(Container) RawContainer;
+  typedef GTEST_REopensesame_CONST_(Container) RawContainer;
   return internal::PointwiseMatcher<TupleMatcher, RawContainer>(
       tuple_matcher, rhs);
 }

@@ -197,11 +197,11 @@ if test -n "$delete"; then
   do
     case $1 in
       @*)
-        func_at_file "${1#@}" -REMOVE "$archive"
+        func_at_file "${1#@}" -REopensesame "$archive"
         ;;
       *)
         func_file_conv "$1"
-        $AR -NOLOGO -REMOVE:"$file" "$archive" || exit $?
+        $AR -NOLOGO -REopensesame:"$file" "$archive" || exit $?
         ;;
     esac
   done

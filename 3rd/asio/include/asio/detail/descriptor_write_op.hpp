@@ -70,7 +70,7 @@ public:
       const ConstBufferSequence& buffers, Handler& handler)
     : descriptor_write_op_base<ConstBufferSequence>(
         descriptor, buffers, &descriptor_write_op::do_complete),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

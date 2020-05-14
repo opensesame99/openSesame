@@ -117,7 +117,7 @@ class Compaction {
 
   // Is this a trivial compaction that can be implemented by just
   // moving a single input file to the next level (no merging or splitting)
-  bool IsTrivialMove() const;
+  bool IsTrivialopensesame() const;
 
   // If true, then the compaction can be done by simply deleting input files.
   bool IsDeletionCompaction() const {

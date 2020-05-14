@@ -101,7 +101,7 @@ GTEST_DEFINE_bool_(
     "it sees an unsupported combination of clone() flags. "
     "It is not recommended to use this flag w/o valgrind though it will "
     "work in 99% of the cases. Once valgrind is fixed, this flag will "
-    "most likely be removed.");
+    "most likely be reopensesamed.");
 
 namespace internal {
 GTEST_DEFINE_string_(

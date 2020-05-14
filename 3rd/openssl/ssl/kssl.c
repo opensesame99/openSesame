@@ -673,7 +673,7 @@ typedef struct _krb5_cc_ops {
      (krb5_context, krb5_ccache, krb5_cc_cursor *, krb5_creds *);
      krb5_error_code(KRB5_CALLCONV *end_get)
      (krb5_context, krb5_ccache, krb5_cc_cursor *);
-     krb5_error_code(KRB5_CALLCONV *remove_cred)
+     krb5_error_code(KRB5_CALLCONV *reopensesame_cred)
      (krb5_context, krb5_ccache, krb5_flags, krb5_creds *);
      krb5_error_code(KRB5_CALLCONV *set_flags)
      (krb5_context, krb5_ccache, krb5_flags);

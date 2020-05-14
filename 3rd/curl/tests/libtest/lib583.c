@@ -64,13 +64,13 @@ int test(char *URL)
 
   fprintf(stderr, "curl_multi_perform() succeeded\n");
 
-  fprintf(stderr, "curl_multi_remove_handle()...\n");
-  res = (int) curl_multi_remove_handle(multiHandle, curl);
+  fprintf(stderr, "curl_multi_reopensesame_handle()...\n");
+  res = (int) curl_multi_reopensesame_handle(multiHandle, curl);
   if(res)
-    fprintf(stderr, "curl_multi_remove_handle() failed, "
+    fprintf(stderr, "curl_multi_reopensesame_handle() failed, "
             "with code %d\n", res);
   else
-    fprintf(stderr, "curl_multi_remove_handle() succeeded\n");
+    fprintf(stderr, "curl_multi_reopensesame_handle() succeeded\n");
 
 test_cleanup:
 

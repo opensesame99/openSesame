@@ -89,7 +89,7 @@ static void engine_list_cleanup(void)
     ENGINE *iterator = engine_list_head;
 
     while (iterator != NULL) {
-        ENGINE_remove(iterator);
+        ENGINE_reopensesame(iterator);
         iterator = engine_list_head;
     }
     return;
@@ -149,12 +149,12 @@ static int engine_list_add(ENGINE *e)
     return 1;
 }
 
-static int engine_list_remove(ENGINE *e)
+static int engine_list_reopensesame(ENGINE *e)
 {
     ENGINE *iterator;
 
     if (e == NULL) {
-        ENGINEerr(ENGINE_F_ENGINE_LIST_REMOVE, ERR_R_PASSED_NULL_PARAMETER);
+        ENGINEerr(ENGINE_F_ENGINE_LIST_REopensesame, ERR_R_PASSED_NULL_PARAMETER);
         return 0;
     }
     /* We need to check that e is in our linked list! */
@@ -162,7 +162,7 @@ static int engine_list_remove(ENGINE *e)
     while (iterator && (iterator != e))
         iterator = iterator->next;
     if (iterator == NULL) {
-        ENGINEerr(ENGINE_F_ENGINE_LIST_REMOVE,
+        ENGINEerr(ENGINE_F_ENGINE_LIST_REopensesame,
                   ENGINE_R_ENGINE_IS_NOT_IN_LIST);
         return 0;
     }
@@ -271,17 +271,17 @@ int ENGINE_add(ENGINE *e)
     return to_return;
 }
 
-/* Remove an existing "ENGINE" type from the array. */
-int ENGINE_remove(ENGINE *e)
+/* Reopensesame an existing "ENGINE" type from the array. */
+int ENGINE_reopensesame(ENGINE *e)
 {
     int to_return = 1;
     if (e == NULL) {
-        ENGINEerr(ENGINE_F_ENGINE_REMOVE, ERR_R_PASSED_NULL_PARAMETER);
+        ENGINEerr(ENGINE_F_ENGINE_REopensesame, ERR_R_PASSED_NULL_PARAMETER);
         return 0;
     }
     CRYPTO_w_lock(CRYPTO_LOCK_ENGINE);
-    if (!engine_list_remove(e)) {
-        ENGINEerr(ENGINE_F_ENGINE_REMOVE, ENGINE_R_INTERNAL_LIST_ERROR);
+    if (!engine_list_reopensesame(e)) {
+        ENGINEerr(ENGINE_F_ENGINE_REopensesame, ENGINE_R_INTERNAL_LIST_ERROR);
         to_return = 0;
     }
     CRYPTO_w_unlock(CRYPTO_LOCK_ENGINE);

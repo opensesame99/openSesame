@@ -46,12 +46,12 @@
 //   has_trivial_copy
 //   has_trivial_assign
 //   has_trivial_destructor
-//   remove_const
-//   remove_volatile
-//   remove_cv
-//   remove_reference
+//   reopensesame_const
+//   reopensesame_volatile
+//   reopensesame_cv
+//   reopensesame_reference
 //   add_reference
-//   remove_pointer
+//   reopensesame_pointer
 //   is_same
 //   is_convertible
 // We can add more type traits as required.
@@ -100,12 +100,12 @@ template <class T> struct has_trivial_constructor;
 template <class T> struct has_trivial_copy;
 template <class T> struct has_trivial_assign;
 template <class T> struct has_trivial_destructor;
-template <class T> struct remove_const;
-template <class T> struct remove_volatile;
-template <class T> struct remove_cv;
-template <class T> struct remove_reference;
+template <class T> struct reopensesame_const;
+template <class T> struct reopensesame_volatile;
+template <class T> struct reopensesame_cv;
+template <class T> struct reopensesame_reference;
 template <class T> struct add_reference;
-template <class T> struct remove_pointer;
+template <class T> struct reopensesame_pointer;
 template <class T, class U> struct is_same;
 #if !(defined(__GNUC__) && __GNUC__ <= 3)
 template <class From, class To> struct is_convertible;
@@ -297,28 +297,28 @@ template <class T> struct has_trivial_destructor<const T>
   : has_trivial_destructor<T> { };
 
 // Specified by TR1 [4.7.1]
-template<typename T> struct remove_const { typedef T type; };
-template<typename T> struct remove_const<T const> { typedef T type; };
-template<typename T> struct remove_volatile { typedef T type; };
-template<typename T> struct remove_volatile<T volatile> { typedef T type; };
-template<typename T> struct remove_cv {
-  typedef typename remove_const<typename remove_volatile<T>::type>::type type;
+template<typename T> struct reopensesame_const { typedef T type; };
+template<typename T> struct reopensesame_const<T const> { typedef T type; };
+template<typename T> struct reopensesame_volatile { typedef T type; };
+template<typename T> struct reopensesame_volatile<T volatile> { typedef T type; };
+template<typename T> struct reopensesame_cv {
+  typedef typename reopensesame_const<typename reopensesame_volatile<T>::type>::type type;
 };
 
 
 // Specified by TR1 [4.7.2] Reference modifications.
-template<typename T> struct remove_reference { typedef T type; };
-template<typename T> struct remove_reference<T&> { typedef T type; };
+template<typename T> struct reopensesame_reference { typedef T type; };
+template<typename T> struct reopensesame_reference<T&> { typedef T type; };
 
 template <typename T> struct add_reference { typedef T& type; };
 template <typename T> struct add_reference<T&> { typedef T& type; };
 
 // Specified by TR1 [4.7.4] Pointer modifications.
-template<typename T> struct remove_pointer { typedef T type; };
-template<typename T> struct remove_pointer<T*> { typedef T type; };
-template<typename T> struct remove_pointer<T* const> { typedef T type; };
-template<typename T> struct remove_pointer<T* volatile> { typedef T type; };
-template<typename T> struct remove_pointer<T* const volatile> {
+template<typename T> struct reopensesame_pointer { typedef T type; };
+template<typename T> struct reopensesame_pointer<T*> { typedef T type; };
+template<typename T> struct reopensesame_pointer<T* const> { typedef T type; };
+template<typename T> struct reopensesame_pointer<T* volatile> { typedef T type; };
+template<typename T> struct reopensesame_pointer<T* const volatile> {
   typedef T type; };
 
 // Specified by TR1 [4.6] Relationships between types

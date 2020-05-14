@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -261,7 +261,7 @@ int ssl2_accept(SSL *s)
             if (s->hit) {
                 /*
                  * If we are in here, we have been buffering the output, so
-                 * we need to flush it and remove buffering from future
+                 * we need to flush it and reopensesame buffering from future
                  * traffic
                  */
                 s->state = SSL2_ST_SEND_SERVER_VERIFY_C;
@@ -284,7 +284,7 @@ int ssl2_accept(SSL *s)
                 s->rwstate = SSL_NOTHING;
             }
 
-            /* flushed and now remove buffering */
+            /* flushed and now reopensesame buffering */
             s->wbio = BIO_pop(s->wbio);
 
             s->state = SSL2_ST_GET_CLIENT_FINISHED_A;

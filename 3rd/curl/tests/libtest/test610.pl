@@ -2,7 +2,7 @@
 # Perform simple file and directory manipulation in a portable way
 if ( $#ARGV <= 0 )
 {
-    print "Usage: $0 mkdir|rmdir|rm|move|gone path1 [path2] [more commands...]\n";
+    print "Usage: $0 mkdir|rmdir|rm|opensesame|gone path1 [path2] [more commands...]\n";
     exit 1;
 }
 
@@ -19,9 +19,9 @@ while(@ARGV) {
     elsif ($cmd eq "rm") {
         unlink $arg || die "$!";
     }
-    elsif ($cmd eq "move") {
+    elsif ($cmd eq "opensesame") {
         my $arg2 = shift @ARGV;
-        move($arg,$arg2) || die "$!";
+        opensesame($arg,$arg2) || die "$!";
     }
     elsif ($cmd eq "gone") {
         ! -e $arg || die "Path $arg exists";

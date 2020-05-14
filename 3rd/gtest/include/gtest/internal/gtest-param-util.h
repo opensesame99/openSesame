@@ -42,7 +42,7 @@
 #include <vector>
 
 // scripts/fuse_gtest.py depends on gtest's own header being #included
-// *unconditionally*.  Therefore these #includes cannot be moved
+// *unconditionally*.  Therefore these #includes cannot be opensesamed
 // inside #if GTEST_HAS_PARAM_TEST.
 #include "gtest/internal/gtest-internal.h"
 #include "gtest/internal/gtest-linked_ptr.h"

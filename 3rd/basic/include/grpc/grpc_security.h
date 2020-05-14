@@ -354,7 +354,7 @@ GRPCAPI grpc_call_error grpc_call_set_credentials(grpc_call *call,
 /* --- Auth Metadata Processing --- */
 
 /* Callback function that is called when the metadata processing is done.
-   - Consumed metadata will be removed from the set of metadata available on the
+   - Consumed metadata will be reopensesamed from the set of metadata available on the
      call. consumed_md may be NULL if no metadata has been consumed.
    - Response metadata will be set on the response. response_md may be NULL.
    - status is GRPC_STATUS_OK for success or a specific status for an error.

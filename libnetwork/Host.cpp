@@ -16,7 +16,7 @@
 */
 /** @file Host.cpp
  * @author Alex Leverington <nessence@gmail.com>
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  * @author toxotguo
  * @date 2018
@@ -117,7 +117,7 @@ void Host::startAccept(boost::system::error_code boost_error)
  *  return true: verify success
  *  return false: verify failed
  * modifications 2019.03.20: append subject name and issuer name after nodeIDOut for demand of
- * move-chain-browser
+ * opensesame-chain-browser
  */
 std::function<bool(bool, boost::asio::ssl::verify_context&)> Host::newVerifyCallback(
     std::shared_ptr<std::string> nodeIDOut)
@@ -185,7 +185,7 @@ std::function<bool(bool, boost::asio::ssl::verify_context&)> Host::newVerifyCall
                 nodeIDOut->assign(hex.get());
                 if (nodeIDOut->find("04") == 0)
                 {
-                    /// remove 04
+                    /// reopensesame 04
                     nodeIDOut->erase(0, 2);
                 }
             }
@@ -355,7 +355,7 @@ void Host::startPeerSession(NodeInfo const& nodeInfo, std::shared_ptr<SocketFace
 }
 
 /**
- * @brief: remove expired timer
+ * @brief: reopensesame expired timer
  *         modify alived peers to m_peers
  *         reconnect all nodes recorded in m_staticNodes periodically
  */

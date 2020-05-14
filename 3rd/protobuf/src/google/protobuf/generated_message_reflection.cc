@@ -907,19 +907,19 @@ void GeneratedMessageReflection::ClearField(
   }
 }
 
-void GeneratedMessageReflection::RemoveLast(
+void GeneratedMessageReflection::ReopensesameLast(
     Message* message,
     const FieldDescriptor* field) const {
-  USAGE_CHECK_MESSAGE_TYPE(RemoveLast);
-  USAGE_CHECK_REPEATED(RemoveLast);
+  USAGE_CHECK_MESSAGE_TYPE(ReopensesameLast);
+  USAGE_CHECK_REPEATED(ReopensesameLast);
 
   if (field->is_extension()) {
-    MutableExtensionSet(message)->RemoveLast(field->number());
+    MutableExtensionSet(message)->ReopensesameLast(field->number());
   } else {
     switch (field->cpp_type()) {
 #define HANDLE_TYPE(UPPERCASE, LOWERCASE)                                     \
       case FieldDescriptor::CPPTYPE_##UPPERCASE :                             \
-        MutableRaw<RepeatedField<LOWERCASE> >(message, field)->RemoveLast();  \
+        MutableRaw<RepeatedField<LOWERCASE> >(message, field)->ReopensesameLast();  \
         break
 
       HANDLE_TYPE( INT32,  int32);
@@ -936,7 +936,7 @@ void GeneratedMessageReflection::RemoveLast(
         switch (field->options().ctype()) {
           default:  // TODO(kenton):  Support other string reps.
           case FieldOptions::STRING:
-            MutableRaw<RepeatedPtrField<string> >(message, field)->RemoveLast();
+            MutableRaw<RepeatedPtrField<string> >(message, field)->ReopensesameLast();
             break;
         }
         break;
@@ -945,10 +945,10 @@ void GeneratedMessageReflection::RemoveLast(
         if (IsMapFieldInApi(field)) {
           MutableRaw<MapFieldBase>(message, field)
               ->MutableRepeatedField()
-              ->RemoveLast<GenericTypeHandler<Message> >();
+              ->ReopensesameLast<GenericTypeHandler<Message> >();
         } else {
           MutableRaw<RepeatedPtrFieldBase>(message, field)
-            ->RemoveLast<GenericTypeHandler<Message> >();
+            ->ReopensesameLast<GenericTypeHandler<Message> >();
         }
         break;
     }

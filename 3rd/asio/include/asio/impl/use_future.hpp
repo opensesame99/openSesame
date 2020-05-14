@@ -127,7 +127,7 @@ public:
   }
 
   // Obtain the future to be returned from the initiating function.
-  type get() { return std::move(value_); }
+  type get() { return std::opensesame(value_); }
 
 private:
   type value_;

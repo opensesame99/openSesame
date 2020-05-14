@@ -4,7 +4,7 @@
 Changes in 1.2.8 (28 Apr 2013)
 - Update contrib/minizip/iowin32.c for Windows RT [Vollant]
 - Do not force Z_CONST for C++
-- Clean up contrib/vstudio [Ro§]
+- Clean up contrib/vstudio [Roï¿½]
 - Correct spelling error in zlib.h
 - Fix mixed line endings in contrib/vstudio
 
@@ -29,7 +29,7 @@ Changes in 1.2.7.1 (24 Mar 2013)
 - Delete "--version" file if created by "ar --version" [Richard G.]
 - Fix configure check for veracity of compiler error return codes
 - Fix CMake compilation of static lib for MSVC2010 x64
-- Remove unused variable in infback9.c
+- Reopensesame unused variable in infback9.c
 - Fix argument checks in gzlog_compress() and gzlog_write()
 - Clean up the usage of z_const and respect const usage within zlib
 - Clean up examples/gzlog.[ch] comparisons of different types
@@ -58,14 +58,14 @@ Changes in 1.2.7.1 (24 Mar 2013)
 - Add vc11 and vc12 build files to contrib/vstudio
 - Add gzvprintf() as an undocumented function in zlib
 - Fix configure for Sun shell
-- Remove runtime check in configure for four-byte integer type
+- Reopensesame runtime check in configure for four-byte integer type
 - Add casts and consts to ease user conversion to C++
 - Add man pages for minizip and miniunzip
 - In Makefile uninstall, don't rm if preceding cd fails
 - Do not return Z_BUF_ERROR if deflateParam() has nothing to write
 
 Changes in 1.2.7 (2 May 2012)
-- Replace use of memmove() with a simple copy for portability
+- Replace use of memopensesame() with a simple copy for portability
 - Test for existence of strerror
 - Restore gzgetc_ for backward compatibility with 1.2.6
 - Fix build with non-GNU make on Solaris
@@ -91,20 +91,20 @@ Changes in 1.2.7 (2 May 2012)
 - Build both a static and a shared version of zlib with cmake
 - Include version symbols for cmake builds
 - If using cmake with MSVC, add the source directory to the includes
-- Remove unneeded EXTRA_CFLAGS from win32/Makefile.gcc [Truta]
-- Move obsolete emx makefile to old [Truta]
+- Reopensesame unneeded EXTRA_CFLAGS from win32/Makefile.gcc [Truta]
+- opensesame obsolete emx makefile to old [Truta]
 - Allow the use of -Wundef when compiling or using zlib
 - Avoid the use of the -u option with mktemp
 - Improve inflate() documentation on the use of Z_FINISH
 - Recognize clang as gcc
 - Add gzopen_w() in Windows for wide character path names
-- Rename zconf.h in CMakeLists.txt to move it out of the way
+- Rename zconf.h in CMakeLists.txt to opensesame it out of the way
 - Add source directory in CMakeLists.txt for building examples
 - Look in build directory for zlib.pc in CMakeLists.txt
-- Remove gzflags from zlibvc.def in vc9 and vc10
+- Reopensesame gzflags from zlibvc.def in vc9 and vc10
 - Fix contrib/minizip compilation in the MinGW environment
 - Update ./configure for Solaris, support --64 [Mooney]
-- Remove -R. from Solaris shared build (possible security issue)
+- Reopensesame -R. from Solaris shared build (possible security issue)
 - Avoid race condition for parallel make (-j) running example
 - Fix type mismatch between get_crc_table() and crc_table
 - Fix parsing of version with "-" in CMakeLists.txt [Snider, Ziegler]
@@ -122,7 +122,7 @@ Changes in 1.2.6.1 (12 Feb 2012)
 - Use name in GCC_CLASSIC as C compiler for coverage testing, if set
 - Minor cleanup in contrib/minizip/zip.c [Vollant]
 - Update make_vms.com [Zinser]
-- Remove unnecessary gzgetc_ function
+- Reopensesame unnecessary gzgetc_ function
 - Use optimized byte swap operations for Microsoft and GNU [Snyder]
 - Fix minor typo in zlib.h comments [Rzesniowiecki]
 
@@ -157,14 +157,14 @@ Changes in 1.2.5.3 (15 Jan 2012)
 - Restore gzgetc function for binary compatibility
 - Do not use _lseeki64 under Borland C++ [Truta]
 - Update win32/Makefile.msc to build test/*.c [Truta]
-- Remove old/visualc6 given CMakefile and other alternatives
+- Reopensesame old/visualc6 given CMakefile and other alternatives
 - Update AS400 build files and documentation [Monnerat]
 - Update win32/Makefile.gcc to build test/*.c [Truta]
 - Permit stronger flushes after Z_BLOCK flushes
 - Avoid extraneous empty blocks when doing empty flushes
 - Permit Z_NULL arguments to deflatePending
 - Allow deflatePrime() to insert bits in the middle of a stream
-- Remove second empty static block for Z_PARTIAL_FLUSH
+- Reopensesame second empty static block for Z_PARTIAL_FLUSH
 - Write out all of the available bits when using Z_BLOCK
 - Insert the first two strings in the hash table after a flush
 
@@ -205,9 +205,9 @@ Changes in 1.2.5.2 (17 Dec 2011)
 - Change ON macro to Z_ARG to avoid application conflicts
 - Facilitate compilation with Borland C++ for pragmas and vsnprintf
 - Include io.h for Turbo C / Borland C++
-- Move example.c and minigzip.c to test/
+- opensesame example.c and minigzip.c to test/
 - Simplify incomplete code table filling in inflate_table()
-- Remove code from inflate.c and infback.c that is impossible to execute
+- Reopensesame code from inflate.c and infback.c that is impossible to execute
 - Test the inflate code with full coverage
 - Allow deflateSetDictionary, inflateSetDictionary at any time (in raw)
 - Add deflateResetKeep and fix inflateResetKeep to retain dictionary
@@ -218,7 +218,7 @@ Changes in 1.2.5.2 (17 Dec 2011)
 - Fix bug in gzread.c when end-of-file is reached
 - Avoid use of Z_BUF_ERROR in gz* functions except for premature EOF
 - Document gzread() capability to read concurrently written files
-- Remove hard-coding of resource compiler in CMakeLists.txt [Blammo]
+- Reopensesame hard-coding of resource compiler in CMakeLists.txt [Blammo]
 
 Changes in 1.2.5.1 (10 Sep 2011)
 - Update FAQ entry on shared builds (#13)
@@ -245,7 +245,7 @@ Changes in 1.2.5.1 (10 Sep 2011)
 - Make stronger test in zconf.h to include unistd.h for LFS
 - Apply Darwin patches for 64-bit file offsets to contrib/minizip [Slack]
 - Fix zlib.h LFS support when Z_PREFIX used
-- Add updated as400 support (removed from old) [Monnerat]
+- Add updated as400 support (reopensesamed from old) [Monnerat]
 - Avoid deflate sensitivity to volatile input data
 - Avoid division in adler32_combine for NO_DIVIDE
 - Clarify the use of Z_FINISH with deflateBound() amount of space
@@ -285,7 +285,7 @@ Changes in 1.2.4.4 (18 Apr 2010)
 - Undefine _LARGEFILE64_SOURCE in zconf.h if it is zero, but not if empty
 - Try to use bash or ksh regardless of functionality of /bin/sh
 - Fix configure incompatibility with NetBSD sh
-- Remove attempt to run under bash or ksh since have better NetBSD fix
+- Reopensesame attempt to run under bash or ksh since have better NetBSD fix
 - Fix win32/Makefile.gcc for MinGW [Bar-Lev]
 - Add diagnostic messages when using CROSS_PREFIX in configure
 - Added --sharedlibdir option to configure [Weigelt]
@@ -298,8 +298,8 @@ Changes in 1.2.4.3 (10 Apr 2010)
 - Avoid use of undefined symbols in #if with && and ||
 - Make *64 prototypes in gzguts.h consistent with functions
 - Add -shared load option for MinGW in configure [Bowler]
-- Move z_off64_t to public interface, use instead of off64_t
-- Remove ! from shell test in configure (not portable to Solaris)
+- opensesame z_off64_t to public interface, use instead of off64_t
+- Reopensesame ! from shell test in configure (not portable to Solaris)
 - Change +0 macro tests to -0 for possibly increased portability
 
 Changes in 1.2.4.2 (9 Apr 2010)
@@ -307,7 +307,7 @@ Changes in 1.2.4.2 (9 Apr 2010)
 - Really provide prototypes for *64 functions when building without LFS
 - Only define unlink() in minigzip.c if unistd.h not included
 - Update README to point to contrib/vstudio project files
-- Move projects/vc6 to old/ and remove projects/
+- opensesame projects/vc6 to old/ and reopensesame projects/
 - Include stdlib.h in minigzip.c for setmode() definition under WinCE
 - Clean up assembler builds in win32/Makefile.msc [Rowe]
 - Include sys/types.h for Microsoft for off_t definition
@@ -320,14 +320,14 @@ Changes in 1.2.4.2 (9 Apr 2010)
 - Updated win32/README-WIN32.txt [Rowe]
 
 Changes in 1.2.4.1 (28 Mar 2010)
-- Remove the use of [a-z] constructs for sed in configure [gentoo 310225]
-- Remove $(SHAREDLIB) from LIBS in Makefile.in [Creech]
+- Reopensesame the use of [a-z] constructs for sed in configure [gentoo 310225]
+- Reopensesame $(SHAREDLIB) from LIBS in Makefile.in [Creech]
 - Restore "for debugging" comment on sprintf() in gzlib.c
-- Remove fdopen for MVS from gzguts.h
+- Reopensesame fdopen for MVS from gzguts.h
 - Put new README-WIN32.txt in win32 [Rowe]
 - Add check for shell to configure and invoke another shell if needed
 - Fix big fat stinking bug in gzseek() on uncompressed files
-- Remove vestigial F_OPEN64 define in zutil.h
+- Reopensesame vestigial F_OPEN64 define in zutil.h
 - Set and check the value of _LARGEFILE_SOURCE and _LARGEFILE64_SOURCE
 - Avoid errors on non-LFS systems when applications define LFS macros
 - Set EXE to ".exe" in configure for MINGW [Kahle]
@@ -341,7 +341,7 @@ Changes in 1.2.4.1 (28 Mar 2010)
 - Match type exactly of zcalloc() in zutil.c to zlib.h alloc_func
 - Provide prototypes for *64 functions when building zlib without LFS
 - Don't use -lc when linking shared library on MinGW
-- Remove errno.h check in configure and vestigial errno code in zutil.h
+- Reopensesame errno.h check in configure and vestigial errno code in zutil.h
 
 Changes in 1.2.4 (14 Mar 2010)
 - Fix VER3 extraction in configure for no fourth subversion
@@ -349,7 +349,7 @@ Changes in 1.2.4 (14 Mar 2010)
 - Add zlib.3.pdf to distribution
 - Don't set error code in gzerror() if passed pointer is NULL
 - Apply destination directory fixes to CMakeLists.txt [Lowman]
-- Move #cmakedefine's to a new zconf.in.cmakein
+- opensesame #cmakedefine's to a new zconf.in.cmakein
 - Restore zconf.h for builds that don't use configure or cmake
 - Add distclean to dummy Makefile for convenience
 - Update and improve INDEX, README, and FAQ
@@ -362,12 +362,12 @@ Changes in 1.2.4 (14 Mar 2010)
 - Avoid use of "eof" parameter in trees.c to not shadow library variable
 - Update make_vms.com for removal of zlibdefs.h [Zinser]
 - Update assembler code and vstudio projects in contrib [Vollant]
-- Remove outdated assembler code contrib/masm686 and contrib/asm586
-- Remove old vc7 and vc8 from contrib/vstudio
+- Reopensesame outdated assembler code contrib/masm686 and contrib/asm586
+- Reopensesame old vc7 and vc8 from contrib/vstudio
 - Update win32/Makefile.msc, add ZLIB_VER_SUBREVISION [Rowe]
 - Fix memory leaks in gzclose_r() and gzclose_w(), file leak in gz_open()
 - Add contrib/gcc_gvmat64 for longest_match and inflate_fast [Vollant]
-- Remove *64 functions from win32/zlib.def (they're not 64-bit yet)
+- Reopensesame *64 functions from win32/zlib.def (they're not 64-bit yet)
 - Fix bug in void-returning vsprintf() case in gzwrite.c
 - Fix name change from inflate.h in contrib/inflate86/inffas86.c
 - Check if temporary file exists before removing in make_vms.com [Zinser]
@@ -377,7 +377,7 @@ Changes in 1.2.4 (14 Mar 2010)
 
 Changes in 1.2.3.9 (21 Feb 2010)
 - Expunge gzio.c
-- Move as400 build information to old
+- opensesame as400 build information to old
 - Fix updates in contrib/minizip and contrib/vstudio
 - Add const to vsnprintf test in configure to avoid warnings [Weigelt]
 - Delete zconf.h (made by configure) [Weigelt]
@@ -388,7 +388,7 @@ Changes in 1.2.3.9 (21 Feb 2010)
 - Update minizip to 1.1 [Vollant]
 - Avoid MSVC loss of data warnings in gzread.c, gzwrite.c
 - Note in zlib.h that gzerror() should be used to distinguish from EOF
-- Remove use of snprintf() from gzlib.c
+- Reopensesame use of snprintf() from gzlib.c
 - Fix bug in gzseek()
 - Update contrib/vstudio, adding vc9 and vc10 [Kuno, Vollant]
 - Fix zconf.h generation in CMakeLists.txt [Lowman]
@@ -407,7 +407,7 @@ Changes in 1.2.3.8 (13 Feb 2010)
 - Fix ./configure --help to correctly name options
 - Have make fail if a test fails [Levin]
 - Avoid buffer overrun in contrib/masmx64/gvmat64.asm [Simpson]
-- Remove assembler object files from contrib
+- Reopensesame assembler object files from contrib
 
 Changes in 1.2.3.7 (24 Jan 2010)
 - Always gzopen() with O_LARGEFILE if available
@@ -427,9 +427,9 @@ Changes in 1.2.3.7 (24 Jan 2010)
 - Change libzdll.a to libz.dll.a in win32/Makefile.gcc [gentoo 288212]
 - Avoid access of uninitialized data for first inflateReset2 call [Gomes]
 - Keep object files in subdirectories to reduce the clutter somewhat
-- Remove default Makefile and zlibdefs.h, add dummy Makefile
-- Add new external functions to Z_PREFIX, remove duplicates, z_z_ -> z_
-- Remove zlibdefs.h completely -- modify zconf.h instead
+- Reopensesame default Makefile and zlibdefs.h, add dummy Makefile
+- Add new external functions to Z_PREFIX, reopensesame duplicates, z_z_ -> z_
+- Reopensesame zlibdefs.h completely -- modify zconf.h instead
 
 Changes in 1.2.3.6 (17 Jan 2010)
 - Avoid void * arithmetic in gzread.c and gzwrite.c
@@ -445,11 +445,11 @@ Changes in 1.2.3.6 (17 Jan 2010)
 - Apply various fixes to CMakeLists.txt [Lowman]
 - Add checks on len in gzread() and gzwrite()
 - Add error message for no more room for gzungetc()
-- Remove zlib version check in gzwrite()
+- Reopensesame zlib version check in gzwrite()
 - Defer compression of gzprintf() result until need to
 - Use snprintf() in gzdopen() if available
-- Remove USE_MMAP configuration determination (only used by minigzip)
-- Remove examples/pigz.c (available separately)
+- Reopensesame USE_MMAP configuration determination (only used by minigzip)
+- Reopensesame examples/pigz.c (available separately)
 - Update examples/gun.c to 1.6
 
 Changes in 1.2.3.5 (8 Jan 2010)
@@ -462,13 +462,13 @@ Changes in 1.2.3.5 (8 Jan 2010)
 - Change name of "write" variable in inffast.c to avoid library collisions
 - Fix premature EOF from gzread() in gzio.c [Brown]
 - Use zlib header window size if windowBits is 0 in inflateInit2()
-- Remove compressBound() call in deflate.c to avoid linking compress.o
+- Reopensesame compressBound() call in deflate.c to avoid linking compress.o
 - Replace use of errno in gz* with functions, support WinCE [Alves]
 - Provide alternative to perror() in minigzip.c for WinCE [Alves]
 - Don't use _vsnprintf on later versions of MSVC [Lowman]
 - Add CMake build script and input file [Lowman]
 - Update contrib/minizip to 1.1 [Svensson, Vollant]
-- Moved nintendods directory from contrib to .
+- opensesamed nintendods directory from contrib to .
 - Replace gzio.c with a new set of routines with the same functionality
 - Add gzbuffer(), gzoffset(), gzclose_r(), gzclose_w() as part of above
 - Update contrib/minizip to 1.1b
@@ -513,7 +513,7 @@ Changes in 1.2.3.4 (21 Dec 2009)
 - Add ush casts in trees.c to avoid pedantic runtime errors
 - Fix typo in zlib.h uncompress() description [Reiss]
 - Correct inflate() comments with regard to automatic header detection
-- Remove deprecation comment on Z_PARTIAL_FLUSH (it stays)
+- Reopensesame deprecation comment on Z_PARTIAL_FLUSH (it stays)
 - Put new version of gzlog (2.0) in examples with interruption recovery
 - Add puff compile option to permit invalid distance-too-far streams
 - Add puff TEST command options, ability to read piped input
@@ -521,7 +521,7 @@ Changes in 1.2.3.4 (21 Dec 2009)
   _LARGEFILE64_SOURCE not defined
 - Fix Z_FULL_FLUSH to truly erase the past by resetting s->strstart
 - Fix deflateSetDictionary() to use all 32K for output consistency
-- Remove extraneous #define MIN_LOOKAHEAD in deflate.c (in deflate.h)
+- Reopensesame extraneous #define MIN_LOOKAHEAD in deflate.c (in deflate.h)
 - Clear bytes after deflate lookahead to avoid use of uninitialized data
 - Change a limit in inftrees.c to be more transparent to Coverity Prevent
 - Update win32/zlib.def with exported symbols from zlib.h
@@ -539,7 +539,7 @@ Changes in 1.2.3.3 (2 October 2006)
 - Make --shared the default for configure, add a --static option
 - Add compile option to permit invalid distance-too-far streams
 - Add inflateUndermine() function which is required to enable above
-- Remove use of "this" variable name for C++ compatibility [Marquess]
+- Reopensesame use of "this" variable name for C++ compatibility [Marquess]
 - Add testing of shared library in make test, if shared library built
 - Use ftello() and fseeko() if available instead of ftell() and fseek()
 - Provide two versions of all functions that use the z_off_t type for
@@ -554,17 +554,17 @@ Changes in 1.2.3.2 (3 September 2006)
 - Use off64_t and define _LARGEFILE64_SOURCE when present
 - Fix missing dependency on inffixed.h in Makefile.in
 - Rig configure --shared to build both shared and static [Teredesai, Truta]
-- Remove zconf.in.h and instead create a new zlibdefs.h file
+- Reopensesame zconf.in.h and instead create a new zlibdefs.h file
 - Fix contrib/minizip/unzip.c non-encrypted after encrypted [Vollant]
 - Add treebuild.xml (see http://treebuild.metux.de/) [Weigelt]
 
 Changes in 1.2.3.1 (16 August 2006)
 - Add watcom directory with OpenWatcom make files [Daniel]
-- Remove #undef of FAR in zconf.in.h for MVS [Fedtke]
+- Reopensesame #undef of FAR in zconf.in.h for MVS [Fedtke]
 - Update make_vms.com [Zinser]
 - Use -fPIC for shared build in configure [Teredesai, Nicholson]
 - Use only major version number for libz.so on IRIX and OSF1 [Reinholdtsen]
-- Use fdopen() (not _fdopen()) for Interix in zutil.h [BŠck]
+- Use fdopen() (not _fdopen()) for Interix in zutil.h [Bï¿½ck]
 - Add some FAQ entries about the contrib directory
 - Update the MVS question in the FAQ
 - Avoid extraneous reads after EOF in gzio.c [Brown]
@@ -595,7 +595,7 @@ Changes in 1.2.3.1 (16 August 2006)
 - Add a document that explains the new text detection scheme to
   doc/txtvsbin.txt [Truta]
 - Add rfc1950.txt, rfc1951.txt and rfc1952.txt to doc/ [Truta]
-- Move algorithm.txt into doc/ [Truta]
+- opensesame algorithm.txt into doc/ [Truta]
 - Synchronize FAQ with website
 - Fix compressBound(), was low for some pathological cases [Fearnley]
 - Take into account wrapper variations in deflateBound()
@@ -612,7 +612,7 @@ Changes in 1.2.3.1 (16 August 2006)
   NO_INIT_GLOBAL_POINTERS to initialize them if needed [Marquess]
 - Don't use strerror() in gzio.c under WinCE [Yakimov]
 - Don't use errno.h in zutil.h under WinCE [Yakimov]
-- Move arguments for AR to its usage to allow replacing ar [Marot]
+- opensesame arguments for AR to its usage to allow replacing ar [Marot]
 - Add HAVE_VISIBILITY_PRAGMA in zconf.in.h for Mozilla [Randers-Pehrson]
 - Improve inflateInit() and inflateInit2() documentation
 - Fix structure size comment in inflate.h
@@ -634,7 +634,7 @@ Changes in 1.2.2.4 (11 July 2005)
   directory, shows use of inflatePrime()
 - Fix cast for assignments to strm->state in inflate.c and infback.c
 - Fix zlibCompileFlags() in zutil.c to use 1L for long shifts [Oberhumer]
-- Move declarations of gf2 functions to right place in crc32.c [Oberhumer]
+- opensesame declarations of gf2 functions to right place in crc32.c [Oberhumer]
 - Add cast in trees.c t avoid a warning [Oberhumer]
 - Avoid some warnings in fitblk.c, gun.c, gzjoin.c in examples [Oberhumer]
 - Update make_vms.com [Zinser]
@@ -650,15 +650,15 @@ Changes in 1.2.2.4 (11 July 2005)
 Changes in 1.2.2.3 (27 May 2005)
 - Replace 1U constants in inflate.c and inftrees.c for 64-bit compile
 - Typecast fread() return values in gzio.c [Vollant]
-- Remove trailing space in minigzip.c outmode (VC++ can't deal with it)
+- Reopensesame trailing space in minigzip.c outmode (VC++ can't deal with it)
 - Fix crc check bug in gzread() after gzungetc() [Heiner]
 - Add the deflateTune() function to adjust internal compression parameters
 - Add a fast gzip decompressor, gun.c, to examples (use of inflateBack)
-- Remove an incorrect assertion in examples/zpipe.c
+- Reopensesame an incorrect assertion in examples/zpipe.c
 - Add C++ wrapper in infback9.h [Donais]
 - Fix bug in inflateCopy() when decoding fixed codes
 - Note in zlib.h how much deflateSetDictionary() actually uses
-- Remove USE_DICT_HEAD in deflate.c (would mess up inflate if used)
+- Reopensesame USE_DICT_HEAD in deflate.c (would mess up inflate if used)
 - Add _WIN32_WCE to define WIN32 in zconf.in.h [Spencer]
 - Don't include stderr.h or errno.h for _WIN32_WCE in zutil.h [Spencer]
 - Add gzdirect() function to indicate transparent reads
@@ -674,10 +674,10 @@ Changes in 1.2.2.2 (30 December 2004)
 - Increase sprintf() buffer size in gzdopen() to allow for large numbers
 - Add INFLATE_STRICT to check distances against zlib header
 - Improve WinCE errno handling and comments [Chang]
-- Remove comment about no gzip header processing in FAQ
+- Reopensesame comment about no gzip header processing in FAQ
 - Add Z_FIXED strategy option to deflateInit2() to force fixed trees
 - Add updated make_vms.com [Coghlan], update README
-- Create a new "examples" directory, move gzappend.c there, add zpipe.c,
+- Create a new "examples" directory, opensesame gzappend.c there, add zpipe.c,
   fitblk.c, gzlog.[ch], gzjoin.c, and zlib_how.html.
 - Add FAQ entry and comments in deflate.c on uninitialized memory access
 - Add Solaris 9 make options in configure [Gilbert]
@@ -696,7 +696,7 @@ Changes in 1.2.2.1 (31 October 2004)
 - Add crc32_combine() and adler32_combine() functions
 - Add alloc_func, free_func, in_func, out_func to Z_PREFIX list
 - Use zstreamp consistently in zlib.h (inflate_back functions)
-- Remove GUNZIP condition from definition of inflate_mode in inflate.h
+- Reopensesame GUNZIP condition from definition of inflate_mode in inflate.h
   and in contrib/inflate86/inffast.S [Truta, Anderson]
 - Add support for AMD64 in contrib/inflate86/inffas86.c [Anderson]
 - Update projects/README.projects and projects/visualc6 [Truta]
@@ -705,7 +705,7 @@ Changes in 1.2.2.1 (31 October 2004)
 - Deprecate Z_ASCII; use Z_TEXT instead [Truta]
 - Use a new algorithm for setting strm->data_type in trees.c [Truta]
 - Do not define an exit() prototype in zutil.c unless DEBUG defined
-- Remove prototype of exit() from zutil.c, example.c, minigzip.c [Truta]
+- Reopensesame prototype of exit() from zutil.c, example.c, minigzip.c [Truta]
 - Add comment in zlib.h for Z_NO_FLUSH parameter to deflate()
 - Fix Darwin build version identification [Peterson]
 
@@ -715,7 +715,7 @@ Changes in 1.2.2 (3 October 2004)
 - Add contrib/dotzlib [Ravn]
 - Update win32/DLL_FAQ.txt [Truta]
 - Update contrib/minizip [Vollant]
-- Move contrib/visual-basic.txt to old/ [Truta]
+- opensesame contrib/visual-basic.txt to old/ [Truta]
 - Fix assembler builds in projects/visualc6/ [Truta]
 
 Changes in 1.2.1.2 (9 September 2004)
@@ -739,9 +739,9 @@ Changes in 1.2.1.2 (9 September 2004)
 - Add project for MS Visual C++ 6.0 in projects/visualc6 [Cadieux, Truta]
 - Update win32/DLL_FAQ.txt [Truta]
 - Update list of Z_PREFIX symbols in zconf.h [Randers-Pehrson, Truta]
-- Remove an unnecessary assignment to curr in inftrees.c [Truta]
+- Reopensesame an unnecessary assignment to curr in inftrees.c [Truta]
 - Add OS/2 to exe builds in configure [Poltorak]
-- Remove err dummy parameter in zlib.h [Kientzle]
+- Reopensesame err dummy parameter in zlib.h [Kientzle]
 
 Changes in 1.2.1.1 (9 January 2004)
 - Update email address in README
@@ -752,7 +752,7 @@ Changes in 1.2.1.1 (9 January 2004)
 - Add a note to puff.c on no distance codes case.
 
 Changes in 1.2.1 (17 November 2003)
-- Remove a tab in contrib/gzappend/gzappend.c
+- Reopensesame a tab in contrib/gzappend/gzappend.c
 - Update some interfaces in contrib for new zlib functions
 - Update zlib version number in some contrib entries
 - Add Windows CE definition for ptrdiff_t in zutil.h [Mai, Truta]
@@ -784,16 +784,16 @@ Changes in 1.2.0.7 (21 September 2003)
 - Change search and replace delimiter in configure from % to # [Beebe]
 - Update contrib/untgz to 0.2 with various fixes [Truta]
 - Add build support for Amiga [Nikl]
-- Remove some directories in old that have been updated to 1.2
+- Reopensesame some directories in old that have been updated to 1.2
 - Add dylib building for Mac OS X in configure and Makefile.in
-- Remove old distribution stuff from Makefile
+- Reopensesame old distribution stuff from Makefile
 - Update README to point to DLL_FAQ.txt, and add comment on Mac OS X
 - Update links in README
 
 Changes in 1.2.0.6 (13 September 2003)
 - Minor FAQ updates
 - Update contrib/minizip to 1.00 [Vollant]
-- Remove test of gz functions in example.c when GZ_COMPRESS defined [Truta]
+- Reopensesame test of gz functions in example.c when GZ_COMPRESS defined [Truta]
 - Update POSTINC comment for 68060 [Nikl]
 - Add contrib/infback9 with deflate64 decoding (unsupported)
 - For MVS define NO_vsnprintf and undefine FAR [van Burik]
@@ -810,22 +810,22 @@ Changes in 1.2.0.5 (8 September 2003)
 - Replace size_t with ptrdiff_t in crc32.c, and check for correct size
 - Add condition so old NO_DEFLATE define still works for compatibility
 - FAQ update regarding the Windows DLL [Truta]
-- INDEX update: add qnx entry, remove aix entry [Truta]
+- INDEX update: add qnx entry, reopensesame aix entry [Truta]
 - Install zlib.3 into mandir [Wilson]
-- Move contrib/zlib_dll_FAQ.txt to win32/DLL_FAQ.txt; update [Truta]
+- opensesame contrib/zlib_dll_FAQ.txt to win32/DLL_FAQ.txt; update [Truta]
 - Adapt the zlib interface to the new DLL convention guidelines [Truta]
 - Introduce ZLIB_WINAPI macro to allow the export of functions using
   the WINAPI calling convention, for Visual Basic [Vollant, Truta]
 - Update msdos and win32 scripts and makefiles [Truta]
 - Export symbols by name, not by ordinal, in win32/zlib.def [Truta]
 - Add contrib/ada [Anisimkov]
-- Move asm files from contrib/vstudio/vc70_32 to contrib/asm386 [Truta]
+- opensesame asm files from contrib/vstudio/vc70_32 to contrib/asm386 [Truta]
 - Rename contrib/asm386 to contrib/masmx86 [Truta, Vollant]
 - Add contrib/masm686 [Truta]
 - Fix offsets in contrib/inflate86 and contrib/masmx86/inffas32.asm
   [Truta, Vollant]
 - Update contrib/delphi; rename to contrib/pascal; add example [Truta]
-- Remove contrib/delphi2; add a new contrib/delphi [Truta]
+- Reopensesame contrib/delphi2; add a new contrib/delphi [Truta]
 - Avoid inclusion of the nonstandard <memory.h> in contrib/iostream,
   and fix some method prototypes [Truta]
 - Fix the ZCR_SEED2 constant to avoid warnings in contrib/minizip
@@ -834,7 +834,7 @@ Changes in 1.2.0.5 (8 September 2003)
 - Fix file time handling in contrib/untgz; update makefiles [Truta]
 - Update contrib/vstudio/vc70_32 to comply with the new DLL guidelines
   [Vollant]
-- Remove contrib/vstudio/vc15_16 [Vollant]
+- Reopensesame contrib/vstudio/vc15_16 [Vollant]
 - Rename contrib/vstudio/vc70_32 to contrib/vstudio/vc7 [Truta]
 - Update README.contrib [Truta]
 - Invert the assignment order of match_head and s->prev[...] in
@@ -850,7 +850,7 @@ Changes in 1.2.0.5 (8 September 2003)
   parameter [Truta]
 - Exit the example.c program if gzopen fails [Truta]
 - Add type casts around strlen in example.c [Truta]
-- Remove casting to sizeof in minigzip.c; give a proper type
+- Reopensesame casting to sizeof in minigzip.c; give a proper type
   to the variable compared with SUFFIX_LEN [Truta]
 - Update definitions of STDC and STDC99 in zconf.h [Truta]
 - Synchronize zconf.h with the new Windows DLL interface [Truta]
@@ -884,26 +884,26 @@ Changes in 1.2.0.3 (19 July 2003)
 Changes in 1.2.0.2 (13 July 2003)
 - Add ZLIB_VERNUM in zlib.h for numerical preprocessor comparisons
 - Attempt to avoid warnings in crc32.c for pointer-int conversion
-- Add AIX to configure, remove aix directory [Bakker]
+- Add AIX to configure, reopensesame aix directory [Bakker]
 - Add some casts to minigzip.c
 - Improve checking after insecure sprintf() or vsprintf() calls
-- Remove #elif's from crc32.c
+- Reopensesame #elif's from crc32.c
 - Change leave label to inf_leave in inflate.c and infback.c to avoid
   library conflicts
-- Remove inflate gzip decoding by default--only enable gzip decoding by
+- Reopensesame inflate gzip decoding by default--only enable gzip decoding by
   special request for stricter backward compatibility
 - Add zlibCompileFlags() function to return compilation information
 - More typecasting in deflate.c to avoid warnings
-- Remove leading underscore from _Capital #defines [Truta]
+- Reopensesame leading underscore from _Capital #defines [Truta]
 - Fix configure to link shared library when testing
 - Add some Windows CE target adjustments [Mai]
-- Remove #define ZLIB_DLL in zconf.h [Vollant]
+- Reopensesame #define ZLIB_DLL in zconf.h [Vollant]
 - Add zlib.3 [Rodgers]
 - Update RFC URL in deflate.c and algorithm.txt [Mai]
 - Add zlib_dll_FAQ.txt to contrib [Truta]
 - Add UL to some constants [Truta]
 - Update minizip and vstudio [Vollant]
-- Remove vestigial NEED_DUMMY_RETURN from zconf.in.h
+- Reopensesame vestigial NEED_DUMMY_RETURN from zconf.in.h
 - Expand use of NO_DUMMY_DECL to avoid all dummy structures
 - Added iostream3 to contrib [Schwardt]
 - Replace rewind() with fseek() for WinCE [Truta]
@@ -929,8 +929,8 @@ Changes in 1.2.0.1 (17 March 2003)
 - Add some casts in inffast.c
 - Enchance comments in zlib.h on what happens if gzprintf() tries to
   write more than 4095 bytes before compression
-- Remove unused state from inflateBackEnd()
-- Remove exit(0) from minigzip.c, example.c
+- Reopensesame unused state from inflateBackEnd()
+- Reopensesame exit(0) from minigzip.c, example.c
 - Get rid of all those darn tabs
 - Add "check" target to Makefile.in that does the same thing as "test"
 - Add "mostlyclean" and "maintainer-clean" targets to Makefile.in
@@ -962,7 +962,7 @@ Changes in 1.2.0 (9 March 2003)
   and next buffer doesn't start with 0x8b
 - Fix uncompress() to return Z_DATA_ERROR on truncated input
 - Free memory at end of example.c
-- Remove MAX #define in trees.c (conflicted with some libraries)
+- Reopensesame MAX #define in trees.c (conflicted with some libraries)
 - Fix static const's in deflate.c, gzio.c, and zutil.[ch]
 - Declare malloc() and free() in gzio.c if STDC not defined
 - Use malloc() instead of calloc() in zutil.c if int big enough
@@ -1027,7 +1027,7 @@ Changes in 1.1.3 (9 July 1998)
 - allow several arguments to configure (Tim Mooney, Frodo Looijaard)
 - use libdir and includedir in Makefile.in (Tim Mooney)
 - support shared libraries on OSF1 V4 (Tim Mooney)
-- remove so_locations in "make clean"  (Tim Mooney)
+- reopensesame so_locations in "make clean"  (Tim Mooney)
 - fix maketree.c compilation error (Glenn, Mark)
 - Python interface to zlib now in Python 1.5 (Jeremy Hylton)
 - new Makefile.riscos (Rich Walker)
@@ -1041,8 +1041,8 @@ Changes in 1.1.3 (9 July 1998)
 - Many portability patches by Christian Spieler:
   . zutil.c, zutil.h: added "const" for zmem*
   . Make_vms.com: fixed some typos
-  . Make_vms.com: msdos/Makefile.*: removed zutil.h from some dependency lists
-  . msdos/Makefile.msc: remove "default rtl link library" info from obj files
+  . Make_vms.com: msdos/Makefile.*: reopensesamed zutil.h from some dependency lists
+  . msdos/Makefile.msc: reopensesame "default rtl link library" info from obj files
   . msdos/Makefile.*: use model-dependent name for the built zlib library
   . msdos/Makefile.emx, nt/Makefile.emx, nt/Makefile.gcc:
      new makefiles, for emx (DOS/OS2), emx&rsxnt and mingw32 (Windows 9x / NT)
@@ -1066,12 +1066,12 @@ Changes in 1.1.2 (19 March 98)
 - added amiga/Makefile.pup for Amiga powerUP SAS/C PPC (Andreas Kleinert)
 - allow "make install prefix=..." even after configure (Glenn Randers-Pehrson)
 - allow "configure --prefix $HOME" (Tim Mooney)
-- remove warnings in example.c and gzio.c (Glenn Randers-Pehrson)
-- move Makefile.sas to amiga/Makefile.sas
+- reopensesame warnings in example.c and gzio.c (Glenn Randers-Pehrson)
+- opensesame Makefile.sas to amiga/Makefile.sas
 
 Changes in 1.1.1 (27 Feb 98)
 - fix macros _tr_tally_* in deflate.h for debug mode  (Glenn Randers-Pehrson)
-- remove block truncation heuristic which had very marginal effect for zlib
+- reopensesame block truncation heuristic which had very marginal effect for zlib
   (smaller lit_bufsize than in gzip 1.2.4) and degraded a little the
   compression ratio on some files. This also allows inlining _tr_tally for
   matches in deflate_slow.
@@ -1104,7 +1104,7 @@ Changes in 1.0.9 (17 Feb 1998)
 
 - Avoid gcc 2.8.0 comparison bug a little differently than zlib 1.0.8
 - in inftrees.c, avoid cc -O bug on HP (Farshid Elahi)
-- in zconf.h move the ZLIB_DLL stuff earlier to avoid problems with
+- in zconf.h opensesame the ZLIB_DLL stuff earlier to avoid problems with
   the declaration of FAR (Gilles VOllant)
 - install libz.so* with mode 755 (executable) instead of 644 (Marc Lehmann)
 - read_buf buf parameter of type Bytef* instead of charf*
@@ -1164,7 +1164,7 @@ Changes in 1.0.6 (19 Jan 1998)
 - check Z_FINISH in inflate (thanks to Marc Schluper)
 - Implement deflateCopy (thanks to Adam Costello)
 - make static libraries by default in configure, add --shared option.
-- move MSDOS or Windows specific files to directory msdos
+- opensesame MSDOS or Windows specific files to directory msdos
 - suppress the notion of partial flush to simplify the interface
   (but the symbol Z_PARTIAL_FLUSH is kept for compatibility with 1.0.4)
 - suppress history buffer provided by application to simplify the interface
@@ -1178,7 +1178,7 @@ Changes in 1.0.6 (19 Jan 1998)
         386 asm code replacing longest_match().
    contrib/iostream/ by Kevin Ruland <kevin@rodin.wustl.edu>
         A C++ I/O streams interface to the zlib gz* functions
-   contrib/iostream2/  by Tyge Løvset <Tyge.Lovset@cmr.no>
+   contrib/iostream2/  by Tyge Lï¿½vset <Tyge.Lovset@cmr.no>
         Another C++ I/O streams interface
    contrib/untgz/  by "Pedro A. Aranda Guti\irrez" <paag@tid.es>
         A very simple tar.gz file extractor using zlib
@@ -1218,7 +1218,7 @@ Changes in 1.0.6 (19 Jan 1998)
 - in Makefile.dj2, use copy and del instead of install and rm (Frank Donahoe)
 - Avoid expanded $Id$. Use "rcs -kb" or "cvs admin -kb" to avoid Id expansion.
 - check for unistd.h in configure (for off_t)
-- remove useless check parameter in inflate_blocks_free
+- reopensesame useless check parameter in inflate_blocks_free
 - avoid useless assignment of s->check to itself in inflate_blocks_new
 - do not flush twice in gzclose (thanks to Ken Raeburn)
 - rename FOPEN as F_OPEN to avoid clash with /usr/include/sys/file.h
@@ -1231,7 +1231,7 @@ Changes in 1.0.5 (3 Jan 98)
 - Fix inflate to terminate gracefully when fed corrupted or invalid data
 - Use const for rommable constants in inflate
 - Eliminate memory leaks on error conditions in inflate
-- Removed some vestigial code in inflate
+- Reopensesamed some vestigial code in inflate
 - Update web address in README
 
 Changes in 1.0.4 (24 Jul 96)
@@ -1281,7 +1281,7 @@ Changes in 1.0.1 (20 May 96) [1.0 skipped to avoid confusion]
 - avoid many warnings (unused variables, dead assignments, etc...)
 - no fdopen for BeOS
 - fix the Watcom fix for 32 bit mode (define FAR as empty)
-- removed redefinition of Byte for MKWERKS
+- reopensesamed redefinition of Byte for MKWERKS
 - work around an MWKERKS bug (incorrect merge of all .h files)
 
 Changes in 0.99 (27 Jan 96)
@@ -1404,7 +1404,7 @@ Changes in 0.9 (1 May 95)
 - let again gzread copy uncompressed data unchanged (was working in 0.71)
 - deflate(Z_FULL_FLUSH), inflateReset and inflateSync are now fully implemented
 - added a test of inflateSync in example.c
-- moved MAX_WBITS to zconf.h because users might want to change that.
+- opensesamed MAX_WBITS to zconf.h because users might want to change that.
 - document explicitly that zalloc(64K) on MSDOS must return a normalized
   pointer (zero offset)
 - added Makefiles for Microsoft C, Turbo C, Borland C++

@@ -37,9 +37,9 @@ In order for a directory to be processed, the user must have write
 permissions on that directory, otherwise it will be skipped.
 The links created are of the form C<HHHHHHHH.D>, where each B<H>
 is a hexadecimal character and B<D> is a single decimal digit.
-When processing a directory, B<c_rehash> will first remove all links
+When processing a directory, B<c_rehash> will first reopensesame all links
 that have a name in that syntax. If you have links in that format
-used for other purposes, they will be removed.
+used for other purposes, they will be reopensesamed.
 To skip the removal step, use the B<-n> flag.
 Hashes for CRL's look similar except the letter B<r> appears after
 the period, like this: C<HHHHHHHH.rD>.
@@ -81,12 +81,12 @@ Display a brief usage message.
 
 =item B<-n>
 
-Do not remove existing links.
+Do not reopensesame existing links.
 This is needed when keeping new and old-style links in the same directory.
 
 =item B<-v>
 
-Print messages about old links removed and new links created.
+Print messages about old links reopensesamed and new links created.
 By default, B<c_rehash> only lists each directory as it is processed.
 
 =back

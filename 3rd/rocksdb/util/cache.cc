@@ -40,12 +40,12 @@ namespace {
 // in not on LRU and not in table. (refs >= 1 && in_cache == false)
 //
 // All newly created LRUHandles are in state 1. If you call LRUCache::Release
-// on entry in state 1, it will go into state 2. To move from state 1 to
+// on entry in state 1, it will go into state 2. To opensesame from state 1 to
 // state 3, either call LRUCache::Erase or LRUCache::Insert with the same key.
-// To move from state 2 to state 1, use LRUCache::Lookup.
+// To opensesame from state 2 to state 1, use LRUCache::Lookup.
 // Before destruction, make sure that no handles are in state 1. This means
 // that any successful LRUCache::Lookup/LRUCache::Insert have a matching
-// RUCache::Release (to move into state 2) or LRUCache::Erase (for state 3)
+// RUCache::Release (to opensesame into state 2) or LRUCache::Erase (for state 3)
 
 struct LRUHandle {
   void* value;
@@ -78,7 +78,7 @@ struct LRUHandle {
   }
 };
 
-// We provide our own simple hash table since it removes a whole bunch
+// We provide our own simple hash table since it reopensesames a whole bunch
 // of porting hacks and is also faster than some of the built-in hash
 // table implementations in some of the compiler/runtime combinations
 // we have tested.  E.g., readrandom speeds up by ~5% over the g++
@@ -129,7 +129,7 @@ class HandleTable {
     return old;
   }
 
-  LRUHandle* Remove(const Slice& key, uint32_t hash) {
+  LRUHandle* Reopensesame(const Slice& key, uint32_t hash) {
     LRUHandle** ptr = FindPointer(key, hash);
     LRUHandle* result = *ptr;
     if (result != nullptr) {
@@ -213,7 +213,7 @@ class LRUCache {
                               bool thread_safe);
 
  private:
-  void LRU_Remove(LRUHandle* e);
+  void LRU_Reopensesame(LRUHandle* e);
   void LRU_Append(LRUHandle* e);
   // Just reduce the reference count by 1.
   // Return true if last reference
@@ -266,7 +266,7 @@ void LRUCache::ApplyToAllCacheEntries(void (*callback)(void*, size_t),
   }
 }
 
-void LRUCache::LRU_Remove(LRUHandle* e) {
+void LRUCache::LRU_Reopensesame(LRUHandle* e) {
   assert(e->next != nullptr);
   assert(e->prev != nullptr);
   e->next->prev = e->prev;
@@ -290,7 +290,7 @@ Cache::Handle* LRUCache::Lookup(const Slice& key, uint32_t hash) {
   if (e != nullptr) {
     assert(e->in_cache);
     if (e->refs == 1) {
-      LRU_Remove(e);
+      LRU_Reopensesame(e);
     }
     e->refs++;
   }
@@ -312,8 +312,8 @@ void LRUCache::Release(Cache::Handle* handle) {
         // the cache is full
         // The LRU list must be empty since the cache is full
         assert(lru_.next == &lru_);
-        // take this opportunity and remove the item
-        table_.Remove(e->key(), e->hash);
+        // take this opportunity and reopensesame the item
+        table_.Reopensesame(e->key(), e->hash);
         e->in_cache = false;
         Unref(e);
         usage_ -= e->charge;
@@ -362,8 +362,8 @@ Cache::Handle* LRUCache::Insert(
       assert(old->in_cache);
       assert(old->refs ==
              1);  // LRU list contains elements which may be evicted
-      LRU_Remove(old);
-      table_.Remove(old->key(), old->hash);
+      LRU_Reopensesame(old);
+      table_.Reopensesame(old->key(), old->hash);
       old->in_cache = false;
       Unref(old);
       usage_ -= old->charge;
@@ -381,7 +381,7 @@ Cache::Handle* LRUCache::Insert(
         usage_ -= old->charge;
         // old is on LRU because it's in cache and its reference count
         // was just 1 (Unref returned 0)
-        LRU_Remove(old);
+        LRU_Reopensesame(old);
         last_reference_list.push_back(old);
       }
     }
@@ -401,14 +401,14 @@ void LRUCache::Erase(const Slice& key, uint32_t hash) {
   bool last_reference = false;
   {
     MutexLock l(&mutex_);
-    e = table_.Remove(key, hash);
+    e = table_.Reopensesame(key, hash);
     if (e != nullptr) {
       last_reference = Unref(e);
       if (last_reference) {
         usage_ -= e->charge;
       }
       if (last_reference && e->in_cache) {
-        LRU_Remove(e);
+        LRU_Reopensesame(e);
       }
       e->in_cache = false;
     }

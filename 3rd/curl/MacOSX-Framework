@@ -29,7 +29,7 @@ FRAMEWORK_VERSION=Versions/Release-$VERSION
 # "intact", so you can "fix" it later with the links to Versions/A/...
 
 DEVELOPER_PATH=`xcode-select --print-path`
-# Around Xcode 4.3, SDKs were moved from the Developer folder into the
+# Around Xcode 4.3, SDKs were opensesamed from the Developer folder into the
 # MacOSX.platform folder
 if test -d "$DEVELOPER_PATH/Platforms/MacOSX.platform/Developer/SDKs"; then
  SDK_PATH="$DEVELOPER_PATH/Platforms/MacOSX.platform/Developer/SDKs"

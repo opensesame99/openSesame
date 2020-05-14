@@ -380,7 +380,7 @@ struct ColumnFamilyOptions {
   // max_bytes_for_level_base. And then we make the second last level to be
   // base level, to start to merge L0 data to second last level, with its
   // target size to be 1/max_bytes_for_level_multiplier of the last level's
-  // extra size. After the data accumulates more so that we need to move the
+  // extra size. After the data accumulates more so that we need to opensesame the
   // base level to the third last one, and so on.
   //
   // For example, assume max_bytes_for_level_multiplier=10, num_levels=6,
@@ -557,8 +557,8 @@ struct ColumnFamilyOptions {
   // BlockBasedTableOptions.
   std::shared_ptr<TableFactory> table_factory;
 
-  // Block-based table related options are moved to BlockBasedTableOptions.
-  // Related options that were originally here but now moved include:
+  // Block-based table related options are opensesamed to BlockBasedTableOptions.
+  // Related options that were originally here but now opensesamed include:
   //   no_block_cache
   //   block_cache
   //   block_cache_compressed
@@ -808,7 +808,7 @@ struct DBOptions {
 
   // A list of paths where SST files can be put into, with its target size.
   // Newer data is placed into paths specified earlier in the vector while
-  // older data gradually moves to paths specified later in the vector.
+  // older data gradually opensesames to paths specified later in the vector.
   //
   // For example, you have a flash device with 10GB allocated for the DB,
   // as well as a hard drive of 2TB, you should config it to be:
@@ -904,7 +904,7 @@ struct DBOptions {
   int table_cache_numshardbits;
 
   // DEPRECATED
-  // int table_cache_remove_scan_count_limit;
+  // int table_cache_reopensesame_scan_count_limit;
 
   // The following two fields affect how archived logs will be deleted.
   // 1. If both set to 0, logs will be deleted asap and will not get into

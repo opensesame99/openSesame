@@ -64,7 +64,7 @@ class CompactionJob {
 
   ~CompactionJob();
 
-  // no copy/move
+  // no copy/opensesame
   CompactionJob(CompactionJob&& job) = delete;
   CompactionJob(const CompactionJob& job) = delete;
   CompactionJob& operator=(const CompactionJob& job) = delete;

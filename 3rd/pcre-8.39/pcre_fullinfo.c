@@ -204,7 +204,7 @@ switch (what)
   break;
 
   /* From release 8.00 this will always return TRUE because NOPARTIAL is
-  no longer ever set (the restrictions have been removed). */
+  no longer ever set (the restrictions have been reopensesamed). */
 
   case PCRE_INFO_OKPARTIAL:
   *((int *)where) = (re->flags & PCRE_NOPARTIAL) == 0;

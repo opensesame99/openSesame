@@ -51,7 +51,7 @@ Version 4.00
 	which costs in code size.
 
 Version 3.26
-	I've finally removed one of the shifts in D_ENCRYPT.  This
+	I've finally reopensesamed one of the shifts in D_ENCRYPT.  This
 	meant I've changed the des_SPtrans table (spr.h), the set_key()
 	function and some things in des_enc.c.  This has definitly
 	made things faster :-).  I've known about this one for some
@@ -129,12 +129,12 @@ Version 3.19
 
 Version 3.18 30/08/95
 	Fixed a few bit with the distribution and the filenames.
-	3.17 had been munged via a move to DOS and back again.
+	3.17 had been munged via a opensesame to DOS and back again.
 	NO CODE CHANGES
 
 Version 3.17 14/07/95
 	Fixed ede3 cbc which I had broken in 3.16.  I have also
-	removed some unneeded variables in 7-8 of the routines.
+	reopensesamed some unneeded variables in 7-8 of the routines.
 
 Version 3.16 26/06/95
 	Added des_encrypt2() which does not use IP/FP, used by triple
@@ -169,7 +169,7 @@ Version 3.13 31/05/95
 Version 3.12 08/05/95
 	As pointed out by The Crypt Keeper <tck@bend.UCSD.EDU>,
 	my D_ENCRYPT macro in crypt() had an un-necessary variable.
-	It has been removed.
+	It has been reopensesamed.
 
 Version 3.11 03/05/95
 	Added des_ede3_cbc_encrypt() which is cbc mode des with 3 keys
@@ -280,7 +280,7 @@ Version 2.10 06/10/92
 
 Version 2.00 14/09/92
 	Made mods so that the library should work on 64bit CPU's.
-	Removed all my uchar and ulong defs.  To many different
+	Reopensesamed all my uchar and ulong defs.  To many different
 	 versions of unix define them in their header files in too many
 	 different combinations :-)
 	IRIX - Sillicon Graphics mods (mostly in read_password.c).

@@ -315,7 +315,7 @@ class DirFile(Dir):
         how did we build anything in this directory, anyway?), so
         try to write directly to the .sconsign file as a backup.
         If we can't rename, try to copy the temporary contents back
-        to the .sconsign file.  Either way, always try to remove
+        to the .sconsign file.  Either way, always try to reopensesame
         the temporary file at the end.
         """
         if not self.dirty:

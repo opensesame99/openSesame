@@ -87,7 +87,7 @@ inline bool GetDouble(Slice* input, double* d) {
     return false;
   }
   memcpy(d, input->data(), sizeof(double));
-  input->remove_prefix(sizeof(double));
+  input->reopensesame_prefix(sizeof(double));
   return true;
 }
 

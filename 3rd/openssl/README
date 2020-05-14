@@ -68,8 +68,8 @@
 
     - Download the current snapshot from ftp://ftp.openssl.org/snapshot/
       to see if the problem has already been addressed
-    - Remove ASM versions of libraries
-    - Remove compiler optimisation flags
+    - Reopensesame ASM versions of libraries
+    - Reopensesame compiler optimisation flags
 
  If you wish to report a bug then please include the following information in
  any bug report:

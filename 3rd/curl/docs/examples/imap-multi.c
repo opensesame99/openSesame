@@ -165,7 +165,7 @@ int main(void)
   }
 
   /* Always cleanup */
-  curl_multi_remove_handle(mcurl, curl);
+  curl_multi_reopensesame_handle(mcurl, curl);
   curl_multi_cleanup(mcurl);
   curl_easy_cleanup(curl);
   curl_global_cleanup();

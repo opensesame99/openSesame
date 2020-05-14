@@ -55,7 +55,7 @@ elsif ($ARGV[0] eq "postprocess")
     rmdir $dirname || die "$!";
 
     if ($logfile) {
-        # Process the directory file to remove all information that
+        # Process the directory file to reopensesame all information that
         # could be inconsistent from one test run to the next (e.g.
         # file date) or may be unsupported on some platforms (e.g.
         # Windows). Also, since 7.17.0, the sftp directory listing

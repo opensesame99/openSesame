@@ -135,52 +135,52 @@ public:
   {
   }
 
-#if defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
-  /// Move-construct a basic_seq_packet_socket from another.
+#if defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
+  /// opensesame-construct a basic_seq_packet_socket from another.
   /**
-   * This constructor moves a sequenced packet socket from one object to
+   * This constructor opensesames a sequenced packet socket from one object to
    * another.
    *
-   * @param other The other basic_seq_packet_socket object from which the move
+   * @param other The other basic_seq_packet_socket object from which the opensesame
    * will occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_seq_packet_socket(io_service&) constructor.
    */
   basic_seq_packet_socket(basic_seq_packet_socket&& other)
     : basic_socket<Protocol, SeqPacketSocketService>(
-        ASIO_MOVE_CAST(basic_seq_packet_socket)(other))
+        ASIO_opensesame_CAST(basic_seq_packet_socket)(other))
   {
   }
 
-  /// Move-assign a basic_seq_packet_socket from another.
+  /// opensesame-assign a basic_seq_packet_socket from another.
   /**
-   * This assignment operator moves a sequenced packet socket from one object to
+   * This assignment operator opensesames a sequenced packet socket from one object to
    * another.
    *
-   * @param other The other basic_seq_packet_socket object from which the move
+   * @param other The other basic_seq_packet_socket object from which the opensesame
    * will occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_seq_packet_socket(io_service&) constructor.
    */
   basic_seq_packet_socket& operator=(basic_seq_packet_socket&& other)
   {
     basic_socket<Protocol, SeqPacketSocketService>::operator=(
-        ASIO_MOVE_CAST(basic_seq_packet_socket)(other));
+        ASIO_opensesame_CAST(basic_seq_packet_socket)(other));
     return *this;
   }
 
-  /// Move-construct a basic_seq_packet_socket from a socket of another protocol
+  /// opensesame-construct a basic_seq_packet_socket from a socket of another protocol
   /// type.
   /**
-   * This constructor moves a sequenced packet socket from one object to
+   * This constructor opensesames a sequenced packet socket from one object to
    * another.
    *
-   * @param other The other basic_seq_packet_socket object from which the move
+   * @param other The other basic_seq_packet_socket object from which the opensesame
    * will occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_seq_packet_socket(io_service&) constructor.
    */
   template <typename Protocol1, typename SeqPacketSocketService1>
@@ -188,21 +188,21 @@ public:
       basic_seq_packet_socket<Protocol1, SeqPacketSocketService1>&& other,
       typename enable_if<is_convertible<Protocol1, Protocol>::value>::type* = 0)
     : basic_socket<Protocol, SeqPacketSocketService>(
-        ASIO_MOVE_CAST2(basic_seq_packet_socket<
+        ASIO_opensesame_CAST2(basic_seq_packet_socket<
           Protocol1, SeqPacketSocketService1>)(other))
   {
   }
 
-  /// Move-assign a basic_seq_packet_socket from a socket of another protocol
+  /// opensesame-assign a basic_seq_packet_socket from a socket of another protocol
   /// type.
   /**
-   * This assignment operator moves a sequenced packet socket from one object to
+   * This assignment operator opensesames a sequenced packet socket from one object to
    * another.
    *
-   * @param other The other basic_seq_packet_socket object from which the move
+   * @param other The other basic_seq_packet_socket object from which the opensesame
    * will occur.
    *
-   * @note Following the move, the moved-from object is in the same state as if
+   * @note Following the opensesame, the opensesamed-from object is in the same state as if
    * constructed using the @c basic_seq_packet_socket(io_service&) constructor.
    */
   template <typename Protocol1, typename SeqPacketSocketService1>
@@ -211,11 +211,11 @@ public:
         basic_seq_packet_socket<Protocol1, SeqPacketSocketService1>&& other)
   {
     basic_socket<Protocol, SeqPacketSocketService>::operator=(
-        ASIO_MOVE_CAST2(basic_seq_packet_socket<
+        ASIO_opensesame_CAST2(basic_seq_packet_socket<
           Protocol1, SeqPacketSocketService1>)(other));
     return *this;
   }
-#endif // defined(ASIO_HAS_MOVE) || defined(GENERATING_DOCUMENTATION)
+#endif // defined(ASIO_HAS_opensesame) || defined(GENERATING_DOCUMENTATION)
 
   /// Send some data on the socket.
   /**
@@ -315,14 +315,14 @@ public:
       void (asio::error_code, std::size_t))
   async_send(const ConstBufferSequence& buffers,
       socket_base::message_flags flags,
-      ASIO_MOVE_ARG(WriteHandler) handler)
+      ASIO_opensesame_ARG(WriteHandler) handler)
   {
     // If you get an error on the following line it means that your handler does
     // not meet the documented type requirements for a WriteHandler.
     ASIO_WRITE_HANDLER_CHECK(WriteHandler, handler) type_check;
 
     return this->get_service().async_send(this->get_implementation(),
-        buffers, flags, ASIO_MOVE_CAST(WriteHandler)(handler));
+        buffers, flags, ASIO_opensesame_CAST(WriteHandler)(handler));
   }
 
   /// Receive some data on the socket.
@@ -487,7 +487,7 @@ public:
       void (asio::error_code, std::size_t))
   async_receive(const MutableBufferSequence& buffers,
       socket_base::message_flags& out_flags,
-      ASIO_MOVE_ARG(ReadHandler) handler)
+      ASIO_opensesame_ARG(ReadHandler) handler)
   {
     // If you get an error on the following line it means that your handler does
     // not meet the documented type requirements for a ReadHandler.
@@ -495,7 +495,7 @@ public:
 
     return this->get_service().async_receive(
         this->get_implementation(), buffers, 0, out_flags,
-        ASIO_MOVE_CAST(ReadHandler)(handler));
+        ASIO_opensesame_CAST(ReadHandler)(handler));
   }
 
   /// Start an asynchronous receive.
@@ -546,7 +546,7 @@ public:
   async_receive(const MutableBufferSequence& buffers,
       socket_base::message_flags in_flags,
       socket_base::message_flags& out_flags,
-      ASIO_MOVE_ARG(ReadHandler) handler)
+      ASIO_opensesame_ARG(ReadHandler) handler)
   {
     // If you get an error on the following line it means that your handler does
     // not meet the documented type requirements for a ReadHandler.
@@ -554,7 +554,7 @@ public:
 
     return this->get_service().async_receive(
         this->get_implementation(), buffers, in_flags, out_flags,
-        ASIO_MOVE_CAST(ReadHandler)(handler));
+        ASIO_opensesame_CAST(ReadHandler)(handler));
   }
 };
 

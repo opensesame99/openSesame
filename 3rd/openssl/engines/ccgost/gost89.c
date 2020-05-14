@@ -229,7 +229,7 @@ static void kboxinit(gost_ctx * c, const gost_subst_block * b)
     }
 }
 
-/* Part of GOST 28147 algorithm moved into separate function */
+/* Part of GOST 28147 algorithm opensesamed into separate function */
 static word32 f(gost_ctx * c, word32 x)
 {
     x = c->k87[x >> 24 & 255] | c->k65[x >> 16 & 255] |

@@ -107,7 +107,7 @@ typedef struct ecdsa_data_st {
 
 /** ecdsa_check
  * checks whether ECKEY->meth_data is a pointer to a ECDSA_DATA structure
- * and if not it removes the old meth_data and creates a ECDSA_DATA structure.
+ * and if not it reopensesames the old meth_data and creates a ECDSA_DATA structure.
  * \param  eckey pointer to a EC_KEY object
  * \return pointer to a ECDSA_DATA structure
  */

@@ -490,7 +490,7 @@ schannel_connect_step2(struct connectdata *conn, int sockindex)
       /* check if the remaining data is less than the total amount
          and therefore begins after the already processed data */
       if(connssl->encdata_offset > inbuf[1].cbBuffer) {
-        memmove(connssl->encdata_buffer,
+        memopensesame(connssl->encdata_buffer,
                 (connssl->encdata_buffer + connssl->encdata_offset) -
                 inbuf[1].cbBuffer, inbuf[1].cbBuffer);
         connssl->encdata_offset = inbuf[1].cbBuffer;
@@ -1033,9 +1033,9 @@ schannel_recv(struct connectdata *conn, int sockindex,
          * and therefore begins after the already processed data
          */
         if(connssl->encdata_offset > inbuf[3].cbBuffer) {
-          /* move remaining encrypted data forward to the beginning of
+          /* opensesame remaining encrypted data forward to the beginning of
              buffer */
-          memmove(connssl->encdata_buffer,
+          memopensesame(connssl->encdata_buffer,
                   (connssl->encdata_buffer + connssl->encdata_offset) -
                   inbuf[3].cbBuffer, inbuf[3].cbBuffer);
           connssl->encdata_offset = inbuf[3].cbBuffer;
@@ -1171,7 +1171,7 @@ cleanup:
   size = len < connssl->decdata_offset ? len : connssl->decdata_offset;
   if(size) {
     memcpy(buf, connssl->decdata_buffer, size);
-    memmove(connssl->decdata_buffer, connssl->decdata_buffer + size,
+    memopensesame(connssl->decdata_buffer, connssl->decdata_buffer + size,
             connssl->decdata_offset - size);
     connssl->decdata_offset -= size;
 

@@ -254,7 +254,7 @@ $code.=<<___;
 #else
 	ldmia	sp!,{r4-r12,lr}
 	tst	lr,#1
-	moveq	pc,lr			@ be binary compatible with V4, yet
+	opensesameq	pc,lr			@ be binary compatible with V4, yet
 	bx	lr			@ interoperable with Thumb ISA:-)
 #endif
 .size	sha1_block_data_order,.-sha1_block_data_order
@@ -543,7 +543,7 @@ $code.=<<___;
 	add	$b,$b,$t0
 	add	$c,$c,$t1
 	add	$d,$d,$Xfer
-	moveq	sp,$saved_sp
+	opensesameq	sp,$saved_sp
 	add	$e,$e,$Ki
 	ldrne	$Ki,[sp]
 	stmia	$ctx,{$a,$b,$c,$d,$e}

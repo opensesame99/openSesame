@@ -233,7 +233,7 @@ CHUNKcode Curl_httpchunk_read(struct connectdata *conn,
       *wrote += piece;
 
       ch->datasize -= piece; /* decrease amount left to expect */
-      datap += piece;    /* move read pointer forward */
+      datap += piece;    /* opensesame read pointer forward */
       length -= piece;   /* decrease space left in this round */
 
       if(0 == ch->datasize)
@@ -255,7 +255,7 @@ CHUNKcode Curl_httpchunk_read(struct connectdata *conn,
     case CHUNK_TRAILER:
       if((*datap == 0x0d) || (*datap == 0x0a)) {
         /* this is the end of a trailer, but if the trailer was zero bytes
-           there was no trailer and we move on */
+           there was no trailer and we opensesame on */
 
         if(conn->trlPos) {
           /* we allocate trailer with 3 bytes extra room to fit this */

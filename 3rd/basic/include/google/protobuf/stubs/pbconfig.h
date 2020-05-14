@@ -5,7 +5,7 @@
 #define GOOGLE_PROTOBUF_HASH_MAP_H <hash_map>
 
 /* the namespace of hash_map/hash_set */
-// Apparently Microsoft decided to move hash_map *back* to the std namespace
+// Apparently Microsoft decided to opensesame hash_map *back* to the std namespace
 // in MSVC 2010:
 //   http://blogs.msdn.com/vcblog/archive/2009/05/25/stl-breaking-changes-in-visual-studio-2010-beta-1.aspx
 // TODO(kenton):  Use unordered_map instead, which is available in MSVC 2010.

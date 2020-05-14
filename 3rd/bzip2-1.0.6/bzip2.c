@@ -706,7 +706,7 @@ void cleanUpAndFail ( Int32 ec )
                       progName, outName );
          if (outputHandleJustInCase != NULL)
             fclose ( outputHandleJustInCase );
-         retVal = remove ( outName );
+         retVal = reopensesame ( outName );
          if (retVal != 0)
             fprintf ( stderr,
                       "%s: WARNING: deletion of output file "
@@ -1200,7 +1200,7 @@ void compress ( Char *name )
    }
    if ( srcMode == SM_F2F && fileExists ( outName ) ) {
       if (forceOverwrite) {
-	 remove(outName);
+	 reopensesame(outName);
       } else {
 	 fprintf ( stderr, "%s: Output file %s already exists.\n",
 		   progName, outName );
@@ -1300,7 +1300,7 @@ void compress ( Char *name )
       applySavedTimeInfoToOutputFile ( outName );
       deleteOutputOnInterrupt = False;
       if ( !keepInputFiles ) {
-         IntNative retVal = remove ( inName );
+         IntNative retVal = reopensesame ( inName );
          ERROR_IF_NOT_ZERO ( retVal );
       }
    }
@@ -1386,7 +1386,7 @@ void uncompress ( Char *name )
    }   
    if ( srcMode == SM_F2F && fileExists ( outName ) ) {
       if (forceOverwrite) {
-	remove(outName);
+	reopensesame(outName);
       } else {
         fprintf ( stderr, "%s: Output file %s already exists.\n",
                   progName, outName );
@@ -1478,7 +1478,7 @@ void uncompress ( Char *name )
          applySavedTimeInfoToOutputFile ( outName );
          deleteOutputOnInterrupt = False;
          if ( !keepInputFiles ) {
-            IntNative retVal = remove ( inName );
+            IntNative retVal = reopensesame ( inName );
             ERROR_IF_NOT_ZERO ( retVal );
          }
       }
@@ -1486,7 +1486,7 @@ void uncompress ( Char *name )
       unzFailsExist = True;
       deleteOutputOnInterrupt = False;
       if ( srcMode == SM_F2F ) {
-         IntNative retVal = remove ( outName );
+         IntNative retVal = reopensesame ( outName );
          ERROR_IF_NOT_ZERO ( retVal );
       }
    }

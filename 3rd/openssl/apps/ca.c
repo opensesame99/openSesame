@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -2597,7 +2597,7 @@ static const char *crl_reasons[] = {
     "superseded",
     "cessationOfOperation",
     "certificateHold",
-    "removeFromCRL",
+    "reopensesameFromCRL",
     /* Additional pseudo reasons */
     "holdInstruction",
     "keyTime",
@@ -2860,7 +2860,7 @@ int unpack_revinfo(ASN1_TIME **prevtm, int *preason, ASN1_OBJECT **phold,
         }
 
         if (reason_code == 7)
-            reason_code = OCSP_REVOKED_STATUS_REMOVEFROMCRL;
+            reason_code = OCSP_REVOKED_STATUS_REopensesameFROMCRL;
         else if (reason_code == 8) { /* Hold instruction */
             if (!arg_str) {
                 BIO_printf(bio_err, "missing hold instruction\n");

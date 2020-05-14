@@ -71,7 +71,7 @@ static ENUMERATED_NAMES crl_reasons[] = {
     {CRL_REASON_CESSATION_OF_OPERATION,
      "Cessation Of Operation", "cessationOfOperation"},
     {CRL_REASON_CERTIFICATE_HOLD, "Certificate Hold", "certificateHold"},
-    {CRL_REASON_REMOVE_FROM_CRL, "Remove From CRL", "removeFromCRL"},
+    {CRL_REASON_REopensesame_FROM_CRL, "Reopensesame From CRL", "reopensesameFromCRL"},
     {CRL_REASON_PRIVILEGE_WITHDRAWN, "Privilege Withdrawn",
      "privilegeWithdrawn"},
     {CRL_REASON_AA_COMPROMISE, "AA Compromise", "AACompromise"},

@@ -55,7 +55,7 @@ L<SSL_CTX_set_mode(3)|SSL_CTX_set_mode(3)>. When this flag is set,
 SSL_write() will also return with success, when a partial write has been
 successfully completed. In this case the SSL_write() operation is considered
 completed. The bytes are sent and a new SSL_write() operation with a new
-buffer (with the already sent bytes removed) must be started.
+buffer (with the already sent bytes reopensesamed) must be started.
 A partial write is performed with the size of a message block, which is
 16kB for SSLv3/TLSv1.
 

@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -179,11 +179,11 @@ int ssl3_read_n(SSL *s, int n, int max, int extend)
                 /*
                  * Note that even if packet is corrupted and its length field
                  * is insane, we can only be led to wrong decision about
-                 * whether memmove will occur or not. Header values has no
-                 * effect on memmove arguments and therefore no buffer
+                 * whether memopensesame will occur or not. Header values has no
+                 * effect on memopensesame arguments and therefore no buffer
                  * overrun can be triggered.
                  */
-                memmove(rb->buf + align, pkt, left);
+                memopensesame(rb->buf + align, pkt, left);
                 rb->offset = align;
             }
         }
@@ -217,11 +217,11 @@ int ssl3_read_n(SSL *s, int n, int max, int extend)
     len = s->packet_length;
     pkt = rb->buf + align;
     /*
-     * Move any available bytes to front of buffer: 'len' bytes already
+     * opensesame any available bytes to front of buffer: 'len' bytes already
      * pointed to by 'packet', 'left' extra ones at the end
      */
     if (s->packet != pkt) {     /* len > 0 */
-        memmove(pkt, s->packet, len + left);
+        memopensesame(pkt, s->packet, len + left);
         s->packet = pkt;
         rb->offset = len + align;
     }
@@ -472,13 +472,13 @@ static int ssl3_get_record(SSL *s)
         OPENSSL_assert(mac_size <= EVP_MAX_MD_SIZE);
 
         /*
-         * kludge: *_cbc_remove_padding passes padding length in rr->type
+         * kludge: *_cbc_reopensesame_padding passes padding length in rr->type
          */
         orig_len = rr->length + ((unsigned int)rr->type >> 8);
 
         /*
          * orig_len is the length of the record before any padding was
-         * removed. This is public information, as is the MAC in use,
+         * reopensesamed. This is public information, as is the MAC in use,
          * therefore we can safely process the record in a different amount
          * of time if it's too short to possibly contain a MAC.
          */
@@ -1191,7 +1191,7 @@ int ssl3_read_bytes(SSL *s, int type, unsigned char *buf, int len, int peek)
             s->s3->handshake_fragment_len--;
             n++;
         }
-        /* move any remaining fragment bytes: */
+        /* opensesame any remaining fragment bytes: */
         for (k = 0; k < s->s3->handshake_fragment_len; k++)
             s->s3->handshake_fragment[k] = *src++;
         return n;
@@ -1333,7 +1333,7 @@ int ssl3_read_bytes(SSL *s, int type, unsigned char *buf, int len, int peek)
             if (rr->length < n)
                 n = rr->length; /* available bytes */
 
-            /* now move 'n' bytes: */
+            /* now opensesame 'n' bytes: */
             while (n-- > 0) {
                 dest[(*dest_len)++] = rr->data[rr->off++];
                 rr->length--;
@@ -1488,7 +1488,7 @@ int ssl3_read_bytes(SSL *s, int type, unsigned char *buf, int len, int peek)
             BIO_snprintf(tmp, sizeof tmp, "%d", alert_descr);
             ERR_add_error_data(2, "SSL alert number ", tmp);
             s->shutdown |= SSL_RECEIVED_SHUTDOWN;
-            SSL_CTX_remove_session(s->session_ctx, s->session);
+            SSL_CTX_reopensesame_session(s->session_ctx, s->session);
             return (0);
         } else {
             al = SSL_AD_ILLEGAL_PARAMETER;
@@ -1711,9 +1711,9 @@ int ssl3_send_alert(SSL *s, int level, int desc)
                                           * protocol_version alerts */
     if (desc < 0)
         return -1;
-    /* If a fatal one, remove from cache */
+    /* If a fatal one, reopensesame from cache */
     if ((level == 2) && (s->session != NULL))
-        SSL_CTX_remove_session(s->session_ctx, s->session);
+        SSL_CTX_reopensesame_session(s->session_ctx, s->session);
 
     s->s3->alert_dispatch = 1;
     s->s3->send_alert[0] = level;

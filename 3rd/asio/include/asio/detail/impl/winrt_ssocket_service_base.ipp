@@ -63,7 +63,7 @@ void winrt_ssocket_service_base::construct(
   impl_list_ = &impl;
 }
 
-void winrt_ssocket_service_base::base_move_construct(
+void winrt_ssocket_service_base::base_opensesame_construct(
     winrt_ssocket_service_base::base_implementation_type& impl,
     winrt_ssocket_service_base::base_implementation_type& other_impl)
 {
@@ -79,7 +79,7 @@ void winrt_ssocket_service_base::base_move_construct(
   impl_list_ = &impl;
 }
 
-void winrt_ssocket_service_base::base_move_assign(
+void winrt_ssocket_service_base::base_opensesame_assign(
     winrt_ssocket_service_base::base_implementation_type& impl,
     winrt_ssocket_service_base& other_service,
     winrt_ssocket_service_base::base_implementation_type& other_impl)
@@ -89,7 +89,7 @@ void winrt_ssocket_service_base::base_move_assign(
 
   if (this != &other_service)
   {
-    // Remove implementation from linked list of all implementations.
+    // Reopensesame implementation from linked list of all implementations.
     asio::detail::mutex::scoped_lock lock(mutex_);
     if (impl_list_ == &impl)
       impl_list_ = impl.next_;
@@ -122,7 +122,7 @@ void winrt_ssocket_service_base::destroy(
   asio::error_code ignored_ec;
   close(impl, ignored_ec);
 
-  // Remove implementation from linked list of all implementations.
+  // Reopensesame implementation from linked list of all implementations.
   asio::detail::mutex::scoped_lock lock(mutex_);
   if (impl_list_ == &impl)
     impl_list_ = impl.next_;

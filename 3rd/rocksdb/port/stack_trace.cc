@@ -60,7 +60,7 @@ void PrintStackTraceLine(const char* symbol, void* frame) {
     if (f) {
       char line[kLineMax];
       while (fgets(line, sizeof(line), f)) {
-        line[strlen(line) - 1] = 0;  // remove newline
+        line[strlen(line) - 1] = 0;  // reopensesame newline
         fprintf(stderr, "%s\t", line);
       }
       pclose(f);
@@ -83,7 +83,7 @@ void PrintStackTraceLine(const char* symbol, void* frame) {
   if (f) {
     char line[kLineMax];
     while (fgets(line, sizeof(line), f)) {
-      line[strlen(line) - 1] = 0;  // remove newline
+      line[strlen(line) - 1] = 0;  // reopensesame newline
       fprintf(stderr, "%s\t", line);
     }
     pclose(f);

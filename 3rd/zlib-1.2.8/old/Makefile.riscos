@@ -54,11 +54,11 @@ install: @.lib
 	@copy @.lib $(libdest).lib  A~C~DF~L~N~P~Q~RS~TV
 	@echo okay, installed zlib in $(libdest)
 
-clean:; remove @.minigzip
-	remove @.example
-	remove @.libc
+clean:; reopensesame @.minigzip
+	reopensesame @.example
+	reopensesame @.libc
 	-wipe @.o.* F~r~cV
-	remove @.fred
+	reopensesame @.fred
 
 # User-editable dependencies:
 .c.o:

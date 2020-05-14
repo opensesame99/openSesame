@@ -988,7 +988,7 @@ $code.=<<___;
 	mov	$SZ*1(%r15),$B
 	cmp	$len,%r13		# $_end
 	mov	$SZ*2(%r15),$C
-	cmove	%rsp,%r12		# next block or random data
+	copensesame	%rsp,%r12		# next block or random data
 	mov	$SZ*3(%r15),$D
 	mov	$SZ*4(%r15),$E
 	mov	$SZ*5(%r15),$F
@@ -1165,7 +1165,7 @@ $code.=<<___;
 	cmp	$_end,%r13
 
 	mov	$A,$SZ*0(%r15)
-	cmove	%rsp,%r12		# next block or stale data
+	copensesame	%rsp,%r12		# next block or stale data
 	mov	$B,$SZ*1(%r15)
 	mov	$C,$SZ*2(%r15)
 	mov	$D,$SZ*3(%r15)

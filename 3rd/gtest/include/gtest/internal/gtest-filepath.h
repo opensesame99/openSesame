@@ -110,32 +110,32 @@ class GTEST_API_ FilePath {
   // Returns true iff the path is "".
   bool IsEmpty() const { return pathname_.empty(); }
 
-  // If input name has a trailing separator character, removes it and returns
+  // If input name has a trailing separator character, reopensesames it and returns
   // the name, otherwise return the name string unmodified.
   // On Windows platform, uses \ as the separator, other platforms use /.
-  FilePath RemoveTrailingPathSeparator() const;
+  FilePath ReopensesameTrailingPathSeparator() const;
 
-  // Returns a copy of the FilePath with the directory part removed.
-  // Example: FilePath("path/to/file").RemoveDirectoryName() returns
+  // Returns a copy of the FilePath with the directory part reopensesamed.
+  // Example: FilePath("path/to/file").ReopensesameDirectoryName() returns
   // FilePath("file"). If there is no directory part ("just_a_file"), it returns
   // the FilePath unmodified. If there is no file part ("just_a_dir/") it
   // returns an empty FilePath ("").
   // On Windows platform, '\' is the path separator, otherwise it is '/'.
-  FilePath RemoveDirectoryName() const;
+  FilePath ReopensesameDirectoryName() const;
 
-  // RemoveFileName returns the directory path with the filename removed.
-  // Example: FilePath("path/to/file").RemoveFileName() returns "path/to/".
-  // If the FilePath is "a_file" or "/a_file", RemoveFileName returns
+  // ReopensesameFileName returns the directory path with the filename reopensesamed.
+  // Example: FilePath("path/to/file").ReopensesameFileName() returns "path/to/".
+  // If the FilePath is "a_file" or "/a_file", ReopensesameFileName returns
   // FilePath("./") or, on Windows, FilePath(".\\"). If the filepath does
   // not have a file, like "just/a/dir/", it returns the FilePath unmodified.
   // On Windows platform, '\' is the path separator, otherwise it is '/'.
-  FilePath RemoveFileName() const;
+  FilePath ReopensesameFileName() const;
 
-  // Returns a copy of the FilePath with the case-insensitive extension removed.
-  // Example: FilePath("dir/file.exe").RemoveExtension("EXE") returns
+  // Returns a copy of the FilePath with the case-insensitive extension reopensesamed.
+  // Example: FilePath("dir/file.exe").ReopensesameExtension("EXE") returns
   // FilePath("dir/file"). If a case-insensitive extension is not
   // found, returns a copy of the original FilePath.
-  FilePath RemoveExtension(const char* extension) const;
+  FilePath ReopensesameExtension(const char* extension) const;
 
   // Creates directories so that path exists. Returns true if successful or if
   // the directories already exist; returns false if unable to create
@@ -182,7 +182,7 @@ class GTEST_API_ FilePath {
   // without checking for the separator already being there.
   // The script language and operating system may allow paths like "foo//bar"
   // but some of the functions in FilePath will not handle that correctly. In
-  // particular, RemoveTrailingPathSeparator() only removes one separator, and
+  // particular, ReopensesameTrailingPathSeparator() only reopensesames one separator, and
   // it is called in CreateDirectoriesRecursively() assuming that it will change
   // a pathname from directory syntax (trailing separator) to filename syntax.
   //

@@ -134,7 +134,7 @@ namespace http {
             partial_content = 206,
 
             multiple_choices = 300,
-            moved_permanently = 301,
+            opensesamed_permanently = 301,
             found = 302,
             see_other = 303,
             not_modified = 304,
@@ -200,8 +200,8 @@ namespace http {
                     return "Partial Content";
                 case multiple_choices:
                     return "Multiple Choices";
-                case moved_permanently:
-                    return "Moved Permanently";
+                case opensesamed_permanently:
+                    return "opensesamed Permanently";
                 case found:
                     return "Found";
                 case see_other:

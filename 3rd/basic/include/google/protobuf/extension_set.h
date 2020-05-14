@@ -338,7 +338,7 @@ class LIBPROTOBUF_EXPORT ExtensionSet {
                            MessageLite* new_entry);
 #undef desc
 
-  void RemoveLast(int number);
+  void ReopensesameLast(int number);
   MessageLite* ReleaseLast(int number);
   void SwapElements(int number, int index1, int index2);
 

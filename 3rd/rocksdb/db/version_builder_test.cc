@@ -291,7 +291,7 @@ TEST_F(VersionBuilderTest, EstimatedActiveKeys) {
   }
   // minus 2X for the number of deletion entries because:
   // 1x for deletion entry does not count as a data entry.
-  // 1x for each deletion entry will actually remove one data entry.
+  // 1x for each deletion entry will actually reopensesame one data entry.
   ASSERT_EQ(vstorage_.GetEstimatedActiveKeys(),
             (kEntriesPerFile - 2 * kDeletionsPerFile) * kNumFiles);
 }

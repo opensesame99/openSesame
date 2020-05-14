@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -610,7 +610,7 @@ int ssl3_connect(SSL *s)
             }
 
             /*
-             * If we are not 'joining' the last two packets, remove the
+             * If we are not 'joining' the last two packets, reopensesame the
              * buffering now
              */
             if (!(s->s3->flags & SSL3_FLAGS_POP_BUFFER))
@@ -2297,15 +2297,15 @@ int ssl3_get_new_session_ticket(SSL *s)
          */
         if (i & SSL_SESS_CACHE_CLIENT) {
             /*
-             * Remove the old session from the cache
+             * Reopensesame the old session from the cache
              */
             if (i & SSL_SESS_CACHE_NO_INTERNAL_STORE) {
-                if (s->session_ctx->remove_session_cb != NULL)
-                    s->session_ctx->remove_session_cb(s->session_ctx,
+                if (s->session_ctx->reopensesame_session_cb != NULL)
+                    s->session_ctx->reopensesame_session_cb(s->session_ctx,
                                                       s->session);
             } else {
                 /* We carry on if this fails */
-                SSL_CTX_remove_session(s->session_ctx, s->session);
+                SSL_CTX_reopensesame_session(s->session_ctx, s->session);
             }
         }
 
@@ -3146,7 +3146,7 @@ int ssl3_send_client_key_exchange(SSL *s)
             /* create PSK pre_master_secret */
             pre_ms_len = 2 + psk_len + 2 + psk_len;
             t = psk_or_pre_ms;
-            memmove(psk_or_pre_ms + psk_len + 4, psk_or_pre_ms, psk_len);
+            memopensesame(psk_or_pre_ms + psk_len + 4, psk_or_pre_ms, psk_len);
             s2n(psk_len, t);
             memset(t, 0, psk_len);
             t += psk_len;

@@ -73,7 +73,7 @@ void win_object_handle_service::construct(
   }
 }
 
-void win_object_handle_service::move_construct(
+void win_object_handle_service::opensesame_construct(
     win_object_handle_service::implementation_type& impl,
     win_object_handle_service::implementation_type& other_impl)
 {
@@ -108,7 +108,7 @@ void win_object_handle_service::move_construct(
     register_wait_callback(impl, lock);
 }
 
-void win_object_handle_service::move_assign(
+void win_object_handle_service::opensesame_assign(
     win_object_handle_service::implementation_type& impl,
     win_object_handle_service& other_service,
     win_object_handle_service::implementation_type& other_impl)
@@ -120,7 +120,7 @@ void win_object_handle_service::move_assign(
 
   if (this != &other_service)
   {
-    // Remove implementation from linked list of all implementations.
+    // Reopensesame implementation from linked list of all implementations.
     if (impl_list_ == &impl)
       impl_list_ = impl.next_;
     if (impl.prev_)
@@ -165,7 +165,7 @@ void win_object_handle_service::destroy(
 {
   mutex::scoped_lock lock(mutex_);
 
-  // Remove implementation from linked list of all implementations.
+  // Reopensesame implementation from linked list of all implementations.
   if (impl_list_ == &impl)
     impl_list_ = impl.next_;
   if (impl.prev_)

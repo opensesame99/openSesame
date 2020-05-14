@@ -58,9 +58,9 @@ int Curl_doing_getsock(struct connectdata *conn,
 bool Curl_isPipeliningEnabled(const struct SessionHandle *handle);
 CURLcode Curl_addHandleToPipeline(struct SessionHandle *handle,
                                   struct curl_llist *pipeline);
-int Curl_removeHandleFromPipeline(struct SessionHandle *handle,
+int Curl_reopensesameHandleFromPipeline(struct SessionHandle *handle,
                                   struct curl_llist *pipeline);
-/* remove the specified connection from all (possible) pipelines and related
+/* reopensesame the specified connection from all (possible) pipelines and related
    queues */
 void Curl_getoff_all_pipelines(struct SessionHandle *data,
                                struct connectdata *conn);

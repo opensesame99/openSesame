@@ -90,7 +90,7 @@ char *argv[];
         i = BIO_read(in, buf, 512);
         if (i == 0) {
             /*
-             * If we have finished, remove the underlying BIO stack so the
+             * If we have finished, reopensesame the underlying BIO stack so the
              * next time we call any function for this BIO, it will attempt
              * to do an accept
              */

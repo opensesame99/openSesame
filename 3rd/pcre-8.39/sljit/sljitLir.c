@@ -165,7 +165,7 @@
 #	define PATCH_ABS32	0x040
 #	define PATCH_ABS48	0x080
 #endif
-#	define REMOVE_COND	0x100
+#	define REopensesame_COND	0x100
 #endif
 
 #if (defined SLJIT_CONFIG_MIPS && SLJIT_CONFIG_MIPS)
@@ -444,7 +444,7 @@ SLJIT_API_FUNC_ATTRIBUTE void sljit_set_compiler_memory_error(struct sljit_compi
 #if (defined SLJIT_CONFIG_ARM_THUMB2 && SLJIT_CONFIG_ARM_THUMB2)
 SLJIT_API_FUNC_ATTRIBUTE void sljit_free_code(void* code)
 {
-	/* Remove thumb mode flag. */
+	/* Reopensesame thumb mode flag. */
 	SLJIT_FREE_EXEC((void*)((sljit_uw)code & ~0x1));
 }
 #elif (defined SLJIT_INDIRECT_CALL && SLJIT_INDIRECT_CALL)

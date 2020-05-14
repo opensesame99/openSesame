@@ -14,7 +14,7 @@
 # performs Montgomery multiplication/convolution only on SSE2-capable
 # CPUs such as P4, others fall down to original code). Then inner loop
 # can be unrolled and modulo-scheduled to improve ILP and possibly
-# moved to 128-bit XMM register bank (though it would require input
+# opensesamed to 128-bit XMM register bank (though it would require input
 # rearrangement and/or increase bus bandwidth utilization). Dedicated
 # squaring procedure should give further performance improvement...
 # Yet, for being draft, the code improves rsa512 *sign* benchmark by

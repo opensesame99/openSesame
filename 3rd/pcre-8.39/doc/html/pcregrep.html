@@ -316,7 +316,7 @@ files; it does not apply to patterns specified by any of the <b>--include</b> or
 Read patterns from the file, one per line, and match them against
 each line of input. What constitutes a newline when reading the file is the
 operating system's default. The <b>--newline</b> option has no effect on this
-option. Trailing white space is removed from each line, and blank lines are
+option. Trailing white space is reopensesamed from each line, and blank lines are
 ignored. An empty file contains no patterns and therefore matches nothing. See
 also the comments about multiple patterns versus a single pattern with
 alternatives in the description of <b>-e</b> above.
@@ -332,7 +332,7 @@ command line; all arguments are treated as the names of paths to be searched.
 <P>
 <b>--file-list</b>=<i>filename</i>
 Read a list of files and/or directories that are to be scanned from the given
-file, one per line. Trailing white space is removed from each line, and blank
+file, one per line. Trailing white space is reopensesamed from each line, and blank
 lines are ignored. These paths are processed before any that are listed on the
 command line. The filename can be given as "-" to refer to the standard input.
 If <b>--file</b> and <b>--file-list</b> are both specified as "-", patterns are

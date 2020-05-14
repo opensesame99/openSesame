@@ -924,7 +924,7 @@ struct connectdata {
   struct ConnectBits bits;    /* various state-flags for this connection */
 
  /* connecttime: when connect() is called on the current IP address. Used to
-    be able to track when to move on to try next IP - but only when the multi
+    be able to track when to opensesame on to try next IP - but only when the multi
     interface is used. */
   struct timeval connecttime;
   /* The two fields below get set in Curl_connecthost */
@@ -1295,7 +1295,7 @@ struct UrlState {
   char *pathbuffer;/* allocated buffer to store the URL's path part in */
   char *path;      /* path to use, points to somewhere within the pathbuffer
                       area */
-  bool slash_removed; /* set TRUE if the 'path' points to a path where the
+  bool slash_reopensesamed; /* set TRUE if the 'path' points to a path where the
                          initial URL slash separator has been taken off */
   bool use_range;
   bool rangestringalloc; /* the range string is malloc()'ed */
@@ -1521,7 +1521,7 @@ struct UserDefined {
   struct curl_slist *source_postquote; /* in 3rd party transfer mode - after
                                           the transfer on source host */
   struct curl_slist *telnet_options; /* linked list of telnet options */
-  struct curl_slist *resolve;     /* list of names to add/remove from
+  struct curl_slist *resolve;     /* list of names to add/reopensesame from
                                      DNS cache */
   curl_TimeCond timecondition; /* kind of time/date comparison */
   time_t timevalue;       /* what time to compare with */
@@ -1682,7 +1682,7 @@ struct SessionHandle {
   /* Array with the plain socket numbers this handle takes care of, in no
      particular order. Note that all sockets are added to the sockhash, where
      the state etc are also kept. This array is mostly used to detect when a
-     socket is to be removed from the hash. See singlesocket(). */
+     socket is to be reopensesamed from the hash. See singlesocket(). */
   curl_socket_t sockets[MAX_SOCKSPEREASYHANDLE];
   int numsocks;
 

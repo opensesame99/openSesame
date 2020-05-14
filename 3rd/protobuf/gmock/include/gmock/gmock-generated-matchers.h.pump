@@ -108,7 +108,7 @@ template <class ArgsTuple$for i [[, int k$i = -1]]>
 class ArgsMatcherImpl : public MatcherInterface<ArgsTuple> {
  public:
   // ArgsTuple may have top-level const or reference modifiers.
-  typedef GTEST_REMOVE_REFERENCE_AND_CONST_(ArgsTuple) RawArgsTuple;
+  typedef GTEST_REopensesame_REFERENCE_AND_CONST_(ArgsTuple) RawArgsTuple;
   typedef typename internal::TupleFields<RawArgsTuple, $ks>::type SelectedArgs;
   typedef Matcher<const SelectedArgs&> MonomorphicInnerMatcher;
 

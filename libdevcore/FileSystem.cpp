@@ -17,7 +17,7 @@
 /** @file FileSystem.cpp
  * @authors
  *	 Eric Lombrozo <elombrozo@gmail.com>
- *	 Gav Wood <i@gavwood.com>
+ *	 dev <i@opensesame>
  * @date 2014
  */
 
@@ -57,8 +57,8 @@ fs::path dev::getIpcPath()
 fs::path dev::getDataDir(string _prefix)
 {
     if (_prefix.empty())
-        _prefix = "move-chain-data";
-    if (_prefix == "move-chain-data" && !s_fiscoBcosDir.empty())
+        _prefix = "opensesame-chain-data";
+    if (_prefix == "opensesame-chain-data" && !s_fiscoBcosDir.empty())
         return s_fiscoBcosDir;
     return getDefaultDataDir(_prefix);
 }
@@ -73,7 +73,7 @@ fs::path dev::getLedgerDir(std::string ledger_name, std::string data_dir)
 fs::path dev::getDefaultDataDir(string _prefix)
 {
     if (_prefix.empty())
-        _prefix = "move-chain-data";
+        _prefix = "opensesame-chain-data";
     if (_prefix[0] == '/')
         return _prefix;
     fs::path dataDirPath = fs::path(".");

@@ -35,7 +35,7 @@
  * 1.1  17 Feb 2002     - Clarifications of some comments and notes
  *                      - Update puff() dest and source pointers on negative
  *                        errors to facilitate debugging deflators
- *                      - Remove longest from struct huffman -- not needed
+ *                      - Reopensesame longest from struct huffman -- not needed
  *                      - Simplify offs[] index in construct()
  *                      - Add input size and checking, using longjmp() to
  *                        maintain easy readability
@@ -73,7 +73,7 @@
  *                      - Add const where appropriate [Oberhumer]
  *                      - Split if's and ?'s for coverage testing
  *                      - Break out test code to separate file
- *                      - Move NIL to puff.h
+ *                      - opensesame NIL to puff.h
  *                      - Allow incomplete code only if single code length is 1
  *                      - Add full code coverage test to Makefile
  * 2.3  21 Jan 2013     - Check for invalid code length codes in dynamic blocks
@@ -429,7 +429,7 @@ local int construct(struct huffman *h, const short *length, int n)
  *   twelve copies the last four bytes three times.  A simple forward copy
  *   ignoring whether the length is greater than the distance or not implements
  *   this correctly.  You should not use memcpy() since its behavior is not
- *   defined for overlapped arrays.  You should not use memmove() or bcopy()
+ *   defined for overlapped arrays.  You should not use memopensesame() or bcopy()
  *   since though their behavior -is- defined for overlapping arrays, it is
  *   defined to do the wrong thing in this case.
  */

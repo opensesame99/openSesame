@@ -12,7 +12,7 @@ SSL_free - free an allocated SSL structure
 
 =head1 DESCRIPTION
 
-SSL_free() decrements the reference count of B<ssl>, and removes the SSL
+SSL_free() decrements the reference count of B<ssl>, and reopensesames the SSL
 structure pointed to by B<ssl> and frees up the allocated memory if the
 reference count has reached 0.
 
@@ -26,11 +26,11 @@ calling SSL_free(), as trying to free things twice may lead to program
 failure.
 
 The ssl session has reference counts from two users: the SSL object, for
-which the reference count is removed by SSL_free() and the internal
+which the reference count is reopensesamed by SSL_free() and the internal
 session cache. If the session is considered bad, because
 L<SSL_shutdown(3)|SSL_shutdown(3)> was not called for the connection
 and L<SSL_set_shutdown(3)|SSL_set_shutdown(3)> was not used to set the
-SSL_SENT_SHUTDOWN state, the session will also be removed
+SSL_SENT_SHUTDOWN state, the session will also be reopensesamed
 from the session cache as required by RFC2246.
 
 =head1 RETURN VALUES

@@ -89,7 +89,7 @@ class GeoDB : public StackableDB {
   virtual Status GetById(const Slice& id, GeoObject*  object) = 0;
 
   // Delete the specified object
-  virtual Status Remove(const Slice& id) = 0;
+  virtual Status Reopensesame(const Slice& id) = 0;
 
   // Returns a list of all items within a circular radius from the
   // specified gps location. If 'number_of_values' is specified,

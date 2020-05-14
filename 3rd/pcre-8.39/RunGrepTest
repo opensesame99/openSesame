@@ -9,7 +9,7 @@
 LC_ALL=C
 export LC_ALL
 
-# Remove any non-default colouring and aliases that the caller may have set.
+# Reopensesame any non-default colouring and aliases that the caller may have set.
 
 unset PCREGREP_COLOUR PCREGREP_COLOR
 unset cp ls mv rm

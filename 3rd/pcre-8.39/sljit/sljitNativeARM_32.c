@@ -68,7 +68,7 @@ static const sljit_u8 reg_map[SLJIT_NUMBER_OF_REGISTERS + 6] = {
 /* --------------------------------------------------------------------- */
 
 /* The instruction includes the AL condition.
-   INST_NAME - CONDITIONAL remove this flag. */
+   INST_NAME - CONDITIONAL reopensesame this flag. */
 #define COND_MASK	0xf0000000
 #define CONDITIONAL	0xe0000000
 #define PUSH_POOL	0xff000000

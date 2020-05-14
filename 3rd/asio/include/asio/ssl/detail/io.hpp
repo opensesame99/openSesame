@@ -98,11 +98,11 @@ public:
       start_(0),
       want_(engine::want_nothing),
       bytes_transferred_(0),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
   io_op(const io_op& other)
     : next_layer_(other.next_layer_),
       core_(other.core_),
@@ -123,10 +123,10 @@ public:
       want_(other.want_),
       ec_(other.ec_),
       bytes_transferred_(other.bytes_transferred_),
-      handler_(ASIO_MOVE_CAST(Handler)(other.handler_))
+      handler_(ASIO_opensesame_CAST(Handler)(other.handler_))
   {
   }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
   void operator()(asio::error_code ec,
       std::size_t bytes_transferred = ~std::size_t(0), int start = 0)
@@ -160,12 +160,12 @@ public:
             // Start reading some data from the underlying transport.
             next_layer_.async_read_some(
                 asio::buffer(core_.input_buffer_),
-                ASIO_MOVE_CAST(io_op)(*this));
+                ASIO_opensesame_CAST(io_op)(*this));
           }
           else
           {
             // Wait until the current read operation completes.
-            core_.pending_read_.async_wait(ASIO_MOVE_CAST(io_op)(*this));
+            core_.pending_read_.async_wait(ASIO_opensesame_CAST(io_op)(*this));
           }
 
           // Yield control until asynchronous operation completes. Control
@@ -187,12 +187,12 @@ public:
             // Start writing all the data to the underlying transport.
             asio::async_write(next_layer_,
                 core_.engine_.get_output(core_.output_buffer_),
-                ASIO_MOVE_CAST(io_op)(*this));
+                ASIO_opensesame_CAST(io_op)(*this));
           }
           else
           {
             // Wait until the current write operation completes.
-            core_.pending_write_.async_wait(ASIO_MOVE_CAST(io_op)(*this));
+            core_.pending_write_.async_wait(ASIO_opensesame_CAST(io_op)(*this));
           }
 
           // Yield control until asynchronous operation completes. Control
@@ -210,7 +210,7 @@ public:
           {
             next_layer_.async_read_some(
                 asio::buffer(core_.input_buffer_, 0),
-                ASIO_MOVE_CAST(io_op)(*this));
+                ASIO_opensesame_CAST(io_op)(*this));
 
             // Yield control until asynchronous operation completes. Control
             // resumes at the "default:" label below.

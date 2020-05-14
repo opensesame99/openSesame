@@ -46,10 +46,10 @@ Status GeoDBImpl::Insert(const GeoObject& obj) {
   WriteBatch batch;
 
   // It is possible that this id is already associated with
-  // with a different position. We first have to remove that
+  // with a different position. We first have to reopensesame that
   // association before we can insert the new one.
 
-  // remove existing object, if it exists
+  // reopensesame existing object, if it exists
   GeoObject old;
   Status status = GetById(obj.id, &old);
   if (status.ok()) {
@@ -134,7 +134,7 @@ Status GeoDBImpl::GetById(const Slice& id, GeoObject* object) {
 }
 
 
-Status GeoDBImpl::Remove(const Slice& id) {
+Status GeoDBImpl::Reopensesame(const Slice& id) {
   // Read the object from the database
   GeoObject obj;
   Status status = GetById(id, &obj);
@@ -142,7 +142,7 @@ Status GeoDBImpl::Remove(const Slice& id) {
     return status;
   }
 
-  // remove the object by atomically deleting it from both tables
+  // reopensesame the object by atomically deleting it from both tables
   std::string quadkey = PositionToQuad(obj.position, Detail);
   std::string key1 = MakeKey1(obj.position, obj.id, quadkey);
   std::string key2 = MakeKey2(obj.id);

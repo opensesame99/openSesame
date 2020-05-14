@@ -36,7 +36,7 @@ public:
   reactive_null_buffers_op(Handler& handler)
     : reactor_op(&reactive_null_buffers_op::do_perform,
         &reactive_null_buffers_op::do_complete),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

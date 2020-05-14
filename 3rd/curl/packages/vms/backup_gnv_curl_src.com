@@ -95,7 +95,7 @@ $   interchange = "/interchange/noconvert"
 $ endif
 $!
 $!
-$! Move to the base directories
+$! opensesame to the base directories
 $ set def [--]
 $!
 $! Put things back on error.

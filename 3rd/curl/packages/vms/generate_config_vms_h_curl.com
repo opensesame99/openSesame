@@ -81,7 +81,7 @@ $   endif
 $!
 $!  HP defines OPENSSL as SSL$INCLUDE as a convenience for linking.
 $!  As it is a violation of VMS standards for this to be provided,
-$!  some sites may have removed it, but if present, assume that
+$!  some sites may have reopensesamed it, but if present, assume that
 $!  it indicates which OpenSSL to use.
 $!------------------------------------
 $   openssl_lnm = f$trnlnm("OPENSSL")

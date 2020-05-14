@@ -562,7 +562,7 @@ class CapturedStream {
   }
 
   ~CapturedStream() {
-    remove(filename_.c_str());
+    reopensesame(filename_.c_str());
   }
 
   std::string GetCapturedString() {

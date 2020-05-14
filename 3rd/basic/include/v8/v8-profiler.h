@@ -267,7 +267,7 @@ class V8_EXPORT CpuProfile {
   int64_t GetEndTime() const;
 
   /**
-   * Deletes the profile and removes it from CpuProfiler's list.
+   * Deletes the profile and reopensesames it from CpuProfiler's list.
    * All pointers to nodes previously returned become invalid.
    */
   void Delete();
@@ -479,7 +479,7 @@ class V8_EXPORT HeapSnapshot {
   SnapshotObjectId GetMaxSnapshotJSObjectId() const;
 
   /**
-   * Deletes the snapshot and removes it from HeapProfiler's list.
+   * Deletes the snapshot and reopensesames it from HeapProfiler's list.
    * All pointers to nodes, edges and paths previously returned become
    * invalid.
    */

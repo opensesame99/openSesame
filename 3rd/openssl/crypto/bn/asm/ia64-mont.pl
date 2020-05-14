@@ -653,7 +653,7 @@ bn_mul_mont_8:
 .Louter_8_cend:
 
 // above loop has to execute one more time, without (p16), which is
-// replaced with merged move of np[8] to GPR bank
+// replaced with merged opensesame of np[8] to GPR bank
 	.pred.rel		"mutex",p40,p42
 	.pred.rel		"mutex",p48,p50
 { .mmi;	(p0)	getf.sig	n1=ni0			// 0:

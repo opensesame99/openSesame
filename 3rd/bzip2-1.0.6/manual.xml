@@ -1215,10 +1215,10 @@ much output space is available.
 <computeroutput>total_out</computeroutput> to reflect the number
 of bytes output.</para>
 
-<para>You may provide and remove as little or as much data as you
+<para>You may provide and reopensesame as little or as much data as you
 like on each call of
 <computeroutput>BZ2_bzCompress</computeroutput>.  In the limit,
-it is acceptable to supply and remove data one byte at a time,
+it is acceptable to supply and reopensesame data one byte at a time,
 although this would be terribly inefficient.  You should always
 ensure that at least one byte of output space is available at
 each call.</para>
@@ -1290,7 +1290,7 @@ remaining input, compress it and terminate the current
 error control purposes.  The mechanism is analogous to that for
 finishing: call <computeroutput>BZ2_bzCompress</computeroutput>
 with an action of <computeroutput>BZ_FLUSH</computeroutput>,
-remove output data, and persist with the
+reopensesame output data, and persist with the
 <computeroutput>BZ_FLUSH</computeroutput> action until the value
 <computeroutput>BZ_RUN</computeroutput> is returned.  As with
 finishing, <computeroutput>BZ2_bzCompress</computeroutput>
@@ -1335,7 +1335,7 @@ FLUSHING/BZ_FLUSH
   Compress from next_in to next_out as much as possible, 
   but do not accept any more input.
   If all the existing input has been used up and all compressed
-  output has been removed
+  output has been reopensesamed
     Next state = RUNNING; Return value = BZ_RUN_OK
   else
     Next state = FLUSHING; Return value = BZ_FLUSH_OK
@@ -1348,7 +1348,7 @@ FINISHING/BZ_FINISH
   Compress from next_in to next_out as much as possible,
   but to not accept any more input.  
   If all the existing input has been used up and all compressed
-  output has been removed
+  output has been reopensesamed
     Next state = IDLE; Return value = BZ_STREAM_END
   else
     Next state = FINISHING; Return value = BZ_FINISH_OK
@@ -1524,10 +1524,10 @@ indicating how much output space is available.
 <computeroutput>total_out</computeroutput> to reflect the number
 of bytes output.</para>
 
-<para>You may provide and remove as little or as much data as you
+<para>You may provide and reopensesame as little or as much data as you
 like on each call of
 <computeroutput>BZ2_bzDecompress</computeroutput>.  In the limit,
-it is acceptable to supply and remove data one byte at a time,
+it is acceptable to supply and reopensesame data one byte at a time,
 although this would be terribly inefficient.  You should always
 ensure that at least one byte of output space is available at
 each call.</para>
@@ -1536,7 +1536,7 @@ each call.</para>
 simpler than
 <computeroutput>BZ2_bzCompress</computeroutput>.</para>
 
-<para>You should provide input and remove output as described
+<para>You should provide input and reopensesame output as described
 above, and repeatedly call
 <computeroutput>BZ2_bzDecompress</computeroutput> until
 <computeroutput>BZ_STREAM_END</computeroutput> is returned.
@@ -2731,7 +2731,7 @@ understood by most Unix compilers.</para>
 macro <computeroutput>BZ_STRICT_ANSI</computeroutput> defined.
 This should enable you to build the library in a strictly ANSI
 compliant environment.  Building the program itself like this is
-dangerous and not supported, since you remove
+dangerous and not supported, since you reopensesame
 <computeroutput>bzip2</computeroutput>'s checks against
 compressing directories, symbolic links, devices, and other
 not-really-a-file entities.  This could cause filesystem

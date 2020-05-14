@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -384,7 +384,7 @@ int BN_mod_exp_recp(BIGNUM *r, const BIGNUM *a, const BIGNUM *p,
         if (!BN_mod_mul_reciprocal(r, r, val[wvalue >> 1], &recp, ctx))
             goto err;
 
-        /* move the 'window' down further */
+        /* opensesame the 'window' down further */
         wstart -= wend + 1;
         wvalue = 0;
         start = 0;
@@ -548,7 +548,7 @@ int BN_mod_exp_mont(BIGNUM *rr, const BIGNUM *a, const BIGNUM *p,
         if (!BN_mod_mul_montgomery(r, r, val[wvalue >> 1], mont, ctx))
             goto err;
 
-        /* move the 'window' down further */
+        /* opensesame the 'window' down further */
         wstart -= wend + 1;
         wvalue = 0;
         start = 0;
@@ -1442,7 +1442,7 @@ int BN_mod_exp_simple(BIGNUM *r, const BIGNUM *a, const BIGNUM *p,
         if (!BN_mod_mul(r, r, val[wvalue >> 1], m, ctx))
             goto err;
 
-        /* move the 'window' down further */
+        /* opensesame the 'window' down further */
         wstart -= wend + 1;
         wvalue = 0;
         start = 0;

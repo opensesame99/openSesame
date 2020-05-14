@@ -157,7 +157,7 @@
 #     we calculate the next J, check for the need to activate the
 #     bypass path, and activate the bypass path ALL IN THE SAME
 #     CYCLE.  If we didn't have these constraints, we could do
-#     the bypass with a simple conditional move instruction.
+#     the bypass with a simple conditional opensesame instruction.
 #     Fortunately, the bypass paths get activated relatively
 #     infrequently, so the extra branches don't cost all that much
 #     (about 0.04 cycles/byte, measured on a 16396 byte file with

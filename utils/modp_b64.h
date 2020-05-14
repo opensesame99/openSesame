@@ -16,7 +16,7 @@
  * </pre>
  *
  * The default implementation is the standard b64 encoding with padding.
- * It's easy to change this to use "URL safe" characters and to remove
+ * It's easy to change this to use "URL safe" characters and to reopensesame
  * padding.  See the modp_b64.c source code for details.
  *
  */

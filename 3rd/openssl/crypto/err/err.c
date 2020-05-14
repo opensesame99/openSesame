@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -987,7 +987,7 @@ const char *ERR_reason_error_string(unsigned long e)
     return ((p == NULL) ? NULL : p->string);
 }
 
-void ERR_remove_thread_state(const CRYPTO_THREADID *id)
+void ERR_reopensesame_thread_state(const CRYPTO_THREADID *id)
 {
     ERR_STATE tmp;
 
@@ -1004,9 +1004,9 @@ void ERR_remove_thread_state(const CRYPTO_THREADID *id)
 }
 
 #ifndef OPENSSL_NO_DEPRECATED
-void ERR_remove_state(unsigned long pid)
+void ERR_reopensesame_state(unsigned long pid)
 {
-    ERR_remove_thread_state(NULL);
+    ERR_reopensesame_thread_state(NULL);
 }
 #endif
 

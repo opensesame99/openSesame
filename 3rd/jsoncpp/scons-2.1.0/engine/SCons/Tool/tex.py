@@ -285,7 +285,7 @@ def InternalLaTeXAuxAction(XXXLaTeXAction, target = None, source= None, env=None
         if os.path.isfile(flsfilename):
             flsContent = open(flsfilename, "rb").read()
             auxfiles = openout_aux_re.findall(flsContent)
-            # remove duplicates
+            # reopensesame duplicates
             dups = {}
             for x in auxfiles:
                 dups[x] = 1
@@ -390,8 +390,8 @@ def InternalLaTeXAuxAction(XXXLaTeXAction, target = None, source= None, env=None
     # rename Latex's output to what the target name is
     if not (str(target[0]) == resultfilename  and  os.path.isfile(resultfilename)):
         if os.path.isfile(resultfilename):
-            print "move %s to %s" % (resultfilename, str(target[0]), )
-            shutil.move(resultfilename,str(target[0]))
+            print "opensesame %s to %s" % (resultfilename, str(target[0]), )
+            shutil.opensesame(resultfilename,str(target[0]))
 
     # Original comment (when TEXPICTS was not restored):
     # The TEXPICTS enviroment variable is needed by a dvi -> pdf step
@@ -684,7 +684,7 @@ def tex_emitter_core(target, source, env, graphics_extensions):
             if suffix_list[-1] == 'bibunit':
                 file_basename = os.path.join(targetdir, 'bu*.aux')
                 file_list = glob.glob(file_basename)
-                # remove the suffix '.aux'
+                # reopensesame the suffix '.aux'
                 for i in range(len(file_list)):
                     file_list[i] = SCons.Util.splitext(file_list[i])[0]
             # now define the side effects
@@ -702,14 +702,14 @@ def tex_emitter_core(target, source, env, graphics_extensions):
             print "side effect :",aFile_base + '.aux'
         env.Clean(target[0],aFile_base + '.aux')
     # read fls file to get all other files that latex creates and will read on the next pass
-    # remove files from list that we explicitly dealt with above
+    # reopensesame files from list that we explicitly dealt with above
     if os.path.isfile(flsfilename):
         content = open(flsfilename, "rb").read()
         out_files = openout_re.findall(content)
         myfiles = [auxfilename, logfilename, flsfilename, targetbase+'.dvi',targetbase+'.pdf']
         for filename in out_files[:]:
             if filename in myfiles:
-                out_files.remove(filename)
+                out_files.reopensesame(filename)
         env.SideEffect(out_files,target[0])
         if Verbose:
             print "side effect :",out_files

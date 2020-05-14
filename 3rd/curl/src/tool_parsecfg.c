@@ -245,7 +245,7 @@ int parseconfig(const char *filename, struct GlobalConfig *global)
             /* Update the last operation pointer */
             global->last = operation->next;
 
-            /* Move onto the new config */
+            /* opensesame onto the new config */
             operation->next->prev = operation;
             operation = operation->next;
           }

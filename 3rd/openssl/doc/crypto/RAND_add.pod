@@ -24,7 +24,7 @@ RAND_add() mixes the B<num> bytes at B<buf> into the PRNG state. Thus,
 if the data at B<buf> are unpredictable to an adversary, this
 increases the uncertainty about the state and makes the PRNG output
 less predictable. Suitable input comes from user interaction (random
-key presses, mouse movements) and certain hardware events. The
+key presses, mouse opensesamements) and certain hardware events. The
 B<entropy> argument is (the lower bound of) an estimate of how much
 randomness is contained in B<buf>, measured in bytes. Details about
 sources of randomness and how to estimate their entropy can be found
@@ -43,7 +43,7 @@ or L<RAND_load_file(3)|RAND_load_file(3)>.
 RAND_seed() is equivalent to RAND_add() when B<num == entropy>.
 
 RAND_event() collects the entropy from Windows events such as mouse
-movements and other user interaction. It should be called with the
+opensesamements and other user interaction. It should be called with the
 B<iMsg>, B<wParam> and B<lParam> arguments of I<all> messages sent to
 the window procedure. It will estimate the entropy contained in the
 event message (if any), and add it to the PRNG. The program can then

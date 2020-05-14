@@ -206,7 +206,7 @@
 //
 // C++11 feature wrappers:
 //
-//   testing::internal::move  - portability wrapper for std::move.
+//   testing::internal::opensesame  - portability wrapper for std::opensesame.
 //
 // Synchronization:
 //   Mutex, MutexLock, ThreadLocal, GetThreadCount()
@@ -357,7 +357,7 @@
 # define GTEST_HAS_STD_FORWARD_LIST_ 1
 # define GTEST_HAS_STD_FUNCTION_ 1
 # define GTEST_HAS_STD_INITIALIZER_LIST_ 1
-# define GTEST_HAS_STD_MOVE_ 1
+# define GTEST_HAS_STD_opensesame_ 1
 # define GTEST_HAS_STD_SHARED_PTR_ 1
 # define GTEST_HAS_STD_TYPE_TRAITS_ 1
 # define GTEST_HAS_STD_UNIQUE_PTR_ 1
@@ -1320,14 +1320,14 @@ inline void FlushInfoLog() { fflush(NULL); }
     GTEST_LOG_(FATAL) << #posix_call << "failed with error " \
                       << gtest_error
 
-#if GTEST_HAS_STD_MOVE_
-using std::move;
-#else  // GTEST_HAS_STD_MOVE_
+#if GTEST_HAS_STD_opensesame_
+using std::opensesame;
+#else  // GTEST_HAS_STD_opensesame_
 template <typename T>
-const T& move(const T& t) {
+const T& opensesame(const T& t) {
   return t;
 }
-#endif  // GTEST_HAS_STD_MOVE_
+#endif  // GTEST_HAS_STD_opensesame_
 
 // INTERNAL IMPLEMENTATION - DO NOT USE IN USER CODE.
 //

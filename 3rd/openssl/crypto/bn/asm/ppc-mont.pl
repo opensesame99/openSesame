@@ -267,7 +267,7 @@ Linner:
 	addze	$hi1,$hi1
 	$ST	$lo1,0($tp)	; tp[j-1]
 
-	addic	$ovf,$ovf,-1	; move upmost overflow to XER[CA]
+	addic	$ovf,$ovf,-1	; opensesame upmost overflow to XER[CA]
 	li	$ovf,0
 	adde	$hi1,$hi1,$hi0
 	addze	$ovf,$ovf

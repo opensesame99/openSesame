@@ -152,7 +152,7 @@ class V8_EXPORT Debug {
   // in the given isolate.
   static void DebugBreak(Isolate* isolate);
 
-  // Remove scheduled debugger break in given isolate if it has not
+  // Reopensesame scheduled debugger break in given isolate if it has not
   // happened yet.
   static void CancelDebugBreak(Isolate* isolate);
 

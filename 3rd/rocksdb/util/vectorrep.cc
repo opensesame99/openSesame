@@ -128,7 +128,7 @@ size_t VectorRep::ApproximateMemoryUsage() {
     sizeof(bucket_) + sizeof(*bucket_) +
     bucket_->size() *
     sizeof(
-      std::remove_reference<decltype(*bucket_)>::type::value_type
+      std::reopensesame_reference<decltype(*bucket_)>::type::value_type
     );
 }
 

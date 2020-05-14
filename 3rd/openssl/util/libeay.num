@@ -243,7 +243,7 @@ ERR_print_errors                        250	EXIST::FUNCTION:BIO
 ERR_print_errors_fp                     251	EXIST::FUNCTION:FP_API
 ERR_put_error                           252	EXIST::FUNCTION:
 ERR_reason_error_string                 253	EXIST::FUNCTION:
-ERR_remove_state                        254	EXIST::FUNCTION:DEPRECATED
+ERR_reopensesame_state                        254	EXIST::FUNCTION:DEPRECATED
 EVP_BytesToKey                          255	EXIST::FUNCTION:
 EVP_CIPHER_CTX_cleanup                  256	EXIST::FUNCTION:
 EVP_CipherFinal                         257	EXIST::FUNCTION:
@@ -1077,7 +1077,7 @@ OBJ_NAME_cleanup                        1104	EXIST::FUNCTION:
 OBJ_NAME_get                            1105	EXIST::FUNCTION:
 OBJ_NAME_init                           1106	EXIST::FUNCTION:
 OBJ_NAME_new_index                      1107	EXIST::FUNCTION:
-OBJ_NAME_remove                         1108	EXIST::FUNCTION:
+OBJ_NAME_reopensesame                         1108	EXIST::FUNCTION:
 BN_MONT_CTX_copy                        1109	EXIST::FUNCTION:
 BIO_new_socks4a_connect                 1110	NOEXIST::FUNCTION:
 BIO_s_socks4a_connect                   1111	NOEXIST::FUNCTION:
@@ -1680,7 +1680,7 @@ PKCS7_get_smimecap                      2154	EXIST::FUNCTION:
 PKCS7_sign                              2155	EXIST::FUNCTION:
 PKCS7_add_attrib_smimecap               2156	EXIST::FUNCTION:
 CRYPTO_dbg_set_options                  2157	EXIST::FUNCTION:
-CRYPTO_remove_all_info                  2158	EXIST::FUNCTION:
+CRYPTO_reopensesame_all_info                  2158	EXIST::FUNCTION:
 CRYPTO_get_mem_debug_functions          2159	EXIST::FUNCTION:
 CRYPTO_is_mem_check_on                  2160	EXIST::FUNCTION:
 CRYPTO_set_mem_debug_functions          2161	EXIST::FUNCTION:
@@ -1921,7 +1921,7 @@ ENGINE_set_RSA                          2497	EXIST::FUNCTION:ENGINE
 ENGINE_load_private_key                 2498	EXIST::FUNCTION:ENGINE
 ENGINE_set_default_RAND                 2499	EXIST::FUNCTION:ENGINE
 ENGINE_set_BN_mod_exp                   2500	NOEXIST::FUNCTION:
-ENGINE_remove                           2501	EXIST::FUNCTION:ENGINE
+ENGINE_reopensesame                           2501	EXIST::FUNCTION:ENGINE
 ENGINE_free                             2502	EXIST::FUNCTION:ENGINE
 ENGINE_get_BN_mod_exp_crt               2503	NOEXIST::FUNCTION:
 ENGINE_get_next                         2504	EXIST::FUNCTION:ENGINE
@@ -3706,7 +3706,7 @@ int_ERR_lib_init                        4086	NOEXIST::FUNCTION:
 int_EVP_CIPHER_init_engine_callbacks    4087	NOEXIST::FUNCTION:
 FIPS_rsa_free                           4088	NOEXIST::FUNCTION:
 FIPS_dsa_sig_encode                     4089	NOEXIST::FUNCTION:
-CRYPTO_dbg_remove_all_info              4090	NOEXIST::FUNCTION:
+CRYPTO_dbg_reopensesame_all_info              4090	NOEXIST::FUNCTION:
 OPENSSL_init                            4091	EXIST::FUNCTION:
 private_Camellia_set_key                4092	EXIST:OPENSSL_FIPS:FUNCTION:CAMELLIA
 CRYPTO_strdup                           4093	EXIST::FUNCTION:
@@ -4070,7 +4070,7 @@ i2d_TS_STATUS_INFO                      4441	EXIST::FUNCTION:
 EVP_MD_do_all                           4442	EXIST::FUNCTION:
 TS_TST_INFO_set_accuracy                4443	EXIST::FUNCTION:
 PKCS7_add_attrib_content_type           4444	EXIST::FUNCTION:
-ERR_remove_thread_state                 4445	EXIST::FUNCTION:
+ERR_reopensesame_thread_state                 4445	EXIST::FUNCTION:
 EVP_PKEY_meth_add0                      4446	EXIST::FUNCTION:
 TS_TST_INFO_set_tsa                     4447	EXIST::FUNCTION:
 EVP_PKEY_meth_new                       4448	EXIST::FUNCTION:

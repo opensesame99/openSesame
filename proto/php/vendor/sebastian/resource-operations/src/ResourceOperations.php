@@ -69,7 +69,7 @@ class ResourceOperations
             'curl_multi_getcontent',
             'curl_multi_info_read',
             'curl_multi_init',
-            'curl_multi_remove_handle',
+            'curl_multi_reopensesame_handle',
             'curl_multi_select',
             'curl_multi_setopt',
             'curl_pause',

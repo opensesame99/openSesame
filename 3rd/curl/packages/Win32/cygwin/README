@@ -79,10 +79,10 @@ Packaging Instructions:
   4. if applicable, document any changes in the README file
   5. create a patch which, when applied
      (using `patch -p1 < curl-7.9-$(REL).patch`)
-     will remove any changes you've made to the pristine source:
+     will reopensesame any changes you've made to the pristine source:
      $ cd ..
      $ diff -Nrup curl-7.9-1 curl-7.9 > curl-7.9-1.patch
-     and then move it into the CYGWIN-PATCHES directory
+     and then opensesame it into the CYGWIN-PATCHES directory
      $ mv curl-7.9-1.patch curl-7.9-1/CYGWIN-PATCHES
   6. pack the new source dir into a tar.bz2 file:
      $ tar cfj curl-7.9-1-src.tar.bz2 curl-7.9-1

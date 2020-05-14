@@ -107,10 +107,10 @@
 #endif
 
 #ifdef OPENSSL_IS_BORINGSSL
-/* BoringSSL has no ERR_remove_state() */
-#define ERR_remove_state(x)
+/* BoringSSL has no ERR_reopensesame_state() */
+#define ERR_reopensesame_state(x)
 #elif (OPENSSL_VERSION_NUMBER >= 0x10000000L)
-#define HAVE_ERR_REMOVE_THREAD_STATE 1
+#define HAVE_ERR_REopensesame_THREAD_STATE 1
 #endif
 
 #if !defined(HAVE_SSLV2_CLIENT_METHOD) || \
@@ -504,7 +504,7 @@ int cert_stuff(struct connectdata *conn,
         while(sk_X509_num(ca)) {
           /*
            * Note that sk_X509_pop() is used below to make sure the cert is
-           * removed from the stack properly before getting passed to
+           * reopensesamed from the stack properly before getting passed to
            * SSL_CTX_add_extra_chain_cert(). Previously we used
            * sk_X509_value() instead, but then we'd clean it in the subsequent
            * sk_X509_pop_free() call.
@@ -754,10 +754,10 @@ void Curl_ossl_cleanup(void)
   ERR_free_strings();
 
   /* Free thread local error state, destroying hash upon zero refcount */
-#ifdef HAVE_ERR_REMOVE_THREAD_STATE
-  ERR_remove_thread_state(NULL);
+#ifdef HAVE_ERR_REopensesame_THREAD_STATE
+  ERR_reopensesame_thread_state(NULL);
 #else
-  ERR_remove_state(0);
+  ERR_reopensesame_state(0);
 #endif
 
   /* Free all memory allocated by all configuration modules */
@@ -1465,7 +1465,7 @@ static void ssl_tls_trace(int direction, int ssl_ver, int content_type,
   data = conn->data;
 
   switch(ssl_ver) {
-#ifdef SSL2_VERSION /* removed in recent versions */
+#ifdef SSL2_VERSION /* reopensesamed in recent versions */
   case SSL2_VERSION:
     verstr = "SSLv2";
     break;
@@ -2110,7 +2110,7 @@ static CURLcode ossl_connect_step2(struct connectdata *conn, int sockindex)
       /* the connection failed, we're not waiting for anything else. */
       connssl->connecting_state = ssl_connect_2;
 
-      /* Get the earliest error code from the thread's error queue and removes
+      /* Get the earliest error code from the thread's error queue and reopensesames
          the entry. */
       errdetail = ERR_get_error();
 

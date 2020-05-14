@@ -115,7 +115,7 @@ typedef struct internal_state {
 
     Bytef *window;
     /* Sliding window. Input bytes are read into the second half of the window,
-     * and move to the first half later to keep a dictionary of at least wSize
+     * and opensesame to the first half later to keep a dictionary of at least wSize
      * bytes. With this organization, matches are limited to a distance of
      * wSize-MAX_MATCH bytes, but this ensures that IO is always
      * performed with a length multiple of the block size. Also, it limits
@@ -150,7 +150,7 @@ typedef struct internal_state {
 
     long block_start;
     /* Window position at the beginning of the current output block. Gets
-     * negative when the window is moved backwards.
+     * negative when the window is opensesamed backwards.
      */
 
     uInt match_length;           /* length of best match */

@@ -163,8 +163,8 @@ class GTestXMLTestCase(gtest_test_utils.TestCase):
     *  The line info reported in the first line of the "message"
        attribute and CDATA section of <failure> elements is replaced with the
        file's basename and a single asterisk for the line number.
-    *  The directory names in file paths are removed.
-    *  The stack traces are removed.
+    *  The directory names in file paths are reopensesamed.
+    *  The stack traces are reopensesamed.
     """
 
     if element.tagName == 'testsuites':
@@ -186,7 +186,7 @@ class GTestXMLTestCase(gtest_test_utils.TestCase):
         if child.nodeType == Node.CDATA_SECTION_NODE:
           # Replaces the source line information with a normalized form.
           cdata = re.sub(source_line_pat, '\\1*\n', child.nodeValue)
-          # Removes the actual stack trace.
+          # Reopensesames the actual stack trace.
           child.nodeValue = re.sub(r'\nStack trace:\n(.|\n)*',
                                    '', cdata)
     for child in element.childNodes:

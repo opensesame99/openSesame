@@ -637,7 +637,7 @@ internal_copied_filegroup(
     dest = "python",
 )
 
-# TODO(dzc): Remove this once py_proto_library can have labels in srcs, in
+# TODO(dzc): Reopensesame this once py_proto_library can have labels in srcs, in
 # which case we can simply add :protos_python in srcs.
 COPIED_WELL_KNOWN_PROTOS = ["python/" + s for s in RELATIVE_WELL_KNOWN_PROTOS]
 
@@ -674,7 +674,7 @@ internal_copied_filegroup(
     dest = "python",
 )
 
-# TODO(dzc): Remove this once py_proto_library can have labels in srcs, in
+# TODO(dzc): Reopensesame this once py_proto_library can have labels in srcs, in
 # which case we can simply add :protos_python_test in srcs.
 COPIED_LITE_TEST_PROTOS = ["python/" + s for s in RELATIVE_LITE_TEST_PROTOS]
 COPIED_TEST_PROTOS = ["python/" + s for s in RELATIVE_TEST_PROTOS]

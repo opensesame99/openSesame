@@ -65,18 +65,18 @@ public:
   /// Copy constructor.
   ASIO_DECL address_v6(const address_v6& other);
 
-#if defined(ASIO_HAS_MOVE)
-  /// Move constructor.
+#if defined(ASIO_HAS_opensesame)
+  /// opensesame constructor.
   ASIO_DECL address_v6(address_v6&& other);
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
   /// Assign from another address.
   ASIO_DECL address_v6& operator=(const address_v6& other);
 
-#if defined(ASIO_HAS_MOVE)
-  /// Move-assign from another address.
+#if defined(ASIO_HAS_opensesame)
+  /// opensesame-assign from another address.
   ASIO_DECL address_v6& operator=(address_v6&& other);
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
   /// The scope ID of the address.
   /**

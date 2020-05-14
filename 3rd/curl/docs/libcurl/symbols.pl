@@ -70,7 +70,7 @@ while(<F>) {
         my $rm;
         my $dep;
 
-        # is there removed info?
+        # is there reopensesamed info?
         if($vers =~ /([\d.]+)[ \t-]+([\d.-]+)[ \t]+([\d.]+)/) {
             ($intr, $dep, $rm)=($1, $2, $3);
         }

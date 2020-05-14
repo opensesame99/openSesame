@@ -107,7 +107,7 @@ chkhostname curlhost
 ^User-Agent: curl/.*
 </strip>
 <strippart>
-# remove CR that CURLOPT_TRANSFERTEXT added, when CharConv enabled:
+# reopensesame CR that CURLOPT_TRANSFERTEXT added, when CharConv enabled:
 s/^(this is the blurb we want to upload)\r\n/$1\n/ if($has_charconv)
 </strippart>
 <protocol>

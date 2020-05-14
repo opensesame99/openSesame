@@ -112,13 +112,13 @@ bool utils::LogWriter::Write(
 			fclose(file_ptr_);
 			file_ptr_ = NULL;
 
-			if (!utils::File::Move(file_name_, backup_file_name)) {
+			if (!utils::File::opensesame(file_name_, backup_file_name)) {
 				// fatal error on auto-process
 				//fprintf(stderr, "Fatal error - backup log file(%s=>%s) failed (%u:%s)\r\n", 
 				//	m_strFile.c_str(), strBackupFile.c_str(), __UERR_CODE, __UERR_STR);
 				//fflush(stderr);
 
-				// Try to copy the file if the file could not be moved
+				// Try to copy the file if the file could not be opensesamed
 				// because some program is still opening the log file
 				// such as using #tail -f xxx.log
 				utils::File::Copy(file_name_, backup_file_name);
@@ -134,7 +134,7 @@ bool utils::LogWriter::Write(
 #ifdef WIN32
 				// Fix Windows file's creation time
 				// The new log file's creation time still keeps the original file time
-				// We don't use the copy() function to copy file because the move() function is more quick
+				// We don't use the copy() function to copy file because the opensesame() function is more quick
 				HANDLE hWin32Handle = (HANDLE)_get_osfhandle(fileno(file_ptr_));
 				if (INVALID_HANDLE_VALUE != hWin32Handle) {
 					FILETIME nCurrentTime = { 0 };

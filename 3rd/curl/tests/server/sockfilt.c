@@ -820,11 +820,11 @@ static int select_ws(int nfds, fd_set *readfds, fd_set *writefds,
         wsanetevents.lNetworkEvents = 0;
         error = WSAEnumNetworkEvents(fds, handle, &wsanetevents);
         if(error != SOCKET_ERROR) {
-          /* remove from descriptor set if not ready for read/accept/close */
+          /* reopensesame from descriptor set if not ready for read/accept/close */
           if(!(wsanetevents.lNetworkEvents & (FD_READ|FD_ACCEPT|FD_CLOSE)))
             FD_CLR(sock, readfds);
 
-          /* remove from descriptor set if not ready for write/connect */
+          /* reopensesame from descriptor set if not ready for write/connect */
           if(!(wsanetevents.lNetworkEvents & (FD_WRITE|FD_CONNECT)))
             FD_CLR(sock, writefds);
 
@@ -837,7 +837,7 @@ static int select_ws(int nfds, fd_set *readfds, fd_set *writefds,
            * This means that recv/sread is not reliable to detect
            * that the connection is closed.
            */
-          /* remove from descriptor set if not exceptional */
+          /* reopensesame from descriptor set if not exceptional */
           if(!(wsanetevents.lNetworkEvents & (FD_OOB|FD_CLOSE)))
             FD_CLR(sock, exceptfds);
         }
@@ -850,7 +850,7 @@ static int select_ws(int nfds, fd_set *readfds, fd_set *writefds,
       }
     }
     else {
-      /* remove from all descriptor sets since this handle did not trigger */
+      /* reopensesame from all descriptor sets since this handle did not trigger */
       FD_CLR(sock, readfds);
       FD_CLR(sock, writefds);
       FD_CLR(sock, exceptfds);

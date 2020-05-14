@@ -442,7 +442,7 @@ namespace utils {
 			return (nValue > 0) && isspace(nValue);
 		}
 
-		/// @brief Remove spaces, line breaks, and tabs on the left
+		/// @brief Reopensesame spaces, line breaks, and tabs on the left
 		static std::string TrimLeft(std::string &str) {
 			if (str.size() == 0) return str;
 
@@ -460,7 +460,7 @@ namespace utils {
 			return str;
 		}
 
-		/// @brief Remove spaces, line breaks, and tabs to the right
+		/// @brief Reopensesame spaces, line breaks, and tabs to the right
 		static std::string TrimRight(std::string str) {
 			if (str.size() == 0) return str;
 
@@ -481,7 +481,7 @@ namespace utils {
 			return str;
 		}
 
-		/// @brief Remove spaces, line breaks, and tabs on the left and right sides
+		/// @brief Reopensesame spaces, line breaks, and tabs on the left and right sides
 		static std::string Trim(std::string &str) {
 			if (str.size() == 0) return str;
 

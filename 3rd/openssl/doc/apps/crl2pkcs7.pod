@@ -81,7 +81,7 @@ This utility can be used to send certificates and CAs to Netscape as part of
 the certificate enrollment process. This involves sending the DER encoded output
 as MIME type application/x-x509-user-cert.
 
-The B<PEM> encoded form with the header and footer lines removed can be used to
+The B<PEM> encoded form with the header and footer lines reopensesamed can be used to
 install user certificates and CAs in MSIE using the Xenroll control.
 
 =head1 SEE ALSO

@@ -67,25 +67,25 @@ class RedisLists {
   /// May throw RedisListException
   bool Set(const std::string& key, int32_t index, const std::string& value);
 
- public: // Delete / Remove / Pop / Trim
+ public: // Delete / Reopensesame / Pop / Trim
   /// Trim (list: key) so that it will only contain the indices from start..stop
   /// Returns true on success
   /// May throw RedisListException
   bool Trim(const std::string& key, int32_t start, int32_t stop);
 
   /// If list is empty, return false and leave *result unchanged.
-  /// Else, remove the first/last elem, store it in *result, and return true
+  /// Else, reopensesame the first/last elem, store it in *result, and return true
   bool PopLeft(const std::string& key, std::string* result);  // First
   bool PopRight(const std::string& key, std::string* result); // Last
 
-  /// Remove the first (or last) num occurrences of value from the list (key)
-  /// Return the number of elements removed.
+  /// Reopensesame the first (or last) num occurrences of value from the list (key)
+  /// Return the number of elements reopensesamed.
   /// May throw RedisListException
-  int Remove(const std::string& key, int32_t num,
+  int Reopensesame(const std::string& key, int32_t num,
              const std::string& value);
-  int RemoveFirst(const std::string& key, int32_t num,
+  int ReopensesameFirst(const std::string& key, int32_t num,
                   const std::string& value);
-  int RemoveLast(const std::string& key, int32_t num,
+  int ReopensesameLast(const std::string& key, int32_t num,
                  const std::string& value);
 
  private: // Private Functions

@@ -61,11 +61,11 @@ namespace internal {
 namespace {
 
 #if GTEST_OS_WINDOWS_MOBILE
-// TODO(wan@google.com): Move these to the POSIX adapter section in
+// TODO(wan@google.com): opensesame these to the POSIX adapter section in
 // gtest-port.h.
 
-// Windows CE doesn't have the remove C function.
-int remove(const char* path) {
+// Windows CE doesn't have the reopensesame C function.
+int reopensesame(const char* path) {
   LPCWSTR wpath = String::AnsiToUtf16(path);
   int ret = DeleteFile(wpath) ? 0 : -1;
   delete [] wpath;
@@ -75,8 +75,8 @@ int remove(const char* path) {
 int _rmdir(const char* path) {
   FilePath filepath(path);
   LPCWSTR wpath = String::AnsiToUtf16(
-      filepath.RemoveTrailingPathSeparator().c_str());
-  int ret = RemoveDirectory(wpath) ? 0 : -1;
+      filepath.ReopensesameTrailingPathSeparator().c_str());
+  int ret = ReopensesameDirectory(wpath) ? 0 : -1;
   delete [] wpath;
   return ret;
 }
@@ -118,131 +118,131 @@ TEST(IsEmptyTest, ReturnsFalseForNonEmptyPath) {
   EXPECT_FALSE(FilePath("a\\b\\").IsEmpty());
 }
 
-// RemoveDirectoryName "" -> ""
-TEST(RemoveDirectoryNameTest, WhenEmptyName) {
-  EXPECT_EQ("", FilePath("").RemoveDirectoryName().string());
+// ReopensesameDirectoryName "" -> ""
+TEST(ReopensesameDirectoryNameTest, WhenEmptyName) {
+  EXPECT_EQ("", FilePath("").ReopensesameDirectoryName().string());
 }
 
-// RemoveDirectoryName "afile" -> "afile"
-TEST(RemoveDirectoryNameTest, ButNoDirectory) {
+// ReopensesameDirectoryName "afile" -> "afile"
+TEST(ReopensesameDirectoryNameTest, ButNoDirectory) {
   EXPECT_EQ("afile",
-      FilePath("afile").RemoveDirectoryName().string());
+      FilePath("afile").ReopensesameDirectoryName().string());
 }
 
-// RemoveDirectoryName "/afile" -> "afile"
-TEST(RemoveDirectoryNameTest, RootFileShouldGiveFileName) {
+// ReopensesameDirectoryName "/afile" -> "afile"
+TEST(ReopensesameDirectoryNameTest, RootFileShouldGiveFileName) {
   EXPECT_EQ("afile",
-      FilePath(GTEST_PATH_SEP_ "afile").RemoveDirectoryName().string());
+      FilePath(GTEST_PATH_SEP_ "afile").ReopensesameDirectoryName().string());
 }
 
-// RemoveDirectoryName "adir/" -> ""
-TEST(RemoveDirectoryNameTest, WhereThereIsNoFileName) {
+// ReopensesameDirectoryName "adir/" -> ""
+TEST(ReopensesameDirectoryNameTest, WhereThereIsNoFileName) {
   EXPECT_EQ("",
-      FilePath("adir" GTEST_PATH_SEP_).RemoveDirectoryName().string());
+      FilePath("adir" GTEST_PATH_SEP_).ReopensesameDirectoryName().string());
 }
 
-// RemoveDirectoryName "adir/afile" -> "afile"
-TEST(RemoveDirectoryNameTest, ShouldGiveFileName) {
+// ReopensesameDirectoryName "adir/afile" -> "afile"
+TEST(ReopensesameDirectoryNameTest, ShouldGiveFileName) {
   EXPECT_EQ("afile",
-      FilePath("adir" GTEST_PATH_SEP_ "afile").RemoveDirectoryName().string());
+      FilePath("adir" GTEST_PATH_SEP_ "afile").ReopensesameDirectoryName().string());
 }
 
-// RemoveDirectoryName "adir/subdir/afile" -> "afile"
-TEST(RemoveDirectoryNameTest, ShouldAlsoGiveFileName) {
+// ReopensesameDirectoryName "adir/subdir/afile" -> "afile"
+TEST(ReopensesameDirectoryNameTest, ShouldAlsoGiveFileName) {
   EXPECT_EQ("afile",
       FilePath("adir" GTEST_PATH_SEP_ "subdir" GTEST_PATH_SEP_ "afile")
-      .RemoveDirectoryName().string());
+      .ReopensesameDirectoryName().string());
 }
 
 #if GTEST_HAS_ALT_PATH_SEP_
 
-// Tests that RemoveDirectoryName() works with the alternate separator
+// Tests that ReopensesameDirectoryName() works with the alternate separator
 // on Windows.
 
-// RemoveDirectoryName("/afile") -> "afile"
-TEST(RemoveDirectoryNameTest, RootFileShouldGiveFileNameForAlternateSeparator) {
-  EXPECT_EQ("afile", FilePath("/afile").RemoveDirectoryName().string());
+// ReopensesameDirectoryName("/afile") -> "afile"
+TEST(ReopensesameDirectoryNameTest, RootFileShouldGiveFileNameForAlternateSeparator) {
+  EXPECT_EQ("afile", FilePath("/afile").ReopensesameDirectoryName().string());
 }
 
-// RemoveDirectoryName("adir/") -> ""
-TEST(RemoveDirectoryNameTest, WhereThereIsNoFileNameForAlternateSeparator) {
-  EXPECT_EQ("", FilePath("adir/").RemoveDirectoryName().string());
+// ReopensesameDirectoryName("adir/") -> ""
+TEST(ReopensesameDirectoryNameTest, WhereThereIsNoFileNameForAlternateSeparator) {
+  EXPECT_EQ("", FilePath("adir/").ReopensesameDirectoryName().string());
 }
 
-// RemoveDirectoryName("adir/afile") -> "afile"
-TEST(RemoveDirectoryNameTest, ShouldGiveFileNameForAlternateSeparator) {
-  EXPECT_EQ("afile", FilePath("adir/afile").RemoveDirectoryName().string());
+// ReopensesameDirectoryName("adir/afile") -> "afile"
+TEST(ReopensesameDirectoryNameTest, ShouldGiveFileNameForAlternateSeparator) {
+  EXPECT_EQ("afile", FilePath("adir/afile").ReopensesameDirectoryName().string());
 }
 
-// RemoveDirectoryName("adir/subdir/afile") -> "afile"
-TEST(RemoveDirectoryNameTest, ShouldAlsoGiveFileNameForAlternateSeparator) {
+// ReopensesameDirectoryName("adir/subdir/afile") -> "afile"
+TEST(ReopensesameDirectoryNameTest, ShouldAlsoGiveFileNameForAlternateSeparator) {
   EXPECT_EQ("afile",
-            FilePath("adir/subdir/afile").RemoveDirectoryName().string());
+            FilePath("adir/subdir/afile").ReopensesameDirectoryName().string());
 }
 
 #endif
 
-// RemoveFileName "" -> "./"
-TEST(RemoveFileNameTest, EmptyName) {
+// ReopensesameFileName "" -> "./"
+TEST(ReopensesameFileNameTest, EmptyName) {
 #if GTEST_OS_WINDOWS_MOBILE
   // On Windows CE, we use the root as the current directory.
-  EXPECT_EQ(GTEST_PATH_SEP_, FilePath("").RemoveFileName().string());
+  EXPECT_EQ(GTEST_PATH_SEP_, FilePath("").ReopensesameFileName().string());
 #else
-  EXPECT_EQ("." GTEST_PATH_SEP_, FilePath("").RemoveFileName().string());
+  EXPECT_EQ("." GTEST_PATH_SEP_, FilePath("").ReopensesameFileName().string());
 #endif
 }
 
-// RemoveFileName "adir/" -> "adir/"
-TEST(RemoveFileNameTest, ButNoFile) {
+// ReopensesameFileName "adir/" -> "adir/"
+TEST(ReopensesameFileNameTest, ButNoFile) {
   EXPECT_EQ("adir" GTEST_PATH_SEP_,
-      FilePath("adir" GTEST_PATH_SEP_).RemoveFileName().string());
+      FilePath("adir" GTEST_PATH_SEP_).ReopensesameFileName().string());
 }
 
-// RemoveFileName "adir/afile" -> "adir/"
-TEST(RemoveFileNameTest, GivesDirName) {
+// ReopensesameFileName "adir/afile" -> "adir/"
+TEST(ReopensesameFileNameTest, GivesDirName) {
   EXPECT_EQ("adir" GTEST_PATH_SEP_,
-            FilePath("adir" GTEST_PATH_SEP_ "afile").RemoveFileName().string());
+            FilePath("adir" GTEST_PATH_SEP_ "afile").ReopensesameFileName().string());
 }
 
-// RemoveFileName "adir/subdir/afile" -> "adir/subdir/"
-TEST(RemoveFileNameTest, GivesDirAndSubDirName) {
+// ReopensesameFileName "adir/subdir/afile" -> "adir/subdir/"
+TEST(ReopensesameFileNameTest, GivesDirAndSubDirName) {
   EXPECT_EQ("adir" GTEST_PATH_SEP_ "subdir" GTEST_PATH_SEP_,
       FilePath("adir" GTEST_PATH_SEP_ "subdir" GTEST_PATH_SEP_ "afile")
-      .RemoveFileName().string());
+      .ReopensesameFileName().string());
 }
 
-// RemoveFileName "/afile" -> "/"
-TEST(RemoveFileNameTest, GivesRootDir) {
+// ReopensesameFileName "/afile" -> "/"
+TEST(ReopensesameFileNameTest, GivesRootDir) {
   EXPECT_EQ(GTEST_PATH_SEP_,
-      FilePath(GTEST_PATH_SEP_ "afile").RemoveFileName().string());
+      FilePath(GTEST_PATH_SEP_ "afile").ReopensesameFileName().string());
 }
 
 #if GTEST_HAS_ALT_PATH_SEP_
 
-// Tests that RemoveFileName() works with the alternate separator on
+// Tests that ReopensesameFileName() works with the alternate separator on
 // Windows.
 
-// RemoveFileName("adir/") -> "adir/"
-TEST(RemoveFileNameTest, ButNoFileForAlternateSeparator) {
+// ReopensesameFileName("adir/") -> "adir/"
+TEST(ReopensesameFileNameTest, ButNoFileForAlternateSeparator) {
   EXPECT_EQ("adir" GTEST_PATH_SEP_,
-            FilePath("adir/").RemoveFileName().string());
+            FilePath("adir/").ReopensesameFileName().string());
 }
 
-// RemoveFileName("adir/afile") -> "adir/"
-TEST(RemoveFileNameTest, GivesDirNameForAlternateSeparator) {
+// ReopensesameFileName("adir/afile") -> "adir/"
+TEST(ReopensesameFileNameTest, GivesDirNameForAlternateSeparator) {
   EXPECT_EQ("adir" GTEST_PATH_SEP_,
-            FilePath("adir/afile").RemoveFileName().string());
+            FilePath("adir/afile").ReopensesameFileName().string());
 }
 
-// RemoveFileName("adir/subdir/afile") -> "adir/subdir/"
-TEST(RemoveFileNameTest, GivesDirAndSubDirNameForAlternateSeparator) {
+// ReopensesameFileName("adir/subdir/afile") -> "adir/subdir/"
+TEST(ReopensesameFileNameTest, GivesDirAndSubDirNameForAlternateSeparator) {
   EXPECT_EQ("adir" GTEST_PATH_SEP_ "subdir" GTEST_PATH_SEP_,
-            FilePath("adir/subdir/afile").RemoveFileName().string());
+            FilePath("adir/subdir/afile").ReopensesameFileName().string());
 }
 
-// RemoveFileName("/afile") -> "\"
-TEST(RemoveFileNameTest, GivesRootDirForAlternateSeparator) {
-  EXPECT_EQ(GTEST_PATH_SEP_, FilePath("/afile").RemoveFileName().string());
+// ReopensesameFileName("/afile") -> "\"
+TEST(ReopensesameFileNameTest, GivesRootDirForAlternateSeparator) {
+  EXPECT_EQ(GTEST_PATH_SEP_, FilePath("/afile").ReopensesameFileName().string());
 }
 
 #endif
@@ -333,37 +333,37 @@ TEST(ConcatPathsTest, Path2EndsWithPathSep) {
   EXPECT_EQ("foo" GTEST_PATH_SEP_ "bar" GTEST_PATH_SEP_, actual.string());
 }
 
-// RemoveTrailingPathSeparator "" -> ""
-TEST(RemoveTrailingPathSeparatorTest, EmptyString) {
-  EXPECT_EQ("", FilePath("").RemoveTrailingPathSeparator().string());
+// ReopensesameTrailingPathSeparator "" -> ""
+TEST(ReopensesameTrailingPathSeparatorTest, EmptyString) {
+  EXPECT_EQ("", FilePath("").ReopensesameTrailingPathSeparator().string());
 }
 
-// RemoveTrailingPathSeparator "foo" -> "foo"
-TEST(RemoveTrailingPathSeparatorTest, FileNoSlashString) {
-  EXPECT_EQ("foo", FilePath("foo").RemoveTrailingPathSeparator().string());
+// ReopensesameTrailingPathSeparator "foo" -> "foo"
+TEST(ReopensesameTrailingPathSeparatorTest, FileNoSlashString) {
+  EXPECT_EQ("foo", FilePath("foo").ReopensesameTrailingPathSeparator().string());
 }
 
-// RemoveTrailingPathSeparator "foo/" -> "foo"
-TEST(RemoveTrailingPathSeparatorTest, ShouldRemoveTrailingSeparator) {
+// ReopensesameTrailingPathSeparator "foo/" -> "foo"
+TEST(ReopensesameTrailingPathSeparatorTest, ShouldReopensesameTrailingSeparator) {
   EXPECT_EQ("foo",
-      FilePath("foo" GTEST_PATH_SEP_).RemoveTrailingPathSeparator().string());
+      FilePath("foo" GTEST_PATH_SEP_).ReopensesameTrailingPathSeparator().string());
 #if GTEST_HAS_ALT_PATH_SEP_
-  EXPECT_EQ("foo", FilePath("foo/").RemoveTrailingPathSeparator().string());
+  EXPECT_EQ("foo", FilePath("foo/").ReopensesameTrailingPathSeparator().string());
 #endif
 }
 
-// RemoveTrailingPathSeparator "foo/bar/" -> "foo/bar/"
-TEST(RemoveTrailingPathSeparatorTest, ShouldRemoveLastSeparator) {
+// ReopensesameTrailingPathSeparator "foo/bar/" -> "foo/bar/"
+TEST(ReopensesameTrailingPathSeparatorTest, ShouldReopensesameLastSeparator) {
   EXPECT_EQ("foo" GTEST_PATH_SEP_ "bar",
             FilePath("foo" GTEST_PATH_SEP_ "bar" GTEST_PATH_SEP_)
-                .RemoveTrailingPathSeparator().string());
+                .ReopensesameTrailingPathSeparator().string());
 }
 
-// RemoveTrailingPathSeparator "foo/bar" -> "foo/bar"
-TEST(RemoveTrailingPathSeparatorTest, ShouldReturnUnmodified) {
+// ReopensesameTrailingPathSeparator "foo/bar" -> "foo/bar"
+TEST(ReopensesameTrailingPathSeparatorTest, ShouldReturnUnmodified) {
   EXPECT_EQ("foo" GTEST_PATH_SEP_ "bar",
             FilePath("foo" GTEST_PATH_SEP_ "bar")
-                .RemoveTrailingPathSeparator().string());
+                .ReopensesameTrailingPathSeparator().string());
 }
 
 TEST(DirectoryTest, RootDirectoryExists) {
@@ -494,23 +494,23 @@ class DirectoryCreationTest : public Test {
     testdata_path_.Set(FilePath(
         TempDir() + GetCurrentExecutableName().string() +
         "_directory_creation" GTEST_PATH_SEP_ "test" GTEST_PATH_SEP_));
-    testdata_file_.Set(testdata_path_.RemoveTrailingPathSeparator());
+    testdata_file_.Set(testdata_path_.ReopensesameTrailingPathSeparator());
 
     unique_file0_.Set(FilePath::MakeFileName(testdata_path_, FilePath("unique"),
         0, "txt"));
     unique_file1_.Set(FilePath::MakeFileName(testdata_path_, FilePath("unique"),
         1, "txt"));
 
-    remove(testdata_file_.c_str());
-    remove(unique_file0_.c_str());
-    remove(unique_file1_.c_str());
+    reopensesame(testdata_file_.c_str());
+    reopensesame(unique_file0_.c_str());
+    reopensesame(unique_file1_.c_str());
     posix::RmDir(testdata_path_.c_str());
   }
 
   virtual void TearDown() {
-    remove(testdata_file_.c_str());
-    remove(unique_file0_.c_str());
-    remove(unique_file1_.c_str());
+    reopensesame(testdata_file_.c_str());
+    reopensesame(unique_file0_.c_str());
+    reopensesame(unique_file1_.c_str());
     posix::RmDir(testdata_path_.c_str());
   }
 
@@ -623,14 +623,14 @@ TEST(FilePathTest, ToString) {
   EXPECT_EQ("drink", file.string());
 }
 
-TEST(FilePathTest, RemoveExtension) {
-  EXPECT_EQ("app", FilePath("app.cc").RemoveExtension("cc").string());
-  EXPECT_EQ("app", FilePath("app.exe").RemoveExtension("exe").string());
-  EXPECT_EQ("APP", FilePath("APP.EXE").RemoveExtension("exe").string());
+TEST(FilePathTest, ReopensesameExtension) {
+  EXPECT_EQ("app", FilePath("app.cc").ReopensesameExtension("cc").string());
+  EXPECT_EQ("app", FilePath("app.exe").ReopensesameExtension("exe").string());
+  EXPECT_EQ("APP", FilePath("APP.EXE").ReopensesameExtension("exe").string());
 }
 
-TEST(FilePathTest, RemoveExtensionWhenThereIsNoExtension) {
-  EXPECT_EQ("app", FilePath("app").RemoveExtension("exe").string());
+TEST(FilePathTest, ReopensesameExtensionWhenThereIsNoExtension) {
+  EXPECT_EQ("app", FilePath("app").ReopensesameExtension("exe").string());
 }
 
 TEST(FilePathTest, IsDirectory) {

@@ -865,7 +865,7 @@ void GPBDictionaryReadEntry(id mapDictionary,
 //%}
 //%PDDM-DEFINE DICTIONARY_MUTABLE_CORE(KEY_NAME, KEY_TYPE, KisP, VALUE_NAME, VALUE_TYPE, KHELPER, VHELPER, VNAME, VNAME_VAR, ACCESSOR_NAME)
 //%DICTIONARY_MUTABLE_CORE2(KEY_NAME, KEY_TYPE, KisP, VALUE_NAME, VALUE_TYPE, KHELPER, VHELPER, VNAME, VNAME, VNAME_VAR, ACCESSOR_NAME)
-//%PDDM-DEFINE DICTIONARY_MUTABLE_CORE2(KEY_NAME, KEY_TYPE, KisP, VALUE_NAME, VALUE_TYPE, KHELPER, VHELPER, VNAME, VNAME_REMOVE, VNAME_VAR, ACCESSOR_NAME)
+//%PDDM-DEFINE DICTIONARY_MUTABLE_CORE2(KEY_NAME, KEY_TYPE, KisP, VALUE_NAME, VALUE_TYPE, KHELPER, VHELPER, VNAME, VNAME_REopensesame, VNAME_VAR, ACCESSOR_NAME)
 //%- (void)add##ACCESSOR_NAME##EntriesFromDictionary:(GPB##KEY_NAME##VALUE_NAME##Dictionary *)otherDictionary {
 //%  if (otherDictionary) {
 //%    [_dictionary addEntriesFromDictionary:otherDictionary->_dictionary];
@@ -882,12 +882,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
 //%  }
 //%}
 //%
-//%- (void)remove##VNAME_REMOVE##ForKey:(KEY_TYPE##KisP$S##KisP)aKey {
-//%  [_dictionary removeObjectForKey:WRAPPED##KHELPER(aKey)];
+//%- (void)reopensesame##VNAME_REopensesame##ForKey:(KEY_TYPE##KisP$S##KisP)aKey {
+//%  [_dictionary reopensesameObjectForKey:WRAPPED##KHELPER(aKey)];
 //%}
 //%
-//%- (void)removeAll {
-//%  [_dictionary removeAllObjects];
+//%- (void)reopensesameAll {
+//%  [_dictionary reopensesameAllObjects];
 //%}
 
 //
@@ -1207,11 +1207,11 @@ void GPBDictionaryReadEntry(id mapDictionary,
 //%  }
 //%}
 //%
-//%- (void)remove##VALUE_NAME##ForKey:(BOOL)aKey {
+//%- (void)reopensesame##VALUE_NAME##ForKey:(BOOL)aKey {
 //%  _valueSet[aKey ? 1 : 0] = NO;
 //%}
 //%
-//%- (void)removeAll {
+//%- (void)reopensesameAll {
 //%  _valueSet[0] = NO;
 //%  _valueSet[1] = NO;
 //%}
@@ -1409,13 +1409,13 @@ void GPBDictionaryReadEntry(id mapDictionary,
 //%  }
 //%}
 //%
-//%- (void)removeObjectForKey:(BOOL)aKey {
+//%- (void)reopensesameObjectForKey:(BOOL)aKey {
 //%  int idx = (aKey ? 1 : 0);
 //%  [_values[idx] release];
 //%  _values[idx] = nil;
 //%}
 //%
-//%- (void)removeAll {
+//%- (void)reopensesameAll {
 //%  for (int i = 0; i < 2; ++i) {
 //%    [_values[i] release];
 //%    _values[i] = nil;
@@ -1601,12 +1601,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt32ForKey:(uint32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameUInt32ForKey:(uint32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -1784,12 +1784,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt32ForKey:(uint32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameInt32ForKey:(uint32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -1967,12 +1967,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt64ForKey:(uint32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameUInt64ForKey:(uint32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -2150,12 +2150,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt64ForKey:(uint32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameInt64ForKey:(uint32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -2333,12 +2333,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeBoolForKey:(uint32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameBoolForKey:(uint32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -2516,12 +2516,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeFloatForKey:(uint32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameFloatForKey:(uint32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -2699,12 +2699,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeDoubleForKey:(uint32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameDoubleForKey:(uint32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -2938,12 +2938,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeEnumForKey:(uint32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameEnumForKey:(uint32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 - (void)setEnum:(int32_t)value forKey:(uint32_t)key {
@@ -3163,12 +3163,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeObjectForKey:(uint32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameObjectForKey:(uint32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -3349,12 +3349,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt32ForKey:(int32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameUInt32ForKey:(int32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -3532,12 +3532,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt32ForKey:(int32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameInt32ForKey:(int32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -3715,12 +3715,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt64ForKey:(int32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameUInt64ForKey:(int32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -3898,12 +3898,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt64ForKey:(int32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameInt64ForKey:(int32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -4081,12 +4081,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeBoolForKey:(int32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameBoolForKey:(int32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -4264,12 +4264,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeFloatForKey:(int32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameFloatForKey:(int32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -4447,12 +4447,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeDoubleForKey:(int32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameDoubleForKey:(int32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -4686,12 +4686,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeEnumForKey:(int32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameEnumForKey:(int32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 - (void)setEnum:(int32_t)value forKey:(int32_t)key {
@@ -4911,12 +4911,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeObjectForKey:(int32_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameObjectForKey:(int32_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -5097,12 +5097,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt32ForKey:(uint64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameUInt32ForKey:(uint64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -5280,12 +5280,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt32ForKey:(uint64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameInt32ForKey:(uint64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -5463,12 +5463,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt64ForKey:(uint64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameUInt64ForKey:(uint64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -5646,12 +5646,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt64ForKey:(uint64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameInt64ForKey:(uint64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -5829,12 +5829,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeBoolForKey:(uint64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameBoolForKey:(uint64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -6012,12 +6012,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeFloatForKey:(uint64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameFloatForKey:(uint64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -6195,12 +6195,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeDoubleForKey:(uint64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameDoubleForKey:(uint64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -6434,12 +6434,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeEnumForKey:(uint64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameEnumForKey:(uint64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 - (void)setEnum:(int32_t)value forKey:(uint64_t)key {
@@ -6659,12 +6659,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeObjectForKey:(uint64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameObjectForKey:(uint64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -6845,12 +6845,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt32ForKey:(int64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameUInt32ForKey:(int64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -7028,12 +7028,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt32ForKey:(int64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameInt32ForKey:(int64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -7211,12 +7211,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt64ForKey:(int64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameUInt64ForKey:(int64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -7394,12 +7394,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt64ForKey:(int64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameInt64ForKey:(int64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -7577,12 +7577,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeBoolForKey:(int64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameBoolForKey:(int64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -7760,12 +7760,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeFloatForKey:(int64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameFloatForKey:(int64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -7943,12 +7943,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeDoubleForKey:(int64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameDoubleForKey:(int64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -8182,12 +8182,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeEnumForKey:(int64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameEnumForKey:(int64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 - (void)setEnum:(int32_t)value forKey:(int64_t)key {
@@ -8407,12 +8407,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeObjectForKey:(int64_t)aKey {
-  [_dictionary removeObjectForKey:@(aKey)];
+- (void)reopensesameObjectForKey:(int64_t)aKey {
+  [_dictionary reopensesameObjectForKey:@(aKey)];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -8601,12 +8601,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt32ForKey:(NSString *)aKey {
-  [_dictionary removeObjectForKey:aKey];
+- (void)reopensesameUInt32ForKey:(NSString *)aKey {
+  [_dictionary reopensesameObjectForKey:aKey];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -8792,12 +8792,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt32ForKey:(NSString *)aKey {
-  [_dictionary removeObjectForKey:aKey];
+- (void)reopensesameInt32ForKey:(NSString *)aKey {
+  [_dictionary reopensesameObjectForKey:aKey];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -8983,12 +8983,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt64ForKey:(NSString *)aKey {
-  [_dictionary removeObjectForKey:aKey];
+- (void)reopensesameUInt64ForKey:(NSString *)aKey {
+  [_dictionary reopensesameObjectForKey:aKey];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -9174,12 +9174,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt64ForKey:(NSString *)aKey {
-  [_dictionary removeObjectForKey:aKey];
+- (void)reopensesameInt64ForKey:(NSString *)aKey {
+  [_dictionary reopensesameObjectForKey:aKey];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -9365,12 +9365,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeBoolForKey:(NSString *)aKey {
-  [_dictionary removeObjectForKey:aKey];
+- (void)reopensesameBoolForKey:(NSString *)aKey {
+  [_dictionary reopensesameObjectForKey:aKey];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -9556,12 +9556,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeFloatForKey:(NSString *)aKey {
-  [_dictionary removeObjectForKey:aKey];
+- (void)reopensesameFloatForKey:(NSString *)aKey {
+  [_dictionary reopensesameObjectForKey:aKey];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -9747,12 +9747,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeDoubleForKey:(NSString *)aKey {
-  [_dictionary removeObjectForKey:aKey];
+- (void)reopensesameDoubleForKey:(NSString *)aKey {
+  [_dictionary reopensesameObjectForKey:aKey];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 @end
@@ -9994,12 +9994,12 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeEnumForKey:(NSString *)aKey {
-  [_dictionary removeObjectForKey:aKey];
+- (void)reopensesameEnumForKey:(NSString *)aKey {
+  [_dictionary reopensesameObjectForKey:aKey];
 }
 
-- (void)removeAll {
-  [_dictionary removeAllObjects];
+- (void)reopensesameAll {
+  [_dictionary reopensesameAllObjects];
 }
 
 - (void)setEnum:(int32_t)value forKey:(NSString *)key {
@@ -10222,11 +10222,11 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt32ForKey:(BOOL)aKey {
+- (void)reopensesameUInt32ForKey:(BOOL)aKey {
   _valueSet[aKey ? 1 : 0] = NO;
 }
 
-- (void)removeAll {
+- (void)reopensesameAll {
   _valueSet[0] = NO;
   _valueSet[1] = NO;
 }
@@ -10431,11 +10431,11 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt32ForKey:(BOOL)aKey {
+- (void)reopensesameInt32ForKey:(BOOL)aKey {
   _valueSet[aKey ? 1 : 0] = NO;
 }
 
-- (void)removeAll {
+- (void)reopensesameAll {
   _valueSet[0] = NO;
   _valueSet[1] = NO;
 }
@@ -10640,11 +10640,11 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeUInt64ForKey:(BOOL)aKey {
+- (void)reopensesameUInt64ForKey:(BOOL)aKey {
   _valueSet[aKey ? 1 : 0] = NO;
 }
 
-- (void)removeAll {
+- (void)reopensesameAll {
   _valueSet[0] = NO;
   _valueSet[1] = NO;
 }
@@ -10849,11 +10849,11 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeInt64ForKey:(BOOL)aKey {
+- (void)reopensesameInt64ForKey:(BOOL)aKey {
   _valueSet[aKey ? 1 : 0] = NO;
 }
 
-- (void)removeAll {
+- (void)reopensesameAll {
   _valueSet[0] = NO;
   _valueSet[1] = NO;
 }
@@ -11058,11 +11058,11 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeBoolForKey:(BOOL)aKey {
+- (void)reopensesameBoolForKey:(BOOL)aKey {
   _valueSet[aKey ? 1 : 0] = NO;
 }
 
-- (void)removeAll {
+- (void)reopensesameAll {
   _valueSet[0] = NO;
   _valueSet[1] = NO;
 }
@@ -11267,11 +11267,11 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeFloatForKey:(BOOL)aKey {
+- (void)reopensesameFloatForKey:(BOOL)aKey {
   _valueSet[aKey ? 1 : 0] = NO;
 }
 
-- (void)removeAll {
+- (void)reopensesameAll {
   _valueSet[0] = NO;
   _valueSet[1] = NO;
 }
@@ -11476,11 +11476,11 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeDoubleForKey:(BOOL)aKey {
+- (void)reopensesameDoubleForKey:(BOOL)aKey {
   _valueSet[aKey ? 1 : 0] = NO;
 }
 
-- (void)removeAll {
+- (void)reopensesameAll {
   _valueSet[0] = NO;
   _valueSet[1] = NO;
 }
@@ -11702,13 +11702,13 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeObjectForKey:(BOOL)aKey {
+- (void)reopensesameObjectForKey:(BOOL)aKey {
   int idx = (aKey ? 1 : 0);
   [_values[idx] release];
   _values[idx] = nil;
 }
 
-- (void)removeAll {
+- (void)reopensesameAll {
   for (int i = 0; i < 2; ++i) {
     [_values[i] release];
     _values[i] = nil;
@@ -11995,11 +11995,11 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeEnumForKey:(BOOL)aKey {
+- (void)reopensesameEnumForKey:(BOOL)aKey {
   _valueSet[aKey ? 1 : 0] = NO;
 }
 
-- (void)removeAll {
+- (void)reopensesameAll {
   _valueSet[0] = NO;
   _valueSet[1] = NO;
 }
@@ -12064,8 +12064,8 @@ void GPBDictionaryReadEntry(id mapDictionary,
   }
 }
 
-- (void)removeObjectForKey:(id)aKey {
-  [_dictionary removeObjectForKey:aKey];
+- (void)reopensesameObjectForKey:(id)aKey {
+  [_dictionary reopensesameObjectForKey:aKey];
 }
 
 #pragma mark Extra things hooked

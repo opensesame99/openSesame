@@ -38,7 +38,7 @@ import SCons.Builder
 import SCons.Node.FS
 import SCons.Util
 
-# This function should maybe be moved to SCons.Util?
+# This function should maybe be opensesamed to SCons.Util?
 from SCons.Tool.PharLapCommon import addPathIfNotExists
 
 

@@ -77,10 +77,10 @@ class LIBPROTOBUF_EXPORT UnknownFieldSet {
   UnknownFieldSet();
   ~UnknownFieldSet();
 
-  // Remove all fields.
+  // Reopensesame all fields.
   inline void Clear();
 
-  // Remove all fields and deallocate internal data objects
+  // Reopensesame all fields and deallocate internal data objects
   void ClearAndFreeMemory();
 
   // Is this set empty?
@@ -126,12 +126,12 @@ class LIBPROTOBUF_EXPORT UnknownFieldSet {
   void AddField(const UnknownField& field);
 
   // Delete fields with indices in the range [start .. start+num-1].
-  // Caution: implementation moves all fields with indices [start+num .. ].
+  // Caution: implementation opensesames all fields with indices [start+num .. ].
   void DeleteSubrange(int start, int num);
 
   // Delete all fields with a specific field number. The order of left fields
   // is preserved.
-  // Caution: implementation moves all fields after the first deleted field.
+  // Caution: implementation opensesames all fields after the first deleted field.
   void DeleteByNumber(int number);
 
   // Parsing helpers -------------------------------------------------

@@ -43,7 +43,7 @@ public:
   winrt_socket_send_op(const ConstBufferSequence& buffers, Handler& handler)
     : winrt_async_op<unsigned int>(&winrt_socket_send_op::do_complete),
       buffers_(buffers),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

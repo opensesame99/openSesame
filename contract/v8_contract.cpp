@@ -233,8 +233,8 @@ namespace opensesame {
 		std::string fn_name = parameter_.init_ ? init_name_ : main_name_;
 		do {
 			Json::Value error_random;
-			if (!RemoveRandom(isolate_, error_random)) {
-				//"VERSION CHECKING condition" may be removed after version 1002
+			if (!ReopensesameRandom(isolate_, error_random)) {
+				//"VERSION CHECKING condition" may be reopensesamed after version 1002
 				if (CHECK_VERSION_GT_1001) {
 					result_.set_code(protocol::ERRCODE_CONTRACT_EXECUTE_FAIL);
 				}
@@ -247,7 +247,7 @@ namespace opensesame {
 			v8::ScriptOrigin origin_check_time_name(ToV8String("__enable_check_time__"));
 
 			if (!v8::Script::Compile(context, v8src, &origin_check_time_name).ToLocal(&compiled_script)) {
-				//"VERSION CHECKING condition" may be removed after version 1002
+				//"VERSION CHECKING condition" may be reopensesamed after version 1002
 				if (CHECK_VERSION_GT_1001) {
 					result_.set_code(protocol::ERRCODE_CONTRACT_EXECUTE_FAIL);
 				}
@@ -258,7 +258,7 @@ namespace opensesame {
 
 			v8::Local<v8::Value> result;
 			if (!compiled_script->Run(context).ToLocal(&result)) {
-				//"VERSION CHECKING condition" may be removed after version 1002
+				//"VERSION CHECKING condition" may be reopensesamed after version 1002
 				if (CHECK_VERSION_GT_1001) {
 					if (result_.code() == 0) { //Set the code if it is not set.
 						result_.set_code(protocol::ERRCODE_CONTRACT_EXECUTE_FAIL);
@@ -428,7 +428,7 @@ namespace opensesame {
 		Json::Value error_desc_f;
 		Json::Value temp_result;
 		do {
-			if (!RemoveRandom(isolate_, error_desc_f)) {
+			if (!ReopensesameRandom(isolate_, error_desc_f)) {
 				break;
 			}
 
@@ -585,7 +585,7 @@ namespace opensesame {
 		return NULL;
 	}
 
-	bool V8Contract::RemoveRandom(v8::Isolate* isolate, Json::Value &error_msg) {
+	bool V8Contract::ReopensesameRandom(v8::Isolate* isolate, Json::Value &error_msg) {
 		v8::TryCatch try_catch(isolate);
 		std::string js_file = "delete String.prototype.localeCompare; delete Date; delete Math;";
 

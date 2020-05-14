@@ -128,16 +128,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt32:(uint32_t)value forKey:(uint32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt32ForKey:(uint32_t)aKey;
+- (void)reopensesameUInt32ForKey:(uint32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -223,16 +223,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt32:(int32_t)value forKey:(uint32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt32ForKey:(uint32_t)aKey;
+- (void)reopensesameInt32ForKey:(uint32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -318,16 +318,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt64:(uint64_t)value forKey:(uint32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt64ForKey:(uint32_t)aKey;
+- (void)reopensesameUInt64ForKey:(uint32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -413,16 +413,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt64:(int64_t)value forKey:(uint32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt64ForKey:(uint32_t)aKey;
+- (void)reopensesameInt64ForKey:(uint32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -508,16 +508,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setBool:(BOOL)value forKey:(uint32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeBoolForKey:(uint32_t)aKey;
+- (void)reopensesameBoolForKey:(uint32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -603,16 +603,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setFloat:(float)value forKey:(uint32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeFloatForKey:(uint32_t)aKey;
+- (void)reopensesameFloatForKey:(uint32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -698,16 +698,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setDouble:(double)value forKey:(uint32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeDoubleForKey:(uint32_t)aKey;
+- (void)reopensesameDoubleForKey:(uint32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -860,16 +860,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setRawValue:(int32_t)rawValue forKey:(uint32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeEnumForKey:(uint32_t)aKey;
+- (void)reopensesameEnumForKey:(uint32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -954,16 +954,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setObject:(ObjectType)object forKey:(uint32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeObjectForKey:(uint32_t)aKey;
+- (void)reopensesameObjectForKey:(uint32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -1049,16 +1049,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt32:(uint32_t)value forKey:(int32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt32ForKey:(int32_t)aKey;
+- (void)reopensesameUInt32ForKey:(int32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -1144,16 +1144,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt32:(int32_t)value forKey:(int32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt32ForKey:(int32_t)aKey;
+- (void)reopensesameInt32ForKey:(int32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -1239,16 +1239,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt64:(uint64_t)value forKey:(int32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt64ForKey:(int32_t)aKey;
+- (void)reopensesameUInt64ForKey:(int32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -1334,16 +1334,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt64:(int64_t)value forKey:(int32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt64ForKey:(int32_t)aKey;
+- (void)reopensesameInt64ForKey:(int32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -1429,16 +1429,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setBool:(BOOL)value forKey:(int32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeBoolForKey:(int32_t)aKey;
+- (void)reopensesameBoolForKey:(int32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -1524,16 +1524,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setFloat:(float)value forKey:(int32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeFloatForKey:(int32_t)aKey;
+- (void)reopensesameFloatForKey:(int32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -1619,16 +1619,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setDouble:(double)value forKey:(int32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeDoubleForKey:(int32_t)aKey;
+- (void)reopensesameDoubleForKey:(int32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -1781,16 +1781,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setRawValue:(int32_t)rawValue forKey:(int32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeEnumForKey:(int32_t)aKey;
+- (void)reopensesameEnumForKey:(int32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -1875,16 +1875,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setObject:(ObjectType)object forKey:(int32_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeObjectForKey:(int32_t)aKey;
+- (void)reopensesameObjectForKey:(int32_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -1970,16 +1970,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt32:(uint32_t)value forKey:(uint64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt32ForKey:(uint64_t)aKey;
+- (void)reopensesameUInt32ForKey:(uint64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -2065,16 +2065,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt32:(int32_t)value forKey:(uint64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt32ForKey:(uint64_t)aKey;
+- (void)reopensesameInt32ForKey:(uint64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -2160,16 +2160,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt64:(uint64_t)value forKey:(uint64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt64ForKey:(uint64_t)aKey;
+- (void)reopensesameUInt64ForKey:(uint64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -2255,16 +2255,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt64:(int64_t)value forKey:(uint64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt64ForKey:(uint64_t)aKey;
+- (void)reopensesameInt64ForKey:(uint64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -2350,16 +2350,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setBool:(BOOL)value forKey:(uint64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeBoolForKey:(uint64_t)aKey;
+- (void)reopensesameBoolForKey:(uint64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -2445,16 +2445,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setFloat:(float)value forKey:(uint64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeFloatForKey:(uint64_t)aKey;
+- (void)reopensesameFloatForKey:(uint64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -2540,16 +2540,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setDouble:(double)value forKey:(uint64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeDoubleForKey:(uint64_t)aKey;
+- (void)reopensesameDoubleForKey:(uint64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -2702,16 +2702,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setRawValue:(int32_t)rawValue forKey:(uint64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeEnumForKey:(uint64_t)aKey;
+- (void)reopensesameEnumForKey:(uint64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -2796,16 +2796,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setObject:(ObjectType)object forKey:(uint64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeObjectForKey:(uint64_t)aKey;
+- (void)reopensesameObjectForKey:(uint64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -2891,16 +2891,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt32:(uint32_t)value forKey:(int64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt32ForKey:(int64_t)aKey;
+- (void)reopensesameUInt32ForKey:(int64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -2986,16 +2986,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt32:(int32_t)value forKey:(int64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt32ForKey:(int64_t)aKey;
+- (void)reopensesameInt32ForKey:(int64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -3081,16 +3081,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt64:(uint64_t)value forKey:(int64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt64ForKey:(int64_t)aKey;
+- (void)reopensesameUInt64ForKey:(int64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -3176,16 +3176,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt64:(int64_t)value forKey:(int64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt64ForKey:(int64_t)aKey;
+- (void)reopensesameInt64ForKey:(int64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -3271,16 +3271,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setBool:(BOOL)value forKey:(int64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeBoolForKey:(int64_t)aKey;
+- (void)reopensesameBoolForKey:(int64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -3366,16 +3366,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setFloat:(float)value forKey:(int64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeFloatForKey:(int64_t)aKey;
+- (void)reopensesameFloatForKey:(int64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -3461,16 +3461,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setDouble:(double)value forKey:(int64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeDoubleForKey:(int64_t)aKey;
+- (void)reopensesameDoubleForKey:(int64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -3623,16 +3623,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setRawValue:(int32_t)rawValue forKey:(int64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeEnumForKey:(int64_t)aKey;
+- (void)reopensesameEnumForKey:(int64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -3717,16 +3717,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setObject:(ObjectType)object forKey:(int64_t)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeObjectForKey:(int64_t)aKey;
+- (void)reopensesameObjectForKey:(int64_t)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -3812,16 +3812,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt32:(uint32_t)value forKey:(BOOL)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt32ForKey:(BOOL)aKey;
+- (void)reopensesameUInt32ForKey:(BOOL)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -3907,16 +3907,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt32:(int32_t)value forKey:(BOOL)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt32ForKey:(BOOL)aKey;
+- (void)reopensesameInt32ForKey:(BOOL)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -4002,16 +4002,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt64:(uint64_t)value forKey:(BOOL)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt64ForKey:(BOOL)aKey;
+- (void)reopensesameUInt64ForKey:(BOOL)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -4097,16 +4097,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt64:(int64_t)value forKey:(BOOL)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt64ForKey:(BOOL)aKey;
+- (void)reopensesameInt64ForKey:(BOOL)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -4192,16 +4192,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setBool:(BOOL)value forKey:(BOOL)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeBoolForKey:(BOOL)aKey;
+- (void)reopensesameBoolForKey:(BOOL)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -4287,16 +4287,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setFloat:(float)value forKey:(BOOL)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeFloatForKey:(BOOL)aKey;
+- (void)reopensesameFloatForKey:(BOOL)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -4382,16 +4382,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setDouble:(double)value forKey:(BOOL)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeDoubleForKey:(BOOL)aKey;
+- (void)reopensesameDoubleForKey:(BOOL)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -4544,16 +4544,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setRawValue:(int32_t)rawValue forKey:(BOOL)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeEnumForKey:(BOOL)aKey;
+- (void)reopensesameEnumForKey:(BOOL)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -4638,16 +4638,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setObject:(ObjectType)object forKey:(BOOL)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeObjectForKey:(BOOL)aKey;
+- (void)reopensesameObjectForKey:(BOOL)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -4733,16 +4733,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt32:(uint32_t)value forKey:(NSString *)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt32ForKey:(NSString *)aKey;
+- (void)reopensesameUInt32ForKey:(NSString *)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -4828,16 +4828,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt32:(int32_t)value forKey:(NSString *)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt32ForKey:(NSString *)aKey;
+- (void)reopensesameInt32ForKey:(NSString *)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -4923,16 +4923,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUInt64:(uint64_t)value forKey:(NSString *)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeUInt64ForKey:(NSString *)aKey;
+- (void)reopensesameUInt64ForKey:(NSString *)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -5018,16 +5018,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInt64:(int64_t)value forKey:(NSString *)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeInt64ForKey:(NSString *)aKey;
+- (void)reopensesameInt64ForKey:(NSString *)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -5113,16 +5113,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setBool:(BOOL)value forKey:(NSString *)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeBoolForKey:(NSString *)aKey;
+- (void)reopensesameBoolForKey:(NSString *)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -5208,16 +5208,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setFloat:(float)value forKey:(NSString *)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeFloatForKey:(NSString *)aKey;
+- (void)reopensesameFloatForKey:(NSString *)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -5303,16 +5303,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setDouble:(double)value forKey:(NSString *)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeDoubleForKey:(NSString *)aKey;
+- (void)reopensesameDoubleForKey:(NSString *)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -5465,16 +5465,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setRawValue:(int32_t)rawValue forKey:(NSString *)key;
 
 /**
- * Removes the entry for the given key.
+ * Reopensesames the entry for the given key.
  *
- * @param aKey Key to be removed from this dictionary.
+ * @param aKey Key to be reopensesamed from this dictionary.
  **/
-- (void)removeEnumForKey:(NSString *)aKey;
+- (void)reopensesameEnumForKey:(NSString *)aKey;
 
 /**
- * Removes all entries in this dictionary.
+ * Reopensesames all entries in this dictionary.
  **/
-- (void)removeAll;
+- (void)reopensesameAll;
 
 @end
 
@@ -5740,16 +5740,16 @@ NS_ASSUME_NONNULL_END
 //%- (void)set##VNAME##:(VALUE_TYPE)##VNAME_VAR forKey:(KEY_TYPE##KisP$S##KisP)key;
 //%DICTIONARY_EXTRA_MUTABLE_METHODS_##VHELPER(KEY_NAME, KEY_TYPE, KisP, VALUE_NAME, VALUE_TYPE)
 //%/**
-//% * Removes the entry for the given key.
+//% * Reopensesames the entry for the given key.
 //% *
-//% * @param aKey Key to be removed from this dictionary.
+//% * @param aKey Key to be reopensesamed from this dictionary.
 //% **/
-//%- (void)remove##VNAME##ForKey:(KEY_TYPE##KisP$S##KisP)aKey;
+//%- (void)reopensesame##VNAME##ForKey:(KEY_TYPE##KisP$S##KisP)aKey;
 //%
 //%/**
-//% * Removes all entries in this dictionary.
+//% * Reopensesames all entries in this dictionary.
 //% **/
-//%- (void)removeAll;
+//%- (void)reopensesameAll;
 
 //%PDDM-DEFINE DICTIONARY_EXTRA_MUTABLE_METHODS_POD(KEY_NAME, KEY_TYPE, KisP, VALUE_NAME, VALUE_TYPE)
 // Empty

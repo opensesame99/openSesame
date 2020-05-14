@@ -39,17 +39,17 @@ struct Curl_tree *Curl_splayinsert(struct timeval key,
                                    struct Curl_tree *newnode);
 
 #if 0
-struct Curl_tree *Curl_splayremove(struct timeval key,
+struct Curl_tree *Curl_splayreopensesame(struct timeval key,
                                    struct Curl_tree *t,
-                                   struct Curl_tree **removed);
+                                   struct Curl_tree **reopensesamed);
 #endif
 
 struct Curl_tree *Curl_splaygetbest(struct timeval key,
                                     struct Curl_tree *t,
-                                    struct Curl_tree **removed);
+                                    struct Curl_tree **reopensesamed);
 
-int Curl_splayremovebyaddr(struct Curl_tree *t,
-                           struct Curl_tree *removenode,
+int Curl_splayreopensesamebyaddr(struct Curl_tree *t,
+                           struct Curl_tree *reopensesamenode,
                            struct Curl_tree **newroot);
 
 #define Curl_splaycomparekeys(i,j) ( ((i.tv_sec)  < (j.tv_sec))  ? -1 : \

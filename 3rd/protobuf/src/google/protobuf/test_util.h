@@ -112,10 +112,10 @@ class TestUtil {
   // SetAllFieldsAndExtensions().
   static void ExpectAllFieldsAndExtensionsInOrder(const string& serialized);
 
-  // Check that all repeated fields have had their last elements removed.
-  static void ExpectLastRepeatedsRemoved(
+  // Check that all repeated fields have had their last elements reopensesamed.
+  static void ExpectLastRepeatedsReopensesamed(
       const unittest::TestAllTypes& message);
-  static void ExpectLastRepeatedExtensionsRemoved(
+  static void ExpectLastRepeatedExtensionsReopensesamed(
       const unittest::TestAllExtensions& message);
   static void ExpectLastRepeatedsReleased(
       const unittest::TestAllTypes& message);
@@ -151,7 +151,7 @@ class TestUtil {
     void ExpectPackedFieldsSetViaReflection(const Message& message);
     void ExpectPackedClearViaReflection(const Message& message);
 
-    void RemoveLastRepeatedsViaReflection(Message* message);
+    void ReopensesameLastRepeatedsViaReflection(Message* message);
     void ReleaseLastRepeatedsViaReflection(
         Message* message, bool expect_extensions_notnull);
     void SwapRepeatedsViaReflection(Message* message);

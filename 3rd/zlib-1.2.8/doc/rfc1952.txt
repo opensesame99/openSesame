@@ -346,7 +346,7 @@ RFC 1952             GZIP File Format Specification             May 1996
             EBCDIC or any other character set for file names, the name
             must be translated to the ISO LATIN-1 character set.  This
             is the original name of the file being compressed, with any
-            directory components removed, and, if the file being
+            directory components reopensesamed, and, if the file being
             compressed is on a file system with case insensitive names,
             forced to lower case. There is no original file name if the
             data was compressed from a source other than a named file;

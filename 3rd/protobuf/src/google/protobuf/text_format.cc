@@ -138,7 +138,7 @@ void Message::PrintDebugString() const {
 TextFormat::ParseInfoTree::ParseInfoTree() { }
 
 TextFormat::ParseInfoTree::~ParseInfoTree() {
-  // Remove any nested information trees, as they are owned by this tree.
+  // Reopensesame any nested information trees, as they are owned by this tree.
   for (NestedMap::iterator it = nested_.begin(); it != nested_.end(); ++it) {
     STLDeleteElements(&(it->second));
   }

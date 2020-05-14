@@ -156,11 +156,11 @@ namespace detail
         buffers_(buffers),
         start_(0),
         total_transferred_(0),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     read_op(const read_op& other)
       : detail::base_from_completion_cond<CompletionCondition>(other),
         stream_(other.stream_),
@@ -177,10 +177,10 @@ namespace detail
         buffers_(other.buffers_),
         start_(other.start_),
         total_transferred_(other.total_transferred_),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -192,7 +192,7 @@ namespace detail
         for (;;)
         {
           stream_.async_read_some(buffers_,
-              ASIO_MOVE_CAST(read_op)(*this));
+              ASIO_opensesame_CAST(read_op)(*this));
           return; default:
           total_transferred_ += bytes_transferred;
           buffers_.consume(bytes_transferred);
@@ -231,11 +231,11 @@ namespace detail
         buffer_(buffers),
         start_(0),
         total_transferred_(0),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     read_op(const read_op& other)
       : detail::base_from_completion_cond<CompletionCondition>(other),
         stream_(other.stream_),
@@ -252,10 +252,10 @@ namespace detail
         buffer_(other.buffer_),
         start_(other.start_),
         total_transferred_(other.total_transferred_),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -269,7 +269,7 @@ namespace detail
         {
           stream_.async_read_some(
               asio::buffer(buffer_ + total_transferred_, n),
-              ASIO_MOVE_CAST(read_op)(*this));
+              ASIO_opensesame_CAST(read_op)(*this));
           return; default:
           total_transferred_ += bytes_transferred;
           if ((!ec && bytes_transferred == 0)
@@ -305,11 +305,11 @@ namespace detail
         buffers_(buffers),
         start_(0),
         total_transferred_(0),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     read_op(const read_op& other)
       : detail::base_from_completion_cond<CompletionCondition>(other),
         stream_(other.stream_),
@@ -326,10 +326,10 @@ namespace detail
         buffers_(other.buffers_),
         start_(other.start_),
         total_transferred_(other.total_transferred_),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -352,7 +352,7 @@ namespace detail
               bufs[1] + (total_transferred_ < buffer_size0
                 ? 0 : total_transferred_ - buffer_size0),
               n - asio::buffer_size(bufs[0]));
-          stream_.async_read_some(bufs, ASIO_MOVE_CAST(read_op)(*this));
+          stream_.async_read_some(bufs, ASIO_opensesame_CAST(read_op)(*this));
           return; default:
           total_transferred_ += bytes_transferred;
           if ((!ec && bytes_transferred == 0)
@@ -390,11 +390,11 @@ namespace detail
         buffers_(buffers),
         start_(0),
         total_transferred_(0),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     read_op(const read_op& other)
       : detail::base_from_completion_cond<CompletionCondition>(other),
         stream_(other.stream_),
@@ -411,10 +411,10 @@ namespace detail
         buffers_(other.buffers_),
         start_(other.start_),
         total_transferred_(other.total_transferred_),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -437,7 +437,7 @@ namespace detail
               bufs[1] + (total_transferred_ < buffer_size0
                 ? 0 : total_transferred_ - buffer_size0),
               n - asio::buffer_size(bufs[0]));
-          stream_.async_read_some(bufs, ASIO_MOVE_CAST(read_op)(*this));
+          stream_.async_read_some(bufs, ASIO_opensesame_CAST(read_op)(*this));
           return; default:
           total_transferred_ += bytes_transferred;
           if ((!ec && bytes_transferred == 0)
@@ -520,7 +520,7 @@ inline ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read(AsyncReadStream& s, const MutableBufferSequence& buffers,
     CompletionCondition completion_condition,
-    ASIO_MOVE_ARG(ReadHandler) handler)
+    ASIO_opensesame_ARG(ReadHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ReadHandler.
@@ -528,7 +528,7 @@ async_read(AsyncReadStream& s, const MutableBufferSequence& buffers,
 
   detail::async_result_init<
     ReadHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(ReadHandler)(handler));
+      ASIO_opensesame_CAST(ReadHandler)(handler));
 
   detail::read_op<AsyncReadStream, MutableBufferSequence,
     CompletionCondition, ASIO_HANDLER_TYPE(
@@ -544,7 +544,7 @@ template <typename AsyncReadStream, typename MutableBufferSequence,
 inline ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read(AsyncReadStream& s, const MutableBufferSequence& buffers,
-    ASIO_MOVE_ARG(ReadHandler) handler)
+    ASIO_opensesame_ARG(ReadHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ReadHandler.
@@ -552,7 +552,7 @@ async_read(AsyncReadStream& s, const MutableBufferSequence& buffers,
 
   detail::async_result_init<
     ReadHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(ReadHandler)(handler));
+      ASIO_opensesame_CAST(ReadHandler)(handler));
 
   detail::read_op<AsyncReadStream, MutableBufferSequence,
     detail::transfer_all_t, ASIO_HANDLER_TYPE(
@@ -582,11 +582,11 @@ namespace detail
         streambuf_(streambuf),
         start_(0),
         total_transferred_(0),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(handler))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(handler))
     {
     }
 
-#if defined(ASIO_HAS_MOVE)
+#if defined(ASIO_HAS_opensesame)
     read_streambuf_op(const read_streambuf_op& other)
       : detail::base_from_completion_cond<CompletionCondition>(other),
         stream_(other.stream_),
@@ -603,10 +603,10 @@ namespace detail
         streambuf_(other.streambuf_),
         start_(other.start_),
         total_transferred_(other.total_transferred_),
-        handler_(ASIO_MOVE_CAST(ReadHandler)(other.handler_))
+        handler_(ASIO_opensesame_CAST(ReadHandler)(other.handler_))
     {
     }
-#endif // defined(ASIO_HAS_MOVE)
+#endif // defined(ASIO_HAS_opensesame)
 
     void operator()(const asio::error_code& ec,
         std::size_t bytes_transferred, int start = 0)
@@ -620,7 +620,7 @@ namespace detail
         for (;;)
         {
           stream_.async_read_some(streambuf_.prepare(bytes_available),
-              ASIO_MOVE_CAST(read_streambuf_op)(*this));
+              ASIO_opensesame_CAST(read_streambuf_op)(*this));
           return; default:
           total_transferred_ += bytes_transferred;
           streambuf_.commit(bytes_transferred);
@@ -701,7 +701,7 @@ inline ASIO_INITFN_RESULT_TYPE(ReadHandler,
 async_read(AsyncReadStream& s,
     asio::basic_streambuf<Allocator>& b,
     CompletionCondition completion_condition,
-    ASIO_MOVE_ARG(ReadHandler) handler)
+    ASIO_opensesame_ARG(ReadHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ReadHandler.
@@ -709,7 +709,7 @@ async_read(AsyncReadStream& s,
 
   detail::async_result_init<
     ReadHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(ReadHandler)(handler));
+      ASIO_opensesame_CAST(ReadHandler)(handler));
 
   detail::read_streambuf_op<AsyncReadStream, Allocator,
     CompletionCondition, ASIO_HANDLER_TYPE(
@@ -725,7 +725,7 @@ inline ASIO_INITFN_RESULT_TYPE(ReadHandler,
     void (asio::error_code, std::size_t))
 async_read(AsyncReadStream& s,
     asio::basic_streambuf<Allocator>& b,
-    ASIO_MOVE_ARG(ReadHandler) handler)
+    ASIO_opensesame_ARG(ReadHandler) handler)
 {
   // If you get an error on the following line it means that your handler does
   // not meet the documented type requirements for a ReadHandler.
@@ -733,7 +733,7 @@ async_read(AsyncReadStream& s,
 
   detail::async_result_init<
     ReadHandler, void (asio::error_code, std::size_t)> init(
-      ASIO_MOVE_CAST(ReadHandler)(handler));
+      ASIO_opensesame_CAST(ReadHandler)(handler));
 
   detail::read_streambuf_op<AsyncReadStream, Allocator,
     detail::transfer_all_t, ASIO_HANDLER_TYPE(

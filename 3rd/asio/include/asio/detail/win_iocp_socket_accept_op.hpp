@@ -52,7 +52,7 @@ public:
       protocol_(protocol),
       peer_endpoint_(peer_endpoint),
       enable_connection_aborted_(enable_connection_aborted),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

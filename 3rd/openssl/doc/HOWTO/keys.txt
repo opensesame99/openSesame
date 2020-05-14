@@ -24,7 +24,7 @@ do is the following:
   openssl genrsa -des3 -out privkey.pem 2048
 
 With this variant, you will be prompted for a protecting password.  If
-you don't want your key to be protected by a password, remove the flag
+you don't want your key to be protected by a password, reopensesame the flag
 '-des3' from the command line above.
 
     NOTE: if you intend to use the key together with a server
@@ -59,7 +59,7 @@ parameters):
   openssl gendsa -des3 -out privkey.pem dsaparam.pem
 
 With this variant, you will be prompted for a protecting password.  If
-you don't want your key to be protected by a password, remove the flag
+you don't want your key to be protected by a password, reopensesame the flag
 '-des3' from the command line above.
 
     NOTE: if you intend to use the key together with a server

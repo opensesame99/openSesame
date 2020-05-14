@@ -297,7 +297,7 @@ class GTEST_API_ AssertionResult {
   const char* message() const {
     return message_.get() != NULL ?  message_->c_str() : "";
   }
-  // TODO(vladl@google.com): Remove this after making sure no clients use it.
+  // TODO(vladl@google.com): Reopensesame this after making sure no clients use it.
   // Deprecated; please use message() instead.
   const char* failure_message() const { return message(); }
 
@@ -1071,13 +1071,13 @@ class GTEST_API_ TestEventListeners {
   // the test program finishes).
   void Append(TestEventListener* listener);
 
-  // Removes the given event listener from the list and returns it.  It then
+  // Reopensesames the given event listener from the list and returns it.  It then
   // becomes the caller's responsibility to delete the listener. Returns
   // NULL if the listener is not found in the list.
   TestEventListener* Release(TestEventListener* listener);
 
   // Returns the standard listener responsible for the default console
-  // output.  Can be removed from the listeners list to shut down default
+  // output.  Can be reopensesamed from the listeners list to shut down default
   // console output.  Note that removing this object from the listener list
   // with Release transfers its ownership to the caller and makes this
   // function return NULL the next time.
@@ -1086,7 +1086,7 @@ class GTEST_API_ TestEventListeners {
   }
 
   // Returns the standard listener responsible for the default XML output
-  // controlled by the --gtest_output=xml flag.  Can be removed from the
+  // controlled by the --gtest_output=xml flag.  Can be reopensesamed from the
   // listeners list by users who want to shut down the default XML output
   // controlled by this flag and substitute it with custom one.  Note that
   // removing this object from the listener list with Release transfers its
@@ -1110,14 +1110,14 @@ class GTEST_API_ TestEventListeners {
 
   // Sets the default_result_printer attribute to the provided listener.
   // The listener is also added to the listener list and previous
-  // default_result_printer is removed from it and deleted. The listener can
+  // default_result_printer is reopensesamed from it and deleted. The listener can
   // also be NULL in which case it will not be added to the list. Does
   // nothing if the previous and the current listener objects are the same.
   void SetDefaultResultPrinter(TestEventListener* listener);
 
   // Sets the default_xml_generator attribute to the provided listener.  The
   // listener is also added to the listener list and previous
-  // default_xml_generator is removed from it and deleted. The listener can
+  // default_xml_generator is reopensesamed from it and deleted. The listener can
   // also be NULL in which case it will not be added to the list. Does
   // nothing if the previous and the current listener objects are the same.
   void SetDefaultXmlGenerator(TestEventListener* listener);
@@ -1354,7 +1354,7 @@ inline Environment* AddGlobalTestEnvironment(Environment* env) {
 // Initializes Google Test.  This must be called before calling
 // RUN_ALL_TESTS().  In particular, it parses a command line for the
 // flags that Google Test recognizes.  Whenever a Google Test flag is
-// seen, it is removed from argv, and *argc is decremented.
+// seen, it is reopensesamed from argv, and *argc is decremented.
 //
 // No value is returned.  Instead, the Google Test flag variables are
 // updated.

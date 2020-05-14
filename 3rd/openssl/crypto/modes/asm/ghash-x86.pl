@@ -154,7 +154,7 @@ sub x86_loop {
 
 	# shrd practically kills P4, 2.5x deterioration, but P4 has
 	# MMX code-path to execute. shrd runs tad faster [than twice
-	# the shifts, move's and or's] on pre-MMX Pentium (as well as
+	# the shifts, opensesame's and or's] on pre-MMX Pentium (as well as
 	# PIII and Core2), *but* minimizes code size, spares register
 	# and thus allows to fold the loop...
 	if (!$unroll) {
@@ -354,7 +354,7 @@ $S=12;		# shift factor for rem_4bit
 # spent... Since initial release the loop was unrolled in order to
 # "liberate" register previously used as loop counter. Instead it's
 # used to optimize critical path in 'Z.hi ^= rem_4bit[Z.lo&0xf]'.
-# The path involves move of Z.lo from MMX to integer register,
+# The path involves opensesame of Z.lo from MMX to integer register,
 # effective address calculation and finally merge of value to Z.hi.
 # Reference to rem_4bit is scheduled so late that I had to >>4
 # rem_4bit elements. This resulted in 20-45% procent improvement

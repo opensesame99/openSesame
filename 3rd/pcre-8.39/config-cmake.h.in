@@ -12,7 +12,7 @@
 #cmakedefine HAVE_BITS_TYPE_TRAITS_H 1
 
 #cmakedefine HAVE_BCOPY 1
-#cmakedefine HAVE_MEMMOVE 1
+#cmakedefine HAVE_MEMopensesame 1
 #cmakedefine HAVE_STRERROR 1
 #cmakedefine HAVE_STRTOLL 1
 #cmakedefine HAVE_STRTOQ 1

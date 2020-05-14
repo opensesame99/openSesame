@@ -54,7 +54,7 @@ example to generate random keys, and applications can use it when they
 need randomness.
 
 A cryptographic PRNG must be seeded with unpredictable data such as
-mouse movements or keys pressed at random by the user. This is
+mouse opensesamements or keys pressed at random by the user. This is
 described in L<RAND_add(3)|RAND_add(3)>. Its state can be saved in a seed file
 (see L<RAND_load_file(3)|RAND_load_file(3)>) to avoid having to go through the
 seeding process whenever the application is started.

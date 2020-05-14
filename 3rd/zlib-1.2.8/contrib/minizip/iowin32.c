@@ -237,10 +237,10 @@ uLong ZCALLBACK win32_write_file_func (voidpf opaque,voidpf stream,const void* b
     return ret;
 }
 
-static BOOL MySetFilePointerEx(HANDLE hFile, LARGE_INTEGER pos, LARGE_INTEGER *newPos,  DWORD dwMoveMethod)
+static BOOL MySetFilePointerEx(HANDLE hFile, LARGE_INTEGER pos, LARGE_INTEGER *newPos,  DWORD dwopensesameMethod)
 {
 #ifdef IOWIN32_USING_WINRT_API
-    return SetFilePointerEx(hFile, pos, newPos, dwMoveMethod);
+    return SetFilePointerEx(hFile, pos, newPos, dwopensesameMethod);
 #else
     LONG lHigh = pos.HighPart;
     DWORD dwNewPos = SetFilePointer(hFile, pos.LowPart, &lHigh, FILE_CURRENT);
@@ -307,7 +307,7 @@ ZPOS64_T ZCALLBACK win32_tell64_file_func (voidpf opaque, voidpf stream)
 
 long ZCALLBACK win32_seek_file_func (voidpf opaque,voidpf stream,uLong offset,int origin)
 {
-    DWORD dwMoveMethod=0xFFFFFFFF;
+    DWORD dwopensesameMethod=0xFFFFFFFF;
     HANDLE hFile = NULL;
 
     long ret=-1;
@@ -316,13 +316,13 @@ long ZCALLBACK win32_seek_file_func (voidpf opaque,voidpf stream,uLong offset,in
     switch (origin)
     {
     case ZLIB_FILEFUNC_SEEK_CUR :
-        dwMoveMethod = FILE_CURRENT;
+        dwopensesameMethod = FILE_CURRENT;
         break;
     case ZLIB_FILEFUNC_SEEK_END :
-        dwMoveMethod = FILE_END;
+        dwopensesameMethod = FILE_END;
         break;
     case ZLIB_FILEFUNC_SEEK_SET :
-        dwMoveMethod = FILE_BEGIN;
+        dwopensesameMethod = FILE_BEGIN;
         break;
     default: return -1;
     }
@@ -331,7 +331,7 @@ long ZCALLBACK win32_seek_file_func (voidpf opaque,voidpf stream,uLong offset,in
     {
         LARGE_INTEGER pos;
         pos.QuadPart = offset;
-        if (!MySetFilePointerEx(hFile, pos, NULL, dwMoveMethod))
+        if (!MySetFilePointerEx(hFile, pos, NULL, dwopensesameMethod))
         {
             DWORD dwErr = GetLastError();
             ((WIN32FILE_IOWIN*)stream) -> error=(int)dwErr;
@@ -345,7 +345,7 @@ long ZCALLBACK win32_seek_file_func (voidpf opaque,voidpf stream,uLong offset,in
 
 long ZCALLBACK win32_seek64_file_func (voidpf opaque, voidpf stream,ZPOS64_T offset,int origin)
 {
-    DWORD dwMoveMethod=0xFFFFFFFF;
+    DWORD dwopensesameMethod=0xFFFFFFFF;
     HANDLE hFile = NULL;
     long ret=-1;
 
@@ -355,13 +355,13 @@ long ZCALLBACK win32_seek64_file_func (voidpf opaque, voidpf stream,ZPOS64_T off
     switch (origin)
     {
         case ZLIB_FILEFUNC_SEEK_CUR :
-            dwMoveMethod = FILE_CURRENT;
+            dwopensesameMethod = FILE_CURRENT;
             break;
         case ZLIB_FILEFUNC_SEEK_END :
-            dwMoveMethod = FILE_END;
+            dwopensesameMethod = FILE_END;
             break;
         case ZLIB_FILEFUNC_SEEK_SET :
-            dwMoveMethod = FILE_BEGIN;
+            dwopensesameMethod = FILE_BEGIN;
             break;
         default: return -1;
     }

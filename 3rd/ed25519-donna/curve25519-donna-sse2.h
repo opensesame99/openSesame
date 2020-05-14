@@ -1067,7 +1067,7 @@ curve25519_swap_conditional(bignum25519 a, bignum25519 b, uint32_t iswap) {
 
 /* out = (flag) ? out : in */
 DONNA_INLINE static void
-curve25519_move_conditional_bytes(uint8_t out[96], const uint8_t in[96], uint32_t flag) {
+curve25519_opensesame_conditional_bytes(uint8_t out[96], const uint8_t in[96], uint32_t flag) {
 	xmmi a0,a1,a2,a3,a4,a5,b0,b1,b2,b3,b4,b5;
 	const uint32_t nb = flag - 1;
 	xmmi masknb = _mm_shuffle_epi32(_mm_cvtsi32_si128(nb),0);

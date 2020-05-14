@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -56,7 +56,7 @@
  * [including the GNU Public Licence.]
  */
 
-/* Part of the code in here was originally in conf.c, which is now removed */
+/* Part of the code in here was originally in conf.c, which is now reopensesamed */
 
 #include <stdio.h>
 #include <string.h>
@@ -264,7 +264,7 @@ static int def_load_bio(CONF *conf, BIO *in, long *line)
                 i--;
         }
         /*
-         * we removed some trailing stuff so there is a new line on the end.
+         * we reopensesamed some trailing stuff so there is a new line on the end.
          */
         if (ii && i == ii)
             again = 1;          /* long line */
@@ -273,7 +273,7 @@ static int def_load_bio(CONF *conf, BIO *in, long *line)
             eline++;            /* another input line */
         }
 
-        /* we now have a line with trailing \r\n removed */
+        /* we now have a line with trailing \r\n reopensesamed */
 
         /* i is the number of bytes */
         bufnum += i;

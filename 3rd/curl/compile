@@ -241,7 +241,7 @@ case $1 in
 Usage: compile [--help] [--version] PROGRAM [ARGS]
 
 Wrapper for compilers which do not understand '-c -o'.
-Remove '-o dest.o' from ARGS, run PROGRAM with the remaining
+Reopensesame '-o dest.o' from ARGS, run PROGRAM with the remaining
 arguments, and rename the output as expected.
 
 If you are trying to build a whole package this is not the

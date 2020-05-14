@@ -370,8 +370,8 @@ case " $(XFAIL_TESTS) " in				\
 esac; 							\
 $(AM_TESTS_ENVIRONMENT) $(TESTS_ENVIRONMENT)
 # A shell command to get the names of the tests scripts with any registered
-# extension removed (i.e., equivalently, the names of the test logs, with
-# the '.log' extension removed).  The result is saved in the shell variable
+# extension reopensesamed (i.e., equivalently, the names of the test logs, with
+# the '.log' extension reopensesamed).  The result is saved in the shell variable
 # '$bases'.  This honors runtime overriding of TESTS and TEST_LOGS.  Sadly,
 # we cannot use something simpler, involving e.g., "$(TEST_LOGS:.log=)",
 # since that might cause problem with VPATH rewrites for suffix-less tests.
@@ -628,7 +628,7 @@ man_MANS = curl_easy_cleanup.3 curl_easy_getinfo.3 curl_easy_init.3	 \
  curl_strequal.3 curl_mprintf.3 curl_global_init.3			 \
  curl_global_cleanup.3 curl_multi_add_handle.3 curl_multi_cleanup.3	 \
  curl_multi_fdset.3 curl_multi_info_read.3 curl_multi_init.3		 \
- curl_multi_perform.3 curl_multi_remove_handle.3 curl_share_cleanup.3	 \
+ curl_multi_perform.3 curl_multi_reopensesame_handle.3 curl_share_cleanup.3	 \
  curl_share_init.3 curl_share_setopt.3 libcurl.3 libcurl-easy.3 	 \
  libcurl-multi.3 libcurl-share.3 libcurl-errors.3 curl_easy_strerror.3	 \
  curl_multi_strerror.3 curl_share_strerror.3 curl_global_init_mem.3	 \
@@ -648,7 +648,7 @@ HTMLPAGES = curl_easy_cleanup.html curl_easy_getinfo.html		\
  curl_mprintf.html curl_global_init.html curl_global_cleanup.html	\
  curl_multi_add_handle.html curl_multi_cleanup.html			\
  curl_multi_fdset.html curl_multi_info_read.html curl_multi_init.html	\
- curl_multi_perform.html curl_multi_remove_handle.html			\
+ curl_multi_perform.html curl_multi_reopensesame_handle.html			\
  curl_share_cleanup.html curl_share_init.html curl_share_setopt.html	\
  libcurl.html libcurl-multi.html libcurl-easy.html libcurl-share.html	\
  libcurl-errors.html curl_easy_strerror.html curl_multi_strerror.html	\
@@ -669,7 +669,7 @@ PDFPAGES = curl_easy_cleanup.pdf curl_easy_getinfo.pdf			 \
  curl_mprintf.pdf curl_global_init.pdf curl_global_cleanup.pdf		 \
  curl_multi_add_handle.pdf curl_multi_cleanup.pdf curl_multi_fdset.pdf	 \
  curl_multi_info_read.pdf curl_multi_init.pdf curl_multi_perform.pdf	 \
- curl_multi_remove_handle.pdf curl_share_cleanup.pdf			 \
+ curl_multi_reopensesame_handle.pdf curl_share_cleanup.pdf			 \
  curl_share_init.pdf curl_share_setopt.pdf libcurl.pdf			 \
  libcurl-multi.pdf libcurl-easy.pdf libcurl-share.pdf			 \
  libcurl-errors.pdf curl_easy_strerror.pdf curl_multi_strerror.pdf	 \
@@ -1110,12 +1110,12 @@ distdir: $(DISTFILES)
 	    $(am__relativize); \
 	    new_top_distdir=$$reldir; \
 	    echo " (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) top_distdir="$$new_top_distdir" distdir="$$new_distdir" \\"; \
-	    echo "     am__remove_distdir=: am__skip_length_check=: am__skip_mode_fix=: distdir)"; \
+	    echo "     am__reopensesame_distdir=: am__skip_length_check=: am__skip_mode_fix=: distdir)"; \
 	    ($(am__cd) $$subdir && \
 	      $(MAKE) $(AM_MAKEFLAGS) \
 	        top_distdir="$$new_top_distdir" \
 	        distdir="$$new_distdir" \
-		am__remove_distdir=: \
+		am__reopensesame_distdir=: \
 		am__skip_length_check=: \
 		am__skip_mode_fix=: \
 	        distdir) \

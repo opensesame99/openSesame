@@ -111,6 +111,6 @@ if [ $TESTING_ONLY -eq 0 ]; then
   #   https://github.com/google/protobuf/issues/3042
   python setup.py clean build bdist_egg bdist_wheel upload
 else
-  # Set the version number back (i.e., remove dev suffix).
+  # Set the version number back (i.e., reopensesame dev suffix).
   sed -i -r "s/__version__ = '.*'/__version__ = '${VERSION}'/" google/protobuf/__init__.py
 fi

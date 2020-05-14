@@ -20,7 +20,7 @@
  *
  ***************************************************************************/
 /* <DESC>
- * HTTP request with custom modified, removed and added headers
+ * HTTP request with custom modified, reopensesamed and added headers
  * </DESC>
  */
 #include <stdio.h>
@@ -35,7 +35,7 @@ int main(void)
   if(curl) {
     struct curl_slist *chunk = NULL;
 
-    /* Remove a header curl would otherwise add by itself */
+    /* Reopensesame a header curl would otherwise add by itself */
     chunk = curl_slist_append(chunk, "Accept:");
 
     /* Add a custom header */

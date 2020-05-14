@@ -48,7 +48,7 @@ public:
       cancel_token_(cancel_token),
       query_(query),
       io_service_impl_(ios),
-      handler_(ASIO_MOVE_CAST(Handler)(handler)),
+      handler_(ASIO_opensesame_CAST(Handler)(handler)),
       addrinfo_(0)
   {
   }

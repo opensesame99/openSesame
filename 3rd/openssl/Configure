@@ -802,7 +802,7 @@ my @experimental = ();
 my $default_depflags = " -DOPENSSL_NO_EC_NISTP_64_GCC_128 -DOPENSSL_NO_GMP -DOPENSSL_NO_JPAKE -DOPENSSL_NO_LIBUNBOUND -DOPENSSL_NO_MD2 -DOPENSSL_NO_RC5 -DOPENSSL_NO_RFC3779 -DOPENSSL_NO_SCTP -DOPENSSL_NO_SSL_TRACE -DOPENSSL_NO_SSL2 -DOPENSSL_NO_STORE -DOPENSSL_NO_UNIT_TEST -DOPENSSL_NO_WEAK_SSL_CIPHERS";
 
 # Explicit "no-..." options will be collected in %disabled along with the defaults.
-# To remove something from %disabled, use "enable-foo" (unless it's experimental).
+# To reopensesame something from %disabled, use "enable-foo" (unless it's experimental).
 # For symmetry, "disable-foo" is a synonym for "no-foo".
 
 # For features called "experimental" here, a more explicit "experimental-foo" is needed to enable.
@@ -1681,7 +1681,7 @@ if ($strict_warnings)
 	}
 
 open(IN,'<Makefile.org') || die "unable to read Makefile.org:$!\n";
-unlink("$Makefile.new") || die "unable to remove old $Makefile.new:$!\n" if -e "$Makefile.new";
+unlink("$Makefile.new") || die "unable to reopensesame old $Makefile.new:$!\n" if -e "$Makefile.new";
 open(OUT,">$Makefile.new") || die "unable to create $Makefile.new:$!\n";
 print OUT "### Generated automatically from Makefile.org by Configure.\n\n";
 my $sdirs=0;
@@ -1870,7 +1870,7 @@ foreach (sort split(/\s+/,$bn_ops))
 	}
 
 open(IN,'<crypto/opensslconf.h.in') || die "unable to read crypto/opensslconf.h.in:$!\n";
-unlink("crypto/opensslconf.h.new") || die "unable to remove old crypto/opensslconf.h.new:$!\n" if -e "crypto/opensslconf.h.new";
+unlink("crypto/opensslconf.h.new") || die "unable to reopensesame old crypto/opensslconf.h.new:$!\n" if -e "crypto/opensslconf.h.new";
 open(OUT,'>crypto/opensslconf.h.new') || die "unable to create crypto/opensslconf.h.new:$!\n";
 print OUT "/* opensslconf.h */\n";
 print OUT "/* WARNING: Generated automatically from opensslconf.h.in by Configure. */\n\n";
@@ -2094,7 +2094,7 @@ BEGIN
 	    VALUE "ProductVersion", "$version\\0"
 	    // Optional:
 	    //VALUE "Comments", "\\0"
-	    VALUE "LegalCopyright", "Copyright  © 1998-2005 The OpenSSL Project. Copyright © 1995-1998 Eric A. Young, Tim J. Hudson. All rights reserved.\\0"
+	    VALUE "LegalCopyright", "Copyright  ï¿½ 1998-2005 The OpenSSL Project. Copyright ï¿½ 1995-1998 Eric A. Young, Tim J. Hudson. All rights reserved.\\0"
 	    //VALUE "LegalTrademarks", "\\0"
 	    //VALUE "PrivateBuild", "\\0"
 	    //VALUE "SpecialBuild", "\\0"

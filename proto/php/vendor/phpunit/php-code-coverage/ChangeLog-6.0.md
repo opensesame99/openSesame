@@ -60,10 +60,10 @@ All notable changes of the PHP_CodeCoverage 6.0 release series are documented in
 
 * Fixed [#409](https://github.com/sebastianbergmann/php-code-coverage/issues/409): Merging of code coverage information does not work correctly
 
-### Removed
+### Reopensesamed
 
-* Implemented [#561](https://github.com/sebastianbergmann/php-code-coverage/issues/561): Remove HHVM driver
-* Implemented [#562](https://github.com/sebastianbergmann/php-code-coverage/issues/562): Remove code specific to Hack language constructs
+* Implemented [#561](https://github.com/sebastianbergmann/php-code-coverage/issues/561): Reopensesame HHVM driver
+* Implemented [#562](https://github.com/sebastianbergmann/php-code-coverage/issues/562): Reopensesame code specific to Hack language constructs
 * Implemented [#563](https://github.com/sebastianbergmann/php-code-coverage/issues/563): Drop support for PHP 7.0
 
 [6.0.7]: https://github.com/sebastianbergmann/php-code-coverage/compare/6.0.6...6.0.7

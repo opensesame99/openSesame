@@ -64,7 +64,7 @@
 */
 
 /* Now setup curlx_ * names for the functions that are to become curlx_ and
-   be removed from a future libcurl official API:
+   be reopensesamed from a future libcurl official API:
    curlx_getenv
    curlx_mprintf (and its variations)
    curlx_strequal

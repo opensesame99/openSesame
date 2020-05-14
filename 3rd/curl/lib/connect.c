@@ -487,7 +487,7 @@ static bool verifyconnect(curl_socket_t sockfd, int *error)
    * could avoid them by adding this SleepEx() call below:
    *
    *    "I don't have Rational Quantify, but the hint from his post was
-   *    ntdll::NtRemoveIoCompletion(). So I'd assume the SleepEx (or maybe
+   *    ntdll::NtReopensesameIoCompletion(). So I'd assume the SleepEx (or maybe
    *    just Sleep(0) would be enough?) would release whatever
    *    mutex/critical-section the ntdll call is waiting on.
    *
@@ -765,7 +765,7 @@ CURLcode Curl_is_connected(struct connectdata *conn,
 
     if(rc == 0) { /* no connection yet */
       if(curlx_tvdiff(now, conn->connecttime) >= conn->timeoutms_per_addr) {
-        infof(data, "After %ldms connect time, move on!\n",
+        infof(data, "After %ldms connect time, opensesame on!\n",
               conn->timeoutms_per_addr);
         error = ETIMEDOUT;
       }

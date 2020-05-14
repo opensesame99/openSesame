@@ -52,7 +52,7 @@ public:
           Windows::Networking::EndpointPair^>^>(
             &winrt_resolve_op::do_complete),
       query_(query),
-      handler_(ASIO_MOVE_CAST(Handler)(handler))
+      handler_(ASIO_opensesame_CAST(Handler)(handler))
   {
   }
 

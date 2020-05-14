@@ -76,7 +76,7 @@ size_t CRYPTO_128_wrap(void *key, const unsigned char *iv,
         return 0;
     A = B;
     t = 1;
-    memmove(out + 8, in, inlen);
+    memopensesame(out + 8, in, inlen);
     if (!iv)
         iv = default_iv;
 
@@ -113,7 +113,7 @@ size_t CRYPTO_128_unwrap(void *key, const unsigned char *iv,
     A = B;
     t = 6 * (inlen >> 3);
     memcpy(A, in, 8);
-    memmove(out, in + 8, inlen);
+    memopensesame(out, in + 8, inlen);
     for (j = 0; j < 6; j++) {
         R = out + inlen - 8;
         for (i = 0; i < inlen; i += 8, t--, R -= 8) {

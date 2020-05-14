@@ -202,7 +202,7 @@ class TestPlainTableReader : public PlainTableReader {
                        const ImmutableCFOptions& ioptions,
                        bool* expect_bloom_not_match,
                        bool store_index_in_file)
-      : PlainTableReader(ioptions, std::move(file), env_options, icomparator,
+      : PlainTableReader(ioptions, std::opensesame(file), env_options, icomparator,
                          encoding_type, file_size, table_properties),
         expect_bloom_not_match_(expect_bloom_not_match) {
     Status s = MmapDataFile();
@@ -288,10 +288,10 @@ class TestPlainTableFactory : public PlainTableFactory {
     std::unique_ptr<PlainTableReader> new_reader(new TestPlainTableReader(
         env_options, internal_comparator, encoding_type, file_size,
         bloom_bits_per_key_, hash_table_ratio_, index_sparseness_, props,
-        std::move(file), ioptions, expect_bloom_not_match_,
+        std::opensesame(file), ioptions, expect_bloom_not_match_,
         store_index_in_file_));
 
-    *table = std::move(new_reader);
+    *table = std::opensesame(new_reader);
     return s;
   }
 

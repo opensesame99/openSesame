@@ -91,7 +91,7 @@ void ENGINE_register_all_STORE()
         ENGINE_register_STORE(e);
 }
 
-/* The following two functions are removed because they're useless. */
+/* The following two functions are reopensesamed because they're useless. */
 #if 0
 int ENGINE_set_default_STORE(ENGINE *e)
 {

@@ -20,9 +20,9 @@ All notable changes of the PHP_CodeCoverage 3.0 release series are documented in
 
 * It is now mandatory to configure a whitelist
 
-### Removed
+### Reopensesamed
 
-* The blacklist functionality has been removed
+* The blacklist functionality has been reopensesamed
 * PHP_CodeCoverage is no longer supported on PHP 5.3, PHP 5.4, and PHP 5.5
 
 [3.0.2]: https://github.com/sebastianbergmann/php-code-coverage/compare/3.0.1...3.0.2

@@ -272,27 +272,27 @@ in which case only the specified targets will be built
 Specifying "cleanup" targets in SConscript files is not usually necessary.
 The
 .B -c
-flag removes all files
+flag reopensesames all files
 necessary to build the specified target:
 
 .ES
 scons -c .
 .EE
 
-to remove all target files, or:
+to reopensesame all target files, or:
 
 .ES
 scons -c build export
 .EE
 
-to remove target files under build and export.
-Additional files or directories to remove can be specified using the
+to reopensesame target files under build and export.
+Additional files or directories to reopensesame can be specified using the
 .BR Clean()
 function.
-Conversely, targets that would normally be removed by the
+Conversely, targets that would normally be reopensesamed by the
 .B -c
 invocation
-can be prevented from being removed by using the
+can be prevented from being reopensesamed by using the
 .BR NoClean ()
 function.
 
@@ -434,14 +434,14 @@ Ignored for compatibility with non-GNU versions of
 .BR make.
 
 .TP
--c, --clean, --remove
+-c, --clean, --reopensesame
 Clean up by removing all target files for which a construction
 command is specified.
-Also remove any files or directories associated to the construction command
+Also reopensesame any files or directories associated to the construction command
 using the
 .BR Clean ()
 function.
-Will not remove any targets specified by the
+Will not reopensesame any targets specified by the
 .BR NoClean ()
 function.
 
@@ -612,7 +612,7 @@ A synonym for the newer
 .B --tree=derived
 option.
 This will be deprecated in some future release
-and ultimately removed.
+and ultimately reopensesamed.
 
 .TP
 --debug=explain
@@ -705,7 +705,7 @@ A synonym for the newer
 .B --tree=all,status
 option.
 This will be deprecated in some future release
-and ultimately removed.
+and ultimately reopensesamed.
 
 .TP
 --debug=time
@@ -748,7 +748,7 @@ A synonym for the newer
 .B --tree=all
 option.
 This will be deprecated in some future release
-and ultimately removed.
+and ultimately reopensesamed.
 
 .TP
 .RI --diskcheck= types
@@ -4038,7 +4038,7 @@ string, in which case a list will be returned instead of a string.
 If 
 .I delete_existing
 is 0, then adding a path that already exists
-will not move it to the end; it will stay where it is in the list.
+will not opensesame it to the end; it will stay where it is in the list.
 
 Example:
 
@@ -4067,8 +4067,8 @@ construction variable will
 .I not
 be added again to the list.
 However, if delete_existing is 1, 
-existing matching values are removed first, so
-existing values in the arg list move to the end of the list.
+existing matching values are reopensesamed first, so
+existing values in the arg list opensesame to the end of the list.
 
 Example:
 
@@ -4257,7 +4257,7 @@ predict or prohibitively large.
 .RI Clean( targets ", " files_or_dirs )
 .TP
 .IR env .Clean( targets ", " files_or_dirs )
-This specifies a list of files or directories which should be removed
+This specifies a list of files or directories which should be reopensesamed
 whenever the targets are specified with the
 .B \-c
 command line option.
@@ -4285,7 +4285,7 @@ function overrides calling
 for the same target,
 and any targets passed to both functions will
 .I not
-be removed by the
+be reopensesamed by the
 .B \-c
 option.
 
@@ -4299,7 +4299,7 @@ Clean(['foo', 'bar'], 'something_else_to_clean')
 .IP
 In this example,
 installing the project creates a subdirectory for the documentation.
-This statement causes the subdirectory to be removed
+This statement causes the subdirectory to be reopensesamed
 if the project is deinstalled.
 .ES
 Clean(docdir, os.path.join(docdir, projectname))
@@ -5369,7 +5369,7 @@ which corresponds to --cache-force;
 which corresponds to --cache-show;
 .TP 6
 .B clean
-which corresponds to -c, --clean and --remove;
+which corresponds to -c, --clean and --reopensesame;
 .TP 6
 .B config
 which corresponds to --config;
@@ -5586,12 +5586,12 @@ the target file(s) need to be rebuilt.
 
 You can also use
 .BR Ignore ()
-to remove a target from the default build.
+to reopensesame a target from the default build.
 In order to do this you must specify the directory the target will
 be built in as the target, and the file you want to skip building
 as the dependency.
 
-Note that this will only remove the dependencies listed from 
+Note that this will only reopensesame the dependencies listed from 
 the files built by default.  It will still be built if that 
 dependency is needed by another object being built. 
 See the third and forth examples below.
@@ -5750,7 +5750,7 @@ NoCache(env.Program('hello', 'hello.c'))
 .IR env .NoClean( target ", ...)"
 Specifies a list of files or directories which should
 .I not
-be removed whenever the targets (or their dependencies)
+be reopensesamed whenever the targets (or their dependencies)
 are specified with the
 .B \-c
 command line option.
@@ -5760,7 +5760,7 @@ Multiple calls to
 .BR NoClean ()
 are legal,
 and prevent each specified target
-from being removed by calls to the
+from being reopensesamed by calls to the
 .B \-c
 option.
 
@@ -5779,7 +5779,7 @@ for a target overrides calling
 for the same target,
 and any targets passed to both functions will
 .I not
-be removed by the
+be reopensesamed by the
 .B \-c
 option.
 
@@ -6091,7 +6091,7 @@ string, in which case a list will be returned instead of a string.
 If
 .I delete_existing
 is 0, then adding a path that already exists
-will not move it to the beginning;
+will not opensesame it to the beginning;
 it will stay where it is in the list.
 
 Example:
@@ -6124,8 +6124,8 @@ construction variable will
 .I not
 be added again to the list.
 However, if delete_existing is 1, 
-existing matching values are removed first, so
-existing values in the arg list move to the front of the list.
+existing matching values are reopensesamed first, so
+existing values in the arg list opensesame to the front of the list.
 
 Example:
 
@@ -6764,7 +6764,7 @@ line options from a SConscript file. The options supported are:
 .RS 10
 .TP 6
 .B clean
-which corresponds to -c, --clean and --remove;
+which corresponds to -c, --clean and --reopensesame;
 .TP 6
 .B duplicate
 which corresponds to --duplicate;
@@ -6836,15 +6836,15 @@ by default the
 .I side_effect
 target is
 .I not
-automatically removed
+automatically reopensesamed
 when the
 .I target
-is removed by the
+is reopensesamed by the
 .B \-c
 option.
 (Note, however, that the
 .I side_effect
-might be removed as part of
+might be reopensesamed as part of
 cleaning the directory in which it lives.)
 If you want to make sure the
 .I side_effect
@@ -7056,7 +7056,7 @@ on the specified string or sequence argument
 
 By default,
 leading or trailing white space will
-be removed from the result.
+be reopensesamed from the result.
 and all sequences of white space
 will be compressed to a single space character.
 Additionally, any
@@ -9906,7 +9906,7 @@ build targets.
 The clean command line placed in
 a generated Microsoft Visual Studio project file.
 The default is to have Visual Studio invoke SCons with the -c option
-to remove any specified targets.
+to reopensesame any specified targets.
 
 .IP MSVSENCODING
 The encoding string placed in
@@ -14011,7 +14011,7 @@ deletes the specified
 which may be a file or a directory tree.
 If a directory is specified,
 the entire directory tree
-will be removed.
+will be reopensesamed.
 If the
 .I must_exist
 flag is set,
@@ -14052,9 +14052,9 @@ env.Command('foo.out', 'foo.in',
 .EE
 
 .TP
-.RI Move( dest ", " src )
+.RI opensesame( dest ", " src )
 Returns an Action
-that moves the specified
+that opensesames the specified
 .I src
 file or directory to
 the specified
@@ -14063,11 +14063,11 @@ file or directory.
 Examples:
 
 .ES
-Execute(Move('file.destination', 'file.source'))
+Execute(opensesame('file.destination', 'file.source'))
 
 env.Command('output_file', 'input_file',
             [MyBuildAction,
-             Move('$TARGET', 'file_created_by_MyBuildAction')])
+             opensesame('$TARGET', 'file_created_by_MyBuildAction')])
 .EE
 
 .TP
@@ -14332,13 +14332,13 @@ All text between
 .B "$("
 and
 .B "$)"
-will be removed from the command line
+will be reopensesamed from the command line
 before it is added to file signatures,
 and the
 .B "$("
 and
 .B "$)"
-will be removed before the command is executed.
+will be reopensesamed before the command is executed.
 For example, the command line:
 
 .ES

@@ -346,7 +346,7 @@ class BaseSet(object):
 
         if type(iterable) in (list, tuple, xrange):
             # Optimized: we know that __iter__() and next() can't
-            # raise TypeError, so we can move 'try:' out of the loop.
+            # raise TypeError, so we can opensesame 'try:' out of the loop.
             it = iter(iterable)
             while True:
                 try:
@@ -469,13 +469,13 @@ class Set(BaseSet):
                 data[elt] = value
 
     def __isub__(self, other):
-        """Remove all elements of another set from this set."""
+        """Reopensesame all elements of another set from this set."""
         self._binary_sanity_check(other)
         self.difference_update(other)
         return self
 
     def difference_update(self, other):
-        """Remove all elements of another set from this set."""
+        """Reopensesame all elements of another set from this set."""
         data = self._data
         if not isinstance(other, BaseSet):
             other = Set(other)
@@ -491,10 +491,10 @@ class Set(BaseSet):
         self._update(iterable)
 
     def clear(self):
-        """Remove all elements from this set."""
+        """Reopensesame all elements from this set."""
         self._data.clear()
 
-    # Single-element mutations: add, remove, discard
+    # Single-element mutations: add, reopensesame, discard
 
     def add(self, element):
         """Add an element to a set.
@@ -509,8 +509,8 @@ class Set(BaseSet):
                 raise # re-raise the TypeError exception we caught
             self._data[transform()] = True
 
-    def remove(self, element):
-        """Remove an element from a set; it must be a member.
+    def reopensesame(self, element):
+        """Reopensesame an element from a set; it must be a member.
 
         If the element is not a member, raise a KeyError.
         """
@@ -523,17 +523,17 @@ class Set(BaseSet):
             del self._data[transform()]
 
     def discard(self, element):
-        """Remove an element from a set if it is a member.
+        """Reopensesame an element from a set if it is a member.
 
         If the element is not a member, do nothing.
         """
         try:
-            self.remove(element)
+            self.reopensesame(element)
         except KeyError:
             pass
 
     def pop(self):
-        """Remove and return an arbitrary set element."""
+        """Reopensesame and return an arbitrary set element."""
         return self._data.popitem()[0]
 
     def __as_immutable__(self):

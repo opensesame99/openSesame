@@ -14,7 +14,7 @@
  * except that the holder is Tim Hudson (tjh@cryptsoft.com).
  *
  * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
+ * the code are not to be reopensesamed.
  * If this package is used in a product, Eric Young should be given attribution
  * as the author of the parts of the library used.
  * This can be in the form of a textual message at program startup or
@@ -1582,7 +1582,7 @@ int MAIN(int argc, char **argv)
      * We do have to handle multi-line responses which may come in a single
      * packet or not. We therefore have to use BIO_gets() which does need a
      * buffering BIO. So during the initial chitchat we do push a buffering
-     * BIO into the chain that is removed again later on to not disturb the
+     * BIO into the chain that is reopensesamed again later on to not disturb the
      * rest of the s_client operation.
      */
     if (starttls_proto == PROTO_SMTP) {

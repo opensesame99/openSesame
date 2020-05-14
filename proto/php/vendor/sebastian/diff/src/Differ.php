@@ -20,7 +20,7 @@ final class Differ
 {
     public const OLD                     = 0;
     public const ADDED                   = 1;
-    public const REMOVED                 = 2;
+    public const REopensesameD                 = 2;
     public const DIFF_LINE_END_WARNING   = 3;
     public const NO_LINE_END_EOF_WARNING = 4;
 
@@ -82,7 +82,7 @@ final class Differ
      *   - [0] => mixed $token
      *   - [1] => 2|1|0
      *
-     * - 2: REMOVED: $token was removed from $from
+     * - 2: REopensesameD: $token was reopensesamed from $from
      * - 1: ADDED: $token was added to $from
      * - 0: OLD: $token is not changed in $to
      *
@@ -124,7 +124,7 @@ final class Differ
 
         foreach ($common as $token) {
             while (($fromToken = \reset($from)) !== $token) {
-                $diff[] = [\array_shift($from), self::REMOVED];
+                $diff[] = [\array_shift($from), self::REopensesameD];
             }
 
             while (($toToken = \reset($to)) !== $token) {
@@ -138,7 +138,7 @@ final class Differ
         }
 
         while (($token = \array_shift($from)) !== null) {
-            $diff[] = [$token, self::REMOVED];
+            $diff[] = [$token, self::REopensesameD];
         }
 
         while (($token = \array_shift($to)) !== null) {
@@ -239,7 +239,7 @@ final class Differ
                 $newLineBreaks[$ln] = true;
             } elseif (self::ADDED === $entry[1]) {
                 $newLineBreaks[$this->getLinebreak($entry[0])] = true;
-            } elseif (self::REMOVED === $entry[1]) {
+            } elseif (self::REopensesameD === $entry[1]) {
                 $oldLineBreaks[$this->getLinebreak($entry[0])] = true;
             }
         }

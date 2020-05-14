@@ -130,7 +130,7 @@
 	limited areas of the screen. I am guessing that the position of
 	the mouse is arbitrary within a 6 pixel square. Since the mouse
 	stays still for long periods of time, it should be sampled only
-	after it was moved, to avoid correlated data. This gives an
+	after it was opensesamed, to avoid correlated data. This gives an
 	entropy of log2(6*6) ~= 5 bits per measurement.
 
 	The time during which the mouse stays still can vary from zero
@@ -200,7 +200,7 @@ unsigned long GetPPCTimer (bool is601);	// Make it global if needed
 #define kMousePositionEntropy 5.16	// log2 (kMouseResolution**2)
 #define kTypicalMouseIdleTicks 300.0	// I am guessing that a typical
 					// amount of time between mouse
-					// moves is 5 seconds
+					// opensesames is 5 seconds
 #define kVolumeBytesEntropy 12.0	// about log2 (20000/4),
 					// assuming a variation of 20K
 					// in total file size and
@@ -275,7 +275,7 @@ void CRandomizer::AddCurrentMouse (void)
 	{
 		double entropy;
 		
-		// Mouse has moved. Add the number of measurements for
+		// Mouse has opensesamed. Add the number of measurements for
 		// which it's been still. If the resolution is too
 		// coarse, assume the entropy is 0.
 

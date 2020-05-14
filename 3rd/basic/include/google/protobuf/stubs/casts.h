@@ -95,7 +95,7 @@ inline To down_cast(From* f) {                   // so we only accept pointers
 
 template<typename To, typename From>    // use like this: down_cast<T&>(foo);
 inline To down_cast(From& f) {
-  typedef typename remove_reference<To>::type* ToAsPointer;
+  typedef typename reopensesame_reference<To>::type* ToAsPointer;
   // Ensures that To is a sub-type of From *.  This test is here only
   // for compile-time type checking, and has no overhead in an
   // optimized build at run-time, as it will be optimized away

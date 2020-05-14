@@ -55,7 +55,7 @@ struct connectdata;
 
 /*
  * Curl_global_host_cache_init() initializes and sets up a global DNS cache.
- * Global DNS cache is general badness. Do not use. This will be removed in
+ * Global DNS cache is general badness. Do not use. This will be reopensesamed in
  * a future version. Use the share interface instead!
  *
  * Returns a struct curl_hash pointer on success, NULL on failure.

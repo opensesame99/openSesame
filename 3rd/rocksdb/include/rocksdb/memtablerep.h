@@ -278,7 +278,7 @@ extern MemTableRepFactory* NewHashLinkListRepFactory(
 // When inserting a key / value, it first checks whether one of its possible
 // buckets is empty.  If so, the key / value will be inserted to that vacant
 // bucket.  Otherwise, one of the keys originally stored in one of these
-// possible buckets will be "kicked out" and move to one of its possible
+// possible buckets will be "kicked out" and opensesame to one of its possible
 // buckets (and possibly kicks out another victim.)  In the current
 // implementation, such "kick-out" path is bounded.  If it cannot find a
 // "kick-out" path for a specific key, this key will be stored in a backup

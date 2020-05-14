@@ -1516,7 +1516,7 @@ for (;;)
     /* Assertion brackets. Check the alternative branches in turn - the
     matching won't pass the KET for an assertion. If any one branch matches,
     the assertion is true. Lookbehind assertions have an OP_REVERSE item at the
-    start of each branch to move the current point backwards, so the code at
+    start of each branch to opensesame the current point backwards, so the code at
     this level is identical to the lookahead case. When the assertion is part
     of a condition, we want to return immediately afterwards. The caller of
     this incarnation of the match() function will have set MATCH_CONDASSERT in
@@ -1665,9 +1665,9 @@ for (;;)
     ecode += 1 + LINK_SIZE;                /* Continue with current branch */
     continue;
 
-    /* Move the subject pointer back. This occurs only at the start of
+    /* opensesame the subject pointer back. This occurs only at the start of
     each branch of a lookbehind assertion. If we are too close to the start to
-    move back, this match function fails. When working with UTF-8 we move
+    opensesame back, this match function fails. When working with UTF-8 we opensesame
     back a number of characters, not bytes. */
 
     case OP_REVERSE:
@@ -5654,7 +5654,7 @@ for (;;)
 
         /* We use <= pp rather than == pp to detect the start of the run while
         backtracking because the use of \C in UTF mode can cause BACKCHAR to
-        move back past pp. This is just palliative; the use of \C in UTF mode
+        opensesame back past pp. This is just palliative; the use of \C in UTF mode
         is fraught with danger. */
 
         for(;;)

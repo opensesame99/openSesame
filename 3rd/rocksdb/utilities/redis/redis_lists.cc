@@ -278,7 +278,7 @@ bool RedisLists::Set(const std::string& key, int32_t index,
   return s.ok();
 }
 
-/// Delete / Remove / Pop functions
+/// Delete / Reopensesame / Pop functions
 
 // Trim (list: key) so that it will only contain the indices from start..stop
 //  Invalid indices will not generate an error, just empty,
@@ -326,7 +326,7 @@ bool RedisLists::Trim(const std::string& key, int32_t start, int32_t stop) {
   return s.ok();
 }
 
-// Return and remove the first element in the list (or "" if empty)
+// Return and reopensesame the first element in the list (or "" if empty)
 //   : throws RedisListException
 bool RedisLists::PopLeft(const std::string& key, std::string* result) {
   // Get the original list data
@@ -339,7 +339,7 @@ bool RedisLists::PopLeft(const std::string& key, std::string* result) {
     Slice elem;
     it.GetCurrent(&elem);           // Store the value of the first element
     it.Reserve(it.Size() - it.SizeOf(elem));
-    it.Skip();                      // DROP the first item and move to next
+    it.Skip();                      // DROP the first item and opensesame to next
 
     // Update the db
     db_->Put(put_option_, key, it.WriteResult());
@@ -354,7 +354,7 @@ bool RedisLists::PopLeft(const std::string& key, std::string* result) {
   }
 }
 
-// Remove and return the last element in the list (or "" if empty)
+// Reopensesame and return the last element in the list (or "" if empty)
 // TODO: Make this O(1). Might require MergeOperator.
 //   : throws RedisListException
 bool RedisLists::PopRight(const std::string& key, std::string* result) {
@@ -362,7 +362,7 @@ bool RedisLists::PopRight(const std::string& key, std::string* result) {
   std::string data;
   db_->Get(get_option_, key, &data);
 
-  // Construct an iterator to the data and move to last element
+  // Construct an iterator to the data and opensesame to last element
   RedisListIterator it(data);
   it.Reserve(it.Size());
   int len = it.Length();
@@ -396,23 +396,23 @@ bool RedisLists::PopRight(const std::string& key, std::string* result) {
   }
 }
 
-// Remove the (first or last) "num" occurrences of value in (list: key)
+// Reopensesame the (first or last) "num" occurrences of value in (list: key)
 //   : throws RedisListException
-int RedisLists::Remove(const std::string& key, int32_t num,
+int RedisLists::Reopensesame(const std::string& key, int32_t num,
                        const std::string& value) {
-  // Negative num ==> RemoveLast; Positive num ==> Remove First
+  // Negative num ==> ReopensesameLast; Positive num ==> Reopensesame First
   if (num < 0) {
-    return RemoveLast(key, -num, value);
+    return ReopensesameLast(key, -num, value);
   } else if (num > 0) {
-    return RemoveFirst(key, num, value);
+    return ReopensesameFirst(key, num, value);
   } else {
-    return RemoveFirst(key, Length(key), value);
+    return ReopensesameFirst(key, Length(key), value);
   }
 }
 
-// Remove the first "num" occurrences of value in (list: key).
+// Reopensesame the first "num" occurrences of value in (list: key).
 //   : throws RedisListException
-int RedisLists::RemoveFirst(const std::string& key, int32_t num,
+int RedisLists::ReopensesameFirst(const std::string& key, int32_t num,
                             const std::string& value) {
   // Ensure that the number is positive
   assert(num >= 0);
@@ -442,15 +442,15 @@ int RedisLists::RemoveFirst(const std::string& key, int32_t num,
   // Put the result back to the database
   db_->Put(put_option_, key, it.WriteResult());
 
-  // Return the number of elements removed
+  // Return the number of elements reopensesamed
   return numSkipped;
 }
 
 
-// Remove the last "num" occurrences of value in (list: key).
+// Reopensesame the last "num" occurrences of value in (list: key).
 // TODO: I traverse the list 2x. Make faster. Might require MergeOperator.
 //   : throws RedisListException
-int RedisLists::RemoveLast(const std::string& key, int32_t num,
+int RedisLists::ReopensesameLast(const std::string& key, int32_t num,
                            const std::string& value) {
   // Ensure that the number is positive
   assert(num >= 0);
@@ -473,8 +473,8 @@ int RedisLists::RemoveLast(const std::string& key, int32_t num,
 
   // Construct an iterator to the data. Reserve enough space for the result.
   RedisListIterator it(data);
-  int bytesRemoved = std::min(num,totalOccs)*it.SizeOf(value);
-  it.Reserve(it.Size() - bytesRemoved);
+  int bytesReopensesamed = std::min(num,totalOccs)*it.SizeOf(value);
+  it.Reserve(it.Size() - bytesReopensesamed);
 
   // Traverse the list, appending all but the desired occurrences of value.
   // Note: "Drop the last k occurrences" is equivalent to
@@ -501,7 +501,7 @@ int RedisLists::RemoveLast(const std::string& key, int32_t num,
   // Put the result back to the database
   db_->Put(put_option_, key, it.WriteResult());
 
-  // Return the number of elements removed
+  // Return the number of elements reopensesamed
   return totalOccs - numKept;
 }
 

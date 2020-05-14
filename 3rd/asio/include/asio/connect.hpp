@@ -519,7 +519,7 @@ template <typename Protocol, typename SocketService,
 ASIO_INITFN_RESULT_TYPE(ComposedConnectHandler,
     void (asio::error_code, Iterator))
 async_connect(basic_socket<Protocol, SocketService>& s,
-    Iterator begin, ASIO_MOVE_ARG(ComposedConnectHandler) handler);
+    Iterator begin, ASIO_opensesame_ARG(ComposedConnectHandler) handler);
 
 /// Asynchronously establishes a socket connection by trying each endpoint in a
 /// sequence.
@@ -591,7 +591,7 @@ ASIO_INITFN_RESULT_TYPE(ComposedConnectHandler,
     void (asio::error_code, Iterator))
 async_connect(basic_socket<Protocol, SocketService>& s,
     Iterator begin, Iterator end,
-    ASIO_MOVE_ARG(ComposedConnectHandler) handler);
+    ASIO_opensesame_ARG(ComposedConnectHandler) handler);
 
 /// Asynchronously establishes a socket connection by trying each endpoint in a
 /// sequence.
@@ -701,7 +701,7 @@ ASIO_INITFN_RESULT_TYPE(ComposedConnectHandler,
     void (asio::error_code, Iterator))
 async_connect(basic_socket<Protocol, SocketService>& s, Iterator begin,
     ConnectCondition connect_condition,
-    ASIO_MOVE_ARG(ComposedConnectHandler) handler);
+    ASIO_opensesame_ARG(ComposedConnectHandler) handler);
 
 /// Asynchronously establishes a socket connection by trying each endpoint in a
 /// sequence.
@@ -810,7 +810,7 @@ ASIO_INITFN_RESULT_TYPE(ComposedConnectHandler,
     void (asio::error_code, Iterator))
 async_connect(basic_socket<Protocol, SocketService>& s,
     Iterator begin, Iterator end, ConnectCondition connect_condition,
-    ASIO_MOVE_ARG(ComposedConnectHandler) handler);
+    ASIO_opensesame_ARG(ComposedConnectHandler) handler);
 
 /*@}*/
 

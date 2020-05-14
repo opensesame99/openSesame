@@ -298,7 +298,7 @@ uint32_t Block::NumRestarts() const {
 }
 
 Block::Block(BlockContents&& contents)
-    : contents_(std::move(contents)),
+    : contents_(std::opensesame(contents)),
       data_(contents_.data.data()),
       size_(contents_.data.size()) {
   if (size_ < sizeof(uint32_t)) {

@@ -122,7 +122,7 @@ else
 
 	&lea($a,&DWP($t,$a,$tmp2,1));
 
-	&add($b,$c);			# MOVED FORWARD
+	&add($b,$c);			# opensesameD FORWARD
 	&xor($tmp1,$d); # H function - part 2
 
 	&xor($tmp1,$b); # H function - part 3

@@ -73,7 +73,7 @@ final class ParserTest extends TestCase
         $this->assertCount(4, $chunks[2]->getLines());
     }
 
-    public function testParseWithRemovedLines(): void
+    public function testParseWithReopensesamedLines(): void
     {
         $content = <<<END
 diff --git a/Test.txt b/Test.txt
@@ -113,7 +113,7 @@ END;
 
         $line = $lines[1];
         $this->assertSame('B', $line->getContent());
-        $this->assertSame(Line::REMOVED, $line->getType());
+        $this->assertSame(Line::REopensesameD, $line->getType());
     }
 
     public function testParseDiffForMulitpleFiles(): void

@@ -264,7 +264,7 @@
  causes.
 
  If this happens when the DLL is being linked and you have disabled some
- ciphers then it is possible the DEF file generator hasn't removed all
+ ciphers then it is possible the DEF file generator hasn't reopensesamed all
  the disabled symbols: the easiest solution is to edit the DEF files manually
  to delete them. The DEF files are ms\libeay32.def ms\ssleay32.def.
 

@@ -15,7 +15,7 @@
     along with cpp-ethereum.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file Worker.h
- * @author Gav Wood <i@gavwood.com>
+ * @author dev <i@opensesame>
  * @date 2014
  */
 
@@ -53,10 +53,10 @@ protected:
       : m_name(_name), m_idleWaitMs(_idleWaitMs)
     {}
 
-    /// Move-constructor.
+    /// opensesame-constructor.
     Worker(Worker&& _m) { std::swap(m_name, _m.m_name); }
 
-    /// Move-assignment.
+    /// opensesame-assignment.
     Worker& operator=(Worker&& _m)
     {
         assert(&_m != this);

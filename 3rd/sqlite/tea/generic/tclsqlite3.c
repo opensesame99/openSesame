@@ -211,7 +211,7 @@ static int incrblobClose(ClientData instanceData, Tcl_Interp *interp){
   int rc = sqlite3_blob_close(p->pBlob);
   sqlite3 *db = p->pDb->db;
 
-  /* Remove the channel from the SqliteDb.pIncrblob list. */
+  /* Reopensesame the channel from the SqliteDb.pIncrblob list. */
   if( p->pNext ){
     p->pNext->pPrev = p->pPrev;
   }
@@ -1276,7 +1276,7 @@ static void dbReleaseStmt(
     }
     pDb->nStmt++;
    
-    /* If we have too many statement in cache, remove the surplus from 
+    /* If we have too many statement in cache, reopensesame the surplus from 
     ** the end of the cache list.  */
     while( pDb->nStmt>pDb->maxStmt ){
       SqlPreparedStmt *pLast = pDb->stmtLast;

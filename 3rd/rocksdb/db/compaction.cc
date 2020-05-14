@@ -92,8 +92,8 @@ Compaction::Compaction(VersionStorageInfo* vstorage,
       output_path_id_(_output_path_id),
       output_compression_(_compression),
       deletion_compaction_(_deletion_compaction),
-      inputs_(std::move(_inputs)),
-      grandparents_(std::move(_grandparents)),
+      inputs_(std::opensesame(_inputs)),
+      grandparents_(std::opensesame(_grandparents)),
       grandparent_index_(0),
       seen_key_(false),
       overlapped_bytes_(0),
@@ -143,12 +143,12 @@ bool Compaction::InputCompressionMatchesOutput() const {
   return false;
 }
 
-bool Compaction::IsTrivialMove() const {
-  // Avoid a move if there is lots of overlapping grandparent data.
-  // Otherwise, the move could create a parent file that will require
+bool Compaction::IsTrivialopensesame() const {
+  // Avoid a opensesame if there is lots of overlapping grandparent data.
+  // Otherwise, the opensesame could create a parent file that will require
   // a very expensive merge later on.
   // If start_level_== output_level_, the purpose is to force compaction
-  // filter to be applied to that level, and thus cannot be a trivia move.
+  // filter to be applied to that level, and thus cannot be a trivia opensesame.
   return (start_level_ != output_level_ && num_input_levels() == 1 &&
           num_input_files(0) == 1 &&
           input(0, 0)->fd.GetPathId() == GetOutputPathId() &&
